@@ -1,0 +1,6831 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\PassOptionsToPackage{dvipsnames,svgnames,x11names}{xcolor}
+\documentclass[
+  12pt,
+  a4paper,
+]{article}
+\usepackage{xcolor}
+\usepackage[a4paper,margin=2.5cm,heightrounded]{geometry}
+\usepackage{amsmath,amssymb}
+\setcounter{secnumdepth}{5}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+  \setmainfont[]{Noto Serif}
+  \setmonofont[]{Noto Sans Mono}
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{longtable,booktabs,array}
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\usepackage{amsmath}   % already pulled in by Pandoc, but safe
+\renewenvironment{equation}{\begin{equation*}}{\end{equation*}}
+\usepackage{microtype}
+\newcommand{\docversion}{0.1.1}
+\setcounter{secnumdepth}{0}
+\setcounter{tocdepth}{2} % keep TOC depth as desired
+\makeatletter
+\renewcommand{\sectionmark}[1]{\markboth{#1}{}}
+\renewcommand{\subsectionmark}[1]{\markright{#1}}
+\makeatother
+\usepackage{fancyhdr}
+\fancyhf{}%
+\fancyhead[LE,RO]{\thepage}%
+\fancyhead[LO,RE]{\nouppercase{\leftmark}}%
+\fancyfoot[C]{Version \docversion}%
+\renewcommand{\headrulewidth}{0.4pt}%
+\setlength{\headheight}{13.6pt}%
+}
+\usepackage{etoolbox}
+\AtBeginDocument{\thispagestyle{plain}\pagestyle{content}}
+\let\oldsection\section
+\renewcommand{\section}{\clearpage\oldsection}
+\usepackage{bookmark}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  pdftitle={The Little Book of Calculus},
+  pdfauthor={Duc-Tam Nguyen},
+  colorlinks=true,
+  linkcolor={blue},
+  filecolor={Maroon},
+  citecolor={Blue},
+  urlcolor={blue},
+  pdfcreator={LaTeX via pandoc}}
+
+\title{The Little Book of Calculus}
+\usepackage{etoolbox}
+\makeatletter
+\providecommand{\subtitle}[1]{% add subtitle to \maketitle
+  \apptocmd{\@title}{\par {\large #1 \par}}{}{}
+}
+\makeatother
+\subtitle{Version 0.1.0}
+\author{Duc-Tam Nguyen}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+{
+\hypersetup{linkcolor=}
+\setcounter{tocdepth}{2}
+\tableofcontents
+}
+\section{Part 1. Limits and
+derivatives}\label{part-1-limits-and-derivatives}
+
+\section{\texorpdfstring{Chapter 1. Functions and limits
+}{Chapter 1. Functions and limits }}\label{chapter-1-functions-and-limits}
+
+\subsection{1.1 Functions}\label{11-functions}
+
+A function is one of the most basic objects in mathematics. At its
+heart, a function is a rule that takes an input and produces exactly one
+output. Functions let us describe relationships, model real-world
+phenomena, and build the entire machinery of calculus.
+
+\subsubsection{Definition}\label{definition}
+
+Formally, a function from a set (called the domain) to a set (called the
+codomain) is written
+
+\[f : X \to Y.\]
+
+For every element , there is a unique element . The value is called the
+image of under .
+
+If , then is the output corresponding to the input . The set of all
+outputs that actually appear is called the range (a subset of the
+codomain).
+
+\subsubsection{Examples}\label{examples}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  The function maps each real number to its square.
+
+  \begin{itemize}
+  \item
+    Domain: all real numbers .
+  \item
+    Codomain: all real numbers .
+  \item
+    Range: all nonnegative real numbers .
+  \end{itemize}
+\item
+  The function assigns to each nonzero real number its reciprocal.
+
+  \begin{itemize}
+  \item
+    Domain: .
+  \item
+    Range: .
+  \end{itemize}
+\item
+  A real-world example: Let be the outside temperature (in °C) at time
+  (in hours). This is a function from ``time of day'' to
+  ``temperature.''
+\end{enumerate}
+
+\subsubsection{Ways of Representing
+Functions}\label{ways-of-representing-functions}
+
+Functions can be represented in several useful ways:
+
+\begin{itemize}
+\item
+  Formulas: e.g., .
+\item
+  Graphs: plotting all points in the coordinate plane.
+\item
+  Tables: pairing inputs and outputs for discrete sets of data.
+\item
+  Verbal descriptions: ``Assign to each student their grade.''
+\end{itemize}
+
+Each representation highlights different aspects of the same function.
+
+\subsubsection{Terminology}\label{terminology}
+
+\begin{itemize}
+\item
+  Independent variable: the input (usually written ).
+\item
+  Dependent variable: the output (usually written , where ).
+\item
+  Function notation: is read `` of .''
+\end{itemize}
+
+\subsubsection{Why Functions Matter in
+Calculus}\label{why-functions-matter-in-calculus}
+
+Calculus is the study of how functions change. Derivatives measure
+instantaneous rates of change, while integrals measure accumulated
+effects. To master these ideas, we first need a solid understanding of
+what functions are and how they behave.
+
+\subsubsection{Exercises}\label{exercises}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  For the function :
+
+  \begin{itemize}
+  \item
+    Find the domain, codomain, and range.
+  \end{itemize}
+\item
+  The function is defined for which inputs? What is its range?
+\item
+  Give a real-world example of a function from your daily life. Clearly
+  state the domain and codomain.
+\item
+  Sketch the graph of . What is the range?
+\item
+  Suppose . Explain why its range is the interval .
+\end{enumerate}
+
+\subsection{1.2 Graphs and
+Transformations}\label{12-graphs-and-transformations}
+
+A function can be understood not only by formulas but also by its graph.
+The graph of a function is the set of all ordered pairs , where belongs
+to the domain of . Plotting these pairs in the coordinate plane gives a
+picture of how the function behaves.
+
+\subsubsection{Basic Graphs}\label{basic-graphs}
+
+Some graphs are so fundamental that they should be memorized:
+
+\begin{itemize}
+\item
+  : a straight line through the origin.
+\item
+  : a parabola opening upward.
+\item
+  : a ``V''-shaped graph.
+\item
+  : a hyperbola with two branches.
+\item
+  : a wave-like periodic curve.
+\end{itemize}
+
+These serve as the building blocks for more complicated functions.
+
+\subsubsection{Transformations}\label{transformations}
+
+Graphs can be shifted, stretched, or reflected using simple rules:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Vertical shifts: Adding a constant moves the graph up or down.
+
+  \[y = f(x) + c \quad \text{is } f(x) \text{ shifted upward by } c.\]
+\item
+  Horizontal shifts: Adding inside the argument moves the graph left or
+  right.
+
+  \[y = f(x - c) \quad \text{is } f(x) \text{ shifted right by } c.\]
+\item
+  Vertical scaling: Multiplying by a constant stretches or compresses
+  the graph vertically.
+
+  \[y = a f(x), \quad a > 1 \text{ stretches; } 0 < a < 1 \text{ compresses.}\]
+\item
+  Horizontal scaling: Multiplying inside the argument stretches or
+  compresses the graph horizontally.
+
+  \[y = f(bx), \quad b > 1 \text{ compresses toward the } y\text{-axis}.\]
+\item
+  Reflections:
+
+  \begin{itemize}
+  \item
+    : reflection across the -axis.
+  \item
+    : reflection across the -axis.
+  \end{itemize}
+\end{enumerate}
+
+\subsubsection{Combining
+Transformations}\label{combining-transformations}
+
+Complex graphs often come from combining several transformations in
+sequence. For example:
+
+\[y = 2(x-1)^2 + 3\]
+
+is obtained by taking the parabola , shifting right by 1, stretching
+vertically by 2, and shifting upward by 3.
+
+\subsubsection{Exercises}\label{exercises-2}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Sketch the graph of . Identify the sequence of transformations from .
+\item
+  What happens to the graph of if we replace by ? Try it with .
+\item
+  Describe the transformations that turn into .
+\item
+  Draw the graph of . State its vertex and slope of each branch.
+\item
+  For , explain how the graph of has been transformed.
+\end{enumerate}
+
+\subsection{1.3 Intuitive Idea of
+Limits}\label{13-intuitive-idea-of-limits}
+
+In many situations, a function's value at a point is less important than
+the values it takes near that point. The concept of a limit captures
+this idea.
+
+\subsubsection{Approaching a Value}\label{approaching-a-value}
+
+Imagine walking toward a wall. Even before you touch it, you get closer
+and closer. In the same way, as approaches a number , the values of may
+approach some number . We then say:
+
+\[\lim_{x \to a} f(x) = L.\]
+
+This expresses the idea that can be made as close as we want to , simply
+by taking close enough to .
+
+\subsubsection{Examples}\label{examples-2}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  For :\\
+  As , .
+\item
+  For :\\
+  As , the function approaches 1, even though is not defined.
+\item
+  For :\\
+  As (approaching from the right), .\\
+  As (approaching from the left), .\\
+  Since the left and right behaviors differ, the limit at 0 does not
+  exist.
+\end{enumerate}
+
+\subsubsection{Importance of Limits}\label{importance-of-limits}
+
+\begin{itemize}
+\item
+  They allow us to define functions at points where they are not
+  originally defined.
+\item
+  They capture behavior near discontinuities and singularities.
+\item
+  They form the foundation for derivatives (instantaneous rates of
+  change) and integrals (areas as limits of sums).
+\end{itemize}
+
+\subsubsection{One-Sided Limits}\label{one-sided-limits}
+
+Sometimes the behavior from the left and right must be studied
+separately:
+
+\[\lim_{x \to a^-} f(x), \quad \lim_{x \to a^+} f(x).\]
+
+If both agree, then the two-sided limit exists.
+
+\subsubsection{Exercises}\label{exercises-3}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Compute .
+\item
+  What is ? Use intuition from the graph of .
+\item
+  Evaluate . Does the two-sided limit exist?
+\item
+  Find . Interpret this result in words.
+\item
+  For , what is ? Compare with the value of .
+\end{enumerate}
+
+\subsection{1.4 Formal Definition of
+Limits}\label{14-formal-definition-of-limits}
+
+The intuitive idea of a limit can be made precise using the
+epsilon--delta definition. This gives us a rigorous way to say that gets
+close to a value as gets close to .
+
+\subsubsection{The Definition}\label{the-definition}
+
+We write
+
+\[\lim_{x \to a} f(x) = L\]
+
+if the following condition holds:
+
+For every (no matter how small), there exists a such that whenever
+
+\[0 < |x - a| < \delta,\]
+
+it follows that
+
+\[|f(x) - L| < \varepsilon.\]
+
+In words: we can make as close as we like to , provided is close enough
+to (but not equal to ).
+
+\subsubsection{Example 1: Linear
+Function}\label{example-1-linear-function}
+
+For , show that .
+
+\begin{itemize}
+\item
+  We want .
+\item
+  But .
+\item
+  So .
+\item
+  If we choose , then whenever , we have .\\
+  This proves the limit.
+\end{itemize}
+
+\subsubsection{Example 2: Reciprocal
+Function}\label{example-2-reciprocal-function}
+
+For , consider .
+
+\begin{itemize}
+\item
+  We want .
+\item
+  This inequality requires algebraic manipulation, but it can be
+  satisfied by choosing depending on .\\
+  The process is more complicated, but the principle is the same.
+\end{itemize}
+
+\subsubsection{Why This Matters}\label{why-this-matters}
+
+\begin{itemize}
+\item
+  The epsilon--delta definition guarantees that limits are not vague or
+  based only on intuition.
+\item
+  It is the foundation for continuity, derivatives, and integrals.
+\item
+  Though beginners may find it abstract, working with simple examples
+  builds familiarity.
+\end{itemize}
+
+\subsubsection{Exercises}\label{exercises-4}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Using the epsilon--delta definition, prove that .
+\item
+  Show that using the formal definition.
+\item
+  Explain why does not exist.
+\item
+  For , show that .
+\item
+  In your own words, explain the role of and in the definition of a
+  limit.
+\end{enumerate}
+
+\subsection{1.5 Continuity}\label{15-continuity}
+
+A function is continuous if its graph can be drawn without lifting your
+pencil from the paper. More precisely, continuity ensures that small
+changes in the input produce small changes in the output.
+
+\subsubsection{Definition}\label{definition-2}
+
+A function is continuous at a point if three conditions are satisfied:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  is defined.
+\item
+  exists.
+\item
+  .
+\end{enumerate}
+
+If a function is continuous at every point in an interval, we say it is
+continuous on that interval.
+
+\subsubsection{Examples}\label{examples-3}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Polynomial functions: Functions like are continuous everywhere on .
+\item
+  Rational functions: is continuous everywhere except at , where it is
+  undefined.
+\item
+  Piecewise functions:
+
+  \[f(x) =
+  \begin{cases}
+  x^2 & x < 1, \\
+  2 & x = 1, \\
+  x+1 & x > 1,
+  \end{cases}\]
+
+  This function has a ``jump'' at , so it is not continuous there.
+\end{enumerate}
+
+\subsubsection{Types of Discontinuities}\label{types-of-discontinuities}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Removable discontinuity: A ``hole'' in the graph. Example: at .
+\item
+  Jump discontinuity: The left-hand and right-hand limits are different.
+\item
+  Infinite discontinuity: The function goes to near a point, as with
+  near .
+\end{enumerate}
+
+\subsubsection{The Intermediate Value
+Theorem}\label{the-intermediate-value-theorem}
+
+If a function is continuous on an interval , then for any number between
+and , there exists some such that .
+
+This property is crucial in proving the existence of roots and solutions
+to equations.
+
+\subsubsection{Exercises}\label{exercises-5}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Decide whether the function is continuous at .
+\item
+  Identify the points of discontinuity for .
+\item
+  Explain why every polynomial function is continuous everywhere.
+\item
+  Give an example of a function with a jump discontinuity. Sketch its
+  graph.
+\item
+  Use the Intermediate Value Theorem to show that the equation has a
+  solution between 0 and 1.
+\end{enumerate}
+
+\section{\texorpdfstring{Chapter 2. Derivatives
+}{Chapter 2. Derivatives }}\label{chapter-2-derivatives}
+
+\subsection{2.1 The Derivative as a Rate of
+Change}\label{21-the-derivative-as-a-rate-of-change}
+
+The derivative is one of the central ideas of calculus. It measures how
+a function changes as its input changes - in other words, the rate of
+change of the output with respect to the input.
+
+\subsubsection{Average Rate of Change}\label{average-rate-of-change}
+
+For a function , the average rate of change between two points and is
+
+\[\frac{f(b) - f(a)}{b - a}.\]
+
+This is the slope of the secant line through the points and .
+
+\subsubsection{Instantaneous Rate of
+Change}\label{instantaneous-rate-of-change}
+
+To measure how fast is changing at a single point, we let the interval
+shrink:
+
+\[f'(a) = \lim_{h \to 0} \frac{f(a+h) - f(a)}{h}.\]
+
+This limit, if it exists, is called the derivative of at .
+Geometrically, it is the slope of the tangent line to the graph of at
+the point .
+
+\subsubsection{Notation}\label{notation}
+
+\begin{itemize}
+\item
+  : prime notation.
+\item
+  : Leibniz notation, used when .
+\item
+  : operator notation.
+\end{itemize}
+
+All these symbols refer to the same concept.
+
+\subsubsection{Examples}\label{examples-4}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  For :
+
+  \[f'(x) = \lim_{h \to 0} \frac{(x+h)^2 - x^2}{h} = \lim_{h \to 0} \frac{2xh + h^2}{h} = 2x.\]
+
+  The slope of the parabola at is .
+\item
+  For :
+
+  \[f'(x) = \cos x.\]
+\item
+  For (a constant):
+
+  \[f'(x) = 0.\]
+
+  A constant function never changes.
+\end{enumerate}
+
+\subsubsection{Interpretation}\label{interpretation}
+
+\begin{itemize}
+\item
+  In physics: If is position, then is velocity.
+\item
+  In economics: If is cost, then is marginal cost.
+\item
+  In biology: If is population, then is growth rate.
+\end{itemize}
+
+The derivative makes ``change'' precise in many contexts.
+
+\subsubsection{Exercises}\label{exercises-6}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Compute for .
+\item
+  Find the slope of the tangent line to at .
+\item
+  If represents distance in meters, what is the velocity at ?
+\item
+  Use the limit definition to compute the derivative of .
+\item
+  Sketch the graph of and draw the tangent line at .
+\end{enumerate}
+
+\subsection{2.2 Differentiation Rules}\label{22-differentiation-rules}
+
+Once the derivative is defined, we need efficient ways to compute it.
+The differentiation rules are shortcuts that save us from repeatedly
+applying the limit definition.
+
+\subsubsection{The Constant Rule}\label{the-constant-rule}
+
+If where is a constant, then
+
+\[f'(x) = 0.\]
+
+\subsubsection{The Power Rule}\label{the-power-rule}
+
+For where is a real number,
+
+\[\frac{d}{dx} \big( x^n \big) = n x^{n-1}.\]
+
+Examples:
+
+\begin{itemize}
+\item
+  .
+\item
+  .
+\item
+  .
+\end{itemize}
+
+\subsubsection{The Constant Multiple
+Rule}\label{the-constant-multiple-rule}
+
+If , then
+
+\[f'(x) = c \cdot g'(x).\]
+
+\subsubsection{The Sum and Difference
+Rules}\label{the-sum-and-difference-rules}
+
+\begin{itemize}
+\item
+  .
+\item
+  .
+\end{itemize}
+
+\subsubsection{The Product Rule}\label{the-product-rule}
+
+For and :
+
+\[(fg)' = f'g + fg'.\]
+
+Example: If , :
+
+\[(fg)' = (2x)(\sin x) + (x^2)(\cos x).\]
+
+\subsubsection{The Quotient Rule}\label{the-quotient-rule}
+
+For and :
+
+\[\left(\frac{f}{g}\right)' = \frac{f'g - fg'}{g^2}, \quad g(x) \neq 0.\]
+
+Example: If , :
+
+\[\left(\frac{x^2}{x+1}\right)' = \frac{(2x)(x+1) - (x^2)(1)}{(x+1)^2}.\]
+
+\subsubsection{Derivatives of Common
+Functions}\label{derivatives-of-common-functions}
+
+\begin{itemize}
+\item
+  .
+\item
+  .
+\item
+  .
+\item
+  .
+\end{itemize}
+
+\subsubsection{Exercises}\label{exercises-7}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Differentiate .
+\item
+  Use the product rule to find the derivative of .
+\item
+  Apply the quotient rule to .
+\item
+  Compute using the chain of rules.
+\item
+  Show that the derivative of is .
+\end{enumerate}
+
+\subsection{2.3 The Chain Rule}\label{23-the-chain-rule}
+
+Often, functions are built by combining simpler functions together. To
+differentiate such composite functions, we use the chain rule.
+
+\subsubsection{The Rule}\label{the-rule}
+
+If , then
+
+\[\frac{dy}{dx} = f'(g(x)) \cdot g'(x).\]
+
+In words: differentiate the outer function, keep the inside unchanged,
+then multiply by the derivative of the inside.
+
+\subsubsection{Examples}\label{examples-5}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Square of a linear function
+
+  \[y = (3x+2)^2\]
+
+  Outer function: , inner function: .
+
+  \[y' = 2(3x+2) \cdot 3 = 6(3x+2).\]
+\item
+  Exponential with quadratic inside
+
+  \[y = e^{x^2}\]
+
+  Outer function: , inner function: .
+
+  \[y' = e^{x^2} \cdot 2x = 2x e^{x^2}.\]
+\item
+  Logarithm with root inside
+
+  \[y = \ln(\sqrt{x})\]
+
+  Outer: , inner: .
+
+  \[y' = \frac{1}{\sqrt{x}} \cdot \frac{1}{2\sqrt{x}} = \frac{1}{2x}.\]
+\end{enumerate}
+
+\subsubsection{Generalized Chain Rule}\label{generalized-chain-rule}
+
+For multiple nested functions :
+
+\[\frac{dy}{dx} = f'(g(h(x))) \cdot g'(h(x)) \cdot h'(x).\]
+
+This extends naturally to deeper compositions.
+
+\subsubsection{Why the Chain Rule
+Matters}\label{why-the-chain-rule-matters}
+
+\begin{itemize}
+\item
+  It handles nearly all real-world models where one quantity depends on
+  another indirectly.
+\item
+  It connects calculus with physics (e.g., velocity depending on time
+  through position).
+\item
+  It is essential in implicit differentiation and advanced topics.
+\end{itemize}
+
+\subsubsection{Exercises}\label{exercises-8}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Differentiate .
+\item
+  Find .
+\item
+  Compute .
+\item
+  Differentiate .
+\item
+  Apply the generalized chain rule to .
+\end{enumerate}
+
+\subsection{2.4 Implicit
+Differentiation}\label{24-implicit-differentiation}
+
+Not all functions are given in the form . Sometimes and are related by
+an equation, and solving explicitly for is difficult or impossible. In
+such cases, we use implicit differentiation.
+
+\subsubsection{The Idea}\label{the-idea}
+
+If an equation involves both and , we can differentiate both sides with
+respect to , treating as a function of . Each time we differentiate a
+term involving , we multiply by .
+
+\subsubsection{Example 1: A Circle}\label{example-1-a-circle}
+
+Equation:
+
+\[x^2 + y^2 = 25\]
+
+Differentiate with respect to :
+
+\[2x + 2y \frac{dy}{dx} = 0.\]
+
+Solve for :
+
+\[\frac{dy}{dx} = -\frac{x}{y}.\]
+
+This gives the slope of the tangent to the circle at any point.
+
+\subsubsection{Example 2: A Product of
+Variables}\label{example-2-a-product-of-variables}
+
+Equation:
+
+\[xy = 1\]
+
+Differentiate:
+
+\[x \frac{dy}{dx} + y = 0.\]
+
+So,
+
+\[\frac{dy}{dx} = -\frac{y}{x}.\]
+
+\subsubsection{Example 3: Trigonometric
+Relation}\label{example-3-trigonometric-relation}
+
+Equation:
+
+\[\sin(xy) = x\]
+
+Differentiate:
+
+\[\cos(xy) \cdot \Big(y + x\frac{dy}{dx}\Big) = 1.\]
+
+Solve for :
+
+\[\frac{dy}{dx} = \frac{1 - y\cos(xy)}{x\cos(xy)}.\]
+
+\subsubsection{Why Implicit Differentiation is
+Useful}\label{why-implicit-differentiation-is-useful}
+
+\begin{itemize}
+\item
+  Many important curves (circles, ellipses, hyperbolas) are naturally
+  defined implicitly.
+\item
+  It allows us to differentiate equations without first solving for .
+\item
+  It is a key step in more advanced topics such as related rates and
+  differential equations.
+\end{itemize}
+
+\subsubsection{Exercises}\label{exercises-9}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  For the curve , find .
+\item
+  Differentiate implicitly.
+\item
+  Find the slope of the tangent line to at the point .
+\item
+  Given , compute when .
+\item
+  Differentiate to find .
+\end{enumerate}
+
+\subsection{2.5 Higher-Order
+Derivatives}\label{25-higher-order-derivatives}
+
+So far, we have studied the first derivative, which measures the rate of
+change of a function. But derivatives themselves can also be
+differentiated, giving rise to higher-order derivatives.
+
+\subsubsection{Definition}\label{definition-3}
+
+\begin{itemize}
+\item
+  The second derivative of is the derivative of the derivative:
+
+  \[f''(x) = \frac{d}{dx}\left(f'(x)\right).\]
+\item
+  More generally, the -th derivative is written as
+
+  \[f^{(n)}(x) = \frac{d^n}{dx^n} f(x).\]
+\end{itemize}
+
+\subsubsection{Examples}\label{examples-6}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  \begin{itemize}
+  \item
+    First derivative: .
+  \item
+    Second derivative: .
+  \item
+    Third derivative: .
+  \item
+    Fourth derivative: .
+  \end{itemize}
+\item
+  \begin{itemize}
+  \item
+    .
+  \item
+    .
+  \item
+    .
+  \item
+    .\\
+    The derivatives repeat in a cycle of length 4.
+  \end{itemize}
+\item
+  \begin{itemize}
+  \item
+    Every derivative is .
+  \end{itemize}
+\end{enumerate}
+
+\subsubsection{Applications}\label{applications}
+
+\begin{itemize}
+\item
+  Concavity: The sign of tells whether the graph of is concave up () or
+  concave down ().
+\item
+  Inflection points: Points where and the concavity changes.
+\item
+  Motion: In physics, if is position:
+
+  \begin{itemize}
+  \item
+    = velocity,
+  \item
+    = acceleration,
+  \item
+    = jerk (rate of change of acceleration).
+  \end{itemize}
+\item
+  Approximations: Higher-order derivatives appear in Taylor series, used
+  to approximate functions.
+\end{itemize}
+
+\subsubsection{Exercises}\label{exercises-10}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Compute the first four derivatives of .
+\item
+  Find for .
+\item
+  For , show that .
+\item
+  Determine the intervals where is concave up and concave down.
+\item
+  If , find the velocity and acceleration at .
+\end{enumerate}
+
+\section{Chapter 3. Applications of
+Derivatives}\label{chapter-3-applications-of-derivatives}
+
+\subsection{3.1 Tangents and Normals}\label{31-tangents-and-normals}
+
+One of the first applications of derivatives is finding the equations of
+tangent and normal lines to a curve. These lines capture the local
+geometry of a function at a given point.
+
+\subsubsection{Tangent Line}\label{tangent-line}
+
+The tangent line to a curve at a point is the line that just ``touches''
+the graph there and has the same slope as the curve.
+
+The slope of the tangent line is given by the derivative:
+
+\[m_{\text{tangent}} = f'(a).\]
+
+Thus, the equation of the tangent line at is
+
+\[y - f(a) = f'(a)(x - a).\]
+
+\subsubsection{Normal Line}\label{normal-line}
+
+The normal line is perpendicular to the tangent line at the same point.
+Its slope is the negative reciprocal of the tangent slope:
+
+\[m_{\text{normal}} = -\frac{1}{f'(a)}.\]
+
+So the equation of the normal line is
+
+\[y - f(a) = -\frac{1}{f'(a)} (x - a), \quad f'(a) \neq 0.\]
+
+\subsubsection{Examples}\label{examples-7}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  at .
+
+  \begin{itemize}
+  \item
+    , , so .
+  \item
+    Tangent: , or .
+  \item
+    Normal: slope = , so equation is .
+  \end{itemize}
+\item
+  at .
+
+  \begin{itemize}
+  \item
+    , .
+  \item
+    Tangent: .
+  \end{itemize}
+\end{enumerate}
+
+\subsubsection{Why Tangents and Normals
+Matter}\label{why-tangents-and-normals-matter}
+
+\begin{itemize}
+\item
+  Tangents approximate the curve locally (linear approximation).
+\item
+  Normals are useful in geometry, optics (reflection/refraction), and
+  mechanics (force directions).
+\item
+  Both play a role in optimization and curvature studies.
+\end{itemize}
+
+\subsubsection{Exercises}\label{exercises-11}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Find the tangent and normal lines to at .
+\item
+  Determine the tangent and normal lines to at .
+\item
+  For , compute the tangent line at .
+\item
+  A circle is given by . Use implicit differentiation to find the slope
+  of the tangent at .
+\item
+  Sketch the graph of and draw the tangent and normal lines at .
+\end{enumerate}
+
+\subsection{3.2 Related Rates}\label{32-related-rates}
+
+In many real-world problems, two or more quantities change with respect
+to time, and their rates of change are connected. Related rates problems
+use derivatives to describe these relationships.
+
+\subsubsection{General Approach}\label{general-approach}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Identify the variables that depend on time .
+\item
+  Write an equation relating the variables.
+\item
+  Differentiate both sides with respect to , applying the chain rule.
+\item
+  Substitute the known values at the given instant.
+\item
+  Solve for the unknown rate.
+\end{enumerate}
+
+\subsubsection{Example 1: Expanding
+Circle}\label{example-1-expanding-circle}
+
+A circle has radius , which increases at the rate of . Find the rate at
+which the area increases when .
+
+Differentiate:
+
+\[\frac{dA}{dt} = 2\pi r \frac{dr}{dt}.\]
+
+Substitute:
+
+\[\frac{dA}{dt} = 2\pi (5)(2) = 20\pi \,\text{cm}^2/\text{s}.\]
+
+\subsubsection{Example 2: Sliding
+Ladder}\label{example-2-sliding-ladder}
+
+A 10 ft ladder leans against a wall. The bottom slides away at . How
+fast is the top sliding down when the bottom is 6 ft from the wall?
+
+Equation: , where is the height.
+
+Differentiate:
+
+\[2x \frac{dx}{dt} + 2y \frac{dy}{dt} = 0.\]
+
+At , . Substitute:
+
+\[2(6)(1) + 2(8)\frac{dy}{dt} = 0 \quad \Rightarrow \quad \frac{dy}{dt} = -\tfrac{6}{8} = -\tfrac{3}{4}.\]
+
+So the top slides down at .
+
+\subsubsection{Example 3: Water in a
+Cone}\label{example-3-water-in-a-cone}
+
+Water is poured into a cone of height 12 cm and radius 6 cm. When the
+water is 4 cm deep, the water level is rising at . At what rate is the
+volume increasing?
+
+Equation: . Using similarity, . Substituting:
+
+\[V = \tfrac{1}{12}\pi h^3.\]
+
+Differentiate:
+
+\[\frac{dV}{dt} = \tfrac{1}{4}\pi h^2 \frac{dh}{dt}.\]
+
+At , :
+
+\[\frac{dV}{dt} = \tfrac{1}{4}\pi (16)(2) = 8\pi \,\text{cm}^3/\text{s}.\]
+
+\subsubsection{Why Related Rates Matter}\label{why-related-rates-matter}
+
+\begin{itemize}
+\item
+  They describe motion and change in physics, engineering, and biology.
+\item
+  They connect geometry with calculus through time-dependent processes.
+\item
+  They train us to model dynamic systems mathematically.
+\end{itemize}
+
+\subsubsection{Exercises}\label{exercises-12}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  A balloon is inflated so that its radius increases at . Find how fast
+  its volume increases when the radius is 10 cm.
+\item
+  A car drives north at 40 km/h and another east at 30 km/h. How fast is
+  the distance between them increasing 2 hours later?
+\item
+  A spotlight 20 m from a wall shines on a man 2 m tall walking away at
+  1.5 m/s. How fast does the length of his shadow on the wall change
+  when he is 5 m from the light?
+\item
+  A cube's side length grows at 2 cm/s. How fast is the surface area
+  increasing when the side is 3 cm?
+\item
+  Sand is poured onto a pile forming a cone with radius always equal to
+  the height. If the height increases at 5 cm/s, at what rate is the
+  volume increasing when the height is 10 cm?
+\end{enumerate}
+
+\subsection{3.3 Optimization Problems}\label{33-optimization-problems}
+
+Optimization problems use derivatives to find the maximum or minimum
+values of a function, often under certain constraints. These problems
+model situations where we want to maximize efficiency, profit, or area,
+or minimize cost, distance, or time.
+
+\subsubsection{General Steps}\label{general-steps}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Understand the problem: Identify the quantity to optimize.
+\item
+  Model with a function: Write the objective function in terms of one
+  variable.
+\item
+  Apply constraints: Use given conditions to reduce variables.
+\item
+  Differentiate: Compute the derivative of the objective function.
+\item
+  Find critical points: Solve or where is undefined.
+\item
+  Test for maxima/minima: Use the second derivative test or check
+  endpoints.
+\item
+  Interpret the result: State the answer in the original context.
+\end{enumerate}
+
+\subsubsection{Example 1: Maximum Area of a
+Rectangle}\label{example-1-maximum-area-of-a-rectangle}
+
+A rectangle has perimeter 40. What dimensions maximize its area?
+
+\begin{itemize}
+\item
+  Let length , width . Constraint: .
+\item
+  Area: .
+\item
+  Derivative: . Set equal to 0: .
+\item
+  Then .
+\item
+  Maximum area: . The rectangle is a square.
+\end{itemize}
+
+\subsubsection{Example 2: Minimizing
+Distance}\label{example-2-minimizing-distance}
+
+Find the point on the parabola closest to .
+
+\begin{itemize}
+\item
+  Distance squared: .
+\item
+  Expand: .
+\item
+  Derivative: . Solve: .
+\item
+  Solutions: , .
+\item
+  Checking gives the minimum distance at .
+\end{itemize}
+
+\subsubsection{Example 3: Box with Maximum
+Volume}\label{example-3-box-with-maximum-volume}
+
+A box with no top is to be made from a square piece of cardboard 20 cm
+on a side by cutting out equal squares from the corners and folding up
+the sides. Find the size of the cut that maximizes volume.
+
+\begin{itemize}
+\item
+  Let cut size = . Then dimensions: .
+\item
+  Volume: .
+\item
+  Derivative: .
+\item
+  Critical points: (gives zero volume) or .
+\item
+  At , volume is maximized.
+\end{itemize}
+
+\subsubsection{Why Optimization Matters}\label{why-optimization-matters}
+
+\begin{itemize}
+\item
+  Engineers use it to design efficient structures.
+\item
+  Businesses use it to maximize profit or minimize costs.
+\item
+  Scientists use it to model natural systems that seek equilibrium.
+\end{itemize}
+
+\subsubsection{Exercises}\label{exercises-13}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  A farmer has 100 m of fencing to enclose a rectangular field along a
+  river (so only 3 sides need fencing). Find dimensions maximizing area.
+\item
+  Find two positive numbers whose sum is 20 and whose product is as
+  large as possible.
+\item
+  A cylinder is to be made from 100 cm of material. Find dimensions of
+  maximum volume.
+\item
+  A wire 10 m long is cut into two pieces, one bent into a square, the
+  other into a circle. How should it be cut to maximize total area
+  enclosed?
+\item
+  A closed box with square base and volume 32 m is to be built. Find
+  dimensions minimizing surface area.
+\end{enumerate}
+
+\subsection{3.4 Concavity and Inflection
+Points}\label{34-concavity-and-inflection-points}
+
+Derivatives not only tell us about slopes but also about the shape of a
+graph. The second derivative is especially useful in understanding
+concavity and identifying inflection points.
+
+\subsubsection{Concavity}\label{concavity}
+
+\begin{itemize}
+\item
+  A function is concave up on an interval if .\\
+  The graph bends upward, like a cup.
+\item
+  A function is concave down on an interval if .\\
+  The graph bends downward, like a frown.
+\end{itemize}
+
+Concavity describes how the slope of a function is changing: if slopes
+are increasing, the graph is concave up; if slopes are decreasing, the
+graph is concave down.
+
+\subsubsection{Inflection Points}\label{inflection-points}
+
+An inflection point is a point on the graph where concavity changes.
+
+\begin{itemize}
+\item
+  If or is undefined, the point is a candidate for an inflection point.
+\item
+  To confirm, the concavity must change sign on either side of the
+  point.
+\end{itemize}
+
+\subsubsection{Examples}\label{examples-8}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  \begin{itemize}
+  \item
+    .
+  \item
+    At , .
+  \item
+    For , → concave down.
+  \item
+    For , → concave up.
+  \item
+    Thus, is an inflection point.
+  \end{itemize}
+\item
+  \begin{itemize}
+  \item
+    .
+  \item
+    At , , but concavity does not change sign (always ≥ 0).
+  \item
+    No inflection point.
+  \end{itemize}
+\end{enumerate}
+
+\subsubsection{Concavity and Curve
+Sketching}\label{concavity-and-curve-sketching}
+
+\begin{itemize}
+\item
+  If and , then has a local minimum.
+\item
+  If and , then has a local maximum.
+\item
+  This is known as the second derivative test.
+\end{itemize}
+
+\subsubsection{Why This Matters}\label{why-this-matters-2}
+
+Concavity and inflection points help us understand the ``shape'' of
+graphs: where they bend, flatten, or turn. These ideas are central in
+curve sketching, physics (acceleration), and economics (diminishing
+returns).
+
+\subsubsection{Exercises}\label{exercises-14}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Determine intervals of concavity for . Find its inflection points.
+\item
+  For , identify concavity and possible inflection points.
+\item
+  Apply the second derivative test to to classify critical points.
+\item
+  Sketch , marking intervals of concavity and inflection points.
+\item
+  Explain why has no inflection points.
+\end{enumerate}
+
+\subsection{3.5 Curve Sketching}\label{35-curve-sketching}
+
+Curve sketching is the process of drawing the graph of a function by
+using information from its derivatives. Rather than plotting many
+points, we analyze key features: intercepts, asymptotes,
+increasing/decreasing intervals, and concavity.
+
+\subsubsection{Steps for Curve
+Sketching}\label{steps-for-curve-sketching}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Domain: Identify where the function is defined.
+\item
+  Intercepts: Find where the graph crosses the axes.
+\item
+  Asymptotes:
+
+  \begin{itemize}
+  \item
+    Vertical asymptotes occur where the function is undefined and tends
+    to infinity.
+  \item
+    Horizontal or slant asymptotes describe end behavior as .
+  \end{itemize}
+\item
+  First derivative :
+
+  \begin{itemize}
+  \item
+    Positive → function is increasing.
+  \item
+    Negative → function is decreasing.
+  \item
+    Zeros of → critical points (possible maxima/minima).
+  \end{itemize}
+\item
+  Second derivative :
+
+  \begin{itemize}
+  \item
+    Positive → concave up.
+  \item
+    Negative → concave down.
+  \item
+    Zeros or undefined → possible inflection points.
+  \end{itemize}
+\item
+  Combine information: Use all results to sketch a clear and accurate
+  graph.
+\end{enumerate}
+
+\subsubsection{\texorpdfstring{Example 1:
+}{Example 1: }}\label{example-1--f--x---x-3-ux2212-3-x}
+
+\begin{itemize}
+\item
+  Domain: all real numbers.
+\item
+  Intercepts: at .
+\item
+  Derivative: .
+
+  \begin{itemize}
+  \item
+    Increasing: .
+  \item
+    Decreasing: .
+  \end{itemize}
+\item
+  Second derivative: .
+
+  \begin{itemize}
+  \item
+    Concave down for , concave up for .
+  \item
+    Inflection point at .
+  \end{itemize}
+\item
+  Shape: an S-curve with local max at , local min at .
+\end{itemize}
+
+\subsubsection{\texorpdfstring{Example 2:
+}{Example 2: }}\label{example-2--f--x---1-x}
+
+\begin{itemize}
+\item
+  Domain: .
+\item
+  Vertical asymptote: .
+\item
+  Horizontal asymptote: .
+\item
+  Derivative: (always negative). Function is always decreasing.
+\item
+  Second derivative: .
+
+  \begin{itemize}
+  \item
+    Concave up for .
+  \item
+    Concave down for .
+  \end{itemize}
+\item
+  Graph: hyperbola with two branches.
+\end{itemize}
+
+\subsubsection{Why Curve Sketching is
+Useful}\label{why-curve-sketching-is-useful}
+
+\begin{itemize}
+\item
+  Provides insight into overall behavior of functions without exhaustive
+  computation.
+\item
+  Essential in calculus exams and applied problems.
+\item
+  Bridges algebraic analysis and geometric understanding.
+\end{itemize}
+
+\subsubsection{Exercises}\label{exercises-15}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Sketch the curve of . Identify maxima, minima, and inflection points.
+\item
+  Analyze and sketch . Show intercepts, asymptotes, and concavity.
+\item
+  For , describe growth/decay, asymptotes, and concavity.
+\item
+  Sketch the graph of on the interval . Mark asymptotes.
+\item
+  Use the first and second derivative tests to classify critical points
+  of .
+\end{enumerate}
+
+\section{\texorpdfstring{Part II. Integrals
+}{Part II. Integrals }}\label{part-ii-integrals}
+
+\section{\texorpdfstring{Chapter 4. Antiderivatives and Definite
+Integrals
+}{Chapter 4. Antiderivatives and Definite Integrals }}\label{chapter-4-antiderivatives-and-definite-integrals}
+
+\subsection{4.1 Indefinite Integrals}\label{41-indefinite-integrals}
+
+An indefinite integral is the reverse process of differentiation. If a
+derivative measures change, then an integral recovers the original
+function from its rate of change.
+
+\subsubsection{Definition}\label{definition-4}
+
+If , then
+
+\[\int f(x)\,dx = F(x) + C,\]
+
+where is the constant of integration.
+
+Every indefinite integral represents a family of functions that differ
+only by a constant, since differentiation eliminates constants.
+
+\subsubsection{Basic Rules}\label{basic-rules}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Constant Rule
+\end{enumerate}
+
+\[\int c\,dx = cx + C.\]
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Power Rule
+\end{enumerate}
+
+\[\int x^n\,dx = \frac{x^{n+1}}{n+1} + C, \quad n \neq -1.\]
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Sum Rule
+\end{enumerate}
+
+\[\int \big(f(x) + g(x)\big)\,dx = \int f(x)\,dx + \int g(x)\,dx.\]
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Constant Multiple Rule
+\end{enumerate}
+
+\[\int c f(x)\,dx = c \int f(x)\,dx.\]
+
+\subsubsection{Common Integrals}\label{common-integrals}
+
+\begin{itemize}
+\item
+\item
+\item
+\item
+\end{itemize}
+
+\subsubsection{Examples}\label{examples-9}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  .
+\item
+  .
+\item
+  .
+\end{enumerate}
+
+\subsubsection{Interpretation}\label{interpretation-2}
+
+\begin{itemize}
+\item
+  Indefinite integrals are antiderivatives.
+\item
+  They are the foundation for definite integrals, which measure
+  accumulated quantities like area, distance, and mass.
+\item
+  In applied contexts, integration allows us to move from rates back to
+  totals.
+\end{itemize}
+
+\subsubsection{Exercises}\label{exercises-16}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Find .
+\item
+  Compute .
+\item
+  Find the general solution of using integration.
+\item
+  Evaluate .
+\item
+  If velocity is , find the position function .
+\end{enumerate}
+
+\subsection{4.2 The Definite Integral as
+Area}\label{42-the-definite-integral-as-area}
+
+While indefinite integrals represent families of antiderivatives, the
+definite integral gives a numerical value: the accumulated area under a
+curve between two points.
+
+\subsubsection{Definition}\label{definition-5}
+
+For a function defined on , the definite integral is
+
+\[\int_a^b f(x)\,dx = \lim_{n \to \infty} \sum_{i=1}^n f(x_i^-) \,\Delta x,\]
+
+where the interval is divided into subintervals of width , and is a
+sample point in each subinterval.
+
+This is the limit of Riemann sums.
+
+\subsubsection{Geometric Interpretation}\label{geometric-interpretation}
+
+\begin{itemize}
+\item
+  If on , then equals the area under the curve from to .
+\item
+  If dips below the -axis, the integral computes signed area: regions
+  below the axis count as negative.
+\end{itemize}
+
+\subsubsection{Properties of the Definite
+Integral}\label{properties-of-the-definite-integral}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Additivity over intervals
+\end{enumerate}
+
+\[\int_a^c f(x)\,dx = \int_a^b f(x)\,dx + \int_b^c f(x)\,dx.\]
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Reversing limits
+\end{enumerate}
+
+\[\int_a^b f(x)\,dx = -\int_b^a f(x)\,dx.\]
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Zero-width interval
+\end{enumerate}
+
+\[\int_a^a f(x)\,dx = 0.\]
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Linearity
+\end{enumerate}
+
+\[\int_a^b \big( cf(x) + g(x)\big)\,dx = c\int_a^b f(x)\,dx + \int_a^b g(x)\,dx.\]
+
+\subsubsection{Examples}\label{examples-10}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  \strut \\
+  This is the area of a right triangle under the line .
+\item
+  \strut \\
+  The odd function has symmetric areas that cancel.
+\item
+  \strut \\
+  This equals the area under one arch of the sine curve.
+\end{enumerate}
+
+\subsubsection{Why This Matters}\label{why-this-matters-3}
+
+\begin{itemize}
+\item
+  Definite integrals measure accumulated quantities: distance, mass,
+  energy, probability.
+\item
+  They bridge algebraic computation with geometric intuition.
+\item
+  The next step is the Fundamental Theorem of Calculus, which connects
+  definite integrals with antiderivatives.
+\end{itemize}
+
+\subsubsection{Exercises}\label{exercises-17}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Compute .
+\item
+  Find the area between and the -axis from to .
+\item
+  Evaluate .
+\item
+  Show that if is odd.
+\item
+  Approximate using a Riemann sum with subintervals and right endpoints.
+\end{enumerate}
+
+\subsection{4.3 The Fundamental Theorem of
+Calculus}\label{43-the-fundamental-theorem-of-calculus}
+
+The Fundamental Theorem of Calculus (FTC) unites the two main ideas of
+calculus: differentiation and integration. It shows that finding areas
+and finding rates of change are two sides of the same coin.
+
+\subsubsection{Part 1: Differentiation of an
+Integral}\label{part-1-differentiation-of-an-integral}
+
+If is continuous on , define
+
+\[F(x) = \int_a^x f(t)\,dt.\]
+
+Then is differentiable, and
+
+\[F'(x) = f(x).\]
+
+In words: the derivative of the accumulated area function is the
+original function itself.
+
+\subsubsection{Part 2: Evaluation of Definite
+Integrals}\label{part-2-evaluation-of-definite-integrals}
+
+If is continuous on and is any antiderivative of , then
+
+\[\int_a^b f(x)\,dx = F(b) - F(a).\]
+
+This tells us we can evaluate definite integrals simply by finding an
+antiderivative, rather than by computing limits of Riemann sums.
+
+\subsubsection{Examples}\label{examples-11}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  .
+
+  \begin{itemize}
+  \item
+    Antiderivative: .
+  \item
+    Apply FTC:
+  \end{itemize}
+\item
+  If , then .
+\item
+  .
+
+  \begin{itemize}
+  \item
+    Antiderivative: .
+  \item
+    Apply FTC:
+  \end{itemize}
+\end{enumerate}
+
+\subsubsection{Why the FTC Matters}\label{why-the-ftc-matters}
+
+\begin{itemize}
+\item
+  It transforms integration from a limit process into a practical
+  computation.
+\item
+  It confirms that differentiation and integration are inverse
+  operations.
+\item
+  It is the central theorem that makes calculus useful in mathematics,
+  science, and engineering.
+\end{itemize}
+
+\subsubsection{Exercises}\label{exercises-18}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Evaluate using the FTC.
+\item
+  If , find .
+\item
+  Compute .
+\item
+  Show that if , then .
+\item
+  Use the FTC to explain why the area under from to equals 1.
+\end{enumerate}
+
+\subsection{4.4 Properties of
+Integrals}\label{44-properties-of-integrals}
+
+The definite integral has several important properties that make it
+flexible and powerful in applications. These properties follow from the
+definition as a limit of sums and from the Fundamental Theorem of
+Calculus.
+
+\subsubsection{Linearity}\label{linearity}
+
+For functions and , and constants :
+
+\[\int_a^b \big(c f(x) + d g(x)\big)\,dx = c \int_a^b f(x)\,dx + d \int_a^b g(x)\,dx.\]
+
+This allows us to break complicated integrals into simpler parts.
+
+\subsubsection{Additivity over
+Intervals}\label{additivity-over-intervals}
+
+If , then
+
+\[\int_a^b f(x)\,dx = \int_a^c f(x)\,dx + \int_c^b f(x)\,dx.\]
+
+We can compute integrals piece by piece.
+
+\subsubsection{Reversal of Limits}\label{reversal-of-limits}
+
+\[\int_a^b f(x)\,dx = -\int_b^a f(x)\,dx.\]
+
+Swapping the bounds changes the sign of the integral.
+
+\subsubsection{Comparison Property}\label{comparison-property}
+
+If for all in , then
+
+\[\int_a^b f(x)\,dx \leq \int_a^b g(x)\,dx.\]
+
+This lets us compare areas without direct computation.
+
+\subsubsection{Absolute Value
+Inequality}\label{absolute-value-inequality}
+
+\[\left| \int_a^b f(x)\,dx \right| \leq \int_a^b |f(x)|\,dx.\]
+
+This property is essential in analysis and convergence tests.
+
+\subsubsection{Symmetry}\label{symmetry}
+
+\begin{itemize}
+\item
+  If is even (symmetric about the -axis):
+
+  \[\int_{-a}^a f(x)\,dx = 2\int_0^a f(x)\,dx.\]
+\item
+  If is odd (symmetric about the origin):
+
+  \[\int_{-a}^a f(x)\,dx = 0.\]
+\end{itemize}
+
+\subsubsection{Examples}\label{examples-12}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+\item
+  Since is odd,
+\item
+  Since is even,
+\end{enumerate}
+
+\subsubsection{Why These Properties
+Matter}\label{why-these-properties-matter}
+
+\begin{itemize}
+\item
+  They simplify calculations.
+\item
+  They reveal geometric and symmetry features of functions.
+\item
+  They provide theoretical tools for more advanced analysis.
+\end{itemize}
+
+\subsubsection{Exercises}\label{exercises-19}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Use symmetry to evaluate .
+\item
+  Show that .
+\item
+  Evaluate and compare with .
+\item
+  Prove that if on , then .
+\item
+  Compute using even/odd properties.
+\end{enumerate}
+
+\section{Chapter 5. Techniques of
+Integration}\label{chapter-5-techniques-of-integration}
+
+\subsection{5.1 Substitution}\label{51-substitution}
+
+One of the most useful techniques of integration is the substitution
+method, also called -u-substitution-. It is the reverse process of the
+chain rule for derivatives.
+
+\subsubsection{The Idea}\label{the-idea-2}
+
+If an integral contains a composite function, we can simplify it by
+changing variables.
+
+Formally, if is a differentiable function, then
+
+\[\int f(g(x)) g'(x)\,dx = \int f(u)\,du.\]
+
+This substitution makes the integral easier to evaluate.
+
+\subsubsection{Steps for Substitution}\label{steps-for-substitution}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Identify an inner function whose derivative also appears in the
+  integrand.
+\item
+  Compute .
+\item
+  Rewrite the integral in terms of .
+\item
+  Integrate with respect to .
+\item
+  Substitute back .
+\end{enumerate}
+
+\subsubsection{Examples}\label{examples-13}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Simple substitution
+
+  \[\int 2x \cos(x^2)\,dx\]
+
+  Let , so .\\
+  Then integral becomes .
+\item
+  Logarithmic case
+
+  \[\int \frac{2x}{x^2+1}\,dx\]
+
+  Let , so .\\
+  Then integral becomes .
+\item
+  Trigonometric substitution
+
+  \[\int \sin(3x)\,dx\]
+
+  Let , so , hence .\\
+  Integral becomes .
+\end{enumerate}
+
+\subsubsection{Definite Integrals with
+Substitution}\label{definite-integrals-with-substitution}
+
+When evaluating definite integrals, we must also change the limits:
+
+\[\int_a^b f(g(x)) g'(x)\,dx = \int_{g(a)}^{g(b)} f(u)\,du.\]
+
+Example:
+
+\[\int_0^1 2x e^{x^2}\,dx.\]
+
+Let , . Limits: when ; when .\\
+So the integral becomes
+
+\[\int_0^1 e^u\,du = e - 1.\]
+
+\subsubsection{Exercises}\label{exercises-20}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Evaluate .
+\item
+  Compute .
+\item
+  Evaluate using substitution.
+\item
+  Find .
+\item
+  Compute by letting .
+\end{enumerate}
+
+\subsection{5.2 Integration by Parts}\label{52-integration-by-parts}
+
+Integration by parts is a technique that comes from the product rule for
+derivatives. It helps evaluate integrals involving products of functions
+that are not easily handled by substitution alone.
+
+\subsubsection{The Formula}\label{the-formula}
+
+From the product rule:
+
+\[\frac{d}{dx}[u(x)v(x)] = u'(x)v(x) + u(x)v'(x).\]
+
+Integrating both sides gives the integration by parts formula:
+
+\[\int u\,dv = uv - \int v\,du.\]
+
+Here:
+
+\begin{itemize}
+\item
+  = a function chosen to be differentiated,
+\item
+  = the remaining part of the integrand to be integrated.
+\end{itemize}
+
+\subsubsection{\texorpdfstring{Choosing and
+}{Choosing  and }}\label{choosing--u--and--d-v}
+
+A common guideline is LIATE (Logarithmic, Inverse trig, Algebraic,
+Trigonometric, Exponential).
+
+\begin{itemize}
+\item
+  Choose from the earliest category present.
+\item
+  Choose as the rest.
+\end{itemize}
+
+\subsubsection{Examples}\label{examples-14}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Polynomial × Exponential
+\end{enumerate}
+
+\[\int x e^x\,dx\]
+
+Let , . Then , .
+
+\[\int x e^x\,dx = x e^x - \int e^x dx = x e^x - e^x + C.\]
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Polynomial × Trig
+\end{enumerate}
+
+\[\int x \cos x\,dx\]
+
+Let , . Then , .
+
+\[\int x \cos x\,dx = x \sin x - \int \sin x dx = x \sin x + \cos x + C.\]
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Logarithm
+\end{enumerate}
+
+\[\int \ln x\,dx\]
+
+Let , . Then , .
+
+\[\int \ln x\,dx = x \ln x - \int 1 dx = x \ln x - x + C.\]
+
+\subsubsection{Definite Integral
+Example}\label{definite-integral-example}
+
+\[\int_0^1 x e^x\,dx\]
+
+Using the earlier result: .\\
+Evaluate:
+
+\[\big[(x-1)e^x\big]_0^1 = (0)e^1 - (-1)e^0 = 0 + 1 = 1.\]
+
+\subsubsection{Why This Matters}\label{why-this-matters-4}
+
+Integration by parts is crucial when substitution fails, especially with
+logarithms, inverse trigonometric functions, and products involving
+polynomials with exponentials or trig functions.
+
+\subsubsection{Exercises}\label{exercises-21}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Evaluate .
+\item
+  Find .
+\item
+  Compute .
+\item
+  Evaluate .
+\item
+  Use integration by parts to show .
+\end{enumerate}
+
+\subsection{5.3 Trigonometric Integrals and
+Substitutions}\label{53-trigonometric-integrals-and-substitutions}
+
+Many integrals involve trigonometric functions. These can often be
+simplified using identities or by making special substitutions.
+
+\subsubsection{Trigonometric Integrals}\label{trigonometric-integrals}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Powers of sine and cosine
+\end{enumerate}
+
+\begin{itemize}
+\item
+  If the power of sine is odd: save one , convert the rest with , and
+  substitute .
+\item
+  If the power of cosine is odd: save one , convert the rest with , and
+  substitute .
+\item
+  If both are even: use half-angle identities.
+\end{itemize}
+
+Example:
+
+\[\int \sin^3x \cos x \, dx\]
+
+Let , :
+
+\[\int u^3\,du = \tfrac{u^4}{4} + C = \tfrac{\sin^4x}{4} + C.\]
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Products of sine and cosine with different angles\\
+  Use product-to-sum formulas:
+\end{enumerate}
+
+\[\sin A \cos B = \tfrac{1}{2}[\sin(A+B) + \sin(A-B)].\]
+
+Example:
+
+\[\int \sin(2x)\cos(3x)\,dx = \tfrac{1}{2}\int [\sin(5x) - \sin(x)]\,dx.\]
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Powers of secant and tangent
+\end{enumerate}
+
+\begin{itemize}
+\item
+  If the power of secant is even: save , convert the rest with , and
+  substitute .
+\item
+  If the power of tangent is odd: save , convert the rest with , and
+  substitute .
+\end{itemize}
+
+Example:
+
+\[\int \tan^3x \sec^2x \, dx\]
+
+Let , :
+
+\[\int u^3\,du = \tfrac{u^4}{4} + C = \tfrac{\tan^4x}{4} + C.\]
+
+\subsubsection{Trigonometric
+Substitutions}\label{trigonometric-substitutions}
+
+For integrals involving , , or , use special substitutions:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  , for .
+\item
+  , for .
+\item
+  , for .
+\end{enumerate}
+
+Example:
+
+\[\int \sqrt{a^2 - x^2}\,dx\]
+
+Let , so :
+
+\[\int \sqrt{a^2 - a^2\sin^2\theta}(a\cos\theta\,d\theta) = \int a^2 \cos^2\theta \, d\theta.\]
+
+Simplify using half-angle identities.
+
+\subsubsection{Why These Techniques
+Matter}\label{why-these-techniques-matter}
+
+\begin{itemize}
+\item
+  They convert difficult algebraic forms into manageable trigonometric
+  ones.
+\item
+  They are especially useful in problems involving areas, volumes, and
+  arc lengths.
+\item
+  They lay groundwork for advanced integration methods.
+\end{itemize}
+
+\subsubsection{Exercises}\label{exercises-22}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Evaluate .
+\item
+  Compute .
+\item
+  Evaluate .
+\item
+  Find using substitution.
+\item
+  Show that using .
+\end{enumerate}
+
+\subsection{5.4 Partial Fractions}\label{54-partial-fractions}
+
+When integrating rational functions (ratios of polynomials), one
+powerful method is partial fraction decomposition. This technique
+expresses a complicated fraction as a sum of simpler fractions that are
+easier to integrate.
+
+\subsubsection{The Idea}\label{the-idea-3}
+
+If is a rational function, where the degree of is less than the degree
+of , we can decompose into simpler fractions.
+
+These simpler pieces correspond to the factors of the denominator .
+
+\subsubsection{Common Forms}\label{common-forms}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Distinct linear factors\\
+  If
+\end{enumerate}
+
+\[\frac{1}{(x-a)(x-b)},\]
+
+then decompose as
+
+\[\frac{A}{x-a} + \frac{B}{x-b}.\]
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Repeated linear factors\\
+  If denominator has , then terms are
+\end{enumerate}
+
+\[\frac{A_1}{x-a} + \frac{A_2}{(x-a)^2} + \dots + \frac{A_n}{(x-a)^n}.\]
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Irreducible quadratic factors\\
+  If denominator has , then numerator is linear:
+\end{enumerate}
+
+\[\frac{Ax+B}{x^2+bx+c}.\]
+
+\subsubsection{Example 1: Distinct Linear
+Factors}\label{example-1-distinct-linear-factors}
+
+\[\int \frac{1}{x^2 - 1}\,dx\]
+
+Factor denominator: .\\
+Decompose:
+
+\[\frac{1}{x^2-1} = \frac{1}{2}\left(\frac{1}{x-1} - \frac{1}{x+1}\right).\]
+
+Integrate:
+
+\[\int \frac{1}{x^2 - 1}\,dx = \tfrac{1}{2}\ln\left|\frac{x-1}{x+1}\right| + C.\]
+
+\subsubsection{Example 2: Repeated Linear
+Factor}\label{example-2-repeated-linear-factor}
+
+\[\int \frac{1}{(x-1)^2}\,dx\]
+
+This is already simple:
+
+\[\int (x-1)^{-2}\,dx = -\frac{1}{x-1} + C.\]
+
+\subsubsection{Example 3: Irreducible Quadratic
+Factor}\label{example-3-irreducible-quadratic-factor}
+
+\[\int \frac{x}{x^2+1}\,dx\]
+
+Substitute , or recognize numerator is derivative of denominator.
+
+\[\int \frac{x}{x^2+1}\,dx = \tfrac{1}{2}\ln(x^2+1) + C.\]
+
+\subsubsection{Steps in Partial Fraction
+Decomposition}\label{steps-in-partial-fraction-decomposition}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Factor the denominator.
+\item
+  Write the general partial fraction form.
+\item
+  Multiply through by the denominator to clear fractions.
+\item
+  Solve for unknown constants.
+\item
+  Integrate each term.
+\end{enumerate}
+
+\subsubsection{Why This Matters}\label{why-this-matters-5}
+
+\begin{itemize}
+\item
+  Converts complex rational functions into simple logarithmic or
+  arctangent forms.
+\item
+  Especially useful in differential equations and Laplace transforms.
+\item
+  Fundamental in advanced calculus and engineering.
+\end{itemize}
+
+\subsubsection{Exercises}\label{exercises-23}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Decompose and integrate .
+\item
+  Evaluate .
+\item
+  Compute .
+\item
+  Find .
+\item
+  Show that using partial fractions or substitution.
+\end{enumerate}
+
+\subsection{5.5 Improper Integrals}\label{55-improper-integrals}
+
+Some integrals cannot be evaluated directly because the interval is
+infinite or the integrand becomes unbounded. These are called improper
+integrals. They are defined using limits.
+
+\subsubsection{Definition}\label{definition-6}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Infinite interval
+\end{enumerate}
+
+\[\int_a^\infty f(x)\,dx = \lim_{b \to \infty} \int_a^b f(x)\,dx.\]
+
+\[\int_{-\infty}^a f(x)\,dx = \lim_{b \to -\infty} \int_b^a f(x)\,dx.\]
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Unbounded integrand\\
+  If has a vertical asymptote at , then
+\end{enumerate}
+
+\[\int_a^c f(x)\,dx = \lim_{t \to c^-} \int_a^t f(x)\,dx,\]
+
+\[\int_c^b f(x)\,dx = \lim_{t \to c^+} \int_t^b f(x)\,dx.\]
+
+\subsubsection{Convergence and
+Divergence}\label{convergence-and-divergence}
+
+\begin{itemize}
+\item
+  If the limit exists and is finite, the improper integral converges.
+\item
+  If the limit does not exist or is infinite, the improper integral
+  diverges.
+\end{itemize}
+
+\subsubsection{Examples}\label{examples-15}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Exponential decay
+\end{enumerate}
+
+\[\int_1^\infty \frac{1}{x^2}\,dx = \lim_{b \to \infty} \Big[-\tfrac{1}{x}\Big]_1^b = 1.\]
+
+This converges.
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Harmonic function
+\end{enumerate}
+
+\[\int_1^\infty \frac{1}{x}\,dx = \lim_{b \to \infty} \ln b.\]
+
+This diverges to infinity.
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Asymptote at 0
+\end{enumerate}
+
+\[\int_0^1 \frac{1}{\sqrt{x}}\,dx = \lim_{t \to 0^+} \int_t^1 x^{-1/2}\,dx.\]
+
+\[= \lim_{t \to 0^+} [2\sqrt{x}]_t^1 = 2.\]
+
+This converges.
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Asymptote at 0 (divergent)
+\end{enumerate}
+
+\[\int_0^1 \frac{1}{x}\,dx = \lim_{t \to 0^+} \ln(1) - \ln(t).\]
+
+This diverges since .
+
+\subsubsection{Comparison Test for Improper
+Integrals}\label{comparison-test-for-improper-integrals}
+
+\begin{itemize}
+\item
+  If for large , and converges, then also converges.
+\item
+  If diverges and , then also diverges.
+\end{itemize}
+
+\subsubsection{Why Improper Integrals
+Matter}\label{why-improper-integrals-matter}
+
+\begin{itemize}
+\item
+  They extend integration to infinite domains and unbounded functions.
+\item
+  They are essential in probability (continuous distributions), physics
+  (gravitational/electric fields), and Fourier analysis.
+\end{itemize}
+
+\subsubsection{Exercises}\label{exercises-24}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Determine whether converges for various values of .
+\item
+  Evaluate .
+\item
+  Test convergence of depending on .
+\item
+  Compute .
+\item
+  Use the comparison test to show that converges.
+\end{enumerate}
+
+\section{\texorpdfstring{Chapter 6. Applications of Integration
+}{Chapter 6. Applications of Integration }}\label{chapter-6-applications-of-integration}
+
+\subsection{6.1 Areas and Volumes}\label{61-areas-and-volumes}
+
+One of the most important applications of integration is finding areas
+under curves and volumes of solids.
+
+\subsubsection{Area Between Curves}\label{area-between-curves}
+
+If on , then the area between the curves and is
+
+\[A = \int_a^b \big(f(x) - g(x)\big)\,dx.\]
+
+Example:\\
+Find the area between and on .
+
+\[A = \int_0^1 (x - x^2)\,dx = \left[\tfrac{1}{2}x^2 - \tfrac{1}{3}x^3\right]_0^1 = \tfrac{1}{6}.\]
+
+\subsubsection{Volumes by Slicing}\label{volumes-by-slicing}
+
+If a solid has cross-sectional area at position , then the volume is
+
+\[V = \int_a^b A(x)\,dx.\]
+
+\subsubsection{Volumes of Revolution}\label{volumes-of-revolution}
+
+When a region is revolved around an axis, the resulting solid's volume
+can be found with integration.
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Disk Method\\
+  If the region under , , is revolved around the -axis:
+\end{enumerate}
+
+\[V = \pi \int_a^b [f(x)]^2\,dx.\]
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Washer Method\\
+  If region between and is revolved around the -axis:
+\end{enumerate}
+
+\[V = \pi \int_a^b \Big([f(x)]^2 - [g(x)]^2\Big)\,dx.\]
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Shell Method\\
+  If region under is revolved around the -axis:
+\end{enumerate}
+
+\[V = 2\pi \int_a^b x f(x)\,dx.\]
+
+\subsubsection{Examples}\label{examples-16}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Disk method\\
+  Revolve , , around the -axis:
+\end{enumerate}
+
+\[V = \pi \int_0^4 (\sqrt{x})^2\,dx = \pi \int_0^4 x\,dx = \pi \left[\tfrac{1}{2}x^2\right]_0^4 = 8\pi.\]
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Washer method\\
+  Revolve region between and , , around -axis:
+\end{enumerate}
+
+\[V = \pi \int_0^1 \big((\sqrt{x})^2 - (1)^2\big)\,dx = \pi \int_0^1 (x-1)\,dx = -\tfrac{\pi}{2}.\]
+
+(Take absolute value for volume: ).
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Shell method\\
+  Revolve region under , , around the -axis:
+\end{enumerate}
+
+\[V = 2\pi \int_0^1 x(x)\,dx = 2\pi \int_0^1 x^2\,dx = 2\pi \cdot \tfrac{1}{3} = \tfrac{2\pi}{3}.\]
+
+\subsubsection{Why This Matters}\label{why-this-matters-6}
+
+\begin{itemize}
+\item
+  Provides exact ways to compute areas and volumes in geometry.
+\item
+  Essential in physics, engineering, and probability.
+\item
+  Introduces geometric thinking with integration.
+\end{itemize}
+
+\subsubsection{Exercises}\label{exercises-25}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Find the area between and on .
+\item
+  Compute the volume of the solid formed by revolving , , around the
+  -axis.
+\item
+  Find the volume of the solid formed by revolving the region between
+  and on around the -axis.
+\item
+  Use the washer method to compute the volume of the solid formed by
+  revolving (a semicircle) around the -axis.
+\item
+  Find the area enclosed between and .
+\end{enumerate}
+
+\subsection{6.2 Arc Length and Surface
+Area}\label{62-arc-length-and-surface-area}
+
+Integration can also be used to measure the length of curves and the
+surface area of solids generated by revolving curves.
+
+\subsubsection{Arc Length}\label{arc-length}
+
+For a smooth curve on the interval , the length of the curve is
+
+\[L = \int_a^b \sqrt{1 + \big(f'(x)\big)^2}\,dx.\]
+
+This comes from approximating the curve with line segments and taking
+the limit.
+
+Example:\\
+Find the length of from to .
+
+\begin{itemize}
+\item
+  Derivative: .
+\item
+  Formula:
+\end{itemize}
+
+\[L = \int_0^4 \sqrt{1 + \Big(\tfrac{3}{4}\sqrt{x}\Big)^2}\,dx 
+= \int_0^4 \sqrt{1 + \tfrac{9}{16}x}\,dx.\]
+
+This integral can be evaluated using substitution.
+
+\subsubsection{Surface Area of
+Revolution}\label{surface-area-of-revolution}
+
+If a curve , , is revolved around the -axis, the surface area of the
+resulting solid is
+
+\[S = 2\pi \int_a^b f(x)\sqrt{1 + \big(f'(x)\big)^2}\,dx.\]
+
+If revolved around the -axis:
+
+\[S = 2\pi \int_a^b x \sqrt{1 + \big(f'(x)\big)^2}\,dx.\]
+
+\subsubsection{Examples}\label{examples-17}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Arc length of a line\\
+  For , :
+\end{enumerate}
+
+\[L = \int_0^3 \sqrt{1+(1)^2}\,dx = \int_0^3 \sqrt{2}\,dx = 3\sqrt{2}.\]
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Surface area of a sphere\\
+  Take , , and revolve around the -axis.
+\end{enumerate}
+
+\[S = 2\pi \int_{-r}^r \sqrt{r^2 - x^2}\sqrt{1+\left(\frac{-x}{\sqrt{r^2-x^2}}\right)^2}\,dx.\]
+
+Simplification gives , the familiar formula for the surface area of a
+sphere.
+
+\subsubsection{Why This Matters}\label{why-this-matters-7}
+
+\begin{itemize}
+\item
+  Arc length extends the idea of distance to curved paths.
+\item
+  Surface area of revolution has applications in physics, engineering,
+  and design.
+\item
+  Provides a bridge between calculus and geometry.
+\end{itemize}
+
+\subsubsection{Exercises}\label{exercises-26}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Find the arc length of from to .
+\item
+  Compute the surface area of the solid obtained by revolving , , around
+  the -axis.
+\item
+  Find the arc length of from to .
+\item
+  Show that revolving from to around the -axis gives half the surface
+  area of a sphere.
+\item
+  Derive the formula for the surface area of a cone by revolving a line.
+\end{enumerate}
+
+\subsection{6.3 Work and Averages}\label{63-work-and-averages}
+
+Integration is not limited to geometry. It also helps calculate work
+done by a force and the average value of a function over an interval.
+
+\subsubsection{Work}\label{work}
+
+If a variable force moves an object along a straight line from to , then
+the total work is
+
+\[W = \int_a^b F(x)\,dx.\]
+
+This formula generalizes the simple case for constant force.
+
+Example 1: Spring Force (Hooke's Law)\\
+For a spring stretched from length to , with force :
+
+\[W = \int_a^b kx\,dx = \tfrac{1}{2}k(b^2-a^2).\]
+
+Example 2: Pumping Water\\
+If water is pumped out of a tank, the work required equals
+
+\[W = \int_a^b \text{(weight density)} \times \text{(cross-sectional area)} \times \text{(distance lifted)} \, dx.\]
+
+\subsubsection{Average Value of a
+Function}\label{average-value-of-a-function}
+
+The average value of a continuous function on is
+
+\[f_{\text{avg}} = \frac{1}{b-a} \int_a^b f(x)\,dx.\]
+
+This is the continuous analog of averaging a list of numbers.
+
+Example 1:\\
+For on :
+
+\[f_{\text{avg}} = \tfrac{1}{2-0}\int_0^2 x^2 dx = \tfrac{1}{2}\cdot \tfrac{8}{3} = \tfrac{4}{3}.\]
+
+Example 2:\\
+If the velocity of a particle is , then the average velocity over is
+
+\[v_{\text{avg}} = \frac{1}{b-a}\int_a^b v(t)\,dt.\]
+
+\subsubsection{Why This Matters}\label{why-this-matters-8}
+
+\begin{itemize}
+\item
+  Work integrals appear in physics, engineering, and energy
+  calculations.
+\item
+  Average value gives a single representative number for varying
+  quantities.
+\item
+  Both connect calculus to real-world problems of motion, force, and
+  efficiency.
+\end{itemize}
+
+\subsubsection{Exercises}\label{exercises-27}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Compute the work required to stretch a spring from 2 m to 5 m if .
+\item
+  A 100 kg object is lifted vertically 5 m in a gravitational field ().
+  Express the work as an integral and evaluate.
+\item
+  Find the average value of on .
+\item
+  Compute the average temperature if over a 24-hour day.
+\item
+  A tank of depth 10 m is full of water. Compute the work required to
+  pump all the water to the top, given water weighs .
+\end{enumerate}
+
+\subsection{6.4 Probability Densities and Continuous
+Distributions}\label{64-probability-densities-and-continuous-distributions}
+
+Integration also plays a central role in probability theory, especially
+for continuous random variables. Instead of discrete outcomes, we
+describe probabilities with functions called probability density
+functions (pdfs).
+
+\subsubsection{Probability Density
+Functions}\label{probability-density-functions}
+
+A probability density function must satisfy two conditions:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  for all .
+\item
+  The total area under the curve is 1:
+
+  \[\int_{-\infty}^\infty f(x)\,dx = 1.\]
+\end{enumerate}
+
+If is a continuous random variable with pdf , then the probability that
+lies between and is
+
+\[P(a \leq X \leq b) = \int_a^b f(x)\,dx.\]
+
+\subsubsection{Cumulative Distribution
+Function}\label{cumulative-distribution-function}
+
+The cumulative distribution function (cdf) is defined as
+
+\[F(x) = \int_{-\infty}^x f(t)\,dt.\]
+
+It gives the probability that the random variable is less than or equal
+to .
+
+\subsubsection{Expected Value (Mean)}\label{expected-value-mean}
+
+The expected value of a continuous random variable is the weighted
+average:
+
+\[E[X] = \int_{-\infty}^\infty x f(x)\,dx.\]
+
+\subsubsection{Examples}\label{examples-18}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Uniform Distribution\\
+  For on :
+\end{enumerate}
+
+\begin{itemize}
+\item
+  Probability of interval :
+
+  \[P(c \leq X \leq d) = \frac{d-c}{b-a}.\]
+\item
+  Expected value: .
+\end{itemize}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Exponential Distribution\\
+  For , :
+\end{enumerate}
+
+\begin{itemize}
+\item
+  .
+\item
+  Mean: .
+\end{itemize}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Normal Distribution\\
+  The bell curve:
+\end{enumerate}
+
+\[f(x) = \frac{1}{\sqrt{2\pi\sigma^2}} e^{-\frac{(x-\mu)^2}{2\sigma^2}}.\]
+
+It integrates to 1, but requires advanced techniques.
+
+\subsubsection{Why This Matters}\label{why-this-matters-9}
+
+\begin{itemize}
+\item
+  Probability densities describe uncertainty in science, engineering,
+  and statistics.
+\item
+  Integrals connect areas under curves to probabilities.
+\item
+  Continuous distributions generalize the idea of counting outcomes to
+  measuring likelihoods over intervals.
+\end{itemize}
+
+\subsubsection{Exercises}\label{exercises-28}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Show that the uniform density on integrates to 1.
+\item
+  For the exponential distribution with , compute .
+\item
+  Find the expected value of if on .
+\item
+  Verify that the normal distribution with mean 0 and variance 1 has
+  total probability 1 (no need for full proof, but explain why it
+  holds).
+\item
+  Compute the cdf of the uniform distribution on .
+\end{enumerate}
+
+\section{\texorpdfstring{Part III. Multivariable Calculus
+}{Part III. Multivariable Calculus }}\label{part-iii-multivariable-calculus}
+
+\section{Chapter 7. Vector Functions and
+Curves}\label{chapter-7-vector-functions-and-curves}
+
+\subsection{7.1 Vector Functions and Space
+Curves}\label{71-vector-functions-and-space-curves}
+
+In multivariable calculus, functions can output vectors instead of
+numbers. These are called vector-valued functions, and they are
+essential for describing curves in space.
+
+\subsubsection{Definition}\label{definition-7}
+
+A vector function is a function of the form
+
+\[\mathbf{r}(t) = \langle x(t), y(t), z(t) \rangle,\]
+
+where are real-valued functions.
+
+\begin{itemize}
+\item
+  The input is often called the parameter.
+\item
+  The output is a vector in 2D or 3D space.
+\item
+  The graph of a vector function in 3D is a space curve.
+\end{itemize}
+
+\subsubsection{Examples}\label{examples-19}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Line
+\end{enumerate}
+
+\[\mathbf{r}(t) = \langle 1+2t, \; 3-t, \; 4+5t \rangle.\]
+
+This describes a straight line through the point with direction vector .
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Circle in the plane
+\end{enumerate}
+
+\[\mathbf{r}(t) = \langle \cos t, \; \sin t, \; 0 \rangle, \quad 0 \leq t < 2\pi.\]
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Helix
+\end{enumerate}
+
+\[\mathbf{r}(t) = \langle \cos t, \; \sin t, \; t \rangle.\]
+
+This is a spiral rising around the -axis.
+
+\subsubsection{Limits and Continuity}\label{limits-and-continuity}
+
+A vector function is continuous at if each component is continuous at .
+
+\[\lim_{t \to a} \mathbf{r}(t) = \langle \lim_{t \to a} x(t), \; \lim_{t \to a} y(t), \; \lim_{t \to a} z(t) \rangle.\]
+
+\subsubsection{Geometry of Space Curves}\label{geometry-of-space-curves}
+
+\begin{itemize}
+\item
+  Each curve has a tangent direction given by the derivative.
+\item
+  Space curves can model motion paths, particle trajectories, and
+  geometric shapes.
+\end{itemize}
+
+\subsubsection{Why This Matters}\label{why-this-matters-10}
+
+Vector functions are the foundation for multivariable calculus, allowing
+us to extend the ideas of derivatives and integrals into higher
+dimensions. They also appear naturally in physics (motion in 3D,
+electromagnetism, fluid dynamics).
+
+\subsubsection{Exercises}\label{exercises-29}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Write a vector function for a line through parallel to the vector .
+\item
+  Describe the curve given by .
+\item
+  Determine whether is continuous at .
+\item
+  Sketch the helix .
+\item
+  Find the point on the curve when .
+\end{enumerate}
+
+\subsection{7.2 Derivatives and Integrals of Vector
+Functions}\label{72-derivatives-and-integrals-of-vector-functions}
+
+Vector functions can be differentiated and integrated just like ordinary
+functions - we simply apply the operation to each component. This allows
+us to study motion, velocity, acceleration, and accumulation in higher
+dimensions.
+
+\subsubsection{Derivative of a Vector
+Function}\label{derivative-of-a-vector-function}
+
+If
+
+\[\mathbf{r}(t) = \langle x(t), y(t), z(t) \rangle,\]
+
+then
+
+\[\mathbf{r}'(t) = \langle x'(t), y'(t), z'(t) \rangle.\]
+
+This derivative vector points in the tangent direction to the curve at
+parameter .
+
+\begin{itemize}
+\item
+  Velocity: If gives the position of a particle at time , then is its
+  velocity vector.
+\item
+  Speed: The magnitude is the particle's speed.
+\item
+  Acceleration: .
+\end{itemize}
+
+\subsubsection{Examples}\label{examples-20}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Helix
+\end{enumerate}
+
+\[\mathbf{r}(t) = \langle \cos t, \sin t, t \rangle.\]
+
+\begin{itemize}
+\item
+  Velocity: .
+\item
+  Speed: .
+\item
+  Acceleration: .
+\end{itemize}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Projectile Motion
+\end{enumerate}
+
+\[\mathbf{r}(t) = \langle v_0 \cos\theta \cdot t, \; v_0 \sin\theta \cdot t - \tfrac{1}{2}gt^2 \rangle.\]
+
+This models the parabolic path of a projectile under gravity.
+
+\subsubsection{Integral of a Vector
+Function}\label{integral-of-a-vector-function}
+
+If
+
+\[\mathbf{r}(t) = \langle x(t), y(t), z(t) \rangle,\]
+
+then
+
+\[\int \mathbf{r}(t)\,dt = \left\langle \int x(t)\,dt, \; \int y(t)\,dt, \; \int z(t)\,dt \right\rangle + \mathbf{C},\]
+
+where is a constant vector.
+
+\subsubsection{Example}\label{example}
+
+\[\mathbf{r}(t) = \langle t, t^2, t^3 \rangle.\]
+
+\begin{itemize}
+\item
+  Derivative: .
+\item
+  Integral:
+\end{itemize}
+
+\[\int \mathbf{r}(t)\,dt = \langle \tfrac{1}{2}t^2, \tfrac{1}{3}t^3, \tfrac{1}{4}t^4 \rangle + \mathbf{C}.\]
+
+\subsubsection{Why This Matters}\label{why-this-matters-11}
+
+\begin{itemize}
+\item
+  Derivatives of vector functions describe motion and forces in space.
+\item
+  Integrals give displacement, work, and accumulated quantities.
+\item
+  These tools connect calculus directly to physics and engineering.
+\end{itemize}
+
+\subsubsection{Exercises}\label{exercises-30}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  For , find velocity, speed, and acceleration.
+\item
+  Compute for .
+\item
+  Integrate .
+\item
+  A particle has velocity . Find its position vector if .
+\item
+  Show that the speed of is constant.
+\end{enumerate}
+
+\subsection{7.3 Arc Length and
+Curvature}\label{73-arc-length-and-curvature}
+
+Vector calculus provides tools to measure not only the path traced by a
+curve but also how sharply it bends. These are expressed through arc
+length and curvature.
+
+\subsubsection{Arc Length of a Space
+Curve}\label{arc-length-of-a-space-curve}
+
+If a curve is given by
+
+\[\mathbf{r}(t) = \langle x(t), y(t), z(t) \rangle, \quad a \leq t \leq b,\]
+
+then the arc length is
+
+\[L = \int_a^b |\mathbf{r}'(t)|\,dt,\]
+
+where
+
+\[|\mathbf{r}'(t)| = \sqrt{(x'(t))^2 + (y'(t))^2 + (z'(t))^2}.\]
+
+Example:\\
+For the helix :
+
+\begin{itemize}
+\item
+  Velocity: .
+\item
+  Speed: .
+\item
+  Arc length:
+\end{itemize}
+
+\[L = \int_0^{2\pi} \sqrt{2}\,dt = 2\pi\sqrt{2}.\]
+
+\subsubsection{Curvature}\label{curvature}
+
+Curvature measures how quickly a curve changes direction.
+
+For a smooth curve :
+
+\[\kappa(t) = \frac{|\mathbf{r}'(t) \times \mathbf{r}''(t)|}{|\mathbf{r}'(t)|^3}.\]
+
+\begin{itemize}
+\item
+  : straight line.
+\item
+  Larger : curve bends more sharply.
+\end{itemize}
+
+Example:\\
+For a circle of radius :
+
+\[\mathbf{r}(t) = \langle r\cos t, r\sin t \rangle.\]
+
+Then .\\
+So curvature is constant and inversely proportional to radius.
+
+\subsubsection{Unit Tangent and Normal
+Vectors}\label{unit-tangent-and-normal-vectors}
+
+\begin{itemize}
+\item
+  Tangent vector:
+\end{itemize}
+
+\[\mathbf{T}(t) = \frac{\mathbf{r}'(t)}{|\mathbf{r}'(t)|}.\]
+
+\begin{itemize}
+\item
+  Normal vector: points toward the center of curvature, defined as
+\end{itemize}
+
+\[\mathbf{N}(t) = \frac{\mathbf{T}'(t)}{|\mathbf{T}'(t)|}.\]
+
+These vectors describe the geometry of motion: direction of travel and
+direction of turning.
+
+\subsubsection{Why This Matters}\label{why-this-matters-12}
+
+\begin{itemize}
+\item
+  Arc length generalizes the concept of distance to curves in space.
+\item
+  Curvature describes bending, crucial in physics (centripetal
+  acceleration), engineering (roads, roller coasters), and computer
+  graphics.
+\end{itemize}
+
+\subsubsection{Exercises}\label{exercises-31}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Find the arc length of from to .
+\item
+  Compute the curvature of the circle .
+\item
+  For , calculate .
+\item
+  Show that a straight line has curvature .
+\item
+  Find the tangent vector to at .
+\end{enumerate}
+
+\subsection{7.4 Motion in Space}\label{74-motion-in-space}
+
+Vector functions are especially powerful in describing motion in two or
+three dimensions. Position, velocity, and acceleration are naturally
+expressed using derivatives and integrals of vector-valued functions.
+
+\subsubsection{Position, Velocity, and
+Acceleration}\label{position-velocity-and-acceleration}
+
+\begin{itemize}
+\item
+  Position vector:
+\end{itemize}
+
+\[\mathbf{r}(t) = \langle x(t), y(t), z(t) \rangle\]
+
+\begin{itemize}
+\item
+  Velocity vector (derivative of position):
+\end{itemize}
+
+\[\mathbf{v}(t) = \mathbf{r}'(t) = \langle x'(t), y'(t), z'(t) \rangle\]
+
+\begin{itemize}
+\item
+  Speed (magnitude of velocity):
+\end{itemize}
+
+\[|\mathbf{v}(t)| = \sqrt{(x'(t))^2 + (y'(t))^2 + (z'(t))^2}\]
+
+\begin{itemize}
+\item
+  Acceleration vector (derivative of velocity):
+\end{itemize}
+
+\[\mathbf{a}(t) = \mathbf{v}'(t) = \mathbf{r}''(t).\]
+
+\subsubsection{Tangential and Normal
+Components}\label{tangential-and-normal-components}
+
+Acceleration can be decomposed into two components:
+
+\[\mathbf{a}(t) = a_T \mathbf{T}(t) + a_N \mathbf{N}(t),\]
+
+where:
+
+\begin{itemize}
+\item
+  = unit tangent vector,
+\item
+  = principal normal vector,
+\item
+  = tangential acceleration (change in speed),
+\item
+  = normal acceleration (change in direction).
+\end{itemize}
+
+\subsubsection{Projectile Motion in 3D}\label{projectile-motion-in-3d}
+
+With gravity acting in the direction:
+
+\[\mathbf{r}(t) = \langle v_0 \cos\theta \cos\phi \cdot t,\; v_0 \cos\theta \sin\phi \cdot t,\; v_0 \sin\theta \cdot t - \tfrac{1}{2}gt^2 \rangle,\]
+
+where is initial speed, launch angle, and azimuthal direction.
+
+\subsubsection{Example: Helical Motion}\label{example-helical-motion}
+
+\[\mathbf{r}(t) = \langle \cos t, \sin t, t \rangle\]
+
+\begin{itemize}
+\item
+  Velocity: .
+\item
+  Speed: .
+\item
+  Acceleration: .
+\item
+  Motion is uniform in speed, spiraling upward.
+\end{itemize}
+
+\subsubsection{Why This Matters}\label{why-this-matters-13}
+
+\begin{itemize}
+\item
+  Provides mathematical language for real-world motion.
+\item
+  Essential in physics (forces, trajectories, circular motion).
+\item
+  Foundation for advanced mechanics and engineering models.
+\end{itemize}
+
+\subsubsection{Exercises}\label{exercises-32}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  A particle moves along . Find velocity and acceleration at .
+\item
+  Show that speed is constant for the helix .
+\item
+  A projectile is launched with at angle . Write its position vector
+  assuming motion in a vertical plane.
+\item
+  For , find and .
+\item
+  Decompose the acceleration vector into tangential and normal
+  components for motion along a circle of radius .
+\end{enumerate}
+
+\section{\texorpdfstring{Chapter 8. Functions of Several Variables
+}{Chapter 8. Functions of Several Variables }}\label{chapter-8-functions-of-several-variables}
+
+\subsection{8.1 Limits and Continuity in Several
+Variables}\label{81-limits-and-continuity-in-several-variables}
+
+In multivariable calculus, functions may depend on two or more
+variables, such as or . The concepts of limits and continuity extend
+naturally from single-variable calculus, but they are more subtle
+because we must consider all possible paths of approach.
+
+\subsubsection{Limits in Two Variables}\label{limits-in-two-variables}
+
+For a function , we say
+
+\[\lim_{(x,y) \to (a,b)} f(x,y) = L\]
+
+if gets arbitrarily close to as approaches along any path.
+
+If different paths give different limit values, then the limit does not
+exist.
+
+Example 1 (limit exists):
+
+\[f(x,y) = x^2 + y^2, \quad \lim_{(x,y) \to (0,0)} f(x,y) = 0.\]
+
+Example 2 (limit does not exist):
+
+\[f(x,y) = \frac{xy}{x^2+y^2}, \quad (x,y) \to (0,0).\]
+
+\begin{itemize}
+\item
+  Along , the function is 0.
+\item
+  Along , the function is .\\
+  Different results → limit does not exist.
+\end{itemize}
+
+\subsubsection{Continuity}\label{continuity}
+
+A function is continuous at if
+
+\[\lim_{(x,y)\to(a,b)} f(x,y) = f(a,b).\]
+
+Polynomials and rational functions (where denominator ≠ 0) are
+continuous everywhere in their domains.
+
+\subsubsection{Extension to Three or More
+Variables}\label{extension-to-three-or-more-variables}
+
+For , limits and continuity are defined the same way, but the point must
+be approached from infinitely many directions in space.
+
+\subsubsection{Why This Matters}\label{why-this-matters-14}
+
+\begin{itemize}
+\item
+  Continuity ensures no jumps, holes, or asymptotes in multivariable
+  functions.
+\item
+  Limits are fundamental for defining partial derivatives and multiple
+  integrals.
+\item
+  These concepts are building blocks for multivariable calculus.
+\end{itemize}
+
+\subsubsection{Exercises}\label{exercises-33}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Determine whether exists.
+\item
+  Show that along all straight-line paths .
+\item
+  Does the limit exist for as ?
+\item
+  Explain why polynomials in two variables are continuous everywhere.
+\item
+  Give an example of a function of two variables that is discontinuous
+  at a point, and explain why.
+\end{enumerate}
+
+\subsection{8.2 Partial Derivatives}\label{82-partial-derivatives}
+
+In functions of several variables, we often want to measure how the
+function changes when only one variable changes while the others are
+held constant. This leads to the idea of partial derivatives.
+
+\subsubsection{Definition}\label{definition-8}
+
+For a function , the partial derivative with respect to at a point is
+
+\[\frac{\partial f}{\partial x}(a,b) = \lim_{h \to 0} \frac{f(a+h, b) - f(a,b)}{h}.\]
+
+Similarly, the partial derivative with respect to is
+
+\[\frac{\partial f}{\partial y}(a,b) = \lim_{h \to 0} \frac{f(a, b+h) - f(a,b)}{h}.\]
+
+We treat all other variables as constants when differentiating.
+
+\subsubsection{Notation}\label{notation-2}
+
+\begin{itemize}
+\item
+  , , .
+\item
+  , , .
+\end{itemize}
+
+For three variables , we also have .
+
+\subsubsection{Examples}\label{examples-21}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+\end{enumerate}
+
+\begin{itemize}
+\item
+  .
+\item
+  .
+\end{itemize}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+\end{enumerate}
+
+\begin{itemize}
+\item
+  .
+\item
+  .
+\end{itemize}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+\end{enumerate}
+
+\begin{itemize}
+\item
+  .
+\item
+  .
+\item
+  .
+\end{itemize}
+
+\subsubsection{Higher-Order Partial
+Derivatives}\label{higher-order-partial-derivatives}
+
+We can take partial derivatives repeatedly:
+
+\begin{itemize}
+\item
+  .
+\item
+  , etc.
+\end{itemize}
+
+Clairaut's Theorem: If has continuous second partial derivatives, then
+
+\[f_{xy} = f_{yx}.\]
+
+\subsubsection{Geometric Meaning}\label{geometric-meaning}
+
+\begin{itemize}
+\item
+  : slope of the surface in the -direction.
+\item
+  : slope of the surface in the -direction.
+\item
+  Together they describe how the surface tilts.
+\end{itemize}
+
+\subsubsection{Why This Matters}\label{why-this-matters-15}
+
+\begin{itemize}
+\item
+  Partial derivatives are the foundation of gradients, tangent planes,
+  and optimization in multiple variables.
+\item
+  They are widely used in physics, engineering, and economics to model
+  systems with several inputs.
+\end{itemize}
+
+\subsubsection{Exercises}\label{exercises-34}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Find and for .
+\item
+  Compute for .
+\item
+  Verify Clairaut's theorem for .
+\item
+  Interpret geometrically what and mean for .
+\item
+  Find all second-order partial derivatives of .
+\end{enumerate}
+
+\subsection{8.3 Gradient and Directional
+Derivatives}\label{83-gradient-and-directional-derivatives}
+
+Partial derivatives measure change along the coordinate axes, but
+sometimes we want to know the rate of change of a function in any
+direction. This leads to the concepts of the gradient and directional
+derivatives.
+
+\subsubsection{Gradient Vector}\label{gradient-vector}
+
+For a function , the gradient is the vector
+
+\[\nabla f(x,y) = \left\langle \frac{\partial f}{\partial x}, \frac{\partial f}{\partial y} \right\rangle.\]
+
+For three variables :
+
+\[\nabla f(x,y,z) = \left\langle f_x, f_y, f_z \right\rangle.\]
+
+The gradient points in the direction of maximum increase of the
+function, and its magnitude gives the steepest slope.
+
+\subsubsection{Directional Derivatives}\label{directional-derivatives}
+
+The rate of change of at a point in the direction of a unit vector is
+
+\[D_{\mathbf{u}} f(x,y) = \nabla f(x,y) \cdot \mathbf{u}.\]
+
+This is the dot product of the gradient with the direction vector.
+
+\subsubsection{Examples}\label{examples-22}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+\end{enumerate}
+
+\begin{itemize}
+\item
+  Gradient: .
+\item
+  At (1,2): .
+\item
+  Directional derivative along :
+\end{itemize}
+
+\[D_{\mathbf{u}} f(1,2) = \langle 2,4 \rangle \cdot \langle \tfrac{3}{5}, \tfrac{4}{5} \rangle = \tfrac{26}{5}.\]
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+\end{enumerate}
+
+\begin{itemize}
+\item
+  Gradient: .
+\item
+  At (1,1,1): .
+\item
+  Maximum increase direction is along .
+\end{itemize}
+
+\subsubsection{Geometric
+Interpretation}\label{geometric-interpretation-2}
+
+\begin{itemize}
+\item
+  The gradient vector is perpendicular (normal) to level curves or level
+  surfaces of .
+\item
+  Directional derivatives generalize slope in arbitrary directions.
+\end{itemize}
+
+\subsubsection{Why This Matters}\label{why-this-matters-16}
+
+\begin{itemize}
+\item
+  In optimization, the gradient tells us the direction to move for
+  steepest ascent or descent.
+\item
+  In physics, gradients describe fields like heat flow and electric
+  potential.
+\item
+  Directional derivatives unify single-variable and multivariable rates
+  of change.
+\end{itemize}
+
+\subsubsection{Exercises}\label{exercises-35}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Compute for .
+\item
+  Find the gradient of and evaluate at (1,1,1).
+\item
+  Calculate the directional derivative of at (2,1) in the direction of .
+\item
+  Show that the gradient of is perpendicular to the circle .
+\item
+  Find the unit vector direction that maximizes the directional
+  derivative of at (1,2).
+\end{enumerate}
+
+\subsection{8.4 Tangent Planes and Linear
+Approximations}\label{84-tangent-planes-and-linear-approximations}
+
+In single-variable calculus, the tangent line approximates a curve near
+a point. In multivariable calculus, the analogous concept is the tangent
+plane, which provides a linear approximation to a surface near a point.
+
+\subsubsection{Tangent Plane to a
+Surface}\label{tangent-plane-to-a-surface}
+
+Suppose is differentiable at . The tangent plane at is given by
+
+\[z = f(a,b) + f_x(a,b)(x-a) + f_y(a,b)(y-b).\]
+
+This plane touches the surface at the point and approximates it nearby.
+
+\subsubsection{Example 1: Paraboloid}\label{example-1-paraboloid}
+
+For at :
+
+\begin{itemize}
+\item
+  .
+\item
+  , so .
+\item
+  , so .
+\end{itemize}
+
+Equation of tangent plane:
+
+\[z = 5 + 2(x-1) + 4(y-2).\]
+
+\subsubsection{Linear Approximation}\label{linear-approximation}
+
+The tangent plane can be used to approximate near :
+
+\[f(x,y) \approx f(a,b) + f_x(a,b)(x-a) + f_y(a,b)(y-b).\]
+
+This is the linearization of at .
+
+\subsubsection{Example 2: Linear
+Approximation}\label{example-2-linear-approximation}
+
+Approximate near .
+
+\begin{itemize}
+\item
+  .
+\item
+  .
+\item
+  At (4,5): .
+\end{itemize}
+
+So,
+
+\[f(x,y) \approx 3 + \tfrac{1}{6}(x-4) + \tfrac{1}{6}(y-5).\]
+
+\subsubsection{Why This Matters}\label{why-this-matters-17}
+
+\begin{itemize}
+\item
+  Tangent planes give the best linear approximation to a surface.
+\item
+  Linearization simplifies complex functions for computation.
+\item
+  Widely used in numerical methods, physics, and economics.
+\end{itemize}
+
+\subsubsection{Exercises}\label{exercises-36}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Find the tangent plane to at .
+\item
+  Approximate near .
+\item
+  Derive the tangent plane equation for at .
+\item
+  Use linear approximation to estimate using near (4,6).
+\item
+  Explain why the tangent plane approximation improves as gets closer to
+  .
+\end{enumerate}
+
+\subsection{8.5 Optimization in Several
+Variables}\label{85-optimization-in-several-variables}
+
+Optimization in multivariable calculus extends the ideas of maxima and
+minima from single-variable functions to functions of two or more
+variables.
+
+\subsubsection{Critical Points}\label{critical-points}
+
+For , a critical point occurs where
+
+\[f_x(x,y) = 0 \quad \text{and} \quad f_y(x,y) = 0,\]
+
+or where the partial derivatives do not exist.
+
+\subsubsection{Second Derivative Test}\label{second-derivative-test}
+
+To classify critical points, compute the second partial derivatives:
+
+\[D = f_{xx}(a,b) f_{yy}(a,b) - \big(f_{xy}(a,b)\big)^2.\]
+
+\begin{itemize}
+\item
+  If and : local minimum.
+\item
+  If and : local maximum.
+\item
+  If : saddle point.
+\item
+  If : test is inconclusive.
+\end{itemize}
+
+\subsubsection{Example 1: Paraboloid}\label{example-1-paraboloid-2}
+
+.
+
+\begin{itemize}
+\item
+  . Critical point at (0,0).
+\item
+  .
+\item
+  , and .
+\item
+  So (0,0) is a local minimum.
+\end{itemize}
+
+\subsubsection{Example 2: Saddle Point}\label{example-2-saddle-point}
+
+.
+
+\begin{itemize}
+\item
+  . Critical point at (0,0).
+\item
+  .
+\item
+  .
+\item
+  So (0,0) is a saddle point.
+\end{itemize}
+
+\subsubsection{Constrained Optimization and Lagrange
+Multipliers}\label{constrained-optimization-and-lagrange-multipliers}
+
+Sometimes, we want to optimize subject to a constraint .
+
+Method of Lagrange multipliers: solve
+
+\[\nabla f(x,y) = \lambda \nabla g(x,y).\]
+
+Example: Maximize subject to .
+
+\begin{itemize}
+\item
+  Gradients: .
+\item
+  Equations: .
+\item
+  Solutions lead to max at .
+\end{itemize}
+
+\subsubsection{Why This Matters}\label{why-this-matters-18}
+
+\begin{itemize}
+\item
+  Optimization is essential in economics, engineering, machine learning,
+  and physics.
+\item
+  Lagrange multipliers allow optimization with constraints, a key tool
+  in applied mathematics.
+\end{itemize}
+
+\subsubsection{Exercises}\label{exercises-37}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Find and classify the critical points of .
+\item
+  Classify the point (0,0) for .
+\item
+  Use the second derivative test for .
+\item
+  Maximize subject to .
+\item
+  Minimize subject to .
+\end{enumerate}
+
+\section{\texorpdfstring{Chapter 9. Multiple Integrals
+}{Chapter 9. Multiple Integrals }}\label{chapter-9-multiple-integrals}
+
+\subsection{9.1 Double Integrals}\label{91-double-integrals}
+
+In single-variable calculus, a definite integral gives the area under a
+curve. In two variables, a double integral computes the volume under a
+surface (or more generally, the accumulation of values over a region).
+
+\subsubsection{Definition}\label{definition-9}
+
+If is continuous on a region , the double integral is
+
+\[\iint_R f(x,y)\, dA = \lim_{m,n \to \infty} \sum_{i=1}^m \sum_{j=1}^n f(x_{ij}^-, y_{ij}^-) \Delta A,\]
+
+where is divided into small rectangles of area .
+
+\subsubsection{Iterated Integrals}\label{iterated-integrals}
+
+By Fubini's Theorem, we can compute a double integral as an iterated
+integral:
+
+\[\iint_R f(x,y)\, dA = \int_a^b \int_c^d f(x,y)\, dy\, dx,\]
+
+if is a rectangle .
+
+Order of integration can often be switched:
+
+\[\int_a^b \int_c^d f(x,y)\,dy\,dx = \int_c^d \int_a^b f(x,y)\,dx\,dy.\]
+
+\subsubsection{Examples}\label{examples-23}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Rectangle region
+\end{enumerate}
+
+\[\iint_R (x+y)\, dA, \quad R=[0,1]\times[0,2].\]
+
+\[= \int_0^1 \int_0^2 (x+y)\,dy\,dx = \int_0^1 \Big[xy+\tfrac{1}{2}y^2\Big]_0^2 dx
+= \int_0^1 (2x+2)dx = 3.\]
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Triangular region
+\end{enumerate}
+
+\[R = \{(x,y): 0 \leq x \leq 1, 0 \leq y \leq x\}.\]
+
+\[\iint_R (x+y)\, dA = \int_0^1 \int_0^x (x+y)\,dy\,dx.\]
+
+Evaluating gives .
+
+\subsubsection{Applications}\label{applications-2}
+
+\begin{itemize}
+\item
+  Volume under a surface:
+\end{itemize}
+
+\[V = \iint_R f(x,y)\, dA.\]
+
+\begin{itemize}
+\item
+  Average value of a function over a region:
+\end{itemize}
+
+\[f_{\text{avg}} = \frac{1}{A(R)} \iint_R f(x,y)\, dA.\]
+
+\subsubsection{Why This Matters}\label{why-this-matters-19}
+
+Double integrals extend integration to two dimensions. They are
+essential in physics (mass, probability distributions), economics
+(expected values), and engineering (centroids, flux).
+
+\subsubsection{Exercises}\label{exercises-38}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Evaluate where .
+\item
+  Compute where .
+\item
+  Find the average value of over the unit square .
+\item
+  Interpret in terms of probability if is a probability density
+  function.
+\item
+  Show that switching order of integration gives the same result for .
+\end{enumerate}
+
+\subsection{9.2 Triple Integrals}\label{92-triple-integrals}
+
+Triple integrals extend the idea of integration to three variables,
+allowing us to compute volumes, masses, and other quantities in
+three-dimensional regions.
+
+\subsubsection{Definition}\label{definition-10}
+
+If is continuous on a solid region , the triple integral is
+
+\[\iiint_E f(x,y,z)\, dV = \lim_{m,n,p \to \infty} \sum f(x_{ijk}^-, y_{ijk}^-, z_{ijk}^-) \Delta V,\]
+
+where the region is subdivided into boxes of volume .
+
+\subsubsection{Iterated Integrals}\label{iterated-integrals-2}
+
+By Fubini's Theorem, a triple integral can be computed as an iterated
+integral:
+
+\[\iiint_E f(x,y,z)\, dV = \int_a^b \int_c^d \int_e^f f(x,y,z)\, dz\, dy\, dx,\]
+
+for a rectangular box .
+
+The order of integration can be chosen for convenience.
+
+\subsubsection{Examples}\label{examples-24}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Rectangular box
+\end{enumerate}
+
+\[\iiint_E xyz\, dV, \quad E=[0,1]\times[0,2]\times[0,3].\]
+
+\[= \int_0^1 \int_0^2 \int_0^3 xyz\,dz\,dy\,dx.\]
+
+First integrate over :
+
+\[\int_0^3 xyz\,dz = xy \left[\tfrac{1}{2}z^2\right]_0^3 = \tfrac{9}{2}xy.\]
+
+Now integrate over :
+
+\[\int_0^2 \tfrac{9}{2}xy\,dy = \tfrac{9}{2}x \cdot \left[\tfrac{1}{2}y^2\right]_0^2 = 9x.\]
+
+Finally integrate over :
+
+\[\int_0^1 9x\,dx = \tfrac{9}{2}.\]
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Region bounded by planes\\
+  Let .
+\end{enumerate}
+
+\[\iiint_E 1\,dV = \int_0^1 \int_0^x \int_0^y 1\,dz\,dy\,dx.\]
+
+Evaluate:
+
+\[= \int_0^1 \int_0^x y\,dy\,dx = \int_0^1 \tfrac{1}{2}x^2\,dx = \tfrac{1}{6}.\]
+
+So the volume of this triangular region is .
+
+\subsubsection{Applications}\label{applications-3}
+
+\begin{itemize}
+\item
+  Volume: .
+\item
+  Mass: If density is , then
+
+  \[M = \iiint_E \rho(x,y,z)\, dV.\]
+\item
+  Average value:
+
+  \[f_{\text{avg}} = \frac{1}{V(E)} \iiint_E f(x,y,z)\,dV.\]
+\end{itemize}
+
+\subsubsection{Why This Matters}\label{why-this-matters-20}
+
+Triple integrals generalize area and volume calculations to arbitrary
+solids. They are used in physics (mass distributions, center of mass,
+gravitational fields), engineering, and probability.
+
+\subsubsection{Exercises}\label{exercises-39}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Compute over the cube .
+\item
+  Find the volume of the tetrahedron bounded by .
+\item
+  Evaluate where .
+\item
+  Show that equals the geometric volume of .
+\item
+  If density is , compute the mass of the unit cube.
+\end{enumerate}
+
+\subsection{9.3 Applications: Volume, Mass,
+Probability}\label{93-applications-volume-mass-probability}
+
+Triple integrals are powerful because they allow us to compute
+quantities in three dimensions by accumulating values over a solid
+region.
+
+\subsubsection{Volume}\label{volume}
+
+The simplest application is finding the volume of a region :
+
+\[V = \iiint_E 1 \, dV.\]
+
+Example:\\
+Find the volume of the solid bounded by the coordinate planes and the
+plane .
+
+\[V = \iiint_E 1 \, dV = \int_0^1 \int_0^{1-x} \int_0^{1-x-y} 1 \, dz\, dy\, dx.\]
+
+Evaluating gives .
+
+\subsubsection{Mass and Density}\label{mass-and-density}
+
+If a solid has density function , its mass is
+
+\[M = \iiint_E \rho(x,y,z)\, dV.\]
+
+The center of mass is given by
+
+\[\bar{x} = \frac{1}{M}\iiint_E x\rho(x,y,z)\,dV, \quad 
+\bar{y} = \frac{1}{M}\iiint_E y\rho(x,y,z)\,dV, \quad 
+\bar{z} = \frac{1}{M}\iiint_E z\rho(x,y,z)\,dV.\]
+
+Example:\\
+For a unit cube with constant density , the center of mass is at .
+
+\subsubsection{Probability}\label{probability}
+
+If is a probability density function in 3D, then the probability that
+the random variable lies in a region is
+
+\[P(E) = \iiint_E f(x,y,z)\, dV,\]
+
+where and
+
+\[\iiint_{\mathbb{R}^3} f(x,y,z)\,dV = 1.\]
+
+Example:\\
+If for , uniformly in , then
+
+\[P(0 \leq z \leq 0.5) = \int_0^{0.5} \tfrac{3}{4}z^2 \, dz = \tfrac{1}{32}.\]
+
+\subsubsection{Why This Matters}\label{why-this-matters-21}
+
+\begin{itemize}
+\item
+  Volumes generalize geometry to irregular solids.
+\item
+  Mass and density integrals connect calculus to physics and
+  engineering.
+\item
+  Probability density functions in higher dimensions are widely used in
+  statistics and data science.
+\end{itemize}
+
+\subsubsection{Exercises}\label{exercises-40}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Find the volume of the solid bounded by (the unit sphere).
+\item
+  Compute the mass of a cone with density proportional to .
+\item
+  Find the center of mass of a uniform tetrahedron bounded by .
+\item
+  If on the cube , verify that it is a probability density function.
+\item
+  Use a triple integral to compute the probability that a randomly
+  chosen point in the unit sphere has .
+\end{enumerate}
+
+\subsection{9.4 Change of Variables: Polar, Cylindrical, Spherical
+Coordinates}\label{94-change-of-variables-polar-cylindrical-spherical-coordinates}
+
+Many integrals become easier when expressed in coordinate systems that
+match the symmetry of the region. Instead of Cartesian coordinates , we
+can use polar, cylindrical, or spherical coordinates.
+
+\subsubsection{Polar Coordinates (2D)}\label{polar-coordinates-2d}
+
+For functions of two variables, we can switch to polar coordinates:
+
+\[x = r\cos\theta, \quad y = r\sin\theta, \quad r \geq 0, \; 0 \leq \theta < 2\pi.\]
+
+The area element transforms as
+
+\[dA = r\,dr\,d\theta.\]
+
+Example:\\
+Find the area of the unit circle.
+
+\[A = \iint_{x^2+y^2\leq 1} 1\,dA = \int_0^{2\pi}\int_0^1 r\,dr\,d\theta = \pi.\]
+
+\subsubsection{Cylindrical Coordinates
+(3D)}\label{cylindrical-coordinates-3d}
+
+In 3D, cylindrical coordinates extend polar coordinates with :
+
+\[x = r\cos\theta, \quad y = r\sin\theta, \quad z = z.\]
+
+The volume element is
+
+\[dV = r\,dr\,d\theta\,dz.\]
+
+Example:\\
+Volume of a cylinder of radius and height :
+
+\[V = \int_0^h \int_0^{2\pi} \int_0^R r\,dr\,d\theta\,dz = \pi R^2 h.\]
+
+\subsubsection{Spherical Coordinates
+(3D)}\label{spherical-coordinates-3d}
+
+For spherical symmetry, use:
+
+\[x = \rho \sin\phi \cos\theta, \quad y = \rho \sin\phi \sin\theta, \quad z = \rho \cos\phi,\]
+
+where
+
+\begin{itemize}
+\item
+  is the distance from the origin,
+\item
+  is the angle from the positive -axis,
+\item
+  is the angle in the -plane.
+\end{itemize}
+
+The volume element is
+
+\[dV = \rho^2 \sin\phi \, d\rho\, d\phi\, d\theta.\]
+
+Example:\\
+Volume of the unit sphere:
+
+\[V = \int_0^{2\pi} \int_0^\pi \int_0^1 \rho^2 \sin\phi \, d\rho\, d\phi\, d\theta.\]
+
+Evaluating:
+
+\[V = \left(\int_0^1 \rho^2 d\rho\right)\left(\int_0^\pi \sin\phi d\phi\right)\left(\int_0^{2\pi} d\theta\right) = \tfrac{1}{3}(2)(2\pi) = \tfrac{4\pi}{3}.\]
+
+\subsubsection{Why This Matters}\label{why-this-matters-22}
+
+\begin{itemize}
+\item
+  Polar coordinates simplify circular regions.
+\item
+  Cylindrical coordinates handle cylinders and rotational symmetry.
+\item
+  Spherical coordinates simplify spheres, cones, and radial problems.
+\item
+  These changes of variables make otherwise impossible integrals
+  manageable.
+\end{itemize}
+
+\subsubsection{Exercises}\label{exercises-41}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Compute using polar coordinates.
+\item
+  Find the volume of a cone of height and radius using cylindrical
+  coordinates.
+\item
+  Use spherical coordinates to evaluate the volume of a ball of radius .
+\item
+  Show that the Jacobian factor for polar coordinates is .
+\item
+  Find the mass of a solid sphere of radius with density proportional to
+  distance from the origin using spherical coordinates.
+\end{enumerate}
+
+\section{\texorpdfstring{Chapter 10. Vector Calculus
+}{Chapter 10. Vector Calculus }}\label{chapter-10-vector-calculus}
+
+\subsection{10.1 Vector Fields}\label{101-vector-fields}
+
+A vector field assigns a vector to each point in space, much like a
+scalar function assigns a number. Vector fields are used to model flows,
+forces, and other directional quantities.
+
+\subsubsection{Definition}\label{definition-11}
+
+In two dimensions, a vector field is a function
+
+\[\mathbf{F}(x,y) = \langle P(x,y), Q(x,y) \rangle,\]
+
+where and are scalar functions.
+
+In three dimensions,
+
+\[\mathbf{F}(x,y,z) = \langle P(x,y,z), Q(x,y,z), R(x,y,z) \rangle.\]
+
+\subsubsection{Examples}\label{examples-25}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Radial field
+\end{enumerate}
+
+\[\mathbf{F}(x,y) = \langle x, y \rangle.\]
+
+Vectors point outward from the origin.
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Rotational field
+\end{enumerate}
+
+\[\mathbf{F}(x,y) = \langle -y, x \rangle.\]
+
+Vectors circulate around the origin.
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Gravitational field
+\end{enumerate}
+
+\[\mathbf{F}(x,y,z) = -\frac{GM}{r^3}\langle x,y,z \rangle, \quad r=\sqrt{x^2+y^2+z^2}.\]
+
+\subsubsection{Visualizing Vector
+Fields}\label{visualizing-vector-fields}
+
+\begin{itemize}
+\item
+  Draw small arrows at sample points to indicate direction and
+  magnitude.
+\item
+  Denser arrows where magnitudes are larger.
+\item
+  Useful for interpreting flow lines, trajectories, and forces.
+\end{itemize}
+
+\subsubsection{Flow Lines}\label{flow-lines}
+
+A flow line (or integral curve) of a vector field is a curve whose
+tangent vector at each point matches the field:
+
+\[\mathbf{r}'(t) = \mathbf{F}(\mathbf{r}(t)).\]
+
+Flow lines describe particle paths in a velocity field.
+
+\subsubsection{Why This Matters}\label{why-this-matters-23}
+
+\begin{itemize}
+\item
+  Vector fields are fundamental in physics (fluid flow,
+  electromagnetism, gravitation).
+\item
+  They form the basis of line integrals, surface integrals, and the big
+  theorems of vector calculus (Green, Stokes, Divergence).
+\item
+  Provide a geometric way to represent directional quantities.
+\end{itemize}
+
+\subsubsection{Exercises}\label{exercises-42}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Sketch the vector field .
+\item
+  Determine whether the vectors of point toward or away from the origin.
+\item
+  For , compute .
+\item
+  Describe the flow lines of .
+\item
+  Explain why gravitational and electric fields are examples of radial
+  vector fields.
+\end{enumerate}
+
+\subsection{10.2 Line Integrals}\label{102-line-integrals}
+
+A line integral extends the idea of an integral to functions evaluated
+along a curve. Instead of integrating over an interval or region, we
+integrate over a path in space.
+
+\subsubsection{Definition: Scalar Line
+Integral}\label{definition-scalar-line-integral}
+
+If is a scalar function and is a curve parameterized by , then the line
+integral is
+
+\[\int_C f(x,y)\, ds = \int_a^b f(x(t),y(t)) \, |\mathbf{r}'(t)|\, dt,\]
+
+where is arc length.
+
+This measures the accumulation of along the curve.
+
+\subsubsection{Definition: Vector Line
+Integral}\label{definition-vector-line-integral}
+
+For a vector field , the line integral along is
+
+\[\int_C \mathbf{F} \cdot d\mathbf{r} = \int_a^b \mathbf{F}(\mathbf{r}(t)) \cdot \mathbf{r}'(t)\, dt.\]
+
+This measures the work done by the field along the curve.
+
+\subsubsection{Examples}\label{examples-26}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Scalar Line Integral
+\end{enumerate}
+
+\[f(x,y) = x+y, \quad C: \mathbf{r}(t) = \langle t, t^2 \rangle, \; 0 \leq t \leq 1.\]
+
+Then
+
+\[\int_C f(x,y)\, ds = \int_0^1 (t+t^2)\sqrt{(1)^2+(2t)^2}\, dt.\]
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Work Done by a Force
+\end{enumerate}
+
+\[\mathbf{F}(x,y) = \langle y, x \rangle, \quad C: \mathbf{r}(t) = \langle t, t^2 \rangle, \; 0 \leq t \leq 1.\]
+
+\[\int_C \mathbf{F} \cdot d\mathbf{r} = \int_0^1 \langle t^2, t \rangle \cdot \langle 1, 2t \rangle\, dt = \int_0^1 (t^2 + 2t^2)\, dt = \int_0^1 3t^2\, dt = 1.\]
+
+\subsubsection{Physical Interpretation}\label{physical-interpretation}
+
+\begin{itemize}
+\item
+  Scalar line integral: accumulation of density along a wire.
+\item
+  Vector line integral: work done by a force moving an object along a
+  path.
+\end{itemize}
+
+\subsubsection{Why This Matters}\label{why-this-matters-24}
+
+\begin{itemize}
+\item
+  Line integrals connect vector fields with physical quantities like
+  work and circulation.
+\item
+  They are building blocks for Green's Theorem and Stokes' Theorem.
+\item
+  Appear in physics (electric potential, fluid flow, mechanics).
+\end{itemize}
+
+\subsubsection{Exercises}\label{exercises-43}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Compute where is the line segment from (0,0) to (1,1).
+\item
+  Evaluate for along the unit circle .
+\item
+  Interpret the meaning of .
+\item
+  For , compute the line integral along .
+\item
+  Explain the difference between scalar and vector line integrals.
+\end{enumerate}
+
+\subsection{10.3 Surface Integrals}\label{103-surface-integrals}
+
+A surface integral generalizes line integrals to two-dimensional
+surfaces in three-dimensional space. They allow us to compute flux
+through surfaces and accumulation of scalar fields over curved surfaces.
+
+\subsubsection{Scalar Surface Integral}\label{scalar-surface-integral}
+
+If a surface is parameterized by
+
+\[\mathbf{r}(u,v) = \langle x(u,v), y(u,v), z(u,v) \rangle,\]
+
+then the surface integral of a scalar function is
+
+\[\iint_S f(x,y,z)\, dS = \iint_D f(\mathbf{r}(u,v)) \, |\mathbf{r}_u \times \mathbf{r}_v| \, du\,dv,\]
+
+where and are partial derivatives of , and is the parameter domain.
+
+\subsubsection{Vector Surface Integral
+(Flux)}\label{vector-surface-integral-flux}
+
+For a vector field , the flux through a surface is
+
+\[\iint_S \mathbf{F}\cdot d\mathbf{S} = \iint_S \mathbf{F}\cdot \mathbf{n}\, dS,\]
+
+where is the unit normal vector. Using parameterization,
+
+\[\iint_S \mathbf{F}\cdot d\mathbf{S} = \iint_D \mathbf{F}(\mathbf{r}(u,v)) \cdot (\mathbf{r}_u \times \mathbf{r}_v)\,du\,dv.\]
+
+\subsubsection{Examples}\label{examples-27}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Scalar Surface Integral\\
+  Surface: plane over unit disk .
+\end{enumerate}
+
+\[\iint_S 1\, dS = \text{area of the disk} = \pi.\]
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Flux Through a Sphere\\
+  Let , and = sphere of radius .\\
+  Normal vector is .
+\end{enumerate}
+
+\[\mathbf{F}\cdot \mathbf{n} = \frac{x^2+y^2+z^2}{R} = R.\]
+
+So
+
+\[\iint_S \mathbf{F}\cdot d\mathbf{S} = \iint_S R\, dS = R \cdot 4\pi R^2 = 4\pi R^3.\]
+
+\subsubsection{Why This Matters}\label{why-this-matters-25}
+
+\begin{itemize}
+\item
+  Scalar surface integrals measure area and surface distributions.
+\item
+  Vector surface integrals measure flux: the amount of a field passing
+  through a surface.
+\item
+  Applications: electromagnetism, fluid flow, heat transfer, and more.
+\end{itemize}
+
+\subsubsection{Exercises}\label{exercises-44}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Compute for the surface of a cube of side length 2.
+\item
+  Find the flux of through the unit sphere.
+\item
+  Evaluate for the paraboloid .
+\item
+  For , compute flux through the plane , .
+\item
+  Explain physically what it means if the flux of a vector field through
+  a closed surface is zero.
+\end{enumerate}
+
+\subsection{10.4 Green's Theorem}\label{104-greens-theorem}
+
+Green's Theorem is a fundamental result in vector calculus that connects
+a line integral around a closed curve to a double integral over the
+region it encloses. It is a two-dimensional version of Stokes' Theorem.
+
+\subsubsection{Statement of Green's
+Theorem}\label{statement-of-greens-theorem}
+
+Let be a positively oriented, simple, closed curve in the plane, and let
+be the region it encloses. If has continuous partial derivatives on an
+open region containing , then
+
+\[\oint_C \mathbf{F} \cdot d\mathbf{r} = \oint_C P\,dx + Q\,dy = \iint_R \left( \frac{\partial Q}{\partial x} - \frac{\partial P}{\partial y} \right)\, dA.\]
+
+\subsubsection{Interpretation}\label{interpretation-3}
+
+\begin{itemize}
+\item
+  The line integral around measures the circulation of the vector field
+  along the boundary.
+\item
+  The double integral over measures the total curl (rotation) of the
+  field inside the region.
+\end{itemize}
+
+\subsubsection{Example 1: Area Formula}\label{example-1-area-formula}
+
+If , then
+
+\[\frac{\partial Q}{\partial x} - \frac{\partial P}{\partial y} = 1.\]
+
+Thus, Green's Theorem gives
+
+\[\text{Area}(R) = \iint_R 1\,dA = \oint_C \left(-\tfrac{y}{2}\,dx + \tfrac{x}{2}\,dy\right).\]
+
+This provides a way to compute area using a line integral.
+
+\subsubsection{Example 2: Circulation}\label{example-2-circulation}
+
+Let , and be the unit circle.
+
+\begin{itemize}
+\item
+  .
+\item
+  .
+\item
+  Double integral over the unit disk:
+\end{itemize}
+
+\[\iint_R 2\,dA = 2\pi (1^2) = 2\pi.\]
+
+So the circulation around the circle is .
+
+\subsubsection{Why This Matters}\label{why-this-matters-26}
+
+\begin{itemize}
+\item
+  Converts difficult line integrals into double integrals, or vice
+  versa.
+\item
+  Provides a bridge between local properties (curl) and global
+  properties (circulation).
+\item
+  Widely used in physics for fluid flow, electromagnetism, and planar
+  vector fields.
+\end{itemize}
+
+\subsubsection{Exercises}\label{exercises-45}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Use Green's Theorem to compute the area inside the ellipse .
+\item
+  Verify Green's Theorem for along the square with vertices (0,0),
+  (1,0), (1,1), (0,1).
+\item
+  Compute the circulation of around the unit circle.
+\item
+  Show that if , then the line integral of around any closed curve is
+  zero.
+\item
+  Use Green's Theorem to show that
+\end{enumerate}
+
+\[\oint_C x\,dy = -\oint_C y\,dx\]
+
+for any closed curve .
+
+\subsection{10.5 Stokes' Theorem}\label{105-stokes-theorem}
+
+Stokes' Theorem generalizes Green's Theorem to three dimensions. It
+relates a surface integral of the curl of a vector field over a surface
+to a line integral of the vector field around the boundary of that
+surface.
+
+\subsubsection{Statement of Stokes'
+Theorem}\label{statement-of-stokes-theorem}
+
+Let be an oriented, smooth surface with boundary curve (positively
+oriented). If is a vector field with continuous partial derivatives,
+then
+
+\[\iint_S (\nabla \times \mathbf{F}) \cdot d\mathbf{S} = \oint_C \mathbf{F} \cdot d\mathbf{r}.\]
+
+\begin{itemize}
+\item
+  Left side: flux of the curl of through the surface.
+\item
+  Right side: circulation of along the boundary curve.
+\end{itemize}
+
+\subsubsection{Interpretation}\label{interpretation-4}
+
+\begin{itemize}
+\item
+  The line integral around the boundary equals the total "rotation"
+  inside the surface.
+\item
+  Extends Green's Theorem (a special case when the surface lies in the
+  plane).
+\end{itemize}
+
+\subsubsection{Example 1: Green's Theorem as a Special
+Case}\label{example-1-greens-theorem-as-a-special-case}
+
+If is a flat region in the -plane, Stokes' Theorem reduces to Green's
+Theorem.
+
+\subsubsection{Example 2: Circulation on a
+Hemisphere}\label{example-2-circulation-on-a-hemisphere}
+
+Let , and be the upper hemisphere of radius 1.
+
+\begin{itemize}
+\item
+  Boundary : unit circle in the -plane.
+\item
+  By Stokes' Theorem:
+\end{itemize}
+
+\[\oint_C \mathbf{F}\cdot d\mathbf{r} = \iint_S (\nabla \times \mathbf{F})\cdot d\mathbf{S}.\]
+
+\begin{itemize}
+\item
+  Curl: .
+\item
+  Normal to hemisphere points outward: .
+\item
+  So integrand = 2.
+\item
+  Area of hemisphere = .
+\end{itemize}
+
+\[\iint_S 2\, dS = 2 \cdot 2\pi = 4\pi.\]
+
+Thus, circulation around the equator is .
+
+\subsubsection{Why This Matters}\label{why-this-matters-27}
+
+\begin{itemize}
+\item
+  Provides a deep connection between surface integrals and line
+  integrals.
+\item
+  Simplifies calculations by allowing choice of convenient surfaces.
+\item
+  Widely used in electromagnetism (Faraday's Law) and fluid dynamics.
+\end{itemize}
+
+\subsubsection{Exercises}\label{exercises-46}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Verify Stokes' Theorem for over the unit disk in the -plane.
+\item
+  Compute where , and is the boundary of the triangle with vertices
+  (0,0,0), (1,0,0), (0,1,0).
+\item
+  Show that if , then the circulation around any closed curve is zero.
+\item
+  Apply Stokes' Theorem to compute circulation of around the boundary of
+  the unit square in the plane .
+\item
+  Explain how Stokes' Theorem generalizes Green's Theorem.
+\end{enumerate}
+
+\subsection{10.6 Divergence Theorem}\label{106-divergence-theorem}
+
+The Divergence Theorem (also called Gauss's Theorem) relates the flux of
+a vector field through a closed surface to the triple integral of the
+divergence of the field inside the surface.
+
+\subsubsection{Statement of the Divergence
+Theorem}\label{statement-of-the-divergence-theorem}
+
+Let be a solid region in with boundary surface (oriented outward). If is
+a vector field with continuous partial derivatives on , then
+
+\[\iint_S \mathbf{F} \cdot d\mathbf{S} = \iiint_E (\nabla \cdot \mathbf{F}) \, dV.\]
+
+\begin{itemize}
+\item
+  Left side: flux of across the closed surface .
+\item
+  Right side: triple integral of the divergence inside the region.
+\end{itemize}
+
+\subsubsection{Divergence}\label{divergence}
+
+The divergence of a vector field is
+
+\[\nabla \cdot \mathbf{F} = \frac{\partial P}{\partial x} + \frac{\partial Q}{\partial y} + \frac{\partial R}{\partial z}.\]
+
+It measures the ``net outflow'' per unit volume at each point.
+
+\subsubsection{Example 1: Flux of a Radial
+Field}\label{example-1-flux-of-a-radial-field}
+
+Let , and let be the unit ball .
+
+\begin{itemize}
+\item
+  Divergence: .
+\item
+  Volume of unit ball: .\\
+  So
+\end{itemize}
+
+\[\iiint_E (\nabla \cdot \mathbf{F})\, dV = 3 \cdot \tfrac{4}{3}\pi = 4\pi.\]
+
+Thus, the flux across the unit sphere is .
+
+\subsubsection{Example 2: Constant
+Field}\label{example-2-constant-field}
+
+Let .
+
+\begin{itemize}
+\item
+  Divergence: .
+\item
+  So flux through any closed surface is zero, consistent with intuition
+  (no net outflow).
+\end{itemize}
+
+\subsubsection{Why This Matters}\label{why-this-matters-28}
+
+\begin{itemize}
+\item
+  Converts surface integrals into simpler volume integrals.
+\item
+  Used in physics: Gauss's Law in electromagnetism, fluid flow, and heat
+  transfer.
+\item
+  Completes the unifying framework:
+
+  \begin{itemize}
+  \item
+    Green's Theorem (2D curl ↔ circulation)
+  \item
+    Stokes' Theorem (3D curl ↔ circulation on surfaces)
+  \item
+    Divergence Theorem (3D divergence ↔ flux on closed surfaces)
+  \end{itemize}
+\end{itemize}
+
+\subsubsection{Exercises}\label{exercises-47}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Use the Divergence Theorem to compute the flux of across the surface
+  of a sphere of radius .
+\item
+  Verify the Divergence Theorem for on the unit cube .
+\item
+  Show that if , then the total flux through any closed surface is zero.
+\item
+  Compute the flux of through the unit sphere.
+\item
+  Explain how the Divergence Theorem generalizes the one-dimensional
+  Fundamental Theorem of Calculus.
+\end{enumerate}
+
+\section{Part IV. Infinite Processes}\label{part-iv-infinite-processes}
+
+\section{\texorpdfstring{Chapter 11. Sequences and convergence
+}{Chapter 11. Sequences and convergence }}\label{chapter-11-sequences-and-convergence}
+
+\subsection{11.1 Definitions and
+Examples}\label{111-definitions-and-examples}
+
+A sequence is an ordered list of numbers, usually written as
+
+\[a_1, a_2, a_3, \dots\]
+
+or more generally . Each is called the nth term of the sequence.
+
+\subsubsection{Defining a Sequence}\label{defining-a-sequence}
+
+A sequence can be defined in two ways:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Explicit formula -- gives a direct rule for the nth term.
+
+  \begin{itemize}
+  \item
+    Example: defines the sequence
+
+    \[1, \tfrac{1}{2}, \tfrac{1}{3}, \tfrac{1}{4}, \dots\]
+  \end{itemize}
+\item
+  Recursive definition -- defines terms using earlier terms.
+
+  \begin{itemize}
+  \item
+    Example: Fibonacci sequence:
+
+    \[a_1 = 1, \quad a_2 = 1, \quad a_{n} = a_{n-1} + a_{n-2} \quad (n \geq 3).\]
+  \end{itemize}
+\end{enumerate}
+
+\subsubsection{Examples of Sequences}\label{examples-of-sequences}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Arithmetic sequence:
+
+  \[a_n = a_1 + (n-1)d.\]
+
+  Example: → sequence of odd numbers.
+\item
+  Geometric sequence:
+
+  \[a_n = a_1 r^{n-1}.\]
+
+  Example: → powers of 2.
+\item
+  Harmonic sequence:
+
+  \[a_n = \frac{1}{n}.\]
+\item
+  Alternating sequence:
+
+  \[a_n = (-1)^n.\]
+\end{enumerate}
+
+\subsubsection{Sequences in Calculus}\label{sequences-in-calculus}
+
+Sequences are the foundation for infinite processes:
+
+\begin{itemize}
+\item
+  Limits of sequences → define convergence.
+\item
+  Series → infinite sums built from sequences.
+\item
+  Functions approximated by sequences and series.
+\end{itemize}
+
+\subsubsection{Why This Matters}\label{why-this-matters-29}
+
+\begin{itemize}
+\item
+  Sequences provide the building blocks for infinite series and
+  approximations.
+\item
+  They allow us to rigorously define "approaching infinity" and
+  convergence.
+\item
+  Many important functions (exponential, trigonometric) can be expressed
+  through sequences and series.
+\end{itemize}
+
+\subsubsection{Exercises}\label{exercises-48}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Write the first five terms of the sequence .
+\item
+  Determine if is bounded.
+\item
+  Give a recursive definition for the sequence .
+\item
+  Find the 10th term of the arithmetic sequence with and .
+\item
+  Write an explicit formula for the sequence defined by , .
+\end{enumerate}
+
+\subsection{11.2 Monotone and Bounded
+Sequences}\label{112-monotone-and-bounded-sequences}
+
+To understand whether a sequence converges, we need to study its
+behavior: does it increase, decrease, stay within bounds, or grow
+without limit? Two important concepts are monotonicity and boundedness.
+
+\subsubsection{Monotone Sequences}\label{monotone-sequences}
+
+A sequence is called monotone if it is always increasing or always
+decreasing.
+
+\begin{itemize}
+\item
+  Monotone increasing:
+
+  \[a_{n+1} \geq a_n \quad \text{for all } n.\]
+\item
+  Monotone decreasing:
+
+  \[a_{n+1} \leq a_n \quad \text{for all } n.\]
+\end{itemize}
+
+Examples:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  is monotone increasing.
+\item
+  is monotone decreasing.
+\end{enumerate}
+
+\subsubsection{Bounded Sequences}\label{bounded-sequences}
+
+A sequence is bounded above if there exists a number such that for all
+.\\
+It is bounded below if there exists such that for all .
+
+If both conditions hold, the sequence is bounded.
+
+Examples:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  is bounded between 0 and 1.
+\item
+  is bounded between -1 and 1.
+\item
+  is not bounded.
+\end{enumerate}
+
+\subsubsection{Monotone Convergence
+Theorem}\label{monotone-convergence-theorem}
+
+A fundamental result in analysis:
+
+\begin{itemize}
+\item
+  Every monotone increasing sequence that is bounded above converges.
+\item
+  Every monotone decreasing sequence that is bounded below converges.
+\end{itemize}
+
+This theorem guarantees convergence without finding the limit
+explicitly.
+
+\subsubsection{Example}\label{example-2}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Sequence: .
+
+  \begin{itemize}
+  \item
+    Increasing: since .
+  \item
+    Bounded above by 1.
+  \item
+    Therefore, it converges.
+  \item
+    Limit: .
+  \end{itemize}
+\end{enumerate}
+
+\subsubsection{Why This Matters}\label{why-this-matters-30}
+
+\begin{itemize}
+\item
+  Monotonicity and boundedness give quick tests for convergence.
+\item
+  They are essential in proofs and in constructing limits rigorously.
+\item
+  These ideas extend naturally to functions and series.
+\end{itemize}
+
+\subsubsection{Exercises}\label{exercises-49}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Determine whether is monotone and bounded.
+\item
+  Show that is monotone increasing but not bounded.
+\item
+  Prove that converges, and find its limit.
+\item
+  Give an example of a bounded sequence that is not monotone.
+\item
+  Apply the monotone convergence theorem to .
+\end{enumerate}
+
+\subsection{11.3 Limits of Sequences}\label{113-limits-of-sequences}
+
+The central question about a sequence is whether its terms approach a
+single value as grows. This leads to the concept of the limit of a
+sequence.
+
+\subsubsection{Definition}\label{definition-12}
+
+A sequence has a limit if, for every , there exists an integer such that
+
+\[|a_n - L| < \varepsilon \quad \text{whenever } n > N.\]
+
+We then write
+
+\[\lim_{n\to\infty} a_n = L.\]
+
+If no such exists, the sequence diverges.
+
+\subsubsection{Intuition}\label{intuition}
+
+\begin{itemize}
+\item
+  The terms of the sequence get arbitrarily close to as becomes large.
+\item
+  Beyond some index , all terms stay within a tiny band around .
+\end{itemize}
+
+\subsubsection{Examples}\label{examples-28}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  .\\
+  As grows, terms shrink toward 0.
+
+  \[\lim_{n\to\infty} \frac{1}{n} = 0.\]
+\item
+  .\\
+  Terms alternate between -1 and 1, so no single limit exists. The
+  sequence diverges.
+\item
+  .\\
+  As , numerator and denominator are nearly equal, so
+
+  \[\lim_{n\to\infty} \frac{n}{n+1} = 1.\]
+\end{enumerate}
+
+\subsubsection{Properties of Limits}\label{properties-of-limits}
+
+If and :
+
+\begin{itemize}
+\item
+  .
+\item
+  .
+\item
+  for constant .
+\item
+  If and , then
+
+  \[\lim \frac{a_n}{b_n} = \frac{A}{B}.\]
+\end{itemize}
+
+\subsubsection{Theorem: Squeeze
+Principle}\label{theorem-squeeze-principle}
+
+If for all large , and
+
+\[\lim_{n\to\infty} a_n = \lim_{n\to\infty} c_n = L,\]
+
+then
+
+\[\lim_{n\to\infty} b_n = L.\]
+
+Example:
+
+\[a_n = -\tfrac{1}{n}, \quad b_n = \tfrac{\sin n}{n}, \quad c_n = \tfrac{1}{n}.\]
+
+Since and both bounding sequences go to 0,
+
+\[\lim_{n\to\infty} \frac{\sin n}{n} = 0.\]
+
+\subsubsection{Why This Matters}\label{why-this-matters-31}
+
+\begin{itemize}
+\item
+  Limits make rigorous the idea of sequences ``approaching'' a value.
+\item
+  Convergence of sequences underpins infinite series and continuity.
+\item
+  These concepts are essential in defining real numbers via limits.
+\end{itemize}
+
+\subsubsection{Exercises}\label{exercises-50}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Find .
+\item
+  Determine if converges.
+\item
+  Does converge? Why or why not?
+\item
+  Use the Squeeze Principle to show .
+\item
+  Prove that if , then .
+\end{enumerate}
+
+\section{Chapter 12. Infinite series}\label{chapter-12-infinite-series}
+
+\subsection{12.1 Series and
+Convergence}\label{121-series-and-convergence}
+
+A series is the sum of the terms of a sequence. Instead of just listing
+numbers, we add them together and study whether the infinite sum
+approaches a finite value.
+
+\subsubsection{Definition}\label{definition-13}
+
+Given a sequence , the corresponding series is
+
+\[\sum_{n=1}^\infty a_n = a_1 + a_2 + a_3 + \dots\]
+
+We define the nth partial sum as
+
+\[S_n = \sum_{k=1}^n a_k.\]
+
+If the sequence converges to a finite limit , then the series converges
+and
+
+\[\sum_{n=1}^\infty a_n = S.\]
+
+If diverges, then the series diverges.
+
+\subsubsection{Examples}\label{examples-29}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Geometric series
+\end{enumerate}
+
+\[\sum_{n=0}^\infty ar^n = \frac{a}{1-r}, \quad |r| < 1.\]
+
+Example:
+
+\[1 + \tfrac{1}{2} + \tfrac{1}{4} + \tfrac{1}{8} + \dots = 2.\]
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Harmonic series
+\end{enumerate}
+
+\[\sum_{n=1}^\infty \frac{1}{n}.\]
+
+This series diverges, even though the terms go to 0.
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  p-series
+\end{enumerate}
+
+\[\sum_{n=1}^\infty \frac{1}{n^p}.\]
+
+\begin{itemize}
+\item
+  Converges if .
+\item
+  Diverges if .
+\end{itemize}
+
+\subsubsection{Necessary Condition for
+Convergence}\label{necessary-condition-for-convergence}
+
+If converges, then necessarily
+
+\[\lim_{n\to\infty} a_n = 0.\]
+
+If , the series diverges.\\
+But the converse is not true: does not guarantee convergence (e.g.,
+harmonic series).
+
+\subsubsection{Why This Matters}\label{why-this-matters-32}
+
+\begin{itemize}
+\item
+  Series extend finite addition to infinite processes.
+\item
+  Convergent series are used to approximate functions, compute areas,
+  and model physical processes.
+\item
+  The study of series leads to powerful convergence tests.
+\end{itemize}
+
+\subsubsection{Exercises}\label{exercises-51}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Determine whether converges, and find its sum.
+\item
+  Show that converges.
+\item
+  Does converge?
+\item
+  Write the first four partial sums of the series .
+\item
+  Explain why is necessary but not sufficient for convergence.
+\end{enumerate}
+
+\subsection{12.2 Convergence Tests}\label{122-convergence-tests}
+
+Since many series cannot be summed directly, mathematicians developed
+tests to decide whether a series converges or diverges. These tests are
+tools for analyzing infinite sums.
+
+\subsubsection{1. The nth-Term Test for
+Divergence}\label{1-the-nth-term-test-for-divergence}
+
+If
+
+\[\lim_{n\to\infty} a_n \neq 0 \quad \text{or does not exist},\]
+
+then
+
+\[\sum a_n\]
+
+diverges.
+
+If , the test is inconclusive.
+
+\subsubsection{2. Comparison Test}\label{2-comparison-test}
+
+Suppose for all .
+
+\begin{itemize}
+\item
+  If converges, then also converges.
+\item
+  If diverges, then also diverges.
+\end{itemize}
+
+\subsubsection{3. Limit Comparison Test}\label{3-limit-comparison-test}
+
+If and
+
+\[\lim_{n\to\infty} \frac{a_n}{b_n} = c,\]
+
+where , then and either both converge or both diverge.
+
+\subsubsection{4. Ratio Test}\label{4-ratio-test}
+
+For , compute
+
+\[L = \lim_{n\to\infty} \left| \frac{a_{n+1}}{a_n} \right|.\]
+
+\begin{itemize}
+\item
+  If , the series converges absolutely.
+\item
+  If or , the series diverges.
+\item
+  If , the test is inconclusive.
+\end{itemize}
+
+\subsubsection{5. Root Test}\label{5-root-test}
+
+For , compute
+
+\[L = \lim_{n\to\infty} \sqrt[n]{|a_n|}.\]
+
+\begin{itemize}
+\item
+  If , the series converges absolutely.
+\item
+  If , the series diverges.
+\item
+  If , the test is inconclusive.
+\end{itemize}
+
+\subsubsection{6. Alternating Series Test (Leibniz's
+Test)}\label{6-alternating-series-test-leibnizs-test}
+
+For series of the form
+
+\[\sum (-1)^n b_n \quad \text{or} \quad \sum (-1)^{n+1} b_n,\]
+
+if
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  (decreasing), and
+\item
+  ,
+\end{enumerate}
+
+then the series converges.
+
+\subsubsection{Examples}\label{examples-30}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  : Comparison Test → converges.
+\item
+  : Harmonic series → diverges.
+\item
+  : Alternating series test → converges.
+\item
+  : Ratio Test → converges.
+\item
+  : Root Test → diverges.
+\end{enumerate}
+
+\subsubsection{Why This Matters}\label{why-this-matters-33}
+
+\begin{itemize}
+\item
+  Convergence tests let us classify series without needing explicit
+  sums.
+\item
+  They provide systematic ways to handle infinite processes in calculus.
+\item
+  They are critical for later topics like power series and Fourier
+  series.
+\end{itemize}
+
+\subsubsection{Exercises}\label{exercises-52}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Test convergence of .
+\item
+  Use the ratio test for .
+\item
+  Apply the root test to .
+\item
+  Determine convergence of .
+\item
+  Use the limit comparison test with to test .
+\end{enumerate}
+
+\subsection{12.3 Absolute vs Conditional
+Convergence}\label{123-absolute-vs-conditional-convergence}
+
+Not all series behave the same way when signs alternate. To handle this,
+we distinguish between absolute convergence and conditional convergence.
+
+\subsubsection{Absolute Convergence}\label{absolute-convergence}
+
+A series is absolutely convergent if
+
+\[\sum |a_n|\]
+
+converges.
+
+Theorem: If a series converges absolutely, then it also converges.
+
+Example:
+
+\[\sum \frac{(-1)^n}{n^2}.\]
+
+Here converges (p-series, ).\\
+So the series is absolutely convergent.
+
+\subsubsection{Conditional Convergence}\label{conditional-convergence}
+
+A series is conditionally convergent if it converges, but not
+absolutely.
+
+Example:
+
+\[\sum \frac{(-1)^n}{n}.\]
+
+\begin{itemize}
+\item
+  Alternating series test → converges.
+\item
+  But diverges (harmonic series).\\
+  So the series is conditionally convergent.
+\end{itemize}
+
+\subsubsection{Rearrangement Theorem}\label{rearrangement-theorem}
+
+For conditionally convergent series, rearranging the terms can change
+the sum - even make it diverge or converge to a different value.
+
+This surprising result shows the delicate nature of conditional
+convergence.
+
+\subsubsection{Why This Matters}\label{why-this-matters-34}
+
+\begin{itemize}
+\item
+  Absolute convergence is stronger and guarantees stability.
+\item
+  Conditional convergence highlights the importance of order in infinite
+  sums.
+\item
+  Many alternating series encountered in practice are only conditionally
+  convergent.
+\end{itemize}
+
+\subsubsection{Exercises}\label{exercises-53}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Show that converges absolutely.
+\item
+  Show that is conditionally convergent.
+\item
+  Test for absolute and conditional convergence.
+\item
+  Explain why absolute convergence implies convergence, but the converse
+  is not true.
+\item
+  Research and summarize the Riemann rearrangement theorem in your own
+  words.
+\end{enumerate}
+
+\section{\texorpdfstring{Chapter 13. Power Series and Expansions
+}{Chapter 13. Power Series and Expansions }}\label{chapter-13-power-series-and-expansions}
+
+\subsection{13.1 Power Series}\label{131-power-series}
+
+A power series is an infinite series in which each term involves a power
+of the variable. Power series are central in calculus because they let
+us represent functions as infinite polynomials.
+
+\subsubsection{General Form}\label{general-form}
+
+A power series centered at has the form
+
+\[\sum_{n=0}^\infty c_n (x-a)^n,\]
+
+where are constants called the coefficients.
+
+\begin{itemize}
+\item
+  If , the series is centered at the origin:
+
+  \[\sum_{n=0}^\infty c_n x^n.\]
+\end{itemize}
+
+\subsubsection{Examples}\label{examples-31}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Geometric series
+\end{enumerate}
+
+\[\sum_{n=0}^\infty x^n = \frac{1}{1-x}, \quad |x|<1.\]
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Exponential function
+\end{enumerate}
+
+\[e^x = \sum_{n=0}^\infty \frac{x^n}{n!}.\]
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Sine and cosine
+\end{enumerate}
+
+\[\sin x = \sum_{n=0}^\infty (-1)^n \frac{x^{2n+1}}{(2n+1)!}, \quad  
+\cos x = \sum_{n=0}^\infty (-1)^n \frac{x^{2n}}{(2n)!}.\]
+
+\subsubsection{Interval of Convergence}\label{interval-of-convergence}
+
+For each power series, there exists a radius of convergence such that:
+
+\begin{itemize}
+\item
+  The series converges if .
+\item
+  The series diverges if .
+\item
+  At , convergence must be checked separately.
+\end{itemize}
+
+\subsubsection{Why This Matters}\label{why-this-matters-35}
+
+\begin{itemize}
+\item
+  Power series allow us to approximate functions by polynomials.
+\item
+  They connect calculus with analysis and differential equations.
+\item
+  Many special functions in mathematics and physics are defined by their
+  power series.
+\end{itemize}
+
+\subsubsection{Exercises}\label{exercises-54}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Write the power series for .
+\item
+  Find the first four terms of the power series for .
+\item
+  Express as a power series centered at 0.
+\item
+  Determine whether the series converges at .
+\item
+  Explain why power series are sometimes called ``infinite
+  polynomials.''
+\end{enumerate}
+
+\subsection{13.2 Radius of Convergence}\label{132-radius-of-convergence}
+
+Every power series converges for some values of and diverges for others.
+The boundary between these two behaviors is described by the radius of
+convergence.
+
+\subsubsection{Definition}\label{definition-14}
+
+For a power series
+
+\[\sum_{n=0}^\infty c_n (x-a)^n,\]
+
+there exists a number (possibly infinite) such that:
+
+\begin{itemize}
+\item
+  The series converges absolutely if .
+\item
+  The series diverges if .
+\item
+  At , convergence must be checked separately.
+\end{itemize}
+
+This number is called the radius of convergence.
+
+\subsubsection{Finding the Radius of
+Convergence}\label{finding-the-radius-of-convergence}
+
+Two common methods:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Ratio Test
+\end{enumerate}
+
+\[R = \lim_{n\to\infty} \left| \frac{c_n}{c_{n+1}} \right|.\]
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Root Test
+\end{enumerate}
+
+\[R = \frac{1}{\limsup_{n\to\infty} \sqrt[n]{|c_n|}}.\]
+
+\subsubsection{Examples}\label{examples-32}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Series:
+\end{enumerate}
+
+\[\sum_{n=0}^\infty \frac{x^n}{n!}.\]
+
+Using ratio test:
+
+\[\lim_{n\to\infty} \frac{1/(n!)}{1/((n+1)!)} = \infty.\]
+
+So (converges for all real ).
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Series:
+\end{enumerate}
+
+\[\sum_{n=0}^\infty x^n.\]
+
+Here .
+
+\[R = 1.\]
+
+Converges for .
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Series:
+\end{enumerate}
+
+\[\sum_{n=1}^\infty \frac{x^n}{n}.\]
+
+Ratio test:
+
+\[\lim_{n\to\infty} \left|\frac{(x^{n+1}/(n+1))}{(x^n/n)}\right| = |x|.\]
+
+So . Converges for , diverges for . At , test separately.
+
+\subsubsection{Interval of Convergence}\label{interval-of-convergence-2}
+
+The set of -values where the series converges is called the interval of
+convergence.
+
+\begin{itemize}
+\item
+  Always centered at .
+\item
+  Extends units in both directions.
+\item
+  Endpoints must be checked individually.
+\end{itemize}
+
+\subsubsection{Why This Matters}\label{why-this-matters-36}
+
+\begin{itemize}
+\item
+  Radius of convergence tells us where power series behave like
+  functions.
+\item
+  Essential for using Taylor series expansions in practice.
+\item
+  Determines the domain of validity of series solutions in physics and
+  engineering.
+\end{itemize}
+
+\subsubsection{Exercises}\label{exercises-55}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Find the radius of convergence of .
+\item
+  Compute the radius of convergence of .
+\item
+  Use the ratio test to find for .
+\item
+  Determine the interval of convergence for .
+\item
+  Explain why the exponential series converges for all , while the
+  geometric series only converges for .
+\end{enumerate}
+
+\subsection{13.3 Taylor and Maclaurin
+Series}\label{133-taylor-and-maclaurin-series}
+
+Power series become especially powerful when they are used to represent
+familiar functions. This is done through Taylor series, and the special
+case centered at 0 is called a Maclaurin series.
+
+\subsubsection{Taylor Series}\label{taylor-series}
+
+If a function is infinitely differentiable at , its Taylor series about
+is
+
+\[f(x) = \sum_{n=0}^\infty \frac{f^{(n)}(a)}{n!}(x-a)^n.\]
+
+Here denotes the -th derivative of at .
+
+\subsubsection{Maclaurin Series}\label{maclaurin-series}
+
+A Taylor series centered at :
+
+\[f(x) = \sum_{n=0}^\infty \frac{f^{(n)}(0)}{n!} x^n.\]
+
+\subsubsection{Examples}\label{examples-33}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Exponential function
+\end{enumerate}
+
+\[e^x = 1 + x + \frac{x^2}{2!} + \frac{x^3}{3!} + \cdots\]
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Sine and cosine
+\end{enumerate}
+
+\[\sin x = x - \frac{x^3}{3!} + \frac{x^5}{5!} - \cdots\]
+
+\[\cos x = 1 - \frac{x^2}{2!} + \frac{x^4}{4!} - \cdots\]
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Natural logarithm (for )
+\end{enumerate}
+
+\[\ln(1+x) = x - \frac{x^2}{2} + \frac{x^3}{3} - \frac{x^4}{4} + \cdots\]
+
+\subsubsection{Taylor Polynomial
+Approximation}\label{taylor-polynomial-approximation}
+
+The finite sum of the first terms is the Taylor polynomial of degree :
+
+\[P_n(x) = \sum_{k=0}^n \frac{f^{(k)}(a)}{k!}(x-a)^k.\]
+
+This polynomial approximates near .
+
+\subsubsection{Remainder (Error Term)}\label{remainder-error-term}
+
+The difference between the function and its Taylor polynomial is the
+remainder:
+
+\[R_n(x) = f(x) - P_n(x).\]
+
+One form (Lagrange's form) is
+
+\[R_n(x) = \frac{f^{(n+1)}(c)}{(n+1)!}(x-a)^{n+1},\]
+
+for some between and .
+
+\subsubsection{Why This Matters}\label{why-this-matters-37}
+
+\begin{itemize}
+\item
+  Taylor series provide polynomial approximations to complicated
+  functions.
+\item
+  They are essential in numerical analysis, physics, and engineering.
+\item
+  Maclaurin series expansions give simple formulas for exponential,
+  trigonometric, and logarithmic functions.
+\end{itemize}
+
+\subsubsection{Exercises}\label{exercises-56}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Find the Maclaurin series for .
+\item
+  Write the Taylor series for centered at .
+\item
+  Compute the degree-3 Taylor polynomial for at .
+\item
+  Use the Maclaurin series for to approximate .
+\item
+  Explain why Taylor series often provide good local approximations but
+  may diverge for large .
+\end{enumerate}
+
+\subsection{13.4 Applications of Taylor
+Series}\label{134-applications-of-taylor-series}
+
+Taylor series are not only theoretical tools - they are used to
+approximate functions, solve equations, and analyze physical systems.
+Their applications span mathematics, science, and engineering.
+
+\subsubsection{Function Approximation}\label{function-approximation}
+
+Complicated functions can be approximated by polynomials near a point.
+
+Example: Approximate near using the degree-3 Maclaurin polynomial:
+
+\[P_3(x) = 1 + x + \tfrac{x^2}{2} + \tfrac{x^3}{6}.\]
+
+For small , this gives accurate estimates of .
+
+\subsubsection{Numerical Methods}\label{numerical-methods}
+
+Taylor series provide the basis for numerical algorithms:
+
+\begin{itemize}
+\item
+  Approximating square roots, logarithms, and trigonometric values.
+\item
+  Error estimation through the remainder term.
+\item
+  Used in iterative methods like Newton's method (where local
+  linearization comes from the Taylor series).
+\end{itemize}
+
+\subsubsection{Solving Differential
+Equations}\label{solving-differential-equations}
+
+Many differential equations have solutions expressed as Taylor (or
+power) series.
+
+Example: The solution to with is , which arises naturally from its
+Maclaurin series.
+
+\subsubsection{Physics and Engineering}\label{physics-and-engineering}
+
+\begin{itemize}
+\item
+  Small-angle approximation:
+
+  \[\sin x \approx x, \quad \cos x \approx 1 - \tfrac{x^2}{2}, \quad |x| \ll 1.\]
+
+  Used in pendulum motion, optics, and wave mechanics.
+\item
+  Relativity and quantum mechanics: Taylor expansions simplify nonlinear
+  expressions for practical use.
+\item
+  Approximating energy functions: In mechanics, potential energy
+  functions are expanded near equilibrium points.
+\end{itemize}
+
+\subsubsection{Probability and
+Statistics}\label{probability-and-statistics}
+
+\begin{itemize}
+\item
+  Moment generating functions and characteristic functions use power
+  series.
+\item
+  Approximations of probability distributions (e.g., normal
+  approximation to binomial) use Taylor expansions.
+\end{itemize}
+
+\subsubsection{Why This Matters}\label{why-this-matters-38}
+
+\begin{itemize}
+\item
+  Taylor series provide a bridge between exact formulas and practical
+  computation.
+\item
+  They allow us to reduce complex problems to manageable polynomial
+  approximations.
+\item
+  Applications make them one of the most important tools in applied
+  mathematics.
+\end{itemize}
+
+\subsubsection{Exercises}\label{exercises-57}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Use the Maclaurin series for to approximate up to four decimal places.
+\item
+  Apply the small-angle approximation to estimate .
+\item
+  Solve the differential equation using a power series approach.
+\item
+  Expand up to the 4th degree and use it to approximate .
+\item
+  Explain why polynomial approximations are especially useful for
+  computers and calculators.
+\end{enumerate}
+
+\section{\texorpdfstring{Appendices }{Appendices }}\label{appendices}
+
+\subsection{\texorpdfstring{Appendix A. Pre-Calculus Essentials
+}{Appendix A. Pre-Calculus Essentials }}\label{appendix-a-pre-calculus-essentials}
+
+\subsubsection{A.1 Algebra Refresher}\label{a1-algebra-refresher}
+
+Before diving into calculus, it helps to review some algebra skills that
+will appear again and again. These are the ``tools'' you'll need for
+manipulating expressions, solving equations, and simplifying results.
+
+\paragraph{Exponents and Powers}\label{exponents-and-powers}
+
+\begin{itemize}
+\item
+  Basic rules:
+
+  \[a^m \cdot a^n = a^{m+n}, \quad \frac{a^m}{a^n} = a^{m-n}, \quad (a^m)^n = a^{mn}.\]
+\item
+  Negative exponents:
+
+  \[a^{-n} = \frac{1}{a^n}, \quad a \neq 0.\]
+\item
+  Fractional exponents:
+
+  \[a^{1/n} = \sqrt[n]{a}, \quad a^{m/n} = \sqrt[n]{a^m}.\]
+\end{itemize}
+
+\paragraph{Factoring}\label{factoring}
+
+Factoring simplifies expressions and helps in solving equations.
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Common factor:
+
+  \[6x^2+9x = 3x(2x+3).\]
+\item
+  Difference of squares:
+
+  \[a^2-b^2 = (a-b)(a+b).\]
+\item
+  Quadratic trinomials:
+
+  \[x^2+5x+6 = (x+2)(x+3).\]
+\end{enumerate}
+
+\paragraph{Polynomials}\label{polynomials}
+
+\begin{itemize}
+\item
+  Standard form: .
+\item
+  Degree: the largest power of .
+\item
+  Long division and synthetic division are useful for simplifying
+  rational functions.
+\end{itemize}
+
+\paragraph{Rational Expressions}\label{rational-expressions}
+
+Simplify by factoring numerator and denominator:
+
+\[\frac{x^2-1}{x^2-2x+1} = \frac{(x-1)(x+1)}{(x-1)^2} = \frac{x+1}{x-1}, \quad x \neq 1.\]
+
+\paragraph{Logarithms}\label{logarithms}
+
+\begin{itemize}
+\item
+  Definition: means .
+\item
+  Common bases: natural log () and base 10 ().
+\item
+  Rules:
+
+  \[\log(ab) = \log a + \log b, \quad \log\left(\frac{a}{b}\right) = \log a - \log b, \quad \log(a^n) = n\log a.\]
+\end{itemize}
+
+\paragraph{Equations}\label{equations}
+
+\begin{itemize}
+\item
+  Linear: solve → .
+\item
+  Quadratic: has solutions
+
+  \[x=\frac{-b\pm \sqrt{b^2-4ac}}{2a}.\]
+\item
+  Exponential: → .
+\end{itemize}
+
+\subsubsection{A.2 Trigonometry Basics}\label{a2-trigonometry-basics}
+
+Trigonometry provides the language of angles and periodic phenomena.
+Since calculus often deals with oscillations, motion, and waves, a solid
+grasp of trigonometric functions and their properties is essential.
+
+\paragraph{The Unit Circle}\label{the-unit-circle}
+
+\begin{itemize}
+\item
+  Defined as the circle of radius 1 centered at the origin in the
+  coordinate plane.
+\item
+  For an angle measured from the positive -axis:
+
+  \[(\cos \theta, \sin \theta)\]
+
+  gives the coordinates of the point on the circle.
+\end{itemize}
+
+Special values:
+
+\begin{longtable}[]{@{}llll@{}}
+\toprule\noalign{}
+& & & \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+& 0 & 1 & 0 \\
+& 1/2 & & \\
+& & & 1 \\
+& & 1/2 & \\
+& 1 & 0 & undefined \\
+\end{longtable}
+
+\paragraph{Fundamental Identities}\label{fundamental-identities}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Pythagorean identity
+\end{enumerate}
+
+\[\sin^2\theta + \cos^2\theta = 1.\]
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Quotient identities
+\end{enumerate}
+
+\[\tan\theta = \frac{\sin\theta}{\cos\theta}, \quad \cot\theta = \frac{\cos\theta}{\sin\theta}.\]
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Reciprocal identities
+\end{enumerate}
+
+\[\sec\theta = \frac{1}{\cos\theta}, \quad \csc\theta = \frac{1}{\sin\theta}.\]
+
+\paragraph{Angle Addition Formulas}\label{angle-addition-formulas}
+
+\[\sin(\alpha+\beta) = \sin\alpha\cos\beta + \cos\alpha\sin\beta,\]
+
+\[\cos(\alpha+\beta) = \cos\alpha\cos\beta - \sin\alpha\sin\beta.\]
+
+Special cases:
+
+\begin{itemize}
+\item
+  Double-angle:
+
+  \[\sin(2\theta) = 2\sin\theta\cos\theta, \quad 
+  \cos(2\theta) = \cos^2\theta - \sin^2\theta.\]
+\end{itemize}
+
+\paragraph{Graphs}\label{graphs}
+
+\begin{itemize}
+\item
+  : wave starting at 0, amplitude 1, period .
+\item
+  : wave starting at 1, amplitude 1, period .
+\item
+  : repeats every , undefined at odd multiples of .
+\end{itemize}
+
+\subsubsection{A.3 Coordinate Geometry}\label{a3-coordinate-geometry}
+
+Coordinate geometry links algebra and geometry by describing geometric
+objects (lines, circles, curves) using equations. Calculus relies
+heavily on this framework for graphing functions, finding slopes, and
+analyzing curves.
+
+\paragraph{The Cartesian Plane}\label{the-cartesian-plane}
+
+\begin{itemize}
+\item
+  A point is represented by coordinates .
+\item
+  Distance between two points and :
+
+  \[d = \sqrt{(x_2-x_1)^2 + (y_2-y_1)^2}.\]
+\item
+  Midpoint of a line segment:
+
+  \[M = \left(\frac{x_1+x_2}{2}, \frac{y_1+y_2}{2}\right).\]
+\end{itemize}
+
+\paragraph{Lines}\label{lines}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Slope formula
+
+  \[m = \frac{y_2-y_1}{x_2-x_1}.\]
+\item
+  Equation of a line
+
+  \begin{itemize}
+  \item
+    Point-slope form:
+
+    \[y-y_1 = m(x-x_1).\]
+  \item
+    Slope-intercept form:
+
+    \[y = mx+b.\]
+  \end{itemize}
+\item
+  Parallel and perpendicular lines
+
+  \begin{itemize}
+  \item
+    Parallel lines: same slope.
+  \item
+    Perpendicular lines: slopes satisfy .
+  \end{itemize}
+\end{enumerate}
+
+\paragraph{Circles}\label{circles}
+
+Equation of a circle with center and radius :
+
+\[(x-h)^2+(y-k)^2 = r^2.\]
+
+Special case: unit circle centered at origin:
+
+\[x^2+y^2=1.\]
+
+\paragraph{Conic Sections}\label{conic-sections}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Parabola:
+
+  \begin{itemize}
+  \item
+    Standard form (opening up/down):
+
+    \[y = ax^2+bx+c.\]
+  \end{itemize}
+\item
+  Ellipse (centered at origin):
+
+  \[\frac{x^2}{a^2}+\frac{y^2}{b^2}=1.\]
+\item
+  Hyperbola (centered at origin):
+
+  \[\frac{x^2}{a^2}-\frac{y^2}{b^2}=1.\]
+\end{enumerate}
+
+\subsection{\texorpdfstring{Appendix B. Key Formulas and Tables
+}{Appendix B. Key Formulas and Tables }}\label{appendix-b-key-formulas-and-tables}
+
+\subsubsection{B.1 Derivative Table}\label{b1-derivative-table}
+
+Derivatives measure rates of change and slopes of functions. Having a
+quick-reference table helps learners avoid re-deriving formulas each
+time.
+
+\paragraph{Basic Rules}\label{basic-rules-2}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Constant rule
+\end{enumerate}
+
+\[\frac{d}{dx}[c] = 0\]
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Power rule
+\end{enumerate}
+
+\[\frac{d}{dx}[x^n] = nx^{n-1}, \quad (n \in \mathbb{R})\]
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Constant multiple rule
+\end{enumerate}
+
+\[\frac{d}{dx}[c f(x)] = c f'(x)\]
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Sum and difference rule
+\end{enumerate}
+
+\[\frac{d}{dx}[f(x)\pm g(x)] = f'(x)\pm g'(x)\]
+
+\paragraph{Trigonometric Functions}\label{trigonometric-functions}
+
+\[\frac{d}{dx}[\sin x] = \cos x\]
+
+\[\frac{d}{dx}[\cos x] = -\sin x\]
+
+\[\frac{d}{dx}[\tan x] = \sec^2 x, \quad x \neq \tfrac{\pi}{2}+k\pi\]
+
+\[\frac{d}{dx}[\cot x] = -\csc^2 x\]
+
+\[\frac{d}{dx}[\sec x] = \sec x \tan x\]
+
+\[\frac{d}{dx}[\csc x] = -\csc x \cot x\]
+
+\paragraph{Exponential and Logarithmic
+Functions}\label{exponential-and-logarithmic-functions}
+
+\[\frac{d}{dx}[e^x] = e^x\]
+
+\[\frac{d}{dx}[a^x] = a^x \ln a, \quad a>0, a\neq 1\]
+
+\[\frac{d}{dx}[\ln x] = \frac{1}{x}, \quad x>0\]
+
+\[\frac{d}{dx}[\log_a x] = \frac{1}{x\ln a}, \quad a>0, a\neq 1\]
+
+\paragraph{Inverse Trigonometric
+Functions}\label{inverse-trigonometric-functions}
+
+\[\frac{d}{dx}[\arcsin x] = \frac{1}{\sqrt{1-x^2}}, \quad |x|<1\]
+
+\[\frac{d}{dx}[\arccos x] = -\frac{1}{\sqrt{1-x^2}}, \quad |x|<1\]
+
+\[\frac{d}{dx}[\arctan x] = \frac{1}{1+x^2}, \quad x \in \mathbb{R}\]
+
+\[\frac{d}{dx}[\arccot x] = -\frac{1}{1+x^2}, \quad x \in \mathbb{R}\]
+
+\[\frac{d}{dx}[\arcsec x] = \frac{1}{|x|\sqrt{x^2-1}}, \quad |x|>1\]
+
+\[\frac{d}{dx}[\arccsc x] = -\frac{1}{|x|\sqrt{x^2-1}}, \quad |x|>1\]
+
+\paragraph{Product, Quotient, and Chain
+Rules}\label{product-quotient-and-chain-rules}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Product Rule
+\end{enumerate}
+
+\[\frac{d}{dx}[f(x)g(x)] = f'(x)g(x)+f(x)g'(x)\]
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Quotient Rule
+\end{enumerate}
+
+\[\frac{d}{dx}\left[\frac{f(x)}{g(x)}\right] = \frac{f'(x)g(x)-f(x)g'(x)}{[g(x)]^2}, \quad g(x)\neq 0\]
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Chain Rule
+\end{enumerate}
+
+\[\frac{d}{dx}[f(g(x))] = f'(g(x))\cdot g'(x)\]
+
+\subsubsection{B.3 Common Series
+Expansions}\label{b3-common-series-expansions}
+
+Power series let us express functions as infinite polynomials. These
+expansions are essential for approximations, solving differential
+equations, and building intuition about functions in calculus.
+
+\paragraph{Geometric Series}\label{geometric-series}
+
+\[\frac{1}{1-x} = \sum_{n=0}^\infty x^n, \quad |x| < 1\]
+
+\paragraph{Exponential Function}\label{exponential-function}
+
+\[e^x = \sum_{n=0}^\infty \frac{x^n}{n!} 
+= 1 + x + \frac{x^2}{2!} + \frac{x^3}{3!} + \cdots\]
+
+Valid for all .
+
+\paragraph{Trigonometric Functions}\label{trigonometric-functions-2}
+
+\[\sin x = \sum_{n=0}^\infty (-1)^n \frac{x^{2n+1}}{(2n+1)!} 
+= x - \frac{x^3}{3!} + \frac{x^5}{5!} - \cdots\]
+
+\[\cos x = \sum_{n=0}^\infty (-1)^n \frac{x^{2n}}{(2n)!} 
+= 1 - \frac{x^2}{2!} + \frac{x^4}{4!} - \cdots\]
+
+\[\tan^{-1} x = \sum_{n=0}^\infty (-1)^n \frac{x^{2n+1}}{2n+1}, \quad |x|\leq 1\]
+
+\paragraph{Logarithm}\label{logarithm}
+
+\[\ln(1+x) = \sum_{n=1}^\infty (-1)^{n+1} \frac{x^n}{n}, \quad -1 < x \leq 1\]
+
+\paragraph{Binomial Expansion
+(Generalized)}\label{binomial-expansion-generalized}
+
+\[(1+x)^r = \sum_{n=0}^\infty \binom{r}{n} x^n, \quad |x|<1\]
+
+where
+
+\[\binom{r}{n} = \frac{r(r-1)(r-2)\cdots(r-n+1)}{n!}.\]
+
+\subsection{Appendix C. Proof Sketches}\label{appendix-c-proof-sketches}
+
+\subsubsection{C.1 Limit Laws and the --
+Definition}\label{c1-limit-laws-and-the--ux3b5----ux3b4--definition}
+
+Calculus rests on the precise meaning of a limit. While intuition
+(``values get closer and closer'') is helpful, a formal definition
+ensures rigor and avoids paradoxes.
+
+\paragraph{Intuitive Idea}\label{intuitive-idea}
+
+We write
+
+\[\lim_{x \to a} f(x) = L\]
+
+to mean that as gets arbitrarily close to , the values of get
+arbitrarily close to .
+
+\paragraph{Formal (--)
+Definition}\label{formal--ux3b5----ux3b4--definition}
+
+We say that
+
+\[\lim_{x \to a} f(x) = L\]
+
+if for every , there exists a such that whenever
+
+\[0 < |x-a| < \delta,\]
+
+we have
+
+\[|f(x) - L| < \varepsilon.\]
+
+\begin{itemize}
+\item
+  : how close we want to be to .
+\item
+  : how close must be to to achieve that.
+\end{itemize}
+
+\paragraph{Example}\label{example-3}
+
+Show that
+
+\[\lim_{x \to 2} (3x+1) = 7.\]
+
+\begin{itemize}
+\item
+  Let .
+\item
+  We want .
+\item
+  Simplify: .
+\item
+  This holds if we choose .
+\end{itemize}
+
+Thus, by the definition, the limit is 7.
+
+\paragraph{Limit Laws}\label{limit-laws}
+
+If and , then:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Sum/Difference
+\end{enumerate}
+
+\[\lim_{x \to a} [f(x) \pm g(x)] = L \pm M\]
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Constant Multiple
+\end{enumerate}
+
+\[\lim_{x \to a} [c f(x)] = cL\]
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Product
+\end{enumerate}
+
+\[\lim_{x \to a} [f(x)g(x)] = LM\]
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Quotient (if )
+\end{enumerate}
+
+\[\lim_{x \to a} \frac{f(x)}{g(x)} = \frac{L}{M}\]
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Powers and Roots
+\end{enumerate}
+
+\[\lim_{x \to a} [f(x)]^n = L^n, \quad \lim_{x \to a} \sqrt[n]{f(x)} = \sqrt[n]{L} \ (\text{if defined}).\]
+
+\subsubsection{C.2 Proof Sketch: The Fundamental Theorem of
+Calculus}\label{c2-proof-sketch-the-fundamental-theorem-of-calculus}
+
+The Fundamental Theorem of Calculus (FTC) links the two central
+operations of calculus: differentiation and integration. It shows that
+they are, in fact, inverse processes.
+
+\paragraph{Statement of the Theorem}\label{statement-of-the-theorem}
+
+Part I (Differentiation of an Integral):\\
+If is continuous on and we define
+
+\[F(x) = \int_a^x f(t)\,dt,\]
+
+then is differentiable on and
+
+\[F'(x) = f(x).\]
+
+Part II (Evaluation of a Definite Integral):\\
+If is any antiderivative of on , then
+
+\[\int_a^b f(x)\,dx = F(b)-F(a).\]
+
+\paragraph{Proof Sketch of Part I}\label{proof-sketch-of-part-i}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Start with the definition of the derivative:
+
+  \[F'(x) = \lim_{h\to 0} \frac{F(x+h)-F(x)}{h}.\]
+\item
+  Substituting :
+
+  \[F(x+h)-F(x) = \int_a^{x+h} f(t)\,dt - \int_a^x f(t)\,dt.\]
+\item
+  By the additivity of integrals:
+
+  \[F(x+h)-F(x) = \int_x^{x+h} f(t)\,dt.\]
+\item
+  Therefore:
+
+  \[\frac{F(x+h)-F(x)}{h} = \frac{1}{h}\int_x^{x+h} f(t)\,dt.\]
+\item
+  By the Mean Value Theorem for integrals, there exists such that
+
+  \[\frac{1}{h}\int_x^{x+h} f(t)\,dt = f(c).\]
+\item
+  As , , and since is continuous:
+
+  \[\lim_{h\to 0} f(c) = f(x).\]
+\end{enumerate}
+
+Thus, .
+
+\paragraph{Proof Sketch of Part II}\label{proof-sketch-of-part-ii}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Let be an antiderivative of , so .
+\item
+  By Part I, the function
+
+  \[G(x) = \int_a^x f(t)\,dt\]
+
+  is also an antiderivative of .
+\item
+  Since and differ only by a constant,
+
+  \[F(x) = G(x) + C.\]
+\item
+  Evaluating at the endpoints:
+
+  \[\int_a^b f(x)\,dx = G(b)-G(a) = (F(b)+C)-(F(a)+C) = F(b)-F(a).\]
+\end{enumerate}
+
+\subsubsection{C.3 Proof Sketch: Convergence of the Geometric
+Series}\label{c3-proof-sketch-convergence-of-the-geometric-series}
+
+The geometric series is one of the simplest and most important infinite
+series. It serves as a model for understanding convergence and is the
+foundation for many later results in calculus.
+
+\paragraph{The Series}\label{the-series}
+
+\[\sum_{n=0}^\infty ar^n = a + ar + ar^2 + ar^3 + \cdots\]
+
+where is the first term and is the common ratio.
+
+\paragraph{Partial Sum Formula}\label{partial-sum-formula}
+
+The -th partial sum is
+
+\[S_n = a + ar + ar^2 + \cdots + ar^n.\]
+
+Multiply both sides by :
+
+\[rS_n = ar + ar^2 + \cdots + ar^{n+1}.\]
+
+Subtract the two equations:
+
+\[S_n - rS_n = a - ar^{n+1}.\]
+
+\[S_n(1-r) = a(1-r^{n+1}).\]
+
+So
+
+\[S_n = \frac{a(1-r^{n+1})}{1-r}, \quad r \neq 1.\]
+
+\paragraph{Convergence}\label{convergence}
+
+Take the limit as :
+
+\begin{itemize}
+\item
+  If , then .
+
+  \[\lim_{n\to\infty} S_n = \frac{a}{1-r}.\]
+\item
+  If , then does not go to 0. The series diverges.
+\end{itemize}
+
+\paragraph{Result}\label{result}
+
+\[\sum_{n=0}^\infty ar^n = 
+\begin{cases}
+\dfrac{a}{1-r}, & |r|<1, \\[6pt]
+\text{diverges}, & |r|\geq 1.
+\end{cases}\]
+
+\subsection{Appendix D. Applications and
+Connections}\label{appendix-d-applications-and-connections}
+
+\subsubsection{D.1 Physics Connections: Velocity, Acceleration, and
+Work}\label{d1-physics-connections-velocity-acceleration-and-work}
+
+Calculus was originally developed to solve problems in physics -
+especially motion and change. Here are some of the most important
+connections.
+
+\paragraph{Position, Velocity, and
+Acceleration}\label{position-velocity-and-acceleration-2}
+
+\begin{itemize}
+\item
+  Position function: gives the location of an object at time .
+\item
+  Velocity: the derivative of position.
+
+  \[v(t) = s'(t) = \frac{ds}{dt}\]
+\item
+  Acceleration: the derivative of velocity (or second derivative of
+  position).
+
+  \[a(t) = v'(t) = s''(t) = \frac{d^2s}{dt^2}\]
+\end{itemize}
+
+Example:\\
+If meters, then:
+
+\[v(t) = 8t, \quad a(t) = 8.\]
+
+So the object moves faster linearly with time, under constant
+acceleration.
+
+\paragraph{Work and Force}\label{work-and-force}
+
+In physics, work is the product of force and distance. If force varies
+with position, calculus gives:
+
+\[W = \int_a^b F(x)\, dx\]
+
+where is the force at position , and the object moves from to .
+
+Example:\\
+A spring with Hooke's law force requires work
+
+\[W = \int_0^d kx\, dx = \frac{1}{2}kd^2\]
+
+to stretch the spring a distance .
+
+\paragraph{Energy and Areas Under
+Curves}\label{energy-and-areas-under-curves}
+
+\begin{itemize}
+\item
+  Kinetic energy: .
+\item
+  Potential energy often involves integrals (e.g., gravitational
+  potential energy from force of gravity).
+\item
+  In general, integrating a force function gives energy stored or work
+  done.
+\end{itemize}
+
+\paragraph{Quick Practice}\label{quick-practice}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  If , find and .
+\item
+  Compute the work done by a constant force of 10 N moving an object 5
+  m.
+\item
+  A spring has constant . How much work is needed to stretch it 0.1 m?
+\item
+  Show that acceleration is the second derivative of position.
+\item
+  Explain how the integral relates to displacement.
+\end{enumerate}
+
+\subsubsection{D.2 Probability and Statistics
+Connections}\label{d2-probability-and-statistics-connections}
+
+Calculus is deeply connected with probability and statistics, especially
+when dealing with continuous random variables. Integrals become
+essential for defining probabilities, averages, and expectations.
+
+\paragraph{Probability Density Functions
+(PDFs)}\label{probability-density-functions-pdfs}
+
+For a continuous random variable , probabilities are described by a
+probability density function :
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  for all .
+\item
+  Total probability equals 1:
+
+  \[\int_{-\infty}^{\infty} f(x)\, dx = 1.\]
+\end{enumerate}
+
+The probability that lies in an interval is
+
+\[P(a \leq X \leq b) = \int_a^b f(x)\, dx.\]
+
+\paragraph{Expected Value (Mean)}\label{expected-value-mean-2}
+
+The expected value (average outcome) is
+
+\[E[X] = \int_{-\infty}^{\infty} x f(x)\, dx.\]
+
+This is the calculus version of a weighted average.
+
+\paragraph{Variance}\label{variance}
+
+Variance measures spread:
+
+\[\text{Var}(X) = E[(X-\mu)^2] = \int_{-\infty}^{\infty} (x-\mu)^2 f(x)\, dx,\]
+
+where .
+
+\paragraph{Common Distributions}\label{common-distributions}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Uniform distribution on :
+
+  \[f(x) = \frac{1}{b-a}, \quad a \leq x \leq b.\]
+
+  Mean: .
+\item
+  Exponential distribution with parameter :
+
+  \[f(x) = \lambda e^{-\lambda x}, \quad x \geq 0.\]
+
+  Mean: .
+\item
+  Normal (Gaussian) distribution:
+
+  \[f(x) = \frac{1}{\sqrt{2\pi\sigma^2}} e^{-(x-\mu)^2/(2\sigma^2)}.\]
+
+  Integrals of this distribution connect to the error function.
+\end{enumerate}
+
+\paragraph{Why This Matters}\label{why-this-matters-39}
+
+\begin{itemize}
+\item
+  Integrals turn probabilities into areas under curves.
+\item
+  Expectation and variance link calculus to averages and variability.
+\item
+  Most real-world data models (finance, physics, biology, AI) use these
+  continuous probability distributions.
+\end{itemize}
+
+\paragraph{Quick Practice}\label{quick-practice-2}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  For on , compute .
+\item
+  For exponential distribution with , compute .
+\item
+  Show that the total area under the standard normal curve equals 1.
+\item
+  Find the mean of a uniform distribution on .
+\item
+  Explain why probabilities are computed with integrals, not sums, for
+  continuous variables.
+\end{enumerate}
+
+\subsubsection{D.3 Computer Science Connections: Taylor Approximations
+in
+Algorithms}\label{d3-computer-science-connections-taylor-approximations-in-algorithms}
+
+Calculus is not only for physics - it also underpins many tools and
+techniques in computer science. One of the clearest bridges is through
+Taylor series, which provide efficient ways to approximate functions in
+numerical computing and algorithms.
+
+\paragraph{Function Approximation for
+Computing}\label{function-approximation-for-computing}
+
+Computers cannot directly store or calculate most functions exactly
+(like , , or ). Instead, they use polynomial approximations derived from
+Taylor expansions.
+
+Example:\\
+To approximate , truncate the Maclaurin series:
+
+\[e^x \approx 1 + x + \frac{x^2}{2!} + \frac{x^3}{3!}.\]
+
+For small , this polynomial gives accurate results with only a few
+terms.
+
+\paragraph{Efficiency in Algorithms}\label{efficiency-in-algorithms}
+
+\begin{itemize}
+\item
+  Trigonometric functions: Algorithms for calculators and CPUs often use
+  series expansions (or variations like Chebyshev polynomials).
+\item
+  Exponential/logarithm: Taylor expansions are the foundation of fast
+  approximations in numerical libraries.
+\item
+  Root finding: Newton's method is based on linear approximation, a
+  direct application of the Taylor series (first derivative).
+\end{itemize}
+
+\paragraph{Numerical Analysis}\label{numerical-analysis}
+
+Taylor expansions are central in error analysis:
+
+\begin{itemize}
+\item
+  Approximating the error term using the remainder formula:
+
+  \[R_n(x) = \frac{f^{(n+1)}(c)}{(n+1)!}(x-a)^{n+1}.\]
+\item
+  This tells us how many terms are needed for a given accuracy.
+\end{itemize}
+
+\paragraph{Machine Learning
+Connections}\label{machine-learning-connections}
+
+\begin{itemize}
+\item
+  Gradient-based optimization (like gradient descent) uses derivatives
+  to update parameters efficiently.
+\item
+  Activation functions (like or ) are often approximated by polynomials
+  or piecewise functions for speed.
+\item
+  Series approximations can speed up training and inference in
+  constrained environments.
+\end{itemize}
+
+\paragraph{Why This Matters}\label{why-this-matters-40}
+
+\begin{itemize}
+\item
+  Taylor approximations bridge continuous mathematics with discrete
+  computing.
+\item
+  They show how calculus concepts are used in algorithms, numerical
+  methods, and machine learning.
+\item
+  Understanding the approximations helps avoid pitfalls when relying on
+  computers for calculations.
+\end{itemize}
+
+\paragraph{Quick Practice}\label{quick-practice-3}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Approximate using the first three terms of its Maclaurin series.
+\item
+  Use the remainder term to estimate the error in approximating with a
+  degree-3 polynomial.
+\item
+  Explain how Newton's method uses Taylor's theorem.
+\item
+  Why might computers prefer polynomial approximations to exact formulas
+  for functions?
+\item
+  In machine learning, why is the derivative (gradient) so critical for
+  optimization?
+\end{enumerate}
+
+\end{document}

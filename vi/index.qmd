@@ -1,0 +1,5148 @@
+---
+title: "Cuốn Sách Giải Tích Nhỏ"
+lang: vi
+---
+
+# Cuốn sách nhỏ về phép tính
+
+Phần giới thiệu ngắn gọn, thân thiện với người mới bắt đầu về những ý tưởng cốt lõi của phép tính.
+
+## Định dạng
+
+- [Tải xuống PDF](../book.pdf) – phiên bản sẵn sàng để in
+- [Tải xuống EPUB](../book.epub) – thân thiện với trình đọc sách điện tử
+- [Xem LaTeX](../book.tex) – Nguồn latex
+
+# Phần 1. Giới hạn và đạo hàm
+
+# Chương 1. Chức năng và giới hạn
+
+## 1.1 Chức năng
+
+Hàm số là một trong những đối tượng cơ bản nhất trong toán học. Về bản chất, hàm là một quy tắc lấy đầu vào và tạo ra chính xác một đầu ra. Hàm cho phép chúng ta mô tả các mối quan hệ, mô hình hóa các hiện tượng trong thế giới thực và xây dựng toàn bộ bộ máy tính toán.
+
+### Sự định nghĩa
+
+Về mặt hình thức, một hàm $f$ từ một tập $X$ (gọi là miền) đến một tập $Y$ (gọi là codomain) được viết
+
+$$
+f : X \to Y.
+$$
+
+Với mỗi phần tử $x \in X$, có một phần tử duy nhất $f(x) \in Y$. Giá trị $f(x)$ được gọi là ảnh của $x$ dưới $f$.
+
+Nếu $y = f(x)$ thì $y$ là đầu ra tương ứng với $x$ đầu vào. Tập hợp tất cả các kết quả đầu ra thực sự xuất hiện được gọi là phạm vi (tập hợp con của tên miền).
+
+### Ví dụ
+
+1. Hàm $f(x) = x^2$ ánh xạ từng số thực $x$ vào bình phương của nó.
+
+- Miền: toàn số thực $\mathbb{R}$.
+   - Codomain: toàn số thực $\mathbb{R}$.
+   - Phạm vi: tất cả các số thực không âm $[0, \infty)$.
+
+2. Hàm $g(x) = \dfrac{1}{x}$ gán cho mỗi số thực khác 0 số nghịch đảo của nó.
+
+- Tên miền: $\mathbb{R} \setminus \{0\}$.
+   - Phạm vi: $\mathbb{R} \setminus \{0\}$.
+
+3. Một ví dụ thực tế: Gọi $T(t)$ là nhiệt độ bên ngoài (tính bằng °C) tại thời điểm $t$ (tính bằng giờ). Đây là một chức năng từ “thời gian trong ngày” đến “nhiệt độ”.
+
+### Các cách biểu diễn hàm
+
+Các hàm có thể được biểu diễn theo nhiều cách hữu ích:
+
+- Công thức: ví dụ: $f(x) = \sin x + x^2$.
+- Đồ thị: vẽ đồ thị tất cả các điểm $(x, f(x))$ trong mặt phẳng tọa độ.
+- Bảng: ghép nối đầu vào và đầu ra cho các bộ dữ liệu rời rạc.
+- Mô tả bằng lời: “Chấm điểm cho từng học sinh.”
+
+Mỗi cách trình bày nêu bật các khía cạnh khác nhau của cùng một chức năng.
+
+### Thuật ngữ
+
+- Biến độc lập: đầu vào (thường viết là $x$).
+- Biến phụ thuộc: kết quả đầu ra (thường viết là $y$, trong đó $y = f(x)$).
+- Ký hiệu hàm: $f(x)$ đọc là “$f$ của $x$.”
+
+### Tại sao Hàm số lại quan trọng trong Giải tích
+
+Giải tích là nghiên cứu về cách các hàm số thay đổi. Công cụ phái sinh đo lường tốc độ thay đổi tức thời, trong khi tích phân đo lường tác động tích lũy. Để nắm vững những ý tưởng này, trước tiên chúng ta cần hiểu biết vững chắc về chức năng là gì và cách chúng hoạt động.
+
+### Bài tập
+
+1. Đối với hàm $f(x) = 3x - 2$:
+
+- Tìm tên miền, tên miền và phạm vi.
+
+2. Hàm $h(x) = \sqrt{x-1}$ được xác định cho đầu vào nào? Phạm vi của nó là gì?
+
+3. Cho một ví dụ thực tế về một chức năng trong cuộc sống hàng ngày của bạn. Nêu rõ tên miền và codomain.
+
+4. Vẽ đồ thị của $f(x) = |x|$. Phạm vi là gì?
+
+5. Giả sử $g(x) = \dfrac{1}{x^2+1}$. Giải thích tại sao phạm vi của nó là khoảng $(0, 1]$.
+
+## 1.2 Đồ thị và các phép biến đổi
+
+Một hàm có thể được hiểu không chỉ bằng công thức mà còn bằng đồ thị của nó. Đồ thị của hàm $f$ là tập hợp tất cả các cặp có thứ tự $(x, f(x))$, trong đó $x$ thuộc tập xác định của $f$. Việc vẽ các cặp này trong mặt phẳng tọa độ sẽ cho ta một hình ảnh về cách hoạt động của hàm.
+
+### Đồ thị cơ bản
+
+Một số biểu đồ rất cơ bản cần được ghi nhớ:
+
+- $f(x) = x$: đường thẳng đi qua gốc tọa độ.
+- $f(x) = x^2$: một parabol hướng lên trên.
+- $f(x) = |x|$: đồ thị hình chữ “V”.
+- $f(x) = \frac{1}{x}$: một hyperbol có hai nhánh.
+- $f(x) = \sin x$: đường cong tuần hoàn dạng sóng.
+
+Chúng đóng vai trò là khối xây dựng cho các chức năng phức tạp hơn.
+
+### Biến đổi
+
+Đồ thị có thể được dịch chuyển, kéo dài hoặc phản ánh bằng các quy tắc đơn giản:
+
+1. Dịch chuyển theo chiều dọc: Thêm một hằng số sẽ làm đồ thị di chuyển lên hoặc xuống.
+
+   $$
+   y = f(x) + c \quad \text{is } f(x) \text{ shifted upward by } c.
+   $$
+
+2. Dịch chuyển theo chiều ngang: Việc thêm vào bên trong đối số sẽ di chuyển đồ thị sang trái hoặc sang phải.
+
+   $$
+   y = f(x - c) \quad \text{is } f(x) \text{ shifted right by } c.
+   $$
+
+3. Chia tỷ lệ theo chiều dọc: Nhân với một hằng số kéo dài hoặc nén đồ thị theo chiều dọc.
+
+   $$
+   y = a f(x), \quad a > 1 \text{ stretches; } 0 < a < 1 \text{ compresses.}
+   $$
+
+4. Chia tỷ lệ theo chiều ngang: Nhân bên trong đối số sẽ kéo dài hoặc nén đồ thị theo chiều ngang.
+
+   $$
+   y = f(bx), \quad b > 1 \text{ compresses toward the } y\text{-axis}.
+   $$
+
+5. Suy ngẫm:
+
+- $y = -f(x)$: phản chiếu qua trục $x$.
+   - $y = f(-x)$: phản chiếu qua trục $y$.
+
+### Kết hợp các phép biến đổi
+
+Đồ thị phức tạp thường đến từ việc kết hợp một số phép biến đổi theo trình tự. Ví dụ:
+
+$$
+y = 2(x-1)^2 + 3
+$$
+
+thu được bằng cách lấy parabol $y = x^2$, dịch chuyển sang phải 1, kéo dài theo chiều dọc thêm 2 và dịch chuyển lên trên 3.
+
+### Bài tập
+
+1. Vẽ đồ thị của $y = (x+2)^2 - 1$. Xác định trình tự các phép biến đổi từ $y = x^2$.
+2. Điều gì xảy ra với đồ thị $y = f(x)$ nếu chúng ta thay $x$ bằng $-x$? Hãy thử với $f(x) = \sqrt{x}$.
+3. Mô tả các phép biến đổi biến $y = \sin x$ thành $y = 3\sin(x - \pi/4)$.
+4. Vẽ đồ thị của $y = |x-1| + 2$. Nêu đỉnh và hệ số góc của mỗi nhánh.
+5. Với $y = \frac{1}{x-2}$, hãy giải thích cách biến đổi đồ thị của $y = \frac{1}{x}$.
+
+## 1.3 Ý tưởng trực quan về giới hạn
+
+Trong nhiều trường hợp, giá trị của hàm tại một điểm ít quan trọng hơn các giá trị mà nó lấy ở gần điểm đó. Khái niệm giới hạn nắm bắt được ý tưởng này.
+
+### Tiếp cận một giá trị
+
+Hãy tưởng tượng bạn đang đi về phía một bức tường. Ngay cả trước khi bạn chạm vào nó, bạn càng ngày càng tiến gần hơn. Theo cách tương tự, khi $x$ tiến đến một số $a$, các giá trị của $f(x)$ có thể tiến đến một số $L$ nào đó. Sau đó chúng tôi nói:
+
+$$
+\lim_{x \to a} f(x) = L.
+$$
+
+Điều này thể hiện ý tưởng rằng $f(x)$ có thể được làm gần đến mức chúng ta muốn với $L$, chỉ bằng cách lấy $x$ đủ gần với $a$.
+
+### Ví dụ
+
+1. Với $f(x) = 2x + 3$:
+   Như $x \to 1$, $f(x) \to 5$.
+
+2. Với $f(x) = \dfrac{\sin x}{x}$:
+   Khi $x \to 0$, hàm tiến tới 1, mặc dù $f(0)$ không được xác định.
+
+3. Với $f(x) = \dfrac{1}{x}$:
+   Như $x \to 0^+$ (tiến dần từ bên phải), $f(x) \to +\infty$.
+   Như $x \to 0^-$ (tiếp cận từ bên trái), $f(x) \to -\infty$.
+   Vì hành vi bên trái và bên phải khác nhau nên giới hạn ở mức 0 không tồn tại.
+
+### Tầm quan trọng của giới hạn
+
+- Chúng cho phép chúng ta định nghĩa các hàm tại những điểm mà ban đầu chúng không được định nghĩa.
+- Chúng nắm bắt hành vi gần những điểm gián đoạn và điểm kỳ dị.
+- Chúng tạo thành nền tảng cho đạo hàm (tốc độ thay đổi tức thời) và tích phân (diện tích là giới hạn của tổng).
+
+### Giới hạn một phía
+
+Đôi khi hành vi từ bên trái và bên phải phải được nghiên cứu riêng biệt:
+
+$$
+\lim_{x \to a^-} f(x), \quad \lim_{x \to a^+} f(x).
+$$
+
+Nếu cả hai đều đồng ý thì tồn tại giới hạn hai phía.
+
+### Bài tập
+
+1. Tính $\lim_{x \to 2} (3x^2 - x)$.
+2. $\lim_{x \to 0} \frac{\sin x}{x}$ là gì? Sử dụng trực giác từ biểu đồ của $\sin x$.
+3. Đánh giá $\lim_{x \to 0} |x|/x$. Giới hạn hai phía có tồn tại không?
+4. Tìm $\lim_{x \to \infty} \frac{1}{x}$. Giải thích kết quả này bằng lời.
+5. Với $f(x) = \frac{x^2-1}{x-1}$, $\lim_{x \to 1} f(x)$ là bao nhiêu? So sánh với giá trị của $f(1)$.
+
+## 1.4 Định nghĩa chính thức về giới hạn
+
+Ý tưởng trực quan về giới hạn có thể được thực hiện chính xác bằng cách sử dụng định nghĩa epsilon–delta. Điều này cho chúng ta một cách chặt chẽ để nói rằng $f(x)$ tiến gần đến một giá trị $L$ khi $x$ tiến gần đến $a$.
+
+### Định nghĩa
+
+Chúng tôi viết
+
+$$
+\lim_{x \to a} f(x) = L
+$$
+
+nếu điều kiện sau đây xảy ra:
+
+Với mỗi $\varepsilon > 0$ (dù nhỏ đến đâu), tồn tại một $\delta > 0$ sao cho bất cứ khi nào
+
+$$
+0 < |x - a| < \delta,
+$$
+
+nó theo sau đó
+
+$$
+|f(x) - L| < \varepsilon.
+$$
+
+Nói cách khác: chúng ta có thể làm cho $f(x)$ càng gần $L$ càng tốt, miễn là $x$ đủ gần với $a$ (nhưng không bằng $a$).
+
+### Ví dụ 1: Hàm tuyến tính
+
+Với $f(x) = 2x + 1$, hãy chứng minh rằng $\lim_{x \to 3} f(x) = 7$.
+
+- Chúng tôi muốn $|f(x) - 7| < \varepsilon$.
+- Nhưng $f(x) - 7 = 2x + 1 - 7 = 2(x - 3)$.
+- Vậy $|f(x) - 7| = 2|x - 3|$.
+- Nếu chọn $\delta = \varepsilon / 2$ thì bất cứ khi nào $|x - 3| < \delta$, ta có $|f(x) - 7| < \varepsilon$.
+  Điều này chứng tỏ giới hạn.
+
+### Ví dụ 2: Hàm nghịch đảo
+
+Với $f(x) = \frac{1}{x}$, hãy xem xét $\lim_{x \to 2} f(x) = \tfrac{1}{2}$.
+
+- Chúng tôi muốn $\left|\frac{1}{x} - \frac{1}{2}\right| < \varepsilon$.
+- Bất đẳng thức này yêu cầu thao tác đại số, nhưng có thể thỏa mãn bằng cách chọn $\delta$ tùy thuộc vào $\varepsilon$.
+  Quá trình này phức tạp hơn, nhưng nguyên tắc thì giống nhau.
+
+### Tại sao điều này lại quan trọng
+
+- Định nghĩa epsilon–delta đảm bảo rằng các giới hạn không mơ hồ hoặc chỉ dựa trên trực giác.
+- Là nền tảng của tính liên tục, đạo hàm và tích phân.
+- Mặc dù những người mới bắt đầu có thể thấy nó trừu tượng, nhưng việc làm việc với các ví dụ đơn giản sẽ tạo nên sự quen thuộc.
+
+### Bài tập
+
+1. Sử dụng định nghĩa epsilon–delta, chứng minh rằng $\lim_{x \to 4} (x+1) = 5$.
+2. Chứng minh rằng $\lim_{x \to 0} 5x = 0$ bằng cách sử dụng định nghĩa hình thức.
+3. Giải thích tại sao $\lim_{x \to 0} \frac{1}{x}$ không tồn tại.
+4. Với $f(x) = x^2$, hãy chứng minh rằng $\lim_{x \to 2} f(x) = 4$.
+5. Bằng lời của bạn, hãy giải thích vai trò của $\varepsilon$ và $\delta$ trong định nghĩa về giới hạn.
+
+## 1.5 Tính liên tục
+
+Một hàm số là liên tục nếu đồ thị của nó có thể vẽ được mà không cần nhấc bút chì lên khỏi giấy. Chính xác hơn, tính liên tục đảm bảo rằng những thay đổi nhỏ ở đầu vào sẽ tạo ra những thay đổi nhỏ ở đầu ra.
+
+### Sự định nghĩa
+
+Hàm $f$ liên tục tại điểm $a$ nếu ba điều kiện được thỏa mãn:
+
+1. $f(a)$ được xác định.
+2. $\lim_{x \to a} f(x)$ tồn tại.
+3. $\lim_{x \to a} f(x) = f(a)$.
+
+Nếu một hàm số liên tục tại mọi điểm trong một khoảng thì ta nói nó liên tục trên khoảng đó.
+
+### Ví dụ
+
+1. Hàm đa thức: Các hàm như $f(x) = x^2 + 3x - 5$ liên tục ở mọi nơi trên $\mathbb{R}$.
+
+2. Hàm hữu tỷ: $f(x) = \frac{1}{x-1}$ liên tục ở mọi nơi ngoại trừ tại $x = 1$, nơi nó không được xác định.
+
+3. Chức năng từng phần:
+
+   $$
+   f(x) =
+   \begin{cases}
+   x^2 & x < 1, \\
+   2 & x = 1, \\
+   x+1 & x > 1,
+   \end{cases}
+   $$
+
+Hàm này có một bước nhảy tại $x = 1$, vì vậy nó không liên tục ở đó.
+
+### Các loại gián đoạn
+
+1. Gián đoạn có thể tháo rời: Một “lỗ hổng” trên biểu đồ. Ví dụ: $f(x) = \frac{x^2-1}{x-1}$ tại $x=1$.
+2. Nhảy không liên tục: Giới hạn bên trái và bên phải là khác nhau.
+3. Gián đoạn vô hạn: Hàm tiến tới $\pm\infty$ gần một điểm, như với $f(x) = 1/x$ gần $x = 0$.
+
+### Định lý giá trị trung gian
+
+Nếu một hàm số liên tục trên một khoảng $[a, b]$, thì với bất kỳ số $N$ nào nằm giữa $f(a)$ và $f(b)$, tồn tại một số $c \in [a, b]$ sao cho $f(c) = N$.
+
+Tính chất này rất quan trọng trong việc chứng minh sự tồn tại nghiệm và nghiệm của phương trình.
+
+### Bài tập
+
+1. Quyết định xem hàm $f(x) = |x|$ có liên tục tại $x = 0$ hay không.
+2. Xác định các điểm gián đoạn của $f(x) = \frac{x+2}{x^2-1}$.
+3. Giải thích tại sao mọi hàm đa thức đều liên tục tại mọi điểm.
+4. Cho ví dụ về hàm số có bước nhảy gián đoạn. Hãy phác họa đồ thị của nó.
+5. Sử dụng Định lý Giá trị Trung gian để chứng minh rằng phương trình $x^3 + x - 1 = 0$ có nghiệm nằm trong khoảng từ 0 đến 1.
+
+# Chương 2. Công cụ phái sinh
+
+## 2.1 Đạo hàm dưới dạng tỷ lệ thay đổi
+
+Đạo hàm là một trong những ý tưởng trung tâm của phép tính. Nó đo lường cách một hàm thay đổi khi đầu vào của nó thay đổi - nói cách khác là tốc độ thay đổi của đầu ra so với đầu vào.
+
+### Tỷ lệ thay đổi trung bình
+
+Đối với hàm $f(x)$, tốc độ thay đổi trung bình giữa hai điểm $x = a$ và $x = b$ là
+
+$$
+\frac{f(b) - f(a)}{b - a}.
+$$
+
+Đây là độ dốc của đường cát tuyến đi qua các điểm $(a, f(a))$ và $(b, f(b))$.
+
+### Tốc độ thay đổi tức thời
+
+Để đo mức độ $f(x)$ thay đổi nhanh như thế nào tại một điểm, chúng ta để khoảng co lại:
+
+$$
+f'(a) = \lim_{h \to 0} \frac{f(a+h) - f(a)}{h}.
+$$
+
+Giới hạn này, nếu nó tồn tại, được gọi là đạo hàm của $f$ tại $a$. Về mặt hình học, nó là độ dốc của đường tiếp tuyến với đồ thị $f$ tại điểm $(a, f(a))$.
+
+### Ký hiệu
+
+- $f'(x)$: ký hiệu nguyên tố.
+- $\dfrac{dy}{dx}$: ký hiệu Leibniz, được sử dụng khi $y = f(x)$.
+- $Df(x)$: ký hiệu toán tử.
+
+Tất cả những biểu tượng này đề cập đến cùng một khái niệm.
+
+### Ví dụ
+
+1. Với $f(x) = x^2$:
+
+   $$
+   f'(x) = \lim_{h \to 0} \frac{(x+h)^2 - x^2}{h} = \lim_{h \to 0} \frac{2xh + h^2}{h} = 2x.
+   $$
+
+Độ dốc của parabol tại $x$ là $2x$.
+
+2. Với $f(x) = \sin x$:
+
+   $$
+   f'(x) = \cos x.
+   $$
+
+3. Với $f(x) = c$ (hằng số):
+
+   $$
+   f'(x) = 0.
+   $$
+
+Hàm hằng không bao giờ thay đổi.
+
+### Phiên dịch
+
+- Trong vật lý: Nếu $s(t)$ là vị trí thì $s'(t)$ là vận tốc.
+- Trong kinh tế học: Nếu $C(x)$ là chi phí thì $C'(x)$ là chi phí biên.
+- Trong sinh học: Nếu $P(t)$ là dân số thì $P'(t)$ là tốc độ tăng trưởng.
+
+Đạo hàm làm cho “sự thay đổi” trở nên chính xác trong nhiều bối cảnh.
+
+### Bài tập
+
+1. Tính $f'(x)$ cho $f(x) = 3x^2 - 2x + 1$.
+2. Tìm độ dốc của đường tiếp tuyến với $f(x) = x^3$ tại $x = 2$.
+3. Nếu $s(t) = t^2 + 2t$ biểu thị khoảng cách tính bằng mét thì vận tốc tại $t = 5$ là bao nhiêu?
+4. Sử dụng định nghĩa giới hạn để tính đạo hàm của $f(x) = \frac{1}{x}$.
+5. Vẽ đồ thị $y = x^2$ và vẽ tiếp tuyến tại $x = 1$.
+
+##2.2 Quy tắc phân biệt
+
+Khi đạo hàm được xác định, chúng ta cần những cách hiệu quả để tính toán nó. Các quy tắc lấy vi phân là những lối tắt giúp chúng ta không phải áp dụng nhiều lần định nghĩa giới hạn.
+
+### Quy tắc không đổi
+
+Nếu $f(x) = c$ trong đó $c$ là hằng số thì
+
+$$
+f'(x) = 0.
+$$
+
+### Quy tắc quyền lực
+
+Với $f(x) = x^n$ trong đó $n$ là số thực,
+
+$$
+\frac{d}{dx} \big( x^n \big) = n x^{n-1}.
+$$
+
+Ví dụ:
+
+- $\frac{d}{dx}(x^2) = 2x$.
+- $\frac{d}{dx}(x^5) = 5x^4$.
+- $\frac{d}{dx}(\sqrt{x}) = \frac{1}{2\sqrt{x}}$.
+
+### Quy tắc bội số không đổi
+
+Nếu $f(x) = c \cdot g(x)$, thì
+
+$$
+f'(x) = c \cdot g'(x).
+$$
+
+### Quy tắc tính tổng và hiệu
+
+- $(f + g)' = f' + g'$.
+- $(f - g)' = f' - g'$.
+
+### Quy tắc sản phẩm
+
+Đối với $f(x)$ và $g(x)$:
+
+$$
+(fg)' = f'g + fg'.
+$$
+
+Ví dụ: Nếu $f(x) = x^2$, $g(x) = \sin x$:
+
+$$
+(fg)' = (2x)(\sin x) + (x^2)(\cos x).
+$$
+
+### Quy tắc thương số
+
+Đối với $f(x)$ và $g(x)$:
+
+$$
+\left(\frac{f}{g}\right)' = \frac{f'g - fg'}{g^2}, \quad g(x) \neq 0.
+$$
+
+Ví dụ: Nếu $f(x) = x^2$, $g(x) = x+1$:
+
+$$
+\left(\frac{x^2}{x+1}\right)' = \frac{(2x)(x+1) - (x^2)(1)}{(x+1)^2}.
+$$
+
+### Đạo hàm của hàm số chung
+
+- $\frac{d}{dx}(\sin x) = \cos x$.
+- $\frac{d}{dx}(\cos x) = -\sin x$.
+- $\frac{d}{dx}(e^x) = e^x$.
+- $\frac{d}{dx}(\ln x) = \frac{1}{x}, \quad x > 0$.
+
+### Bài tập
+
+1. Đạo hàm $f(x) = 7x^3 - 4x + 9$.
+2. Sử dụng quy tắc tích để tìm đạo hàm của $f(x) = x^2 e^x$.
+3. Áp dụng quy tắc thương cho $f(x) = \frac{\sin x}{x}$.
+4. Tính $\frac{d}{dx}(\ln(x^2))$ bằng cách sử dụng chuỗi quy tắc.
+5. Chứng minh rằng đạo hàm của $f(x) = \frac{1}{x}$ là $-\frac{1}{x^2}$.
+
+## 2.3 Quy tắc dây chuyền
+
+Thông thường, các hàm được xây dựng bằng cách kết hợp các hàm đơn giản hơn với nhau. Để phân biệt các hàm tổng hợp như vậy, chúng tôi sử dụng quy tắc dây chuyền.
+
+### Quy tắc
+
+Nếu $y = f(g(x))$, thì
+
+$$
+\frac{dy}{dx} = f'(g(x)) \cdot g'(x).
+$$
+
+Nói cách khác: lấy hàm số ngoài, giữ nguyên phần bên trong, sau đó nhân với đạo hàm của hàm bên trong.
+
+### Ví dụ
+
+1. Bình phương của hàm tuyến tính
+
+   $$
+   y = (3x+2)^2
+   $$
+
+Hàm ngoài: $f(u) = u^2$, hàm trong: $g(x) = 3x+2$.
+
+   $$
+   y' = 2(3x+2) \cdot 3 = 6(3x+2).
+   $$
+
+2. Hàm mũ với phương trình bậc hai bên trong
+
+   $$
+   y = e^{x^2}
+   $$
+
+Hàm ngoài: $f(u) = e^u$, hàm trong: $g(x) = x^2$.
+
+   $$
+   y' = e^{x^2} \cdot 2x = 2x e^{x^2}.
+   $$
+
+3. Logarit có gốc bên trong
+
+   $$
+   y = \ln(\sqrt{x})
+   $$
+
+Bên ngoài: $f(u) = \ln u$, bên trong: $g(x) = \sqrt{x}$.
+
+   $$
+   y' = \frac{1}{\sqrt{x}} \cdot \frac{1}{2\sqrt{x}} = \frac{1}{2x}.
+   $$
+
+### Quy tắc chuỗi tổng quát
+
+Đối với nhiều hàm lồng nhau $y = f(g(h(x)))$:
+
+$$
+\frac{dy}{dx} = f'(g(h(x))) \cdot g'(h(x)) \cdot h'(x).
+$$
+
+Điều này mở rộng một cách tự nhiên đến các tác phẩm sâu hơn.
+
+### Tại sao Quy tắc Chuỗi lại quan trọng
+
+- Nó xử lý gần như tất cả các mô hình trong thế giới thực trong đó một đại lượng phụ thuộc vào một đại lượng khác một cách gián tiếp.
+- Nó kết nối phép tính với vật lý (ví dụ: vận tốc phụ thuộc vào thời gian qua vị trí).
+- Cần thiết trong việc phân biệt ngầm và các chủ đề nâng cao.
+
+### Bài tập
+
+1. Đạo hàm $y = (5x^2 + 1)^3$.
+2. Tìm $\frac{d}{dx}(\sin(3x))$.
+3. Tính $\frac{d}{dx}(\ln(1+x^2))$.
+4. Đạo hàm $y = \cos^2(x)$.
+5. Áp dụng quy tắc chuỗi tổng quát cho $y = e^{\sin(x^2)}$.
+
+## 2.4 Sự khác biệt tiềm ẩn
+
+Không phải tất cả các hàm đều có dạng $y = f(x)$. Đôi khi $x$ và $y$ có liên hệ với nhau bằng một phương trình, và việc giải $y$ một cách rõ ràng là khó hoặc không thể. Trong những trường hợp như vậy, chúng tôi sử dụng vi phân ngầm.
+
+### Ý tưởng
+
+Nếu một phương trình bao gồm cả $x$ và $y$, chúng ta có thể lấy đạo hàm cả hai vế theo $x$, coi $y$ là một hàm của $x$. Mỗi lần chúng tôi phân biệt một số hạng liên quan đến $y$, chúng tôi nhân với $\frac{dy}{dx}$.
+
+### Ví dụ 1: Hình tròn
+
+phương trình:
+
+$$
+x^2 + y^2 = 25
+$$
+
+Đạo hàm theo $x$:
+
+$$
+2x + 2y \frac{dy}{dx} = 0.
+$$
+
+Giải $\frac{dy}{dx}$:
+
+$$
+\frac{dy}{dx} = -\frac{x}{y}.
+$$
+
+Điều này cho biết độ dốc của tiếp tuyến với đường tròn tại bất kỳ điểm nào.
+
+### Ví dụ 2: Tích của biến
+
+phương trình:
+
+$$
+xy = 1
+$$
+
+Phân biệt:
+
+$$
+x \frac{dy}{dx} + y = 0.
+$$
+
+Vì thế,
+
+$$
+\frac{dy}{dx} = -\frac{y}{x}.
+$$
+
+### Ví dụ 3: Quan hệ lượng giác
+
+phương trình:
+
+$$
+\sin(xy) = x
+$$
+
+Phân biệt:
+
+$$
+\cos(xy) \cdot \Big(y + x\frac{dy}{dx}\Big) = 1.
+$$
+
+Giải $\frac{dy}{dx}$:
+
+$$
+\frac{dy}{dx} = \frac{1 - y\cos(xy)}{x\cos(xy)}.
+$$
+
+### Tại sao sự khác biệt tiềm ẩn lại hữu ích
+
+- Nhiều đường cong quan trọng (hình tròn, hình elip, hyperbol) được xác định ngầm một cách tự nhiên.
+- Nó cho phép chúng ta phân tích các phương trình mà không cần giải $y$ trước tiên.
+- Đây là một bước quan trọng trong các chủ đề nâng cao hơn như tỷ lệ liên quan và phương trình vi phân.
+
+### Bài tập
+
+1. Cho đường cong $x^2 + xy + y^2 = 7$, hãy tìm $\frac{dy}{dx}$.
+2. Đạo hàm ngầm định $\cos(x) + \cos(y) = 1$.
+3. Tìm hệ số góc của tiếp tuyến với $x^3 + y^3 = 9$ tại điểm $(1, 2)$.
+4. Cho $x^2 + y^2 = 10$, hãy tính $\frac{dy}{dx}$ khi $(x, y) = (1, 3)$.
+5. Đạo hàm $e^{xy} = x + y$ để tìm $\frac{dy}{dx}$.
+
+## 2.5 Đạo hàm bậc cao
+
+Cho đến nay, chúng ta đã nghiên cứu đạo hàm bậc nhất, đo lường tốc độ thay đổi của hàm số. Nhưng bản thân các đạo hàm cũng có thể vi phân, tạo ra các đạo hàm bậc cao hơn.
+
+### Sự định nghĩa
+
+- Đạo hàm bậc hai của $f$ là đạo hàm của đạo hàm:
+
+  $$
+  f''(x) = \frac{d}{dx}\left(f'(x)\right).
+  $$
+
+- Tổng quát hơn, đạo hàm thứ $n$-th được viết là
+
+  $$
+  f^{(n)}(x) = \frac{d^n}{dx^n} f(x).
+  $$
+
+### Ví dụ
+
+1. $f(x) = x^3$
+
+- Đạo hàm cấp 1: $f'(x) = 3x^2$.
+   - Đạo hàm bậc hai: $f''(x) = 6x$.
+   - Đạo hàm bậc ba: $f^{(3)}(x) = 6$.
+   - Đạo hàm cấp 4: $f^{(4)}(x) = 0$.
+
+2. $f(x) = \sin x$
+
+- $f'(x) = \cos x$.
+   - $f''(x) = -\sin x$.
+   - $f^{(3)}(x) = -\cos x$.
+   - $f^{(4)}(x) = \sin x$.
+     Các đạo hàm lặp lại trong một chu kỳ có độ dài 4.
+
+3. $f(x) = e^x$
+
+- Mọi đạo hàm đều là $e^x$.
+
+### Ứng dụng
+
+- Tính lõm: Dấu của $f''(x)$ cho biết đồ thị của $f$ là lõm lên ($f'' > 0$) hay lõm xuống ($f'' < 0$).
+- Điểm uốn: Những điểm có $f''(x) = 0$ và độ lõm thay đổi.
+- Chuyển động: Trong vật lý, nếu $s(t)$ là vị trí:
+
+- $s'(t)$ = vận tốc,
+  - $s''(t)$ = gia tốc,
+  - $s^{(3)}(t)$ = giật (tốc độ thay đổi gia tốc).
+- Xấp xỉ: Đạo hàm bậc cao xuất hiện trong chuỗi Taylor, dùng để xấp xỉ các hàm số.
+
+### Bài tập
+
+1. Tính bốn đạo hàm đầu tiên của $f(x) = \cos x$.
+2. Tìm $f''(x)$ cho $f(x) = x^4 - 2x^2 + 3$.
+3. Với $f(x) = e^{2x}$, hãy chứng minh rằng $f^{(n)}(x) = 2^n e^{2x}$.
+4. Xác định các khoảng trong đó $f(x) = x^3 - 3x$ lõm lên và lõm xuống.
+5. Nếu $s(t) = t^3 - 6t^2 + 9t$, tìm vận tốc và gia tốc tại $t = 2$.
+
+# Chương 3. Ứng dụng của công cụ phái sinh
+
+## 3.1 Tiếp tuyến và pháp tuyến
+
+Một trong những ứng dụng đầu tiên của đạo hàm là tìm phương trình tiếp tuyến và pháp tuyến của một đường cong. Những đường này nắm bắt hình dạng cục bộ của hàm tại một điểm nhất định.
+
+### Đường tiếp tuyến
+
+Đường tiếp tuyến của một đường cong $y = f(x)$ tại một điểm $(a, f(a))$ là đường thẳng “chạm” vào đồ thị ở đó và có cùng độ dốc với đường cong.
+
+Độ dốc của đường tiếp tuyến được cho bởi đạo hàm:
+
+$$
+m_{\text{tangent}} = f'(a).
+$$
+
+Do đó, phương trình của đường tiếp tuyến tại $(a, f(a))$ là
+
+$$
+y - f(a) = f'(a)(x - a).
+$$
+
+### Đường thường
+
+Đường thẳng vuông góc với đường tiếp tuyến tại cùng một điểm. Độ dốc của nó là nghịch đảo âm của độ dốc tiếp tuyến:
+
+$$
+m_{\text{normal}} = -\frac{1}{f'(a)}.
+$$
+
+Vậy phương trình của đường chuẩn là
+
+$$
+y - f(a) = -\frac{1}{f'(a)} (x - a), \quad f'(a) \neq 0.
+$$
+
+### Ví dụ
+
+1. $f(x) = x^2$ tại $x = 1$.
+
+- $f(1) = 1$, $f'(x) = 2x$, do đó $f'(1) = 2$.
+   - Tiếp tuyến: $y - 1 = 2(x - 1)$, hoặc $y = 2x - 1$.
+   - Bình thường: độ dốc = $-\tfrac{1}{2}$, nên phương trình là $y - 1 = -\tfrac{1}{2}(x - 1)$.
+
+2. $f(x) = \sin x$ tại $x = \tfrac{\pi}{4}$.
+
+- $f(\tfrac{\pi}{4}) = \tfrac{\sqrt{2}}{2}$, $f'(\tfrac{\pi}{4}) = \cos(\tfrac{\pi}{4}) = \tfrac{\sqrt{2}}{2}$.
+   - Tiếp tuyến: $y - \tfrac{\sqrt{2}}{2} = \tfrac{\sqrt{2}}{2}(x - \tfrac{\pi}{4})$.
+
+### Tại sao tiếp tuyến và chuẩn mực lại quan trọng
+
+- Tiếp tuyến xấp xỉ đường cong cục bộ (xấp xỉ tuyến tính).
+- Định mức rất hữu ích trong hình học, quang học (phản xạ/khúc xạ) và cơ học (hướng lực).
+- Cả hai đều có vai trò trong việc tối ưu hóa và nghiên cứu độ cong.
+
+### Bài tập
+
+1. Tìm các tiếp tuyến và pháp tuyến của $y = x^3$ tại $x = 2$.
+2. Xác định tiếp tuyến và pháp tuyến của $y = e^x$ tại $x = 0$.
+3. Với $y = \ln x$, hãy tính đường tiếp tuyến tại $x = 1$.
+4. Đường tròn có $x^2 + y^2 = 9$. Sử dụng đạo hàm ẩn để tìm độ dốc của tiếp tuyến tại $(0,3)$.
+5. Vẽ đồ thị $y = \sqrt{x}$ và vẽ các tiếp tuyến và pháp tuyến tại $x = 4$.
+
+## 3.2 Giá liên quan
+
+Trong nhiều bài toán thực tế, hai hoặc nhiều đại lượng thay đổi theo thời gian và tốc độ thay đổi của chúng có mối liên hệ với nhau. Các bài toán về tỷ giá liên quan sử dụng đạo hàm để mô tả các mối quan hệ này.
+
+### Cách tiếp cận chung
+
+1. Xác định các biến phụ thuộc vào thời gian $t$.
+2. Viết phương trình liên hệ các biến.
+3. Tìm đạo hàm cả hai vế đối với $t$, áp dụng quy tắc dây chuyền.
+4. Thay thế các giá trị đã biết tại thời điểm đã cho.
+5. Giải tìm tỷ lệ chưa biết.
+
+### Ví dụ 1: Mở rộng vòng tròn
+
+Một đường tròn có bán kính $r$, bán kính tăng với tốc độ $\frac{dr}{dt} = 2 \,\text{cm/s}$. Tìm tốc độ tăng diện tích $A = \pi r^2$ khi $r = 5$.
+
+Phân biệt:
+
+$$
+\frac{dA}{dt} = 2\pi r \frac{dr}{dt}.
+$$
+
+Thay thế:
+
+$$
+\frac{dA}{dt} = 2\pi (5)(2) = 20\pi \,\text{cm}^2/\text{s}.
+$$
+
+### Ví dụ 2: Thang trượt
+
+Một chiếc thang cao 10 ft dựa vào tường. Đáy trượt đi ở mức $\frac{dx}{dt} = 1 \,\text{ft/s}$. Đỉnh trượt xuống nhanh như thế nào khi đáy cách tường 6 ft?
+
+Phương trình: $x^2 + y^2 = 100$, trong đó $y$ là chiều cao.
+
+Phân biệt:
+
+$$
+2x \frac{dx}{dt} + 2y \frac{dy}{dt} = 0.
+$$
+
+Tại $x = 6$, $y = 8$. Thay thế:
+
+$$
+2(6)(1) + 2(8)\frac{dy}{dt} = 0 \quad \Rightarrow \quad \frac{dy}{dt} = -\tfrac{6}{8} = -\tfrac{3}{4}.
+$$
+
+Vì vậy, đỉnh trượt xuống ở mức $0,75 \,\text{ft/s}$.
+
+### Ví dụ 3: Nước trong hình nón
+
+Người ta đổ nước vào một hình nón có chiều cao 12 cm và bán kính 6 cm. Khi nước sâu 4 cm, mực nước đang dâng lên $2 \,\text{cm/s}$. Khối lượng đang tăng với tốc độ bao nhiêu?
+
+Phương trình: $V = \tfrac{1}{3}\pi r^2 h$. Sử dụng tính tương tự, $r = \tfrac{h}{2}$. Thay thế:
+
+$$
+V = \tfrac{1}{12}\pi h^3.
+$$
+
+Phân biệt:
+
+$$
+\frac{dV}{dt} = \tfrac{1}{4}\pi h^2 \frac{dh}{dt}.
+$$
+
+Tại $h = 4$, $\frac{dh}{dt} = 2$:
+
+$$
+\frac{dV}{dt} = \tfrac{1}{4}\pi (16)(2) = 8\pi \,\text{cm}^3/\text{s}.
+$$
+
+### Tại sao Giá liên quan lại quan trọng
+
+- Chúng mô tả chuyển động và sự thay đổi trong vật lý, kỹ thuật và sinh học.
+- Họ kết nối hình học với phép tính thông qua các quá trình phụ thuộc vào thời gian.
+- Họ đào tạo chúng tôi mô hình hóa các hệ thống động về mặt toán học.
+
+### Bài tập
+
+1. Một quả bóng bay được thổi phồng lên để bán kính của nó tăng lên $0,5 \,\text{cm/s}$. Tìm thể tích của nó tăng nhanh như thế nào khi bán kính là 10 cm.
+2. Một ô tô chạy về phía bắc với vận tốc 40 km/h và một ô tô khác chạy về phía đông với vận tốc 30 km/h. Khoảng cách giữa họ tăng nhanh như thế nào sau 2 giờ?
+3. Một đèn chiếu cách bức tường 20 m chiếu vào một người cao 2 m đang bước đi với vận tốc 1,5 m/s. Độ dài bóng của người đó trên tường thay đổi nhanh như thế nào khi người đó cách nguồn sáng 5m?
+4. Chiều dài cạnh của hình lập phương tăng với tốc độ 2 cm/s. Diện tích bề mặt tăng nhanh như thế nào khi cạnh 3 cm?
+5. Cát được đổ lên đống tạo thành hình nón có bán kính luôn bằng chiều cao. Nếu chiều cao tăng với tốc độ 5 cm/s thì thể tích tăng với tốc độ bao nhiêu khi chiều cao là 10 cm?
+
+## 3.3 Vấn đề tối ưu hóa
+
+Các bài toán tối ưu hóa sử dụng đạo hàm để tìm giá trị lớn nhất hoặc nhỏ nhất của hàm, thường dưới những ràng buộc nhất định. Những vấn đề này mô hình hóa các tình huống mà chúng ta muốn tối đa hóa hiệu quả, lợi nhuận hoặc diện tích hoặc giảm thiểu chi phí, khoảng cách hoặc thời gian.
+
+### Các bước chung
+
+1. Hiểu rõ vấn đề: Xác định số lượng cần tối ưu.
+2. Mô hình hàm: Viết hàm mục tiêu theo một biến.
+3. Áp dụng ràng buộc: Sử dụng các điều kiện đã cho để rút gọn các biến.
+4. Đạo hàm: Tính đạo hàm của hàm mục tiêu.
+5. Tìm các điểm tới hạn: Giải $f'(x) = 0$ hoặc trong đó $f'(x)$ không xác định.
+6. Kiểm tra cực đại/cực tiểu: Sử dụng phép kiểm tra đạo hàm bậc hai hoặc kiểm tra điểm cuối.
+7. Giải thích kết quả: Nêu câu trả lời trong ngữ cảnh ban đầu.
+
+### Ví dụ 1: Diện tích tối đa của hình chữ nhật
+
+Một hình chữ nhật có chu vi là 40. Kích thước nào giúp diện tích của nó lớn nhất?
+
+- Gọi chiều dài $x$, chiều rộng $y$. Ràng buộc: $2x + 2y = 40 \Rightarrow y = 20 - x$.
+- Diện tích: $A = xy = x(20 - x) = 20x - x^2$.
+- Đạo hàm: $A'(x) = 20 - 2x$. Đặt bằng 0: $x = 10$.
+- Khi đó $y = 10$.
+- Diện tích tối đa: $100$. Hình chữ nhật là hình vuông.
+
+### Ví dụ 2: Giảm thiểu khoảng cách
+
+Tìm điểm trên parabol $y = x^2$ gần $(0,3)$ nhất.
+
+- Khoảng cách bình phương: $D(x) = (x-0)^2 + (x^2 - 3)^2$.
+- Khai triển: $D(x) = x^2 + (x^2 - 3)^2 = x^2 + x^4 - 6x^2 + 9 = x^4 - 5x^2 + 9$.
+- Đạo hàm: $D'(x) = 4x^3 - 10x$. Giải: $x(4x^2 - 10) = 0$.
+- Lời giải: $x = 0$, $x = \pm \sqrt{2.5}$.
+- Kiểm tra sẽ đưa ra khoảng cách tối thiểu là $x = \pm \sqrt{2.5}$.
+
+### Ví dụ 3: Hộp có âm lượng tối đa
+
+Một chiếc hộp không có phần trên được làm từ một miếng bìa cứng hình vuông có cạnh 20 cm bằng cách cắt các hình vuông bằng nhau ở các góc và gấp các cạnh lại. Tìm kích thước của vết cắt để tối đa hóa khối lượng.
+
+- Cho kích thước cắt = $x$. Khi đó kích thước: $(20 - 2x) \times (20 - 2x) \times x$.
+- Khối lượng: $V(x) = x(20 - 2x)^2$.
+- Đạo hàm: $V'(x) = (20 - 2x)(20 - 6x)$.
+- Điểm tới hạn: $x = 10$ (khối lượng bằng 0) hoặc $x = \tfrac{20}{6} \approx 3.33$.
+- Ở mức $x \approx 3,33$, khối lượng đạt mức tối đa.
+
+### Tại sao tối ưu hóa lại quan trọng
+
+- Các kỹ sư sử dụng nó để thiết kế các kết cấu hiệu quả.
+- Doanh nghiệp sử dụng nó để tối đa hóa lợi nhuận hoặc giảm thiểu chi phí.
+- Các nhà khoa học sử dụng nó để mô hình hóa các hệ thống tự nhiên tìm kiếm sự cân bằng.
+
+### Bài tập
+
+1. Một người nông dân có 100 m hàng rào để bao quanh một thửa ruộng hình chữ nhật ven sông (vì vậy chỉ cần rào 3 mặt). Tìm kích thước tối đa hóa diện tích.
+2. Tìm hai số dương có tổng bằng 20 và tích của chúng càng lớn càng tốt.
+3. Một hình trụ được làm từ vật liệu có kích thước 100 cm$^2$. Tìm kích thước thể tích lớn nhất.
+4. Một sợi dây dài 10 m được cắt thành hai đoạn, một đoạn uốn thành hình vuông, đoạn kia uốn thành hình tròn. Nên cắt nó như thế nào để tối đa hóa tổng diện tích được bao bọc?
+5. Xây một cái hộp kín có đáy vuông, thể tích 32 m$^3$. Tìm các kích thước có diện tích bề mặt nhỏ nhất.
+
+## 3.4 Điểm lõm và điểm uốn
+
+Đạo hàm không chỉ cho chúng ta biết về hệ số góc mà còn về hình dạng của đồ thị. Đạo hàm thứ hai đặc biệt hữu ích trong việc tìm hiểu tính lõm và xác định các điểm uốn.
+
+### Độ lõm
+
+- Hàm $f(x)$ lõm trên một khoảng nếu $f''(x) > 0$.
+  Đồ thị uốn cong lên trên, giống như một cái cốc.
+
+- Hàm $f(x)$ lõm xuống trên một khoảng nếu $f''(x) < 0$.
+  Đồ thị uốn cong xuống, giống như một cái cau mày.
+
+Độ lõm mô tả độ dốc của hàm số thay đổi như thế nào: nếu độ dốc tăng thì đồ thị lõm lên; nếu độ dốc giảm dần thì đồ thị lõm xuống.
+
+### Điểm uốn
+
+Điểm uốn là một điểm trên đồ thị có độ lõm thay đổi.
+
+- Nếu $f''(x) = 0$ hoặc $f''(x)$ không được xác định, thì điểm đó là ứng cử viên cho điểm uốn.
+- Để khẳng định mặt lõm phải đổi dấu ở hai bên điểm.
+
+### Ví dụ
+
+1. $f(x) = x^3$
+
+- $f''(x) = 6x$.
+   - Tại $x = 0$, $f''(0) = 0$.
+   - Với $x < 0$, $f''(x) < 0$ → lõm xuống.
+   - Với $x > 0$, $f''(x) > 0$ → lõm lên.
+   - Như vậy $(0,0)$ là một điểm uốn.
+
+2. $f(x) = x^4$
+
+- $f''(x) = 12x^2$.
+   - Tại $x = 0$, $f''(0) = 0$ nhưng độ lõm không đổi dấu (luôn ≥ 0).
+   - Không có điểm uốn.
+
+### Phác thảo lõm và đường cong
+
+- Nếu $f'(x) = 0$ và $f''(x) > 0$, thì $f$ có mức tối thiểu cục bộ.
+- Nếu $f'(x) = 0$ và $f''(x) < 0$, thì $f$ có mức cực đại cục bộ.
+- Đây được gọi là phép thử đạo hàm bậc hai.
+
+### Tại sao điều này lại quan trọng
+
+Điểm lõm và điểm uốn giúp chúng ta hiểu được “hình dạng” của đồ thị: nơi chúng uốn cong, làm phẳng hoặc xoay. Những ý tưởng này là trọng tâm trong việc phác thảo đường cong, vật lý (gia tốc) và kinh tế học (hiệu suất giảm dần).
+
+### Bài tập
+
+1. Xác định khoảng lõm của $f(x) = x^3 - 3x$. Tìm điểm uốn của nó.
+2. Với $f(x) = \ln(x)$, hãy xác định độ lõm và các điểm uốn có thể có.
+3. Áp dụng phép thử đạo hàm bậc hai cho $f(x) = x^2 e^{-x}$ để phân loại các điểm tới hạn.
+4. Vẽ $f(x) = \sin x$, đánh dấu các khoảng lõm và điểm uốn.
+5. Giải thích tại sao $f(x) = e^x$ không có điểm uốn.
+
+## 3.5 Phác thảo đường cong
+
+Vẽ đường cong là quá trình vẽ đồ thị của hàm số bằng cách sử dụng thông tin từ đạo hàm của nó. Thay vì vẽ đồ thị nhiều điểm, chúng tôi phân tích các đặc điểm chính: điểm chặn, đường tiệm cận, khoảng tăng/giảm và độ lõm.
+
+### Các bước vẽ đường cong
+
+1. Miền: Xác định nơi hàm được xác định.
+2. Điểm giao nhau: Tìm nơi đồ thị đi qua các trục.
+3. Đường tiệm cận:
+
+- Các tiệm cận đứng xảy ra khi hàm số không xác định và có xu hướng tiến tới vô cùng.
+   - Các tiệm cận ngang hoặc nghiêng mô tả hành vi cuối cùng là $x \to \pm\infty$.
+4. Đạo hàm bậc nhất $f'(x)$:
+
+- Tích cực → hàm số ngày càng tăng.
+   - Âm → hàm số giảm dần.
+   - Điểm 0 của $f'(x)$ → điểm tới hạn (có thể là cực đại/cực tiểu).
+5. Đạo hàm bậc hai $f''(x)$:
+
+- Dương → lõm lên.
+   - Âm → lõm xuống.
+   - Số không hoặc không xác định → điểm uốn có thể.
+6. Kết hợp thông tin: Sử dụng tất cả các kết quả để phác họa một biểu đồ rõ ràng và chính xác.
+
+### Ví dụ 1: $f(x) = x^3 - 3x$
+
+- Tên miền: toàn số thực.
+- Chặn: tại $(0,0)$.
+- Đạo hàm: $f'(x) = 3x^2 - 3 = 3(x-1)(x+1)$.
+
+- Tăng: $(-\infty, -1) \cup (1, \infty)$.
+  - Giảm: $(-1, 1)$.
+- Đạo hàm bậc hai: $f''(x) = 6x$.
+
+- Lõm xuống khi $x < 0$, lõm lên khi $x > 0$.
+  - Điểm uốn tại $(0,0)$.
+- Hình dạng: đường cong chữ S với cực đại cục bộ tại $(-1, 2)$, cực tiểu cục bộ tại $(1, -2)$.
+
+### Ví dụ 2: $f(x) = \frac{1}{x}$
+
+- Tên miền: $x \neq 0$.
+- Đường tiệm cận đứng: $x = 0$.
+- Tiệm cận ngang: $y = 0$.
+- Đạo hàm: $f'(x) = -\frac{1}{x^2}$ (luôn âm). Chức năng luôn giảm.
+- Đạo hàm bậc hai: $f''(x) = \frac{2}{x^3}$.
+
+- Lõm lên khi $x > 0$.
+  - Lõm xuống khi $x < 0$.
+- Đồ thị: hyperbol có hai nhánh.
+
+### Tại sao việc phác thảo đường cong lại hữu ích
+
+- Cung cấp cái nhìn sâu sắc về hành vi tổng thể của các chức năng mà không cần tính toán toàn diện.
+- Cần thiết trong các kỳ thi giải tích và các bài toán ứng dụng.
+- Cầu nối phân tích đại số và hiểu biết hình học.
+
+### Bài tập
+
+1. Vẽ đường cong $f(x) = x^4 - 2x^2$. Xác định điểm cực đại, điểm cực tiểu và điểm uốn.
+2. Phân tích và phác họa $f(x) = \ln(x)$. Hiển thị các điểm chặn, tiệm cận và độ lõm.
+3. Với $f(x) = e^{-x}$, hãy mô tả sự tăng trưởng/phân rã, tiệm cận và độ lõm.
+4. Vẽ đồ thị $f(x) = \tan x$ trên đoạn $(- \pi, \pi)$. Đánh dấu các tiệm cận.
+5. Sử dụng phép kiểm định đạo hàm cấp một và cấp hai để phân loại các điểm tới hạn của $f(x) = x^3 - 6x^2 + 9x$.
+
+#Phần II. tích phân
+
+# Chương 4. Nguyên hàm và tích phân xác định
+
+## 4.1 Tích phân không xác định
+
+Tích phân không xác định là quá trình vi phân ngược lại. Nếu đạo hàm có số đo thay đổi thì tích phân sẽ khôi phục hàm ban đầu từ tốc độ thay đổi của nó.
+
+### Sự định nghĩa
+
+Nếu $F'(x) = f(x)$, thì
+
+$$
+\int f(x)\,dx = F(x) + C,
+$$
+
+trong đó $C$ là hằng số tích phân.
+
+Mọi tích phân không xác định biểu diễn một họ hàm số chỉ khác nhau một hằng số, vì vi phân loại bỏ hằng số.
+
+### Quy tắc cơ bản
+
+1. Quy tắc không đổi
+
+$$
+\int c\,dx = cx + C.
+$$
+
+2. Quy tắc quyền lực
+
+$$
+\int x^n\,dx = \frac{x^{n+1}}{n+1} + C, \quad n \neq -1.
+$$
+
+3. Quy tắc tính tổng
+
+$$
+\int \big(f(x) + g(x)\big)\,dx = \int f(x)\,dx + \int g(x)\,dx.
+$$
+
+4. Quy tắc bội số không đổi
+
+$$
+\int c f(x)\,dx = c \int f(x)\,dx.
+$$
+
+### Tích phân chung
+
+- $\int e^x dx = e^x + C$
+- $\int \sin x dx = -\cos x + C$
+- $\int \cos x dx = \sin x + C$
+- $\int \frac{1}{x} dx = \ln|x| + C$
+
+### Ví dụ
+
+1. $\int (3x^2 - 4)\,dx = x^3 - 4x + C$.
+
+2. $\int \cos(2x)\,dx = \tfrac{1}{2}\sin(2x) + C$.
+
+3. $\int \frac{1}{x}\,dx = \ln|x| + C$.
+
+### Phiên dịch
+
+- Tích phân không xác định là nguyên hàm.
+- Chúng là nền tảng cho tích phân xác định, đo các đại lượng tích lũy như diện tích, khoảng cách và khối lượng.
+- Trong bối cảnh ứng dụng, tích hợp cho phép chúng ta chuyển từ tỷ lệ trở lại tổng số.
+
+### Bài tập
+
+1. Tìm $\int (5x^4 + 2x)\,dx$.
+2. Tính $\int (e^x + 3)\,dx$.
+3. Tìm nghiệm tổng quát của $f'(x) = 6x$ bằng cách sử dụng tích phân.
+4. Đánh giá $\int \frac{2}{x}\,dx$.
+5. Nếu vận tốc là $v(t) = 4t$, hãy tìm hàm vị trí $s(t)$.
+
+## 4.2 Tích phân xác định dưới dạng diện tích
+
+Trong khi tích phân không xác định đại diện cho họ các nguyên hàm thì tích phân xác định cho một giá trị bằng số: diện tích tích lũy dưới đường cong giữa hai điểm.
+
+### Sự định nghĩa
+
+Đối với hàm $f(x)$ được xác định trên $[a, b]$, tích phân xác định là
+
+$$
+\int_a^b f(x)\,dx = \lim_{n \to \infty} \sum_{i=1}^n f(x_i^-) \,\Delta x,
+$$
+
+trong đó khoảng $[a, b]$ được chia thành các khoảng con $n$ có chiều rộng $\Delta x$ và $x_i^-$ là một điểm mẫu trong mỗi khoảng con.
+
+Đây là giới hạn của tổng Riemann.
+
+### Giải thích hình học
+
+- Nếu $f(x) \geq 0$ trên $[a, b]$, thì $\int_a^b f(x)\,dx$ bằng diện tích dưới đường cong $y = f(x)$ từ $x=a$ đến $x=b$.
+- Nếu $f(x)$ giảm xuống dưới trục $x$, tích phân sẽ tính diện tích có dấu: các vùng bên dưới trục được tính là âm.
+
+### Thuộc tính của Tích phân xác định
+
+1. Cộng tính theo khoảng thời gian
+
+$$
+\int_a^c f(x)\,dx = \int_a^b f(x)\,dx + \int_b^c f(x)\,dx.
+$$
+
+2. Đảo ngược giới hạn
+
+$$
+\int_a^b f(x)\,dx = -\int_b^a f(x)\,dx.
+$$
+
+3. Khoảng cách có độ rộng bằng 0
+
+$$
+\int_a^a f(x)\,dx = 0.
+$$
+
+4. Tuyến tính
+
+$$
+\int_a^b \big( cf(x) + g(x)\big)\,dx = c\int_a^b f(x)\,dx + \int_a^b g(x)\,dx.
+$$
+
+### Ví dụ
+
+1. $\int_0^2 x\,dx = \left[\tfrac{1}{2}x^2\right]_0^2 = 2.$
+   Đây là diện tích của tam giác vuông dưới đường thẳng $y=x$.
+
+2. $\int_{-1}^1 x^3\,dx = 0.$
+   Hàm lẻ $x^3$ có diện tích đối xứng triệt tiêu nhau.
+
+3. $\int_0^\pi \sin x\,dx = 2.$
+   Giá trị này bằng diện tích dưới một vòm của đường cong hình sin.
+
+### Tại sao điều này lại quan trọng
+
+- Tích phân xác định đo các đại lượng tích lũy: khoảng cách, khối lượng, năng lượng, xác suất.
+- Họ kết nối tính toán đại số với trực giác hình học.
+- Bước tiếp theo là Định lý cơ bản của Giải tích, kết nối tích phân xác định với nguyên hàm.
+
+### Bài tập
+
+1. Tính $\int_0^3 (2x+1)\,dx$.
+2. Tìm diện tích giữa $y = x^2$ và trục $x$ từ $x = 0$ đến $x = 2$.
+3. Tính giá $\int_{-2}^2 (x^2 - 1)\,dx$.
+4. Chứng minh rằng $\int_{-a}^a f(x)\,dx = 0$ nếu $f(x)$ là số lẻ.
+5. Ước tính $\int_0^1 e^x\,dx$ bằng cách sử dụng tổng Riemann với các khoảng con $n=4$ và điểm cuối bên phải.
+
+## 4.3 Định lý cơ bản của phép tính
+
+Định lý cơ bản của phép tính (FTC) hợp nhất hai ý tưởng chính của phép tính: vi phân và tích phân. Nó cho thấy rằng việc tìm diện tích và tìm tỷ lệ thay đổi là hai mặt của một đồng tiền.
+
+### Phần 1: Đạo hàm của một tích phân
+
+Nếu $f$ liên tục trên $[a, b]$, hãy xác định
+
+$$
+F(x) = \int_a^x f(t)\,dt.
+$$
+
+Khi đó $F$ khả vi và
+
+$$
+F'(x) = f(x).
+$$
+
+Nói cách khác: đạo hàm của hàm diện tích tích lũy chính là hàm ban đầu.
+
+### Phần 2: Đánh giá tích phân xác định
+
+Nếu $f$ liên tục trên $[a, b]$ và $F$ là nguyên hàm bất kỳ của $f$, thì
+
+$$
+\int_a^b f(x)\,dx = F(b) - F(a).
+$$
+
+Điều này cho chúng ta biết rằng chúng ta có thể tính tích phân xác định đơn giản bằng cách tìm nguyên hàm, thay vì tính giới hạn của tổng Riemann.
+
+### Ví dụ
+
+1. $\int_0^2 x^2\,dx$.
+
+- Nguyên hàm: $F(x) = \tfrac{1}{3}x^3$.
+   - Áp dụng FTC: $F(2) - F(0) = \tfrac{8}{3} - 0 = \tfrac{8}{3}.$
+
+2. Nếu $F(x) = \int_1^x \cos t \, dt$, thì $F'(x) = \cos x$.
+
+3. $\int_1^4 \frac{1}{x}\,dx$.
+
+- Nguyên hàm: $\ln|x|$.
+   - Áp dụng FTC: $\ln 4 - \ln 1 = \ln 4.$
+
+### Tại sao FTC lại quan trọng
+
+- Nó biến đổi tích phân từ một quá trình giới hạn thành một tính toán thực tế.
+- Khẳng định phép vi phân và tích phân là hai phép toán nghịch đảo.
+- Định lý trung tâm làm cho phép tính vi phân trở nên hữu ích trong toán học, khoa học và kỹ thuật.
+
+### Bài tập
+
+1. Đánh giá $\int_0^3 (2x+1)\,dx$ bằng cách sử dụng FTC.
+2. Nếu $F(x) = \int_0^x e^t\,dt$, hãy tìm $F'(x)$.
+3. Tính $\int_0^\pi \sin x \, dx$.
+4. Chứng minh rằng nếu $f'(x) = g(x)$ thì $\int_a^b g(x)\,dx = f(b) - f(a)$.
+5. Sử dụng FTC để giải thích tại sao diện tích bên dưới $y = \cos x$ từ $0$ đến $\pi/2$ bằng 1.
+
+## 4.4 Tính chất của tích phân
+
+Tích phân xác định có một số tính chất quan trọng giúp nó linh hoạt và hiệu quả trong các ứng dụng. Các tính chất này tuân theo định nghĩa là giới hạn của tổng và từ Định lý cơ bản của Giải tích.
+
+### Tính tuyến tính
+
+Đối với các hàm $f(x)$ và $g(x)$ và các hằng số $c, d$:
+
+$$
+\int_a^b \big(c f(x) + d g(x)\big)\,dx = c \int_a^b f(x)\,dx + d \int_a^b g(x)\,dx.
+$$
+
+Điều này cho phép chúng ta chia các tích phân phức tạp thành các phần đơn giản hơn.
+
+### Tính cộng theo khoảng thời gian
+
+Nếu $a < c < b$ thì
+
+$$
+\int_a^b f(x)\,dx = \int_a^c f(x)\,dx + \int_c^b f(x)\,dx.
+$$
+
+Chúng ta có thể tính tích phân từng phần một.
+
+### Đảo ngược giới hạn
+
+$$
+\int_a^b f(x)\,dx = -\int_b^a f(x)\,dx.
+$$
+
+Hoán đổi giới hạn làm thay đổi dấu của tích phân.
+
+### Thuộc tính so sánh
+
+Nếu $f(x) \leq g(x)$ với mọi $x$ trong $[a, b]$, thì
+
+$$
+\int_a^b f(x)\,dx \leq \int_a^b g(x)\,dx.
+$$
+
+Điều này cho phép chúng ta so sánh các khu vực mà không cần tính toán trực tiếp.
+
+### Bất bình đẳng về giá trị tuyệt đối
+
+$$
+\left| \int_a^b f(x)\,dx \right| \leq \int_a^b |f(x)|\,dx.
+$$
+
+Tính chất này rất cần thiết trong phân tích và kiểm tra độ hội tụ.
+
+### Tính đối xứng
+
+- Nếu $f(x)$ chẵn (đối xứng qua trục $y$):
+
+  $$
+  \int_{-a}^a f(x)\,dx = 2\int_0^a f(x)\,dx.
+  $$
+
+- Nếu $f(x)$ lẻ (đối xứng qua gốc tọa độ):
+
+  $$
+  \int_{-a}^a f(x)\,dx = 0.
+  $$
+
+### Ví dụ
+
+1. $\int_0^2 (3x^2 + 4)\,dx = \int_0^2 3x^2\,dx + \int_0^2 4\,dx = 8 + 8 = 16.$
+
+2. Vì $f(x) = x^3$ là số lẻ nên $\int_{-1}^1 x^3\,dx = 0.$
+
+3. Vì $f(x) = x^2$ là số chẵn nên $\int_{-2}^2 x^2\,dx = 2\int_0^2 x^2\,dx = 2\cdot \tfrac{8}{3} = \tfrac{16}{3}.$
+
+### Tại sao những thuộc tính này lại quan trọng
+
+- Họ đơn giản hóa việc tính toán.
+- Chúng bộc lộ những đặc điểm hình học và tính đối xứng của hàm số.
+- Họ cung cấp các công cụ lý thuyết để phân tích nâng cao hơn.
+
+### Bài tập
+
+1. Sử dụng tính đối xứng để đánh giá $\int_{-5}^5 (x^4 - x^3)\,dx$.
+2. Chứng minh rằng $\int_1^4 (2x+3)\,dx = \int_1^2 (2x+3)\,dx + \int_2^4 (2x+3)\,dx$.
+3. Tính giá $\int_0^\pi \sin(x)\,dx$ và so sánh với $\int_{-\pi}^\pi \sin(x)\,dx$.
+4. Chứng minh rằng nếu $f(x) \geq 0$ trên $[a, b]$, thì $\int_a^b f(x)\,dx \geq 0$.
+5. Tính $\int_{-3}^3 (x^2 + 1)\,dx$ bằng cách sử dụng thuộc tính chẵn/lẻ.
+
+# Chương 5. Kỹ thuật tích hợp
+
+## 5.1 Thay người
+
+Một trong những kỹ thuật tích phân hữu ích nhất là phương pháp thay thế, còn được gọi là -u-substitution-. Đó là quá trình ngược lại của quy tắc dây chuyền đối với các công cụ phái sinh.
+
+### Ý tưởng
+
+Nếu tích phân chứa hàm tổng hợp, chúng ta có thể đơn giản hóa nó bằng cách thay đổi các biến.
+
+Về mặt hình thức, nếu $u = g(x)$ là một hàm khả vi, thì
+
+$$
+\int f(g(x)) g'(x)\,dx = \int f(u)\,du.
+$$
+
+Sự thay thế này làm cho tích phân dễ tính hơn.
+
+### Các bước thay thế
+
+1. Xác định hàm bên trong $u = g(x)$ có đạo hàm cũng xuất hiện trong tích phân.
+2. Tính $du = g'(x)\,dx$.
+3. Viết lại tích phân theo $u$.
+4. Tích phân đối với $u$.
+5. Thay lại $u = g(x)$.
+
+### Ví dụ
+
+1. Thay thế đơn giản
+
+   $$
+   \int 2x \cos(x^2)\,dx
+   $$
+
+Đặt $u = x^2$, do đó $du = 2x\,dx$.
+   Khi đó tích phân trở thành $\int \cos u \,du = \sin u + C = \sin(x^2) + C$.
+
+2. Trường hợp logarit
+
+   $$
+   \int \frac{2x}{x^2+1}\,dx
+   $$
+
+Đặt $u = x^2 + 1$, do đó $du = 2x\,dx$.
+   Khi đó tích phân trở thành $\int \frac{1}{u}\,du = \ln|u| + C = \ln(x^2+1) + C$.
+
+3. Thay thế lượng giác
+
+   $$
+   \int \sin(3x)\,dx
+   $$
+
+Cho $u = 3x$, do đó $du = 3\,dx$, do đó $dx = \frac{du}{3}$.
+   Tích phân trở thành $\tfrac{1}{3}\int \sin u\,du = -\tfrac{1}{3}\cos u + C = -\tfrac{1}{3}\cos(3x) + C$.
+
+### Tích phân xác định có thể thay thế
+
+Khi tính tích phân xác định, chúng ta cũng phải thay đổi các giới hạn:
+
+$$
+\int_a^b f(g(x)) g'(x)\,dx = \int_{g(a)}^{g(b)} f(u)\,du.
+$$
+
+Ví dụ:
+
+$$
+\int_0^1 2x e^{x^2}\,dx.
+$$
+
+Cho $u = x^2$, $du = 2x\,dx$. Giới hạn: khi $x=0, u=0$; khi $x=1, u=1$.
+Vậy tích phân trở thành
+
+$$
+\int_0^1 e^u\,du = e - 1.
+$$
+
+### Bài tập
+
+1. Tính giá $\int (x^2+1)^5 (2x)\,dx$.
+2. Tính $\int \frac{\cos x}{\sin x}\,dx$.
+3. Đánh giá $\int_0^\pi \sin(2x)\,dx$ bằng cách sử dụng thay thế.
+4. Tìm $\int e^{3x}\,dx$.
+5. Tính $\int \frac{1}{\sqrt{1+x^2}}\,dx$ bằng cách cho $u = 1+x^2$.
+
+## 5.2 Tích hợp theo bộ phận
+
+Tích hợp từng phần là một kỹ thuật xuất phát từ quy tắc tích phân cho đạo hàm. Nó giúp đánh giá các tích phân liên quan đến tích của các hàm không dễ dàng được xử lý chỉ bằng phép thế.
+
+### Công thức
+
+Từ quy tắc sản phẩm:
+
+$$
+\frac{d}{dx}[u(x)v(x)] = u'(x)v(x) + u(x)v'(x).
+$$
+
+Tích phân cả hai vế cho công thức tích phân từng phần:
+
+$$
+\int u\,dv = uv - \int v\,du.
+$$
+
+Đây:
+
+- $u$ = hàm được chọn để lấy đạo hàm,
+- $dv$ = phần còn lại của số nguyên cần tích phân.
+
+### Chọn $u$ và $dv$
+
+Một hướng dẫn phổ biến là LIATE (Logarit, nghịch đảo lượng giác, đại số, lượng giác, hàm mũ).
+
+- Chọn $u$ từ danh mục có mặt sớm nhất.
+- Chọn $dv$ làm phần còn lại.
+
+### Ví dụ
+
+1. Đa thức × hàm mũ
+
+$$
+\int x e^x\,dx
+$$
+
+Giả sử $u = x$, $dv = e^x dx$. Khi đó $du = dx$, $v = e^x$.
+
+$$
+\int x e^x\,dx = x e^x - \int e^x dx = x e^x - e^x + C.
+$$
+
+2. Đa thức × Lượng giác
+
+$$
+\int x \cos x\,dx
+$$
+
+Cho $u = x$, $dv = \cos x dx$. Khi đó $du = dx$, $v = \sin x$.
+
+$$
+\int x \cos x\,dx = x \sin x - \int \sin x dx = x \sin x + \cos x + C.
+$$
+
+3. Logarit
+
+$$
+\int \ln x\,dx
+$$
+
+Cho $u = \ln x$, $dv = dx$. Khi đó $du = \frac{1}{x}dx$, $v = x$.
+
+$$
+\int \ln x\,dx = x \ln x - \int 1 dx = x \ln x - x + C.
+$$
+
+### Ví dụ tích phân xác định
+
+$$
+\int_0^1 x e^x\,dx
+$$
+
+Sử dụng kết quả trước đó: $\int x e^x dx = (x-1)e^x$.
+Đánh giá:
+
+$$
+\big[(x-1)e^x\big]_0^1 = (0)e^1 - (-1)e^0 = 0 + 1 = 1.
+$$
+
+### Tại sao điều này lại quan trọng
+
+Việc tích hợp từng phần là rất quan trọng khi việc thay thế không thành công, đặc biệt là với logarit, hàm lượng giác nghịch đảo và các tích liên quan đến đa thức với hàm mũ hoặc hàm lượng giác.
+
+### Bài tập
+
+1. Tính giá $\int x \sin x\,dx$.
+2. Tìm $\int e^x \cos x\,dx$.
+3. Tính $\int_1^2 \ln x\,dx$.
+4. Tính giá $\int x^2 e^x\,dx$.
+5. Sử dụng tích phân từng phần để hiển thị $\int \arctan x\,dx = x\arctan x - \tfrac{1}{2}\ln(1+x^2) + C$.
+
+## 5.3 Tích phân lượng giác và Thay thế
+
+Nhiều tích phân liên quan đến các hàm lượng giác. Những điều này thường có thể được đơn giản hóa bằng cách sử dụng danh tính hoặc bằng cách thực hiện các phép thay thế đặc biệt.
+
+### Tích phân lượng giác
+
+1. lũy thừa của sin và cos
+
+- Nếu lũy thừa của sin là số lẻ: lưu một $\sin x$, đổi phần còn lại bằng $\sin^2x = 1 - \cos^2x$, và thay $u = \cos x$.
+- Nếu lũy thừa cosin lẻ: lưu một $\cos x$, đổi phần còn lại thành $\cos^2x = 1 - \sin^2x$, và thay $u = \sin x$.
+- Nếu cả hai đều chẵn: sử dụng đẳng thức nửa góc.
+
+Ví dụ:
+
+$$
+\int \sin^3x \cos x \, dx
+$$
+
+Cho $u = \sin x$, $du = \cos x\,dx$:
+
+$$
+\int u^3\,du = \tfrac{u^4}{4} + C = \tfrac{\sin^4x}{4} + C.
+$$
+
+2. Tích các hàm sin và cos có các góc khác nhau
+   Sử dụng công thức tính tổng:
+
+$$
+\sin A \cos B = \tfrac{1}{2}[\sin(A+B) + \sin(A-B)].
+$$
+
+Ví dụ:
+
+$$
+\int \sin(2x)\cos(3x)\,dx = \tfrac{1}{2}\int [\sin(5x) - \sin(x)]\,dx.
+$$
+
+3. lũy thừa cát tuyến và tiếp tuyến
+
+- Nếu lũy thừa cát tuyến chẵn: lưu $\sec^2x$, quy đổi phần còn lại bằng $\sec^2x = 1 + \tan^2x$, và thay $u = \tan x$.
+- Nếu lũy thừa của tiếp tuyến là số lẻ: lưu $\sec^2x$, quy đổi phần còn lại bằng $\tan^2x = \sec^2x - 1$, và thay $u = \tan x$.
+
+Ví dụ:
+
+$$
+\int \tan^3x \sec^2x \, dx
+$$
+
+Cho $u = \tan x$, $du = \sec^2x\,dx$:
+
+$$
+\int u^3\,du = \tfrac{u^4}{4} + C = \tfrac{\tan^4x}{4} + C.
+$$
+
+### Thay thế lượng giác
+
+Đối với các tích phân liên quan đến $\sqrt{a^2 - x^2}$, $\sqrt{a^2 + x^2}$ hoặc $\sqrt{x^2 - a^2}$, hãy sử dụng các phép thay thế đặc biệt:
+
+1. $x = a \sin \theta$, với $\sqrt{a^2 - x^2}$.
+2. $x = a \tan \theta$, với $\sqrt{a^2 + x^2}$.
+3. $x = a \sec \theta$, với $\sqrt{x^2 - a^2}$.
+
+Ví dụ:
+
+$$
+\int \sqrt{a^2 - x^2}\,dx
+$$
+
+Đặt $x = a\sin\theta$, vì vậy $dx = a\cos\theta\,d\theta$:
+
+$$
+\int \sqrt{a^2 - a^2\sin^2\theta}(a\cos\theta\,d\theta) = \int a^2 \cos^2\theta \, d\theta.
+$$
+
+Đơn giản hóa việc sử dụng danh tính nửa góc.
+
+### Tại sao những kỹ thuật này lại quan trọng
+
+- Chuyển các dạng đại số khó thành dạng lượng giác dễ học.
+- Chúng đặc biệt hữu ích trong các bài toán liên quan đến diện tích, thể tích và độ dài cung.
+- Đặt nền móng cho các phương pháp tích hợp tiên tiến.
+
+### Bài tập
+
+1. Tính giá $\int \sin^4x \cos^2x \, dx$.
+2. Tính $\int \sin(5x)\cos(2x)\,dx$.
+3. Tính giá $\int \tan^2x \sec^2x \, dx$.
+4. Tìm $\int \sqrt{9 - x^2}\,dx$ bằng cách sử dụng phép thay thế.
+5. Chứng minh rằng $\int \frac{dx}{\sqrt{x^2 + a^2}} = \ln|x + \sqrt{x^2 + a^2}| + C$ sử dụng $x = a\tan\theta$.
+
+## 5.4 Phân số một phần
+
+Khi tích phân các hàm hữu tỷ (tỷ lệ của đa thức), một phương pháp hiệu quả là phân rã từng phần. Kỹ thuật này biểu diễn một phân số phức tạp dưới dạng tổng của các phân số đơn giản hơn, dễ tích phân hơn.
+
+### Ý tưởng
+
+Nếu $R(x) = \frac{P(x)}{Q(x)}$ là một hàm hữu tỉ, trong đó bậc của $P(x)$ nhỏ hơn bậc của $Q(x)$, thì chúng ta có thể phân tách $R(x)$ thành các phân số đơn giản hơn.
+
+Những phần đơn giản hơn này tương ứng với các thừa số của mẫu số $Q(x)$.
+
+### Các dạng thông dụng
+
+1. Yếu tố tuyến tính riêng biệt
+   Nếu
+
+$$
+\frac{1}{(x-a)(x-b)},
+$$
+
+sau đó phân hủy thành
+
+$$
+\frac{A}{x-a} + \frac{B}{x-b}.
+$$
+
+2. Hệ số tuyến tính lặp lại
+   Nếu mẫu số có $(x-a)^n$, thì các số hạng là
+
+$$
+\frac{A_1}{x-a} + \frac{A_2}{(x-a)^2} + \dots + \frac{A_n}{(x-a)^n}.
+$$
+
+3. Hệ số bậc hai bất khả quy
+   Nếu mẫu số có $(x^2+bx+c)$, thì tử số là tuyến tính:
+
+$$
+\frac{Ax+B}{x^2+bx+c}.
+$$
+
+### Ví dụ 1: Hệ số tuyến tính riêng biệt
+
+$$
+\int \frac{1}{x^2 - 1}\,dx
+$$
+
+Mẫu số nhân tố: $(x-1)(x+1)$.
+Phân hủy:
+
+$$
+\frac{1}{x^2-1} = \frac{1}{2}\left(\frac{1}{x-1} - \frac{1}{x+1}\right).
+$$
+
+Tích hợp:
+
+$$
+\int \frac{1}{x^2 - 1}\,dx = \tfrac{1}{2}\ln\left|\frac{x-1}{x+1}\right| + C.
+$$
+
+### Ví dụ 2: Hệ số tuyến tính lặp
+
+$$
+\int \frac{1}{(x-1)^2}\,dx
+$$
+
+Việc này đã đơn giản rồi:
+
+$$
+\int (x-1)^{-2}\,dx = -\frac{1}{x-1} + C.
+$$
+
+### Ví dụ 3: Hệ số bậc hai bất khả quy
+
+$$
+\int \frac{x}{x^2+1}\,dx
+$$
+
+Thay $u = x^2+1$, hoặc nhận ra tử số là đạo hàm của mẫu số.
+
+$$
+\int \frac{x}{x^2+1}\,dx = \tfrac{1}{2}\ln(x^2+1) + C.
+$$
+
+### Các bước phân tách từng phần
+
+1. Phân tích mẫu số.
+2. Viết dạng phân số tổng quát.
+3. Nhân với mẫu số để xóa phân số.
+4. Giải các hằng số chưa biết.
+5. Tích hợp từng thuật ngữ.
+
+### Tại sao điều này lại quan trọng
+
+- Chuyển đổi các hàm số hữu tỷ phức tạp thành dạng logarit hoặc arctang đơn giản.
+- Đặc biệt hữu ích trong các phương trình vi phân và phép biến đổi Laplace.
+- Cơ bản về tính toán và kỹ thuật nâng cao.
+
+### Bài tập
+
+1. Phân tách và tích phân $\int \frac{3x+5}{x^2-1}\,dx$.
+2. Tính giá $\int \frac{1}{x^2(x+1)}\,dx$.
+3. Tính $\int \frac{2x+1}{x^2+2x+2}\,dx$.
+4. Tìm $\int \frac{1}{x^3 - x}\,dx$.
+5. Chứng minh $\int \frac{dx}{x^2+1} = \arctan x + C$ bằng cách sử dụng phân số một phần hoặc thay thế.
+
+## 5.5 Tích phân không đúng
+
+Một số tích phân không thể được tính trực tiếp vì khoảng là vô hạn hoặc tích phân trở nên không bị chặn. Chúng được gọi là tích phân không đúng. Chúng được xác định bằng cách sử dụng các giới hạn.
+
+### Sự định nghĩa
+
+1. Khoảng thời gian vô hạn
+
+$$
+\int_a^\infty f(x)\,dx = \lim_{b \to \infty} \int_a^b f(x)\,dx.
+$$
+
+$$
+\int_{-\infty}^a f(x)\,dx = \lim_{b \to -\infty} \int_b^a f(x)\,dx.
+$$
+
+2. Tích phân không giới hạn
+   Nếu $f(x)$ có tiệm cận đứng tại $c$, thì
+
+$$
+\int_a^c f(x)\,dx = \lim_{t \to c^-} \int_a^t f(x)\,dx,
+$$
+
+$$
+\int_c^b f(x)\,dx = \lim_{t \to c^+} \int_t^b f(x)\,dx.
+$$
+
+### Hội tụ và phân kỳ
+
+- Nếu giới hạn tồn tại và hữu hạn thì tích phân suy rộng sẽ hội tụ.
+- Nếu giới hạn không tồn tại hoặc vô hạn thì tích phân suy rộng sẽ phân kỳ.
+
+### Ví dụ
+
+1. Phân rã theo cấp số nhân
+
+$$
+\int_1^\infty \frac{1}{x^2}\,dx = \lim_{b \to \infty} \Big[-\tfrac{1}{x}\Big]_1^b = 1.
+$$
+
+Điều này hội tụ.
+
+2. Chức năng điều hòa
+
+$$
+\int_1^\infty \frac{1}{x}\,dx = \lim_{b \to \infty} \ln b.
+$$
+
+Điều này phân kỳ đến vô cùng.
+
+3. Đường tiệm cận tại 0
+
+$$
+\int_0^1 \frac{1}{\sqrt{x}}\,dx = \lim_{t \to 0^+} \int_t^1 x^{-1/2}\,dx.
+$$
+
+$$
+= \lim_{t \to 0^+} [2\sqrt{x}]_t^1 = 2.
+$$
+
+Điều này hội tụ.
+
+4. Đường tiệm cận tại 0 (phân kỳ)
+
+$$
+\int_0^1 \frac{1}{x}\,dx = \lim_{t \to 0^+} \ln(1) - \ln(t).
+$$
+
+Điều này phân kỳ vì $\ln(t) \to -\infty$.
+
+### Kiểm tra so sánh các tích phân không đúng
+
+- Nếu $0 \leq f(x) \leq g(x)$ đối với $x$ lớn và $\int g(x)\,dx$ hội tụ, thì $\int f(x)\,dx$ cũng hội tụ.
+- Nếu $\int f(x)\,dx$ phân kỳ và $f(x) \geq g(x) \geq 0$, thì $\int g(x)\,dx$ cũng phân kỳ.
+
+### Tại sao tích phân không đúng lại quan trọng
+
+- Chúng mở rộng tích hợp tới các miền vô hạn và các chức năng không giới hạn.
+- Chúng rất cần thiết trong xác suất (phân bố liên tục), vật lý (trường hấp dẫn/điện trường) và phân tích Fourier.
+
+### Bài tập
+
+1. Xác định xem $\int_1^\infty \frac{1}{x^p}\,dx$ có hội tụ với các giá trị khác nhau của $p$ hay không.
+2. Tính giá $\int_0^\infty e^{-x}\,dx$.
+3. Kiểm tra sự hội tụ của $\int_0^1 \frac{1}{x^p}\,dx$ tùy thuộc vào $p$.
+4. Tính $\int_{-\infty}^\infty \frac{1}{1+x^2}\,dx$.
+5. Sử dụng phép kiểm tra so sánh để chứng tỏ rằng $\int_1^\infty \frac{1}{x^2+1}\,dx$ hội tụ.
+
+# Chương 6. Ứng dụng của Tích hợp
+
+## 6.1 Khu vực và Khối lượng
+
+Một trong những ứng dụng quan trọng nhất của tích phân là tìm diện tích dưới đường cong và thể tích của chất rắn.
+
+### Vùng giữa các đường cong
+
+Nếu $f(x) \geq g(x)$ trên $[a, b]$, thì diện tích giữa các đường cong $y=f(x)$ và $y=g(x)$ là
+
+$$
+A = \int_a^b \big(f(x) - g(x)\big)\,dx.
+$$
+
+Ví dụ:
+Tìm diện tích giữa $y=x^2$ và $y=x$ trên $[0,1]$.
+
+$$
+A = \int_0^1 (x - x^2)\,dx = \left[\tfrac{1}{2}x^2 - \tfrac{1}{3}x^3\right]_0^1 = \tfrac{1}{6}.
+$$
+
+### Tập bằng cách cắt
+
+Nếu một vật rắn có diện tích tiết diện $A(x)$ tại vị trí $x$ thì thể tích là
+
+$$
+V = \int_a^b A(x)\,dx.
+$$
+
+### Tập cách mạng
+
+Khi một vùng được quay quanh một trục, thể tích của chất rắn thu được có thể được tìm thấy bằng tích phân.
+
+1. Phương pháp đĩa
+   Nếu vùng bên dưới $y=f(x)$, $x\in[a,b]$, được xoay quanh trục $x$:
+
+$$
+V = \pi \int_a^b [f(x)]^2\,dx.
+$$
+
+2. Phương pháp giặt
+   Nếu vùng giữa $y=f(x)$ và $y=g(x)$ được xoay quanh trục $x$:
+
+$$
+V = \pi \int_a^b \Big([f(x)]^2 - [g(x)]^2\Big)\,dx.
+$$
+
+3. Phương pháp vỏ
+   Nếu vùng bên dưới $y=f(x)$ được xoay quanh trục $y$:
+
+$$
+V = 2\pi \int_a^b x f(x)\,dx.
+$$
+
+### Ví dụ
+
+1. Phương pháp đĩa
+   Xoay $y=\sqrt{x}$, $0 \leq x \leq 4$, quanh trục $x$:
+
+$$
+V = \pi \int_0^4 (\sqrt{x})^2\,dx = \pi \int_0^4 x\,dx = \pi \left[\tfrac{1}{2}x^2\right]_0^4 = 8\pi.
+$$
+
+2. Phương pháp giặt
+   Xoay vùng giữa $y=\sqrt{x}$ và $y=1$, $0 \leq x \leq 1$, quanh trục $x$:
+
+$$
+V = \pi \int_0^1 \big((\sqrt{x})^2 - (1)^2\big)\,dx = \pi \int_0^1 (x-1)\,dx = -\tfrac{\pi}{2}.
+$$
+
+(Lấy giá trị tuyệt đối cho khối lượng: $V = \tfrac{\pi}{2}$).
+
+3. Phương pháp vỏ
+   Xoay vùng dưới $y=x$, $0 \leq x \leq 1$, quanh trục $y$:
+
+$$
+V = 2\pi \int_0^1 x(x)\,dx = 2\pi \int_0^1 x^2\,dx = 2\pi \cdot \tfrac{1}{3} = \tfrac{2\pi}{3}.
+$$
+
+### Tại sao điều này lại quan trọng
+
+- Cung cấp các cách chính xác để tính diện tích và thể tích trong hình học.
+- Cần thiết trong vật lý, kỹ thuật và xác suất.
+- Giới thiệu tư duy hình học tích hợp.
+
+### Bài tập
+
+1. Tìm diện tích giữa $y=\cos x$ và $y=\sin x$ trên $[0, \pi/2]$.
+2. Tính thể tích của vật rắn được hình thành bằng cách quay $y=x^2$, $0 \leq x \leq 1$, quanh trục $x$.
+3. Tìm thể tích của vật rắn được hình thành bằng cách quay vùng giữa $y=x$ và $y=\sqrt{x}$ trên $[0,1]$ quanh trục $y$.
+4. Sử dụng phương pháp vòng đệm để tính thể tích của vật rắn được hình thành bằng cách quay $y=\sqrt{1-x^2}$ (hình bán nguyệt) quanh trục $x$.
+5. Tìm diện tích nằm giữa $y=x^2+1$ và $y=3x$.
+
+## 6.2 Chiều dài cung và diện tích bề mặt
+
+Tích phân cũng có thể được sử dụng để đo chiều dài của đường cong và diện tích bề mặt của chất rắn được tạo ra bởi các đường cong quay.
+
+### Độ dài cung
+
+Đối với một đường cong trơn $y=f(x)$ trên đoạn $[a,b]$, độ dài của đường cong là
+
+$$
+L = \int_a^b \sqrt{1 + \big(f'(x)\big)^2}\,dx.
+$$
+
+Điều này xuất phát từ việc xấp xỉ đường cong với các đoạn đường và lấy giới hạn.
+
+Ví dụ:
+Tìm độ dài của $y=\tfrac{1}{2}x^{3/2}$ từ $x=0$ đến $x=4$.
+
+- Đạo hàm: $f'(x) = \tfrac{3}{4}\sqrt{x}$.
+- Công thức:
+
+$$
+L = \int_0^4 \sqrt{1 + \Big(\tfrac{3}{4}\sqrt{x}\Big)^2}\,dx
+= \int_0^4 \sqrt{1 + \tfrac{9}{16}x}\,dx.
+$$
+
+Tích phân này có thể được đánh giá bằng cách thay thế.
+
+### Diện tích bề mặt cách mạng
+
+Nếu một đường cong $y=f(x)$, $a \leq x \leq b$, được xoay quanh trục $x$, thì diện tích bề mặt của vật rắn thu được là
+
+$$
+S = 2\pi \int_a^b f(x)\sqrt{1 + \big(f'(x)\big)^2}\,dx.
+$$
+
+Nếu xoay quanh trục $y$:
+
+$$
+S = 2\pi \int_a^b x \sqrt{1 + \big(f'(x)\big)^2}\,dx.
+$$
+
+### Ví dụ
+
+1. Độ dài cung của một đường thẳng
+   Với $y=x$, $0 \leq x \leq 3$:
+
+$$
+L = \int_0^3 \sqrt{1+(1)^2}\,dx = \int_0^3 \sqrt{2}\,dx = 3\sqrt{2}.
+$$
+
+2. Diện tích bề mặt của hình cầu
+   Lấy $y = \sqrt{r^2 - x^2}$, $-r \leq x \leq r$ và xoay quanh trục $x$.
+
+$$
+S = 2\pi \int_{-r}^r \sqrt{r^2 - x^2}\sqrt{1+\left(\frac{-x}{\sqrt{r^2-x^2}}\right)^2}\,dx.
+$$
+
+Đơn giản hóa ta có $S = 4\pi r^2$, công thức quen thuộc tính diện tích bề mặt của hình cầu.
+
+### Tại sao điều này lại quan trọng
+
+- Độ dài cung mở rộng ý tưởng về khoảng cách tới những đường cong.
+- Diện tích bề mặt cách mạng có ứng dụng trong vật lý, kỹ thuật và thiết kế.
+- Cung cấp một cầu nối giữa giải tích và hình học.
+
+### Bài tập
+
+1. Tìm độ dài cung của $y=\sqrt{x}$ từ $x=0$ đến $x=4$.
+2. Tính diện tích bề mặt của vật rắn thu được bằng cách quay $y=x^2$, $0 \leq x \leq 1$, quanh trục $x$.
+3. Tìm độ dài cung của $y=\ln(\cosh x)$ từ $x=0$ đến $x=1$.
+4. Chứng minh rằng việc quay $y=\sqrt{r^2 - x^2}$ từ $0$ đến $r$ quanh trục $x$ sẽ có một nửa diện tích bề mặt của hình cầu.
+5. Suy ra công thức tính diện tích toàn phần của hình nón bằng cách quay một đường thẳng.
+
+## 6.3 Công việc và Trung bình
+
+Tích hợp không giới hạn ở hình học. Nó cũng giúp tính toán công do một lực thực hiện và giá trị trung bình của hàm số trong một khoảng.
+
+### Công việc
+
+Nếu một lực thay đổi $F(x)$ di chuyển một vật dọc theo một đường thẳng từ $x=a$ đến $x=b$, thì tổng công là
+
+$$
+W = \int_a^b F(x)\,dx.
+$$
+
+Công thức này khái quát hóa trường hợp đơn giản $W = F \cdot d$ cho lực không đổi.
+
+Ví dụ 1: Lực lò xo (Định luật Hooke)
+Đối với một lò xo kéo dài từ độ dài $a$ đến $b$, với lực $F(x) = kx$:
+
+$$
+W = \int_a^b kx\,dx = \tfrac{1}{2}k(b^2-a^2).
+$$
+
+Ví dụ 2: Bơm nước
+Nếu bơm nước ra khỏi bể thì công cần thiết bằng
+
+$$
+W = \int_a^b \text{(weight density)} \times \text{(cross-sectional area)} \times \text{(distance lifted)} \, dx.
+$$
+
+### Giá trị trung bình của hàm
+
+Giá trị trung bình của hàm liên tục $f(x)$ trên $[a,b]$ là
+
+$$
+f_{\text{avg}} = \frac{1}{b-a} \int_a^b f(x)\,dx.
+$$
+
+Đây là sự tương tự liên tục của việc tính trung bình một danh sách các số.
+
+Ví dụ 1:
+Với $f(x)=x^2$ trên $[0,2]$:
+
+$$
+f_{\text{avg}} = \tfrac{1}{2-0}\int_0^2 x^2 dx = \tfrac{1}{2}\cdot \tfrac{8}{3} = \tfrac{4}{3}.
+$$
+
+Ví dụ 2:
+Nếu vận tốc của một hạt là $v(t)$ thì vận tốc trung bình trên $[a,b]$ là
+
+$$
+v_{\text{avg}} = \frac{1}{b-a}\int_a^b v(t)\,dt.
+$$
+
+### Tại sao điều này lại quan trọng
+
+- Tích phân công xuất hiện trong các tính toán vật lý, kỹ thuật và năng lượng.
+- Giá trị trung bình cho một số đại diện duy nhất cho các đại lượng khác nhau.
+- Cả hai đều kết nối phép tính với các bài toán thực tế về chuyển động, lực và hiệu suất.
+
+### Bài tập
+
+1. Tính công cần thiết để kéo dãn một lò xo từ 2 m lên 5 m nếu $k=10$.
+2. Một vật có khối lượng 100 kg được nâng thẳng đứng lên cao 5 m trong trường hấp dẫn ($g=9,8 \,\text{m/s}^2$). Thể hiện công việc như một phần không thể thiếu và đánh giá.
+3. Tìm giá trị trung bình của $f(x)=\sin x$ trên $[0,\pi]$.
+4. Tính nhiệt độ trung bình nếu $T(t)=20+5\cos(\tfrac{\pi t}{12})$ trong 24 giờ một ngày.
+5. Một bể có độ sâu 10 m chứa đầy nước. Tính công cần thiết để bơm toàn bộ nước lên trên, biết nước nặng $9800 \,\text{N/m}^3$.
+
+## 6.4 Mật độ xác suất và phân bố liên tục
+
+Tích phân cũng đóng vai trò trung tâm trong lý thuyết xác suất, đặc biệt đối với các biến ngẫu nhiên liên tục. Thay vì các kết quả riêng biệt, chúng tôi mô tả xác suất bằng các hàm gọi là hàm mật độ xác suất (pdf).
+
+### Hàm mật độ xác suất
+
+Hàm mật độ xác suất $f(x)$ phải thỏa mãn hai điều kiện:
+
+1. $f(x) \geq 0$ với mọi $x$.
+2. Tổng diện tích dưới đường cong là 1:
+
+   $$
+   \int_{-\infty}^\infty f(x)\,dx = 1.
+   $$
+
+Nếu $X$ là một biến ngẫu nhiên liên tục với pdf $f(x)$, thì xác suất để $X$ nằm giữa $a$ và $b$ là
+
+$$
+P(a \leq X \leq b) = \int_a^b f(x)\,dx.
+$$
+
+### Hàm phân phối tích lũy
+
+Hàm phân phối tích lũy (cdf) được định nghĩa là
+
+$$
+F(x) = \int_{-\infty}^x f(t)\,dt.
+$$
+
+Nó cho biết xác suất để biến ngẫu nhiên nhỏ hơn hoặc bằng $x$.
+
+### Giá trị mong đợi (Trung bình)
+
+Giá trị kỳ vọng của một biến ngẫu nhiên liên tục là giá trị trung bình có trọng số:
+
+$$
+E[X] = \int_{-\infty}^\infty x f(x)\,dx.
+$$
+
+### Ví dụ
+
+1. Phân phối thống nhất
+   Với $f(x) = \tfrac{1}{b-a}$ trên $[a,b]$:
+
+- Xác suất của khoảng $[c,d]$:
+
+  $$
+  P(c \leq X \leq d) = \frac{d-c}{b-a}.
+  $$
+- Expected value: $E[X] = \tfrac{a+b}{2}$.
+
+2. Phân phối theo cấp số nhân
+   Với $f(x) = \lambda e^{-\lambda x}$, $x \geq 0$:
+
+- $\int_0^\infty \lambda e^{-\lambda x}\,dx = 1$.
+- Giá trị trung bình: $E[X] = \tfrac{1}{\lambda}$.
+
+3. Phân phối chuẩn
+   Đường cong hình chuông:
+
+$$
+f(x) = \frac{1}{\sqrt{2\pi\sigma^2}} e^{-\frac{(x-\mu)^2}{2\sigma^2}}.
+$$
+
+Nó tích hợp thành 1, nhưng đòi hỏi kỹ thuật tiên tiến.
+
+### Tại sao điều này lại quan trọng
+
+- Mật độ xác suất mô tả sự không chắc chắn trong khoa học, kỹ thuật và thống kê.
+- Tích phân kết nối các khu vực dưới đường cong với xác suất.
+- Phân phối liên tục khái quát hóa ý tưởng tính kết quả để đo lường khả năng xảy ra trong các khoảng thời gian.
+
+### Bài tập
+
+1. Chứng minh rằng mật độ đồng nhất $f(x) = \tfrac{1}{b-a}$ trên $[a,b]$ tích phân thành 1.
+2. Đối với phân phối mũ với $\lambda = 2$, hãy tính $P(0 \leq X \leq 1)$.
+3. Tìm giá trị kỳ vọng của $X$ nếu $f(x) = 3x^2$ trên $[0,1]$.
+4. Xác minh rằng phân phối chuẩn với trung bình 0 và phương sai 1 có tổng xác suất là 1 (không cần bằng chứng đầy đủ nhưng hãy giải thích lý do tại sao nó đúng).
+5. Tính cdf của phân bố đều trên $[0,1]$.
+
+#Phần III. Phép tính đa biến
+
+# Chương 7. Hàm vectơ và đường cong
+
+## 7.1 Hàm vectơ và đường cong không gian
+
+Trong phép tính nhiều biến, các hàm có thể xuất ra vectơ thay vì số. Chúng được gọi là các hàm có giá trị vectơ và chúng rất cần thiết để mô tả các đường cong trong không gian.
+
+### Sự định nghĩa
+
+Hàm vectơ là hàm có dạng
+
+$$
+\mathbf{r}(t) = \langle x(t), y(t), z(t) \rangle,
+$$
+
+trong đó $x(t), y(t), z(t)$ là các hàm có giá trị thực.
+
+- Đầu vào $t$ thường được gọi là tham số.
+- Đầu ra là một vector trong không gian 2D hoặc 3D.
+- Đồ thị của hàm vectơ trong không gian 3D là đường cong không gian.
+
+### Ví dụ
+
+1. Đường dây
+
+$$
+\mathbf{r}(t) = \langle 1+2t, \; 3-t, \; 4+5t \rangle.
+$$
+
+Điều này mô tả một đường thẳng đi qua điểm $(1,3,4)$ với vectơ chỉ phương $\langle 2,-1,5 \rangle$.
+
+2. Vòng tròn trong mặt phẳng
+
+$$
+\mathbf{r}(t) = \langle \cos t, \; \sin t, \; 0 \rangle, \quad 0 \leq t < 2\pi.
+$$
+
+3. Chuỗi xoắn
+
+$$
+\mathbf{r}(t) = \langle \cos t, \; \sin t, \; t \rangle.
+$$
+
+Đây là một đường xoắn ốc tăng lên xung quanh trục $z$.
+
+### Giới hạn và tính liên tục
+
+Một hàm vectơ liên tục tại $t=a$ nếu mỗi thành phần $x(t), y(t), z(t)$ liên tục tại $t=a$.
+
+$$
+\lim_{t \to a} \mathbf{r}(t) = \langle \lim_{t \to a} x(t), \; \lim_{t \to a} y(t), \; \lim_{t \to a} z(t) \rangle.
+$$
+
+### Hình học của đường cong không gian
+
+- Mỗi đường cong có một hướng tiếp tuyến được cho bởi đạo hàm.
+- Đường cong không gian có thể mô hình hóa đường chuyển động, quỹ đạo hạt và hình dạng hình học.
+
+### Tại sao điều này lại quan trọng
+
+Hàm vectơ là nền tảng cho phép tính nhiều biến, cho phép chúng ta mở rộng ý tưởng về đạo hàm và tích phân sang các chiều cao hơn. Chúng cũng xuất hiện một cách tự nhiên trong vật lý (chuyển động trong không gian 3D, điện từ, động lực học chất lỏng).
+
+### Bài tập
+
+1. Viết hàm vectơ cho đường thẳng đi qua $(0,1,2)$ song song với vectơ $\langle 3,-2,1 \rangle$.
+2. Hãy mô tả đường cong cho bởi $\mathbf{r}(t) = \langle 2\cos t, \; 2\sin t, \; 3 \rangle$.
+3. Xác định xem $\mathbf{r}(t) = \langle e^t, \; \lnt, \; t^2 \rangle$ liên tục tại $t=1$.
+4. Vẽ đường xoắn $\mathbf{r}(t) = \langle \cos t, \; \sin t, \; 2t \rangle$.
+5. Tìm điểm trên đường cong $\mathbf{r}(t) = \langle t, \; t^2, \; t^3 \rangle$ khi $t=2$.
+
+## 7.2 Đạo hàm và tích phân của hàm vectơ
+
+Các hàm vectơ có thể được vi phân và tích hợp giống như các hàm thông thường - chúng ta chỉ cần áp dụng thao tác cho từng thành phần. Điều này cho phép chúng ta nghiên cứu chuyển động, vận tốc, gia tốc và sự tích lũy ở các chiều cao hơn.
+
+### Đạo hàm của hàm vectơ
+
+Nếu như
+
+$$
+\mathbf{r}(t) = \langle x(t), y(t), z(t) \rangle,
+$$
+
+sau đó
+
+$$
+\mathbf{r}'(t) = \langle x'(t), y'(t), z'(t) \rangle.
+$$
+
+Vectơ đạo hàm này hướng tiếp tuyến với đường cong tại tham số $t$.
+
+- Vận tốc: Nếu $\mathbf{r}(t)$ cho biết vị trí của một hạt tại thời điểm $t$ thì $\mathbf{v}(t) = \mathbf{r}'(t)$ là vectơ vận tốc của hạt.
+- Tốc độ: Độ lớn $|\mathbf{v}(t)|$ là tốc độ của hạt.
+- Gia tốc: $\mathbf{a}(t) = \mathbf{v}'(t) = \mathbf{r}''(t)$.
+
+### Ví dụ
+
+1. Đường xoắn ốc
+
+$$
+\mathbf{r}(t) = \langle \cos t, \sin t, t \rangle.
+$$
+
+- Vận tốc: $\mathbf{v}(t) = \langle -\sin t, \cos t, 1 \rangle$.
+- Tốc độ: $|\mathbf{v}(t)| = \sqrt{(-\sin t)^2 + (\cos t)^2 + 1^2} = \sqrt{2}$.
+- Gia tốc: $\mathbf{a}(t) = \langle -\cos t, -\sin t, 0 \rangle$.
+
+2. Chuyển động của đạn
+
+$$
+\mathbf{r}(t) = \langle v_0 \cos\theta \cdot t, \; v_0 \sin\theta \cdot t - \tfrac{1}{2}gt^2 \rangle.
+$$
+
+Điều này mô hình hóa đường parabol của một viên đạn dưới tác dụng của trọng lực.
+
+### Tích phân của hàm vectơ
+
+Nếu như
+
+$$
+\mathbf{r}(t) = \langle x(t), y(t), z(t) \rangle,
+$$
+
+sau đó
+
+$$
+\int \mathbf{r}(t)\,dt = \left\langle \int x(t)\,dt, \; \int y(t)\,dt, \; \int z(t)\,dt \right\rangle + \mathbf{C},
+$$
+
+trong đó $\mathbf{C}$ là một vectơ không đổi.
+
+### Ví dụ
+
+$$
+\mathbf{r}(t) = \langle t, t^2, t^3 \rangle.
+$$
+
+- Đạo hàm: $\mathbf{r}'(t) = \langle 1, 2t, 3t^2 \rangle$.
+- Tích phân:
+
+$$
+\int \mathbf{r}(t)\,dt = \langle \tfrac{1}{2}t^2, \tfrac{1}{3}t^3, \tfrac{1}{4}t^4 \rangle + \mathbf{C}.
+$$
+
+### Tại sao điều này lại quan trọng
+
+- Đạo hàm của hàm vectơ mô tả chuyển động và các lực trong không gian.
+- Tích phân cho biết độ dịch chuyển, công và các đại lượng tích lũy.
+- Những công cụ này kết nối trực tiếp phép tính với vật lý và kỹ thuật.
+
+### Bài tập
+
+1. Với $\mathbf{r}(t) = \langle t, \cos t, \sin t \rangle$, tìm vận tốc, vận tốc và gia tốc.
+2. Tính $\mathbf{r}'(t)$ với $\mathbf{r}(t) = \langle e^t, \ln t, t^2 \rangle$.
+3. Tích phân $\mathbf{r}(t) = \langle 1, t, t^2 \rangle$.
+4. Một hạt có vận tốc $\mathbf{v}(t) = \langle t, 2, 0 \rangle$. Tìm vectơ vị trí của nó nếu $\mathbf{r}(0) = \langle 1, 0, 0 \rangle$.
+5. Chứng minh rằng tốc độ của $\mathbf{r}(t) = \langle \cos t, \sin t, 0 \rangle$ là không đổi.
+
+## 7.3 Chiều dài và độ cong của cung
+
+Phép tính vectơ cung cấp các công cụ để đo không chỉ đường đi được vạch ra bởi một đường cong mà còn đo độ cong của nó. Chúng được thể hiện thông qua chiều dài cung và độ cong.
+
+### Độ dài cung của đường cong không gian
+
+Nếu một đường cong được cho bởi
+
+$$
+\mathbf{r}(t) = \langle x(t), y(t), z(t) \rangle, \quad a \leq t \leq b,
+$$
+
+thì độ dài cung là
+
+$$
+L = \int_a^b |\mathbf{r}'(t)|\,dt,
+$$
+
+Ở đâu
+
+$$
+|\mathbf{r}'(t)| = \sqrt{(x'(t))^2 + (y'(t))^2 + (z'(t))^2}.
+$$
+
+Ví dụ:
+Đối với chuỗi xoắn $\mathbf{r}(t) = \langle \cos t, \sin t, t \rangle, \, 0 \leq t \leq 2\pi$:
+
+- Vận tốc: $\mathbf{r}'(t) = \langle -\sin t, \cos t, 1 \rangle$.
+- Tốc độ: $|\mathbf{r}'(t)| = \sqrt{(-\sin t)^2 + (\cos t)^2 + 1^2} = \sqrt{2}$.
+- Độ dài cung:
+
+$$
+L = \int_0^{2\pi} \sqrt{2}\,dt = 2\pi\sqrt{2}.
+$$
+
+### Độ cong
+
+Độ cong đo tốc độ đường cong thay đổi hướng.
+
+Đối với một đường cong trơn $\mathbf{r}(t)$:
+
+$$
+\kappa(t) = \frac{|\mathbf{r}'(t) \times \mathbf{r}''(t)|}{|\mathbf{r}'(t)|^3}.
+$$
+
+- $\kappa = 0$: đường thẳng.
+- $\kappa$ càng lớn: đường cong càng cong.
+
+Ví dụ:
+Đối với đường tròn bán kính $r$:
+
+$$
+\mathbf{r}(t) = \langle r\cos t, r\sin t \rangle.
+$$
+
+Khi đó $\kappa = \tfrac{1}{r}$.
+Vì vậy độ cong không đổi và tỷ lệ nghịch với bán kính.
+
+### Đơn vị tiếp tuyến và vectơ pháp tuyến
+
+- Vectơ tiếp tuyến:
+
+$$
+\mathbf{T}(t) = \frac{\mathbf{r}'(t)}{|\mathbf{r}'(t)|}.
+$$
+
+- Vector pháp tuyến: hướng về tâm cong, được định nghĩa là
+
+$$
+\mathbf{N}(t) = \frac{\mathbf{T}'(t)}{|\mathbf{T}'(t)|}.
+$$
+
+Các vectơ này mô tả hình học của chuyển động: hướng di chuyển và hướng quay.
+
+### Tại sao điều này lại quan trọng
+
+- Độ dài cung khái quát khái niệm khoảng cách tới các đường cong trong không gian.
+- Độ cong mô tả sự uốn cong, rất quan trọng trong vật lý (gia tốc hướng tâm), kỹ thuật (đường, tàu lượn siêu tốc) và đồ họa máy tính.
+
+### Bài tập
+
+1. Tìm độ dài cung của $\mathbf{r}(t) = \langle t, t^2, 0 \rangle$ từ $t=0$ đến $t=1$.
+2. Tính độ cong của đường tròn $\mathbf{r}(t) = \langle \cos t, \sin t \rangle$.
+3. Với $\mathbf{r}(t) = \langle t, \cos t, \sin t \rangle$, hãy tính $|\mathbf{r}'(t)|$.
+4. Chứng minh đường thẳng có độ cong $\kappa = 0$.
+5. Tìm vectơ tiếp tuyến của $\mathbf{r}(t) = \langle e^t, e^{-t}, t \rangle$ tại $t=0$.
+
+## 7.4 Chuyển động trong không gian
+
+Hàm vectơ đặc biệt mạnh mẽ trong việc mô tả chuyển động theo hai hoặc ba chiều. Vị trí, vận tốc và gia tốc được biểu diễn một cách tự nhiên bằng cách sử dụng đạo hàm và tích phân của các hàm có giá trị vectơ.
+
+### Vị trí, Vận tốc và Gia tốc
+
+- Vectơ vị trí:
+
+$$
+\mathbf{r}(t) = \langle x(t), y(t), z(t) \rangle
+$$
+
+- Vector vận tốc (đạo hàm vị trí):
+
+$$
+\mathbf{v}(t) = \mathbf{r}'(t) = \langle x'(t), y'(t), z'(t) \rangle
+$$
+
+- Tốc độ (độ lớn của vận tốc):
+
+$$
+|\mathbf{v}(t)| = \sqrt{(x'(t))^2 + (y'(t))^2 + (z'(t))^2}
+$$
+
+- Vectơ gia tốc (đạo hàm của vận tốc):
+
+$$
+\mathbf{a}(t) = \mathbf{v}'(t) = \mathbf{r}''(t).
+$$
+
+### Thành phần tiếp tuyến và pháp tuyến
+
+Gia tốc có thể được phân tách thành hai thành phần:
+
+$$
+\mathbf{a}(t) = a_T \mathbf{T}(t) + a_N \mathbf{N}(t),
+$$
+
+Ở đâu:
+
+- $\mathbf{T}(t)$ = vectơ tiếp tuyến đơn vị,
+- $\mathbf{N}(t)$ = vectơ pháp tuyến chính,
+- $a_T = \frac{d}{dt}|\mathbf{v}(t)|$ = gia tốc tiếp tuyến (thay đổi tốc độ),
+- $a_N = \kappa |\mathbf{v}(t)|^2$ = gia tốc bình thường (đổi hướng).
+
+### Chuyển động của đạn ở dạng 3D
+
+Với trọng lực tác dụng theo hướng $-z$:
+
+$$
+\mathbf{r}(t) = \langle v_0 \cos\theta \cos\phi \cdot t,\; v_0 \cos\theta \sin\phi \cdot t,\; v_0 \sin\theta \cdot t - \tfrac{1}{2}gt^2 \rangle,
+$$
+
+trong đó $v_0$ là tốc độ ban đầu, $\theta$ góc phóng và $\phi$ hướng phương vị.
+
+### Ví dụ: Chuyển động xoắn ốc
+
+$$
+\mathbf{r}(t) = \langle \cos t, \sin t, t \rangle
+$$
+
+- Vận tốc: $\mathbf{v}(t) = \langle -\sin t, \cos t, 1 \rangle$.
+- Tốc độ: $|\mathbf{v}(t)| = \sqrt{2}$.
+- Gia tốc: $\mathbf{a}(t) = \langle -\cos t, -\sin t, 0 \rangle$.
+- Chuyển động có tốc độ đều, chuyển động xoắn ốc hướng lên trên.
+
+### Tại sao điều này lại quan trọng
+
+- Cung cấp ngôn ngữ toán học cho chuyển động trong thế giới thực.
+- Cần thiết trong vật lý (lực, quỹ đạo, chuyển động tròn).
+- Nền tảng cho các mô hình cơ khí và kỹ thuật tiên tiến.
+
+### Bài tập
+
+1. Một hạt chuyển động dọc theo $\mathbf{r}(t) = \langle t, t^2, t^3 \rangle$. Tìm vận tốc và gia tốc tại $t=1$.
+2. Chứng minh rằng tốc độ không đổi đối với đường xoắn ốc $\mathbf{r}(t) = \langle \cos t, \sin t, t \rangle$.
+3. Một viên đạn được phóng với góc $v_0 = 20 \,\text{m/s}$ với góc $45^\circ$. Viết vectơ vị trí của nó giả sử chuyển động trong mặt phẳng thẳng đứng.
+4. Với $\mathbf{r}(t) = \langle e^t, e^{-t}, t \rangle$, tìm $\mathbf{v}(t)$ và $\mathbf{a}(t)$.
+5. Phân tích vectơ gia tốc thành các thành phần tiếp tuyến và pháp tuyến đối với chuyển động dọc theo đường tròn bán kính $r$.
+
+# Chương 8. Hàm nhiều biến
+
+## 8.1 Giới hạn và tính liên tục của một số biến
+
+Trong phép tính nhiều biến, các hàm có thể phụ thuộc vào hai hoặc nhiều biến, chẳng hạn như $f(x,y)$ hoặc $f(x,y,z)$. Các khái niệm về giới hạn và tính liên tục mở rộng một cách tự nhiên từ phép tính một biến, nhưng chúng tinh tế hơn vì chúng ta phải xem xét tất cả các cách tiếp cận có thể có.
+
+### Giới hạn của hai biến
+
+Đối với hàm $f(x,y)$, ta nói
+
+$$
+\lim_{(x,y) \to (a,b)} f(x,y) = L
+$$
+
+nếu $f(x,y)$ tùy ý tiến gần đến $L$ khi $(x,y)$ tiến đến $(a,b)$ dọc theo bất kỳ đường dẫn nào.
+
+Nếu các đường dẫn khác nhau cho các giá trị giới hạn khác nhau thì giới hạn đó không tồn tại.
+
+Ví dụ 1 (tồn tại giới hạn):
+
+$$
+f(x,y) = x^2 + y^2, \quad \lim_{(x,y) \to (0,0)} f(x,y) = 0.
+$$
+
+Ví dụ 2 (không tồn tại giới hạn):
+
+$$
+f(x,y) = \frac{xy}{x^2+y^2}, \quad (x,y) \to (0,0).
+$$
+
+- Cùng $y=0$ thì hàm số bằng 0.
+- Cùng với $y=x$, hàm số là $\tfrac{1}{2}$.
+  Kết quả khác nhau → giới hạn không tồn tại.
+
+### Tính liên tục
+
+Hàm $f(x,y)$ liên tục tại $(a,b)$ nếu
+
+$$
+\lim_{(x,y)\to(a,b)} f(x,y) = f(a,b).
+$$
+
+Đa thức và hàm hữu tỷ (trong đó mẫu số ≠ 0) liên tục ở mọi nơi trong miền của chúng.
+
+### Mở rộng thành ba biến trở lên
+
+Đối với $f(x,y,z)$, giới hạn và tính liên tục được xác định theo cùng một cách, nhưng điểm $(a,b,c)$ phải được tiếp cận từ vô số hướng trong không gian.
+
+### Tại sao điều này lại quan trọng
+
+- Tính liên tục đảm bảo không có bước nhảy, lỗ trống hoặc tiệm cận trong hàm số nhiều biến.
+- Giới hạn là cơ sở để xác định đạo hàm riêng và tích phân bội.
+- Những khái niệm này là nền tảng cho phép tính nhiều biến.
+
+### Bài tập
+
+1. Xác định xem $\lim_{(x,y)\to(0,0)} (x^2+y^2)$ có tồn tại hay không.
+2. Chứng minh rằng $\lim_{(x,y)\to(0,0)} \frac{x^2y}{x^2+y^2} = 0$ dọc theo tất cả các đường thẳng $y=mx$.
+3. Có tồn tại giới hạn cho $f(x,y) = \frac{x^2-y^2}{x^2+y^2}$ là $(x,y)\to(0,0)$ không?
+4. Giải thích tại sao đa thức hai biến liên tục ở mọi nơi.
+5. Cho ví dụ về hàm hai biến không liên tục tại một điểm và giải thích tại sao.
+
+## 8.2 Đạo hàm riêng phần
+
+Trong hàm nhiều biến, chúng ta thường muốn đo xem hàm này thay đổi như thế nào khi chỉ có một biến thay đổi trong khi các biến khác không đổi. Điều này dẫn đến ý tưởng về đạo hàm riêng.
+
+### Sự định nghĩa
+
+Đối với hàm $f(x,y)$, đạo hàm riêng đối với $x$ tại một điểm $(a,b)$ là
+
+$$
+\frac{\partial f}{\partial x}(a,b) = \lim_{h \to 0} \frac{f(a+h, b) - f(a,b)}{h}.
+$$
+
+Tương tự, đạo hàm riêng đối với $y$ là
+
+$$
+\frac{\partial f}{\partial y}(a,b) = \lim_{h \to 0} \frac{f(a, b+h) - f(a,b)}{h}.
+$$
+
+Chúng ta coi tất cả các biến khác là hằng số khi lấy đạo hàm.
+
+### Ký hiệu
+
+- $\frac{\partial f}{\partial x}$, $f_x$, $\partial_x f$.
+- $\frac{\partial f}{\partial y}$, $f_y$, $\partial_y f$.
+
+Với ba biến $f(x,y,z)$, chúng ta cũng có $f_x, f_y, f_z$.
+
+### Ví dụ
+
+1. $f(x,y) = x^2y + y^3$
+
+- $f_x = 2xy$.
+- $f_y = x^2 + 3y^2$.
+
+2. $f(x,y) = e^{xy}$
+
+- $f_x = y e^{xy}$.
+- $f_y = x e^{xy}$.
+
+3. $f(x,y,z) = x^2 + yz$
+
+- $f_x = 2x$.
+- $f_y = z$.
+- $f_z = y$.
+
+### Đạo hàm từng phần bậc cao hơn
+
+Chúng ta có thể lấy đạo hàm riêng nhiều lần:
+
+- $f_{xx} = \frac{\partial}{\partial x}\Big(f_x\Big)$.
+- $f_{yy}, f_{xy}, f_{yx}$, v.v.
+
+Định lý Clairaut: Nếu $f$ có đạo hàm riêng cấp hai liên tục thì
+
+$$
+f_{xy} = f_{yx}.
+$$
+
+### Ý nghĩa hình học
+
+- $f_x$: độ dốc của bề mặt theo phương $x$.
+- $f_y$: độ dốc của bề mặt theo phương $y$.
+- Họ cùng nhau mô tả bề mặt nghiêng như thế nào.
+
+### Tại sao điều này lại quan trọng
+
+- Đạo hàm riêng là nền tảng của gradient, mặt phẳng tiếp tuyến và tối ưu hóa đa biến.
+- Chúng được sử dụng rộng rãi trong vật lý, kỹ thuật và kinh tế để mô hình hóa các hệ thống có nhiều đầu vào.
+
+### Bài tập
+
+1. Tìm $f_x$ và $f_y$ với $f(x,y) = x^3y^2$.
+2. Tính $f_x, f_y, f_z$ cho $f(x,y,z) = xyz + x^2$.
+3. Chứng minh định lý Clairaut cho $f(x,y) = x^2y + y^3$.
+4. Giải thích về mặt hình học ý nghĩa của $f_x$ và $f_y$ đối với $f(x,y) = \sqrt{x^2+y^2}$.
+5. Tìm tất cả các đạo hàm riêng bậc hai của $f(x,y) = e^{x^2+y^2}$.
+
+## 8.3 Đạo hàm theo độ dốc và hướng
+
+Đạo hàm riêng đo sự thay đổi dọc theo trục tọa độ, nhưng đôi khi chúng ta muốn biết tốc độ thay đổi của hàm số theo bất kỳ hướng nào. Điều này dẫn đến các khái niệm về độ dốc và đạo hàm có hướng.
+
+### Vectơ chuyển màu
+
+Đối với hàm $f(x,y)$, gradient là vectơ
+
+$$
+\nabla f(x,y) = \left\langle \frac{\partial f}{\partial x}, \frac{\partial f}{\partial y} \right\rangle.
+$$
+
+Đối với ba biến $f(x,y,z)$:
+
+$$
+\nabla f(x,y,z) = \left\langle f_x, f_y, f_z \right\rangle.
+$$
+
+Các điểm gradient theo hướng tăng tối đa của hàm và độ lớn của nó cho độ dốc lớn nhất.
+
+### Đạo hàm định hướng
+
+Tốc độ thay đổi của $f(x,y)$ tại một điểm theo hướng của vectơ đơn vị $\mathbf{u} = \langle u_1, u_2 \rangle$ là
+
+$$
+D_{\mathbf{u}} f(x,y) = \nabla f(x,y) \cdot \mathbf{u}.
+$$
+
+Đây là tích số chấm của gradient với vectơ chỉ phương.
+
+### Ví dụ
+
+1. $f(x,y) = x^2 + y^2$
+
+- Độ dốc: $\nabla f = \langle 2x, 2y \rangle$.
+- Tại (1,2): $\nabla f = \langle 2,4 \rangle$.
+- Đạo hàm có hướng dọc theo $\mathbf{u} = \langle \tfrac{3}{5}, \tfrac{4}{5} \rangle$:
+
+$$
+D_{\mathbf{u}} f(1,2) = \langle 2,4 \rangle \cdot \langle \tfrac{3}{5}, \tfrac{4}{5} \rangle = \tfrac{26}{5}.
+$$
+
+2. $f(x,y,z) = x y z$
+
+- Độ dốc: $\nabla f = \langle yz, xz, xy \rangle$.
+- Tại (1,1,1): $\nabla f = \langle 1,1,1 \rangle$.
+- Hướng tăng tối đa dọc theo $\langle 1,1,1 \rangle$.
+
+### Giải thích hình học
+
+- Vector gradient vuông góc (chuẩn tắc) với các đường cong mức hoặc các mặt phẳng của $f$.
+- Đạo hàm có hướng khái quát hóa độ dốc theo các hướng tùy ý.
+
+### Tại sao điều này lại quan trọng
+
+- Trong tối ưu hóa, độ dốc cho chúng ta biết hướng di chuyển để đi lên hoặc đi xuống dốc nhất.
+- Trong vật lý, gradient mô tả các trường như dòng nhiệt và điện thế.
+- Đạo hàm định hướng thống nhất tỷ lệ thay đổi một biến và đa biến.
+
+### Bài tập
+
+1. Tính $\nabla f(x,y)$ cho $f(x,y) = e^{xy}$.
+2. Tìm gradient của $f(x,y,z) = x^2+y^2+z^2$ và ước tính tại (1,1,1).
+3. Tính đạo hàm có hướng của $f(x,y) = x^2-y$ tại (2,1) theo hướng $\mathbf{u} = \langle 0,1 \rangle$.
+4. Chứng minh rằng gradient của $f(x,y) = x^2+y^2$ vuông góc với đường tròn $x^2+y^2=1$.
+5. Tìm hướng vectơ đơn vị làm cực đại hóa đạo hàm có hướng của $f(x,y) = xy$ tại (1,2).
+
+## 8.4 Mặt phẳng tiếp tuyến và xấp xỉ tuyến tính
+
+Trong phép tính một biến, đường tiếp tuyến gần giống một đường cong gần một điểm. Trong phép tính nhiều biến, khái niệm tương tự là mặt phẳng tiếp tuyến, cung cấp một phép tính gần đúng tuyến tính cho một bề mặt gần một điểm.
+
+### Mặt phẳng tiếp tuyến với một bề mặt
+
+Giả sử $z = f(x,y)$ khả vi tại $(a,b)$. Mặt phẳng tiếp tuyến tại $(a,b,f(a,b))$ được cho bởi
+
+$$
+z = f(a,b) + f_x(a,b)(x-a) + f_y(a,b)(y-b).
+$$
+
+Mặt phẳng này chạm vào bề mặt tại điểm và xấp xỉ nó ở gần đó.
+
+### Ví dụ 1: Paraboloid
+
+Với $f(x,y) = x^2 + y^2$ tại $(1,2)$:
+
+- $f(1,2) = 1^2+2^2=5$.
+- $f_x = 2x$ nên $f_x(1,2) = 2$.
+- $f_y = 2y$, nên $f_y(1,2) = 4$.
+
+Phương trình mặt phẳng tiếp tuyến:
+
+$$
+z = 5 + 2(x-1) + 4(y-2).
+$$
+
+### Xấp xỉ tuyến tính
+
+Mặt phẳng tiếp tuyến có thể được sử dụng để tính gần đúng $f(x,y)$ gần $(a,b)$:
+
+$$
+f(x,y) \approx f(a,b) + f_x(a,b)(x-a) + f_y(a,b)(y-b).
+$$
+
+Đây là sự tuyến tính hóa của $f$ tại $(a,b)$.
+
+### Ví dụ 2: Xấp xỉ tuyến tính
+
+Gần đúng $f(x,y) = \sqrt{x+y}$ gần $(4,5)$.
+
+- $f(4,5) = \sqrt{9} = 3$.
+- $f_x = \frac{1}{2\sqrt{x+y}}, \quad f_y = \frac{1}{2\sqrt{x+y}}$.
+- Tại (4,5): $f_x = f_y = \tfrac{1}{6}$.
+
+Vì thế,
+
+$$
+f(x,y) \approx 3 + \tfrac{1}{6}(x-4) + \tfrac{1}{6}(y-5).
+$$
+
+### Tại sao điều này lại quan trọng
+
+- Các mặt phẳng tiếp tuyến cho phép tính gần đúng tuyến tính tốt nhất của một bề mặt.
+- Tuyến tính hóa đơn giản hóa các hàm phức tạp để tính toán.
+- Được sử dụng rộng rãi trong các phương pháp số, vật lý và kinh tế.
+
+### Bài tập
+
+1. Tìm mặt phẳng tiếp tuyến của $z = x^2y + y^2$ tại $(1,1)$.
+2. Gần đúng $f(x,y) = e^{x+y}$ gần $(0,0)$.
+3. Suy ra phương trình mặt phẳng tiếp tuyến của $z = \ln(x^2+y^2)$ tại $(1,1)$.
+4. Sử dụng phép tính gần đúng tuyến tính để ước tính $\sqrt{10.1}$ bằng cách sử dụng $f(x,y) = \sqrt{x+y}$ gần (4,6).
+5. Giải thích tại sao phép tính gần đúng của mặt phẳng tiếp tuyến được cải thiện khi $(x,y)$ tiến gần hơn đến $(a,b)$.
+
+## 8.5 Tối ưu hóa nhiều biến
+
+Tối ưu hóa trong phép tính nhiều biến mở rộng ý tưởng về cực đại và cực tiểu từ hàm một biến đến hàm hai biến trở lên.
+
+### Điểm quan trọng
+
+Đối với $f(x,y)$, một điểm tới hạn xảy ra ở đó
+
+$$
+f_x(x,y) = 0 \quad \text{and} \quad f_y(x,y) = 0,
+$$
+
+hoặc khi đạo hàm riêng không tồn tại.
+
+### Kiểm tra đạo hàm thứ hai
+
+Để phân loại các điểm tới hạn, hãy tính đạo hàm từng phần thứ hai:
+
+$$
+D = f_{xx}(a,b) f_{yy}(a,b) - \big(f_{xy}(a,b)\big)^2.
+$$
+
+- Nếu $D > 0$ và $f_{xx}(a,b) > 0$: mức tối thiểu cục bộ.
+- Nếu $D > 0$ và $f_{xx}(a,b) < 0$: mức tối đa cục bộ.
+- Nếu $D < 0$: điểm yên ngựa.
+- Nếu $D = 0$: kiểm định không thuyết phục.
+
+### Ví dụ 1: Paraboloid
+
+$f(x,y) = x^2 + y^2$.
+
+- $f_x = 2x, f_y = 2y$. Điểm tới hạn tại (0,0).
+- $f_{xx} = 2, f_{yy} = 2, f_{xy} = 0$.
+- $D = (2)(2) - 0 = 4 > 0$, và $f_{xx} > 0$.
+- Vậy (0,0) là cực tiểu địa phương.
+
+### Ví dụ 2: Điểm yên ngựa
+
+$f(x,y) = x^2 - y^2$.
+
+- $f_x = 2x, f_y = -2y$. Điểm tới hạn tại (0,0).
+- $f_{xx} = 2, f_{yy} = -2, f_{xy} = 0$.
+- $D = (2)(-2) - 0 = -4 < 0$.
+- Vậy (0,0) là điểm yên ngựa.
+
+### Tối ưu hóa ràng buộc và Hệ số Lagrange
+
+Đôi khi, chúng ta muốn tối ưu hóa $f(x,y)$ tuân theo một ràng buộc $g(x,y) = c$.
+
+Phương pháp nhân Lagrange: giải
+
+$$
+\nabla f(x,y) = \lambda \nabla g(x,y).
+$$
+
+Ví dụ: Tối đa hóa $f(x,y) = xy$ tùy thuộc vào $x^2+y^2=1$.
+
+- Độ dốc: $\nabla f = \langle y,x \rangle, \quad \nabla g = \langle 2x,2y \rangle$.
+- Phương trình: $y = 2\lambda x, \, x = 2\lambda y$.
+- Các giải pháp dẫn đến giá trị tối đa ở mức $(\pm \tfrac{1}{\sqrt{2}}, \pm \tfrac{1}{\sqrt{2}})$.
+
+### Tại sao điều này lại quan trọng
+
+- Tối ưu hóa là điều cần thiết trong kinh tế, kỹ thuật, học máy và vật lý.
+- Hệ số nhân Lagrange cho phép tối ưu hóa có ràng buộc, một công cụ quan trọng trong toán học ứng dụng.
+
+### Bài tập
+
+1. Tìm và phân loại các điểm tới hạn của $f(x,y) = x^2+xy+y^2$.
+2. Phân loại điểm (0,0) cho $f(x,y) = x^3-y^3$.
+3. Sử dụng phép thử đạo hàm bậc hai cho $f(x,y) = x^4+y^4-4xy$.
+4. Tối đa hóa $f(x,y) = x+y$ với $x^2+y^2=1$.
+5. Giảm thiểu $f(x,y) = x^2+2y^2$ theo $x+y=1$.
+
+# Chương 9. Tích phân bội
+
+## 9.1 Tích phân kép
+
+Trong phép tính một biến, tích phân xác định cho diện tích dưới một đường cong. Trong hai biến, tích phân kép tính thể tích dưới một bề mặt (hay nói chung hơn là tích lũy các giá trị trên một vùng).
+
+### Sự định nghĩa
+
+Nếu $f(x,y)$ liên tục trên vùng $R$, thì tích phân kép là
+
+$$
+\iint_R f(x,y)\, dA = \lim_{m,n \to \infty} \sum_{i=1}^m \sum_{j=1}^n f(x_{ij}^-, y_{ij}^-) \Delta A,
+$$
+
+trong đó $R$ được chia thành các hình chữ nhật nhỏ có diện tích $\Delta A$.
+
+### Tích phân lặp
+
+Theo Định lý Fubini, chúng ta có thể tính tích phân kép dưới dạng tích phân lặp:
+
+$$
+\iint_R f(x,y)\, dA = \int_a^b \int_c^d f(x,y)\, dy\, dx,
+$$
+
+nếu $R$ là hình chữ nhật $[a,b] \times [c,d]$.
+
+Thứ tự tích hợp thường có thể được chuyển đổi:
+
+$$
+\int_a^b \int_c^d f(x,y)\,dy\,dx = \int_c^d \int_a^b f(x,y)\,dx\,dy.
+$$
+
+### Ví dụ
+
+1. Vùng hình chữ nhật
+
+$$
+\iint_R (x+y)\, dA, \quad R=[0,1]\times[0,2].
+$$
+
+$$
+= \int_0^1 \int_0^2 (x+y)\,dy\,dx = \int_0^1 \Big[xy+\tfrac{1}{2}y^2\Big]_0^2 dx
+= \int_0^1 (2x+2)dx = 3.
+$$
+
+2. Vùng tam giác
+
+$$
+R = \{(x,y): 0 \leq x \leq 1, 0 \leq y \leq x\}.
+$$
+
+$$
+\iint_R (x+y)\, dA = \int_0^1 \int_0^x (x+y)\,dy\,dx.
+$$
+
+Đánh giá mang lại $\tfrac{2}{3}$.
+
+### Ứng dụng
+
+- Thể tích dưới bề mặt:
+
+$$
+V = \iint_R f(x,y)\, dA.
+$$
+
+- Giá trị trung bình của hàm số trên một vùng:
+
+$$
+f_{\text{avg}} = \frac{1}{A(R)} \iint_R f(x,y)\, dA.
+$$
+
+### Tại sao điều này lại quan trọng
+
+Tích phân kép mở rộng tích phân sang hai chiều. Chúng rất cần thiết trong vật lý (khối lượng, phân bố xác suất), kinh tế (giá trị kỳ vọng) và kỹ thuật (trọng tâm, thông lượng).
+
+### Bài tập
+
+1. Tính giá $\iint_R (x^2+y^2)\, dA$ trong đó $R=[0,1]\times[0,1]$.
+2. Tính $\iint_R xy\, dA$ trong đó $R=\{(x,y):0\leq x\leq2,0\leq y\leq x\}$.
+3. Tìm giá trị trung bình của $f(x,y) = x+y$ trên bình phương đơn vị $[0,1]\times[0,1]$.
+4. Giải thích $\iint_R f(x,y)\, dA$ về mặt xác suất nếu $f(x,y)$ là hàm mật độ xác suất.
+5. Chứng minh rằng việc chuyển đổi thứ tự tích phân sẽ cho kết quả tương tự đối với $\iint_{[0,1]\times[0,2]} (x+y)\,dA$.
+
+## 9.2 Tích phân ba lớp
+
+Tích phân ba lớp mở rộng ý tưởng tích phân cho ba biến, cho phép chúng ta tính thể tích, khối lượng và các đại lượng khác trong vùng ba chiều.
+
+### Sự định nghĩa
+
+Nếu $f(x,y,z)$ liên tục trên một vùng đặc $E$, thì tích phân bội ba là
+
+$$
+\iiint_E f(x,y,z)\, dV = \lim_{m,n,p \to \infty} \sum f(x_{ijk}^-, y_{ijk}^-, z_{ijk}^-) \Delta V,
+$$
+
+trong đó vùng được chia thành các hộp có tập $\Delta V$.
+
+### Tích phân lặp
+
+Theo Định lý Fubini, tích phân bội ba có thể được tính dưới dạng tích phân lặp:
+
+$$
+\iiint_E f(x,y,z)\, dV = \int_a^b \int_c^d \int_e^f f(x,y,z)\, dz\, dy\, dx,
+$$
+
+cho hình hộp chữ nhật $E = [a,b]\times[c,d]\times[e,f]$.
+
+Thứ tự tích hợp có thể được lựa chọn để thuận tiện.
+
+### Ví dụ
+
+1. Hộp hình chữ nhật
+
+$$
+\iiint_E xyz\, dV, \quad E=[0,1]\times[0,2]\times[0,3].
+$$
+
+$$
+= \int_0^1 \int_0^2 \int_0^3 xyz\,dz\,dy\,dx.
+$$
+
+Tích hợp đầu tiên trên $z$:
+
+$$
+\int_0^3 xyz\,dz = xy \left[\tfrac{1}{2}z^2\right]_0^3 = \tfrac{9}{2}xy.
+$$
+
+Bây giờ tích phân trên $y$:
+
+$$
+\int_0^2 \tfrac{9}{2}xy\,dy = \tfrac{9}{2}x \cdot \left[\tfrac{1}{2}y^2\right]_0^2 = 9x.
+$$
+
+Cuối cùng lấy tích phân trên $x$:
+
+$$
+\int_0^1 9x\,dx = \tfrac{9}{2}.
+$$
+
+2. Vùng giới hạn bởi mặt phẳng
+   Đặt $E = \{(x,y,z) \mid 0 \leq x \leq 1, 0 \leq y \leq x, 0 \leq z \leq y\}$.
+
+$$
+\iiint_E 1\,dV = \int_0^1 \int_0^x \int_0^y 1\,dz\,dy\,dx.
+$$
+
+Đánh giá:
+
+$$
+= \int_0^1 \int_0^x y\,dy\,dx = \int_0^1 \tfrac{1}{2}x^2\,dx = \tfrac{1}{6}.
+$$
+
+Vậy thể tích của vùng tam giác này là $\tfrac{1}{6}$.
+
+### Ứng dụng
+
+- Khối lượng: $V = \iiint_E 1 \, dV$.
+- Khối lượng: Nếu mật độ là $\rho(x,y,z)$ thì
+
+  $$
+  M = \iiint_E \rho(x,y,z)\, dV.
+  $$
+- Average value:
+
+  $$
+  f_{\text{avg}} = \frac{1}{V(E)} \iiint_E f(x,y,z)\,dV.
+  $$
+
+### Tại sao điều này lại quan trọng
+
+Tích phân ba tổng quát hóa các phép tính diện tích và thể tích cho các chất rắn tùy ý. Chúng được sử dụng trong vật lý (phân bố khối lượng, tâm khối lượng, trường hấp dẫn), kỹ thuật và xác suất.
+
+### Bài tập
+
+1. Tính $\iiint_E (x+y+z)\,dV$ trên khối lập phương $E=[0,1]\times[0,1]\times[0,1]$.
+2. Tìm thể tích của tứ diện giới hạn bởi $x=0, y=0, z=0, x+y+z=1$.
+3. Tính giá $\iiint_E x^2 \, dV$ trong đó $E=[0,2]\times[0,1]\times[0,1]$.
+4. Chứng minh rằng $\iiint_E 1\,dV$ bằng thể tích hình học của $E$.
+5. Nếu mật độ là $\rho(x,y,z)=x+y+z$, hãy tính khối lượng của khối lập phương đơn vị.
+
+## 9.3 Ứng dụng: Khối lượng, Khối lượng, Xác suất
+
+Tích phân ba chiều rất mạnh vì chúng cho phép chúng ta tính các đại lượng trong không gian ba chiều bằng cách tích lũy các giá trị trên một vùng đặc.
+
+### Âm lượng
+
+Ứng dụng đơn giản nhất là tìm thể tích của vùng $E$:
+
+$$
+V = \iiint_E 1 \, dV.
+$$
+
+Ví dụ:
+Tìm thể tích của hình khối giới hạn bởi các mặt phẳng tọa độ và mặt phẳng $x+y+z=1$.
+
+$$
+V = \iiint_E 1 \, dV = \int_0^1 \int_0^{1-x} \int_0^{1-x-y} 1 \, dz\, dy\, dx.
+$$
+
+Đánh giá cho $V = \tfrac{1}{6}$.
+
+### Khối lượng và mật độ
+
+Nếu một vật rắn có hàm mật độ $\rho(x,y,z)$ thì khối lượng của nó là
+
+$$
+M = \iiint_E \rho(x,y,z)\, dV.
+$$
+
+Khối tâm được cho bởi
+
+$$
+\bar{x} = \frac{1}{M}\iiint_E x\rho(x,y,z)\,dV, \quad
+\bar{y} = \frac{1}{M}\iiint_E y\rho(x,y,z)\,dV, \quad
+\bar{z} = \frac{1}{M}\iiint_E z\rho(x,y,z)\,dV.
+$$
+
+Ví dụ:
+Đối với một khối lập phương đơn vị có mật độ không đổi $\rho=1$, khối tâm là $(0,5,0,5,0,5)$.
+
+### Xác suất
+
+Nếu $f(x,y,z)$ là hàm mật độ xác suất trong không gian 3D, thì xác suất để biến ngẫu nhiên nằm trong vùng $E$ là
+
+$$
+P(E) = \iiint_E f(x,y,z)\, dV,
+$$
+
+trong đó $f(x,y,z) \geq 0$ và
+
+$$
+\iiint_{\mathbb{R}^3} f(x,y,z)\,dV = 1.
+$$
+
+Ví dụ:
+Nếu $f(x,y,z) = \tfrac{3}{4}z^2$ cho $0 \leq z \leq 1$, thống nhất trong $x,y$, thì
+
+$$
+P(0 \leq z \leq 0.5) = \int_0^{0.5} \tfrac{3}{4}z^2 \, dz = \tfrac{1}{32}.
+$$
+
+### Tại sao điều này lại quan trọng
+
+- Khối lượng khái quát hình học cho chất rắn không đều.
+- Tích phân khối lượng và mật độ kết nối phép tính với vật lý và kỹ thuật.
+- Hàm mật độ xác suất ở các chiều cao hơn được sử dụng rộng rãi trong thống kê và khoa học dữ liệu.
+
+### Bài tập
+
+1. Tìm thể tích của vật rắn giới hạn bởi $x^2+y^2+z^2 \leq 1$ (hình cầu đơn vị).
+2. Tính khối lượng của một hình nón có mật độ tỉ lệ với $z$.
+3. Tìm khối tâm của một tứ diện đều giới hạn bởi $x=0, y=0, z=0, x+y+z=1$.
+4. Nếu $f(x,y,z) = \frac{1}{8}$ trên khối $[0,2]\times[0,2]\times[0,2]$, hãy xác minh rằng đó là hàm mật độ xác suất.
+5. Sử dụng tích phân bội ba để tính xác suất để một điểm được chọn ngẫu nhiên trong hình cầu đơn vị có $z > 0$.
+
+## 9.4 Thay đổi các biến: Tọa độ cực, tọa độ trụ, tọa độ cầu
+
+Nhiều tích phân trở nên dễ dàng hơn khi được biểu diễn trong hệ tọa độ phù hợp với tính đối xứng của vùng. Thay vì tọa độ Descartes $(x,y,z)$, chúng ta có thể sử dụng tọa độ cực, hình trụ hoặc hình cầu.
+
+### Tọa độ cực (2D)
+
+Đối với hàm hai biến, chúng ta có thể chuyển sang tọa độ cực:
+
+$$
+x = r\cos\theta, \quad y = r\sin\theta, \quad r \geq 0, \; 0 \leq \theta < 2\pi.
+$$
+
+Phần tử diện tích biến đổi thành
+
+$$
+dA = r\,dr\,d\theta.
+$$
+
+Ví dụ:
+Tìm diện tích của hình tròn đơn vị.
+
+$$
+A = \iint_{x^2+y^2\leq 1} 1\,dA = \int_0^{2\pi}\int_0^1 r\,dr\,d\theta = \pi.
+$$
+
+### Tọa độ hình trụ (3D)
+
+Trong 3D, tọa độ trụ mở rộng tọa độ cực với $z$:
+
+$$
+x = r\cos\theta, \quad y = r\sin\theta, \quad z = z.
+$$
+
+Phần tử khối lượng là
+
+$$
+dV = r\,dr\,d\theta\,dz.
+$$
+
+Ví dụ:
+Thể tích hình trụ có bán kính $R$ và chiều cao $h$:
+
+$$
+V = \int_0^h \int_0^{2\pi} \int_0^R r\,dr\,d\theta\,dz = \pi R^2 h.
+$$
+
+### Tọa độ cầu (3D)
+
+Đối với sự đối xứng hình cầu, sử dụng:
+
+$$
+x = \rho \sin\phi \cos\theta, \quad y = \rho \sin\phi \sin\theta, \quad z = \rho \cos\phi,
+$$
+
+Ở đâu
+
+- $\rho \geq 0$ là khoảng cách từ gốc tọa độ,
+- $0 \leq \phi \leq \pi$ là góc tính từ trục $z$ dương,
+- $0 \leq \theta < 2\pi$ là góc trong mặt phẳng $xy$.
+
+Phần tử khối lượng là
+
+$$
+dV = \rho^2 \sin\phi \, d\rho\, d\phi\, d\theta.
+$$
+
+Ví dụ:
+Thể tích khối cầu đơn vị:
+
+$$
+V = \int_0^{2\pi} \int_0^\pi \int_0^1 \rho^2 \sin\phi \, d\rho\, d\phi\, d\theta.
+$$
+
+Đánh giá:
+
+$$
+V = \left(\int_0^1 \rho^2 d\rho\right)\left(\int_0^\pi \sin\phi d\phi\right)\left(\int_0^{2\pi} d\theta\right) = \tfrac{1}{3}(2)(2\pi) = \tfrac{4\pi}{3}.
+$$
+
+### Tại sao điều này lại quan trọng
+
+- Tọa độ cực đơn giản hóa các vùng hình tròn.
+- Tọa độ trụ xử lý hình trụ và đối xứng quay.
+- Tọa độ cầu đơn giản hóa các bài toán về hình cầu, hình nón và bán kính.
+- Những thay đổi của các biến này làm cho các tích phân không thể quản lý được.
+
+### Bài tập
+
+1. Tính $\iint_{x^2+y^2\leq 4} (x^2+y^2)\,dA$ sử dụng tọa độ cực.
+2. Tìm thể tích hình nón có chiều cao $h$ và bán kính $R$ bằng tọa độ trụ.
+3. Sử dụng tọa độ cầu để tính thể tích của quả cầu bán kính $R$.
+4. Chứng minh rằng hệ số Jacobian cho tọa độ cực là $r$.
+5. Tìm khối lượng của một quả cầu đặc có bán kính $R$ với mật độ tỉ lệ với khoảng cách từ gốc tọa độ cầu.
+
+# Chương 10. Phép tính vectơ
+
+## 10.1 Trường vectơ
+
+Trường vectơ gán một vectơ cho mỗi điểm trong không gian, giống như hàm vô hướng gán một số. Trường vectơ được sử dụng để mô hình hóa dòng chảy, lực và các đại lượng định hướng khác.
+
+### Sự định nghĩa
+
+Trong hai chiều, trường vectơ là một hàm
+
+$$
+\mathbf{F}(x,y) = \langle P(x,y), Q(x,y) \rangle,
+$$
+
+trong đó $P$ và $Q$ là các hàm vô hướng.
+
+Trong ba chiều,
+
+$$
+\mathbf{F}(x,y,z) = \langle P(x,y,z), Q(x,y,z), R(x,y,z) \rangle.
+$$
+
+### Ví dụ
+
+1. Trường xuyên tâm
+
+$$
+\mathbf{F}(x,y) = \langle x, y \rangle.
+$$
+
+Các vectơ hướng ra ngoài từ gốc tọa độ.
+
+2. Trường quay
+
+$$
+\mathbf{F}(x,y) = \langle -y, x \rangle.
+$$
+
+Các vectơ quay quanh gốc tọa độ.
+
+3. Trường hấp dẫn
+
+$$
+\mathbf{F}(x,y,z) = -\frac{GM}{r^3}\langle x,y,z \rangle, \quad r=\sqrt{x^2+y^2+z^2}.
+$$
+
+### Trực quan hóa các trường Vector
+
+- Vẽ các mũi tên nhỏ tại các điểm mẫu để chỉ hướng và độ lớn.
+- Mũi tên dày đặc hơn nơi cường độ lớn hơn.
+- Hữu ích cho việc giải thích các đường dòng chảy, quỹ đạo và lực.
+
+### Đường dòng chảy
+
+Một đường dòng (hoặc đường cong tích phân) của trường vectơ là một đường cong $\mathbf{r}(t)$ có vectơ tiếp tuyến tại mỗi điểm khớp với trường:
+
+$$
+\mathbf{r}'(t) = \mathbf{F}(\mathbf{r}(t)).
+$$
+
+Các đường dòng mô tả đường đi của hạt trong trường vận tốc.
+
+### Tại sao điều này lại quan trọng
+
+- Trường vectơ là cơ sở của vật lý (dòng chất lỏng, điện từ, lực hấp dẫn).
+- Chúng tạo thành cơ sở của tích phân đường, tích phân mặt và các định lý lớn của phép tính vectơ (Green, Stokes, Divergence).
+- Cung cấp một cách hình học để biểu diễn các đại lượng có hướng.
+
+### Bài tập
+
+1. Vẽ trường vectơ $\mathbf{F}(x,y) = \langle y, -x \rangle$.
+2. Xác định xem các vectơ của $\mathbf{F}(x,y) = \langle x,y \rangle$ hướng về phía hay ra xa gốc tọa độ.
+3. Với $\mathbf{F}(x,y,z) = \langle y, z, x \rangle$, hãy tính $\mathbf{F}(1,2,3)$.
+4. Mô tả các đường dòng của $\mathbf{F}(x,y) = \langle -y, x \rangle$.
+5. Giải thích tại sao trường hấp dẫn và điện trường là ví dụ của trường vectơ hướng tâm.
+
+## 10.2 Tích phân đường
+
+Tích phân đường mở rộng ý tưởng về tích phân cho các hàm được tính dọc theo một đường cong. Thay vì tích phân trên một khoảng hoặc vùng, chúng ta tích phân trên một đường trong không gian.
+
+### Định nghĩa: Tích phân đường vô hướng
+
+Nếu $f(x,y)$ là hàm vô hướng và $C$ là đường cong được tham số hóa bởi $\mathbf{r}(t) = \langle x(t), y(t) \rangle, \; a \leq t \leq b$ thì tích phân đường là
+
+$$
+\int_C f(x,y)\, ds = \int_a^b f(x(t),y(t)) \, |\mathbf{r}'(t)|\, dt,
+$$
+
+trong đó $ds$ là độ dài cung.
+
+Điều này đo lường sự tích lũy của $f$ dọc theo đường cong.
+
+### Định nghĩa: Tích phân đường vectơ
+
+Với trường vectơ $\mathbf{F}(x,y) = \langle P(x,y), Q(x,y) \rangle$, tích phân đường dọc theo $C$ là
+
+$$
+\int_C \mathbf{F} \cdot d\mathbf{r} = \int_a^b \mathbf{F}(\mathbf{r}(t)) \cdot \mathbf{r}'(t)\, dt.
+$$
+
+Điều này đo công được thực hiện bởi trường dọc theo đường cong.
+
+### Ví dụ
+
+1. Tích phân đường vô hướng
+
+$$
+f(x,y) = x+y, \quad C: \mathbf{r}(t) = \langle t, t^2 \rangle, \; 0 \leq t \leq 1.
+$$
+
+Sau đó
+
+$$
+\int_C f(x,y)\, ds = \int_0^1 (t+t^2)\sqrt{(1)^2+(2t)^2}\, dt.
+$$
+
+2. Công việc được thực hiện bởi một lực lượng
+
+$$
+\mathbf{F}(x,y) = \langle y, x \rangle, \quad C: \mathbf{r}(t) = \langle t, t^2 \rangle, \; 0 \leq t \leq 1.
+$$
+
+$$
+\int_C \mathbf{F} \cdot d\mathbf{r} = \int_0^1 \langle t^2, t \rangle \cdot \langle 1, 2t \rangle\, dt = \int_0^1 (t^2 + 2t^2)\, dt = \int_0^1 3t^2\, dt = 1.
+$$
+
+### Giải thích vật lý
+
+- Tích phân đường vô hướng: tích lũy mật độ dọc theo một dây.
+- Tích phân đường vectơ: công được thực hiện bởi một lực di chuyển một vật dọc theo một đường đi.
+
+### Tại sao điều này lại quan trọng
+
+- Tích phân đường kết nối các trường vectơ với các đại lượng vật lý như công và tuần hoàn.
+- Chúng là những khối xây dựng cho Định lý Green và Định lý Stokes.
+- Xuất hiện trong vật lý (điện thế, dòng chất lỏng, cơ học).
+
+### Bài tập
+
+1. Tính $\int_C (x^2+y^2)\, ds$ trong đó $C$ là đoạn thẳng từ (0,0) đến (1,1).
+2. Đánh giá $\int_C \mathbf{F}\cdot d\mathbf{r}$ với $\mathbf{F}(x,y) = \langle -y, x \rangle$ dọc theo vòng tròn đơn vị $x^2+y^2=1$.
+3. Giải thích ý nghĩa của $\int_C 1\,ds$.
+4. Với $\mathbf{F}(x,y,z) = \langle z,0,x \rangle$, hãy tính tích phân đường dọc theo $\mathbf{r}(t) = \langle t,t,1 \rangle, 0 \leq t \leq 1$.
+5. Giải thích sự khác biệt giữa tích phân đường vô hướng và tích phân đường vectơ.
+
+## 10.3 Tích phân bề mặt
+
+Tích phân mặt khái quát hóa tích phân đường cho các bề mặt hai chiều trong không gian ba chiều. Chúng cho phép chúng ta tính toán thông lượng qua các bề mặt và sự tích lũy của trường vô hướng trên các bề mặt cong.
+
+### Tích phân bề mặt vô hướng
+
+Nếu một bề mặt $S$ được tham số hóa bởi
+
+$$
+\mathbf{r}(u,v) = \langle x(u,v), y(u,v), z(u,v) \rangle,
+$$
+
+thì tích phân bề mặt của hàm vô hướng $f(x,y,z)$ là
+
+$$
+\iint_S f(x,y,z)\, dS = \iint_D f(\mathbf{r}(u,v)) \, |\mathbf{r}_u \times \mathbf{r}_v| \, du\,dv,
+$$
+
+trong đó $\mathbf{r></u$ và $\mathbf{r__v$ là đạo hàm riêng của $\mathbf{r}(u,v)$ và $D$ là miền tham số.
+
+### Tích phân bề mặt vectơ (Thông lượng)
+
+Đối với trường vectơ $\mathbf{F}(x,y,z)$, thông lượng qua một bề mặt $S$ là
+
+$$
+\iint_S \mathbf{F}\cdot d\mathbf{S} = \iint_S \mathbf{F}\cdot \mathbf{n}\, dS,
+$$
+
+trong đó $\mathbf{n}$ là vectơ pháp tuyến đơn vị. Sử dụng tham số hóa,
+
+$$
+\iint_S \mathbf{F}\cdot d\mathbf{S} = \iint_D \mathbf{F}(\mathbf{r}(u,v)) \cdot (\mathbf{r}_u \times \mathbf{r}_v)\,du\,dv.
+$$
+
+### Ví dụ
+
+1. Tích phân bề mặt vô hướng
+   Bề mặt: mặt phẳng $z=1$ trên đĩa đơn $x^2+y^2 \leq 1$.
+
+$$
+\iint_S 1\, dS = \text{area of the disk} = \pi.
+$$
+
+2. Dòng chảy qua một quả cầu
+   Đặt $\mathbf{F}(x,y,z) = \langle x,y,z \rangle$, và $S$ = hình cầu bán kính $R$.
+   Vectơ pháp tuyến là $\mathbf{n} = \frac{1}{R}\langle x,y,z \rangle$.
+
+$$
+\mathbf{F}\cdot \mathbf{n} = \frac{x^2+y^2+z^2}{R} = R.
+$$
+
+Vì thế
+
+$$
+\iint_S \mathbf{F}\cdot d\mathbf{S} = \iint_S R\, dS = R \cdot 4\pi R^2 = 4\pi R^3.
+$$
+
+### Tại sao điều này lại quan trọng
+
+- Tích phân bề mặt vô hướng đo diện tích và phân bố bề mặt.
+- Tích phân mặt vector đo thông lượng: lượng trường truyền qua một mặt.
+- Ứng dụng: điện từ, dòng chất lỏng, truyền nhiệt, v.v.
+
+### Bài tập
+
+1. Tính $\iint_S 1\, dS$ cho bề mặt của hình lập phương có cạnh 2.
+2. Tìm thông lượng của $\mathbf{F}(x,y,z) = \langle x,y,z \rangle$ qua mặt cầu đơn vị.
+3. Tính $\iint_S z\, dS$ cho paraboloid $z = x^2+y^2, \, z \leq 1$.
+4. Với $\mathbf{F}(x,y,z) = \langle y,0,0 \rangle$, tính thông lượng qua mặt phẳng $x=1$, $0 \leq y,z \leq 1$.
+5. Giải thích về mặt vật lý ý nghĩa của thông lượng của trường vectơ qua một bề mặt kín bằng không.
+
+## 10.4 Định lý Green
+
+Định lý Green là một kết quả cơ bản trong phép tính vectơ nối tích phân đường xung quanh một đường cong kín với tích phân kép trên vùng mà nó bao quanh. Đây là phiên bản hai chiều của Định lý Stokes.
+
+### Tuyên bố Định lý Green
+
+Giả sử $C$ là một đường cong khép kín, đơn giản, có hướng dương trong mặt phẳng và gọi $R$ là vùng mà nó bao quanh. Nếu $\mathbf{F}(x,y) = \langle P(x,y), Q(x,y) \rangle$ có đạo hàm riêng liên tục trên một vùng mở chứa $R$, thì
+
+$$
+\oint_C \mathbf{F} \cdot d\mathbf{r} = \oint_C P\,dx + Q\,dy = \iint_R \left( \frac{\partial Q}{\partial x} - \frac{\partial P}{\partial y} \right)\, dA.
+$$
+
+### Phiên dịch
+
+- Tích phân đường quanh $C$ đo sự hoàn lưu của trường vectơ dọc theo đường biên.
+- Tích phân kép trên $R$ đo tổng độ cong (xoay) của trường bên trong vùng.
+
+### Ví dụ 1: Công thức tính diện tích
+
+Nếu $\mathbf{F} = \langle -y/2, x/2 \rangle$, thì
+
+$$
+\frac{\partial Q}{\partial x} - \frac{\partial P}{\partial y} = 1.
+$$
+
+Do đó, Định lý Green cho
+
+$$
+\text{Area}(R) = \iint_R 1\,dA = \oint_C \left(-\tfrac{y}{2}\,dx + \tfrac{x}{2}\,dy\right).
+$$
+
+Điều này cung cấp một cách tính diện tích bằng cách sử dụng tích phân đường.
+
+### Ví dụ 2: Lưu thông
+
+Đặt $\mathbf{F}(x,y) = \langle -y, x \rangle$, và $C$ là vòng tròn đơn vị.
+
+- $P=-y, Q=x$.
+- $Q_x - P_y = 1 - (-1) = 2$.
+- Tích phân kép trên đĩa đơn vị:
+
+$$
+\iint_R 2\,dA = 2\pi (1^2) = 2\pi.
+$$
+
+Vậy vòng tuần hoàn quanh vòng tròn là $2\pi$.
+
+### Tại sao điều này lại quan trọng
+
+- Chuyển tích phân đường khó thành tích phân kép hoặc ngược lại.
+- Cung cấp cầu nối giữa các thuộc tính cục bộ (curl) và các thuộc tính toàn cầu (lưu thông).
+- Được sử dụng rộng rãi trong vật lý cho dòng chất lỏng, điện từ và trường vectơ phẳng.
+
+### Bài tập
+
+1. Sử dụng Định lý Green để tính diện tích bên trong hình elip $\frac{x^2}{a^2} + \frac{y^2}{b^2} = 1$.
+2. Chứng minh Định lý Green cho $\mathbf{F}(x,y) = \langle -y, x \rangle$ dọc theo hình vuông có các đỉnh (0,0), (1,0), (1,1), (0,1).
+3. Tính chu kỳ của $\mathbf{F}(x,y) = \langle -y, x \rangle$ xung quanh vòng tròn đơn vị.
+4. Chứng minh rằng nếu $\nabla \times \mathbf{F} = 0$ thì tích phân đường của $\mathbf{F}$ xung quanh bất kỳ đường cong kín nào đều bằng 0.
+5. Sử dụng Định lý Green để chứng minh rằng
+
+$$
+\oint_C x\,dy = -\oint_C y\,dx
+$$
+
+với mọi đường cong khép kín $C$.
+
+## Định lý 10,5 Stokes
+
+Định lý Stokes khái quát Định lý Green thành ba chiều. Nó liên hệ tích phân bề mặt của độ cong của trường vectơ trên một bề mặt với tích phân đường của trường vectơ xung quanh biên của bề mặt đó.
+
+### Phát biểu định lý Stokes
+
+Cho $S$ là một bề mặt nhẵn, có định hướng với đường cong biên $C$ (có hướng dương). Nếu $\mathbf{F}(x,y,z)$ là trường vectơ có đạo hàm riêng liên tục, thì
+
+$$
+\iint_S (\nabla \times \mathbf{F}) \cdot d\mathbf{S} = \oint_C \mathbf{F} \cdot d\mathbf{r}.
+$$
+
+- Phía bên trái: dòng chuyển động của đường cong $\mathbf{F}$ qua bề mặt.
+- Bên phải: sự tuần hoàn của $\mathbf{F}$ dọc theo đường cong biên.
+
+### Phiên dịch
+
+- Tích phân đường xung quanh biên bằng tổng “phép quay” bên trong bề mặt.
+- Mở rộng Định lý Green (trường hợp đặc biệt khi bề mặt nằm trong mặt phẳng).
+
+### Ví dụ 1: Định lý Green là trường hợp đặc biệt
+
+Nếu $S$ là một vùng phẳng trong mặt phẳng $xy$, Định lý Stokes rút gọn thành Định lý Green.
+
+### Ví dụ 2: Hoàn lưu trên bán cầu
+
+Đặt $\mathbf{F}(x,y,z) = \langle -y, x, 0 \rangle$, và $S$ là bán cầu trên của bán kính 1.
+
+- Biên $C$: đường tròn đơn vị trong mặt phẳng $xy$.
+- Theo định lý Stokes:
+
+$$
+\oint_C \mathbf{F}\cdot d\mathbf{r} = \iint_S (\nabla \times \mathbf{F})\cdot d\mathbf{S}.
+$$
+
+- Curl: $\nabla \times \mathbf{F} = \langle 0,0,2 \rangle$.
+- Điểm bình thường đến bán cầu hướng ra ngoài: $\mathbf{n} = \langle 0,0,1 \rangle$.
+- Vậy tích phân = 2.
+- Diện tích bán cầu = $2\pi (1^2)$.
+
+$$
+\iint_S 2\, dS = 2 \cdot 2\pi = 4\pi.
+$$
+
+Do đó, lưu thông quanh xích đạo là $4\pi$.
+
+### Tại sao điều này lại quan trọng
+
+- Cung cấp một kết nối sâu sắc giữa tích phân bề mặt và tích phân đường.
+- Đơn giản hóa việc tính toán bằng cách cho phép lựa chọn các bề mặt thuận tiện.
+- Được sử dụng rộng rãi trong điện từ học (Định luật Faraday) và động lực học chất lỏng.
+
+### Bài tập
+
+1. Kiểm chứng Định lý Stokes cho $\mathbf{F}(x,y,z) = \langle y, -x, 0 \rangle$ trên đĩa đơn vị trong mặt phẳng $xy$.
+2. Tính $\oint_C \mathbf{F}\cdot d\mathbf{r}$ trong đó $\mathbf{F}(x,y,z) = \langle z, 0, x \rangle$, và $C$ là ranh giới của tam giác với các đỉnh (0,0,0), (1,0,0), (0,1,0).
+3. Chứng minh rằng nếu $\nabla \times \mathbf{F} = 0$, thì vòng tuần hoàn quanh bất kỳ đường cong kín nào đều bằng không.
+4. Áp dụng Định lý Stokes để tính chu trình của $\mathbf{F}(x,y,z) = \langle -y, x, z \rangle$ xung quanh ranh giới của hình vuông đơn vị trong mặt phẳng $z=0$.
+5. Giải thích Định lý Stokes khái quát hóa Định lý Green như thế nào.
+
+## 10.6 Định lý phân kỳ
+
+Định lý phân kỳ (còn gọi là Định lý Gauss) liên hệ dòng của một trường vectơ qua một bề mặt kín với tích phân ba lớp của sự phân kỳ của trường bên trong bề mặt.
+
+### Phát biểu về Định lý phân kỳ
+
+Cho $E$ là một vùng đặc trong $\mathbb{R}^3$ với bề mặt biên $S$ (hướng ra ngoài). Nếu $\mathbf{F}(x,y,z)$ là trường vectơ có đạo hàm riêng liên tục trên $E$, thì
+
+$$
+\iint_S \mathbf{F} \cdot d\mathbf{S} = \iiint_E (\nabla \cdot \mathbf{F}) \, dV.
+$$
+
+- Vế trái: thông lượng $\mathbf{F}$ đi qua mặt kín $S$.
+- Vế phải: tích phân bội ba của phân kỳ bên trong miền.
+
+###Sự khác biệt
+
+Sự phân kỳ của trường vectơ $\mathbf{F}(x,y,z) = \langle P, Q, R \rangle$ là
+
+$$
+\nabla \cdot \mathbf{F} = \frac{\partial P}{\partial x} + \frac{\partial Q}{\partial y} + \frac{\partial R}{\partial z}.
+$$
+
+Nó đo “dòng chảy ra ròng” trên một đơn vị thể tích tại mỗi điểm.
+
+### Ví dụ 1: Thông lượng của trường xuyên tâm
+
+Đặt $\mathbf{F}(x,y,z) = \langle x, y, z \rangle$, và gọi $E$ là quả cầu đơn vị $x^2+y^2+z^2 \leq 1$.
+
+- Phân kỳ: $\nabla \cdot \mathbf{F} = 1+1+1 = 3$.
+- Thể tích đơn vị bóng: $\tfrac{4}{3}\pi$.
+  Vì thế
+
+$$
+\iiint_E (\nabla \cdot \mathbf{F})\, dV = 3 \cdot \tfrac{4}{3}\pi = 4\pi.
+$$
+
+Do đó, thông lượng trên hình cầu đơn vị là $4\pi$.
+
+### Ví dụ 2: Trường hằng
+
+Đặt $\mathbf{F}(x,y,z) = \langle 1, 0, 0 \rangle$.
+
+- Phân kỳ: $\nabla \cdot \mathbf{F} = 0$.
+- Vậy dòng thông qua bất kỳ bề mặt kín nào đều bằng 0, phù hợp với trực giác (không có dòng chảy ròng).
+
+### Tại sao điều này lại quan trọng
+
+- Chuyển tích phân mặt thành tích phân thể tích đơn giản hơn.
+- Ứng dụng trong vật lý: Định luật Gauss trong điện từ, dòng chất lỏng và truyền nhiệt.
+- Hoàn thiện khuôn khổ thống nhất:
+
+- Định lý Green (2D ↔ tuần hoàn)
+  - Định lý Stokes (độ cong 3D ↔ tuần hoàn trên bề mặt)
+  - Định lý phân kỳ (phân kỳ 3D ↔ thông lượng trên các bề mặt kín)
+
+### Bài tập
+
+1. Sử dụng Định lý phân kỳ để tính dòng $\mathbf{F}(x,y,z) = \langle x,y,z \rangle$ trên bề mặt của một hình cầu có bán kính $R$.
+2. Chứng minh Định lý phân kỳ cho $\mathbf{F}(x,y,z) = \langle y, z, x \rangle$ trên khối lập phương đơn vị $[0,1]^3$.
+3. Chứng minh rằng nếu $\nabla \cdot \mathbf{F} = 0$ thì tổng thông lượng qua bất kỳ bề mặt kín nào đều bằng không.
+4. Tính thông lượng của $\mathbf{F}(x,y,z) = \langle x^2, y^2, z^2 \rangle$ qua hình cầu đơn vị.
+5. Giải thích cách Định lý Phân kỳ khái quát hóa Định lý Cơ bản một chiều của Giải tích.
+
+#Phần IV. Quy trình vô hạn
+
+# Chương 11. Trình tự và sự hội tụ
+
+## 11.1 Định nghĩa và ví dụ
+
+Dãy số là một danh sách các số có thứ tự, thường được viết dưới dạng
+
+$$
+a_1, a_2, a_3, \dots
+$$
+
+hay nói chung hơn là $(a_n)_{n=1}^\infty$. Mỗi $a_n$ được gọi là số hạng thứ n của dãy.
+
+### Xác định trình tự
+
+Một chuỗi có thể được xác định theo hai cách:
+
+1. Công thức rõ ràng – đưa ra quy tắc trực tiếp cho số hạng thứ n.
+
+- Ví dụ: $a_n = \frac{1}{n}$ xác định dãy
+
+     $$
+     1, \tfrac{1}{2}, \tfrac{1}{3}, \tfrac{1}{4}, \dots
+     $$
+
+2. Định nghĩa đệ quy – định nghĩa các thuật ngữ sử dụng các thuật ngữ trước đó.
+
+- Ví dụ: Dãy Fibonacci:
+
+     $$
+     a_1 = 1, \quad a_2 = 1, \quad a_{n} = a_{n-1} + a_{n-2} \quad (n \geq 3).
+     $$
+
+### Ví dụ về trình tự
+
+1. Dãy số học:
+
+   $$
+   a_n = a_1 + (n-1)d.
+   $$
+
+Ví dụ: $a_n = 2n+1$ → dãy số lẻ.
+
+2. Trình tự hình học:
+
+   $$
+   a_n = a_1 r^{n-1}.
+   $$
+
+Ví dụ: $a_n = 2^n$ → lũy thừa của 2.
+
+3. Chuỗi hài:
+
+   $$
+   a_n = \frac{1}{n}.
+   $$
+
+4. Trình tự luân phiên:
+
+   $$
+   a_n = (-1)^n.
+   $$
+
+### Dãy số trong phép tính
+
+Trình tự là nền tảng cho các quá trình vô hạn:
+
+- Giới hạn của dãy → xác định sự hội tụ.
+- Chuỗi → tổng vô hạn được xây dựng từ chuỗi.
+- Các hàm xấp xỉ theo trình tự và chuỗi.
+
+### Tại sao điều này lại quan trọng
+
+- Chuỗi cung cấp các khối xây dựng cho chuỗi vô hạn và chuỗi xấp xỉ.
+- Chúng cho phép chúng ta định nghĩa chặt chẽ việc “tiến tới vô cực” và sự hội tụ.
+- Nhiều hàm số quan trọng (lũy thừa, lượng giác) có thể được biểu diễn thông qua dãy số và chuỗi.
+
+### Bài tập
+
+1. Viết năm số hạng đầu tiên của dãy $a_n = \frac{n}{n+1}$.
+2. Xác định xem $a_n = (-1)^n n$ có bị chặn hay không.
+3. Đưa ra định nghĩa đệ quy cho dãy $2,4,8,16,\dots$.
+4. Tìm số hạng thứ 10 của dãy số học với $a_1=3$ và $d=5$.
+5. Viết công thức rõ ràng cho dãy được xác định bởi $a_1=1$, $a_{n+1}=2a_n$.
+
+## 11.2 Trình tự đơn điệu và có giới hạn
+
+Để hiểu liệu một chuỗi có hội tụ hay không, chúng ta cần nghiên cứu hành vi của nó: nó tăng, giảm, nằm trong giới hạn hay tăng không giới hạn? Hai khái niệm quan trọng là tính đơn điệu và tính giới hạn.
+
+### Trình tự đơn điệu
+
+Dãy $(a_n)$ được gọi là đơn điệu nếu nó luôn tăng hoặc luôn giảm.
+
+- Đơn điệu tăng dần:
+
+  $$
+  a_{n+1} \geq a_n \quad \text{for all } n.
+  $$
+
+- Giảm đơn điệu:
+
+  $$
+  a_{n+1} \leq a_n \quad \text{for all } n.
+  $$
+
+Ví dụ:
+
+1. $a_n = n$ tăng đơn điệu.
+2. $a_n = \frac{1}{n}$ đơn điệu giảm dần.
+
+### Chuỗi giới hạn
+
+Một dãy được giới hạn ở trên nếu tồn tại một số $M$ sao cho $a_n \leq M$ với mọi $n$.
+Nó được giới hạn bên dưới nếu tồn tại $m$ sao cho $a_n \geq m$ với mọi $n$.
+
+Nếu cả hai điều kiện đều đúng thì chuỗi bị chặn.
+
+Ví dụ:
+
+1. $a_n = \frac{1}{n}$ được giới hạn trong khoảng từ 0 đến 1.
+2. $a_n = (-1)^n$ được giới hạn giữa -1 và 1.
+3. $a_n = n$ không bị giới hạn.
+
+### Định lý hội tụ đơn điệu
+
+Một kết quả cơ bản trong phân tích:
+
+- Mọi dãy tăng đơn điệu bị chặn ở trên đều hội tụ.
+- Mọi dãy giảm đơn điệu bị chặn dưới đây đều hội tụ.
+
+Định lý này đảm bảo sự hội tụ mà không cần tìm giới hạn một cách rõ ràng.
+
+### Ví dụ
+
+1. Dãy số: $a_n = 1 - \frac{1}{n}$.
+
+- Tăng: vì $a_{n+1} - a_n = \frac{1}{n} - \frac{1}{n+1} > 0$.
+   - Bị chặn ở trên bởi 1.
+   - Do đó nó hội tụ.
+   - Giới hạn: $\lim_{n\to\infty} a_n = 1$.
+
+### Tại sao điều này lại quan trọng
+
+- Tính đơn điệu và tính bị chặn cho phép kiểm tra nhanh sự hội tụ.
+- Chúng rất cần thiết trong việc chứng minh và xây dựng các giới hạn một cách chặt chẽ.
+- Những ý tưởng này mở rộng một cách tự nhiên sang các hàm số và chuỗi.
+
+### Bài tập
+
+1. Xác định xem $a_n = \frac{n}{n+1}$ có đơn điệu và bị chặn hay không.
+2. Chứng minh $a_n = \sqrt{n}$ tăng đơn điệu nhưng không bị chặn.
+3. Chứng minh rằng $a_n = 2 - \frac{1}{n}$ hội tụ và tìm giới hạn của nó.
+4. Cho ví dụ về dãy giới hạn không đơn điệu.
+5. Áp dụng định lý hội tụ đơn điệu cho $a_n = \ln\!\big(1+\frac{1}{n}\big)$.
+
+## 11.3 Giới hạn của dãy
+
+Câu hỏi trọng tâm về một dãy là liệu các số hạng của nó có tiến tới một giá trị duy nhất khi $n$ tăng lên hay không. Điều này dẫn đến khái niệm giới hạn của dãy.
+
+### Sự định nghĩa
+
+Một dãy $(a_n)$ có một giới hạn $L$ nếu, với mỗi $\varepsilon > 0$, tồn tại một số nguyên $N$ sao cho
+
+$$
+|a_n - L| < \varepsilon \quad \text{whenever } n > N.
+$$
+
+Sau đó chúng tôi viết
+
+$$
+\lim_{n\to\infty} a_n = L.
+$$
+
+Nếu không có $L$ như vậy tồn tại thì chuỗi sẽ phân kỳ.
+
+### Trực giác
+
+- Các số hạng của dãy tiến gần tùy ý tới $L$ khi $n$ trở nên lớn.
+- Ngoài một số chỉ số $N$, tất cả các số hạng đều nằm trong một biên độ nhỏ quanh $L$.
+
+### Ví dụ
+
+1. $a_n = \frac{1}{n}$.
+   Khi $n$ tăng lên, số hạng co lại về 0.
+
+   $$
+   \lim_{n\to\infty} \frac{1}{n} = 0.
+   $$
+
+2. $a_n = (-1)^n$.
+   Các số hạng xen kẽ giữa -1 và 1, do đó không tồn tại một giới hạn nào. Trình tự phân kỳ.
+
+3. $a_n = \frac{n}{n+1}$.
+   Vì $n \to \infty$, tử số và mẫu số gần bằng nhau, vì vậy
+
+   $$
+   \lim_{n\to\infty} \frac{n}{n+1} = 1.
+   $$
+
+### Thuộc tính của giới hạn
+
+Nếu $\lim a_n = A$ và $\lim b_n = B$:
+
+- $\lim (a_n+b_n) = A+B$.
+- $\lim (a_n b_n) = AB$.
+- $\lim (c a_n) = cA$ cho $c$ không đổi.
+- Nếu $b_n \neq 0$ và $B \neq 0$ thì
+
+  $$
+  \lim \frac{a_n}{b_n} = \frac{A}{B}.
+  $$
+
+### Định lý: Nguyên lý nén
+
+Nếu $a_n \leq b_n \leq c_n$ cho tất cả $n$ lớn, và
+
+$$
+\lim_{n\to\infty} a_n = \lim_{n\to\infty} c_n = L,
+$$
+
+sau đó
+
+$$
+\lim_{n\to\infty} b_n = L.
+$$
+
+Ví dụ:
+
+$$
+a_n = -\tfrac{1}{n}, \quad b_n = \tfrac{\sin n}{n}, \quad c_n = \tfrac{1}{n}.
+$$
+
+Vì $-\tfrac{1}{n} \leq \tfrac{\sin n}{n} \leq \tfrac{1}{n}$ và cả hai chuỗi giới hạn đều tiến về 0,
+
+$$
+\lim_{n\to\infty} \frac{\sin n}{n} = 0.
+$$
+
+### Tại sao điều này lại quan trọng
+
+- Các giới hạn làm cho ý tưởng về chuỗi “tiếp cận” một giá trị trở nên khắt khe hơn.
+- Sự hội tụ của các chuỗi củng cố chuỗi vô hạn và tính liên tục.
+- Những khái niệm này rất cần thiết trong việc định nghĩa số thực thông qua giới hạn.
+
+### Bài tập
+
+1. Tìm $\lim_{n\to\infty} \frac{2n+1}{3n+4}$.
+2. Xác định xem $a_n = \sqrt{n+1} - \sqrt{n}$ có hội tụ hay không.
+3. $a_n = \cos n$ có hội tụ không? Tại sao hoặc tại sao không?
+4. Sử dụng Nguyên lý nén để chứng minh $\lim_{n\to\infty} \frac{\sin n}{n} = 0$.
+5. Chứng minh rằng nếu $\lim a_n = L$ thì $\lim |a_n| = |L|$.
+
+# Chương 12. Chuỗi vô tận
+
+## 12.1 Chuỗi và Hội tụ
+
+Một chuỗi là tổng các số hạng của một dãy. Thay vì chỉ liệt kê các số, chúng tôi cộng chúng lại với nhau và nghiên cứu xem tổng vô hạn có tiến tới giá trị hữu hạn hay không.
+
+### Sự định nghĩa
+
+Cho một dãy $(a_n)$, chuỗi tương ứng là
+
+$$
+\sum_{n=1}^\infty a_n = a_1 + a_2 + a_3 + \dots
+$$
+
+Chúng tôi xác định tổng một phần thứ n là
+
+$$
+S_n = \sum_{k=1}^n a_k.
+$$
+
+Nếu dãy $(S_n)$ hội tụ đến một giới hạn hữu hạn $S$, thì chuỗi hội tụ và
+
+$$
+\sum_{n=1}^\infty a_n = S.
+$$
+
+Nếu $(S_n)$ phân kỳ thì chuỗi phân kỳ.
+
+### Ví dụ
+
+1. Chuỗi hình học
+
+$$
+\sum_{n=0}^\infty ar^n = \frac{a}{1-r}, \quad |r| < 1.
+$$
+
+Ví dụ:
+
+$$
+1 + \tfrac{1}{2} + \tfrac{1}{4} + \tfrac{1}{8} + \dots = 2.
+$$
+
+2. Chuỗi sóng hài
+
+$$
+\sum_{n=1}^\infty \frac{1}{n}.
+$$
+
+Chuỗi này phân kỳ, mặc dù các số hạng tiến tới 0.
+
+3. dòng p
+
+$$
+\sum_{n=1}^\infty \frac{1}{n^p}.
+$$
+
+- Hội tụ nếu $p > 1$.
+- Phân kỳ nếu $p \leq 1$.
+
+### Điều kiện cần để hội tụ
+
+Nếu $\sum a_n$ hội tụ thì nhất thiết
+
+$$
+\lim_{n\to\infty} a_n = 0.
+$$
+
+Nếu $\lim a_n \neq 0$, chuỗi sẽ phân kỳ.
+Nhưng điều ngược lại không đúng: $\lim a_n = 0$ không đảm bảo sự hội tụ (ví dụ: chuỗi hài).
+
+### Tại sao điều này lại quan trọng
+
+- Chuỗi mở rộng phép cộng hữu hạn cho quá trình vô hạn.
+- Chuỗi hội tụ được sử dụng để tính gần đúng các hàm, tính toán vùng và mô hình hóa các quá trình vật lý.
+- Việc nghiên cứu chuỗi dẫn tới các kiểm định hội tụ mạnh mẽ.
+
+### Bài tập
+
+1. Xác định xem $\sum_{n=1}^\infty \frac{2}{3^n}$ có hội tụ hay không và tìm tổng của nó.
+2. Chứng minh rằng $\sum_{n=1}^\infty \frac{1}{n^2}$ hội tụ.
+3. $\sum_{n=1}^\infty \frac{1}{\sqrt{n}}$ có hội tụ không?
+4. Viết bốn tổng riêng đầu tiên của chuỗi $\sum_{n=1}^\infty \frac{1}{2^n}$.
+5. Giải thích tại sao $\lim a_n = 0$ là cần thiết nhưng chưa đủ để hội tụ.
+
+## 12.2 Kiểm tra hội tụ
+
+Vì nhiều chuỗi không thể tính tổng một cách trực tiếp nên các nhà toán học đã phát triển các bài kiểm tra để quyết định xem một chuỗi đó hội tụ hay phân kỳ. Những bài kiểm tra này là công cụ để phân tích số tiền vô hạn.
+
+### 1. Bài kiểm tra phân kỳ học kỳ thứ n
+
+Nếu như
+
+$$
+\lim_{n\to\infty} a_n \neq 0 \quad \text{or does not exist},
+$$
+
+sau đó
+
+$$
+\sum a_n
+$$
+
+phân kỳ.
+
+Nếu $\lim a_n = 0$, phép thử không có kết quả.
+
+### 2. Kiểm tra so sánh
+
+Giả sử $0 \leq a_n \leq b_n$ cho tất cả $n$.
+
+- Nếu $\sum b_n$ hội tụ thì $\sum a_n$ cũng hội tụ.
+- Nếu $\sum a_n$ phân kỳ thì $\sum b_n$ cũng phân kỳ.
+
+### 3. Kiểm tra so sánh giới hạn
+
+Nếu $a_n, b_n > 0$ và
+
+$$
+\lim_{n\to\infty} \frac{a_n}{b_n} = c,
+$$
+
+trong đó $0 < c < \infty$, thì $\sum a_n$ và $\sum b_n$ đều hội tụ hoặc phân kỳ.
+
+### 4. Kiểm tra tỷ lệ
+
+Với $\sum a_n$, hãy tính
+
+$$
+L = \lim_{n\to\infty} \left| \frac{a_{n+1}}{a_n} \right|.
+$$
+
+- Nếu $L < 1$ thì chuỗi hội tụ tuyệt đối.
+- Nếu $L > 1$ hoặc $L = \infty$ thì chuỗi phân kỳ.
+- Nếu $L = 1$, phép kiểm định không thuyết phục.
+
+### 5. Kiểm tra gốc
+
+Với $\sum a_n$, hãy tính
+
+$$
+L = \lim_{n\to\infty} \sqrt[n]{|a_n|}.
+$$
+
+- Nếu $L < 1$ thì chuỗi hội tụ tuyệt đối.
+- Nếu $L > 1$ thì chuỗi phân kỳ.
+- Nếu $L = 1$, phép kiểm định không thuyết phục.
+
+### 6. Bài kiểm tra nối tiếp xen kẽ (Bài kiểm tra của Leibniz)
+
+Đối với loạt mẫu
+
+$$
+\sum (-1)^n b_n \quad \text{or} \quad \sum (-1)^{n+1} b_n,
+$$
+
+nếu như
+
+1. $b_{n+1} \leq b_n$ (giảm) và
+2. $\lim_{n\to\infty} b_n = 0$,
+
+thì chuỗi hội tụ.
+
+### Ví dụ
+
+1. $\sum \frac{1}{n^2}$: Kiểm tra so sánh → hội tụ.
+2. $\sum \frac{1}{n}$: Chuỗi sóng hài → phân kỳ.
+3. $\sum \frac{(-1)^n}{n}$: Kiểm tra chuỗi xen kẽ → hội tụ.
+4. $\sum \frac{n!}{n^n}$: Kiểm tra tỷ lệ → hội tụ.
+5. $\sum \frac{2^n}{n}$: Kiểm tra gốc → phân kỳ.
+
+### Tại sao điều này lại quan trọng
+
+- Kiểm định hội tụ cho phép chúng ta phân loại chuỗi mà không cần tính tổng rõ ràng.
+- Chúng cung cấp những cách có hệ thống để xử lý các quá trình vô hạn trong giải tích.
+- Chúng rất quan trọng cho các chủ đề sau này như chuỗi lũy thừa và chuỗi Fourier.
+
+### Bài tập
+
+1. Kiểm tra sự hội tụ của $\sum \frac{1}{n^3}$.
+2. Sử dụng phép kiểm tra tỷ lệ cho $\sum \frac{3^n}{n!}$.
+3. Áp dụng kiểm tra gốc cho $\sum \left(\frac{1}{2}\right)^n$.
+4. Xác định sự hội tụ của $\sum \frac{(-1)^n}{\sqrt{n}}$.
+5. Sử dụng phép kiểm tra so sánh giới hạn với $\frac{1}{n^2}$ để kiểm tra $\sum \frac{1}{n^2+1}$.
+
+## 12.3 Hội tụ tuyệt đối và có điều kiện
+
+Không phải tất cả các chuỗi đều hoạt động giống nhau khi các dấu hiệu thay thế. Để giải quyết vấn đề này, chúng ta phân biệt giữa hội tụ tuyệt đối và hội tụ có điều kiện.
+
+### Hội tụ tuyệt đối
+
+Chuỗi $\sum a_n$ hội tụ tuyệt đối nếu
+
+$$
+\sum |a_n|
+$$
+
+hội tụ.
+
+Định lý: Nếu một chuỗi hội tụ tuyệt đối thì nó cũng hội tụ.
+
+Ví dụ:
+
+$$
+\sum \frac{(-1)^n}{n^2}.
+$$
+
+Ở đây $\sum \left|\frac{(-1)^n}{n^2}\right| = \sum \frac{1}{n^2}$ hội tụ (p-series, $p=2$).
+Vậy chuỗi này hội tụ tuyệt đối.
+
+### Hội tụ có điều kiện
+
+Chuỗi $\sum a_n$ hội tụ có điều kiện nếu nó hội tụ, nhưng không hội tụ tuyệt đối.
+
+Ví dụ:
+
+$$
+\sum \frac{(-1)^n}{n}.
+$$
+
+- Kiểm tra chuỗi xen kẽ → hội tụ.
+- Nhưng $\sum \left|\frac{(-1)^n}{n}\right| = \sum \frac{1}{n}$ phân kỳ (chuỗi sóng hài).
+  Vậy chuỗi hội tụ có điều kiện.
+
+### Định lý sắp xếp lại
+
+Đối với chuỗi hội tụ có điều kiện, việc sắp xếp lại các số hạng có thể thay đổi tổng - thậm chí làm cho tổng phân kỳ hoặc hội tụ về một giá trị khác.
+
+Kết quả đáng ngạc nhiên này cho thấy bản chất mong manh của sự hội tụ có điều kiện.
+
+### Tại sao điều này lại quan trọng
+
+- Sự hội tụ tuyệt đối mạnh hơn và đảm bảo sự ổn định.
+- Sự hội tụ có điều kiện nêu bật tầm quan trọng của trật tự trong tổng vô hạn.
+- Nhiều chuỗi xen kẽ gặp trong thực tế chỉ hội tụ có điều kiện.
+
+### Bài tập
+
+1. Chứng minh rằng $\sum \frac{(-1)^n}{n^3}$ hội tụ tuyệt đối.
+2. Chứng minh rằng $\sum \frac{(-1)^n}{n}$ hội tụ có điều kiện.
+3. Kiểm tra $\sum \frac{(-1)^n}{\sqrt{n}}$ về sự hội tụ tuyệt đối và có điều kiện.
+4. Giải thích tại sao sự hội tụ tuyệt đối kéo theo sự hội tụ, nhưng điều ngược lại là không đúng.
+5. Nghiên cứu và tóm tắt định lý sắp xếp lại Riemann bằng lời nói của bạn.
+
+# Chương 13. Chuỗi sức mạnh và mở rộng
+
+## Dòng điện 13.1
+
+Chuỗi lũy thừa là chuỗi vô hạn trong đó mỗi số hạng liên quan đến lũy thừa của biến. Chuỗi lũy thừa là trung tâm của phép tính vì chúng cho phép chúng ta biểu diễn các hàm số dưới dạng đa thức vô hạn.
+
+### Mẫu chung
+
+Chuỗi lũy thừa có tâm tại $a$ có dạng
+
+$$
+\sum_{n=0}^\infty c_n (x-a)^n,
+$$
+
+trong đó $c_n$ là các hằng số được gọi là hệ số.
+
+- Nếu $a=0$ thì chuỗi có tâm tại gốc tọa độ:
+
+  $$
+  \sum_{n=0}^\infty c_n x^n.
+  $$
+
+### Ví dụ
+
+1. Chuỗi hình học
+
+$$
+\sum_{n=0}^\infty x^n = \frac{1}{1-x}, \quad |x|<1.
+$$
+
+2. Hàm mũ
+
+$$
+e^x = \sum_{n=0}^\infty \frac{x^n}{n!}.
+$$
+
+3. Sin và cosin
+
+$$
+\sin x = \sum_{n=0}^\infty (-1)^n \frac{x^{2n+1}}{(2n+1)!}, \quad  
+\cos x = \sum_{n=0}^\infty (-1)^n \frac{x^{2n}}{(2n)!}.
+$$
+
+### Khoảng hội tụ
+
+Với mỗi chuỗi lũy thừa tồn tại bán kính hội tụ $R$ sao cho:
+
+- Chuỗi hội tụ nếu $|x-a| < R$.
+- Chuỗi phân kỳ nếu $|x-a| > R$.
+- Tại $|x-a| = R$, sự hội tụ phải được kiểm tra riêng.
+
+### Tại sao điều này lại quan trọng
+
+- Chuỗi lũy thừa cho phép ta tính gần đúng hàm số bằng đa thức.
+- Họ kết nối phép tính với phân tích và phương trình vi phân.
+- Nhiều hàm đặc biệt trong toán học và vật lý được xác định bằng chuỗi lũy thừa.
+
+### Bài tập
+
+1. Viết chuỗi lũy thừa của $\sum_{n=0}^\infty \frac{(x-2)^n}{n!}$.
+2. Tìm bốn số hạng đầu tiên của chuỗi lũy thừa của $e^x$.
+3. Biểu thị $\frac{1}{1+x}$ dưới dạng chuỗi lũy thừa có tâm tại 0.
+4. Xác định xem chuỗi $\sum_{n=0}^\infty n! x^n$ hội tụ tại $x=0,1$.
+5. Giải thích tại sao chuỗi lũy thừa đôi khi được gọi là “đa thức vô hạn”.
+
+## 13,2 Bán kính hội tụ
+
+Mọi chuỗi lũy thừa đều hội tụ đối với một số giá trị của $x$ và phân kỳ đối với các giá trị khác. Ranh giới giữa hai hành vi này được mô tả bằng bán kính hội tụ.
+
+### Sự định nghĩa
+
+Đối với chuỗi điện
+
+$$
+\sum_{n=0}^\infty c_n (x-a)^n,
+$$
+
+tồn tại một số $R \geq 0$ (có thể là vô hạn) sao cho:
+
+- Chuỗi hội tụ tuyệt đối nếu $|x-a| < R$.
+- Chuỗi phân kỳ nếu $|x-a| > R$.
+- Tại $|x-a| = R$, sự hội tụ phải được kiểm tra riêng.
+
+Số $R$ này được gọi là bán kính hội tụ.
+
+### Tìm bán kính hội tụ
+
+Hai phương pháp phổ biến:
+
+1. Kiểm tra tỷ lệ
+
+$$
+R = \lim_{n\to\infty} \left| \frac{c_n}{c_{n+1}} \right|.
+$$
+
+2. Kiểm tra gốc
+
+$$
+R = \frac{1}{\limsup_{n\to\infty} \sqrt[n]{|c_n|}}.
+$$
+
+### Ví dụ
+
+1. Dòng sản phẩm:
+
+$$
+\sum_{n=0}^\infty \frac{x^n}{n!}.
+$$
+
+Sử dụng kiểm tra tỷ lệ:
+
+$$
+\lim_{n\to\infty} \frac{1/(n!)}{1/((n+1)!)} = \infty.
+$$
+
+Vậy $R = \infty$ (hội tụ với mọi $x$ thực).
+
+2. Chuỗi:
+
+$$
+\sum_{n=0}^\infty x^n.
+$$
+
+Ở đây $c_n = 1$.
+
+$$
+R = 1.
+$$
+
+Hội tụ cho $|x| < 1$.
+
+3. Dòng sản phẩm:
+
+$$
+\sum_{n=1}^\infty \frac{x^n}{n}.
+$$
+
+Kiểm tra tỷ lệ:
+
+$$
+\lim_{n\to\infty} \left|\frac{(x^{n+1}/(n+1))}{(x^n/n)}\right| = |x|.
+$$
+
+Vậy $R = 1$. Hội tụ cho $|x| < 1$, phân kỳ cho $|x| > 1 đô la. Tại $x=\pm 1$, hãy kiểm tra riêng.
+
+### Khoảng hội tụ
+
+Tập hợp các giá trị $x$ trong đó chuỗi hội tụ được gọi là khoảng hội tụ.
+
+- Luôn tập trung tại $a$.
+- Mở rộng đơn vị $R$ theo cả hai hướng.
+- Điểm cuối $x=a\pm R$ phải được kiểm tra riêng lẻ.
+
+### Tại sao điều này lại quan trọng
+
+- Bán kính hội tụ cho chúng ta biết chuỗi lũy thừa hoạt động giống như hàm số ở đâu.
+- Cần thiết cho việc sử dụng khai triển chuỗi Taylor trong thực tế.
+- Xác định phạm vi nghiệm của dãy nghiệm trong vật lý và kỹ thuật.
+
+### Bài tập
+
+1. Tìm bán kính hội tụ của $\sum_{n=0}^\infty \frac{(x-3)^n}{n!}$.
+2. Tính bán kính hội tụ của $\sum_{n=1}^\infty \frac{x^n}{n^2}$.
+3. Sử dụng phép kiểm tra tỷ lệ để tìm $R$ cho $\sum_{n=0}^\infty n!x^n$.
+4. Xác định khoảng hội tụ của $\sum_{n=1}^\infty \frac{(x+1)^n}{n}$.
+5. Giải thích tại sao chuỗi số mũ hội tụ với mọi $x$, trong khi chuỗi hình học chỉ hội tụ với $|x|<1$.
+
+## 13.3 Dòng Taylor và Maclaurin
+
+Chuỗi lũy thừa trở nên đặc biệt mạnh mẽ khi chúng được sử dụng để biểu diễn các hàm quen thuộc. Điều này được thực hiện thông qua chuỗi Taylor và trường hợp đặc biệt có tâm tại 0 được gọi là chuỗi Maclaurin.
+
+###Dòng Taylor
+
+Nếu một hàm $f(x)$ khả vi vô hạn tại $x=a$ thì chuỗi Taylor của nó về $a$ là
+
+$$
+f(x) = \sum_{n=0}^\infty \frac{f^{(n)}(a)}{n!}(x-a)^n.
+$$
+
+Ở đây $f^{(n)}(a)$ biểu thị đạo hàm thứ $n$ của $f$ tại $a$.
+
+### Dòng Maclaurin
+
+Chuỗi Taylor có tâm tại $a=0$:
+
+$$
+f(x) = \sum_{n=0}^\infty \frac{f^{(n)}(0)}{n!} x^n.
+$$
+
+### Ví dụ
+
+1. Hàm mũ
+
+$$
+e^x = 1 + x + \frac{x^2}{2!} + \frac{x^3}{3!} + \cdots
+$$
+
+2. Sin và cosin
+
+$$
+\sin x = x - \frac{x^3}{3!} + \frac{x^5}{5!} - \cdots
+$$
+
+$$
+\cos x = 1 - \frac{x^2}{2!} + \frac{x^4}{4!} - \cdots
+$$
+
+3. Logarit tự nhiên (với $|x|<1$)
+
+$$
+\ln(1+x) = x - \frac{x^2}{2} + \frac{x^3}{3} - \frac{x^4}{4} + \cdots
+$$
+
+### Xấp xỉ đa thức Taylor
+
+Tổng hữu hạn của các số hạng $n$ đầu tiên là đa thức Taylor bậc $n$:
+
+$$
+P_n(x) = \sum_{k=0}^n \frac{f^{(k)}(a)}{k!}(x-a)^k.
+$$
+
+Đa thức này xấp xỉ $f(x)$ gần $x=a$.
+
+### Phần dư (Thuật ngữ Lỗi)
+
+Hiệu giữa hàm số và đa thức Taylor của nó là phần dư:
+
+$$
+R_n(x) = f(x) - P_n(x).
+$$
+
+Một dạng (dạng Lagrange) là
+
+$$
+R_n(x) = \frac{f^{(n+1)}(c)}{(n+1)!}(x-a)^{n+1},
+$$
+
+đối với một số $c$ nằm giữa $a$ và $x$.
+
+### Tại sao điều này lại quan trọng
+
+- Chuỗi Taylor cung cấp các phép tính gần đúng đa thức cho các hàm phức tạp.
+- Chúng rất cần thiết trong phân tích số, vật lý và kỹ thuật.
+- Khai triển chuỗi Maclaurin đưa ra các công thức đơn giản cho các hàm số mũ, lượng giác và logarit.
+
+### Bài tập
+
+1. Tìm chuỗi Maclaurin của $f(x)=\cosh x = \tfrac{e^x+e^{-x}}{2}$.
+2. Viết chuỗi Taylor cho $f(x)=e^x$ có tâm tại $a=2$.
+3. Tính đa thức Taylor bậc 3 cho $f(x)=\ln(1+x)$ tại $a=0$.
+4. Sử dụng chuỗi Maclaurin cho $\sin x$ để xấp xỉ $\sin(0,1)$.
+5. Giải thích tại sao chuỗi Taylor thường cho kết quả gần đúng cục bộ tốt nhưng có thể phân kỳ đối với $|x|$ lớn.
+
+##13.4 Ứng dụng của dòng Taylor
+
+Chuỗi Taylor không chỉ là công cụ lý thuyết - chúng còn được sử dụng để tính gần đúng các hàm, giải phương trình và phân tích các hệ vật lý. Ứng dụng của họ bao gồm toán học, khoa học và kỹ thuật.
+
+### Xấp xỉ hàm
+
+Các hàm phức tạp có thể được tính gần đúng bằng các đa thức gần một điểm.
+
+Ví dụ: Ước tính $e^x$ gần $x=0$ bằng cách sử dụng đa thức Maclaurin bậc 3:
+
+$$
+P_3(x) = 1 + x + \tfrac{x^2}{2} + \tfrac{x^3}{6}.
+$$
+
+Đối với $x$ nhỏ, điều này đưa ra ước tính chính xác về $e^x$.
+
+### Phương pháp số
+
+Chuỗi Taylor cung cấp cơ sở cho các thuật toán số:
+
+- Xấp xỉ căn bậc hai, logarit và giá trị lượng giác.
+- Ước lượng sai số qua số hạng còn lại.
+- Được sử dụng trong các phương pháp lặp như phương pháp Newton (trong đó tuyến tính hóa cục bộ lấy từ chuỗi Taylor).
+
+### Giải phương trình vi phân
+
+Nhiều phương trình vi phân có nghiệm được biểu thị dưới dạng chuỗi Taylor (hoặc lũy thừa).
+
+Ví dụ: Nghiệm của $y'' + y = 0$ với $y(0)=0, y'(0)=1$ là $\sin x$, xuất hiện một cách tự nhiên từ chuỗi Maclaurin của nó.
+
+### Vật lý và Kỹ thuật
+
+- Xấp xỉ góc nhỏ:
+
+  $$
+  \sin x \approx x, \quad \cos x \approx 1 - \tfrac{x^2}{2}, \quad |x| \ll 1.
+  $$
+
+Được sử dụng trong chuyển động con lắc, quang học và cơ học sóng.
+
+- Thuyết tương đối và cơ học lượng tử: Khai triển Taylor đơn giản hóa các biểu thức phi tuyến để sử dụng trong thực tế.
+
+- Xấp xỉ hàm năng lượng: Trong cơ học, hàm thế năng được khai triển gần điểm cân bằng.
+
+### Xác suất và Thống kê
+
+- Hàm sinh mômen và hàm đặc tính sử dụng chuỗi lũy thừa.
+- Các phép tính gần đúng của phân bố xác suất (ví dụ: xấp xỉ chuẩn với nhị thức) sử dụng khai triển Taylor.
+
+### Tại sao điều này lại quan trọng
+
+- Chuỗi Taylor cung cấp cầu nối giữa các công thức chính xác và tính toán thực tế.
+- Chúng cho phép chúng ta giảm các vấn đề phức tạp thành các xấp xỉ đa thức có thể quản lý được.
+- Các ứng dụng làm cho chúng trở thành một trong những công cụ quan trọng nhất trong toán học ứng dụng.
+
+### Bài tập
+
+1. Sử dụng chuỗi Maclaurin cho $e^x$ để tính gần đúng $e^{0.1}$ tới bốn chữ số thập phân.
+2. Áp dụng phép tính gần đúng góc nhỏ để ước tính $\sin(5^\circ)$.
+3. Giải phương trình vi phân $y'' = -y$ bằng cách sử dụng phương pháp chuỗi lũy thừa.
+4. Khai triển $\ln(1+x)$ lên đến bậc 4 và sử dụng nó để tính gần đúng $\ln(1.1)$.
+5. Giải thích tại sao phép tính gần đúng đa thức đặc biệt hữu ích cho máy tính và máy tính bỏ túi.
+
+#Phụ lục
+
+## Phụ lục A. Những kiến ​​thức cơ bản trước khi tính toán
+
+### Ôn lại đại số A.1
+
+Trước khi đi sâu vào giải tích, việc ôn lại một số kỹ năng đại số sẽ xuất hiện lặp đi lặp lại sẽ rất hữu ích. Đây là những “công cụ” bạn sẽ cần để thao tác với biểu thức, giải phương trình và đơn giản hóa kết quả.
+
+#### Số mũ và lũy thừa
+
+- Các quy tắc cơ bản:
+
+  $$
+  a^m \cdot a^n = a^{m+n}, \quad \frac{a^m}{a^n} = a^{m-n}, \quad (a^m)^n = a^{mn}.
+  $$
+- Negative exponents:
+
+  $$
+  a^{-n} = \frac{1}{a^n}, \quad a \neq 0.
+  $$
+- Fractional exponents:
+
+  $$
+  a^{1/n} = \sqrt[n]{a}, \quad a^{m/n} = \sqrt[n]{a^m}.
+  $$
+
+#### Bao thanh toán
+
+Phân tích nhân tử đơn giản hóa các biểu thức và giúp giải các phương trình.
+
+1. Yếu tố chung:
+
+   $$
+   6x^2+9x = 3x(2x+3).
+   $$
+
+2. Sự khác biệt của hình vuông:
+
+   $$
+   a^2-b^2 = (a-b)(a+b).
+   $$
+
+3. Tam thức bậc hai:
+
+   $$
+   x^2+5x+6 = (x+2)(x+3).
+   $$
+
+#### Đa thức
+
+- Dạng chuẩn: $P(x) = a_nx^n + a_{n-1}x^{n-1} + \cdots + a_0$.
+- Bậc: lũy thừa lớn nhất của $x$.
+- Phép chia dài và phép chia tổng hợp rất hữu ích trong việc đơn giản hóa hàm số hữu tỉ.
+
+#### Biểu thức hữu tỉ
+
+Rút gọn bằng cách phân tích nhân tử và mẫu số:
+
+$$
+\frac{x^2-1}{x^2-2x+1} = \frac{(x-1)(x+1)}{(x-1)^2} = \frac{x+1}{x-1}, \quad x \neq 1.
+$$
+
+#### Logarit
+
+- Định nghĩa: $\log_a b = c$ có nghĩa là $a^c = b$.
+- Các cơ số chung: log tự nhiên ($\ln x = \log_e x$) và cơ số 10 ($\log x$).
+- Quy tắc:
+
+  $$
+  \log(ab) = \log a + \log b, \quad \log\left(\frac{a}{b}\right) = \log a - \log b, \quad \log(a^n) = n\log a.
+  $$
+
+#### Phương trình
+
+- Tuyến tính: giải $ax+b=0$ → $x=-b/a$.
+- Bậc hai: $ax^2+bx+c=0$ có nghiệm
+
+  $$
+  x=\frac{-b\pm \sqrt{b^2-4ac}}{2a}.
+  $$
+- Exponential: $e^x = k$ → $x = \ln k$.
+
+### A.2 Cơ bản về lượng giác
+
+Lượng giác cung cấp ngôn ngữ của các góc và hiện tượng tuần hoàn. Vì phép tính thường xử lý các dao động, chuyển động và sóng nên việc nắm vững các hàm lượng giác và các tính chất của chúng là điều cần thiết.
+
+#### Vòng tròn đơn vị
+
+- Được xác định là đường tròn bán kính 1 có tâm tại gốc tọa độ.
+- Đối với góc $\theta$ đo từ trục $x$ dương:
+
+  $$
+  (\cos \theta, \sin \theta)
+  $$
+
+cho biết tọa độ của điểm trên đường tròn.
+
+Giá trị đặc biệt:
+
+| $\theta$ | $\sin \theta$ | $\cos \theta$ | $\tan \theta = \frac{\sin \theta}{\cos \theta}$ |
+| -- | - | - | -- |
+| $0$ | 0 | 1 | 0 |
+| $\pi/6$ | 1/2 | $\sqrt{3}/2$ | $1/\sqrt{3}$ |
+| $\pi/4$ | $\sqrt{2}/2$ | $\sqrt{2}/2$ | 1 |
+| $\pi/3$ | $\sqrt{3}/2$ | 1/2 | $\sqrt{3}$ |
+| $\pi/2$ | 1 | 0 | không xác định |
+
+#### Danh tính cơ bản
+
+1. Nhận dạng Pythagore
+
+$$
+\sin^2\theta + \cos^2\theta = 1.
+$$
+
+2. Danh tính thương
+
+$$
+\tan\theta = \frac{\sin\theta}{\cos\theta}, \quad \cot\theta = \frac{\cos\theta}{\sin\theta}.
+$$
+
+3. Bản sắc tương hỗ
+
+$$
+\sec\theta = \frac{1}{\cos\theta}, \quad \csc\theta = \frac{1}{\sin\theta}.
+$$
+
+#### Công thức cộng góc
+
+$$
+\sin(\alpha+\beta) = \sin\alpha\cos\beta + \cos\alpha\sin\beta,
+$$
+
+$$
+\cos(\alpha+\beta) = \cos\alpha\cos\beta - \sin\alpha\sin\beta.
+$$
+
+Các trường hợp đặc biệt:
+
+- Góc đôi:
+
+  $$
+  \sin(2\theta) = 2\sin\theta\cos\theta, \quad
+  \cos(2\theta) = \cos^2\theta - \sin^2\theta.
+  $$
+
+#### Đồ thị
+
+- $\sin x$: sóng bắt đầu từ 0, biên độ 1, chu kỳ $2\pi$.
+- $\cos x$: sóng bắt đầu tại 1, biên độ 1, chu kỳ $2\pi$.
+- $\tan x$: lặp lại mọi $\pi$, không xác định ở bội số lẻ của $\pi/2$.
+
+### A.3 Hình học tọa độ
+
+Phối hợp hình học liên kết đại số và hình học bằng cách mô tả các đối tượng hình học (đường thẳng, hình tròn, đường cong) bằng các phương trình. Giải tích phụ thuộc rất nhiều vào khuôn khổ này để vẽ đồ thị các hàm số, tìm hệ số góc và phân tích các đường cong.
+
+#### Mặt phẳng Descartes
+
+- Một điểm được biểu diễn bằng tọa độ $(x,y)$.
+- Khoảng cách giữa hai điểm $(x_1,y_1)$ và $(x_2,y_2)$:
+
+  $$
+  d = \sqrt{(x_2-x_1)^2 + (y_2-y_1)^2}.
+  $$
+- Midpoint of a line segment:
+
+  $$
+  M = \left(\frac{x_1+x_2}{2}, \frac{y_1+y_2}{2}\right).
+  $$
+
+#### Dòng
+
+1. Công thức độ dốc
+
+   $$
+   m = \frac{y_2-y_1}{x_2-x_1}.
+   $$
+
+2. Phương trình đường thẳng
+
+- Dạng độ dốc điểm:
+
+     $$
+     y-y_1 = m(x-x_1).
+     $$
+   - Slope-intercept form:
+
+     $$
+     y = mx+b.
+     $$
+
+3. Đường song song và vuông góc
+
+- Các đường song song: cùng độ dốc.
+   - Đường vuông góc: hệ số góc thỏa mãn $m_1m_2 = -1$.
+
+#### Vòng kết nối
+
+Phương trình đường tròn có tâm $(h,k)$ và bán kính $r$:
+
+$$
+(x-h)^2+(y-k)^2 = r^2.
+$$
+
+Trường hợp đặc biệt: đường tròn đơn vị có tâm tại gốc tọa độ:
+
+$$
+x^2+y^2=1.
+$$
+
+#### Đoạn hình nón
+
+1. Parabol:
+
+- Dạng chuẩn (mở lên/xuống):
+
+     $$
+     y = ax^2+bx+c.
+     $$
+
+2. Hình elip (tập trung vào gốc):
+
+   $$
+   \frac{x^2}{a^2}+\frac{y^2}{b^2}=1.
+   $$
+
+3. Hyperbol (tập trung tại gốc tọa độ):
+
+   $$
+   \frac{x^2}{a^2}-\frac{y^2}{b^2}=1.
+   $$
+
+## Phụ lục B. Các công thức và bảng chính
+
+### B.1 Bảng đạo hàm
+
+Đạo hàm đo lường tốc độ thay đổi và độ dốc của hàm số. Việc có bảng tra cứu nhanh giúp người học tránh phải học lại công thức mỗi lần học.
+
+#### Quy tắc cơ bản
+
+1. Quy tắc bất biến
+
+$$
+\frac{d}{dx}[c] = 0
+$$
+
+2. Quy tắc quyền lực
+
+$$
+\frac{d}{dx}[x^n] = nx^{n-1}, \quad (n \in \mathbb{R})
+$$
+
+3. Quy tắc bội số không đổi
+
+$$
+\frac{d}{dx}[c f(x)] = c f'(x)
+$$
+
+4. Quy tắc tính tổng và hiệu
+
+$$
+\frac{d}{dx}[f(x)\pm g(x)] = f'(x)\pm g'(x)
+$$
+
+#### Hàm lượng giác
+
+$$
+\frac{d}{dx}[\sin x] = \cos x
+$$
+
+$$
+\frac{d}{dx}[\cos x] = -\sin x
+$$
+
+$$
+\frac{d}{dx}[\tan x] = \sec^2 x, \quad x \neq \tfrac{\pi}{2}+k\pi
+$$
+
+$$
+\frac{d}{dx}[\cot x] = -\csc^2 x
+$$
+
+$$
+\frac{d}{dx}[\sec x] = \sec x \tan x
+$$
+
+$$
+\frac{d}{dx}[\csc x] = -\csc x \cot x
+$$
+
+#### Hàm số mũ và hàm logarit
+
+$$
+\frac{d}{dx}[e^x] = e^x
+$$
+
+$$
+\frac{d}{dx}[a^x] = a^x \ln a, \quad a>0, a\neq 1
+$$
+
+$$
+\frac{d}{dx}[\ln x] = \frac{1}{x}, \quad x>0
+$$
+
+$$
+\frac{d}{dx}[\log_a x] = \frac{1}{x\ln a}, \quad a>0, a\neq 1
+$$
+
+#### Hàm lượng giác nghịch đảo
+
+$$
+\frac{d}{dx}[\arcsin x] = \frac{1}{\sqrt{1-x^2}}, \quad |x|<1
+$$
+
+$$
+\frac{d}{dx}[\arccos x] = -\frac{1}{\sqrt{1-x^2}}, \quad |x|<1
+$$
+
+$$
+\frac{d}{dx}[\arctan x] = \frac{1}{1+x^2}, \quad x \in \mathbb{R}
+$$
+
+#### Quy tắc sản phẩm, thương số và chuỗi
+
+1. Quy tắc sản phẩm
+
+$$
+\frac{d}{dx}[f(x)g(x)] = f'(x)g(x)+f(x)g'(x)
+$$
+
+2. Quy tắc thương số
+
+$$
+\frac{d}{dx}\left[\frac{f(x)}{g(x)}\right] = \frac{f'(x)g(x)-f(x)g'(x)}{[g(x)]^2}, \quad g(x)\neq 0
+$$
+
+3. Quy tắc dây chuyền
+
+$$
+\frac{d}{dx}[f(g(x))] = f'(g(x))\cdot g'(x)
+$$
+
+### B.3 Mở rộng chuỗi thông thường
+
+Chuỗi lũy thừa cho phép chúng ta biểu diễn các hàm dưới dạng đa thức vô hạn. Những mở rộng này rất cần thiết cho các phép tính gần đúng, giải phương trình vi phân và xây dựng trực giác về các hàm trong phép tính.
+
+#### Chuỗi hình học
+
+$$
+\frac{1}{1-x} = \sum_{n=0}^\infty x^n, \quad |x| < 1
+$$
+
+#### Hàm số mũ
+
+$$
+e^x = \sum_{n=0}^\infty \frac{x^n}{n!}
+= 1 + x + \frac{x^2}{2!} + \frac{x^3}{3!} + \cdots
+$$
+
+Hợp lệ cho tất cả $x$.
+
+#### Hàm lượng giác
+
+$$
+\sin x = \sum_{n=0}^\infty (-1)^n \frac{x^{2n+1}}{(2n+1)!}
+= x - \frac{x^3}{3!} + \frac{x^5}{5!} - \cdots
+$$
+
+$$
+\cos x = \sum_{n=0}^\infty (-1)^n \frac{x^{2n}}{(2n)!}
+= 1 - \frac{x^2}{2!} + \frac{x^4}{4!} - \cdots
+$$
+
+$$
+\tan^{-1} x = \sum_{n=0}^\infty (-1)^n \frac{x^{2n+1}}{2n+1}, \quad |x|\leq 1
+$$
+
+#### Lôgarit
+
+$$
+\ln(1+x) = \sum_{n=1}^\infty (-1)^{n+1} \frac{x^n}{n}, \quad -1 < x \leq 1
+$$
+
+#### Mở rộng nhị thức (Tổng quát)
+
+$$
+(1+x)^r = \sum_{n=0}^\infty \binom{r}{n} x^n, \quad |x|<1
+$$
+
+Ở đâu
+
+$$
+\binom{r}{n} = \frac{r(r-1)(r-2)\cdots(r-n+1)}{n!}.
+$$
+
+## Phụ lục C. Bản phác thảo chứng minh
+
+### C.1 Luật giới hạn và định nghĩa $\varepsilon$–$\delta$
+
+Phép tính dựa trên ý nghĩa chính xác của giới hạn. Mặc dù trực giác (“các giá trị ngày càng gần gũi hơn”) là hữu ích nhưng một định nghĩa hình thức sẽ đảm bảo tính chặt chẽ và tránh được những nghịch lý.
+
+#### Ý tưởng trực quan
+
+Chúng tôi viết
+
+$$
+\lim_{x \to a} f(x) = L
+$$
+
+có nghĩa là khi $x$ tiến gần tùy ý đến $a$, thì các giá trị của $f(x)$ sẽ tiến gần tùy ý đến $L$.
+
+#### Trang trọng ($\varepsilon$–$\delta$) Định nghĩa
+
+Chúng tôi nói rằng
+
+$$
+\lim_{x \to a} f(x) = L
+$$
+
+nếu với mọi $\varepsilon > 0$, tồn tại một $\delta > 0$ sao cho bất cứ khi nào
+
+$$
+0 < |x-a| < \delta,
+$$
+
+chúng tôi có
+
+$$
+|f(x) - L| < \varepsilon.
+$$
+
+- $\varepsilon$: chúng ta muốn $f(x)$ tiến gần đến $L$ đến mức nào.
+- $\delta$: $x$ phải gần $a$ đến mức nào để đạt được điều đó.
+
+#### Ví dụ
+
+Cho thấy điều đó
+
+$$
+\lim_{x \to 2} (3x+1) = 7.
+$$
+
+- Cho $\varepsilon > 0$.
+- Chúng tôi muốn $|(3x+1)-7| < \varepsilon$.
+- Rút gọn: $|3x-6| = 3|x-2| < \varepsilon$.
+- Điều này đúng nếu chúng ta chọn $\delta = \varepsilon/3$.
+
+Vì vậy, theo định nghĩa, giới hạn là 7.
+
+#### Luật giới hạn
+
+Nếu $\lim_{x \to a} f(x) = L$ và $\lim_{x \to a} g(x) = M$, thì:
+
+1. Tổng/Chênh lệch
+
+$$
+\lim_{x \to a} [f(x) \pm g(x)] = L \pm M
+$$
+
+2. Bội số không đổi
+
+$$
+\lim_{x \to a} [c f(x)] = cL
+$$
+
+3. Sản phẩm
+
+$$
+\lim_{x \to a} [f(x)g(x)] = LM
+$$
+
+4. Thương số (nếu $M \neq 0$)
+
+$$
+\lim_{x \to a} \frac{f(x)}{g(x)} = \frac{L}{M}
+$$
+
+5. Quyền lực và cội nguồn
+
+$$
+\lim_{x \to a} [f(x)]^n = L^n, \quad \lim_{x \to a} \sqrt[n]{f(x)} = \sqrt[n]{L} \ (\text{if defined}).
+$$
+
+### C.2 Phác thảo chứng minh: Định lý cơ bản của phép tính
+
+Định lý cơ bản của phép tính (FTC) liên kết hai phép tính trung tâm của phép tính: vi phân và tích phân. Nó cho thấy rằng trên thực tế, chúng là những quá trình nghịch đảo.
+
+#### Phát biểu của Định lý
+
+Phần I (Vi phân của tích phân):
+Nếu $f$ liên tục trên $[a,b]$ và ta xác định
+
+$$
+F(x) = \int_a^x f(t)\,dt,
+$$
+
+thì $F$ khả vi trên $(a,b)$ và
+
+$$
+F'(x) = f(x).
+$$
+
+Phần II (Đánh giá tích phân xác định):
+Nếu $F$ là nguyên hàm bất kỳ của $f$ trên $[a,b]$, thì
+
+$$
+\int_a^b f(x)\,dx = F(b)-F(a).
+$$
+
+####Bản phác thảo chứng minh của Phần I
+
+1. Bắt đầu với định nghĩa đạo hàm:
+
+   $$
+   F'(x) = \lim_{h\to 0} \frac{F(x+h)-F(x)}{h}.
+   $$
+
+2. Thay $F(x) = \int_a^x f(t)\,dt$:
+
+   $$
+   F(x+h)-F(x) = \int_a^{x+h} f(t)\,dt - \int_a^x f(t)\,dt.
+   $$
+
+3. Bằng tính cộng của tích phân:
+
+   $$
+   F(x+h)-F(x) = \int_x^{x+h} f(t)\,dt.
+   $$
+
+4. Vì vậy:
+
+   $$
+   \frac{F(x+h)-F(x)}{h} = \frac{1}{h}\int_x^{x+h} f(t)\,dt.
+   $$
+
+5. Theo Định lý Giá trị Trung bình của tích phân, tồn tại $c \in [x,x+h]$ sao cho
+
+   $$
+   \frac{1}{h}\int_x^{x+h} f(t)\,dt = f(c).
+   $$
+
+6. Vì $h \to 0$, $c \to x$, và vì $f$ là liên tục:
+
+   $$
+   \lim_{h\to 0} f(c) = f(x).
+   $$
+
+Do đó, $F'(x) = f(x)$.
+
+####Bản phác thảo chứng minh phần II
+
+1. Cho $F$ là nguyên hàm của $f$, vì vậy $F'(x) = f(x)$.
+
+2. Theo Phần I, hàm
+
+   $$
+   G(x) = \int_a^x f(t)\,dt
+   $$
+
+cũng là nguyên hàm của $f$.
+
+3. Vì $F$ và $G$ chỉ khác nhau một hằng số,
+
+   $$
+   F(x) = G(x) + C.
+   $$
+
+4. Đánh giá ở điểm cuối:
+
+   $$
+   \int_a^b f(x)\,dx = G(b)-G(a) = (F(b)+C)-(F(a)+C) = F(b)-F(a).
+   $$
+
+### C.3 Phác thảo chứng minh: Sự hội tụ của chuỗi hình học
+
+Chuỗi hình học là một trong những chuỗi vô hạn đơn giản và quan trọng nhất. Nó phục vụ như một mô hình để hiểu sự hội tụ và là nền tảng cho nhiều kết quả sau này trong giải tích.
+
+#### Bộ truyện
+
+$$
+\sum_{n=0}^\infty ar^n = a + ar + ar^2 + ar^3 + \cdots
+$$
+
+trong đó $a$ là số hạng đầu tiên và $r$ là tỉ số chung.
+
+#### Công thức tính tổng một phần
+
+Tổng từng phần $n$-th là
+
+$$
+S_n = a + ar + ar^2 + \cdots + ar^n.
+$$
+
+Nhân cả hai vế với $r$:
+
+$$
+rS_n = ar + ar^2 + \cdots + ar^{n+1}.
+$$
+
+Trừ hai phương trình:
+
+$$
+S_n - rS_n = a - ar^{n+1}.
+$$
+
+$$
+S_n(1-r) = a(1-r^{n+1}).
+$$
+
+Vì thế
+
+$$
+S_n = \frac{a(1-r^{n+1})}{1-r}, \quad r \neq 1.
+$$
+
+#### Hội tụ
+
+Lấy giới hạn là $n \to \infty$:
+
+- Nếu $|r| < 1$ thì $r^{n+1} \to 0$.
+
+  $$
+  \lim_{n\to\infty} S_n = \frac{a}{1-r}.
+  $$
+
+- Nếu $|r| \geq 1$, thì $r^{n+1}$ không tiến về 0. Chuỗi phân kỳ.
+
+#### Kết quả
+
+$$
+\sum_{n=0}^\infty ar^n =
+\begin{cases}
+\dfrac{a}{1-r}, & |r|<1, \\[6pt]
+\text{diverges}, & |r|\geq 1.
+\end{cases}
+$$
+
+## Phụ lục D. Ứng dụng và Kết nối
+
+### D.1 Các kết nối Vật lý: Vận tốc, Gia tốc và Công
+
+Giải tích ban đầu được phát triển để giải các bài toán vật lý - đặc biệt là chuyển động và sự biến đổi. Dưới đây là một số kết nối quan trọng nhất.
+
+#### Vị trí, Vận tốc và Gia tốc
+
+- Hàm định vị: $s(t)$ cho biết vị trí của một vật tại thời điểm $t$.
+- Vận tốc: đạo hàm của vị trí.
+
+  $$
+  v(t) = s'(t) = \frac{ds}{dt}
+  $$
+- Acceleration: the derivative of velocity (or second derivative of position).
+
+  $$
+  a(t) = v'(t) = s''(t) = \frac{d^2s}{dt^2}
+  $$
+
+Ví dụ:
+Nếu $s(t) = 4t^2$ mét thì:
+
+$$
+v(t) = 8t, \quad a(t) = 8.
+$$
+
+Vì vậy vật chuyển động tuyến tính nhanh hơn theo thời gian với gia tốc không đổi.
+
+#### Công việc và sức ép
+
+Trong vật lý, công là tích của lực và khoảng cách. Nếu lực thay đổi theo vị trí, phép tính sẽ cho:
+
+$$
+W = \int_a^b F(x)\, dx
+$$
+
+trong đó $F(x)$ là lực tại vị trí $x$, và vật chuyển động từ $x=a$ đến $x=b$.
+
+Ví dụ:
+Một lò xo chịu lực định luật Hooke $F(x) = kx$ cần công
+
+$$
+W = \int_0^d kx\, dx = \frac{1}{2}kd^2
+$$
+
+để kéo dãn lò xo một đoạn $d$.
+
+#### Năng lượng và Diện tích Dưới Đường cong
+
+- Động năng: $E_k = \tfrac{1}{2}mv^2$.
+- Thế năng thường liên quan đến tích phân (ví dụ thế năng hấp dẫn từ lực hấp dẫn).
+- Nói chung, việc tích phân hàm lực sẽ cho năng lượng được tích trữ hoặc thực hiện công.
+
+####Thực hành nhanh
+
+1. Nếu $s(t) = t^3 - 3t$, hãy tìm $v(t)$ và $a(t)$.
+2. Tính công do một lực không đổi 10 N thực hiện làm vật chuyển động được 5 m.
+3. Một lò xo có hằng số $k=200$. Cần bao nhiêu công để kéo nó ra 0,1 m?
+4. Chứng minh rằng gia tốc là đạo hàm bậc hai của vị trí.
+5. Giải thích tích phân $\int v(t)\, dt$ liên quan như thế nào đến độ dịch chuyển.
+
+### D.2 Kết nối xác suất và thống kê
+
+Giải tích có mối liên hệ sâu sắc với xác suất và thống kê, đặc biệt khi xử lý các biến ngẫu nhiên liên tục. Tích phân trở nên cần thiết để xác định xác suất, mức trung bình và kỳ vọng.
+
+#### Hàm mật độ xác suất (PDF)
+
+Đối với biến ngẫu nhiên liên tục $X$, xác suất được mô tả bằng hàm mật độ xác suất $f(x)$:
+
+1. $f(x) \geq 0$ với mọi $x$.
+2. Tổng xác suất bằng 1:
+
+   $$
+   \int_{-\infty}^{\infty} f(x)\, dx = 1.
+   $$
+
+Xác suất để $X$ nằm trong khoảng $[a,b]$ là
+
+$$
+P(a \leq X \leq b) = \int_a^b f(x)\, dx.
+$$
+
+#### Giá trị mong đợi (Trung bình)
+
+Giá trị kỳ vọng (kết quả trung bình) là
+
+$$
+E[X] = \int_{-\infty}^{\infty} x f(x)\, dx.
+$$
+
+Đây là phiên bản tính toán của mức trung bình có trọng số.
+
+#### Phương sai
+
+Các biện pháp phương sai lây lan:
+
+$$
+\text{Var}(X) = E[(X-\mu)^2] = \int_{-\infty}^{\infty} (x-\mu)^2 f(x)\, dx,
+$$
+
+trong đó $\mu = E[X]$.
+
+#### Phân phối chung
+
+1. Phân phối đồng đều trên $[a,b]$:
+
+   $$
+   f(x) = \frac{1}{b-a}, \quad a \leq x \leq b.
+   $$
+
+Giá trị trung bình: $\frac{a+b}{2}$.
+
+2. Phân phối lũy thừa với tham số $\lambda > 0$:
+
+   $$
+   f(x) = \lambda e^{-\lambda x}, \quad x \geq 0.
+   $$
+
+Trung bình: $1/\lambda$.
+
+3. Phân phối chuẩn (Gaussian):
+
+   $$
+   f(x) = \frac{1}{\sqrt{2\pi\sigma^2}} e^{-(x-\mu)^2/(2\sigma^2)}.
+   $$
+
+Tích phân của phân phối này kết nối với hàm lỗi.
+
+#### Tại sao điều này lại quan trọng
+
+- Tích phân biến xác suất thành diện tích dưới đường cong.
+- Phép tính liên kết kỳ vọng và phương sai với giá trị trung bình và độ biến thiên.
+- Hầu hết các mô hình dữ liệu trong thế giới thực (tài chính, vật lý, sinh học, AI) đều sử dụng các phân bố xác suất liên tục này.
+
+####Thực hành nhanh
+
+1. Với $f(x) = \tfrac{1}{2}$ trên $[0,2]$, hãy tính $P(0.5 \leq X \leq 1.5)$.
+2. Để phân phối theo cấp số nhân với $\lambda = 2$, hãy tính $E[X]$.
+3. Chứng minh rằng tổng diện tích dưới đường chuẩn chuẩn bằng 1.
+4. Tìm giá trị trung bình của phân bố đều trên $[3,7]$.
+5. Giải thích tại sao xác suất được tính bằng tích phân chứ không phải tổng cho các biến liên tục.
+
+### D.3 Kết nối khoa học máy tính: Xấp xỉ Taylor trong thuật toán
+
+Giải tích không chỉ dành cho vật lý - nó còn là nền tảng của nhiều công cụ và kỹ thuật trong khoa học máy tính. Một trong những cầu nối rõ ràng nhất là thông qua chuỗi Taylor, cung cấp những cách hiệu quả để tính gần đúng các hàm trong tính toán số và thuật toán.
+
+#### Xấp xỉ hàm cho máy tính
+
+Máy tính không thể trực tiếp lưu trữ hoặc tính toán chính xác hầu hết các hàm (như $e^x$, $\sin x$ hoặc $\ln x$). Thay vào đó, họ sử dụng các phép tính gần đúng đa thức rút ra từ khai triển Taylor.
+
+Ví dụ:
+Để ước chừng $e^x$, hãy cắt bớt chuỗi Maclaurin:
+
+$$
+e^x \approx 1 + x + \frac{x^2}{2!} + \frac{x^3}{3!}.
+$$
+
+Đối với $x$ nhỏ, đa thức này cho kết quả chính xác chỉ với một vài số hạng.
+
+#### Hiệu quả trong thuật toán
+
+- Hàm lượng giác: Các thuật toán cho máy tính và CPU thường sử dụng khai triển chuỗi (hoặc các biến thể như đa thức Chebyshev).
+- Hàm mũ/logarit: Khai triển Taylor là nền tảng của phép tính gần đúng nhanh trong các thư viện số.
+- Tìm nghiệm: Phương pháp Newton dựa trên phép gần đúng tuyến tính, ứng dụng trực tiếp chuỗi Taylor (đạo hàm bậc nhất).
+
+#### Phân tích số
+
+Khai triển Taylor là trọng tâm trong phân tích lỗi:
+
+- Xấp xỉ sai số bằng công thức tính số dư:
+
+  $$
+  R_n(x) = \frac{f^{(n+1)}(c)}{(n+1)!}(x-a)^{n+1}.
+  $$
+- This tells us how many terms are needed for a given accuracy.
+
+#### Kết nối máy học
+
+- Tối ưu hóa dựa trên độ dốc (như giảm độ dốc) sử dụng đạo hàm để cập nhật các tham số một cách hiệu quả.
+- Các hàm kích hoạt (như $\tanh x$ hoặc $\sigma(x)=1/(1+e^{-x})$) thường được xấp xỉ bằng các đa thức hoặc các hàm từng phần cho tốc độ.
+- Chuỗi xấp xỉ có thể tăng tốc độ đào tạo và suy luận trong môi trường hạn chế.
+
+#### Tại sao điều này lại quan trọng
+
+- Phép tính gần đúng Taylor kết nối toán học liên tục với tính toán rời rạc.
+- Chúng cho thấy các khái niệm tính toán được sử dụng như thế nào trong các thuật toán, phương pháp số và học máy.
+- Hiểu được các phép tính gần đúng giúp tránh được những cạm bẫy khi dựa vào máy tính để tính toán.
+
+####Thực hành nhanh
+
+1. Tính gần đúng $\sin(0,1)$ bằng cách sử dụng ba số hạng đầu tiên của chuỗi Maclaurin.
+2. Sử dụng số hạng còn lại để ước tính sai số khi xấp xỉ $e^1$ với đa thức bậc 3.
+3. Giải thích cách sử dụng định lý Taylor trong phương pháp Newton.
+4. Tại sao máy tính có thể thích các phép tính gần đúng đa thức hơn là các công thức chính xác của hàm số?
+5. Trong học máy, tại sao đạo hàm (độ dốc) lại quan trọng đối với việc tối ưu hóa?

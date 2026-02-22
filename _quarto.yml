@@ -14,6 +14,8 @@ website:
         text: Tiếng Việt
       - href: zh/index.qmd
         text: 中文
+      - href: ja/index.qmd
+        text: 日本語
 
 format:
   html:

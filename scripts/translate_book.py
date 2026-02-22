@@ -82,7 +82,7 @@ def protect_inline(text: str) -> tuple[str, dict[str, str]]:
     mapping: dict[str, str] = {}
 
     def repl(match: re.Match[str]) -> str:
-        token = f"¤¤{len(mapping)}¤¤"
+        token = f"__CODEX_TOKEN_{len(mapping)}__"
         mapping[token] = match.group(0)
         return token
 

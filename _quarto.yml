@@ -26,6 +26,8 @@ website:
         text: 日本語
       - href: ko/index.qmd
         text: 한국어
+      - href: ar/index.qmd
+        text: العربية
 
 format:
   html:

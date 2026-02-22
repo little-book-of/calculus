@@ -14,6 +14,7 @@ title: "The Little Book of Calculus"
 - [日本語版](ja/index.qmd)
 - [한국어판](ko/index.qmd)
 - [النسخة العربية](ar/index.qmd)
+- [Русская версия](ru/index.qmd)
 
 ## Downloads
 

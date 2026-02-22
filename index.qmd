@@ -6,6 +6,7 @@ title: "The Little Book of Calculus"
 
 - [English version](en/index.qmd)
 - [Phiên bản tiếng Việt](vi/index.qmd)
+- [中文版](zh/index.qmd)
 
 ## Downloads
 

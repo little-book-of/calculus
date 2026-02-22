@@ -10,6 +10,8 @@ website:
         text: Home
       - href: en/index.qmd
         text: English
+      - href: es/index.qmd
+        text: Español
       - href: vi/index.qmd
         text: Tiếng Việt
       - href: zh/index.qmd

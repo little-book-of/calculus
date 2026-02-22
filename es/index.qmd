@@ -1,0 +1,5071 @@
+---
+title: "El pequeño libro del cálculo"
+lang: es
+---
+
+# El librito de cálculo
+
+Una introducción concisa y amigable para principiantes a las ideas centrales del cálculo.
+
+## Formatos
+
+- [Download PDF](../book.pdf) – versión lista para imprimir
+- [Download EPUB](../book.epub) – compatible con lectores electrónicos
+- [View LaTeX](../book.tex) – Fuente de látex
+
+# Parte 1. Límites y derivadas
+
+# Capítulo 1. Funciones y límites
+
+## 1.1 Funciones
+
+Una función es uno de los objetos más básicos de las matemáticas. En esencia, una función es una regla que toma una entrada y produce exactamente una salida. Las funciones nos permiten describir relaciones, modelar fenómenos del mundo real y construir toda la maquinaria del cálculo.
+
+### Definición
+
+Formalmente, se escribe una función $f$ desde un conjunto $X$ (llamado dominio) hasta un conjunto $Y$ (llamado codominio)
+
+$$
+f : X \to Y.
+$$
+
+Por cada elemento $x \in X$, existe un elemento único $f(x) \in Y$. El valor $f(x)$ se llama imagen de $x$ bajo $f$.
+
+Si $y = f(x)$, entonces $y$ es la salida correspondiente a la entrada $x$. El conjunto de todas las salidas que realmente aparecen se denomina rango (un subconjunto del codominio).
+
+### Ejemplos
+
+1. La función $f(x) = x^2$ asigna cada número real $x$ a su cuadrado.
+
+   - Dominio: todos los números reales $\mathbb{R}$.
+   - Codominio: todos los números reales $\mathbb{R}$.
+   - Rango: todos los números reales no negativos $[0, \infty)$.
+
+2. La función $g(x) = \dfrac{1}{x}$ asigna a cada número real distinto de cero su recíproco.
+
+   - Dominio: $\mathbb{R} \setminus \{0\}$.
+   - Rango: $\mathbb{R} \setminus \{0\}$.
+
+3. Un ejemplo del mundo real: Sea $T(t)$ la temperatura exterior (en °C) en el momento $t$ (en horas). Esta es una función desde "hora del día" hasta "temperatura".
+
+### Formas de representar funciones
+
+Las funciones se pueden representar de varias formas útiles:
+
+- Fórmulas: ej., $f(x) = \sin x + x^2$.
+- Gráficas: trazar todos los puntos $(x, f(x))$ en el plano coordenado.
+- Tablas: emparejamiento de entradas y salidas para conjuntos discretos de datos.
+- Descripciones verbales: “Asignar a cada alumno su calificación”.
+
+Cada representación resalta diferentes aspectos de una misma función.
+
+### Terminología
+
+- Variable independiente: la entrada (normalmente se escribe $x$).
+- Variable dependiente: la salida (generalmente escrita $y$, donde $y = f(x)$).
+- Notación de funciones: $f(x)$ se lee “$f$ de $x$”.
+
+### Por qué las funciones son importantes en cálculo
+
+El cálculo es el estudio de cómo cambian las funciones. Los derivados miden tasas de cambio instantáneas, mientras que las integrales miden los efectos acumulados. Para dominar estas ideas, primero necesitamos una comprensión sólida de qué son las funciones y cómo se comportan.
+
+### Ejercicios
+
+1. Para la función $f(x) = 3x - 2$:- Encuentra el dominio, codominio y rango.
+
+2. ¿Para qué entradas está definida la función $h(x) = \sqrt{x-1}$? ¿Cuál es su alcance?
+
+3. Da un ejemplo del mundo real de una función de tu vida diaria. Indique claramente el dominio y el codominio.
+
+4. Dibuja la gráfica de $f(x) = |x|$. ¿Cuál es el rango?
+
+5. Supongamos $g(x) = \dfrac{1}{x^2+1}$. Explica por qué su rango es el intervalo $(0, 1]$.
+
+## 1.2 Gráficos y Transformaciones
+
+Una función puede entenderse no sólo por fórmulas sino también por su gráfica. La gráfica de una función $f$ es el conjunto de todos los pares ordenados $(x, f(x))$, donde $x$ pertenece al dominio de $f$. Trazar estos pares en el plano de coordenadas da una idea de cómo se comporta la función.
+
+### Gráficos básicos
+
+Algunos gráficos son tan fundamentales que conviene memorizarlos:
+
+- $f(x) = x$: recta que pasa por el origen.
+- $f(x) = x^2$: una parábola que se abre hacia arriba.
+- $f(x) = |x|$: gráfico en forma de “V”.
+- $f(x) = \frac{1}{x}$: una hipérbola con dos ramas.
+- $f(x) = \sin x$: una curva periódica en forma de onda.
+
+Estos sirven como componentes básicos para funciones más complicadas.
+
+### Transformaciones
+
+Los gráficos se pueden desplazar, estirar o reflejar usando reglas simples:
+
+1. Desplazamientos verticales: agregar una constante mueve el gráfico hacia arriba o hacia abajo.
+
+   $$
+   y = f(x) + c \quad \text{is } f(x) \text{ shifted upward by } c.
+   $$
+
+2. Desplazamientos horizontales: Agregar dentro del argumento mueve el gráfico hacia la izquierda o hacia la derecha.
+
+   $$
+   y = f(x - c) \quad \text{is } f(x) \text{ shifted right by } c.
+   $$
+
+3. Escala vertical: multiplicar por una constante estira o comprime el gráfico verticalmente.
+
+   $$
+   y = a f(x), \quad a > 1 \text{ stretches; } 0 < a < 1 \text{ compresses.}
+   $$
+
+4. Escala horizontal: multiplicar dentro del argumento estira o comprime el gráfico horizontalmente.
+
+   $$
+   y = f(bx), \quad b > 1 \text{ compresses toward the } y\text{-axis}.
+   $$
+
+5. Reflexiones:
+
+   - $y = -f(x)$: reflexión sobre el eje $x$.
+   - $y = f(-x)$: reflexión sobre el eje $y$.
+
+### Combinando transformaciones
+
+Los gráficos complejos a menudo surgen de la combinación de varias transformaciones en secuencia. Por ejemplo:
+
+$$
+y = 2(x-1)^2 + 3
+$$
+
+se obtiene tomando la parábola $y = x^2$, desplazándola 1 hacia la derecha, estirándola verticalmente 2 y desplazándola hacia arriba 3.
+
+### Ejercicios
+
+1. Dibuja la gráfica de $y = (x+2)^2 - 1$. Identifica la secuencia de transformaciones de $y = x^2$.
+2. ¿Qué pasa con la gráfica de $y = f(x)$ si reemplazamos $x$ por $-x$? Pruébalo con $f(x) = \sqrt{x}$.
+3. Describe las transformaciones que convierten $y = \sin x$ en $y = 3\sin(x - \pi/4)$.4. Dibuja la gráfica de $y = |x-1| + 2$. Indique su vértice y pendiente de cada rama.
+5. Para $y = \frac{1}{x-2}$, explica cómo se ha transformado la gráfica de $y = \frac{1}{x}$.
+
+## 1.3 Idea intuitiva de límites
+
+En muchas situaciones, el valor de una función en un punto es menos importante que los valores que toma cerca de ese punto. El concepto de límite captura esta idea.
+
+### Acercándose a un valor
+
+Imagínese caminar hacia una pared. Incluso antes de tocarlo, te acercas cada vez más. De la misma manera, cuando $x$ se acerca a un número $a$, los valores de $f(x)$ pueden acercarse a algún número $L$. Entonces decimos:
+
+$$
+\lim_{x \to a} f(x) = L.
+$$
+
+Esto expresa la idea de que $f(x)$ se puede acercar tanto como queramos a $L$, simplemente acercando $x$ lo suficiente a $a$.
+
+### Ejemplos
+
+1. Por $f(x) = 2x + 3$:
+   Como $x \to 1$, $f(x) \to 5$.
+
+2. Por $f(x) = \dfrac{\sin x}{x}$:
+   Como $x \to 0$, la función tiende a 1, aunque $f(0)$ no esté definida.
+
+3. Por $f(x) = \dfrac{1}{x}$:
+   Como $x \to 0^+$ (acercándose por la derecha), $f(x) \to +\infty$.
+   Como $x \to 0^-$ (acercándose desde la izquierda), $f(x) \to -\infty$.
+   Dado que los comportamientos izquierdo y derecho difieren, el límite en 0 no existe.
+
+### Importancia de los límites
+
+- Nos permiten definir funciones en puntos donde originalmente no están definidas.
+- Captan comportamientos cercanos a discontinuidades y singularidades.
+- Forman la base de las derivadas (tasas de cambio instantáneas) y las integrales (áreas como límites de sumas).
+
+### Límites unilaterales
+
+A veces el comportamiento de la izquierda y de la derecha debe estudiarse por separado:
+
+$$
+\lim_{x \to a^-} f(x), \quad \lim_{x \to a^+} f(x).
+$$
+
+Si ambos están de acuerdo, entonces existe el límite bilateral.
+
+### Ejercicios
+
+1. Calcular $\lim_{x \to 2} (3x^2 - x)$.
+2. ¿Qué es $\lim_{x \to 0} \frac{\sin x}{x}$? Usa la intuición de la gráfica de $\sin x$.
+3. Valorar $\lim_{x \to 0} |x|/x$. ¿Existe el límite bilateral?
+4. Calcula $\lim_{x \to \infty} \frac{1}{x}$. Interprete este resultado en palabras.
+5. Para $f(x) = \frac{x^2-1}{x-1}$, ¿cuánto es $\lim_{x \to 1} f(x)$? Comparar con el valor de $f(1)$.
+
+## 1.4 Definición formal de límites
+
+La idea intuitiva de límite se puede precisar utilizando la definición épsilon-delta. Esto nos da una forma rigurosa de decir que $f(x)$ se acerca a un valor $L$ a medida que $x$ se acerca a $a$.
+
+### La definición
+
+escribimos
+
+$$
+\lim_{x \to a} f(x) = L
+$$
+
+si se cumple la siguiente condición:
+
+Por cada $\varepsilon > 0$ (por pequeño que sea), existe un $\delta > 0$ tal que siempre que
+
+$$
+0 < |x - a| < \delta,
+$$
+
+se deduce que
+
+$$
+|f(x) - L| < \varepsilon.
+$$En palabras: podemos hacer que $f(x)$ sea lo más cercano que queramos a $L$, siempre que $x$ esté lo suficientemente cerca de $a$ (pero no sea igual a $a$).
+
+### Ejemplo 1: función lineal
+
+Para $f(x) = 2x + 1$, demuestra que $\lim_{x \to 3} f(x) = 7$.
+
+- Queremos $|f(x) - 7| < \varepsilon$.
+- Pero $f(x) - 7 = 2x + 1 - 7 = 2(x - 3)$.
+- Entonces $|f(x) - 7| = 2|x - 3|$.
+- Si elegimos $\delta = \varepsilon / 2$, entonces siempre que $|x - 3| < \delta$, tenemos $|f(x) - 7| < \varepsilon$.
+  Esto demuestra el límite.
+
+### Ejemplo 2: función recíproca
+
+Por $f(x) = \frac{1}{x}$, considere $\lim_{x \to 2} f(x) = \tfrac{1}{2}$.
+
+- Queremos $\left|\frac{1}{x} - \frac{1}{2}\right| < \varepsilon$.
+- Esta desigualdad requiere manipulación algebraica, pero se puede satisfacer eligiendo $\delta$ dependiendo de $\varepsilon$.
+  El proceso es más complicado, pero el principio es el mismo.
+
+### Por qué esto es importante
+
+- La definición épsilon-delta garantiza que los límites no sean vagos ni se basen únicamente en la intuición.
+- Es la base de la continuidad, las derivadas y las integrales.
+- Aunque los principiantes pueden encontrarlo abstracto, trabajar con ejemplos simples genera familiaridad.
+
+### Ejercicios
+
+1. Utilizando la definición épsilon-delta, demuestra que $\lim_{x \to 4} (x+1) = 5$.
+2. Demuestra que $\lim_{x \to 0} 5x = 0$ usando la definición formal.
+3. Explica por qué $\lim_{x \to 0} \frac{1}{x}$ no existe.
+4. Para $f(x) = x^2$, demuestra que $\lim_{x \to 2} f(x) = 4$.
+5. En tus propias palabras, explica el papel de $\varepsilon$ y $\delta$ en la definición de límite.
+
+## 1.5 Continuidad
+
+Una función es continua si su gráfica se puede dibujar sin levantar el lápiz del papel. Más precisamente, la continuidad asegura que pequeños cambios en la entrada produzcan pequeños cambios en la salida.
+
+### Definición
+
+Una función $f$ es continua en un punto $a$ si se cumplen tres condiciones:
+
+1. Se define $f(a)$.
+2. Existe $\lim_{x \to a} f(x)$.
+3. $\lim_{x \to a} f(x) = f(a)$.
+
+Si una función es continua en todo punto de un intervalo, decimos que es continua en ese intervalo.
+
+### Ejemplos
+
+1. Funciones polinómicas: Funciones como $f(x) = x^2 + 3x - 5$ son continuas en todas partes de $\mathbb{R}$.
+
+2. Funciones racionales: $f(x) = \frac{1}{x-1}$ es continua en todas partes excepto en $x = 1$, donde no está definida.
+
+3. Funciones por partes:
+
+   $$
+   f(x) =
+   \begin{cases}
+   x^2 & x < 1, \\
+   2 & x = 1, \\
+   x+1 & x > 1,
+   \end{cases}
+   $$
+
+   Esta función tiene un “salto” en $x = 1$, por lo que no es continua allí.
+
+### Tipos de discontinuidades
+
+1. Discontinuidad removible: Un “agujero” en el gráfico. Ejemplo: $f(x) = \frac{x^2-1}{x-1}$ a $x=1$.2. Discontinuidad de salto: los límites izquierdo y derecho son diferentes.
+3. Discontinuidad infinita: La función va a $\pm\infty$ cerca de un punto, como ocurre con $f(x) = 1/x$ cerca de $x = 0$.
+
+### El teorema del valor intermedio
+
+Si una función es continua en un intervalo $[a, b]$, entonces para cualquier número $N$ entre $f(a)$ y $f(b)$, existe algún $c \in [a, b]$ tal que $f(c) = N$.
+
+Esta propiedad es crucial para demostrar la existencia de raíces y soluciones de ecuaciones.
+
+### Ejercicios
+
+1. Decide si la función $f(x) = |x|$ es continua en $x = 0$.
+2. Identifica los puntos de discontinuidad para $f(x) = \frac{x+2}{x^2-1}$.
+3. Explica por qué toda función polinómica es continua en todas partes.
+4. Da un ejemplo de una función con una discontinuidad de salto. Dibuja su gráfica.
+5. Usa el Teorema del Valor Intermedio para demostrar que la ecuación $x^3 + x - 1 = 0$ tiene una solución entre 0 y 1.
+
+# Capítulo 2. Derivados
+
+## 2.1 La derivada como tasa de cambio
+
+La derivada es una de las ideas centrales del cálculo. Mide cómo cambia una función a medida que cambia su entrada; en otras palabras, la tasa de cambio de la salida con respecto a la entrada.
+
+### Tasa de cambio promedio
+
+Para una función $f(x)$, la tasa de cambio promedio entre dos puntos $x = a$ y $x = b$ es
+
+$$
+\frac{f(b) - f(a)}{b - a}.
+$$
+
+Esta es la pendiente de la recta secante que pasa por los puntos $(a, f(a))$ y $(b, f(b))$.
+
+### Tasa de cambio instantánea
+
+Para medir qué tan rápido cambia $f(x)$ en un solo punto, dejamos que el intervalo se reduzca:
+
+$$
+f'(a) = \lim_{h \to 0} \frac{f(a+h) - f(a)}{h}.
+$$
+
+Este límite, si existe, se llama derivada de $f$ en $a$. Geométricamente es la pendiente de la recta tangente a la gráfica de $f$ en el punto $(a, f(a))$.
+
+### Notación
+
+- $f'(x)$: notación prima.
+- $\dfrac{dy}{dx}$: Notación de Leibniz, utilizada cuando $y = f(x)$.
+- $Df(x)$: notación de operador.
+
+Todos estos símbolos hacen referencia al mismo concepto.
+
+### Ejemplos
+
+1. Por $f(x) = x^2$:
+
+   $$
+   f'(x) = \lim_{h \to 0} \frac{(x+h)^2 - x^2}{h} = \lim_{h \to 0} \frac{2xh + h^2}{h} = 2x.
+   $$
+
+   La pendiente de la parábola en $x$ es $2x$.
+
+2. Por $f(x) = \sin x$:
+
+   $$
+   f'(x) = \cos x.
+   $$
+
+3. Por $f(x) = c$ (una constante):
+
+   $$
+   f'(x) = 0.
+   $$
+
+   Una función constante nunca cambia.
+
+### Interpretación
+
+- En física: Si $s(t)$ es posición, entonces $s'(t)$ es velocidad.
+- En economía: Si $C(x)$ es costo, entonces $C'(x)$ es costo marginal.
+- En biología: Si $P(t)$ es población, entonces $P'(t)$ es tasa de crecimiento.
+
+La derivada hace que el “cambio” sea preciso en muchos contextos.
+
+### Ejercicios
+
+1. Calcular $f'(x)$ para $f(x) = 3x^2 - 2x + 1$.2. Calcula la pendiente de la recta tangente a $f(x) = x^3$ en $x = 2$.
+3. Si $s(t) = t^2 + 2t$ representa la distancia en metros, ¿cuál es la velocidad en $t = 5$?
+4. Utilice la definición de límite para calcular la derivada de $f(x) = \frac{1}{x}$.
+5. Dibuja la gráfica de $y = x^2$ y traza la recta tangente en $x = 1$.
+
+## 2.2 Reglas de diferenciación
+
+Una vez definida la derivada, necesitamos formas eficientes de calcularla. Las reglas de diferenciación son atajos que nos salvan de aplicar repetidamente la definición de límite.
+
+### La regla constante
+
+Si $f(x) = c$ donde $c$ es una constante, entonces
+
+$$
+f'(x) = 0.
+$$
+
+### La regla del poder
+
+Para $f(x) = x^n$ donde $n$ es un número real,
+
+$$
+\frac{d}{dx} \big( x^n \big) = n x^{n-1}.
+$$
+
+Ejemplos:
+
+- $\frac{d}{dx}(x^2) = 2x$.
+- $\frac{d}{dx}(x^5) = 5x^4$.
+- $\frac{d}{dx}(\sqrt{x}) = \frac{1}{2\sqrt{x}}$.
+
+### La regla del múltiplo constante
+
+Si $f(x) = c \cdot g(x)$, entonces
+
+$$
+f'(x) = c \cdot g'(x).
+$$
+
+### Las reglas de la suma y la diferencia
+
+- $(f + g)' = f' + g'$.
+- $(f - g)' = f' - g'$.
+
+### La regla del producto
+
+Por $f(x)$ y $g(x)$:
+
+$$
+(fg)' = f'g + fg'.
+$$
+
+Ejemplo: Si $f(x) = x^2$, $g(x) = \sin x$:
+
+$$
+(fg)' = (2x)(\sin x) + (x^2)(\cos x).
+$$
+
+### La regla del cociente
+
+Por $f(x)$ y $g(x)$:
+
+$$
+\left(\frac{f}{g}\right)' = \frac{f'g - fg'}{g^2}, \quad g(x) \neq 0.
+$$
+
+Ejemplo: Si $f(x) = x^2$, $g(x) = x+1$:
+
+$$
+\left(\frac{x^2}{x+1}\right)' = \frac{(2x)(x+1) - (x^2)(1)}{(x+1)^2}.
+$$
+
+### Derivadas de funciones comunes
+
+- $\frac{d}{dx}(\sin x) = \cos x$.
+- $\frac{d}{dx}(\cos x) = -\sin x$.
+- $\frac{d}{dx}(e^x) = e^x$.
+- $\frac{d}{dx}(\ln x) = \frac{1}{x}, \quad x > 0$.
+
+### Ejercicios
+
+1. Diferenciar $f(x) = 7x^3 - 4x + 9$.
+2. Usa la regla del producto para encontrar la derivada de $f(x) = x^2 e^x$.
+3. Aplica la regla del cociente a $f(x) = \frac{\sin x}{x}$.
+4. Calcula $\frac{d}{dx}(\ln(x^2))$ usando la cadena de reglas.
+5. Demuestra que la derivada de $f(x) = \frac{1}{x}$ es $-\frac{1}{x^2}$.
+
+## 2.3 La regla de la cadena
+
+A menudo, las funciones se construyen combinando funciones más simples. Para diferenciar este tipo de funciones compuestas, utilizamos la regla de la cadena.
+
+### La regla
+
+Si $y = f(g(x))$, entonces
+
+$$
+\frac{dy}{dx} = f'(g(x)) \cdot g'(x).
+$$
+
+En palabras: diferencia la función exterior, mantén la interior sin cambios y luego multiplica por la derivada de la interior.
+
+### Ejemplos
+
+1. Cuadrado de una función lineal
+
+   $$
+   y = (3x+2)^2
+   $$
+
+   Función exterior: $f(u) = u^2$, función interior: $g(x) = 3x+2$.
+
+   $$
+   y' = 2(3x+2) \cdot 3 = 6(3x+2).
+   $$
+
+2. Exponencial con interior cuadrático
+
+   $$
+   y = e^{x^2}
+   $$
+
+   Función exterior: $f(u) = e^u$, función interior: $g(x) = x^2$.
+
+   $$y' = e^{x^2} \cdot 2x = 2x e^{x^2}.
+   $$
+
+3. Logarithm with root inside
+
+   $$
+   y = \ln(\sqrt{x})
+   $$
+
+   Outer: $f(u) = \ln u$, inner: $g(x) = \sqrt{x}$.
+
+   $$
+   y' = \frac{1}{\sqrt{x}} \cdot \frac{1}{2\sqrt{x}} = \frac{1}{2x}.
+   $$
+
+### Generalized Chain Rule
+
+For multiple nested functions $y = f(g(h(x)))$:
+
+$$
+\frac{dy}{dx} = f'(g(h(x))) \cdot g'(h(x)) \cdot h'(x).
+$$
+
+This extends naturally to deeper compositions.
+
+### Why the Chain Rule Matters
+
+- It handles nearly all real-world models where one quantity depends on another indirectly.
+- It connects calculus with physics (e.g., velocity depending on time through position).
+- It is essential in implicit differentiation and advanced topics.
+
+### Exercises
+
+1. Differentiate $y = (5x^2 + 1)^3$.
+2. Find $\frac{d}{dx}(\sin(3x))$.
+3. Compute $\frac{d}{dx}(\ln(1+x^2))$.
+4. Differentiate $y = \cos^2(x)$.
+5. Apply the generalized chain rule to $y = e^{\sin(x^2)}$.
+
+## 2.4 Implicit Differentiation
+
+Not all functions are given in the form $y = f(x)$. Sometimes $x$ and $y$ are related by an equation, and solving explicitly for $y$ is difficult or impossible. In such cases, we use implicit differentiation.
+
+### The Idea
+
+If an equation involves both $x$ and $y$, we can differentiate both sides with respect to $x$, treating $y$ as a function of $x$. Each time we differentiate a term involving $y$, we multiply by $\frac{dy}{dx}$.
+
+### Example 1: A Circle
+
+Equation:
+
+$$
+x^2 + y^2 = 25
+$$
+
+Differentiate with respect to $x$:
+
+$$
+2x + 2y \frac{dy}{dx} = 0.
+$$
+
+Solve for $\frac{dy}{dx}$:
+
+$$
+\frac{dy}{dx} = -\frac{x}{y}.
+$$
+
+This gives the slope of the tangent to the circle at any point.
+
+### Example 2: A Product of Variables
+
+Equation:
+
+$$
+xy = 1
+$$
+
+Differentiate:
+
+$$
+x \frac{dy}{dx} + y = 0.
+$$
+
+So,
+
+$$
+\frac{dy}{dx} = -\frac{y}{x}.
+$$
+
+### Example 3: Trigonometric Relation
+
+Equation:
+
+$$
+\sin(xy) = x
+$$
+
+Differentiate:
+
+$$
+\cos(xy) \cdot \Big(y + x\frac{dy}{dx}\Big) = 1.
+$$
+
+Solve for $\frac{dy}{dx}$:
+
+$$
+\frac{dy}{dx} = \frac{1 - y\cos(xy)}{x\cos(xy)}.
+$$
+
+### Por qué es útil la diferenciación implícita
+
+- Muchas curvas importantes (círculos, elipses, hipérbolas) se definen naturalmente de forma implícita.
+- Nos permite diferenciar ecuaciones sin resolver primero $y$.
+- Es un paso clave en temas más avanzados como tasas relacionadas y ecuaciones diferenciales.
+
+### Ejercicios
+
+1. Para la curva $x^2 + xy + y^2 = 7$, encuentre $\frac{dy}{dx}$.
+2. Diferenciar $\cos(x) + \cos(y) = 1$ implícitamente.
+3. Calcula la pendiente de la recta tangente a $x^3 + y^3 = 9$ en el punto $(1, 2)$.4. Dado $x^2 + y^2 = 10$, calcula $\frac{dy}{dx}$ cuando $(x, y) = (1, 3)$.
+5. Diferencia $e^{xy} = x + y$ para encontrar $\frac{dy}{dx}$.
+
+## 2.5 Derivados de orden superior
+
+Hasta ahora hemos estudiado la primera derivada, que mide la tasa de cambio de una función. Pero los propios derivados también pueden diferenciarse, dando lugar a derivados de orden superior.
+
+### Definición
+
+- La segunda derivada de $f$ es la derivada de la derivada:
+
+  $$
+  f''(x) = \frac{d}{dx}\left(f'(x)\right).
+  $$
+
+- De manera más general, la derivada $n$-ésima se escribe como
+
+  $$
+  f^{(n)}(x) = \frac{d^n}{dx^n} f(x).
+  $$
+
+### Ejemplos
+
+1. $f(x) = x^3$
+
+   - Primera derivada: $f'(x) = 3x^2$.
+   - Segunda derivada: $f''(x) = 6x$.
+   - Tercera derivada: $f^{(3)}(x) = 6$.
+   - Cuarta derivada: $f^{(4)}(x) = 0$.
+
+2. $f(x) = \sin x$
+
+   - $f'(x) = \cos x$.
+   - $f''(x) = -\sin x$.
+   - $f^{(3)}(x) = -\cos x$.
+   - $f^{(4)}(x) = \sin x$.
+     Las derivadas se repiten en un ciclo de longitud 4.
+
+3. $f(x) = e^x$
+
+   - Cada derivada es $e^x$.
+
+### Aplicaciones
+
+- Concavidad: El signo de $f''(x)$ indica si la gráfica de $f$ es cóncava hacia arriba ($f'' > 0$) o hacia abajo ($f'' < 0$).
+- Puntos de inflexión: Puntos donde $f''(x) = 0$ y cambia la concavidad.
+- Movimiento: En física, si $s(t)$ es posición:
+
+  - $s'(t)$ = velocidad,
+  - $s''(t)$ = aceleración,
+  - $s^{(3)}(t)$ = tirón (tasa de cambio de aceleración).
+- Aproximaciones: Las derivadas de orden superior aparecen en las series de Taylor, utilizadas para aproximar funciones.
+
+### Ejercicios
+
+1. Calcula las primeras cuatro derivadas de $f(x) = \cos x$.
+2. Calcula $f''(x)$ para $f(x) = x^4 - 2x^2 + 3$.
+3. Para $f(x) = e^{2x}$, demuestra que $f^{(n)}(x) = 2^n e^{2x}$.
+4. Determina los intervalos donde $f(x) = x^3 - 3x$ es cóncavo hacia arriba y cóncavo hacia abajo.
+5. Si $s(t) = t^3 - 6t^2 + 9t$, encuentre la velocidad y la aceleración en $t = 2$.
+
+# Capítulo 3. Aplicaciones de los Derivados
+
+## 3.1 Tangentes y Normales
+
+Una de las primeras aplicaciones de las derivadas es encontrar las ecuaciones de las rectas tangentes y normales a una curva. Estas líneas capturan la geometría local de una función en un punto dado.
+
+### Línea tangente
+
+La recta tangente a una curva $y = f(x)$ en un punto $(a, f(a))$ es la recta que simplemente “toca” la gráfica allí y tiene la misma pendiente que la curva.
+
+La pendiente de la recta tangente viene dada por la derivada:
+
+$$
+m_{\text{tangent}} = f'(a).
+$$
+
+Así, la ecuación de la recta tangente en $(a, f(a))$ es
+
+$$
+y - f(a) = f'(a)(x - a).
+$$
+
+### Línea normal
+
+La recta normal es perpendicular a la recta tangente en el mismo punto. Su pendiente es el recíproco negativo de la pendiente tangente:
+
+$$m_{\text{normal}} = -\frac{1}{f'(a)}.
+$$
+
+So the equation of the normal line is
+
+$$
+y - f(a) = -\frac{1}{f'(a)} (x - a), \quad f'(a) \neq 0.
+$$
+
+### Examples
+
+1. $f(x) = x^2$ at $x = 1$.
+
+   - $f(1) = 1$, $f'(x) = 2x$, so $f'(1) = 2$.
+   - Tangent: $y - 1 = 2(x - 1)$, or $y = 2x - 1$.
+   - Normal: slope = $-\tfrac{1}{2}$, so equation is $y - 1 = -\tfrac{1}{2}(x - 1)$.
+
+2. $f(x) = \sin x$ at $x = \tfrac{\pi}{4}$.
+
+   - $f(\tfrac{\pi}{4}) = \tfrac{\sqrt{2}}{2}$, $f'(\tfrac{\pi}{4}) = \cos(\tfrac{\pi}{4}) = \tfrac{\sqrt{2}}{2}$.
+   - Tangent: $y - \tfrac{\sqrt{2}}{2} = \tfrac{\sqrt{2}}{2}(x - \tfrac{\pi}{4})$.
+
+### Why Tangents and Normals Matter
+
+- Tangents approximate the curve locally (linear approximation).
+- Normals are useful in geometry, optics (reflection/refraction), and mechanics (force directions).
+- Both play a role in optimization and curvature studies.
+
+### Exercises
+
+1. Find the tangent and normal lines to $y = x^3$ at $x = 2$.
+2. Determine the tangent and normal lines to $y = e^x$ at $x = 0$.
+3. For $y = \ln x$, compute the tangent line at $x = 1$.
+4. A circle is given by $x^2 + y^2 = 9$. Use implicit differentiation to find the slope of the tangent at $(0,3)$.
+5. Sketch the graph of $y = \sqrt{x}$ and draw the tangent and normal lines at $x = 4$.
+
+## 3.2 Related Rates
+
+In many real-world problems, two or more quantities change with respect to time, and their rates of change are connected. Related rates problems use derivatives to describe these relationships.
+
+### General Approach
+
+1. Identify the variables that depend on time $t$.
+2. Write an equation relating the variables.
+3. Differentiate both sides with respect to $t$, applying the chain rule.
+4. Substitute the known values at the given instant.
+5. Solve for the unknown rate.
+
+### Example 1: Expanding Circle
+
+A circle has radius $r$, which increases at the rate of $\frac{dr}{dt} = 2 \,\text{cm/s}$. Find the rate at which the area $A = \pi r^2$ increases when $r = 5$.
+
+Differentiate:
+
+$$
+\frac{dA}{dt} = 2\pi r \frac{dr}{dt}.
+$$
+
+Substitute:
+
+$$
+\frac{dA}{dt} = 2\pi (5)(2) = 20\pi \,\text{cm}^2/\text{s}.
+$$
+
+### Example 2: Sliding Ladder
+
+A 10 ft ladder leans against a wall. The bottom slides away at $\frac{dx}{dt} = 1 \,\text{ft/s}$. How fast is the top sliding down when the bottom is 6 ft from the wall?
+
+Equation: $x^2 + y^2 = 100$, where $y$ is the height.
+
+Differentiate:
+
+$$
+2x \frac{dx}{dt} + 2y \frac{dy}{dt} = 0.
+$$
+
+At $x = 6$, $y = 8$. Substitute:
+
+$$
+2(6)(1) + 2(8)\frac{dy}{dt} = 0 \quad \Rightarrow \quad \frac{dy}{dt} = -\tfrac{6}{8} = -\tfrac{3}{4}.
+$$Entonces la parte superior se desliza hacia abajo en $0.75 \,\text{ft/s}$.
+
+### Ejemplo 3: Agua en un cono
+
+Se vierte agua en un cono de 12 cm de altura y 6 cm de radio. Cuando el agua tiene 4 cm de profundidad, el nivel del agua sube a $2 \,\text{cm/s}$. ¿A qué velocidad aumenta el volumen?
+
+Ecuación: $V = \tfrac{1}{3}\pi r^2 h$. Usando similitud, $r = \tfrac{h}{2}$. Sustituyendo:
+
+$$
+V = \tfrac{1}{12}\pi h^3.
+$$
+
+Diferenciar:
+
+$$
+\frac{dV}{dt} = \tfrac{1}{4}\pi h^2 \frac{dh}{dt}.
+$$
+
+A $h = 4$, $\frac{dh}{dt} = 2$:
+
+$$
+\frac{dV}{dt} = \tfrac{1}{4}\pi (16)(2) = 8\pi \,\text{cm}^3/\text{s}.
+$$
+
+### Por qué son importantes las tarifas relacionadas
+
+- Describen el movimiento y el cambio en física, ingeniería y biología.
+- Relacionan la geometría con el cálculo mediante procesos dependientes del tiempo.
+- Nos entrenan para modelar matemáticamente sistemas dinámicos.
+
+### Ejercicios
+
+1. Se infla un globo de modo que su radio aumenta en $0.5 \,\text{cm/s}$. Encuentre qué tan rápido aumenta su volumen cuando el radio es de 10 cm.
+2. Un coche circula hacia el norte a 40 km/h y otro hacia el este a 30 km/h. ¿A qué velocidad aumenta la distancia entre ellos 2 horas después?
+3. Un foco a 20 m de una pared ilumina a un hombre de 2 m de altura que se aleja a 1,5 m/s. ¿Qué tan rápido cambia la longitud de su sombra en la pared cuando está a 5 m de la luz?
+4. La longitud de los lados de un cubo crece a 2 cm/s. ¿A qué velocidad aumenta el área de la superficie cuando el lado mide 3 cm?
+5. Se vierte arena sobre un montón formando un cono de radio siempre igual a la altura. Si la altura aumenta a 5 cm/s, ¿a qué tasa aumenta el volumen cuando la altura es de 10 cm?
+
+## 3.3 Problemas de optimización
+
+Los problemas de optimización utilizan derivadas para encontrar los valores máximos o mínimos de una función, a menudo bajo ciertas restricciones. Estos problemas modelan situaciones en las que queremos maximizar la eficiencia, las ganancias o el área, o minimizar el costo, la distancia o el tiempo.
+
+### Pasos generales
+
+1. Comprenda el problema: identifique la cantidad a optimizar.
+2. Modelo con una función: Escribe la función objetivo en términos de una variable.
+3. Aplicar restricciones: utilizar condiciones dadas para reducir las variables.
+4. Derivar: Calcular la derivada de la función objetivo.
+5. Encuentra puntos críticos: Resuelve $f'(x) = 0$ o donde $f'(x)$ no está definido.
+6. Prueba de máximos/mínimos: utilice la prueba de la segunda derivada o verifique los puntos finales.
+7. Interpretar el resultado: Indique la respuesta en el contexto original.
+
+### Ejemplo 1: Área máxima de un rectángulo
+
+Un rectángulo tiene perímetro 40. ¿Qué dimensiones maximizan su área?
+
+- Sea largo $x$, ancho $y$. Restricción: $2x + 2y = 40 \Rightarrow y = 20 - x$.
+- Superficie: $A = xy = x(20 - x) = 20x - x^2$.- Derivado: $A'(x) = 20 - 2x$. Establecer igual a 0: $x = 10$.
+- Entonces $y = 10$.
+- Superficie máxima: $100$. El rectángulo es un cuadrado.
+
+### Ejemplo 2: Minimizar la distancia
+
+Encuentra el punto de la parábola $y = x^2$ más cercano a $(0,3)$.
+
+- Distancia al cuadrado: $D(x) = (x-0)^2 + (x^2 - 3)^2$.
+- Ampliar: $D(x) = x^2 + (x^2 - 3)^2 = x^2 + x^4 - 6x^2 + 9 = x^4 - 5x^2 + 9$.
+- Derivado: $D'(x) = 4x^3 - 10x$. Resuelve: $x(4x^2 - 10) = 0$.
+- Soluciones: $x = 0$, $x = \pm \sqrt{2.5}$.
+- La comprobación da la distancia mínima en $x = \pm \sqrt{2.5}$.
+
+### Ejemplo 3: Caja con volumen máximo
+
+Se va a hacer una caja sin tapa con un trozo de cartón cuadrado de 20 cm de lado, cortando cuadrados iguales de las esquinas y doblando los lados. Encuentra el tamaño del corte que maximiza el volumen.
+
+- Dejar tamaño de corte = $x$. Luego dimensiones: $(20 - 2x) \times (20 - 2x) \times x$.
+- Volumen: $V(x) = x(20 - 2x)^2$.
+- Derivado: $V'(x) = (20 - 2x)(20 - 6x)$.
+- Puntos críticos: $x = 10$ (da volumen cero) o $x = \tfrac{20}{6} \approx 3.33$.
+- A $x \approx 3.33$, se maximiza el volumen.
+
+### Por qué es importante la optimización
+
+- Los ingenieros lo utilizan para diseñar estructuras eficientes.
+- Las empresas lo utilizan para maximizar las ganancias o minimizar los costos.
+- Los científicos lo utilizan para modelar sistemas naturales que buscan el equilibrio.
+
+### Ejercicios
+
+1. Un agricultor tiene 100 m de cerca para cercar un campo rectangular a lo largo de un río (por lo que solo se necesitan cercas en 3 lados). Encuentre dimensiones que maximicen el área.
+2. Encuentra dos números positivos cuya suma sea 20 y cuyo producto sea lo más grande posible.
+3. Se va a fabricar un cilindro con 100 cm$^2$ de material. Encuentre las dimensiones del volumen máximo.
+4. Un cable de 10 m de largo se corta en dos trozos, uno se dobla formando un cuadrado y el otro formando un círculo. ¿Cómo se debe cortar para maximizar el área total encerrada?
+5. Se va a construir una caja cerrada de base cuadrada y volumen 32 m$^3$. Encuentre dimensiones minimizando el área de superficie.
+
+## 3.4 Concavidad y puntos de inflexión
+
+Las derivadas no sólo nos informan sobre las pendientes sino también sobre la forma de una gráfica. La segunda derivada es especialmente útil para comprender la concavidad e identificar puntos de inflexión.
+
+### Concavidad
+
+- Una función $f(x)$ es cóncava hacia arriba en un intervalo si $f''(x) > 0$.
+  El gráfico se inclina hacia arriba, como una taza.
+
+- Una función $f(x)$ es cóncava hacia abajo en un intervalo si $f''(x) < 0$.
+  El gráfico se inclina hacia abajo, como si frunciera el ceño.
+
+La concavidad describe cómo cambia la pendiente de una función: si las pendientes aumentan, la gráfica es cóncava hacia arriba; si las pendientes disminuyen, la gráfica es cóncava hacia abajo.
+
+### Puntos de inflexión
+
+Un punto de inflexión es un punto del gráfico donde cambia la concavidad.- Si $f''(x) = 0$ o $f''(x)$ no está definido, el punto es candidato a punto de inflexión.
+- Para confirmar, la concavidad debe cambiar de signo a ambos lados de la punta.
+
+### Ejemplos
+
+1. $f(x) = x^3$
+
+   - $f''(x) = 6x$.
+   - A $x = 0$, $f''(0) = 0$.
+   - Para $x < 0$, $f''(x) < 0$ → cóncavo hacia abajo.
+   - Para $x > 0$, $f''(x) > 0$ → cóncavo hacia arriba.
+   - Por tanto, $(0,0)$ es un punto de inflexión.
+
+2. $f(x) = x^4$
+
+   - $f''(x) = 12x^2$.
+   - En $x = 0$, $f''(0) = 0$, pero la concavidad no cambia de signo (siempre ≥ 0).
+   - Sin punto de inflexión.
+
+### Bosquejo de concavidades y curvas
+
+- Si $f'(x) = 0$ y $f''(x) > 0$, entonces $f$ tiene un mínimo local.
+- Si $f'(x) = 0$ y $f''(x) < 0$, entonces $f$ tiene un máximo local.
+- Esto se conoce como prueba de la segunda derivada.
+
+### Por qué esto es importante
+
+La concavidad y los puntos de inflexión nos ayudan a comprender la “forma” de las gráficas: dónde se doblan, aplanan o giran. Estas ideas son fundamentales en el trazado de curvas, la física (aceleración) y la economía (rendimientos decrecientes).
+
+### Ejercicios
+
+1. Determinar intervalos de concavidad para $f(x) = x^3 - 3x$. Encuentra sus puntos de inflexión.
+2. Para $f(x) = \ln(x)$, identifique la concavidad y los posibles puntos de inflexión.
+3. Aplicar la prueba de la segunda derivada a $f(x) = x^2 e^{-x}$ para clasificar los puntos críticos.
+4. Dibujar $f(x) = \sin x$, marcando intervalos de concavidad y puntos de inflexión.
+5. Explica por qué $f(x) = e^x$ no tiene puntos de inflexión.
+
+## 3.5 Croquis de curvas
+
+El trazado de curvas es el proceso de dibujar la gráfica de una función utilizando información de sus derivadas. En lugar de trazar muchos puntos, analizamos características clave: intersecciones, asíntotas, intervalos crecientes/decrecientes y concavidad.
+
+### Pasos para dibujar curvas
+
+1. Dominio: Identifique dónde está definida la función.
+2. Intersecciones: Encuentra dónde la gráfica cruza los ejes.
+3. Asíntotas:
+
+   - Las asíntotas verticales ocurren cuando la función no está definida y tiende al infinito.
+   - Las asíntotas horizontales o inclinadas describen el comportamiento final como $x \to \pm\infty$.
+4. Primera derivada $f'(x)$:
+
+   - Positivo → la función está aumentando.
+   - Negativo → la función es decreciente.
+   - Ceros de $f'(x)$ → puntos críticos (máximos/mínimos posibles).
+5. Segunda derivada $f''(x)$:
+
+   - Positivo → cóncavo hacia arriba.
+   - Negativo → cóncavo hacia abajo.
+   - Ceros o indefinidos → posibles puntos de inflexión.
+6. Combine información: utilice todos los resultados para dibujar un gráfico claro y preciso.
+
+### Ejemplo 1: $f(x) = x^3 - 3x$
+
+- Dominio: todos los números reales.
+- Intercepciones: a $(0,0)$.
+- Derivado: $f'(x) = 3x^2 - 3 = 3(x-1)(x+1)$.
+
+  - Creciente: $(-\infty, -1) \cup (1, \infty)$.
+  - Decreciente: $(-1, 1)$.- Segunda derivada: $f''(x) = 6x$.
+
+  - Cóncavo hacia abajo por $x < 0$, cóncavo hacia arriba por $x > 0$.
+  - Punto de inflexión en $(0,0)$.
+- Forma: una curva en S con un máximo local en $(-1, 2)$, un mínimo local en $(1, -2)$.
+
+### Ejemplo 2: $f(x) = \frac{1}{x}$
+
+- Dominio: $x \neq 0$.
+- Asíntota vertical: $x = 0$.
+- Asíntota horizontal: $y = 0$.
+- Derivado: $f'(x) = -\frac{1}{x^2}$ (siempre negativo). La función siempre es decreciente.
+- Segunda derivada: $f''(x) = \frac{2}{x^3}$.
+
+  - Cóncavo hacia arriba por $x > 0$.
+  - Cóncavo hacia abajo por $x < 0$.
+- Gráfica: hipérbola con dos ramas.
+
+### Por qué es útil dibujar curvas
+
+- Proporciona información sobre el comportamiento general de funciones sin un cálculo exhaustivo.
+- Imprescindible en exámenes de cálculo y problemas aplicados.
+- Une el análisis algebraico y la comprensión geométrica.
+
+### Ejercicios
+
+1. Dibuja la curva de $f(x) = x^4 - 2x^2$. Identificar máximos, mínimos y puntos de inflexión.
+2. Analiza y dibuja $f(x) = \ln(x)$. Muestre intersecciones, asíntotas y concavidad.
+3. Para $f(x) = e^{-x}$, describa crecimiento/decadencia, asíntotas y concavidad.
+4. Dibuja la gráfica de $f(x) = \tan x$ en el intervalo $(- \pi, \pi)$. Marque asíntotas.
+5. Utilice las pruebas de la primera y segunda derivada para clasificar los puntos críticos de $f(x) = x^3 - 6x^2 + 9x$.
+
+# Parte II. Integrales
+
+# Capítulo 4. Antiderivadas e Integrales Definidas
+
+## 4.1 Integrales Indefinidas
+
+Una integral indefinida es el proceso inverso de diferenciación. Si una derivada mide el cambio, entonces una integral recupera la función original a partir de su tasa de cambio.
+
+### Definición
+
+Si $F'(x) = f(x)$, entonces
+
+$$
+\int f(x)\,dx = F(x) + C,
+$$
+
+donde $C$ es la constante de integración.
+
+Cada integral indefinida representa una familia de funciones que difieren sólo por una constante, ya que la diferenciación elimina constantes.
+
+### Reglas básicas
+
+1. Regla constante
+
+$$
+\int c\,dx = cx + C.
+$$
+
+2. Regla de poder
+
+$$
+\int x^n\,dx = \frac{x^{n+1}}{n+1} + C, \quad n \neq -1.
+$$
+
+3. Regla de la suma
+
+$$
+\int \big(f(x) + g(x)\big)\,dx = \int f(x)\,dx + \int g(x)\,dx.
+$$
+
+4. Regla múltiple constante
+
+$$
+\int c f(x)\,dx = c \int f(x)\,dx.
+$$
+
+### Integrales comunes
+
+- $\int e^x dx = e^x + C$
+- $\int \sin x dx = -\cos x + C$
+- $\int \cos x dx = \sin x + C$
+- $\int \frac{1}{x} dx = \ln|x| + C$
+
+### Ejemplos
+
+1. $\int (3x^2 - 4)\,dx = x^3 - 4x + C$.
+
+2. $\int \cos(2x)\,dx = \tfrac{1}{2}\sin(2x) + C$.
+
+3. $\int \frac{1}{x}\,dx = \ln|x| + C$.
+
+### Interpretación
+
+- Las integrales indefinidas son antiderivadas.
+- Son la base de las integrales definidas, que miden cantidades acumuladas como área, distancia y masa.- En contextos aplicados, la integración nos permite pasar de las tasas a los totales.
+
+### Ejercicios
+
+1. Encuentra $\int (5x^4 + 2x)\,dx$.
+2. Calcula $\int (e^x + 3)\,dx$.
+3. Encuentra la solución general de $f'(x) = 6x$ usando integración.
+4. Evalúe $\int \frac{2}{x}\,dx$.
+5. Si la velocidad es $v(t) = 4t$, encuentre la función de posición $s(t)$.
+
+## 4.2 La integral definida como área
+
+Mientras que las integrales indefinidas representan familias de primitivas, la integral definida da un valor numérico: el área acumulada bajo una curva entre dos puntos.
+
+### Definición
+
+Para una función $f(x)$ definida en $[a, b]$, la integral definida es
+
+$$
+\int_a^b f(x)\,dx = \lim_{n \to \infty} \sum_{i=1}^n f(x_i^-) \,\Delta x,
+$$
+
+donde el intervalo $[a, b]$ se divide en $n$ subintervalos de ancho $\Delta x$, y $x_i^-$ es un punto de muestra en cada subintervalo.
+
+Este es el límite de las sumas de Riemann.
+
+### Interpretación geométrica
+
+- Si $f(x) \geq 0$ sobre $[a, b]$, entonces $\int_a^b f(x)\,dx$ es igual al área bajo la curva $y = f(x)$ de $x=a$ a $x=b$.
+- Si $f(x)$ cae por debajo del eje $x$, la integral calcula el área con signo: las regiones debajo del eje cuentan como negativas.
+
+### Propiedades de la integral definida
+
+1. Aditividad en intervalos
+
+$$
+\int_a^c f(x)\,dx = \int_a^b f(x)\,dx + \int_b^c f(x)\,dx.
+$$
+
+2. Límites de inversión
+
+$$
+\int_a^b f(x)\,dx = -\int_b^a f(x)\,dx.
+$$
+
+3. Intervalo de ancho cero
+
+$$
+\int_a^a f(x)\,dx = 0.
+$$
+
+4. Linealidad
+
+$$
+\int_a^b \big( cf(x) + g(x)\big)\,dx = c\int_a^b f(x)\,dx + \int_a^b g(x)\,dx.
+$$
+
+### Ejemplos
+
+1. $\int_0^2 x\,dx = \left[\tfrac{1}{2}x^2\right]_0^2 = 2.$
+   Esta es el área de un triángulo rectángulo bajo la línea $y=x$.
+
+2. $\int_{-1}^1 x^3\,dx = 0.$
+   La función impar $x^3$ tiene áreas simétricas que se cancelan.
+
+3. $\int_0^\pi \sin x\,dx = 2.$
+   Esto equivale al área bajo un arco de la curva sinusoidal.
+
+### Por qué esto es importante
+
+- Las integrales definidas miden cantidades acumuladas: distancia, masa, energía, probabilidad.
+- Unen el cálculo algebraico con la intuición geométrica.
+- El siguiente paso es el Teorema Fundamental del Cálculo, que conecta integrales definidas con antiderivadas.
+
+### Ejercicios
+
+1. Calcular $\int_0^3 (2x+1)\,dx$.
+2. Encuentra el área entre $y = x^2$ y el eje $x$ desde $x = 0$ hasta $x = 2$.
+3. Tasar $\int_{-2}^2 (x^2 - 1)\,dx$.
+4. Demuestra que $\int_{-a}^a f(x)\,dx = 0$ si $f(x)$ es impar.
+5. Calcule $\int_0^1 e^x\,dx$ usando una suma de Riemann con $n=4$ subintervalos y extremos derechos.
+
+## 4.3 El teorema fundamental del cálculoEl Teorema Fundamental del Cálculo (FTC) une las dos ideas principales del cálculo: diferenciación e integración. Muestra que encontrar áreas y encontrar tasas de cambio son dos caras de la misma moneda.
+
+### Parte 1: Diferenciación de una integral
+
+Si $f$ es continua en $[a, b]$, defina
+
+$$
+F(x) = \int_a^x f(t)\,dt.
+$$
+
+Entonces $F$ es derivable, y
+
+$$
+F'(x) = f(x).
+$$
+
+En palabras: la derivada de la función de área acumulada es la función original misma.
+
+### Parte 2: Evaluación de integrales definidas
+
+Si $f$ es continua en $[a, b]$ y $F$ es cualquier antiderivada de $f$, entonces
+
+$$
+\int_a^b f(x)\,dx = F(b) - F(a).
+$$
+
+Esto nos dice que podemos evaluar integrales definidas simplemente encontrando una primitiva, en lugar de calcular los límites de las sumas de Riemann.
+
+### Ejemplos
+
+1. $\int_0^2 x^2\,dx$.
+
+   - Antiderivada: $F(x) = \tfrac{1}{3}x^3$.
+   - Aplicar FTC: $F(2) - F(0) = \tfrac{8}{3} - 0 = \tfrac{8}{3}.$
+
+2. Si $F(x) = \int_1^x \cos t \, dt$, entonces $F'(x) = \cos x$.
+
+3. $\int_1^4 \frac{1}{x}\,dx$.
+
+   - Antiderivada: $\ln|x|$.
+   - Aplicar FTC: $\ln 4 - \ln 1 = \ln 4.$
+
+### Por qué es importante la FTC
+
+- Transforma la integración de un proceso límite a un cálculo práctico.
+- Confirma que diferenciación e integración son operaciones inversas.
+- Es el teorema central que hace que el cálculo sea útil en matemáticas, ciencias e ingeniería.
+
+### Ejercicios
+
+1. Evalúe $\int_0^3 (2x+1)\,dx$ utilizando la FTC.
+2. Si $F(x) = \int_0^x e^t\,dt$, encuentre $F'(x)$.
+3. Calcular $\int_0^\pi \sin x \, dx$.
+4. Demuestre que si $f'(x) = g(x)$, entonces $\int_a^b g(x)\,dx = f(b) - f(a)$.
+5. Utilice la FTC para explicar por qué el área bajo $y = \cos x$ desde $0$ hasta $\pi/2$ es igual a 1.
+
+## 4.4 Propiedades de las integrales
+
+La integral definida tiene varias propiedades importantes que la hacen flexible y potente en aplicaciones. Estas propiedades se derivan de la definición como límite de sumas y del Teorema Fundamental del Cálculo.
+
+### Linealidad
+
+Para funciones $f(x)$ y $g(x)$, y constantes $c, d$:
+
+$$
+\int_a^b \big(c f(x) + d g(x)\big)\,dx = c \int_a^b f(x)\,dx + d \int_a^b g(x)\,dx.
+$$
+
+Esto nos permite dividir integrales complicadas en partes más simples.
+
+### Aditividad en intervalos
+
+Si $a < c < b$, entonces
+
+$$
+\int_a^b f(x)\,dx = \int_a^c f(x)\,dx + \int_c^b f(x)\,dx.
+$$
+
+Podemos calcular integrales pieza por pieza.
+
+### Reversión de límites
+
+$$
+\int_a^b f(x)\,dx = -\int_b^a f(x)\,dx.
+$$
+
+Al intercambiar los límites se cambia el signo de la integral.
+
+### Propiedad de comparación
+
+Si $f(x) \leq g(x)$ para todos los $x$ en $[a, b]$, entonces
+
+$$
+\int_a^b f(x)\,dx \leq \int_a^b g(x)\,dx.
+$$Esto nos permite comparar áreas sin cálculo directo.
+
+### Desigualdad de valor absoluto
+
+$$
+\left| \int_a^b f(x)\,dx \right| \leq \int_a^b |f(x)|\,dx.
+$$
+
+Esta propiedad es esencial en análisis y pruebas de convergencia.
+
+### Simetría
+
+- Si $f(x)$ es par (simétrico respecto al eje $y$):
+
+  $$
+  \int_{-a}^a f(x)\,dx = 2\int_0^a f(x)\,dx.
+  $$
+
+- Si $f(x)$ es impar (simétrico respecto al origen):
+
+  $$
+  \int_{-a}^a f(x)\,dx = 0.
+  $$
+
+### Ejemplos
+
+1. $\int_0^2 (3x^2 + 4)\,dx = \int_0^2 3x^2\,dx + \int_0^2 4\,dx = 8 + 8 = 16.$
+
+2. Como $f(x) = x^3$ es impar, $\int_{-1}^1 x^3\,dx = 0.$
+
+3. Como $f(x) = x^2$ es par, $\int_{-2}^2 x^2\,dx = 2\int_0^2 x^2\,dx = 2\cdot \tfrac{8}{3} = \tfrac{16}{3}.$
+
+### Por qué son importantes estas propiedades
+
+- Simplifican los cálculos.
+- Revelan características geométricas y de simetría de funciones.
+- Proporcionan herramientas teóricas para análisis más avanzados.
+
+### Ejercicios
+
+1. Usa la simetría para evaluar $\int_{-5}^5 (x^4 - x^3)\,dx$.
+2. Demuestra que $\int_1^4 (2x+3)\,dx = \int_1^2 (2x+3)\,dx + \int_2^4 (2x+3)\,dx$.
+3. Evalúe $\int_0^\pi \sin(x)\,dx$ y compárelo con $\int_{-\pi}^\pi \sin(x)\,dx$.
+4. Demuestre que si $f(x) \geq 0$ sobre $[a, b]$, entonces $\int_a^b f(x)\,dx \geq 0$.
+5. Calcula $\int_{-3}^3 (x^2 + 1)\,dx$ usando propiedades pares/impares.
+
+# Capítulo 5. Técnicas de Integración
+
+## 5.1 Sustitución
+
+Una de las técnicas de integración más útiles es el método de sustitución, también llamado -u-sustitución-. Es el proceso inverso de la regla de la cadena para los derivados.
+
+### La idea
+
+Si una integral contiene una función compuesta, podemos simplificarla cambiando variables.
+
+Formalmente, si $u = g(x)$ es una función derivable, entonces
+
+$$
+\int f(g(x)) g'(x)\,dx = \int f(u)\,du.
+$$
+
+Esta sustitución hace que la integral sea más fácil de evaluar.
+
+### Pasos para la sustitución
+
+1. Identifica una función interna $u = g(x)$ cuya derivada también aparece en el integrando.
+2. Calcular $du = g'(x)\,dx$.
+3. Reescribe la integral en términos de $u$.
+4. Integrar respecto de $u$.
+5. Sustituir nuevamente $u = g(x)$.
+
+### Ejemplos
+
+1. Sustitución sencilla
+
+   $$
+   \int 2x \cos(x^2)\,dx
+   $$
+
+   Sea $u = x^2$, entonces $du = 2x\,dx$.
+   Entonces la integral se convierte en $\int \cos u \,du = \sin u + C = \sin(x^2) + C$.
+
+2. Caso logarítmico
+
+   $$
+   \int \frac{2x}{x^2+1}\,dx
+   $$
+
+   Sea $u = x^2 + 1$, entonces $du = 2x\,dx$.
+   Entonces la integral se convierte en $\int \frac{1}{u}\,du = \ln|u| + C = \ln(x^2+1) + C$.
+
+3. Sustitución trigonométrica
+
+   $$
+   \int \sin(3x)\,dx
+   $$
+
+   Sea $u = 3x$, entonces $du = 3\,dx$, por lo tanto $dx = \frac{du}{3}$.La integral se convierte en $\tfrac{1}{3}\int \sin u\,du = -\tfrac{1}{3}\cos u + C = -\tfrac{1}{3}\cos(3x) + C$.
+
+### Integrales definidas con sustitución
+
+Al evaluar integrales definidas, también debemos cambiar los límites:
+
+$$
+\int_a^b f(g(x)) g'(x)\,dx = \int_{g(a)}^{g(b)} f(u)\,du.
+$$
+
+Ejemplo:
+
+$$
+\int_0^1 2x e^{x^2}\,dx.
+$$
+
+Sea $u = x^2$, $du = 2x\,dx$. Límites: cuando $x=0, u=0$; cuando $x=1, u=1$.
+Entonces la integral se convierte en
+
+$$
+\int_0^1 e^u\,du = e - 1.
+$$
+
+### Ejercicios
+
+1. Evalúe $\int (x^2+1)^5 (2x)\,dx$.
+2. Calcula $\int \frac{\cos x}{\sin x}\,dx$.
+3. Calcula $\int_0^\pi \sin(2x)\,dx$ usando sustitución.
+4. Encuentra $\int e^{3x}\,dx$.
+5. Calcula $\int \frac{1}{\sqrt{1+x^2}}\,dx$ dejando $u = 1+x^2$.
+
+## 5.2 Integración por Partes
+
+La integración por partes es una técnica que surge de la regla del producto para las derivadas. Ayuda a evaluar integrales que involucran productos de funciones que no se manejan fácilmente mediante sustitución únicamente.
+
+### La fórmula
+
+De la regla del producto:
+
+$$
+\frac{d}{dx}[u(x)v(x)] = u'(x)v(x) + u(x)v'(x).
+$$
+
+Al integrar ambos lados se obtiene la fórmula de integración por partes:
+
+$$
+\int u\,dv = uv - \int v\,du.
+$$
+
+Aquí:
+
+- $u$ = una función elegida para ser diferenciada,
+- $dv$ = la parte restante del integrando a integrar.
+
+### Eligiendo $u$ y $dv$
+
+Una pauta común es LIATE (logarítmica, trigonométrica inversa, algebraica, trigonométrica, exponencial).
+
+- Elija $u$ de la categoría más antigua presente.
+- Elige $dv$ como el resto.
+
+### Ejemplos
+
+1. Polinomio × Exponencial
+
+$$
+\int x e^x\,dx
+$$
+
+Sea $u = x$, $dv = e^x dx$. Entonces $du = dx$, $v = e^x$.
+
+$$
+\int x e^x\,dx = x e^x - \int e^x dx = x e^x - e^x + C.
+$$
+
+2. Polinomio × Trig.
+
+$$
+\int x \cos x\,dx
+$$
+
+Sea $u = x$, $dv = \cos x dx$. Entonces $du = dx$, $v = \sin x$.
+
+$$
+\int x \cos x\,dx = x \sin x - \int \sin x dx = x \sin x + \cos x + C.
+$$
+
+3. Logaritmo
+
+$$
+\int \ln x\,dx
+$$
+
+Sea $u = \ln x$, $dv = dx$. Entonces $du = \frac{1}{x}dx$, $v = x$.
+
+$$
+\int \ln x\,dx = x \ln x - \int 1 dx = x \ln x - x + C.
+$$
+
+### Ejemplo de integral definida
+
+$$
+\int_0^1 x e^x\,dx
+$$
+
+Usando el resultado anterior: $\int x e^x dx = (x-1)e^x$.
+Evaluar:
+
+$$
+\big[(x-1)e^x\big]_0^1 = (0)e^1 - (-1)e^0 = 0 + 1 = 1.
+$$
+
+### Por qué esto es importante
+
+La integración por partes es crucial cuando falla la sustitución, especialmente con logaritmos, funciones trigonométricas inversas y productos que involucran polinomios con exponenciales o funciones trigonométricas.
+
+### Ejercicios
+
+1. Valorar $\int x \sin x\,dx$.
+2. Calcula $\int e^x \cos x\,dx$.
+3. Calcular $\int_1^2 \ln x\,dx$.
+4. Valorar $\int x^2 e^x\,dx$.5. Usa la integración por partes para mostrar $\int \arctan x\,dx = x\arctan x - \tfrac{1}{2}\ln(1+x^2) + C$.
+
+## 5.3 Integrales y sustituciones trigonométricas
+
+Muchas integrales involucran funciones trigonométricas. A menudo, estos se pueden simplificar utilizando identidades o realizando sustituciones especiales.
+
+### Integrales trigonométricas
+
+1. Potencias del seno y el coseno
+
+- Si la potencia del seno es impar: guarda un $\sin x$, convierte el resto por $\sin^2x = 1 - \cos^2x$, y sustituye $u = \cos x$.
+- Si la potencia del coseno es impar: guarda un $\cos x$, convierte el resto con $\cos^2x = 1 - \sin^2x$ y sustituye $u = \sin x$.
+- Si ambos son pares: use identidades de medio ángulo.
+
+Ejemplo:
+
+$$
+\int \sin^3x \cos x \, dx
+$$
+
+Sean $u = \sin x$, $du = \cos x\,dx$:
+
+$$
+\int u^3\,du = \tfrac{u^4}{4} + C = \tfrac{\sin^4x}{4} + C.
+$$
+
+2. Productos de seno y coseno con diferentes ángulos.
+   Utilice fórmulas de producto a suma:
+
+$$
+\sin A \cos B = \tfrac{1}{2}[\sin(A+B) + \sin(A-B)].
+$$
+
+Ejemplo:
+
+$$
+\int \sin(2x)\cos(3x)\,dx = \tfrac{1}{2}\int [\sin(5x) - \sin(x)]\,dx.
+$$
+
+3. Potencias de secante y tangente
+
+- Si la potencia de la secante es par: guarda $\sec^2x$, convierte el resto con $\sec^2x = 1 + \tan^2x$, y sustituye $u = \tan x$.
+- Si la potencia de la tangente es impar: guarda $\sec^2x$, convierte el resto con $\tan^2x = \sec^2x - 1$, y sustituye $u = \tan x$.
+
+Ejemplo:
+
+$$
+\int \tan^3x \sec^2x \, dx
+$$
+
+Sean $u = \tan x$, $du = \sec^2x\,dx$:
+
+$$
+\int u^3\,du = \tfrac{u^4}{4} + C = \tfrac{\tan^4x}{4} + C.
+$$
+
+### Sustituciones trigonométricas
+
+Para integrales que involucran $\sqrt{a^2 - x^2}$, $\sqrt{a^2 + x^2}$ o $\sqrt{x^2 - a^2}$, use sustituciones especiales:
+
+1. $x = a \sin \theta$, por $\sqrt{a^2 - x^2}$.
+2. $x = a \tan \theta$, por $\sqrt{a^2 + x^2}$.
+3. $x = a \sec \theta$, por $\sqrt{x^2 - a^2}$.
+
+Ejemplo:
+
+$$
+\int \sqrt{a^2 - x^2}\,dx
+$$
+
+Sea $x = a\sin\theta$, entonces $dx = a\cos\theta\,d\theta$:
+
+$$
+\int \sqrt{a^2 - a^2\sin^2\theta}(a\cos\theta\,d\theta) = \int a^2 \cos^2\theta \, d\theta.
+$$
+
+Simplifique usando identidades de medio ángulo.
+
+### Por qué son importantes estas técnicas
+
+- Convierten formas algebraicas difíciles en trigonométricas manejables.
+- Son especialmente útiles en problemas que involucran áreas, volúmenes y longitudes de arco.
+- Sientan las bases para métodos de integración avanzados.
+
+### Ejercicios
+
+1. Valorar $\int \sin^4x \cos^2x \, dx$.
+2. Calcular $\int \sin(5x)\cos(2x)\,dx$.
+3. Valorar $\int \tan^2x \sec^2x \, dx$.
+4. Calcula $\int \sqrt{9 - x^2}\,dx$ usando sustitución.
+5. Demuestra que $\int \frac{dx}{\sqrt{x^2 + a^2}} = \ln|x + \sqrt{x^2 + a^2}| + C$ usando $x = a\tan\theta$.
+
+## 5.4 Fracciones ParcialesAl integrar funciones racionales (razones de polinomios), un método poderoso es la descomposición en fracciones parciales. Esta técnica expresa una fracción complicada como una suma de fracciones más simples que son más fáciles de integrar.
+
+### La idea
+
+Si $R(x) = \frac{P(x)}{Q(x)}$ es una función racional, donde el grado de $P(x)$ es menor que el grado de $Q(x)$, podemos descomponer $R(x)$ en fracciones más simples.
+
+Estas piezas más simples corresponden a los factores del denominador $Q(x)$.
+
+### Formularios comunes
+
+1. Factores lineales distintos
+   si
+
+$$
+\frac{1}{(x-a)(x-b)},
+$$
+
+luego descomponerse como
+
+$$
+\frac{A}{x-a} + \frac{B}{x-b}.
+$$
+
+2. Factores lineales repetidos
+   Si el denominador tiene $(x-a)^n$, entonces los términos son
+
+$$
+\frac{A_1}{x-a} + \frac{A_2}{(x-a)^2} + \dots + \frac{A_n}{(x-a)^n}.
+$$
+
+3. Factores cuadráticos irreducibles
+   Si el denominador tiene $(x^2+bx+c)$, entonces el numerador es lineal:
+
+$$
+\frac{Ax+B}{x^2+bx+c}.
+$$
+
+### Ejemplo 1: factores lineales distintos
+
+$$
+\int \frac{1}{x^2 - 1}\,dx
+$$
+
+Denominador del factor: $(x-1)(x+1)$.
+Descomponer:
+
+$$
+\frac{1}{x^2-1} = \frac{1}{2}\left(\frac{1}{x-1} - \frac{1}{x+1}\right).
+$$
+
+Integrar:
+
+$$
+\int \frac{1}{x^2 - 1}\,dx = \tfrac{1}{2}\ln\left|\frac{x-1}{x+1}\right| + C.
+$$
+
+### Ejemplo 2: factor lineal repetido
+
+$$
+\int \frac{1}{(x-1)^2}\,dx
+$$
+
+Esto ya es sencillo:
+
+$$
+\int (x-1)^{-2}\,dx = -\frac{1}{x-1} + C.
+$$
+
+### Ejemplo 3: Factor cuadrático irreducible
+
+$$
+\int \frac{x}{x^2+1}\,dx
+$$
+
+Sustituye $u = x^2+1$, o reconoce que el numerador es derivado del denominador.
+
+$$
+\int \frac{x}{x^2+1}\,dx = \tfrac{1}{2}\ln(x^2+1) + C.
+$$
+
+### Pasos en la descomposición de fracciones parciales
+
+1. Factoriza el denominador.
+2. Escribe la forma de fracción parcial general.
+3. Multiplica por el denominador para borrar fracciones.
+4. Resuelva para constantes desconocidas.
+5. Integra cada término.
+
+### Por qué esto es importante
+
+- Convierte funciones racionales complejas en formas logarítmicas o arctangentes simples.
+- Especialmente útil en ecuaciones diferenciales y transformadas de Laplace.
+- Fundamental en cálculo avanzado e ingeniería.
+
+### Ejercicios
+
+1. Descomponer e integrar $\int \frac{3x+5}{x^2-1}\,dx$.
+2. Valorar $\int \frac{1}{x^2(x+1)}\,dx$.
+3. Calcula $\int \frac{2x+1}{x^2+2x+2}\,dx$.
+4. Calcula $\int \frac{1}{x^3 - x}\,dx$.
+5. Demuestra que $\int \frac{dx}{x^2+1} = \arctan x + C$ usando fracciones parciales o sustitución.
+
+## 5.5 Integrales impropias
+
+Algunas integrales no se pueden evaluar directamente porque el intervalo es infinito o el integrando se vuelve ilimitado. Éstas se llaman integrales impropias. Se definen mediante límites.
+
+### Definición
+
+1. Intervalo infinito
+
+$$\int_a^\infty f(x)\,dx = \lim_{b \to \infty} \int_a^b f(x)\,dx.
+$$
+
+$$
+\int_{-\infty}^a f(x)\,dx = \lim_{b \to -\infty} \int_b^a f(x)\,dx.
+$$
+
+2. Unbounded integrand
+   If $f(x)$ has a vertical asymptote at $c$, then
+
+$$
+\int_a^c f(x)\,dx = \lim_{t \to c^-} \int_a^t f(x)\,dx,
+$$
+
+$$
+\int_c^b f(x)\,dx = \lim_{t \to c^+} \int_t^b f(x)\,dx.
+$$
+
+### Convergence and Divergence
+
+- If the limit exists and is finite, the improper integral converges.
+- If the limit does not exist or is infinite, the improper integral diverges.
+
+### Examples
+
+1. Exponential decay
+
+$$
+\int_1^\infty \frac{1}{x^2}\,dx = \lim_{b \to \infty} \Big[-\tfrac{1}{x}\Big]_1^b = 1.
+$$
+
+This converges.
+
+2. Harmonic function
+
+$$
+\int_1^\infty \frac{1}{x}\,dx = \lim_{b \to \infty} \ln b.
+$$
+
+This diverges to infinity.
+
+3. Asymptote at 0
+
+$$
+\int_0^1 \frac{1}{\sqrt{x}}\,dx = \lim_{t \to 0^+} \int_t^1 x^{-1/2}\,dx.
+$$
+
+$$
+= \lim_{t \to 0^+} [2\sqrt{x}]_t^1 = 2.
+$$
+
+This converges.
+
+4. Asymptote at 0 (divergent)
+
+$$
+\int_0^1 \frac{1}{x}\,dx = \lim_{t \to 0^+} \ln(1) - \ln(t).
+$$
+
+This diverges since $\ln(t) \to -\infty$.
+
+### Comparison Test for Improper Integrals
+
+- If $0 \leq f(x) \leq g(x)$ for large $x$, and $\int g(x)\,dx$ converges, then $\int f(x)\,dx$ also converges.
+- If $\int f(x)\,dx$ diverges and $f(x) \geq g(x) \geq 0$, then $\int g(x)\,dx$ also diverges.
+
+### Why Improper Integrals Matter
+
+- They extend integration to infinite domains and unbounded functions.
+- They are essential in probability (continuous distributions), physics (gravitational/electric fields), and Fourier analysis.
+
+### Exercises
+
+1. Determine whether $\int_1^\infty \frac{1}{x^p}\,dx$ converges for various values of $p$.
+2. Evaluate $\int_0^\infty e^{-x}\,dx$.
+3. Test convergence of $\int_0^1 \frac{1}{x^p}\,dx$ depending on $p$.
+4. Compute $\int_{-\infty}^\infty \frac{1}{1+x^2}\,dx$.
+5. Use the comparison test to show that $\int_1^\infty \frac{1}{x^2+1}\,dx$ converges.
+
+# Chapter 6. Applications of Integration
+
+## 6.1 Areas and Volumes
+
+One of the most important applications of integration is finding areas under curves and volumes of solids.
+
+### Area Between Curves
+
+If $f(x) \geq g(x)$ on $[a, b]$, then the area between the curves $y=f(x)$ and $y=g(x)$ is
+
+$$
+A = \int_a^b \big(f(x) - g(x)\big)\,dx.
+$$
+
+Example:
+Find the area between $y=x^2$ and $y=x$ on $[0,1]$.
+
+$$
+A = \int_0^1 (x - x^2)\,dx = \left[\tfrac{1}{2}x^2 - \tfrac{1}{3}x^3\right]_0^1 = \tfrac{1}{6}.
+$$
+
+### Volumes by Slicing
+
+If a solid has cross-sectional area $A(x)$ at position $x$, then the volume is
+
+$$
+V = \int_a^b A(x)\,dx.
+$$### Volúmenes de Revolución
+
+Cuando una región gira alrededor de un eje, el volumen del sólido resultante se puede encontrar mediante integración.
+
+1. Método de disco
+   Si la región bajo $y=f(x)$, $x\in[a,b]$, gira alrededor del eje $x$:
+
+$$
+V = \pi \int_a^b [f(x)]^2\,dx.
+$$
+
+2. Método de la lavadora
+   Si la región entre $y=f(x)$ y $y=g(x)$ gira alrededor del eje $x$:
+
+$$
+V = \pi \int_a^b \Big([f(x)]^2 - [g(x)]^2\Big)\,dx.
+$$
+
+3. Método de concha
+   Si la región bajo $y=f(x)$ gira alrededor del eje $y$:
+
+$$
+V = 2\pi \int_a^b x f(x)\,dx.
+$$
+
+### Ejemplos
+
+1. método de disco
+   Girar $y=\sqrt{x}$, $0 \leq x \leq 4$, alrededor del eje $x$:
+
+$$
+V = \pi \int_0^4 (\sqrt{x})^2\,dx = \pi \int_0^4 x\,dx = \pi \left[\tfrac{1}{2}x^2\right]_0^4 = 8\pi.
+$$
+
+2. Método de la lavadora
+   Región de revolución entre $y=\sqrt{x}$ y $y=1$, $0 \leq x \leq 1$, alrededor del eje $x$:
+
+$$
+V = \pi \int_0^1 \big((\sqrt{x})^2 - (1)^2\big)\,dx = \pi \int_0^1 (x-1)\,dx = -\tfrac{\pi}{2}.
+$$
+
+(Tomar valor absoluto para el volumen: $V = \tfrac{\pi}{2}$).
+
+3. Método de concha
+   Región de revolución bajo $y=x$, $0 \leq x \leq 1$, alrededor del eje $y$:
+
+$$
+V = 2\pi \int_0^1 x(x)\,dx = 2\pi \int_0^1 x^2\,dx = 2\pi \cdot \tfrac{1}{3} = \tfrac{2\pi}{3}.
+$$
+
+### Por qué esto es importante
+
+- Proporciona formas exactas de calcular áreas y volúmenes en geometría.
+- Imprescindible en física, ingeniería y probabilidad.
+- Introduce el pensamiento geométrico con integración.
+
+### Ejercicios
+
+1. Calcula el área entre $y=\cos x$ y $y=\sin x$ en $[0, \pi/2]$.
+2. Calcula el volumen del sólido que se forma al hacer girar $y=x^2$, $0 \leq x \leq 1$, alrededor del eje $x$.
+3. Encuentra el volumen del sólido formado al hacer girar la región entre $y=x$ y $y=\sqrt{x}$ en $[0,1]$ alrededor del eje $y$.
+4. Utilice el método de la arandela para calcular el volumen del sólido formado al hacer girar $y=\sqrt{1-x^2}$ (un semicírculo) alrededor del eje $x$.
+5. Calcula el área encerrada entre $y=x^2+1$ y $y=3x$.
+
+## 6.2 Longitud del arco y área de superficie
+
+La integración también se puede utilizar para medir la longitud de las curvas y el área de superficie de los sólidos generados por curvas giratorias.
+
+### Longitud del arco
+
+Para una curva suave $y=f(x)$ en el intervalo $[a,b]$, la longitud de la curva es
+
+$$
+L = \int_a^b \sqrt{1 + \big(f'(x)\big)^2}\,dx.
+$$
+
+Esto surge de aproximar la curva con segmentos de recta y tomar el límite.
+
+Ejemplo:
+Encuentra la longitud de $y=\tfrac{1}{2}x^{3/2}$ desde $x=0$ hasta $x=4$.
+
+- Derivado: $f'(x) = \tfrac{3}{4}\sqrt{x}$.
+- Fórmula:
+
+$$
+L = \int_0^4 \sqrt{1 + \Big(\tfrac{3}{4}\sqrt{x}\Big)^2}\,dx
+= \int_0^4 \sqrt{1 + \tfrac{9}{16}x}\,dx.
+$$
+
+Esta integral se puede evaluar mediante sustitución.### Área de superficie de revolución
+
+Si una curva $y=f(x)$, $a \leq x \leq b$, gira alrededor del eje $x$, el área de la superficie del sólido resultante es
+
+$$
+S = 2\pi \int_a^b f(x)\sqrt{1 + \big(f'(x)\big)^2}\,dx.
+$$
+
+Si gira alrededor del eje $y$:
+
+$$
+S = 2\pi \int_a^b x \sqrt{1 + \big(f'(x)\big)^2}\,dx.
+$$
+
+### Ejemplos
+
+1. Longitud del arco de una línea
+   Por $y=x$, $0 \leq x \leq 3$:
+
+$$
+L = \int_0^3 \sqrt{1+(1)^2}\,dx = \int_0^3 \sqrt{2}\,dx = 3\sqrt{2}.
+$$
+
+2. Área de superficie de una esfera
+   Tome $y = \sqrt{r^2 - x^2}$, $-r \leq x \leq r$ y gire alrededor del eje $x$.
+
+$$
+S = 2\pi \int_{-r}^r \sqrt{r^2 - x^2}\sqrt{1+\left(\frac{-x}{\sqrt{r^2-x^2}}\right)^2}\,dx.
+$$
+
+La simplificación da $S = 4\pi r^2$, la conocida fórmula para el área de superficie de una esfera.
+
+### Por qué esto es importante
+
+- La longitud del arco extiende la idea de distancia a caminos curvos.
+- El área de superficie de revolución tiene aplicaciones en física, ingeniería y diseño.
+- Proporciona un puente entre el cálculo y la geometría.
+
+### Ejercicios
+
+1. Encuentra la longitud del arco de $y=\sqrt{x}$ desde $x=0$ hasta $x=4$.
+2. Calcula el área de la superficie del sólido obtenido al hacer girar $y=x^2$, $0 \leq x \leq 1$, alrededor del eje $x$.
+3. Calcula la longitud del arco de $y=\ln(\cosh x)$ desde $x=0$ hasta $x=1$.
+4. Demuestra que al hacer girar $y=\sqrt{r^2 - x^2}$ de $0$ a $r$ alrededor del eje $x$ se obtiene la mitad del área de superficie de una esfera.
+5. Derive la fórmula para el área de superficie de un cono haciendo girar una línea.
+
+## 6.3 Trabajo y Promedios
+
+La integración no se limita a la geometría. También ayuda a calcular el trabajo realizado por una fuerza y ​​el valor promedio de una función durante un intervalo.
+
+### Trabajo
+
+Si una fuerza variable $F(x)$ mueve un objeto en línea recta desde $x=a$ hasta $x=b$, entonces el trabajo total es
+
+$$
+W = \int_a^b F(x)\,dx.
+$$
+
+Esta fórmula generaliza el caso simple $W = F \cdot d$ para fuerza constante.
+
+Ejemplo 1: Fuerza del resorte (Ley de Hooke)
+Para un resorte estirado desde una longitud $a$ hasta $b$, con fuerza $F(x) = kx$:
+
+$$
+W = \int_a^b kx\,dx = \tfrac{1}{2}k(b^2-a^2).
+$$
+
+Ejemplo 2: bombeo de agua
+Si se bombea agua de un tanque, el trabajo requerido es igual
+
+$$
+W = \int_a^b \text{(weight density)} \times \text{(cross-sectional area)} \times \text{(distance lifted)} \, dx.
+$$
+
+### Valor promedio de una función
+
+El valor medio de una función continua $f(x)$ sobre $[a,b]$ es
+
+$$
+f_{\text{avg}} = \frac{1}{b-a} \int_a^b f(x)\,dx.
+$$
+
+Este es el análogo continuo de promediar una lista de números.
+
+Ejemplo 1:
+Por $f(x)=x^2$ sobre $[0,2]$:
+
+$$
+f_{\text{avg}} = \tfrac{1}{2-0}\int_0^2 x^2 dx = \tfrac{1}{2}\cdot \tfrac{8}{3} = \tfrac{4}{3}.
+$$
+
+Ejemplo 2:Si la velocidad de una partícula es $v(t)$, entonces la velocidad promedio sobre $[a,b]$ es
+
+$$
+v_{\text{avg}} = \frac{1}{b-a}\int_a^b v(t)\,dt.
+$$
+
+### Por qué esto es importante
+
+- Las integrales de trabajo aparecen en física, ingeniería y cálculos de energía.
+- El valor medio proporciona un único número representativo para cantidades variables.
+- Ambos conectan el cálculo con problemas de movimiento, fuerza y ​​eficiencia del mundo real.
+
+### Ejercicios
+
+1. Calcula el trabajo necesario para estirar un resorte de 2 ma 5 m si $k=10$.
+2. Un objeto de 100 kg se eleva verticalmente 5 m en un campo gravitacional ($g=9.8 \,\text{m/s}^2$). Expresar el trabajo como una integral y evaluar.
+3. Calcula el valor medio de $f(x)=\sin x$ sobre $[0,\pi]$.
+4. Calcula la temperatura promedio si $T(t)=20+5\cos(\tfrac{\pi t}{12})$ durante un día de 24 horas.
+5. Un tanque de 10 m de profundidad está lleno de agua. Calcula el trabajo necesario para bombear toda el agua hasta la superficie, dado que el agua pesa $9800 \,\text{N/m}^3$.
+
+## 6.4 Densidades de probabilidad y distribuciones continuas
+
+La integración también juega un papel central en la teoría de la probabilidad, especialmente para variables aleatorias continuas. En lugar de resultados discretos, describimos probabilidades con funciones llamadas funciones de densidad de probabilidad (pdf).
+
+### Funciones de densidad de probabilidad
+
+Una función de densidad de probabilidad $f(x)$ debe cumplir dos condiciones:
+
+1. $f(x) \geq 0$ para todos $x$.
+2. El área total bajo la curva es 1:
+
+   $$
+   \int_{-\infty}^\infty f(x)\,dx = 1.
+   $$
+
+Si $X$ es una variable aleatoria continua con función de densidad de probabilidad $f(x)$, entonces la probabilidad de que $X$ se encuentre entre $a$ y $b$ es
+
+$$
+P(a \leq X \leq b) = \int_a^b f(x)\,dx.
+$$
+
+### Función de distribución acumulativa
+
+La función de distribución acumulativa (cdf) se define como
+
+$$
+F(x) = \int_{-\infty}^x f(t)\,dt.
+$$
+
+Da la probabilidad de que la variable aleatoria sea menor o igual a $x$.
+
+### Valor esperado (media)
+
+El valor esperado de una variable aleatoria continua es el promedio ponderado:
+
+$$
+E[X] = \int_{-\infty}^\infty x f(x)\,dx.
+$$
+
+### Ejemplos
+
+1. Distribución uniforme
+   Por $f(x) = \tfrac{1}{b-a}$ a $[a,b]$:
+
+- Probabilidad del intervalo $[c,d]$:
+
+  $$
+  P(c \leq X \leq d) = \frac{d-c}{b-a}.
+  $$
+- Valor esperado: $E[X] = \tfrac{a+b}{2}$.
+
+2. Distribución exponencial
+   Por $f(x) = \lambda e^{-\lambda x}$, $x \geq 0$:
+
+- $\int_0^\infty \lambda e^{-\lambda x}\,dx = 1$.
+- Media: $E[X] = \tfrac{1}{\lambda}$.
+
+3. Distribución normal
+   La curva de campana:
+
+$$
+f(x) = \frac{1}{\sqrt{2\pi\sigma^2}} e^{-\frac{(x-\mu)^2}{2\sigma^2}}.
+$$
+
+Se integra a 1, pero requiere técnicas avanzadas.
+
+### Por qué esto es importante- Las densidades de probabilidad describen la incertidumbre en ciencia, ingeniería y estadística.
+- Las integrales conectan áreas bajo curvas con probabilidades.
+- Las distribuciones continuas generalizan la idea de contar resultados para medir probabilidades en intervalos.
+
+### Ejercicios
+
+1. Demuestre que la densidad uniforme $f(x) = \tfrac{1}{b-a}$ en $[a,b]$ se integra a 1.
+2. Para la distribución exponencial con $\lambda = 2$, calcula $P(0 \leq X \leq 1)$.
+3. Calcula el valor esperado de $X$ si $f(x) = 3x^2$ sobre $[0,1]$.
+4. Verifique que la distribución normal con media 0 y varianza 1 tenga probabilidad total 1 (no es necesario realizar una prueba completa, pero explique por qué se cumple).
+5. Calcule la CDF de la distribución uniforme en $[0,1]$.
+
+# Parte III. Cálculo multivariable
+
+# Capítulo 7. Funciones vectoriales y curvas
+
+## 7.1 Funciones vectoriales y curvas espaciales
+
+En el cálculo multivariable, las funciones pueden generar vectores en lugar de números. Éstas se denominan funciones con valores vectoriales y son esenciales para describir curvas en el espacio.
+
+### Definición
+
+Una función vectorial es una función de la forma
+
+$$
+\mathbf{r}(t) = \langle x(t), y(t), z(t) \rangle,
+$$
+
+donde $x(t), y(t), z(t)$ son funciones de valor real.
+
+- La entrada $t$ suele denominarse parámetro.
+- La salida es un vector en un espacio 2D o 3D.
+- La gráfica de una función vectorial en 3D es una curva espacial.
+
+### Ejemplos
+
+1. Línea
+
+$$
+\mathbf{r}(t) = \langle 1+2t, \; 3-t, \; 4+5t \rangle.
+$$
+
+Describe una línea recta que pasa por el punto $(1,3,4)$ con el vector director $\langle 2,-1,5 \rangle$.
+
+2. Círculo en el avión.
+
+$$
+\mathbf{r}(t) = \langle \cos t, \; \sin t, \; 0 \rangle, \quad 0 \leq t < 2\pi.
+$$
+
+3. hélice
+
+$$
+\mathbf{r}(t) = \langle \cos t, \; \sin t, \; t \rangle.
+$$
+
+Se trata de una espiral que se eleva alrededor del eje $z$.
+
+### Límites y Continuidad
+
+Una función vectorial es continua en $t=a$ si cada componente $x(t), y(t), z(t)$ es continua en $t=a$.
+
+$$
+\lim_{t \to a} \mathbf{r}(t) = \langle \lim_{t \to a} x(t), \; \lim_{t \to a} y(t), \; \lim_{t \to a} z(t) \rangle.
+$$
+
+### Geometría de las curvas espaciales
+
+- Cada curva tiene una dirección tangente dada por la derivada.
+- Las curvas espaciales pueden modelar trayectorias de movimiento, trayectorias de partículas y formas geométricas.
+
+### Por qué esto es importante
+
+Las funciones vectoriales son la base del cálculo multivariable y nos permiten extender las ideas de derivadas e integrales a dimensiones superiores. También aparecen de forma natural en física (movimiento en 3D, electromagnetismo, dinámica de fluidos).
+
+### Ejercicios
+
+1. Escribe una función vectorial para una recta que pasa por $(0,1,2)$ paralela al vector $\langle 3,-2,1 \rangle$.2. Describe la curva dada por $\mathbf{r}(t) = \langle 2\cos t, \; 2\sin t, \; 3 \rangle$.
+3. Determina si $\mathbf{r}(t) = \langle e^t, \; \ln t, \; t^2 \rangle$ es continua en $t=1$.
+4. Dibuja la hélice $\mathbf{r}(t) = \langle \cos t, \; \sin t, \; 2t \rangle$.
+5. Encuentra el punto de la curva $\mathbf{r}(t) = \langle t, \; t^2, \; t^3 \rangle$ cuando $t=2$.
+
+## 7.2 Derivadas e integrales de funciones vectoriales
+
+Las funciones vectoriales se pueden diferenciar e integrar como funciones ordinarias: simplemente aplicamos la operación a cada componente. Esto nos permite estudiar el movimiento, la velocidad, la aceleración y la acumulación en dimensiones superiores.
+
+### Derivada de una función vectorial
+
+si
+
+$$
+\mathbf{r}(t) = \langle x(t), y(t), z(t) \rangle,
+$$
+
+entonces
+
+$$
+\mathbf{r}'(t) = \langle x'(t), y'(t), z'(t) \rangle.
+$$
+
+Este vector derivada apunta en la dirección tangente a la curva en el parámetro $t$.
+
+- Velocidad: Si $\mathbf{r}(t)$ da la posición de una partícula en el tiempo $t$, entonces $\mathbf{v}(t) = \mathbf{r}'(t)$ es su vector velocidad.
+- Velocidad: La magnitud $|\mathbf{v}(t)|$ es la velocidad de la partícula.
+- Aceleración: $\mathbf{a}(t) = \mathbf{v}'(t) = \mathbf{r}''(t)$.
+
+### Ejemplos
+
+1. hélice
+
+$$
+\mathbf{r}(t) = \langle \cos t, \sin t, t \rangle.
+$$
+
+- Velocidad: $\mathbf{v}(t) = \langle -\sin t, \cos t, 1 \rangle$.
+- Velocidad: $|\mathbf{v}(t)| = \sqrt{(-\sin t)^2 + (\cos t)^2 + 1^2} = \sqrt{2}$.
+- Aceleración: $\mathbf{a}(t) = \langle -\cos t, -\sin t, 0 \rangle$.
+
+2. Movimiento del proyectil
+
+$$
+\mathbf{r}(t) = \langle v_0 \cos\theta \cdot t, \; v_0 \sin\theta \cdot t - \tfrac{1}{2}gt^2 \rangle.
+$$
+
+Esto modela la trayectoria parabólica de un proyectil bajo gravedad.
+
+### Integral de una función vectorial
+
+si
+
+$$
+\mathbf{r}(t) = \langle x(t), y(t), z(t) \rangle,
+$$
+
+entonces
+
+$$
+\int \mathbf{r}(t)\,dt = \left\langle \int x(t)\,dt, \; \int y(t)\,dt, \; \int z(t)\,dt \right\rangle + \mathbf{C},
+$$
+
+donde $\mathbf{C}$ es un vector constante.
+
+### Ejemplo
+
+$$
+\mathbf{r}(t) = \langle t, t^2, t^3 \rangle.
+$$
+
+- Derivado: $\mathbf{r}'(t) = \langle 1, 2t, 3t^2 \rangle$.
+- Integrales:
+
+$$
+\int \mathbf{r}(t)\,dt = \langle \tfrac{1}{2}t^2, \tfrac{1}{3}t^3, \tfrac{1}{4}t^4 \rangle + \mathbf{C}.
+$$
+
+### Por qué esto es importante
+
+- Las derivadas de funciones vectoriales describen el movimiento y las fuerzas en el espacio.
+- Las integrales dan desplazamiento, trabajo y cantidades acumuladas.
+- Estas herramientas conectan el cálculo directamente con la física y la ingeniería.
+
+### Ejercicios
+
+1. Para $\mathbf{r}(t) = \langle t, \cos t, \sin t \rangle$, encuentra la velocidad, la rapidez y la aceleración.2. Calcula $\mathbf{r}'(t)$ para $\mathbf{r}(t) = \langle e^t, \ln t, t^2 \rangle$.
+3. Integra $\mathbf{r}(t) = \langle 1, t, t^2 \rangle$.
+4. Una partícula tiene velocidad $\mathbf{v}(t) = \langle t, 2, 0 \rangle$. Encuentre su vector de posición si $\mathbf{r}(0) = \langle 1, 0, 0 \rangle$.
+5. Demuestra que la rapidez de $\mathbf{r}(t) = \langle \cos t, \sin t, 0 \rangle$ es constante.
+
+## 7.3 Longitud y curvatura del arco
+
+El cálculo vectorial proporciona herramientas para medir no sólo la trayectoria trazada por una curva sino también la intensidad con la que se curva. Estos se expresan mediante la longitud del arco y la curvatura.
+
+### Longitud de arco de una curva espacial
+
+Si una curva está dada por
+
+$$
+\mathbf{r}(t) = \langle x(t), y(t), z(t) \rangle, \quad a \leq t \leq b,
+$$
+
+entonces la longitud del arco es
+
+$$
+L = \int_a^b |\mathbf{r}'(t)|\,dt,
+$$
+
+donde
+
+$$
+|\mathbf{r}'(t)| = \sqrt{(x'(t))^2 + (y'(t))^2 + (z'(t))^2}.
+$$
+
+Ejemplo:
+Para la hélice $\mathbf{r}(t) = \langle \cos t, \sin t, t \rangle, \, 0 \leq t \leq 2\pi$:
+
+- Velocidad: $\mathbf{r}'(t) = \langle -\sin t, \cos t, 1 \rangle$.
+- Velocidad: $|\mathbf{r}'(t)| = \sqrt{(-\sin t)^2 + (\cos t)^2 + 1^2} = \sqrt{2}$.
+- Longitud del arco:
+
+$$
+L = \int_0^{2\pi} \sqrt{2}\,dt = 2\pi\sqrt{2}.
+$$
+
+### Curvatura
+
+La curvatura mide la rapidez con la que una curva cambia de dirección.
+
+Para una curva suave $\mathbf{r}(t)$:
+
+$$
+\kappa(t) = \frac{|\mathbf{r}'(t) \times \mathbf{r}''(t)|}{|\mathbf{r}'(t)|^3}.
+$$
+
+- $\kappa = 0$: línea recta.
+- Más grande $\kappa$: la curva se curva más bruscamente.
+
+Ejemplo:
+Para un círculo de radio $r$:
+
+$$
+\mathbf{r}(t) = \langle r\cos t, r\sin t \rangle.
+$$
+
+Luego $\kappa = \tfrac{1}{r}$.
+Entonces la curvatura es constante e inversamente proporcional al radio.
+
+### Unidades tangentes y vectores normales
+
+- Vector tangente:
+
+$$
+\mathbf{T}(t) = \frac{\mathbf{r}'(t)}{|\mathbf{r}'(t)|}.
+$$
+
+- Vector normal: apunta hacia el centro de curvatura, definido como
+
+$$
+\mathbf{N}(t) = \frac{\mathbf{T}'(t)}{|\mathbf{T}'(t)|}.
+$$
+
+Estos vectores describen la geometría del movimiento: dirección de desplazamiento y dirección de giro.
+
+### Por qué esto es importante
+
+- La longitud del arco generaliza el concepto de distancia a las curvas en el espacio.
+- La curvatura describe la flexión, crucial en física (aceleración centrípeta), ingeniería (carreteras, montañas rusas) y gráficos por computadora.
+
+### Ejercicios
+
+1. Encuentra la longitud del arco de $\mathbf{r}(t) = \langle t, t^2, 0 \rangle$ desde $t=0$ hasta $t=1$.
+2. Calcula la curvatura del círculo $\mathbf{r}(t) = \langle \cos t, \sin t \rangle$.
+3. Para $\mathbf{r}(t) = \langle t, \cos t, \sin t \rangle$, calcula $|\mathbf{r}'(t)|$.
+4. Demuestra que una recta tiene curvatura $\kappa = 0$.5. Encuentra el vector tangente a $\mathbf{r}(t) = \langle e^t, e^{-t}, t \rangle$ en $t=0$.
+
+## 7.4 Movimiento en el espacio
+
+Las funciones vectoriales son especialmente poderosas para describir el movimiento en dos o tres dimensiones. La posición, la velocidad y la aceleración se expresan naturalmente mediante derivadas e integrales de funciones con valores vectoriales.
+
+### Posición, velocidad y aceleración
+
+- Vector de posición:
+
+$$
+\mathbf{r}(t) = \langle x(t), y(t), z(t) \rangle
+$$
+
+- Vector de velocidad (derivada de la posición):
+
+$$
+\mathbf{v}(t) = \mathbf{r}'(t) = \langle x'(t), y'(t), z'(t) \rangle
+$$
+
+- Velocidad (magnitud de la velocidad):
+
+$$
+|\mathbf{v}(t)| = \sqrt{(x'(t))^2 + (y'(t))^2 + (z'(t))^2}
+$$
+
+- Vector de aceleración (derivada de la velocidad):
+
+$$
+\mathbf{a}(t) = \mathbf{v}'(t) = \mathbf{r}''(t).
+$$
+
+### Componentes tangenciales y normales
+
+La aceleración se puede descomponer en dos componentes:
+
+$$
+\mathbf{a}(t) = a_T \mathbf{T}(t) + a_N \mathbf{N}(t),
+$$
+
+donde:
+
+- $\mathbf{T}(t)$ = vector unitario tangente,
+- $\mathbf{N}(t)$ = vector normal principal,
+- $a_T = \frac{d}{dt}|\mathbf{v}(t)|$ = aceleración tangencial (cambio de velocidad),
+- $a_N = \kappa |\mathbf{v}(t)|^2$ = aceleración normal (cambio de dirección).
+
+### Movimiento de proyectil en 3D
+
+Con gravedad actuando en la dirección $-z$:
+
+$$
+\mathbf{r}(t) = \langle v_0 \cos\theta \cos\phi \cdot t,\; v_0 \cos\theta \sin\phi \cdot t,\; v_0 \sin\theta \cdot t - \tfrac{1}{2}gt^2 \rangle,
+$$
+
+donde $v_0$ es la velocidad inicial, $\theta$ el ángulo de lanzamiento y $\phi$ la dirección azimutal.
+
+### Ejemplo: movimiento helicoidal
+
+$$
+\mathbf{r}(t) = \langle \cos t, \sin t, t \rangle
+$$
+
+- Velocidad: $\mathbf{v}(t) = \langle -\sin t, \cos t, 1 \rangle$.
+- Velocidad: $|\mathbf{v}(t)| = \sqrt{2}$.
+- Aceleración: $\mathbf{a}(t) = \langle -\cos t, -\sin t, 0 \rangle$.
+- El movimiento es uniforme en velocidad, en espiral hacia arriba.
+
+### Por qué esto es importante
+
+- Proporciona lenguaje matemático para el movimiento del mundo real.
+- Imprescindible en física (fuerzas, trayectorias, movimiento circular).
+- Fundamentos de mecánica avanzada y modelos de ingeniería.
+
+### Ejercicios
+
+1. Una partícula se mueve a lo largo de $\mathbf{r}(t) = \langle t, t^2, t^3 \rangle$. Encuentre la velocidad y la aceleración en $t=1$.
+2. Demuestre que la velocidad es constante para la hélice $\mathbf{r}(t) = \langle \cos t, \sin t, t \rangle$.
+3. Se lanza un proyectil con $v_0 = 20 \,\text{m/s}$ en un ángulo de $45^\circ$. Escriba su vector de posición suponiendo movimiento en un plano vertical.
+4. Para $\mathbf{r}(t) = \langle e^t, e^{-t}, t \rangle$, encuentre $\mathbf{v}(t)$ y $\mathbf{a}(t)$.
+5. Descomponga el vector de aceleración en componentes tangencial y normal para el movimiento a lo largo de un círculo de radio $r$.# Capítulo 8. Funciones de varias variables
+
+## 8.1 Límites y continuidad en varias variables
+
+En cálculo multivariable, las funciones pueden depender de dos o más variables, como $f(x,y)$ o $f(x,y,z)$. Los conceptos de límites y continuidad se extienden naturalmente del cálculo de una sola variable, pero son más sutiles porque debemos considerar todos los caminos posibles de aproximación.
+
+### Límites en dos variables
+
+Para una función $f(x,y)$, decimos
+
+$$
+\lim_{(x,y) \to (a,b)} f(x,y) = L
+$$
+
+si $f(x,y)$ se acerca arbitrariamente a $L$ cuando $(x,y)$ se acerca a $(a,b)$ en cualquier camino.
+
+Si diferentes caminos dan valores límite diferentes, entonces el límite no existe.
+
+Ejemplo 1 (existe límite):
+
+$$
+f(x,y) = x^2 + y^2, \quad \lim_{(x,y) \to (0,0)} f(x,y) = 0.
+$$
+
+Ejemplo 2 (el límite no existe):
+
+$$
+f(x,y) = \frac{xy}{x^2+y^2}, \quad (x,y) \to (0,0).
+$$
+
+- A lo largo de $y=0$, la función es 0.
+- A lo largo de $y=x$, la función es $\tfrac{1}{2}$.
+  Resultados diferentes → el límite no existe.
+
+### Continuidad
+
+Una función $f(x,y)$ es continua en $(a,b)$ si
+
+$$
+\lim_{(x,y)\to(a,b)} f(x,y) = f(a,b).
+$$
+
+Los polinomios y las funciones racionales (donde denominador ≠ 0) son continuos en todos sus dominios.
+
+### Extensión a tres o más variables
+
+Para $f(x,y,z)$, los límites y la continuidad se definen de la misma manera, pero el punto $(a,b,c)$ debe acercarse desde infinitas direcciones en el espacio.
+
+### Por qué esto es importante
+
+- La continuidad garantiza que no haya saltos, agujeros o asíntotas en funciones multivariables.
+- Los límites son fundamentales para definir derivadas parciales e integrales múltiples.
+- Estos conceptos son componentes básicos del cálculo multivariable.
+
+### Ejercicios
+
+1. Determinar si existe $\lim_{(x,y)\to(0,0)} (x^2+y^2)$.
+2. Demuestre que $\lim_{(x,y)\to(0,0)} \frac{x^2y}{x^2+y^2} = 0$ a lo largo de todos los caminos rectilíneos $y=mx$.
+3. ¿Existe el límite para $f(x,y) = \frac{x^2-y^2}{x^2+y^2}$ como $(x,y)\to(0,0)$?
+4. Explique por qué los polinomios de dos variables son continuos en todas partes.
+5. Da un ejemplo de una función de dos variables que sea discontinua en un punto y explica por qué.
+
+## 8.2 Derivados Parciales
+
+En funciones de varias variables, a menudo queremos medir cómo cambia la función cuando solo cambia una variable mientras las demás se mantienen constantes. Esto lleva a la idea de derivadas parciales.
+
+### Definición
+
+Para una función $f(x,y)$, la derivada parcial respecto de $x$ en un punto $(a,b)$ es
+
+$$
+\frac{\partial f}{\partial x}(a,b) = \lim_{h \to 0} \frac{f(a+h, b) - f(a,b)}{h}.
+$$
+
+De manera similar, la derivada parcial con respecto a $y$ es
+
+$$\frac{\partial f}{\partial y}(a,b) = \lim_{h \to 0} \frac{f(a, b+h) - f(a,b)}{h}.
+$$
+
+We treat all other variables as constants when differentiating.
+
+### Notation
+
+- $\frac{\partial f}{\partial x}$, $f_x$, $\partial_x f$.
+- $\frac{\partial f}{\partial y}$, $f_y$, $\partial_y f$.
+
+For three variables $f(x,y,z)$, we also have $f_x, f_y, f_z$.
+
+### Examples
+
+1. $f(x,y) = x^2y + y^3$
+
+- $f_x = 2xy$.
+- $f_y = x^2 + 3y^2$.
+
+2. $f(x,y) = e^{xy}$
+
+- $f_x = y e^{xy}$.
+- $f_y = x e^{xy}$.
+
+3. $f(x,y,z) = x^2 + yz$
+
+- $f_x = 2x$.
+- $f_y = z$.
+- $f_z = y$.
+
+### Higher-Order Partial Derivatives
+
+We can take partial derivatives repeatedly:
+
+- $f_{xx} = \frac{\partial}{\partial x}\Big(f_x\Big)$.
+- $f_{yy}, f_{xy}, f_{yx}$, etc.
+
+Clairaut’s Theorem: If $f$ has continuous second partial derivatives, then
+
+$$
+f_{xy} = f_{yx}.
+$$
+
+### Geometric Meaning
+
+- $f_x$: slope of the surface in the $x$-direction.
+- $f_y$: slope of the surface in the $y$-direction.
+- Together they describe how the surface tilts.
+
+### Why This Matters
+
+- Partial derivatives are the foundation of gradients, tangent planes, and optimization in multiple variables.
+- They are widely used in physics, engineering, and economics to model systems with several inputs.
+
+### Exercises
+
+1. Find $f_x$ and $f_y$ for $f(x,y) = x^3y^2$.
+2. Compute $f_x, f_y, f_z$ for $f(x,y,z) = xyz + x^2$.
+3. Verify Clairaut’s theorem for $f(x,y) = x^2y + y^3$.
+4. Interpret geometrically what $f_x$ and $f_y$ mean for $f(x,y) = \sqrt{x^2+y^2}$.
+5. Find all second-order partial derivatives of $f(x,y) = e^{x^2+y^2}$.
+
+## 8.3 Gradient and Directional Derivatives
+
+Partial derivatives measure change along the coordinate axes, but sometimes we want to know the rate of change of a function in any direction. This leads to the concepts of the gradient and directional derivatives.
+
+### Gradient Vector
+
+For a function $f(x,y)$, the gradient is the vector
+
+$$
+\nabla f(x,y) = \left\langle \frac{\partial f}{\partial x}, \frac{\partial f}{\partial y} \right\rangle.
+$$
+
+For three variables $f(x,y,z)$:
+
+$$
+\nabla f(x,y,z) = \left\langle f_x, f_y, f_z \right\rangle.
+$$
+
+The gradient points in the direction of maximum increase of the function, and its magnitude gives the steepest slope.
+
+### Directional Derivatives
+
+The rate of change of $f(x,y)$ at a point in the direction of a unit vector $\mathbf{u} = \langle u_1, u_2 \rangle$ is
+
+$$
+D_{\mathbf{u}} f(x,y) = \nabla f(x,y) \cdot \mathbf{u}.
+$$
+
+Este es el producto escalar del gradiente con el vector de dirección.
+
+### Ejemplos
+
+1. $f(x,y) = x^2 + y^2$
+
+- Degradado: $\nabla f = \langle 2x, 2y \rangle$.- En (1,2): $\nabla f = \langle 2,4 \rangle$.
+- Derivada direccional según $\mathbf{u} = \langle \tfrac{3}{5}, \tfrac{4}{5} \rangle$:
+
+$$
+D_{\mathbf{u}} f(1,2) = \langle 2,4 \rangle \cdot \langle \tfrac{3}{5}, \tfrac{4}{5} \rangle = \tfrac{26}{5}.
+$$
+
+2. $f(x,y,z) = x y z$
+
+- Degradado: $\nabla f = \langle yz, xz, xy \rangle$.
+- En (1,1,1): $\nabla f = \langle 1,1,1 \rangle$.
+- La dirección de aumento máximo es a lo largo de $\langle 1,1,1 \rangle$.
+
+### Interpretación geométrica
+
+- El vector gradiente es perpendicular (normal) a las curvas de nivel o superficies de nivel de $f$.
+- Las derivadas direccionales generalizan la pendiente en direcciones arbitrarias.
+
+### Por qué esto es importante
+
+- En optimización, el gradiente nos indica la dirección a seguir para el ascenso o descenso más pronunciado.
+- En física, los gradientes describen campos como el flujo de calor y el potencial eléctrico.
+- Las derivadas direccionales unifican tasas de cambio de una y varias variables.
+
+### Ejercicios
+
+1. Calcula $\nabla f(x,y)$ para $f(x,y) = e^{xy}$.
+2. Encuentra el gradiente de $f(x,y,z) = x^2+y^2+z^2$ y evalúa en (1,1,1).
+3. Calcula la derivada direccional de $f(x,y) = x^2-y$ en (2,1) en la dirección de $\mathbf{u} = \langle 0,1 \rangle$.
+4. Demuestra que la pendiente de $f(x,y) = x^2+y^2$ es perpendicular al círculo $x^2+y^2=1$.
+5. Encuentre la dirección del vector unitario que maximiza la derivada direccional de $f(x,y) = xy$ en (1,2).
+
+## 8.4 Planos tangentes y aproximaciones lineales
+
+En el cálculo de una sola variable, la recta tangente se aproxima a una curva cerca de un punto. En cálculo multivariable, el concepto análogo es el plano tangente, que proporciona una aproximación lineal a una superficie cercana a un punto.
+
+### Plano tangente a una superficie
+
+Supongamos que $z = f(x,y)$ es diferenciable en $(a,b)$. El plano tangente en $(a,b,f(a,b))$ viene dado por
+
+$$
+z = f(a,b) + f_x(a,b)(x-a) + f_y(a,b)(y-b).
+$$
+
+Este plano toca la superficie en el punto y se aproxima a él cerca.
+
+### Ejemplo 1: Paraboloide
+
+Por $f(x,y) = x^2 + y^2$ a $(1,2)$:
+
+- $f(1,2) = 1^2+2^2=5$.
+- $f_x = 2x$, entonces $f_x(1,2) = 2$.
+- $f_y = 2y$, entonces $f_y(1,2) = 4$.
+
+Ecuación del plano tangente:
+
+$$
+z = 5 + 2(x-1) + 4(y-2).
+$$
+
+### Aproximación lineal
+
+El plano tangente se puede utilizar para aproximar $f(x,y)$ cerca de $(a,b)$:
+
+$$
+f(x,y) \approx f(a,b) + f_x(a,b)(x-a) + f_y(a,b)(y-b).
+$$
+
+Esta es la linealización de $f$ en $(a,b)$.
+
+### Ejemplo 2: Aproximación lineal
+
+Aproximadamente $f(x,y) = \sqrt{x+y}$ cerca de $(4,5)$.
+
+- $f(4,5) = \sqrt{9} = 3$.
+- $f_x = \frac{1}{2\sqrt{x+y}}, \quad f_y = \frac{1}{2\sqrt{x+y}}$.
+- En (4,5): $f_x = f_y = \tfrac{1}{6}$.
+
+Entonces,
+
+$$f(x,y) \approx 3 + \tfrac{1}{6}(x-4) + \tfrac{1}{6}(y-5).
+$$
+
+### Why This Matters
+
+- Tangent planes give the best linear approximation to a surface.
+- Linearization simplifies complex functions for computation.
+- Widely used in numerical methods, physics, and economics.
+
+### Exercises
+
+1. Find the tangent plane to $z = x^2y + y^2$ at $(1,1)$.
+2. Approximate $f(x,y) = e^{x+y}$ near $(0,0)$.
+3. Derive the tangent plane equation for $z = \ln(x^2+y^2)$ at $(1,1)$.
+4. Use linear approximation to estimate $\sqrt{10.1}$ using $f(x,y) = \sqrt{x+y}$ near (4,6).
+5. Explain why the tangent plane approximation improves as $(x,y)$ gets closer to $(a,b)$.
+
+## 8.5 Optimization in Several Variables
+
+Optimization in multivariable calculus extends the ideas of maxima and minima from single-variable functions to functions of two or more variables.
+
+### Critical Points
+
+For $f(x,y)$, a critical point occurs where
+
+$$
+f_x(x,y) = 0 \quad \text{y} \quad f_y(x,y) = 0,
+$$
+
+or where the partial derivatives do not exist.
+
+### Second Derivative Test
+
+To classify critical points, compute the second partial derivatives:
+
+$$
+D = f_{xx}(a,b) f_{yy}(a,b) - \big(f_{xy}(a,b)\big)^2.
+$$
+
+- If $D > 0$ and $f_{xx}(a,b) > 0$: local minimum.
+- If $D > 0$ and $f_{xx}(a,b) < 0$: local maximum.
+- If $D < 0$: saddle point.
+- If $D = 0$: test is inconclusive.
+
+### Example 1: Paraboloid
+
+$f(x,y) = x^2 + y^2$.
+
+- $f_x = 2x, f_y = 2y$. Critical point at (0,0).
+- $f_{xx} = 2, f_{yy} = 2, f_{xy} = 0$.
+- $D = (2)(2) - 0 = 4 > 0$, and $f_{xx} > 0$.
+- So (0,0) is a local minimum.
+
+### Example 2: Saddle Point
+
+$f(x,y) = x^2 - y^2$.
+
+- $f_x = 2x, f_y = -2y$. Critical point at (0,0).
+- $f_{xx} = 2, f_{yy} = -2, f_{xy} = 0$.
+- $D = (2)(-2) - 0 = -4 < 0$.
+- So (0,0) is a saddle point.
+
+### Constrained Optimization and Lagrange Multipliers
+
+Sometimes, we want to optimize $f(x,y)$ subject to a constraint $g(x,y) = c$.
+
+Method of Lagrange multipliers: solve
+
+$$
+\nabla f(x,y) = \lambda \nabla g(x,y).
+$$
+
+Ejemplo: Maximizar $f(x,y) = xy$ sujeto a $x^2+y^2=1$.
+
+- Degradados: $\nabla f = \langle y,x \rangle, \quad \nabla g = \langle 2x,2y \rangle$.
+- Ecuaciones: $y = 2\lambda x, \, x = 2\lambda y$.
+- Las soluciones llevan al máximo a $(\pm \tfrac{1}{\sqrt{2}}, \pm \tfrac{1}{\sqrt{2}})$.
+
+### Por qué esto es importante
+
+- La optimización es esencial en economía, ingeniería, aprendizaje automático y física.
+- Los multiplicadores de Lagrange permiten la optimización con restricciones, una herramienta clave en matemáticas aplicadas.
+
+### Ejercicios
+
+1. Encuentra y clasifica los puntos críticos de $f(x,y) = x^2+xy+y^2$.
+2. Clasifica el punto (0,0) para $f(x,y) = x^3-y^3$.3. Utilice la prueba de la segunda derivada para $f(x,y) = x^4+y^4-4xy$.
+4. Maximizar $f(x,y) = x+y$ sujeto a $x^2+y^2=1$.
+5. Minimizar $f(x,y) = x^2+2y^2$ sujeto a $x+y=1$.
+
+# Capítulo 9. Integrales Múltiples
+
+## 9.1 Integrales dobles
+
+En cálculo de una sola variable, una integral definida da el área bajo una curva. En dos variables, una integral doble calcula el volumen bajo una superficie (o más generalmente, la acumulación de valores sobre una región).
+
+### Definición
+
+Si $f(x,y)$ es continua en una región $R$, la integral doble es
+
+$$
+\iint_R f(x,y)\, dA = \lim_{m,n \to \infty} \sum_{i=1}^m \sum_{j=1}^n f(x_{ij}^-, y_{ij}^-) \Delta A,
+$$
+
+donde $R$ se divide en pequeños rectángulos de área $\Delta A$.
+
+### Integrales iteradas
+
+Según el teorema de Fubini, podemos calcular una integral doble como una integral iterada:
+
+$$
+\iint_R f(x,y)\, dA = \int_a^b \int_c^d f(x,y)\, dy\, dx,
+$$
+
+si $R$ es un rectángulo $[a,b] \times [c,d]$.
+
+El orden de integración a menudo se puede cambiar:
+
+$$
+\int_a^b \int_c^d f(x,y)\,dy\,dx = \int_c^d \int_a^b f(x,y)\,dx\,dy.
+$$
+
+### Ejemplos
+
+1. Región rectangular
+
+$$
+\iint_R (x+y)\, dA, \quad R=[0,1]\times[0,2].
+$$
+
+$$
+= \int_0^1 \int_0^2 (x+y)\,dy\,dx = \int_0^1 \Big[xy+\tfrac{1}{2}y^2\Big]_0^2 dx
+= \int_0^1 (2x+2)dx = 3.
+$$
+
+2. Región triangular
+
+$$
+R = \{(x,y): 0 \leq x \leq 1, 0 \leq y \leq x\}.
+$$
+
+$$
+\iint_R (x+y)\, dA = \int_0^1 \int_0^x (x+y)\,dy\,dx.
+$$
+
+Evaluando da $\tfrac{2}{3}$.
+
+### Aplicaciones
+
+- Volumen bajo una superficie:
+
+$$
+V = \iint_R f(x,y)\, dA.
+$$
+
+- Valor medio de una función sobre una región:
+
+$$
+f_{\text{avg}} = \frac{1}{A(R)} \iint_R f(x,y)\, dA.
+$$
+
+### Por qué esto es importante
+
+Las integrales dobles extienden la integración a dos dimensiones. Son esenciales en física (masa, distribuciones de probabilidad), economía (valores esperados) e ingeniería (centroides, flujo).
+
+### Ejercicios
+
+1. Evalúe $\iint_R (x^2+y^2)\, dA$ donde $R=[0,1]\times[0,1]$.
+2. Calcula $\iint_R xy\, dA$ donde $R=\{(x,y):0\leq x\leq2,0\leq y\leq x\}$.
+3. Calcula el valor promedio de $f(x,y) = x+y$ sobre el cuadrado unitario $[0,1]\times[0,1]$.
+4. Interpretar $\iint_R f(x,y)\, dA$ en términos de probabilidad si $f(x,y)$ es una función de densidad de probabilidad.
+5. Demuestre que cambiar el orden de integración da el mismo resultado para $\iint_{[0,1]\times[0,2]} (x+y)\,dA$.
+
+## 9.2 Integrales triples
+
+Las integrales triples amplían la idea de integración a tres variables, permitiéndonos calcular volúmenes, masas y otras cantidades en regiones tridimensionales.
+
+### Definición
+
+Si $f(x,y,z)$ es continua en una región sólida $E$, la integral triple es
+
+$$\iiint_E f(x,y,z)\, dV = \lim_{m,n,p \to \infty} \sum f(x_{ijk}^-, y_{ijk}^-, z_{ijk}^-) \Delta V,
+$$
+
+where the region is subdivided into boxes of volume $\Delta V$.
+
+### Iterated Integrals
+
+By Fubini’s Theorem, a triple integral can be computed as an iterated integral:
+
+$$
+\iiint_E f(x,y,z)\, dV = \int_a^b \int_c^d \int_e^f f(x,y,z)\, dz\, dy\, dx,
+$$
+
+for a rectangular box $E = [a,b]\times[c,d]\times[e,f]$.
+
+The order of integration can be chosen for convenience.
+
+### Examples
+
+1. Rectangular box
+
+$$
+\iiint_E xyz\, dV, \quad E=[0,1]\times[0,2]\times[0,3].
+$$
+
+$$
+= \int_0^1 \int_0^2 \int_0^3 xyz\,dz\,dy\,dx.
+$$
+
+First integrate over $z$:
+
+$$
+\int_0^3 xyz\,dz = xy \left[\tfrac{1}{2}z^2\right]_0^3 = \tfrac{9}{2}xy.
+$$
+
+Now integrate over $y$:
+
+$$
+\int_0^2 \tfrac{9}{2}xy\,dy = \tfrac{9}{2}x \cdot \left[\tfrac{1}{2}y^2\right]_0^2 = 9x.
+$$
+
+Finally integrate over $x$:
+
+$$
+\int_0^1 9x\,dx = \tfrac{9}{2}.
+$$
+
+2. Region bounded by planes
+   Let $E = \{(x,y,z) \mid 0 \leq x \leq 1, 0 \leq y \leq x, 0 \leq z \leq y\}$.
+
+$$
+\iiint_E 1\,dV = \int_0^1 \int_0^x \int_0^y 1\,dz\,dy\,dx.
+$$
+
+Evaluate:
+
+$$
+= \int_0^1 \int_0^x y\,dy\,dx = \int_0^1 \tfrac{1}{2}x^2\,dx = \tfrac{1}{6}.
+$$
+
+So the volume of this triangular region is $\tfrac{1}{6}$.
+
+### Applications
+
+- Volume: $V = \iiint_E 1 \, dV$.
+- Mass: If density is $\rho(x,y,z)$, then
+
+  $$
+  M = \iiint_E \rho(x,y,z)\, dV.
+  $$
+- Average value:
+
+  $$
+  f_{\text{promedio}} = \frac{1}{V(E)} \iiint_E f(x,y,z)\,dV.
+  $$
+
+### Why This Matters
+
+Triple integrals generalize area and volume calculations to arbitrary solids. They are used in physics (mass distributions, center of mass, gravitational fields), engineering, and probability.
+
+### Exercises
+
+1. Compute $\iiint_E (x+y+z)\,dV$ over the cube $E=[0,1]\times[0,1]\times[0,1]$.
+2. Find the volume of the tetrahedron bounded by $x=0, y=0, z=0, x+y+z=1$.
+3. Evaluate $\iiint_E x^2 \, dV$ where $E=[0,2]\times[0,1]\times[0,1]$.
+4. Show that $\iiint_E 1\,dV$ equals the geometric volume of $E$.
+5. If density is $\rho(x,y,z)=x+y+z$, compute the mass of the unit cube.
+
+## 9.3 Applications: Volume, Mass, Probability
+
+Triple integrals are powerful because they allow us to compute quantities in three dimensions by accumulating values over a solid region.
+
+### Volume
+
+The simplest application is finding the volume of a region $E$:
+
+$$
+V = \iiint_E 1 \, dV.
+$$
+
+Example:
+Find the volume of the solid bounded by the coordinate planes and the plane $x+y+z=1$.
+
+$$
+V = \iiint_E 1 \, dV = \int_0^1 \int_0^{1-x} \int_0^{1-x-y} 1 \, dz\, dy\, dx.
+$$
+
+Evaluando da $V = \tfrac{1}{6}$.### Masa y densidad
+
+Si un sólido tiene función de densidad $\rho(x,y,z)$, su masa es
+
+$$
+M = \iiint_E \rho(x,y,z)\, dV.
+$$
+
+El centro de masa está dado por
+
+$$
+\bar{x} = \frac{1}{M}\iiint_E x\rho(x,y,z)\,dV, \quad
+\bar{y} = \frac{1}{M}\iiint_E y\rho(x,y,z)\,dV, \quad
+\bar{z} = \frac{1}{M}\iiint_E z\rho(x,y,z)\,dV.
+$$
+
+Ejemplo:
+Para un cubo unitario con densidad constante $\rho=1$, el centro de masa está en $(0.5,0.5,0.5)$.
+
+### Probabilidad
+
+Si $f(x,y,z)$ es una función de densidad de probabilidad en 3D, entonces la probabilidad de que la variable aleatoria se encuentre en una región $E$ es
+
+$$
+P(E) = \iiint_E f(x,y,z)\, dV,
+$$
+
+donde $f(x,y,z) \geq 0$ y
+
+$$
+\iiint_{\mathbb{R}^3} f(x,y,z)\,dV = 1.
+$$
+
+Ejemplo:
+Si $f(x,y,z) = \tfrac{3}{4}z^2$ para $0 \leq z \leq 1$, uniformemente en $x,y$, entonces
+
+$$
+P(0 \leq z \leq 0.5) = \int_0^{0.5} \tfrac{3}{4}z^2 \, dz = \tfrac{1}{32}.
+$$
+
+### Por qué esto es importante
+
+- Los volúmenes generalizan la geometría a sólidos irregulares.
+- Las integrales de masa y densidad conectan el cálculo con la física y la ingeniería.
+- Las funciones de densidad de probabilidad en dimensiones superiores se utilizan ampliamente en estadística y ciencia de datos.
+
+### Ejercicios
+
+1. Encuentra el volumen del sólido acotado por $x^2+y^2+z^2 \leq 1$ (la esfera unitaria).
+2. Calcula la masa de un cono con densidad proporcional a $z$.
+3. Encuentra el centro de masa de un tetraedro uniforme acotado por $x=0, y=0, z=0, x+y+z=1$.
+4. Si $f(x,y,z) = \frac{1}{8}$ en el cubo $[0,2]\times[0,2]\times[0,2]$, verifica que es una función de densidad de probabilidad.
+5. Usa una integral triple para calcular la probabilidad de que un punto elegido al azar en la esfera unitaria tenga $z > 0$.
+
+## 9.4 Cambio de Variables: Coordenadas Polares, Cilíndricas, Esféricas
+
+Muchas integrales se vuelven más fáciles cuando se expresan en sistemas de coordenadas que coinciden con la simetría de la región. En lugar de coordenadas cartesianas $(x,y,z)$, podemos utilizar coordenadas polares, cilíndricas o esféricas.
+
+### Coordenadas polares (2D)
+
+Para funciones de dos variables, podemos cambiar a coordenadas polares:
+
+$$
+x = r\cos\theta, \quad y = r\sin\theta, \quad r \geq 0, \; 0 \leq \theta < 2\pi.
+$$
+
+El elemento área se transforma como
+
+$$
+dA = r\,dr\,d\theta.
+$$
+
+Ejemplo:
+Encuentra el área del círculo unitario.
+
+$$
+A = \iint_{x^2+y^2\leq 1} 1\,dA = \int_0^{2\pi}\int_0^1 r\,dr\,d\theta = \pi.
+$$
+
+### Coordenadas cilíndricas (3D)
+
+En 3D, las coordenadas cilíndricas extienden las coordenadas polares con $z$:
+
+$$
+x = r\cos\theta, \quad y = r\sin\theta, \quad z = z.
+$$
+
+El elemento de volumen es
+
+$$
+dV = r\,dr\,d\theta\,dz.
+$$
+
+Ejemplo:
+Volumen de un cilindro de radio $R$ y altura $h$:
+
+$$
+V = \int_0^h \int_0^{2\pi} \int_0^R r\,dr\,d\theta\,dz = \pi R^2 h.
+$$### Coordenadas esféricas (3D)
+
+Para simetría esférica, utilice:
+
+$$
+x = \rho \sin\phi \cos\theta, \quad y = \rho \sin\phi \sin\theta, \quad z = \rho \cos\phi,
+$$
+
+donde
+
+- $\rho \geq 0$ es la distancia desde el origen,
+- $0 \leq \phi \leq \pi$ es el ángulo formado por el eje positivo $z$,
+- $0 \leq \theta < 2\pi$ es el ángulo en el plano $xy$.
+
+El elemento de volumen es
+
+$$
+dV = \rho^2 \sin\phi \, d\rho\, d\phi\, d\theta.
+$$
+
+Ejemplo:
+Volumen de la esfera unitaria:
+
+$$
+V = \int_0^{2\pi} \int_0^\pi \int_0^1 \rho^2 \sin\phi \, d\rho\, d\phi\, d\theta.
+$$
+
+Evaluando:
+
+$$
+V = \left(\int_0^1 \rho^2 d\rho\right)\left(\int_0^\pi \sin\phi d\phi\right)\left(\int_0^{2\pi} d\theta\right) = \tfrac{1}{3}(2)(2\pi) = \tfrac{4\pi}{3}.
+$$
+
+### Por qué esto es importante
+
+- Las coordenadas polares simplifican las regiones circulares.
+- Las coordenadas cilíndricas manejan cilindros y simetría rotacional.
+- Las coordenadas esféricas simplifican problemas de esferas, conos y radiales.
+- Estos cambios de variables hacen manejables integrales que de otro modo serían imposibles.
+
+### Ejercicios
+
+1. Calcula $\iint_{x^2+y^2\leq 4} (x^2+y^2)\,dA$ usando coordenadas polares.
+2. Encuentra el volumen de un cono de altura $h$ y radio $R$ usando coordenadas cilíndricas.
+3. Usa coordenadas esféricas para evaluar el volumen de una bola de radio $R$.
+4. Demuestra que el factor jacobiano para las coordenadas polares es $r$.
+5. Encuentra la masa de una esfera sólida de radio $R$ con densidad proporcional a la distancia desde el origen usando coordenadas esféricas.
+
+# Capítulo 10. Cálculo vectorial
+
+## 10.1 Campos vectoriales
+
+Un campo vectorial asigna un vector a cada punto en el espacio, de forma muy similar a como una función escalar asigna un número. Los campos vectoriales se utilizan para modelar flujos, fuerzas y otras cantidades direccionales.
+
+### Definición
+
+En dos dimensiones, un campo vectorial es una función.
+
+$$
+\mathbf{F}(x,y) = \langle P(x,y), Q(x,y) \rangle,
+$$
+
+donde $P$ y $Q$ son funciones escalares.
+
+En tres dimensiones,
+
+$$
+\mathbf{F}(x,y,z) = \langle P(x,y,z), Q(x,y,z), R(x,y,z) \rangle.
+$$
+
+### Ejemplos
+
+1. Campo radial
+
+$$
+\mathbf{F}(x,y) = \langle x, y \rangle.
+$$
+
+Los vectores apuntan hacia afuera desde el origen.
+
+2. Campo rotacional
+
+$$
+\mathbf{F}(x,y) = \langle -y, x \rangle.
+$$
+
+Los vectores circulan alrededor del origen.
+
+3. Campo gravitacional
+
+$$
+\mathbf{F}(x,y,z) = -\frac{GM}{r^3}\langle x,y,z \rangle, \quad r=\sqrt{x^2+y^2+z^2}.
+$$
+
+### Visualización de campos vectoriales
+
+- Dibujar pequeñas flechas en puntos de muestra para indicar dirección y magnitud.
+- Flechas más densas donde las magnitudes son mayores.
+- Útil para interpretar líneas de flujo, trayectorias y fuerzas.
+
+### Líneas de flujoUna línea de flujo (o curva integral) de un campo vectorial es una curva $\mathbf{r}(t)$ cuyo vector tangente en cada punto coincide con el campo:
+
+$$
+\mathbf{r}'(t) = \mathbf{F}(\mathbf{r}(t)).
+$$
+
+Las líneas de flujo describen las trayectorias de las partículas en un campo de velocidad.
+
+### Por qué esto es importante
+
+- Los campos vectoriales son fundamentales en física (flujo de fluidos, electromagnetismo, gravitación).
+- Forman la base de las integrales de línea, las integrales de superficie y los grandes teoremas del cálculo vectorial (Green, Stokes, Divergencia).
+- Proporcionar una forma geométrica de representar cantidades direccionales.
+
+### Ejercicios
+
+1. Dibuja el campo vectorial $\mathbf{F}(x,y) = \langle y, -x \rangle$.
+2. Determina si los vectores de $\mathbf{F}(x,y) = \langle x,y \rangle$ apuntan hacia o lejos del origen.
+3. Para $\mathbf{F}(x,y,z) = \langle y, z, x \rangle$, calcule $\mathbf{F}(1,2,3)$.
+4. Describe las líneas de flujo de $\mathbf{F}(x,y) = \langle -y, x \rangle$.
+5. Explique por qué los campos gravitacionales y eléctricos son ejemplos de campos vectoriales radiales.
+
+## 10.2 Integrales de línea
+
+Una integral de línea extiende la idea de una integral a funciones evaluadas a lo largo de una curva. En lugar de integrarnos en un intervalo o región, nos integramos en un camino en el espacio.
+
+### Definición: Integral de línea escalar
+
+Si $f(x,y)$ es una función escalar y $C$ es una curva parametrizada por $\mathbf{r}(t) = \langle x(t), y(t) \rangle, \; a \leq t \leq b$, entonces la integral de línea es
+
+$$
+\int_C f(x,y)\, ds = \int_a^b f(x(t),y(t)) \, |\mathbf{r}'(t)|\, dt,
+$$
+
+donde $ds$ es la longitud del arco.
+
+Mide la acumulación de $f$ a lo largo de la curva.
+
+### Definición: Integral de línea vectorial
+
+Para un campo vectorial $\mathbf{F}(x,y) = \langle P(x,y), Q(x,y) \rangle$, la integral de línea a lo largo de $C$ es
+
+$$
+\int_C \mathbf{F} \cdot d\mathbf{r} = \int_a^b \mathbf{F}(\mathbf{r}(t)) \cdot \mathbf{r}'(t)\, dt.
+$$
+
+Mide el trabajo realizado por el campo a lo largo de la curva.
+
+### Ejemplos
+
+1. Integral de línea escalar
+
+$$
+f(x,y) = x+y, \quad C: \mathbf{r}(t) = \langle t, t^2 \rangle, \; 0 \leq t \leq 1.
+$$
+
+entonces
+
+$$
+\int_C f(x,y)\, ds = \int_0^1 (t+t^2)\sqrt{(1)^2+(2t)^2}\, dt.
+$$
+
+2. Trabajo realizado por una fuerza
+
+$$
+\mathbf{F}(x,y) = \langle y, x \rangle, \quad C: \mathbf{r}(t) = \langle t, t^2 \rangle, \; 0 \leq t \leq 1.
+$$
+
+$$
+\int_C \mathbf{F} \cdot d\mathbf{r} = \int_0^1 \langle t^2, t \rangle \cdot \langle 1, 2t \rangle\, dt = \int_0^1 (t^2 + 2t^2)\, dt = \int_0^1 3t^2\, dt = 1.
+$$
+
+### Interpretación física
+
+- Integral de línea escalar: acumulación de densidad a lo largo de un alambre.
+- Integral de línea vectorial: trabajo realizado por una fuerza que mueve un objeto a lo largo de una trayectoria.
+
+### Por qué esto es importante- Las integrales de línea conectan campos vectoriales con cantidades físicas como el trabajo y la circulación.
+- Son componentes básicos del teorema de Green y del teorema de Stokes.
+- Aparecer en física (potencial eléctrico, flujo de fluidos, mecánica).
+
+### Ejercicios
+
+1. Calcula $\int_C (x^2+y^2)\, ds$ donde $C$ es el segmento de recta de (0,0) a (1,1).
+2. Calcula $\int_C \mathbf{F}\cdot d\mathbf{r}$ para $\mathbf{F}(x,y) = \langle -y, x \rangle$ a lo largo del círculo unitario $x^2+y^2=1$.
+3. Interpretar el significado de $\int_C 1\,ds$.
+4. Para $\mathbf{F}(x,y,z) = \langle z,0,x \rangle$, calcula la integral de línea a lo largo de $\mathbf{r}(t) = \langle t,t,1 \rangle, 0 \leq t \leq 1$.
+5. Explique la diferencia entre integrales de línea escalares y vectoriales.
+
+## 10.3 Integrales de superficie
+
+Una integral de superficie generaliza integrales de línea a superficies bidimensionales en un espacio tridimensional. Nos permiten calcular el flujo a través de superficies y la acumulación de campos escalares sobre superficies curvas.
+
+### Integral de superficie escalar
+
+Si una superficie $S$ está parametrizada por
+
+$$
+\mathbf{r}(u,v) = \langle x(u,v), y(u,v), z(u,v) \rangle,
+$$
+
+entonces la integral de superficie de una función escalar $f(x,y,z)$ es
+
+$$
+\iint_S f(x,y,z)\, dS = \iint_D f(\mathbf{r}(u,v)) \, |\mathbf{r}_u \times \mathbf{r}_v| \, du\,dv,
+$$
+
+donde $\mathbf{r}_u$ y $\mathbf{r}_v$ son derivadas parciales de $\mathbf{r}(u,v)$, y $D$ es el dominio de parámetros.
+
+### Integral de superficie vectorial (flujo)
+
+Para un campo vectorial $\mathbf{F}(x,y,z)$, el flujo a través de una superficie $S$ es
+
+$$
+\iint_S \mathbf{F}\cdot d\mathbf{S} = \iint_S \mathbf{F}\cdot \mathbf{n}\, dS,
+$$
+
+donde $\mathbf{n}$ es el vector normal unitario. Usando parametrización,
+
+$$
+\iint_S \mathbf{F}\cdot d\mathbf{S} = \iint_D \mathbf{F}(\mathbf{r}(u,v)) \cdot (\mathbf{r}_u \times \mathbf{r}_v)\,du\,dv.
+$$
+
+### Ejemplos
+
+1. Integral de superficie escalar
+   Superficie: plano $z=1$ sobre disco unitario $x^2+y^2 \leq 1$.
+
+$$
+\iint_S 1\, dS = \text{area of the disk} = \pi.
+$$
+
+2. Flujo a través de una esfera
+   Sean $\mathbf{F}(x,y,z) = \langle x,y,z \rangle$, y $S$ = esfera de radio $R$.
+   El vector normal es $\mathbf{n} = \frac{1}{R}\langle x,y,z \rangle$.
+
+$$
+\mathbf{F}\cdot \mathbf{n} = \frac{x^2+y^2+z^2}{R} = R.
+$$
+
+entonces
+
+$$
+\iint_S \mathbf{F}\cdot d\mathbf{S} = \iint_S R\, dS = R \cdot 4\pi R^2 = 4\pi R^3.
+$$
+
+### Por qué esto es importante
+
+- Las integrales de superficie escalares miden distribuciones de área y superficie.
+- Las integrales de superficie vectoriales miden el flujo: la cantidad de un campo que pasa a través de una superficie.
+- Aplicaciones: electromagnetismo, flujo de fluidos, transferencia de calor y más.
+
+### Ejercicios
+
+1. Calcula $\iint_S 1\, dS$ para la superficie de un cubo de lado 2.2. Encuentra el flujo de $\mathbf{F}(x,y,z) = \langle x,y,z \rangle$ a través de la esfera unitaria.
+3. Calcula $\iint_S z\, dS$ para el paraboloide $z = x^2+y^2, \, z \leq 1$.
+4. Para $\mathbf{F}(x,y,z) = \langle y,0,0 \rangle$, calcule el flujo a través del plano $x=1$, $0 \leq y,z \leq 1$.
+5. Explique físicamente qué significa que el flujo de un campo vectorial a través de una superficie cerrada sea cero.
+
+## 10.4 Teorema de Green
+
+El teorema de Green es un resultado fundamental en el cálculo vectorial que conecta una integral de línea alrededor de una curva cerrada con una integral doble sobre la región que encierra. Es una versión bidimensional del teorema de Stokes.
+
+### Declaración del teorema de Green
+
+Sea $C$ una curva cerrada, simple y orientada positivamente en el plano, y sea $R$ la región que encierra. Si $\mathbf{F}(x,y) = \langle P(x,y), Q(x,y) \rangle$ tiene derivadas parciales continuas en una región abierta que contiene $R$, entonces
+
+$$
+\oint_C \mathbf{F} \cdot d\mathbf{r} = \oint_C P\,dx + Q\,dy = \iint_R \left( \frac{\partial Q}{\partial x} - \frac{\partial P}{\partial y} \right)\, dA.
+$$
+
+### Interpretación
+
+- La integral de recta alrededor de $C$ mide la circulación del campo vectorial a lo largo de la frontera.
+- La integral doble sobre $R$ mide la curvatura (rotación) total del campo dentro de la región.
+
+### Ejemplo 1: Fórmula de área
+
+Si $\mathbf{F} = \langle -y/2, x/2 \rangle$, entonces
+
+$$
+\frac{\partial Q}{\partial x} - \frac{\partial P}{\partial y} = 1.
+$$
+
+Por tanto, el teorema de Green da
+
+$$
+\text{Area}(R) = \iint_R 1\,dA = \oint_C \left(-\tfrac{y}{2}\,dx + \tfrac{x}{2}\,dy\right).
+$$
+
+Esto proporciona una manera de calcular el área usando una integral de línea.
+
+### Ejemplo 2: Circulación
+
+Sean $\mathbf{F}(x,y) = \langle -y, x \rangle$ y $C$ el círculo unitario.
+
+- $P=-y, Q=x$.
+- $Q_x - P_y = 1 - (-1) = 2$.
+- Integral doble sobre el disco unitario:
+
+$$
+\iint_R 2\,dA = 2\pi (1^2) = 2\pi.
+$$
+
+Entonces la circulación alrededor del círculo es $2\pi$.
+
+### Por qué esto es importante
+
+- Convierte integrales de línea difíciles en integrales dobles, o viceversa.
+- Proporciona un puente entre las propiedades locales (rizo) y las propiedades globales (circulación).
+- Ampliamente utilizado en física para flujo de fluidos, electromagnetismo y campos vectoriales planos.
+
+### Ejercicios
+
+1. Usa el teorema de Green para calcular el área dentro de la elipse $\frac{x^2}{a^2} + \frac{y^2}{b^2} = 1$.
+2. Verifica el teorema de Green para $\mathbf{F}(x,y) = \langle -y, x \rangle$ a lo largo del cuadrado con vértices (0,0), (1,0), (1,1), (0,1).
+3. Calcula la circulación de $\mathbf{F}(x,y) = \langle -y, x \rangle$ alrededor del círculo unitario.4. Demuestre que si $\nabla \times \mathbf{F} = 0$, entonces la integral de línea de $\mathbf{F}$ alrededor de cualquier curva cerrada es cero.
+5. Utilice el teorema de Green para demostrar que
+
+$$
+\oint_C x\,dy = -\oint_C y\,dx
+$$
+
+para cualquier curva cerrada $C$.
+
+## 10.5 Teorema de Stokes
+
+El teorema de Stokes generaliza el teorema de Green a tres dimensiones. Relaciona una integral de superficie de la curvatura de un campo vectorial sobre una superficie con una integral de línea del campo vectorial alrededor del límite de esa superficie.
+
+### Declaración del teorema de Stokes
+
+Sea $S$ una superficie lisa y orientada con curva límite $C$ (orientada positivamente). Si $\mathbf{F}(x,y,z)$ es un campo vectorial con derivadas parciales continuas, entonces
+
+$$
+\iint_S (\nabla \times \mathbf{F}) \cdot d\mathbf{S} = \oint_C \mathbf{F} \cdot d\mathbf{r}.
+$$
+
+- Lado izquierdo: flujo del rizo de $\mathbf{F}$ a través de la superficie.
+- Lado derecho: circulación de $\mathbf{F}$ por la curva límite.
+
+### Interpretación
+
+- La integral de línea alrededor del límite es igual a la "rotación" total dentro de la superficie.
+- Extiende el teorema de Green (un caso especial cuando la superficie se encuentra en el plano).
+
+### Ejemplo 1: El teorema de Green como caso especial
+
+Si $S$ es una región plana en el plano $xy$, el teorema de Stokes se reduce al teorema de Green.
+
+### Ejemplo 2: Circulación en un hemisferio
+
+Sean $\mathbf{F}(x,y,z) = \langle -y, x, 0 \rangle$ y $S$ el hemisferio superior de radio 1.
+
+- Límite $C$: círculo unitario en el plano $xy$.
+- Según el teorema de Stokes:
+
+$$
+\oint_C \mathbf{F}\cdot d\mathbf{r} = \iint_S (\nabla \times \mathbf{F})\cdot d\mathbf{S}.
+$$
+
+- Rizado: $\nabla \times \mathbf{F} = \langle 0,0,2 \rangle$.
+- Normal al hemisferio apunta hacia afuera: $\mathbf{n} = \langle 0,0,1 \rangle$.
+- Entonces integrando = 2.
+- Área del hemisferio = $2\pi (1^2)$.
+
+$$
+\iint_S 2\, dS = 2 \cdot 2\pi = 4\pi.
+$$
+
+Por tanto, la circulación alrededor del ecuador es de $4\pi$.
+
+### Por qué esto es importante
+
+- Proporciona una conexión profunda entre integrales de superficie e integrales de línea.
+- Simplifica los cálculos al permitir la elección de superficies convenientes.
+- Ampliamente utilizado en electromagnetismo (Ley de Faraday) y dinámica de fluidos.
+
+### Ejercicios
+
+1. Verifique el teorema de Stokes para $\mathbf{F}(x,y,z) = \langle y, -x, 0 \rangle$ sobre el disco unitario en el plano $xy$.
+2. Calcula $\oint_C \mathbf{F}\cdot d\mathbf{r}$ donde $\mathbf{F}(x,y,z) = \langle z, 0, x \rangle$ y $C$ es el límite del triángulo con vértices (0,0,0), (1,0,0), (0,1,0).
+3. Demuestre que si $\nabla \times \mathbf{F} = 0$, entonces la circulación alrededor de cualquier curva cerrada es cero.4. Aplicar el teorema de Stokes para calcular la circulación de $\mathbf{F}(x,y,z) = \langle -y, x, z \rangle$ alrededor del límite del cuadrado unitario en el plano $z=0$.
+5. Explique cómo el teorema de Stokes generaliza el teorema de Green.
+
+## 10.6 Teorema de la divergencia
+
+El teorema de la divergencia (también llamado teorema de Gauss) relaciona el flujo de un campo vectorial a través de una superficie cerrada con la integral triple de la divergencia del campo dentro de la superficie.
+
+### Declaración del teorema de la divergencia
+
+Sea $E$ una región sólida en $\mathbb{R}^3$ con superficie límite $S$ (orientada hacia afuera). Si $\mathbf{F}(x,y,z)$ es un campo vectorial con derivadas parciales continuas en $E$, entonces
+
+$$
+\iint_S \mathbf{F} \cdot d\mathbf{S} = \iiint_E (\nabla \cdot \mathbf{F}) \, dV.
+$$
+
+- Lado izquierdo: flujo de $\mathbf{F}$ a través de la superficie cerrada $S$.
+- Lado derecho: integral triple de la divergencia dentro de la región.
+
+### Divergencia
+
+La divergencia de un campo vectorial $\mathbf{F}(x,y,z) = \langle P, Q, R \rangle$ es
+
+$$
+\nabla \cdot \mathbf{F} = \frac{\partial P}{\partial x} + \frac{\partial Q}{\partial y} + \frac{\partial R}{\partial z}.
+$$
+
+Mide la “salida neta” por unidad de volumen en cada punto.
+
+### Ejemplo 1: flujo de un campo radial
+
+Sea $\mathbf{F}(x,y,z) = \langle x, y, z \rangle$, y sea $E$ la bola unitaria $x^2+y^2+z^2 \leq 1$.
+
+- Divergencia: $\nabla \cdot \mathbf{F} = 1+1+1 = 3$.
+- Volumen de bola unitaria: $\tfrac{4}{3}\pi$.
+  entonces
+
+$$
+\iiint_E (\nabla \cdot \mathbf{F})\, dV = 3 \cdot \tfrac{4}{3}\pi = 4\pi.
+$$
+
+Por tanto, el flujo a través de la esfera unitaria es $4\pi$.
+
+### Ejemplo 2: campo constante
+
+Sea $\mathbf{F}(x,y,z) = \langle 1, 0, 0 \rangle$.
+
+- Divergencia: $\nabla \cdot \mathbf{F} = 0$.
+- Entonces, el flujo a través de cualquier superficie cerrada es cero, lo que es consistente con la intuición (no hay salida neta).
+
+### Por qué esto es importante
+
+- Convierte integrales de superficie en integrales de volumen más simples.
+- Utilizado en física: Ley de Gauss en electromagnetismo, flujo de fluidos y transferencia de calor.
+- Completa el marco unificador:
+
+  - Teorema de Green (curvatura 2D ↔ circulación)
+  - Teorema de Stokes (curvatura 3D ↔ circulación en superficies)
+  - Teorema de la divergencia (divergencia 3D ↔ flujo en superficies cerradas)
+
+### Ejercicios
+
+1. Utilice el teorema de la divergencia para calcular el flujo de $\mathbf{F}(x,y,z) = \langle x,y,z \rangle$ a través de la superficie de una esfera de radio $R$.
+2. Verifica el Teorema de la Divergencia para $\mathbf{F}(x,y,z) = \langle y, z, x \rangle$ en el cubo unitario $[0,1]^3$.
+3. Demuestre que si $\nabla \cdot \mathbf{F} = 0$, entonces el flujo total a través de cualquier superficie cerrada es cero.
+4. Calcula el flujo de $\mathbf{F}(x,y,z) = \langle x^2, y^2, z^2 \rangle$ a través de la esfera unitaria.5. Explique cómo el teorema de la divergencia generaliza el teorema fundamental unidimensional del cálculo.
+
+# Parte IV. Procesos infinitos
+
+# Capítulo 11. Secuencias y convergencia.
+
+## 11.1 Definiciones y ejemplos
+
+Una secuencia es una lista ordenada de números, generalmente escrita como
+
+$$
+a_1, a_2, a_3, \dots
+$$
+
+o más generalmente $(a_n)_{n=1}^\infty$. Cada $a_n$ se llama enésimo término de la secuencia.
+
+### Definiendo una secuencia
+
+Una secuencia se puede definir de dos maneras:
+
+1. Fórmula explícita: proporciona una regla directa para el enésimo término.
+
+   - Ejemplo: $a_n = \frac{1}{n}$ define la secuencia
+
+     $$
+     1, \tfrac{1}{2}, \tfrac{1}{3}, \tfrac{1}{4}, \dots
+     $$
+
+2. Definición recursiva: define términos utilizando términos anteriores.
+
+   - Ejemplo: secuencia de Fibonacci:
+
+     $$
+     a_1 = 1, \quad a_2 = 1, \quad a_{n} = a_{n-1} + a_{n-2} \quad (n \geq 3).
+     $$
+
+### Ejemplos de secuencias
+
+1. Secuencia aritmética:
+
+   $$
+   a_n = a_1 + (n-1)d.
+   $$
+
+   Ejemplo: $a_n = 2n+1$ → secuencia de números impares.
+
+2. Secuencia geométrica:
+
+   $$
+   a_n = a_1 r^{n-1}.
+   $$
+
+   Ejemplo: $a_n = 2^n$ → potencias de 2.
+
+3. Secuencia armónica:
+
+   $$
+   a_n = \frac{1}{n}.
+   $$
+
+4. Secuencia alterna:
+
+   $$
+   a_n = (-1)^n.
+   $$
+
+### Secuencias en Cálculo
+
+Las secuencias son la base de procesos infinitos:
+
+- Límites de secuencias → definen la convergencia.
+- Series → sumas infinitas construidas a partir de secuencias.
+- Funciones aproximadas por secuencias y series.
+
+### Por qué esto es importante
+
+- Las secuencias proporcionan los componentes básicos para series y aproximaciones infinitas.
+- Nos permiten definir rigurosamente "infinito próximo" y convergencia.
+- Muchas funciones importantes (exponenciales, trigonométricas) se pueden expresar mediante secuencias y series.
+
+### Ejercicios
+
+1. Escribe los primeros cinco términos de la secuencia $a_n = \frac{n}{n+1}$.
+2. Determina si $a_n = (-1)^n n$ está acotado.
+3. Da una definición recursiva para la secuencia $2,4,8,16,\dots$.
+4. Encuentra el décimo término de la secuencia aritmética con $a_1=3$ y $d=5$.
+5. Escribe una fórmula explícita para la secuencia definida por $a_1=1$, $a_{n+1}=2a_n$.
+
+## 11.2 Secuencias monótonas y acotadas
+
+Para entender si una secuencia converge, necesitamos estudiar su comportamiento: ¿aumenta, disminuye, se mantiene dentro de límites o crece sin límite? Dos conceptos importantes son monotonía y limitación.
+
+### Secuencias monótonas
+
+Una secuencia $(a_n)$ se llama monótona si siempre es creciente o siempre decreciente.
+
+- Monótono creciente:
+
+  $$
+  a_{n+1} \geq a_n \quad \text{for all } n.
+  $$
+
+- Monótono decreciente:
+
+  $$
+  a_{n+1} \leq a_n \quad \text{for all } n.
+  $$
+
+Ejemplos:1. $a_n = n$ es monótono creciente.
+2. $a_n = \frac{1}{n}$ es monótono decreciente.
+
+### Secuencias acotadas
+
+Una secuencia está acotada arriba si existe un número $M$ tal que $a_n \leq M$ para todo $n$.
+Está acotado por debajo si existe $m$ tal que $a_n \geq m$ para todo $n$.
+
+Si se cumplen ambas condiciones, la secuencia está acotada.
+
+Ejemplos:
+
+1. $a_n = \frac{1}{n}$ está acotado entre 0 y 1.
+2. $a_n = (-1)^n$ está acotado entre -1 y 1.
+3. $a_n = n$ no está acotado.
+
+### Teorema de convergencia monótona
+
+Un resultado fundamental en el análisis:
+
+- Toda secuencia creciente monótona que está acotada arriba converge.
+- Toda secuencia monótona decreciente que está acotada por debajo converge.
+
+Este teorema garantiza la convergencia sin encontrar el límite explícitamente.
+
+### Ejemplo
+
+1. Secuencia: $a_n = 1 - \frac{1}{n}$.
+
+   - Creciente: desde $a_{n+1} - a_n = \frac{1}{n} - \frac{1}{n+1} > 0$.
+   - Acotado arriba por 1.
+   - Por tanto, converge.
+   - Límite: $\lim_{n\to\infty} a_n = 1$.
+
+### Por qué esto es importante
+
+- La monotonicidad y la limitación son pruebas rápidas de convergencia.
+- Son imprescindibles en las pruebas y en la construcción de límites con rigor.
+- Estas ideas se extienden naturalmente a funciones y series.
+
+### Ejercicios
+
+1. Determina si $a_n = \frac{n}{n+1}$ es monótono y acotado.
+2. Demuestre que $a_n = \sqrt{n}$ es monótono creciente pero no acotado.
+3. Demuestra que $a_n = 2 - \frac{1}{n}$ converge y encuentra su límite.
+4. Da un ejemplo de una secuencia acotada que no sea monótona.
+5. Aplicar el teorema de convergencia monótona a $a_n = \ln\!\big(1+\frac{1}{n}\big)$.
+
+## 11.3 Límites de secuencias
+
+La pregunta central acerca de una secuencia es si sus términos se acercan a un valor único a medida que $n$ crece. Esto lleva al concepto de límite de una secuencia.
+
+### Definición
+
+Una secuencia $(a_n)$ tiene un límite $L$ si para cada $\varepsilon > 0$ existe un número entero $N$ tal que
+
+$$
+|a_n - L| < \varepsilon \quad \text{whenever } n > N.
+$$
+
+luego escribimos
+
+$$
+\lim_{n\to\infty} a_n = L.
+$$
+
+Si no existe tal $L$, la secuencia diverge.
+
+### Intuición
+
+- Los términos de la secuencia se acercan arbitrariamente a $L$ a medida que $n$ se hace grande.
+- Más allá de algún índice $N$, todos los términos se mantienen dentro de una pequeña banda alrededor de $L$.
+
+### Ejemplos
+
+1. $a_n = \frac{1}{n}$.
+   A medida que $n$ crece, los términos se reducen hacia 0.
+
+   $$
+   \lim_{n\to\infty} \frac{1}{n} = 0.
+   $$
+
+2. $a_n = (-1)^n$.
+   Los términos alternan entre -1 y 1, por lo que no existe un límite único. La secuencia diverge.
+
+3. $a_n = \frac{n}{n+1}$.
+   Como $n \to \infty$, el numerador y el denominador son casi iguales, por lo que
+
+   $$
+   \lim_{n\to\infty} \frac{n}{n+1} = 1.
+   $$
+
+### Propiedades de los límitesSi $\lim a_n = A$ y $\lim b_n = B$:
+
+- $\lim (a_n+b_n) = A+B$.
+- $\lim (a_n b_n) = AB$.
+- $\lim (c a_n) = cA$ para $c$ constante.
+- Si $b_n \neq 0$ y $B \neq 0$, entonces
+
+  $$
+  \lim \frac{a_n}{b_n} = \frac{A}{B}.
+  $$
+
+### Teorema: principio de compresión
+
+Si $a_n \leq b_n \leq c_n$ para todos los grandes $n$, y
+
+$$
+\lim_{n\to\infty} a_n = \lim_{n\to\infty} c_n = L,
+$$
+
+entonces
+
+$$
+\lim_{n\to\infty} b_n = L.
+$$
+
+Ejemplo:
+
+$$
+a_n = -\tfrac{1}{n}, \quad b_n = \tfrac{\sin n}{n}, \quad c_n = \tfrac{1}{n}.
+$$
+
+Dado que $-\tfrac{1}{n} \leq \tfrac{\sin n}{n} \leq \tfrac{1}{n}$ y ambas secuencias delimitadoras van a 0,
+
+$$
+\lim_{n\to\infty} \frac{\sin n}{n} = 0.
+$$
+
+### Por qué esto es importante
+
+- Los límites hacen rigurosa la idea de secuencias que “se acercan” a un valor.
+- La convergencia de secuencias sustenta las series infinitas y la continuidad.
+- Estos conceptos son esenciales para definir números reales mediante límites.
+
+### Ejercicios
+
+1. Calcula $\lim_{n\to\infty} \frac{2n+1}{3n+4}$.
+2. Determina si $a_n = \sqrt{n+1} - \sqrt{n}$ converge.
+3. ¿Converge $a_n = \cos n$? ¿Por qué o por qué no?
+4. Usa el principio de compresión para mostrar $\lim_{n\to\infty} \frac{\sin n}{n} = 0$.
+5. Demuestre que si $\lim a_n = L$, entonces $\lim |a_n| = |L|$.
+
+# Capítulo 12. Serie infinita
+
+## 12.1 Serie y Convergencia
+
+Una serie es la suma de los términos de una secuencia. En lugar de simplemente enumerar números, los sumamos y estudiamos si la suma infinita se acerca a un valor finito.
+
+### Definición
+
+Dada una secuencia $(a_n)$, la serie correspondiente es
+
+$$
+\sum_{n=1}^\infty a_n = a_1 + a_2 + a_3 + \dots
+$$
+
+Definimos la enésima suma parcial como
+
+$$
+S_n = \sum_{k=1}^n a_k.
+$$
+
+Si la secuencia $(S_n)$ converge a un límite finito $S$, entonces la serie converge y
+
+$$
+\sum_{n=1}^\infty a_n = S.
+$$
+
+Si $(S_n)$ diverge, entonces la serie diverge.
+
+### Ejemplos
+
+1. Serie geométrica
+
+$$
+\sum_{n=0}^\infty ar^n = \frac{a}{1-r}, \quad |r| < 1.
+$$
+
+Ejemplo:
+
+$$
+1 + \tfrac{1}{2} + \tfrac{1}{4} + \tfrac{1}{8} + \dots = 2.
+$$
+
+2. Serie armónica
+
+$$
+\sum_{n=1}^\infty \frac{1}{n}.
+$$
+
+Esta serie diverge, aunque los términos lleguen a 0.
+
+3. serie p
+
+$$
+\sum_{n=1}^\infty \frac{1}{n^p}.
+$$
+
+- Converge si $p > 1$.
+- Divergencia si $p \leq 1$.
+
+### Condición necesaria para la convergencia
+
+Si $\sum a_n$ converge, entonces necesariamente
+
+$$
+\lim_{n\to\infty} a_n = 0.
+$$
+
+Si $\lim a_n \neq 0$, la serie diverge.
+Pero lo contrario no es cierto: $\lim a_n = 0$ no garantiza la convergencia (por ejemplo, series armónicas).
+
+### Por qué esto es importante
+
+- Las series extienden la suma finita a procesos infinitos.
+- Las series convergentes se utilizan para aproximar funciones, calcular áreas y modelar procesos físicos.- El estudio de series conduce a potentes pruebas de convergencia.
+
+### Ejercicios
+
+1. Determina si $\sum_{n=1}^\infty \frac{2}{3^n}$ converge y encuentra su suma.
+2. Demuestre que $\sum_{n=1}^\infty \frac{1}{n^2}$ converge.
+3. ¿Converge $\sum_{n=1}^\infty \frac{1}{\sqrt{n}}$?
+4. Escribe las primeras cuatro sumas parciales de la serie $\sum_{n=1}^\infty \frac{1}{2^n}$.
+5. Explique por qué $\lim a_n = 0$ es necesario pero no suficiente para la convergencia.
+
+## 12.2 Pruebas de convergencia
+
+Dado que muchas series no se pueden sumar directamente, los matemáticos desarrollaron pruebas para decidir si una serie converge o diverge. Estas pruebas son herramientas para analizar sumas infinitas.
+
+### 1. La prueba de divergencia del enésimo término
+
+si
+
+$$
+\lim_{n\to\infty} a_n \neq 0 \quad \text{or does not exist},
+$$
+
+entonces
+
+$$
+\sum a_n
+$$
+
+diverge.
+
+Si $\lim a_n = 0$, la prueba no es concluyente.
+
+### 2. Prueba de comparación
+
+Supongamos $0 \leq a_n \leq b_n$ para todos $n$.
+
+- Si $\sum b_n$ converge, entonces $\sum a_n$ también converge.
+- Si $\sum a_n$ diverge, entonces $\sum b_n$ también diverge.
+
+### 3. Prueba de comparación de límites
+
+Si $a_n, b_n > 0$ y
+
+$$
+\lim_{n\to\infty} \frac{a_n}{b_n} = c,
+$$
+
+donde $0 < c < \infty$, entonces $\sum a_n$ y $\sum b_n$ ambos convergen o ambos divergen.
+
+### 4. Prueba de relación
+
+Para $\sum a_n$, calcule
+
+$$
+L = \lim_{n\to\infty} \left| \frac{a_{n+1}}{a_n} \right|.
+$$
+
+- Si $L < 1$, la serie converge absolutamente.
+- Si $L > 1$ o $L = \infty$, la serie diverge.
+- Si $L = 1$, la prueba no es concluyente.
+
+### 5. Prueba de raíz
+
+Para $\sum a_n$, calcule
+
+$$
+L = \lim_{n\to\infty} \sqrt[n]{|a_n|}.
+$$
+
+- Si $L < 1$, la serie converge absolutamente.
+- Si $L > 1$, la serie diverge.
+- Si $L = 1$, la prueba no es concluyente.
+
+### 6. Prueba de series alternas (prueba de Leibniz)
+
+Para series de la forma
+
+$$
+\sum (-1)^n b_n \quad \text{or} \quad \sum (-1)^{n+1} b_n,
+$$
+
+si
+
+1. $b_{n+1} \leq b_n$ (decreciente), y
+2. $\lim_{n\to\infty} b_n = 0$,
+
+entonces la serie converge.
+
+### Ejemplos
+
+1. $\sum \frac{1}{n^2}$: Prueba de Comparación → converge.
+2. $\sum \frac{1}{n}$: Serie armónica → diverge.
+3. $\sum \frac{(-1)^n}{n}$: Prueba de series alternas → converge.
+4. $\sum \frac{n!}{n^n}$: Prueba de razón → converge.
+5. $\sum \frac{2^n}{n}$: Prueba de raíz → diverge.
+
+### Por qué esto es importante
+
+- Las pruebas de convergencia nos permiten clasificar series sin necesidad de sumas explícitas.
+- Proporcionan formas sistemáticas de manejar infinitos procesos en cálculo.
+- Son fundamentales para temas posteriores como series de potencia y series de Fourier.
+
+### Ejercicios
+
+1. Pruebe la convergencia de $\sum \frac{1}{n^3}$.
+2. Utilice la prueba de razón para $\sum \frac{3^n}{n!}$.3. Aplicar la prueba de la raíz a $\sum \left(\frac{1}{2}\right)^n$.
+4. Determinar la convergencia de $\sum \frac{(-1)^n}{\sqrt{n}}$.
+5. Utilice la prueba de comparación de límites con $\frac{1}{n^2}$ para probar $\sum \frac{1}{n^2+1}$.
+
+## 12.3 Convergencia absoluta versus condicional
+
+No todas las series se comportan igual cuando se alternan los signos. Para manejar esto, distinguimos entre convergencia absoluta y convergencia condicional.
+
+### Convergencia absoluta
+
+Una serie $\sum a_n$ es absolutamente convergente si
+
+$$
+\sum |a_n|
+$$
+
+converge.
+
+Teorema: si una serie converge absolutamente, entonces también converge.
+
+Ejemplo:
+
+$$
+\sum \frac{(-1)^n}{n^2}.
+$$
+
+Aquí converge $\sum \left|\frac{(-1)^n}{n^2}\right| = \sum \frac{1}{n^2}$ (serie p, $p=2$).
+Entonces la serie es absolutamente convergente.
+
+### Convergencia condicional
+
+Una serie $\sum a_n$ es condicionalmente convergente si converge, pero no absolutamente.
+
+Ejemplo:
+
+$$
+\sum \frac{(-1)^n}{n}.
+$$
+
+- Prueba de series alternas → converge.
+- Pero $\sum \left|\frac{(-1)^n}{n}\right| = \sum \frac{1}{n}$ diverge (serie armónica).
+  Entonces la serie es condicionalmente convergente.
+
+### Teorema de reordenamiento
+
+Para series condicionalmente convergentes, reorganizar los términos puede cambiar la suma, incluso hacerla divergir o converger a un valor diferente.
+
+Este sorprendente resultado muestra la delicada naturaleza de la convergencia condicional.
+
+### Por qué esto es importante
+
+- La convergencia absoluta es más fuerte y garantiza la estabilidad.
+- La convergencia condicional resalta la importancia del orden en sumas infinitas.
+- Muchas series alternas que se encuentran en la práctica son sólo condicionalmente convergentes.
+
+### Ejercicios
+
+1. Demuestre que $\sum \frac{(-1)^n}{n^3}$ converge absolutamente.
+2. Demuestre que $\sum \frac{(-1)^n}{n}$ es condicionalmente convergente.
+3. Pruebe $\sum \frac{(-1)^n}{\sqrt{n}}$ para convergencia absoluta y condicional.
+4. Explique por qué la convergencia absoluta implica convergencia, pero lo contrario no es cierto.
+5. Investiga y resume el teorema del reordenamiento de Riemann en tus propias palabras.
+
+# Capítulo 13. Series de potencia y expansiones.
+
+## 13.1 Serie de potencia
+
+Una serie de potencias es una serie infinita en la que cada término implica una potencia de la variable. Las series de potencias son fundamentales en el cálculo porque nos permiten representar funciones como polinomios infinitos.
+
+### Formulario general
+
+Una serie de potencias centrada en $a$ tiene la forma
+
+$$
+\sum_{n=0}^\infty c_n (x-a)^n,
+$$
+
+donde $c_n$ son constantes llamadas coeficientes.
+
+- Si $a=0$, la serie está centrada en el origen:
+
+  $$
+  \sum_{n=0}^\infty c_n x^n.
+  $$
+
+### Ejemplos
+
+1. Serie geométrica
+
+$$
+\sum_{n=0}^\infty x^n = \frac{1}{1-x}, \quad |x|<1.
+$$
+
+2. Función exponencial
+
+$$e^x = \sum_{n=0}^\infty \frac{x^n}{n!}.
+$$
+
+3. Sine and cosine
+
+$$
+\sin x = \sum_{n=0}^\infty (-1)^n \frac{x^{2n+1}}{(2n+1)!}, \quad  
+\cos x = \sum_{n=0}^\infty (-1)^n \frac{x^{2n}}{(2n)!}.
+$$
+
+### Interval of Convergence
+
+For each power series, there exists a radius of convergence $R$ such that:
+
+- The series converges if $|x-a| < R$.
+- The series diverges if $|x-a| > R$.
+- At $|x-a| = R$, convergence must be checked separately.
+
+### Why This Matters
+
+- Power series allow us to approximate functions by polynomials.
+- They connect calculus with analysis and differential equations.
+- Many special functions in mathematics and physics are defined by their power series.
+
+### Exercises
+
+1. Write the power series for $\sum_{n=0}^\infty \frac{(x-2)^n}{n!}$.
+2. Find the first four terms of the power series for $e^x$.
+3. Express $\frac{1}{1+x}$ as a power series centered at 0.
+4. Determine whether the series $\sum_{n=0}^\infty n! x^n$ converges at $x=0.1$.
+5. Explain why power series are sometimes called “infinite polynomials.”
+
+## 13.2 Radius of Convergence
+
+Every power series converges for some values of $x$ and diverges for others. The boundary between these two behaviors is described by the radius of convergence.
+
+### Definition
+
+For a power series
+
+$$
+\sum_{n=0}^\infty c_n (xa)^n,
+$$
+
+there exists a number $R \geq 0$ (possibly infinite) such that:
+
+- The series converges absolutely if $|x-a| < R$.
+- The series diverges if $|x-a| > R$.
+- At $|x-a| = R$, convergence must be checked separately.
+
+This number $R$ is called the radius of convergence.
+
+### Finding the Radius of Convergence
+
+Two common methods:
+
+1. Ratio Test
+
+$$
+R = \lim_{n\to\infty} \left| \frac{c_n}{c_{n+1}} \right|.
+$$
+
+2. Root Test
+
+$$
+R = \frac{1}{\limsup_{n\to\infty} \sqrt[n]{|c_n|}}.
+$$
+
+### Examples
+
+1. Series:
+
+$$
+\sum_{n=0}^\infty \frac{x^n}{n!}.
+$$
+
+Using ratio test:
+
+$$
+\lim_{n\to\infty} \frac{1/(n!)}{1/((n+1)!)} = \infty.
+$$
+
+So $R = \infty$ (converges for all real $x$).
+
+2. Series:
+
+$$
+\sum_{n=0}^\infty x^n.
+$$
+
+Here $c_n = 1$.
+
+$$
+R = 1.
+$$
+
+Converges for $|x| < 1$.
+
+3. Series:
+
+$$
+\sum_{n=1}^\infty \frac{x^n}{n}.
+$$
+
+Ratio test:
+
+$$
+\lim_{n\to\infty} \left|\frac{(x^{n+1}/(n+1))}{(x^n/n)}\right| = |x|.
+$$
+
+Entonces $R = 1$. Converge para $|x| < 1$, diverge para $|x| > 1$. A $x=\pm 1$, prueba por separado.
+
+### Intervalo de convergencia
+
+El conjunto de valores de $x$ donde converge la serie se llama intervalo de convergencia.
+
+- Siempre centrado en $a$.
+- Extiende $R$ unidades en ambas direcciones.
+- Los puntos finales $x=a\pm R$ deben comprobarse individualmente.
+
+### Por qué esto es importante- El radio de convergencia nos dice dónde las series de potencias se comportan como funciones.
+- Esencial para utilizar las expansiones de series de Taylor en la práctica.
+- Determina el dominio de validez de soluciones en serie en física e ingeniería.
+
+### Ejercicios
+
+1. Encuentra el radio de convergencia de $\sum_{n=0}^\infty \frac{(x-3)^n}{n!}$.
+2. Calcula el radio de convergencia de $\sum_{n=1}^\infty \frac{x^n}{n^2}$.
+3. Usa la prueba de razón para encontrar $R$ para $\sum_{n=0}^\infty n!x^n$.
+4. Determina el intervalo de convergencia para $\sum_{n=1}^\infty \frac{(x+1)^n}{n}$.
+5. Explica por qué la serie exponencial converge para todos $x$, mientras que la serie geométrica solo converge para $|x|<1$.
+
+## 13.3 Serie Taylor y Maclaurin
+
+Las series de potencias se vuelven especialmente poderosas cuando se usan para representar funciones familiares. Esto se hace mediante series de Taylor y el caso especial centrado en 0 se denomina serie de Maclaurin.
+
+### Serie Taylor
+
+Si una función $f(x)$ es infinitamente diferenciable en $x=a$, su serie de Taylor sobre $a$ es
+
+$$
+f(x) = \sum_{n=0}^\infty \frac{f^{(n)}(a)}{n!}(x-a)^n.
+$$
+
+Aquí $f^{(n)}(a)$ denota la $n$-ésima derivada de $f$ en $a$.
+
+### Serie Maclaurin
+
+Una serie de Taylor centrada en $a=0$:
+
+$$
+f(x) = \sum_{n=0}^\infty \frac{f^{(n)}(0)}{n!} x^n.
+$$
+
+### Ejemplos
+
+1. Función exponencial
+
+$$
+e^x = 1 + x + \frac{x^2}{2!} + \frac{x^3}{3!} + \cdots
+$$
+
+2. Seno y coseno
+
+$$
+\sin x = x - \frac{x^3}{3!} + \frac{x^5}{5!} - \cdots
+$$
+
+$$
+\cos x = 1 - \frac{x^2}{2!} + \frac{x^4}{4!} - \cdots
+$$
+
+3. Logaritmo natural (por $|x|<1$)
+
+$$
+\ln(1+x) = x - \frac{x^2}{2} + \frac{x^3}{3} - \frac{x^4}{4} + \cdots
+$$
+
+### Aproximación del polinomio de Taylor
+
+La suma finita de los primeros $n$ términos es el polinomio de Taylor de grado $n$:
+
+$$
+P_n(x) = \sum_{k=0}^n \frac{f^{(k)}(a)}{k!}(x-a)^k.
+$$
+
+Este polinomio se aproxima a $f(x)$ cerca de $x=a$.
+
+### Resto (término de error)
+
+La diferencia entre la función y su polinomio de Taylor es el resto:
+
+$$
+R_n(x) = f(x) - P_n(x).
+$$
+
+Una forma (la forma de Lagrange) es
+
+$$
+R_n(x) = \frac{f^{(n+1)}(c)}{(n+1)!}(x-a)^{n+1},
+$$
+
+por unos $c$ entre $a$ y $x$.
+
+### Por qué esto es importante
+
+- Las series de Taylor proporcionan aproximaciones polinómicas a funciones complicadas.
+- Son fundamentales en análisis numérico, física e ingeniería.
+- Las expansiones de series de Maclaurin dan fórmulas simples para funciones exponenciales, trigonométricas y logarítmicas.
+
+### Ejercicios
+
+1. Encuentra la serie de Maclaurin por $f(x)=\cosh x = \tfrac{e^x+e^{-x}}{2}$.
+2. Escribe la serie de Taylor para $f(x)=e^x$ centrada en $a=2$.
+3. Calcula el polinomio de Taylor de grado 3 para $f(x)=\ln(1+x)$ en $a=0$.4. Utilice la serie de Maclaurin para $\sin x$ para aproximar $\sin(0.1)$.
+5. Explique por qué las series de Taylor a menudo proporcionan buenas aproximaciones locales pero pueden divergir para $|x|$ grandes.
+
+## 13.4 Aplicaciones de las series de Taylor
+
+Las series de Taylor no son sólo herramientas teóricas: se utilizan para aproximar funciones, resolver ecuaciones y analizar sistemas físicos. Sus aplicaciones abarcan matemáticas, ciencias e ingeniería.
+
+### Aproximación de funciones
+
+Las funciones complicadas se pueden aproximar mediante polinomios cerca de un punto.
+
+Ejemplo: Aproximar $e^x$ cerca de $x=0$ usando el polinomio de Maclaurin de grado 3:
+
+$$
+P_3(x) = 1 + x + \tfrac{x^2}{2} + \tfrac{x^3}{6}.
+$$
+
+Para pequeños $x$, esto da estimaciones precisas de $e^x$.
+
+### Métodos numéricos
+
+Las series de Taylor proporcionan la base para los algoritmos numéricos:
+
+- Aproximar raíces cuadradas, logaritmos y valores trigonométricos.
+- Estimación del error a través del término restante.
+- Se utiliza en métodos iterativos como el método de Newton (donde la linealización local proviene de la serie de Taylor).
+
+### Resolver ecuaciones diferenciales
+
+Muchas ecuaciones diferenciales tienen soluciones expresadas como series de Taylor (o potencias).
+
+Ejemplo: La solución de $y'' + y = 0$ con $y(0)=0, y'(0)=1$ es $\sin x$, que surge naturalmente de su serie de Maclaurin.
+
+### Física e Ingeniería
+
+- Aproximación de ángulo pequeño:
+
+  $$
+  \sin x \approx x, \quad \cos x \approx 1 - \tfrac{x^2}{2}, \quad |x| \ll 1.
+  $$
+
+  Utilizado en movimiento pendular, óptica y mecánica ondulatoria.
+
+- Relatividad y mecánica cuántica: las expansiones de Taylor simplifican expresiones no lineales para uso práctico.
+
+- Aproximación de funciones de energía: En mecánica, las funciones de energía potencial se expanden cerca de los puntos de equilibrio.
+
+### Probabilidad y Estadística
+
+- Las funciones generadoras de momentos y las funciones características utilizan series de potencias.
+- Las aproximaciones de distribuciones de probabilidad (p. ej., aproximación normal a binomial) utilizan expansiones de Taylor.
+
+### Por qué esto es importante
+
+- Las series de Taylor proporcionan un puente entre fórmulas exactas y cálculos prácticos.
+- Nos permiten reducir problemas complejos a aproximaciones polinomiales manejables.
+- Las aplicaciones las convierten en una de las herramientas más importantes de las matemáticas aplicadas.
+
+### Ejercicios
+
+1. Utilice la serie de Maclaurin para $e^x$ para aproximar $e^{0.1}$ hasta cuatro decimales.
+2. Aplique la aproximación de ángulo pequeño para estimar $\sin(5^\circ)$.
+3. Resuelva la ecuación diferencial $y'' = -y$ usando un enfoque de series de potencias.
+4. Expande $\ln(1+x)$ hasta el 4to grado y úsalo para aproximar $\ln(1.1)$.
+5. Explique por qué las aproximaciones polinómicas son especialmente útiles para computadoras y calculadoras.# Apéndices
+
+## Apéndice A. Conceptos básicos de precálculo
+
+### A.1 Actualización de álgebra
+
+Antes de sumergirnos en el cálculo, es útil repasar algunas habilidades de álgebra que aparecerán una y otra vez. Estas son las "herramientas" que necesitará para manipular expresiones, resolver ecuaciones y simplificar resultados.
+
+#### Exponentes y potencias
+
+- Reglas básicas:
+
+  $$
+  a^m \cdot a^n = a^{m+n}, \quad \frac{a^m}{a^n} = a^{m-n}, \quad (a^m)^n = a^{mn}.
+  $$
+- Exponentes negativos:
+
+  $$
+  a^{-n} = \frac{1}{a^n}, \quad a \neq 0.
+  $$
+- Exponentes fraccionarios:
+
+  $$
+  a^{1/n} = \sqrt[n]{a}, \quad a^{m/n} = \sqrt[n]{a^m}.
+  $$
+
+#### Factorización
+
+La factorización simplifica expresiones y ayuda a resolver ecuaciones.
+
+1. Factor común:
+
+   $$
+   6x^2+9x = 3x(2x+3).
+   $$
+
+2. Diferencia de cuadrados:
+
+   $$
+   a^2-b^2 = (a-b)(a+b).
+   $$
+
+3. Trinomios cuadráticos:
+
+   $$
+   x^2+5x+6 = (x+2)(x+3).
+   $$
+
+#### Polinomios
+
+- Formulario estándar: $P(x) = a_nx^n + a_{n-1}x^{n-1} + \cdots + a_0$.
+- Grado: la potencia mayor de $x$.
+- La división larga y la división sintética son útiles para simplificar funciones racionales.
+
+#### Expresiones racionales
+
+Simplifica factorizando numerador y denominador:
+
+$$
+\frac{x^2-1}{x^2-2x+1} = \frac{(x-1)(x+1)}{(x-1)^2} = \frac{x+1}{x-1}, \quad x \neq 1.
+$$
+
+#### Logaritmos
+
+- Definición: $\log_a b = c$ significa $a^c = b$.
+- Bases comunes: tronco natural ($\ln x = \log_e x$) y base 10 ($\log x$).
+- Reglas:
+
+  $$
+  \log(ab) = \log a + \log b, \quad \log\left(\frac{a}{b}\right) = \log a - \log b, \quad \log(a^n) = n\log a.
+  $$
+
+#### Ecuaciones
+
+- Lineal: resolver $ax+b=0$ → $x=-b/a$.
+- Cuadrática: $ax^2+bx+c=0$ tiene soluciones
+
+  $$
+  x=\frac{-b\pm \sqrt{b^2-4ac}}{2a}.
+  $$
+- Exponencial: $e^x = k$ → $x = \ln k$.
+
+### A.2 Conceptos básicos de trigonometría
+
+La trigonometría proporciona el lenguaje de los ángulos y los fenómenos periódicos. Dado que el cálculo a menudo se ocupa de oscilaciones, movimientos y ondas, es esencial tener una comprensión sólida de las funciones trigonométricas y sus propiedades.
+
+#### El círculo unitario
+
+- Definido como el círculo de radio 1 con centro en el origen en el plano coordenado.
+- Para un ángulo $\theta$ medido desde el eje positivo $x$:
+
+  $$
+  (\cos \theta, \sin \theta)
+  $$
+
+  da las coordenadas del punto en el círculo.
+
+Valores especiales:
+
+| $\theta$ | $\sin \theta$ | $\cos \theta$ | $\tan \theta = \frac{\sin \theta}{\cos \theta}$ |
+| -- | - | - | -- |
+| $0$ | 0 | 1 | 0 |
+| $\pi/6$ | 1/2 | $\sqrt{3}/2$ | $1/\sqrt{3}$ || $\pi/4$ | $\sqrt{2}/2$ | $\sqrt{2}/2$ | 1 |
+| $\pi/3$ | $\sqrt{3}/2$ | 1/2 | $\sqrt{3}$ |
+| $\pi/2$ | 1 | 0 | indefinido |
+
+#### Identidades fundamentales
+
+1. Identidad pitagórica
+
+$$
+\sin^2\theta + \cos^2\theta = 1.
+$$
+
+2. Identidades de cociente
+
+$$
+\tan\theta = \frac{\sin\theta}{\cos\theta}, \quad \cot\theta = \frac{\cos\theta}{\sin\theta}.
+$$
+
+3. Identidades recíprocas
+
+$$
+\sec\theta = \frac{1}{\cos\theta}, \quad \csc\theta = \frac{1}{\sin\theta}.
+$$
+
+#### Fórmulas de suma de ángulos
+
+$$
+\sin(\alpha+\beta) = \sin\alpha\cos\beta + \cos\alpha\sin\beta,
+$$
+
+$$
+\cos(\alpha+\beta) = \cos\alpha\cos\beta - \sin\alpha\sin\beta.
+$$
+
+Casos especiales:
+
+- Doble ángulo:
+
+  $$
+  \sin(2\theta) = 2\sin\theta\cos\theta, \quad
+  \cos(2\theta) = \cos^2\theta - \sin^2\theta.
+  $$
+
+#### Gráficos
+
+- $\sin x$: onda que comienza en 0, amplitud 1, período $2\pi$.
+- $\cos x$: onda que comienza en 1, amplitud 1, período $2\pi$.
+- $\tan x$: se repite cada $\pi$, indefinido en múltiplos impares de $\pi/2$.
+
+### A.3 Geometría de coordenadas
+
+La geometría de coordenadas vincula el álgebra y la geometría al describir objetos geométricos (líneas, círculos, curvas) usando ecuaciones. El cálculo se basa en gran medida en este marco para graficar funciones, encontrar pendientes y analizar curvas.
+
+#### El plano cartesiano
+
+- Un punto está representado por las coordenadas $(x,y)$.
+- Distancia entre dos puntos $(x_1,y_1)$ y $(x_2,y_2)$:
+
+  $$
+  d = \sqrt{(x_2-x_1)^2 + (y_2-y_1)^2}.
+  $$
+- Punto medio de un segmento de recta:
+
+  $$
+  M = \left(\frac{x_1+x_2}{2}, \frac{y_1+y_2}{2}\right).
+  $$
+
+#### Líneas
+
+1. Fórmula de pendiente
+
+   $$
+   m = \frac{y_2-y_1}{x_2-x_1}.
+   $$
+
+2. Ecuación de una recta
+
+   - Forma punto-pendiente:
+
+     $$
+     y-y_1 = m(x-x_1).
+     $$
+   - Forma pendiente-intersección:
+
+     $$
+     y = mx+b.
+     $$
+
+3. Rectas paralelas y perpendiculares
+
+   - Rectas paralelas: misma pendiente.
+   - Rectas perpendiculares: las pendientes satisfacen $m_1m_2 = -1$.
+
+#### Círculos
+
+Ecuación de una circunferencia con centro $(h,k)$ y radio $r$:
+
+$$
+(x-h)^2+(y-k)^2 = r^2.
+$$
+
+Caso especial: círculo unitario centrado en el origen:
+
+$$
+x^2+y^2=1.
+$$
+
+#### Secciones cónicas
+
+1. Parábola:
+
+   - Forma estándar (apertura arriba/abajo):
+
+     $$
+     y = ax^2+bx+c.
+     $$
+
+2. Elipse (centrada en el origen):
+
+   $$
+   \frac{x^2}{a^2}+\frac{y^2}{b^2}=1.
+   $$
+
+3. Hipérbola (centrada en el origen):
+
+   $$
+   \frac{x^2}{a^2}-\frac{y^2}{b^2}=1.
+   $$
+
+## Apéndice B. Fórmulas y tablas clave
+
+### B.1 Tabla de derivadasLas derivadas miden tasas de cambio y pendientes de funciones. Tener una tabla de referencia rápida ayuda a los alumnos a evitar volver a derivar fórmulas cada vez.
+
+#### Reglas básicas
+
+1. Regla constante
+
+$$
+\frac{d}{dx}[c] = 0
+$$
+
+2. Regla de poder
+
+$$
+\frac{d}{dx}[x^n] = nx^{n-1}, \quad (n \in \mathbb{R})
+$$
+
+3. Regla múltiple constante
+
+$$
+\frac{d}{dx}[c f(x)] = c f'(x)
+$$
+
+4. Regla de suma y diferencia
+
+$$
+\frac{d}{dx}[f(x)\pm g(x)] = f'(x)\pm g'(x)
+$$
+
+#### Funciones trigonométricas
+
+$$
+\frac{d}{dx}[\sin x] = \cos x
+$$
+
+$$
+\frac{d}{dx}[\cos x] = -\sin x
+$$
+
+$$
+\frac{d}{dx}[\tan x] = \sec^2 x, \quad x \neq \tfrac{\pi}{2}+k\pi
+$$
+
+$$
+\frac{d}{dx}[\cot x] = -\csc^2 x
+$$
+
+$$
+\frac{d}{dx}[\sec x] = \sec x \tan x
+$$
+
+$$
+\frac{d}{dx}[\csc x] = -\csc x \cot x
+$$
+
+#### Funciones exponenciales y logarítmicas
+
+$$
+\frac{d}{dx}[e^x] = e^x
+$$
+
+$$
+\frac{d}{dx}[a^x] = a^x \ln a, \quad a>0, a\neq 1
+$$
+
+$$
+\frac{d}{dx}[\ln x] = \frac{1}{x}, \quad x>0
+$$
+
+$$
+\frac{d}{dx}[\log_a x] = \frac{1}{x\ln a}, \quad a>0, a\neq 1
+$$
+
+#### Funciones trigonométricas inversas
+
+$$
+\frac{d}{dx}[\arcsin x] = \frac{1}{\sqrt{1-x^2}}, \quad |x|<1
+$$
+
+$$
+\frac{d}{dx}[\arccos x] = -\frac{1}{\sqrt{1-x^2}}, \quad |x|<1
+$$
+
+$$
+\frac{d}{dx}[\arctan x] = \frac{1}{1+x^2}, \quad x \in \mathbb{R}
+$$
+
+#### Reglas de producto, cociente y cadena
+
+1. Regla del producto
+
+$$
+\frac{d}{dx}[f(x)g(x)] = f'(x)g(x)+f(x)g'(x)
+$$
+
+2. Regla del cociente
+
+$$
+\frac{d}{dx}\left[\frac{f(x)}{g(x)}\right] = \frac{f'(x)g(x)-f(x)g'(x)}{[g(x)]^2}, \quad g(x)\neq 0
+$$
+
+3. Regla de la cadena
+
+$$
+\frac{d}{dx}[f(g(x))] = f'(g(x))\cdot g'(x)
+$$
+
+### B.3 Ampliaciones de series comunes
+
+Las series de potencias nos permiten expresar funciones como polinomios infinitos. Estas expansiones son esenciales para aproximaciones, resolver ecuaciones diferenciales y desarrollar la intuición sobre funciones en cálculo.
+
+#### Serie geométrica
+
+$$
+\frac{1}{1-x} = \sum_{n=0}^\infty x^n, \quad |x| < 1
+$$
+
+#### Función exponencial
+
+$$
+e^x = \sum_{n=0}^\infty \frac{x^n}{n!}
+= 1 + x + \frac{x^2}{2!} + \frac{x^3}{3!} + \cdots
+$$
+
+Válido para todos $x$.
+
+#### Funciones trigonométricas
+
+$$
+\sin x = \sum_{n=0}^\infty (-1)^n \frac{x^{2n+1}}{(2n+1)!}
+= x - \frac{x^3}{3!} + \frac{x^5}{5!} - \cdots
+$$
+
+$$
+\cos x = \sum_{n=0}^\infty (-1)^n \frac{x^{2n}}{(2n)!}
+= 1 - \frac{x^2}{2!} + \frac{x^4}{4!} - \cdots
+$$
+
+$$
+\tan^{-1} x = \sum_{n=0}^\infty (-1)^n \frac{x^{2n+1}}{2n+1}, \quad |x|\leq 1
+$$
+
+#### Logaritmo
+
+$$
+\ln(1+x) = \sum_{n=1}^\infty (-1)^{n+1} \frac{x^n}{n}, \quad -1 < x \leq 1
+$$
+
+#### Expansión binomial (generalizada)
+
+$$
+(1+x)^r = \sum_{n=0}^\infty \binom{r}{n} x^n, \quad |x|<1
+$$
+
+donde
+
+$$\binom{r}{n} = \frac{r(r-1)(r-2)\cdots(r-n+1)}{n!}.
+$$
+
+## Appendix C. Proof Sketches
+
+### C.1 Limit Laws and the $\varepsilon$–$\delta$ Definition
+
+Calculus rests on the precise meaning of a limit. While intuition (“values get closer and closer”) is helpful, a formal definition ensures rigor and avoids paradoxes.
+
+#### Intuitive Idea
+
+We write
+
+$$
+\lim_{x\to a} f(x) = L
+$$
+
+to mean that as $x$ gets arbitrarily close to $a$, the values of $f(x)$ get arbitrarily close to $L$.
+
+#### Formal ($\varepsilon$–$\delta$) Definition
+
+We say that
+
+$$
+\lim_{x\to a} f(x) = L
+$$
+
+if for every $\varepsilon > 0$, there exists a $\delta > 0$ such that whenever
+
+$$
+0 < |xa| <\delta,
+$$
+
+we have
+
+$$
+|f(x) - L| < \varepsilon.
+$$
+
+- $\varepsilon$: how close we want $f(x)$ to be to $L$.
+- $\delta$: how close $x$ must be to $a$ to achieve that.
+
+#### Example
+
+Show that
+
+$$
+\lim_{x\to 2} (3x+1) = 7.
+$$
+
+- Let $\varepsilon > 0$.
+- We want $|(3x+1)-7| < \varepsilon$.
+- Simplify: $|3x-6| = 3|x-2| < \varepsilon$.
+- This holds if we choose $\delta = \varepsilon/3$.
+
+Thus, by the definition, the limit is 7.
+
+#### Limit Laws
+
+If $\lim_{x \to a} f(x) = L$ and $\lim_{x \to a} g(x) = M$, then:
+
+1. Sum/Difference
+
+$$
+\lim_{x \to a} [f(x) \pm g(x)] = L \pm M
+$$
+
+2. Constant Multiple
+
+$$
+\lim_{x \to a} [c f(x)] = cL
+$$
+
+3. Product
+
+$$
+\lim_{x\to a} [f(x)g(x)] = LM
+$$
+
+4. Quotient (if $M \neq 0$)
+
+$$
+\lim_{x \to a} \frac{f(x)}{g(x)} = \frac{L}{M}
+$$
+
+5. Powers and Roots
+
+$$
+\lim_{x \to a} [f(x)]^n = L^n, \quad \lim_{x \to a} \sqrt[n]{f(x)} = \sqrt[n]{L} \ (\text{si está definido}).
+$$
+
+### C.2 Proof Sketch: The Fundamental Theorem of Calculus
+
+The Fundamental Theorem of Calculus (FTC) links the two central operations of calculus: differentiation and integration. It shows that they are, in fact, inverse processes.
+
+#### Statement of the Theorem
+
+Part I (Differentiation of an Integral):
+If $f$ is continuous on $[a,b]$ and we define
+
+$$
+F(x) = \int_a^x f(t)\,dt,
+$$
+
+then $F$ is differentiable on $(a,b)$ and
+
+$$
+F'(x) = f(x).
+$$
+
+Part II (Evaluation of a Definite Integral):
+If $F$ is any antiderivative of $f$ on $[a,b]$, then
+
+$$
+\int_a^b f(x)\,dx = F(b)-F(a).
+$$
+
+#### Proof Sketch of Part I
+
+1. Start with the definition of the derivative:
+
+   $$
+   F'(x) = \lim_{h\to 0} \frac{F(x+h)-F(x)}{h}.
+   $$
+
+2. Substituting $F(x) = \int_a^x f(t)\,dt$:
+
+   $$
+   F(x+h)-F(x) = \int_a^{x+h} f(t)\,dt - \int_a^x f(t)\,dt.
+   $$
+
+3. By the additivity of integrals:
+
+   $$
+   F(x+h)-F(x) = \int_x^{x+h} f(t)\,dt.
+   $$
+
+4. Therefore:
+
+   $$
+   \frac{F(x+h)-F(x)}{h} = \frac{1}{h}\int_x^{x+h} f(t)\,dt.
+   $$5. Según el teorema del valor medio para integrales, existe $c \in [x,x+h]$ tal que
+
+   $$
+   \frac{1}{h}\int_x^{x+h} f(t)\,dt = f(c).
+   $$
+
+6. Como $h \to 0$, $c \to x$, y como $f$ es continua:
+
+   $$
+   \lim_{h\to 0} f(c) = f(x).
+   $$
+
+Por tanto, $F'(x) = f(x)$.
+
+#### Bosquejo de prueba de la Parte II
+
+1. Sea $F$ una antiderivada de $f$, entonces $F'(x) = f(x)$.
+
+2. Por la Parte I, la función
+
+   $$
+   G(x) = \int_a^x f(t)\,dt
+   $$
+
+   también es una antiderivada de $f$.
+
+3. Dado que $F$ y $G$ difieren sólo por una constante,
+
+   $$
+   F(x) = G(x) + C.
+   $$
+
+4. Evaluación en los puntos finales:
+
+   $$
+   \int_a^b f(x)\,dx = G(b)-G(a) = (F(b)+C)-(F(a)+C) = F(b)-F(a).
+   $$
+
+### C.3 Bosquejo de prueba: Convergencia de la serie geométrica
+
+La serie geométrica es una de las series infinitas más simples e importantes. Sirve como modelo para comprender la convergencia y es la base de muchos resultados posteriores en cálculo.
+
+#### La Serie
+
+$$
+\sum_{n=0}^\infty ar^n = a + ar + ar^2 + ar^3 + \cdots
+$$
+
+donde $a$ es el primer término y $r$ es la razón común.
+
+#### Fórmula de suma parcial
+
+La suma parcial $n$-ésima es
+
+$$
+S_n = a + ar + ar^2 + \cdots + ar^n.
+$$
+
+Multiplica ambos lados por $r$:
+
+$$
+rS_n = ar + ar^2 + \cdots + ar^{n+1}.
+$$
+
+Resta las dos ecuaciones:
+
+$$
+S_n - rS_n = a - ar^{n+1}.
+$$
+
+$$
+S_n(1-r) = a(1-r^{n+1}).
+$$
+
+entonces
+
+$$
+S_n = \frac{a(1-r^{n+1})}{1-r}, \quad r \neq 1.
+$$
+
+#### Convergencia
+
+Tome el límite como $n \to \infty$:
+
+- Si $|r| < 1$, entonces $r^{n+1} \to 0$.
+
+  $$
+  \lim_{n\to\infty} S_n = \frac{a}{1-r}.
+  $$
+
+- Si $|r| \geq 1$, entonces $r^{n+1}$ no llega a 0. La serie diverge.
+
+#### Resultado
+
+$$
+\sum_{n=0}^\infty ar^n =
+\begin{cases}
+\dfrac{a}{1-r}, & |r|<1, \\[6pt]
+\text{diverges}, & |r|\geq 1.
+\end{cases}
+$$
+
+## Apéndice D. Aplicaciones y conexiones
+
+### D.1 Conexiones físicas: velocidad, aceleración y trabajo
+
+El cálculo se desarrolló originalmente para resolver problemas de física, especialmente de movimiento y cambio. Estas son algunas de las conexiones más importantes.
+
+#### Posición, velocidad y aceleración
+
+- Función de posición: $s(t)$ da la ubicación de un objeto en el tiempo $t$.
+- Velocidad: la derivada de la posición.
+
+  $$
+  v(t) = s'(t) = \frac{ds}{dt}
+  $$
+- Aceleración: la derivada de la velocidad (o segunda derivada de la posición).
+
+  $$
+  a(t) = v'(t) = s''(t) = \frac{d^2s}{dt^2}
+  $$
+
+Ejemplo:
+Si $s(t) = 4t^2$ metros, entonces:
+
+$$
+v(t) = 8t, \quad a(t) = 8.
+$$
+
+Entonces el objeto se mueve más rápido linealmente con el tiempo, bajo aceleración constante.
+
+#### Trabajo y Fuerza
+
+En física, el trabajo es el producto de la fuerza y la distancia. Si la fuerza varía con la posición, el cálculo da:
+
+$$W = \int_a^b F(x)\,dx
+$$
+
+where $F(x)$ is the force at position $x$, and the object moves from $x=a$ to $x=b$.
+
+Example:
+A spring with Hooke’s law force $F(x) = kx$ requires work
+
+$$
+W = \int_0^d kx\, dx = \frac{1}{2}kd^2
+$$
+
+to stretch the spring a distance $d$.
+
+#### Energy and Areas Under Curves
+
+- Kinetic energy: $E_k = \tfrac{1}{2}mv^2$.
+- Potential energy often involves integrals (e.g., gravitational potential energy from force of gravity).
+- In general, integrating a force function gives energy stored or work done.
+
+#### Quick Practice
+
+1. If $s(t) = t^3 - 3t$, find $v(t)$ and $a(t)$.
+2. Compute the work done by a constant force of 10 N moving an object 5 m.
+3. A spring has constant $k=200$. How much work is needed to stretch it 0.1 m?
+4. Show that acceleration is the second derivative of position.
+5. Explain how the integral $\int v(t)\, dt$ relates to displacement.
+
+### D.2 Probability and Statistics Connections
+
+Calculus is deeply connected with probability and statistics, especially when dealing with continuous random variables. Integrals become essential for defining probabilities, averages, and expectations.
+
+#### Probability Density Functions (PDFs)
+
+For a continuous random variable $X$, probabilities are described by a probability density function $f(x)$:
+
+1. $f(x) \geq 0$ for all $x$.
+2. Total probability equals 1:
+
+   $$
+   \int_{-\infty}^{\infty} f(x)\, dx = 1.
+   $$
+
+The probability that $X$ lies in an interval $[a,b]$ is
+
+$$
+P(a \leq X \leq b) = \int_a^b f(x)\, dx.
+$$
+
+#### Expected Value (Mean)
+
+The expected value (average outcome) is
+
+$$
+E[X] = \int_{-\infty}^{\infty} x f(x)\, dx.
+$$
+
+This is the calculus version of a weighted average.
+
+#### Variance
+
+Variance measures spread:
+
+$$
+\text{Var}(X) = E[(X-\mu)^2] = \int_{-\infty}^{\infty} (x-\mu)^2 f(x)\, dx,
+$$
+
+where $\mu = E[X]$.
+
+#### Common Distributions
+
+1. Uniform distribution on $[a,b]$:
+
+   $$
+   f(x) = \frac{1}{b-a}, \quad a \leq x \leq b.
+   $$
+
+   Mean: $\frac{a+b}{2}$.
+
+2. Exponential distribution with parameter $\lambda > 0$:
+
+   $$
+   f(x) = \lambda e^{-\lambda x}, \quad x \geq 0.
+   $$
+
+   Mean: $1/\lambda$.
+
+3. Normal (Gaussian) distribution:
+
+   $$
+   f(x) = \frac{1}{\sqrt{2\pi\sigma^2}} e^{-(x-\mu)^2/(2\sigma^2)}.
+   $$
+
+   Las integrales de esta distribución se conectan a la función de error.
+
+#### Por qué esto es importante
+
+- Las integrales convierten las probabilidades en áreas bajo curvas.
+- El cálculo de expectativa y varianza vincula los promedios y la variabilidad.
+- La mayoría de los modelos de datos del mundo real (finanzas, física, biología, inteligencia artificial) utilizan estas distribuciones de probabilidad continua.
+
+#### Práctica rápida1. Para $f(x) = \tfrac{1}{2}$ sobre $[0,2]$, calcule $P(0.5 \leq X \leq 1.5)$.
+2. Para una distribución exponencial con $\lambda = 2$, calcule $E[X]$.
+3. Demuestre que el área total bajo la curva normal estándar es igual a 1.
+4. Calcula la media de una distribución uniforme en $[3,7]$.
+5. Explique por qué las probabilidades se calculan con integrales, no sumas, para variables continuas.
+
+### D.3 Conexiones de la informática: aproximaciones de Taylor en algoritmos
+
+El cálculo no es sólo para la física: también sustenta muchas herramientas y técnicas en informática. Uno de los puentes más claros es a través de las series de Taylor, que proporcionan formas eficientes de aproximar funciones en algoritmos y computación numérica.
+
+#### Aproximación de funciones para informática
+
+Las computadoras no pueden almacenar ni calcular directamente la mayoría de las funciones con exactitud (como $e^x$, $\sin x$ o $\ln x$). En cambio, utilizan aproximaciones polinómicas derivadas de expansiones de Taylor.
+
+Ejemplo:
+Para aproximar $e^x$, trunca la serie de Maclaurin:
+
+$$
+e^x \approx 1 + x + \frac{x^2}{2!} + \frac{x^3}{3!}.
+$$
+
+Para $x$ pequeños, este polinomio da resultados precisos con sólo unos pocos términos.
+
+#### Eficiencia en algoritmos
+
+- Funciones trigonométricas: los algoritmos para calculadoras y CPU suelen utilizar expansiones en serie (o variaciones como los polinomios de Chebyshev).
+- Exponencial/logaritmo: las expansiones de Taylor son la base de las aproximaciones rápidas en bibliotecas numéricas.
+- Hallazgo de raíces: el método de Newton se basa en la aproximación lineal, una aplicación directa de la serie de Taylor (primera derivada).
+
+#### Análisis numérico
+
+Las expansiones de Taylor son fundamentales en el análisis de errores:
+
+- Aproximar el término de error utilizando la fórmula del resto:
+
+  $$
+  R_n(x) = \frac{f^{(n+1)}(c)}{(n+1)!}(x-a)^{n+1}.
+  $$
+- Esto nos dice cuántos términos se necesitan para una precisión determinada.
+
+#### Conexiones de aprendizaje automático
+
+- La optimización basada en gradientes (como el descenso de gradientes) utiliza derivados para actualizar los parámetros de manera eficiente.
+- Las funciones de activación (como $\tanh x$ o ​​$\sigma(x)=1/(1+e^{-x})$) a menudo se aproximan mediante polinomios o funciones por partes para la velocidad.
+- Las aproximaciones en serie pueden acelerar el entrenamiento y la inferencia en entornos restringidos.
+
+#### Por qué esto es importante
+
+- Las aproximaciones de Taylor unen las matemáticas continuas con la computación discreta.
+- Muestran cómo se utilizan conceptos de cálculo en algoritmos, métodos numéricos y aprendizaje automático.
+- Comprender las aproximaciones ayuda a evitar problemas al depender de computadoras para los cálculos.
+
+#### Práctica rápida
+
+1. Aproxima $\sin(0.1)$ utilizando los tres primeros términos de su serie de Maclaurin.2. Utilice el término restante para estimar el error al aproximar $e^1$ con un polinomio de grado 3.
+3. Explique cómo el método de Newton utiliza el teorema de Taylor.
+4. ¿Por qué las computadoras podrían preferir aproximaciones polinómicas a fórmulas exactas de funciones?
+5. En el aprendizaje automático, ¿por qué la derivada (gradiente) es tan crítica para la optimización?

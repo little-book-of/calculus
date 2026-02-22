@@ -5,6 +5,7 @@ title: "The Little Book of Calculus"
 ## Read the book
 
 - [English version](en/index.qmd)
+- [Versão em português](pt/index.qmd)
 - [Deutsche Version](de/index.qmd)
 - [Versión en español](es/index.qmd)
 - [Version française](fr/index.qmd)

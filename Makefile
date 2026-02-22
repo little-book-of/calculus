@@ -12,7 +12,7 @@ TRANSLATE_MAX_WORKERS ?= 6
 TRANSLATE_RATE_LIMIT ?= 4
 TRANSLATE_RETRIES ?= 4
 
-.PHONY: help install-quarto check-quarto install-translate-deps translate translate-ja translate-ko render render-en render-vi render-zh render-ja render-ko preview clean
+.PHONY: help install-quarto check-quarto install-translate-deps translate translate-ja translate-ko translate-pt render render-en render-pt render-vi render-zh render-ja render-ko preview clean
 
 help:
 	@echo "Available targets:"
@@ -22,7 +22,9 @@ help:
 	@echo "  make translate              # Translate source to target language"
 	@echo "  make translate-ja           # Translate English book to Japanese"
 	@echo "  make translate-ko           # Translate English book to Korean"
+	@echo "  make translate-pt           # Translate English book to Portuguese"
 	@echo "  make render-en              # Render English book page"
+	@echo "  make render-pt              # Render Portuguese book page"
 	@echo "  make render-vi              # Render Vietnamese book page"
 	@echo "  make render-zh              # Render Chinese book page"
 	@echo "  make render-ja              # Render Japanese book page"
@@ -65,8 +67,14 @@ translate-ja:
 translate-ko:
 	@$(MAKE) translate TRANSLATE_TARGET=ko TRANSLATE_OUTPUT=ko/index.qmd
 
+translate-pt:
+	@$(MAKE) translate TRANSLATE_TARGET=pt TRANSLATE_OUTPUT=pt/index.qmd
+
 render-en: check-quarto
 	@quarto render en/index.qmd
+
+render-pt: check-quarto
+	@quarto render pt/index.qmd
 
 render-vi: check-quarto
 	@quarto render vi/index.qmd

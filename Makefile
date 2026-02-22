@@ -4,7 +4,7 @@ QUARTO_VERSION ?= 1.6.43
 QUARTO_DEB := quarto-$(QUARTO_VERSION)-linux-amd64.deb
 QUARTO_DEB_URL := https://github.com/quarto-dev/quarto-cli/releases/download/v$(QUARTO_VERSION)/$(QUARTO_DEB)
 
-.PHONY: help install-quarto check-quarto render render-en render-vi preview clean
+.PHONY: help install-quarto check-quarto render render-en render-vi render-zh preview clean
 
 help:
 	@echo "Available targets:"
@@ -12,6 +12,7 @@ help:
 	@echo "  make check-quarto    # Show Quarto version"
 	@echo "  make render-en       # Render English book page"
 	@echo "  make render-vi       # Render Vietnamese book page"
+	@echo "  make render-zh       # Render Chinese book page"
 	@echo "  make render          # Render full multilingual website"
 	@echo "  make preview         # Live preview website"
 	@echo "  make clean           # Remove rendered site output"
@@ -35,6 +36,9 @@ render-en: check-quarto
 
 render-vi: check-quarto
 	@quarto render vi/index.qmd
+
+render-zh: check-quarto
+	@quarto render zh/index.qmd
 
 render: check-quarto
 	@quarto render

@@ -14,7 +14,7 @@ from deep_translator import GoogleTranslator
 
 ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_SOURCE = ROOT / "en" / "index.qmd"
-PROTECTED_INLINE_RE = re.compile(r"(`[^`]*`|\$[^$]*\$|\[.*?\]\(.*?\))")
+PROTECTED_INLINE_RE = re.compile(r"(`[^`]*`|\$\$[\s\S]*?\$\$|\$[^$\n]*\$|\[.*?\]\(.*?\))", re.DOTALL)
 SKIP_RE = re.compile(r"^[\s\d#>*\-`~:;,.!\[\](){}+=_/\\|]+$")
 
 
@@ -82,7 +82,7 @@ def protect_inline(text: str) -> tuple[str, dict[str, str]]:
     mapping: dict[str, str] = {}
 
     def repl(match: re.Match[str]) -> str:
-        token = f"__KEEP_{len(mapping)}__"
+        token = f"¤¤{len(mapping)}¤¤"
         mapping[token] = match.group(0)
         return token
 

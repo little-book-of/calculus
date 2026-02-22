@@ -1,0 +1,14 @@
+---
+title: "The Little Book of Calculus"
+---
+
+## Read the book
+
+- [English version](en/index.qmd)
+- [Phiên bản tiếng Việt](vi/index.qmd)
+
+## Downloads
+
+- [PDF](book.pdf)
+- [EPUB](book.epub)
+- [LaTeX source](book.tex)

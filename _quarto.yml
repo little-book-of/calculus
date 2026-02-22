@@ -1,0 +1,19 @@
+project:
+  type: website
+  output-dir: _site
+
+website:
+  title: "The Little Book of Calculus"
+  navbar:
+    left:
+      - href: index.qmd
+        text: Home
+      - href: en/index.qmd
+        text: English
+      - href: vi/index.qmd
+        text: Tiếng Việt
+
+format:
+  html:
+    theme: cosmo
+    toc: true

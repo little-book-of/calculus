@@ -12,7 +12,7 @@ TRANSLATE_MAX_WORKERS ?= 6
 TRANSLATE_RATE_LIMIT ?= 4
 TRANSLATE_RETRIES ?= 4
 
-.PHONY: help install-quarto check-quarto install-translate-deps translate translate-ja translate-ko translate-pt translate-ar render render-en render-pt render-vi render-zh render-ja render-ko render-ar preview clean
+.PHONY: help install-quarto check-quarto install-translate-deps translate translate-ja translate-ko translate-pt translate-ar translate-it render render-en render-pt render-vi render-zh render-ja render-ko render-ar render-it preview clean
 
 help:
 	@echo "Available targets:"
@@ -24,6 +24,7 @@ help:
 	@echo "  make translate-ko           # Translate English book to Korean"
 	@echo "  make translate-pt           # Translate English book to Portuguese"
 	@echo "  make translate-ar           # Translate English book to Arabic"
+	@echo "  make translate-it           # Translate English book to Italian"
 	@echo "  make render-en              # Render English book page"
 	@echo "  make render-pt              # Render Portuguese book page"
 	@echo "  make render-vi              # Render Vietnamese book page"
@@ -31,6 +32,7 @@ help:
 	@echo "  make render-ja              # Render Japanese book page"
 	@echo "  make render-ko              # Render Korean book page"
 	@echo "  make render-ar              # Render Arabic book page"
+	@echo "  make render-it              # Render Italian book page"
 	@echo "  make render                 # Render full multilingual website"
 	@echo "  make preview                # Live preview website"
 	@echo "  make clean                  # Remove rendered site output"
@@ -75,6 +77,9 @@ translate-pt:
 translate-ar:
 	@$(MAKE) translate TRANSLATE_TARGET=ar TRANSLATE_OUTPUT=ar/index.qmd
 
+translate-it:
+	@$(MAKE) translate TRANSLATE_TARGET=it TRANSLATE_OUTPUT=it/index.qmd
+
 render-en: check-quarto
 	@quarto render en/index.qmd
 
@@ -95,6 +100,9 @@ render-ko: check-quarto
 
 render-ar: check-quarto
 	@quarto render ar/index.qmd
+
+render-it: check-quarto
+	@quarto render it/index.qmd
 
 render: check-quarto
 	@quarto render

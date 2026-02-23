@@ -18,6 +18,8 @@ website:
         text: Español
       - href: fr/index.qmd
         text: Français
+      - href: it/index.qmd
+        text: Italiano
       - href: vi/index.qmd
         text: Tiếng Việt
       - href: zh/index.qmd

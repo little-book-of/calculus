@@ -9,6 +9,7 @@ title: "The Little Book of Calculus"
 - [Deutsche Version](de/index.qmd)
 - [Versión en español](es/index.qmd)
 - [Version française](fr/index.qmd)
+- [Versione italiana](it/index.qmd)
 - [Phiên bản tiếng Việt](vi/index.qmd)
 - [简体中文版本](zh/index.qmd)
 - [日本語版](ja/index.qmd)

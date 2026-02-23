@@ -19,6 +19,7 @@ title: "The Little Book of Calculus"
 - [हिन्दी संस्करण](hi/index.qmd)
 - [संस्कृत संस्करण](sa/index.qmd)
 - [पालि संस्करण](pi/index.qmd)
+- [བོད་ཡིག་ཐོན་རིམ།](bo/index.qmd)
 
 ## Downloads
 

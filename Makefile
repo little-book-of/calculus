@@ -12,7 +12,7 @@ TRANSLATE_MAX_WORKERS ?= 6
 TRANSLATE_RATE_LIMIT ?= 4
 TRANSLATE_RETRIES ?= 4
 
-.PHONY: help install-quarto check-quarto install-translate-deps translate translate-ja translate-ko translate-pt translate-ar translate-it translate-sa translate-pi render render-en render-pt render-vi render-zh render-ja render-ko render-ar render-it render-sa render-pi preview clean
+.PHONY: help install-quarto check-quarto install-translate-deps translate translate-ja translate-ko translate-pt translate-ar translate-it translate-sa translate-pi translate-bo render render-en render-pt render-vi render-zh render-ja render-ko render-ar render-it render-sa render-pi render-bo preview clean
 
 help:
 	@echo "Available targets:"
@@ -27,6 +27,7 @@ help:
 	@echo "  make translate-it           # Translate English book to Italian"
 	@echo "  make translate-sa           # Translate English book to Sanskrit"
 	@echo "  make translate-pi           # Translate English book to Pali (fallback: Sanskrit)"
+	@echo "  make translate-bo           # Translate English book to Tibetan"
 	@echo "  make render-en              # Render English book page"
 	@echo "  make render-pt              # Render Portuguese book page"
 	@echo "  make render-vi              # Render Vietnamese book page"
@@ -37,6 +38,7 @@ help:
 	@echo "  make render-it              # Render Italian book page"
 	@echo "  make render-sa              # Render Sanskrit book page"
 	@echo "  make render-pi              # Render Pali book page"
+	@echo "  make render-bo              # Render Tibetan book page"
 	@echo "  make render                 # Render full multilingual website"
 	@echo "  make preview                # Live preview website"
 	@echo "  make clean                  # Remove rendered site output"
@@ -90,6 +92,9 @@ translate-sa:
 translate-pi:
 	@$(MAKE) translate TRANSLATE_TARGET=pi TRANSLATE_OUTPUT=pi/index.qmd
 
+translate-bo:
+	@$(MAKE) translate TRANSLATE_TARGET=bo TRANSLATE_OUTPUT=bo/index.qmd
+
 render-en: check-quarto
 	@quarto render en/index.qmd
 
@@ -119,6 +124,9 @@ render-sa: check-quarto
 
 render-pi: check-quarto
 	@quarto render pi/index.qmd
+
+render-bo: check-quarto
+	@quarto render bo/index.qmd
 
 render: check-quarto
 	@quarto render

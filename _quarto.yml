@@ -38,6 +38,8 @@ website:
         text: संस्कृतम्
       - href: pi/index.qmd
         text: Pāḷi
+      - href: bo/index.qmd
+        text: བོད་ཡིག
 
 format:
   html:

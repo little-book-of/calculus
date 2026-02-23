@@ -10,7 +10,9 @@ import time
 from dataclasses import dataclass, field
 from pathlib import Path
 
+import requests
 from deep_translator import GoogleTranslator
+from deep_translator.exceptions import LanguageNotSupportedException
 
 ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_SOURCE = ROOT / "en" / "index.qmd"
@@ -21,6 +23,33 @@ LANGUAGE_ALIASES = {
     # Use Sanskrit as a practical fallback for generating an Indic translation draft.
     "pi": "sa",
 }
+
+
+class GoogleTranslateHttpClient:
+    """Fallback translator that calls Google's public translate endpoint."""
+
+    def __init__(self, source: str, target: str) -> None:
+        self.source = source
+        self.target = target
+        self.session = requests.Session()
+
+    def translate(self, text: str) -> str:
+        resp = self.session.get(
+            "https://translate.googleapis.com/translate_a/single",
+            params={
+                "client": "gtx",
+                "sl": self.source,
+                "tl": self.target,
+                "dt": "t",
+                "q": text,
+            },
+            timeout=30,
+        )
+        resp.raise_for_status()
+        payload = resp.json()
+        if not payload or not payload[0]:
+            return text
+        return "".join(part[0] for part in payload[0] if part and part[0])
 
 
 @dataclass
@@ -83,21 +112,11 @@ def split_chunks(text: str, size: int) -> list[str]:
     return out
 
 
-def _alpha_token(n: int) -> str:
-    letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-    out = []
-    n += 1
-    while n > 0:
-        n, r = divmod(n - 1, 26)
-        out.append(letters[r])
-    return "".join(reversed(out))
-
-
 def protect_inline(text: str) -> tuple[str, dict[str, str]]:
     mapping: dict[str, str] = {}
 
     def repl(match: re.Match[str]) -> str:
-        token = f"`__XTK{_alpha_token(len(mapping))}__`"
+        token = f"⟪XTK{len(mapping):04d}⟫"
         mapping[token] = match.group(0)
         return token
 
@@ -110,7 +129,7 @@ def restore_inline(text: str, mapping: dict[str, str]) -> str:
     return text
 
 
-def translate_one(idx: int, chunk: str, translator: GoogleTranslator, limiter: RateLimiter, retries: int, counter: Counter) -> tuple[int, str]:
+def translate_one(idx: int, chunk: str, translator: object, limiter: RateLimiter, retries: int, counter: Counter) -> tuple[int, str]:
     if not chunk.strip() or SKIP_RE.fullmatch(chunk):
         counter.tick()
         return idx, chunk
@@ -149,7 +168,17 @@ def main() -> None:
     if resolved_target != requested_target:
         logging.warning("target language '%s' is not supported by GoogleTranslator; using fallback '%s'", requested_target, resolved_target)
 
-    translator = GoogleTranslator(source=args.source_lang, target=resolved_target)
+    try:
+        translator = GoogleTranslator(source=args.source_lang, target=resolved_target)
+        logging.info("translator backend: deep-translator/google")
+    except LanguageNotSupportedException:
+        logging.warning(
+            "deep-translator does not support '%s'; falling back to Google HTTP endpoint",
+            resolved_target,
+        )
+        translator = GoogleTranslateHttpClient(source=args.source_lang, target=resolved_target)
+        logging.info("translator backend: googleapis HTTP")
+
     limiter = RateLimiter(interval_s=1.0 / max(0.2, args.rate_limit))
     counter = Counter(total=len(chunks))
 

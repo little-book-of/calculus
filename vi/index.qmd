@@ -3,9 +3,9 @@ title: "Cuốn Sách Giải Tích Nhỏ"
 lang: vi
 ---
 
-# Cuốn sách nhỏ về phép tính
+# Cuốn sách nhỏ về giải tích
 
-Phần giới thiệu ngắn gọn, thân thiện với người mới bắt đầu về những ý tưởng cốt lõi của phép tính.
+Phần giới thiệu ngắn gọn, thân thiện với người mới bắt đầu về những ý tưởng cốt lõi của giải tích.
 
 ## Định dạng
 
@@ -15,15 +15,15 @@ Phần giới thiệu ngắn gọn, thân thiện với người mới bắt đ�
 
 # Phần 1. Giới hạn và đạo hàm
 
-# Chương 1. Chức năng và giới hạn
+# Chương 1. Hàm số và giới hạn
 
-## 1.1 Chức năng
+## 1.1 Hàm số
 
-Hàm số là một trong những đối tượng cơ bản nhất trong toán học. Về bản chất, hàm là một quy tắc lấy đầu vào và tạo ra chính xác một đầu ra. Hàm cho phép chúng ta mô tả các mối quan hệ, mô hình hóa các hiện tượng trong thế giới thực và xây dựng toàn bộ bộ máy tính toán.
+Hàm số là một trong những đối tượng cơ bản nhất trong toán học. Về bản chất, hàm số là một quy tắc nhận đầu vào và cho đúng một đầu ra. Hàm số cho phép chúng ta mô tả các mối quan hệ, mô hình hóa các hiện tượng trong thế giới thực và xây dựng toàn bộ nền tảng của giải tích.
 
-### Sự định nghĩa
+### Định nghĩa
 
-Về mặt hình thức, một hàm $f$ từ một tập $X$ (gọi là miền) đến một tập $Y$ (gọi là codomain) được viết
+Về mặt hình thức, một hàm $f$ từ một tập $X$ (gọi là miền) đến một tập $Y$ (gọi là đối miền) được viết
 
 $$
 f : X \to Y.
@@ -31,22 +31,22 @@ $$
 
 Với mỗi phần tử $x \in X$, có một phần tử duy nhất $f(x) \in Y$. Giá trị $f(x)$ được gọi là ảnh của $x$ dưới $f$.
 
-Nếu $y = f(x)$ thì $y$ là đầu ra tương ứng với $x$ đầu vào. Tập hợp tất cả các kết quả đầu ra thực sự xuất hiện được gọi là phạm vi (tập hợp con của tên miền).
+Nếu $y = f(x)$ thì $y$ là đầu ra tương ứng với đầu vào $x$. Tập hợp tất cả các đầu ra thực sự xuất hiện được gọi là tập giá trị (là tập con của đối miền).
 
 ### Ví dụ
 
 1. Hàm $f(x) = x^2$ ánh xạ từng số thực $x$ vào bình phương của nó.
 
-- Miền: toàn số thực $\mathbb{R}$.
-   - Codomain: toàn số thực $\mathbb{R}$.
-   - Phạm vi: tất cả các số thực không âm $[0, \infty)$.
+- Miền: toàn bộ số thực $\mathbb{R}$.
+   - Đối miền: toàn bộ số thực $\mathbb{R}$.
+   - Tập giá trị: tất cả các số thực không âm $[0, \infty)$.
 
 2. Hàm $g(x) = \dfrac{1}{x}$ gán cho mỗi số thực khác 0 số nghịch đảo của nó.
 
-- Tên miền: $\mathbb{R} \setminus \{0\}$.
-   - Phạm vi: $\mathbb{R} \setminus \{0\}$.
+- Miền xác định: $\mathbb{R} \setminus \{0\}$.
+   - Tập giá trị: $\mathbb{R} \setminus \{0\}$.
 
-3. Một ví dụ thực tế: Gọi $T(t)$ là nhiệt độ bên ngoài (tính bằng °C) tại thời điểm $t$ (tính bằng giờ). Đây là một chức năng từ “thời gian trong ngày” đến “nhiệt độ”.
+3. Một ví dụ thực tế: Gọi $T(t)$ là nhiệt độ bên ngoài (tính bằng °C) tại thời điểm $t$ (tính bằng giờ). Đây là một hàm số từ “thời gian trong ngày” đến “nhiệt độ”.
 
 ### Các cách biểu diễn hàm
 
@@ -57,7 +57,7 @@ Các hàm có thể được biểu diễn theo nhiều cách hữu ích:
 - Bảng: ghép nối đầu vào và đầu ra cho các bộ dữ liệu rời rạc.
 - Mô tả bằng lời: “Chấm điểm cho từng học sinh.”
 
-Mỗi cách trình bày nêu bật các khía cạnh khác nhau của cùng một chức năng.
+Mỗi cách trình bày nêu bật các khía cạnh khác nhau của cùng một hàm số.
 
 ### Thuật ngữ
 
@@ -65,23 +65,23 @@ Mỗi cách trình bày nêu bật các khía cạnh khác nhau của cùng mộ
 - Biến phụ thuộc: kết quả đầu ra (thường viết là $y$, trong đó $y = f(x)$).
 - Ký hiệu hàm: $f(x)$ đọc là “$f$ của $x$.”
 
-### Tại sao Hàm số lại quan trọng trong Giải tích
+### Tại sao hàm số quan trọng trong giải tích
 
-Giải tích là nghiên cứu về cách các hàm số thay đổi. Công cụ phái sinh đo lường tốc độ thay đổi tức thời, trong khi tích phân đo lường tác động tích lũy. Để nắm vững những ý tưởng này, trước tiên chúng ta cần hiểu biết vững chắc về chức năng là gì và cách chúng hoạt động.
+Giải tích là nghiên cứu về cách các hàm số thay đổi. Đạo hàm đo lường tốc độ thay đổi tức thời, trong khi tích phân đo lường tác động tích lũy. Để nắm vững những ý tưởng này, trước tiên chúng ta cần hiểu biết vững chắc về hàm số là gì và cách chúng hoạt động.
 
 ### Bài tập
 
 1. Đối với hàm $f(x) = 3x - 2$:
 
-- Tìm tên miền, tên miền và phạm vi.
+- Tìm miền xác định, đối miền và tập giá trị.
 
-2. Hàm $h(x) = \sqrt{x-1}$ được xác định cho đầu vào nào? Phạm vi của nó là gì?
+2. Hàm $h(x) = \sqrt{x-1}$ được xác định cho đầu vào nào? Tập giá trị của nó là gì?
 
-3. Cho một ví dụ thực tế về một chức năng trong cuộc sống hàng ngày của bạn. Nêu rõ tên miền và codomain.
+3. Cho một ví dụ thực tế về một hàm số trong cuộc sống hàng ngày của bạn. Nêu rõ miền xác định và đối miền.
 
-4. Vẽ đồ thị của $f(x) = |x|$. Phạm vi là gì?
+4. Vẽ đồ thị của $f(x) = |x|$. Tập giá trị là gì?
 
-5. Giả sử $g(x) = \dfrac{1}{x^2+1}$. Giải thích tại sao phạm vi của nó là khoảng $(0, 1]$.
+5. Giả sử $g(x) = \dfrac{1}{x^2+1}$. Giải thích tại sao tập giá trị của nó là khoảng $(0, 1]$.
 
 ## 1.2 Đồ thị và các phép biến đổi
 
@@ -89,7 +89,7 @@ Một hàm có thể được hiểu không chỉ bằng công thức mà còn b
 
 ### Đồ thị cơ bản
 
-Một số biểu đồ rất cơ bản cần được ghi nhớ:
+Một số đồ thị rất cơ bản cần được ghi nhớ:
 
 - $f(x) = x$: đường thẳng đi qua gốc tọa độ.
 - $f(x) = x^2$: một parabol hướng lên trên.
@@ -97,37 +97,37 @@ Một số biểu đồ rất cơ bản cần được ghi nhớ:
 - $f(x) = \frac{1}{x}$: một hyperbol có hai nhánh.
 - $f(x) = \sin x$: đường cong tuần hoàn dạng sóng.
 
-Chúng đóng vai trò là khối xây dựng cho các chức năng phức tạp hơn.
+Chúng đóng vai trò là nền tảng cho các hàm số phức tạp hơn.
 
 ### Biến đổi
 
-Đồ thị có thể được dịch chuyển, kéo dài hoặc phản ánh bằng các quy tắc đơn giản:
+Đồ thị có thể được tịnh tiến, co giãn hoặc đối xứng bằng các quy tắc đơn giản:
 
 1. Dịch chuyển theo chiều dọc: Thêm một hằng số sẽ làm đồ thị di chuyển lên hoặc xuống.
 
    $$
-   y = f(x) + c \quad \text{is } f(x) \text{ shifted upward by } c.
+   y = f(x) + c \quad \text{là đồ thị của } f(x) \text{ tịnh tiến lên trên } c.
    $$
 
 2. Dịch chuyển theo chiều ngang: Việc thêm vào bên trong đối số sẽ di chuyển đồ thị sang trái hoặc sang phải.
 
    $$
-   y = f(x - c) \quad \text{is } f(x) \text{ shifted right by } c.
+   y = f(x - c) \quad \text{là đồ thị của } f(x) \text{ tịnh tiến sang phải } c.
    $$
 
 3. Chia tỷ lệ theo chiều dọc: Nhân với một hằng số kéo dài hoặc nén đồ thị theo chiều dọc.
 
    $$
-   y = a f(x), \quad a > 1 \text{ stretches; } 0 < a < 1 \text{ compresses.}
+   y = a f(x), \quad a > 1 \text{ thì kéo giãn; } 0 < a < 1 \text{ thì nén.}
    $$
 
 4. Chia tỷ lệ theo chiều ngang: Nhân bên trong đối số sẽ kéo dài hoặc nén đồ thị theo chiều ngang.
 
    $$
-   y = f(bx), \quad b > 1 \text{ compresses toward the } y\text{-axis}.
+   y = f(bx), \quad b > 1 \text{ thì nén về phía trục } y.
    $$
 
-5. Suy ngẫm:
+5. Phép đối xứng:
 
 - $y = -f(x)$: phản chiếu qua trục $x$.
    - $y = f(-x)$: phản chiếu qua trục $y$.
@@ -156,26 +156,26 @@ Trong nhiều trường hợp, giá trị của hàm tại một điểm ít qua
 
 ### Tiếp cận một giá trị
 
-Hãy tưởng tượng bạn đang đi về phía một bức tường. Ngay cả trước khi bạn chạm vào nó, bạn càng ngày càng tiến gần hơn. Theo cách tương tự, khi $x$ tiến đến một số $a$, các giá trị của $f(x)$ có thể tiến đến một số $L$ nào đó. Sau đó chúng tôi nói:
+Hãy tưởng tượng bạn đang đi về phía một bức tường. Ngay cả trước khi chạm vào tường, bạn vẫn ngày càng tiến gần hơn. Tương tự, khi $x$ tiến đến một số $a$, các giá trị của $f(x)$ có thể tiến đến một số $L$. Khi đó ta viết:
 
 $$
 \lim_{x \to a} f(x) = L.
 $$
 
-Điều này thể hiện ý tưởng rằng $f(x)$ có thể được làm gần đến mức chúng ta muốn với $L$, chỉ bằng cách lấy $x$ đủ gần với $a$.
+Điều này diễn tả ý tưởng rằng ta có thể làm cho $f(x)$ gần $L$ tùy ý, chỉ cần lấy $x$ đủ gần $a$.
 
 ### Ví dụ
 
 1. Với $f(x) = 2x + 3$:
-   Như $x \to 1$, $f(x) \to 5$.
+   Khi $x \to 1$, $f(x) \to 5$.
 
 2. Với $f(x) = \dfrac{\sin x}{x}$:
    Khi $x \to 0$, hàm tiến tới 1, mặc dù $f(0)$ không được xác định.
 
 3. Với $f(x) = \dfrac{1}{x}$:
-   Như $x \to 0^+$ (tiến dần từ bên phải), $f(x) \to +\infty$.
-   Như $x \to 0^-$ (tiếp cận từ bên trái), $f(x) \to -\infty$.
-   Vì hành vi bên trái và bên phải khác nhau nên giới hạn ở mức 0 không tồn tại.
+   Khi $x \to 0^+$ (tiến dần từ bên phải), $f(x) \to +\infty$.
+   Khi $x \to 0^-$ (tiếp cận từ bên trái), $f(x) \to -\infty$.
+   Vì hành vi bên trái và bên phải khác nhau nên giới hạn tại 0 không tồn tại.
 
 ### Tầm quan trọng của giới hạn
 
@@ -191,12 +191,12 @@ $$
 \lim_{x \to a^-} f(x), \quad \lim_{x \to a^+} f(x).
 $$
 
-Nếu cả hai đều đồng ý thì tồn tại giới hạn hai phía.
+Nếu cả hai đều trùng nhau thì tồn tại giới hạn hai phía.
 
 ### Bài tập
 
 1. Tính $\lim_{x \to 2} (3x^2 - x)$.
-2. $\lim_{x \to 0} \frac{\sin x}{x}$ là gì? Sử dụng trực giác từ biểu đồ của $\sin x$.
+2. $\lim_{x \to 0} \frac{\sin x}{x}$ là gì? Sử dụng trực giác từ đồ thị của $\sin x$.
 3. Đánh giá $\lim_{x \to 0} |x|/x$. Giới hạn hai phía có tồn tại không?
 4. Tìm $\lim_{x \to \infty} \frac{1}{x}$. Giải thích kết quả này bằng lời.
 5. Với $f(x) = \frac{x^2-1}{x-1}$, $\lim_{x \to 1} f(x)$ là bao nhiêu? So sánh với giá trị của $f(1)$.
@@ -207,13 +207,13 @@ Nếu cả hai đều đồng ý thì tồn tại giới hạn hai phía.
 
 ### Định nghĩa
 
-Chúng tôi viết
+Ta viết
 
 $$
 \lim_{x \to a} f(x) = L
 $$
 
-nếu điều kiện sau đây xảy ra:
+nếu điều kiện sau đúng:
 
 Với mỗi $\varepsilon > 0$ (dù nhỏ đến đâu), tồn tại một $\delta > 0$ sao cho bất cứ khi nào
 
@@ -265,7 +265,7 @@ Với $f(x) = \frac{1}{x}$, hãy xem xét $\lim_{x \to 2} f(x) = \tfrac{1}{2}$.
 
 Một hàm số là liên tục nếu đồ thị của nó có thể vẽ được mà không cần nhấc bút chì lên khỏi giấy. Chính xác hơn, tính liên tục đảm bảo rằng những thay đổi nhỏ ở đầu vào sẽ tạo ra những thay đổi nhỏ ở đầu ra.
 
-### Sự định nghĩa
+### Định nghĩa
 
 Hàm $f$ liên tục tại điểm $a$ nếu ba điều kiện được thỏa mãn:
 
@@ -296,7 +296,7 @@ Hàm này có một bước nhảy tại $x = 1$, vì vậy nó không liên t�
 
 ### Các loại gián đoạn
 
-1. Gián đoạn có thể tháo rời: Một “lỗ hổng” trên biểu đồ. Ví dụ: $f(x) = \frac{x^2-1}{x-1}$ tại $x=1$.
+1. Gián đoạn có thể tháo rời: Một “lỗ hổng” trên đồ thị. Ví dụ: $f(x) = \frac{x^2-1}{x-1}$ tại $x=1$.
 2. Nhảy không liên tục: Giới hạn bên trái và bên phải là khác nhau.
 3. Gián đoạn vô hạn: Hàm tiến tới $\pm\infty$ gần một điểm, như với $f(x) = 1/x$ gần $x = 0$.
 
@@ -314,11 +314,11 @@ Tính chất này rất quan trọng trong việc chứng minh sự tồn tại 
 4. Cho ví dụ về hàm số có bước nhảy gián đoạn. Hãy phác họa đồ thị của nó.
 5. Sử dụng Định lý Giá trị Trung gian để chứng minh rằng phương trình $x^3 + x - 1 = 0$ có nghiệm nằm trong khoảng từ 0 đến 1.
 
-# Chương 2. Công cụ phái sinh
+# Chương 2. Đạo hàm
 
 ## 2.1 Đạo hàm dưới dạng tỷ lệ thay đổi
 
-Đạo hàm là một trong những ý tưởng trung tâm của phép tính. Nó đo lường cách một hàm thay đổi khi đầu vào của nó thay đổi - nói cách khác là tốc độ thay đổi của đầu ra so với đầu vào.
+Đạo hàm là một trong những ý tưởng trung tâm của giải tích. Nó đo lường cách một hàm thay đổi khi đầu vào của nó thay đổi - nói cách khác là tốc độ thay đổi của đầu ra so với đầu vào.
 
 ### Tỷ lệ thay đổi trung bình
 
@@ -535,7 +535,7 @@ $$
 ### Tại sao Quy tắc Chuỗi lại quan trọng
 
 - Nó xử lý gần như tất cả các mô hình trong thế giới thực trong đó một đại lượng phụ thuộc vào một đại lượng khác một cách gián tiếp.
-- Nó kết nối phép tính với vật lý (ví dụ: vận tốc phụ thuộc vào thời gian qua vị trí).
+- Nó kết nối giải tích với vật lý (ví dụ: vận tốc phụ thuộc vào thời gian qua vị trí).
 - Cần thiết trong việc phân biệt ngầm và các chủ đề nâng cao.
 
 ### Bài tập
@@ -634,7 +634,7 @@ $$
 
 Cho đến nay, chúng ta đã nghiên cứu đạo hàm bậc nhất, đo lường tốc độ thay đổi của hàm số. Nhưng bản thân các đạo hàm cũng có thể vi phân, tạo ra các đạo hàm bậc cao hơn.
 
-### Sự định nghĩa
+### Định nghĩa
 
 - Đạo hàm bậc hai của $f$ là đạo hàm của đạo hàm:
 
@@ -824,7 +824,7 @@ $$
 ### Tại sao Giá liên quan lại quan trọng
 
 - Chúng mô tả chuyển động và sự thay đổi trong vật lý, kỹ thuật và sinh học.
-- Họ kết nối hình học với phép tính thông qua các quá trình phụ thuộc vào thời gian.
+- Họ kết nối hình học với giải tích thông qua các quá trình phụ thuộc vào thời gian.
 - Họ đào tạo chúng tôi mô hình hóa các hệ thống động về mặt toán học.
 
 ### Bài tập
@@ -970,11 +970,11 @@ Vẽ đường cong là quá trình vẽ đồ thị của hàm số bằng các
 - Dương → lõm lên.
    - Âm → lõm xuống.
    - Số không hoặc không xác định → điểm uốn có thể.
-6. Kết hợp thông tin: Sử dụng tất cả các kết quả để phác họa một biểu đồ rõ ràng và chính xác.
+6. Kết hợp thông tin: Sử dụng tất cả các kết quả để phác họa một đồ thị rõ ràng và chính xác.
 
 ### Ví dụ 1: $f(x) = x^3 - 3x$
 
-- Tên miền: toàn số thực.
+- Miền xác định: toàn số thực.
 - Chặn: tại $(0,0)$.
 - Đạo hàm: $f'(x) = 3x^2 - 3 = 3(x-1)(x+1)$.
 
@@ -988,7 +988,7 @@ Vẽ đường cong là quá trình vẽ đồ thị của hàm số bằng các
 
 ### Ví dụ 2: $f(x) = \frac{1}{x}$
 
-- Tên miền: $x \neq 0$.
+- Miền xác định: $x \neq 0$.
 - Đường tiệm cận đứng: $x = 0$.
 - Tiệm cận ngang: $y = 0$.
 - Đạo hàm: $f'(x) = -\frac{1}{x^2}$ (luôn âm). Chức năng luôn giảm.
@@ -1000,7 +1000,7 @@ Vẽ đường cong là quá trình vẽ đồ thị của hàm số bằng các
 
 ### Tại sao việc phác thảo đường cong lại hữu ích
 
-- Cung cấp cái nhìn sâu sắc về hành vi tổng thể của các chức năng mà không cần tính toán toàn diện.
+- Cung cấp cái nhìn sâu sắc về hành vi tổng thể của các hàm số mà không cần tính toán toàn diện.
 - Cần thiết trong các kỳ thi giải tích và các bài toán ứng dụng.
 - Cầu nối phân tích đại số và hiểu biết hình học.
 
@@ -1020,7 +1020,7 @@ Vẽ đường cong là quá trình vẽ đồ thị của hàm số bằng các
 
 Tích phân không xác định là quá trình vi phân ngược lại. Nếu đạo hàm có số đo thay đổi thì tích phân sẽ khôi phục hàm ban đầu từ tốc độ thay đổi của nó.
 
-### Sự định nghĩa
+### Định nghĩa
 
 Nếu $F'(x) = f(x)$, thì
 
@@ -1091,7 +1091,7 @@ $$
 
 Trong khi tích phân không xác định đại diện cho họ các nguyên hàm thì tích phân xác định cho một giá trị bằng số: diện tích tích lũy dưới đường cong giữa hai điểm.
 
-### Sự định nghĩa
+### Định nghĩa
 
 Đối với hàm $f(x)$ được xác định trên $[a, b]$, tích phân xác định là
 
@@ -1159,9 +1159,9 @@ $$
 4. Chứng minh rằng $\int_{-a}^a f(x)\,dx = 0$ nếu $f(x)$ là số lẻ.
 5. Ước tính $\int_0^1 e^x\,dx$ bằng cách sử dụng tổng Riemann với các khoảng con $n=4$ và điểm cuối bên phải.
 
-## 4.3 Định lý cơ bản của phép tính
+## 4.3 Định lý cơ bản của giải tích
 
-Định lý cơ bản của phép tính (FTC) hợp nhất hai ý tưởng chính của phép tính: vi phân và tích phân. Nó cho thấy rằng việc tìm diện tích và tìm tỷ lệ thay đổi là hai mặt của một đồng tiền.
+Định lý cơ bản của giải tích (FTC) hợp nhất hai ý tưởng chính của giải tích: vi phân và tích phân. Nó cho thấy rằng việc tìm diện tích và tìm tỷ lệ thay đổi là hai mặt của một đồng tiền.
 
 ### Phần 1: Đạo hàm của một tích phân
 
@@ -1207,7 +1207,7 @@ $$
 
 - Nó biến đổi tích phân từ một quá trình giới hạn thành một tính toán thực tế.
 - Khẳng định phép vi phân và tích phân là hai phép toán nghịch đảo.
-- Định lý trung tâm làm cho phép tính vi phân trở nên hữu ích trong toán học, khoa học và kỹ thuật.
+- Định lý trung tâm làm cho giải tích vi phân trở nên hữu ích trong toán học, khoa học và kỹ thuật.
 
 ### Bài tập
 
@@ -1678,7 +1678,7 @@ $$
 
 Một số tích phân không thể được tính trực tiếp vì khoảng là vô hạn hoặc tích phân trở nên không bị chặn. Chúng được gọi là tích phân không đúng. Chúng được xác định bằng cách sử dụng các giới hạn.
 
-### Sự định nghĩa
+### Định nghĩa
 
 1. Khoảng thời gian vô hạn
 
@@ -1751,7 +1751,7 @@ $$
 
 ### Tại sao tích phân không đúng lại quan trọng
 
-- Chúng mở rộng tích hợp tới các miền vô hạn và các chức năng không giới hạn.
+- Chúng mở rộng tích hợp tới các miền vô hạn và các hàm số không giới hạn.
 - Chúng rất cần thiết trong xác suất (phân bố liên tục), vật lý (trường hấp dẫn/điện trường) và phân tích Fourier.
 
 ### Bài tập
@@ -1984,7 +1984,7 @@ $$
 
 - Tích phân công xuất hiện trong các tính toán vật lý, kỹ thuật và năng lượng.
 - Giá trị trung bình cho một số đại diện duy nhất cho các đại lượng khác nhau.
-- Cả hai đều kết nối phép tính với các bài toán thực tế về chuyển động, lực và hiệu suất.
+- Cả hai đều kết nối giải tích với các bài toán thực tế về chuyển động, lực và hiệu suất.
 
 ### Bài tập
 
@@ -2080,9 +2080,9 @@ Nó tích hợp thành 1, nhưng đòi hỏi kỹ thuật tiên tiến.
 
 ## 7.1 Hàm vectơ và đường cong không gian
 
-Trong phép tính nhiều biến, các hàm có thể xuất ra vectơ thay vì số. Chúng được gọi là các hàm có giá trị vectơ và chúng rất cần thiết để mô tả các đường cong trong không gian.
+Trong giải tích nhiều biến, các hàm có thể xuất ra vectơ thay vì số. Chúng được gọi là các hàm có giá trị vectơ và chúng rất cần thiết để mô tả các đường cong trong không gian.
 
-### Sự định nghĩa
+### Định nghĩa
 
 Hàm vectơ là hàm có dạng
 
@@ -2135,7 +2135,7 @@ $$
 
 ### Tại sao điều này lại quan trọng
 
-Hàm vectơ là nền tảng cho phép tính nhiều biến, cho phép chúng ta mở rộng ý tưởng về đạo hàm và tích phân sang các chiều cao hơn. Chúng cũng xuất hiện một cách tự nhiên trong vật lý (chuyển động trong không gian 3D, điện từ, động lực học chất lỏng).
+Hàm vectơ là nền tảng cho giải tích nhiều biến, cho phép chúng ta mở rộng ý tưởng về đạo hàm và tích phân sang các chiều cao hơn. Chúng cũng xuất hiện một cách tự nhiên trong vật lý (chuyển động trong không gian 3D, điện từ, động lực học chất lỏng).
 
 ### Bài tập
 
@@ -2222,7 +2222,7 @@ $$
 
 - Đạo hàm của hàm vectơ mô tả chuyển động và các lực trong không gian.
 - Tích phân cho biết độ dịch chuyển, công và các đại lượng tích lũy.
-- Những công cụ này kết nối trực tiếp phép tính với vật lý và kỹ thuật.
+- Những công cụ này kết nối trực tiếp giải tích với vật lý và kỹ thuật.
 
 ### Bài tập
 
@@ -2403,7 +2403,7 @@ $$
 
 ## 8.1 Giới hạn và tính liên tục của một số biến
 
-Trong phép tính nhiều biến, các hàm có thể phụ thuộc vào hai hoặc nhiều biến, chẳng hạn như $f(x,y)$ hoặc $f(x,y,z)$. Các khái niệm về giới hạn và tính liên tục mở rộng một cách tự nhiên từ phép tính một biến, nhưng chúng tinh tế hơn vì chúng ta phải xem xét tất cả các cách tiếp cận có thể có.
+Trong giải tích nhiều biến, các hàm có thể phụ thuộc vào hai hoặc nhiều biến, chẳng hạn như $f(x,y)$ hoặc $f(x,y,z)$. Các khái niệm về giới hạn và tính liên tục mở rộng một cách tự nhiên từ giải tích một biến, nhưng chúng tinh tế hơn vì chúng ta phải xem xét tất cả các cách tiếp cận có thể có.
 
 ### Giới hạn của hai biến
 
@@ -2451,7 +2451,7 @@ $$
 
 - Tính liên tục đảm bảo không có bước nhảy, lỗ trống hoặc tiệm cận trong hàm số nhiều biến.
 - Giới hạn là cơ sở để xác định đạo hàm riêng và tích phân bội.
-- Những khái niệm này là nền tảng cho phép tính nhiều biến.
+- Những khái niệm này là nền tảng cho giải tích nhiều biến.
 
 ### Bài tập
 
@@ -2465,7 +2465,7 @@ $$
 
 Trong hàm nhiều biến, chúng ta thường muốn đo xem hàm này thay đổi như thế nào khi chỉ có một biến thay đổi trong khi các biến khác không đổi. Điều này dẫn đến ý tưởng về đạo hàm riêng.
 
-### Sự định nghĩa
+### Định nghĩa
 
 Đối với hàm $f(x,y)$, đạo hàm riêng đối với $x$ tại một điểm $(a,b)$ là
 
@@ -2607,7 +2607,7 @@ $$
 
 ## 8.4 Mặt phẳng tiếp tuyến và xấp xỉ tuyến tính
 
-Trong phép tính một biến, đường tiếp tuyến gần giống một đường cong gần một điểm. Trong phép tính nhiều biến, khái niệm tương tự là mặt phẳng tiếp tuyến, cung cấp một phép tính gần đúng tuyến tính cho một bề mặt gần một điểm.
+Trong giải tích một biến, đường tiếp tuyến gần giống một đường cong gần một điểm. Trong giải tích nhiều biến, khái niệm tương tự là mặt phẳng tiếp tuyến, cung cấp một giải tích gần đúng tuyến tính cho một bề mặt gần một điểm.
 
 ### Mặt phẳng tiếp tuyến với một bề mặt
 
@@ -2659,7 +2659,7 @@ $$
 
 ### Tại sao điều này lại quan trọng
 
-- Các mặt phẳng tiếp tuyến cho phép tính gần đúng tuyến tính tốt nhất của một bề mặt.
+- Các mặt phẳng tiếp tuyến cho giải tích gần đúng tuyến tính tốt nhất của một bề mặt.
 - Tuyến tính hóa đơn giản hóa các hàm phức tạp để tính toán.
 - Được sử dụng rộng rãi trong các phương pháp số, vật lý và kinh tế.
 
@@ -2668,12 +2668,12 @@ $$
 1. Tìm mặt phẳng tiếp tuyến của $z = x^2y + y^2$ tại $(1,1)$.
 2. Gần đúng $f(x,y) = e^{x+y}$ gần $(0,0)$.
 3. Suy ra phương trình mặt phẳng tiếp tuyến của $z = \ln(x^2+y^2)$ tại $(1,1)$.
-4. Sử dụng phép tính gần đúng tuyến tính để ước tính $\sqrt{10.1}$ bằng cách sử dụng $f(x,y) = \sqrt{x+y}$ gần (4,6).
-5. Giải thích tại sao phép tính gần đúng của mặt phẳng tiếp tuyến được cải thiện khi $(x,y)$ tiến gần hơn đến $(a,b)$.
+4. Sử dụng giải tích gần đúng tuyến tính để ước tính $\sqrt{10.1}$ bằng cách sử dụng $f(x,y) = \sqrt{x+y}$ gần (4,6).
+5. Giải thích tại sao giải tích gần đúng của mặt phẳng tiếp tuyến được cải thiện khi $(x,y)$ tiến gần hơn đến $(a,b)$.
 
 ## 8.5 Tối ưu hóa nhiều biến
 
-Tối ưu hóa trong phép tính nhiều biến mở rộng ý tưởng về cực đại và cực tiểu từ hàm một biến đến hàm hai biến trở lên.
+Tối ưu hóa trong giải tích nhiều biến mở rộng ý tưởng về cực đại và cực tiểu từ hàm một biến đến hàm hai biến trở lên.
 
 ### Điểm quan trọng
 
@@ -2749,9 +2749,9 @@ Ví dụ: Tối đa hóa $f(x,y) = xy$ tùy thuộc vào $x^2+y^2=1$.
 
 ## 9.1 Tích phân kép
 
-Trong phép tính một biến, tích phân xác định cho diện tích dưới một đường cong. Trong hai biến, tích phân kép tính thể tích dưới một bề mặt (hay nói chung hơn là tích lũy các giá trị trên một vùng).
+Trong giải tích một biến, tích phân xác định cho diện tích dưới một đường cong. Trong hai biến, tích phân kép tính thể tích dưới một bề mặt (hay nói chung hơn là tích lũy các giá trị trên một vùng).
 
-### Sự định nghĩa
+### Định nghĩa
 
 Nếu $f(x,y)$ liên tục trên vùng $R$, thì tích phân kép là
 
@@ -2832,7 +2832,7 @@ Tích phân kép mở rộng tích phân sang hai chiều. Chúng rất cần th
 
 Tích phân ba lớp mở rộng ý tưởng tích phân cho ba biến, cho phép chúng ta tính thể tích, khối lượng và các đại lượng khác trong vùng ba chiều.
 
-### Sự định nghĩa
+### Định nghĩa
 
 Nếu $f(x,y,z)$ liên tục trên một vùng đặc $E$, thì tích phân bội ba là
 
@@ -2915,7 +2915,7 @@ Vậy thể tích của vùng tam giác này là $\tfrac{1}{6}$.
 
 ### Tại sao điều này lại quan trọng
 
-Tích phân ba tổng quát hóa các phép tính diện tích và thể tích cho các chất rắn tùy ý. Chúng được sử dụng trong vật lý (phân bố khối lượng, tâm khối lượng, trường hấp dẫn), kỹ thuật và xác suất.
+Tích phân ba tổng quát hóa các giải tích diện tích và thể tích cho các chất rắn tùy ý. Chúng được sử dụng trong vật lý (phân bố khối lượng, tâm khối lượng, trường hấp dẫn), kỹ thuật và xác suất.
 
 ### Bài tập
 
@@ -2989,7 +2989,7 @@ $$
 ### Tại sao điều này lại quan trọng
 
 - Khối lượng khái quát hình học cho chất rắn không đều.
-- Tích phân khối lượng và mật độ kết nối phép tính với vật lý và kỹ thuật.
+- Tích phân khối lượng và mật độ kết nối giải tích với vật lý và kỹ thuật.
 - Hàm mật độ xác suất ở các chiều cao hơn được sử dụng rộng rãi trong thống kê và khoa học dữ liệu.
 
 ### Bài tập
@@ -3100,7 +3100,7 @@ $$
 
 Trường vectơ gán một vectơ cho mỗi điểm trong không gian, giống như hàm vô hướng gán một số. Trường vectơ được sử dụng để mô hình hóa dòng chảy, lực và các đại lượng định hướng khác.
 
-### Sự định nghĩa
+### Định nghĩa
 
 Trong hai chiều, trường vectơ là một hàm
 
@@ -3159,7 +3159,7 @@ Các đường dòng mô tả đường đi của hạt trong trường vận t�
 ### Tại sao điều này lại quan trọng
 
 - Trường vectơ là cơ sở của vật lý (dòng chất lỏng, điện từ, lực hấp dẫn).
-- Chúng tạo thành cơ sở của tích phân đường, tích phân mặt và các định lý lớn của phép tính vectơ (Green, Stokes, Divergence).
+- Chúng tạo thành cơ sở của tích phân đường, tích phân mặt và các định lý lớn của giải tích vectơ (Green, Stokes, Divergence).
 - Cung cấp một cách hình học để biểu diễn các đại lượng có hướng.
 
 ### Bài tập
@@ -3228,7 +3228,7 @@ $$
 ### Tại sao điều này lại quan trọng
 
 - Tích phân đường kết nối các trường vectơ với các đại lượng vật lý như công và tuần hoàn.
-- Chúng là những khối xây dựng cho Định lý Green và Định lý Stokes.
+- Chúng là những nền tảng cho Định lý Green và Định lý Stokes.
 - Xuất hiện trong vật lý (điện thế, dòng chất lỏng, cơ học).
 
 ### Bài tập
@@ -3312,7 +3312,7 @@ $$
 
 ## 10.4 Định lý Green
 
-Định lý Green là một kết quả cơ bản trong phép tính vectơ nối tích phân đường xung quanh một đường cong kín với tích phân kép trên vùng mà nó bao quanh. Đây là phiên bản hai chiều của Định lý Stokes.
+Định lý Green là một kết quả cơ bản trong giải tích vectơ nối tích phân đường xung quanh một đường cong kín với tích phân kép trên vùng mà nó bao quanh. Đây là phiên bản hai chiều của Định lý Stokes.
 
 ### Tuyên bố Định lý Green
 
@@ -3565,7 +3565,7 @@ Ví dụ: $a_n = 2^n$ → lũy thừa của 2.
    a_n = (-1)^n.
    $$
 
-### Dãy số trong phép tính
+### Dãy số trong giải tích
 
 Trình tự là nền tảng cho các quá trình vô hạn:
 
@@ -3575,7 +3575,7 @@ Trình tự là nền tảng cho các quá trình vô hạn:
 
 ### Tại sao điều này lại quan trọng
 
-- Chuỗi cung cấp các khối xây dựng cho chuỗi vô hạn và chuỗi xấp xỉ.
+- Chuỗi cung cấp các nền tảng cho chuỗi vô hạn và chuỗi xấp xỉ.
 - Chúng cho phép chúng ta định nghĩa chặt chẽ việc “tiến tới vô cực” và sự hội tụ.
 - Nhiều hàm số quan trọng (lũy thừa, lượng giác) có thể được biểu diễn thông qua dãy số và chuỗi.
 
@@ -3661,7 +3661,7 @@ Một kết quả cơ bản trong phân tích:
 
 Câu hỏi trọng tâm về một dãy là liệu các số hạng của nó có tiến tới một giá trị duy nhất khi $n$ tăng lên hay không. Điều này dẫn đến khái niệm giới hạn của dãy.
 
-### Sự định nghĩa
+### Định nghĩa
 
 Một dãy $(a_n)$ có một giới hạn $L$ nếu, với mỗi $\varepsilon > 0$, tồn tại một số nguyên $N$ sao cho
 
@@ -3760,7 +3760,7 @@ $$
 
 Một chuỗi là tổng các số hạng của một dãy. Thay vì chỉ liệt kê các số, chúng tôi cộng chúng lại với nhau và nghiên cứu xem tổng vô hạn có tiến tới giá trị hữu hạn hay không.
 
-### Sự định nghĩa
+### Định nghĩa
 
 Cho một dãy $(a_n)$, chuỗi tương ứng là
 
@@ -4001,7 +4001,7 @@ Kết quả đáng ngạc nhiên này cho thấy bản chất mong manh của s�
 
 ## Dòng điện 13.1
 
-Chuỗi lũy thừa là chuỗi vô hạn trong đó mỗi số hạng liên quan đến lũy thừa của biến. Chuỗi lũy thừa là trung tâm của phép tính vì chúng cho phép chúng ta biểu diễn các hàm số dưới dạng đa thức vô hạn.
+Chuỗi lũy thừa là chuỗi vô hạn trong đó mỗi số hạng liên quan đến lũy thừa của biến. Chuỗi lũy thừa là trung tâm của giải tích vì chúng cho phép chúng ta biểu diễn các hàm số dưới dạng đa thức vô hạn.
 
 ### Mẫu chung
 
@@ -4051,7 +4051,7 @@ Với mỗi chuỗi lũy thừa tồn tại bán kính hội tụ $R$ sao cho:
 ### Tại sao điều này lại quan trọng
 
 - Chuỗi lũy thừa cho phép ta tính gần đúng hàm số bằng đa thức.
-- Họ kết nối phép tính với phân tích và phương trình vi phân.
+- Họ kết nối giải tích với phân tích và phương trình vi phân.
 - Nhiều hàm đặc biệt trong toán học và vật lý được xác định bằng chuỗi lũy thừa.
 
 ### Bài tập
@@ -4066,7 +4066,7 @@ Với mỗi chuỗi lũy thừa tồn tại bán kính hội tụ $R$ sao cho:
 
 Mọi chuỗi lũy thừa đều hội tụ đối với một số giá trị của $x$ và phân kỳ đối với các giá trị khác. Ranh giới giữa hai hành vi này được mô tả bằng bán kính hội tụ.
 
-### Sự định nghĩa
+### Định nghĩa
 
 Đối với chuỗi điện
 
@@ -4154,7 +4154,7 @@ Tập hợp các giá trị $x$ trong đó chuỗi hội tụ được gọi là
 
 - Bán kính hội tụ cho chúng ta biết chuỗi lũy thừa hoạt động giống như hàm số ở đâu.
 - Cần thiết cho việc sử dụng khai triển chuỗi Taylor trong thực tế.
-- Xác định phạm vi nghiệm của dãy nghiệm trong vật lý và kỹ thuật.
+- Xác định tập giá trị nghiệm của dãy nghiệm trong vật lý và kỹ thuật.
 
 ### Bài tập
 
@@ -4238,7 +4238,7 @@ $$
 
 ### Tại sao điều này lại quan trọng
 
-- Chuỗi Taylor cung cấp các phép tính gần đúng đa thức cho các hàm phức tạp.
+- Chuỗi Taylor cung cấp các giải tích gần đúng đa thức cho các hàm phức tạp.
 - Chúng rất cần thiết trong phân tích số, vật lý và kỹ thuật.
 - Khai triển chuỗi Maclaurin đưa ra các công thức đơn giản cho các hàm số mũ, lượng giác và logarit.
 
@@ -4297,7 +4297,7 @@ Ví dụ: Nghiệm của $y'' + y = 0$ với $y(0)=0, y'(0)=1$ là $\sin x$, xu�
 ### Xác suất và Thống kê
 
 - Hàm sinh mômen và hàm đặc tính sử dụng chuỗi lũy thừa.
-- Các phép tính gần đúng của phân bố xác suất (ví dụ: xấp xỉ chuẩn với nhị thức) sử dụng khai triển Taylor.
+- Các giải tích gần đúng của phân bố xác suất (ví dụ: xấp xỉ chuẩn với nhị thức) sử dụng khai triển Taylor.
 
 ### Tại sao điều này lại quan trọng
 
@@ -4308,10 +4308,10 @@ Ví dụ: Nghiệm của $y'' + y = 0$ với $y(0)=0, y'(0)=1$ là $\sin x$, xu�
 ### Bài tập
 
 1. Sử dụng chuỗi Maclaurin cho $e^x$ để tính gần đúng $e^{0.1}$ tới bốn chữ số thập phân.
-2. Áp dụng phép tính gần đúng góc nhỏ để ước tính $\sin(5^\circ)$.
+2. Áp dụng giải tích gần đúng góc nhỏ để ước tính $\sin(5^\circ)$.
 3. Giải phương trình vi phân $y'' = -y$ bằng cách sử dụng phương pháp chuỗi lũy thừa.
 4. Khai triển $\ln(1+x)$ lên đến bậc 4 và sử dụng nó để tính gần đúng $\ln(1.1)$.
-5. Giải thích tại sao phép tính gần đúng đa thức đặc biệt hữu ích cho máy tính và máy tính bỏ túi.
+5. Giải thích tại sao giải tích gần đúng đa thức đặc biệt hữu ích cho máy tính và máy tính bỏ túi.
 
 #Phụ lục
 
@@ -4397,7 +4397,7 @@ $$
 
 ### A.2 Cơ bản về lượng giác
 
-Lượng giác cung cấp ngôn ngữ của các góc và hiện tượng tuần hoàn. Vì phép tính thường xử lý các dao động, chuyển động và sóng nên việc nắm vững các hàm lượng giác và các tính chất của chúng là điều cần thiết.
+Lượng giác cung cấp ngôn ngữ của các góc và hiện tượng tuần hoàn. Vì giải tích thường xử lý các dao động, chuyển động và sóng nên việc nắm vững các hàm lượng giác và các tính chất của chúng là điều cần thiết.
 
 #### Vòng tròn đơn vị
 
@@ -4657,7 +4657,7 @@ $$
 
 ### B.3 Mở rộng chuỗi thông thường
 
-Chuỗi lũy thừa cho phép chúng ta biểu diễn các hàm dưới dạng đa thức vô hạn. Những mở rộng này rất cần thiết cho các phép tính gần đúng, giải phương trình vi phân và xây dựng trực giác về các hàm trong phép tính.
+Chuỗi lũy thừa cho phép chúng ta biểu diễn các hàm dưới dạng đa thức vô hạn. Những mở rộng này rất cần thiết cho các giải tích gần đúng, giải phương trình vi phân và xây dựng trực giác về các hàm trong giải tích.
 
 #### Chuỗi hình học
 
@@ -4716,7 +4716,7 @@ Phép tính dựa trên ý nghĩa chính xác của giới hạn. Mặc dù tr�
 
 #### Ý tưởng trực quan
 
-Chúng tôi viết
+Ta viết
 
 $$
 \lim_{x \to a} f(x) = L
@@ -4796,9 +4796,9 @@ $$
 \lim_{x \to a} [f(x)]^n = L^n, \quad \lim_{x \to a} \sqrt[n]{f(x)} = \sqrt[n]{L} \ (\text{if defined}).
 $$
 
-### C.2 Phác thảo chứng minh: Định lý cơ bản của phép tính
+### C.2 Phác thảo chứng minh: Định lý cơ bản của giải tích
 
-Định lý cơ bản của phép tính (FTC) liên kết hai phép tính trung tâm của phép tính: vi phân và tích phân. Nó cho thấy rằng trên thực tế, chúng là những quá trình nghịch đảo.
+Định lý cơ bản của giải tích (FTC) liên kết hai giải tích trung tâm của giải tích: vi phân và tích phân. Nó cho thấy rằng trên thực tế, chúng là những quá trình nghịch đảo.
 
 #### Phát biểu của Định lý
 
@@ -4981,7 +4981,7 @@ Vì vậy vật chuyển động tuyến tính nhanh hơn theo thời gian với
 
 #### Công việc và sức ép
 
-Trong vật lý, công là tích của lực và khoảng cách. Nếu lực thay đổi theo vị trí, phép tính sẽ cho:
+Trong vật lý, công là tích của lực và khoảng cách. Nếu lực thay đổi theo vị trí, giải tích sẽ cho:
 
 $$
 W = \int_a^b F(x)\, dx
@@ -5099,7 +5099,7 @@ Giải tích không chỉ dành cho vật lý - nó còn là nền tảng của 
 
 #### Xấp xỉ hàm cho máy tính
 
-Máy tính không thể trực tiếp lưu trữ hoặc tính toán chính xác hầu hết các hàm (như $e^x$, $\sin x$ hoặc $\ln x$). Thay vào đó, họ sử dụng các phép tính gần đúng đa thức rút ra từ khai triển Taylor.
+Máy tính không thể trực tiếp lưu trữ hoặc tính toán chính xác hầu hết các hàm (như $e^x$, $\sin x$ hoặc $\ln x$). Thay vào đó, họ sử dụng các giải tích gần đúng đa thức rút ra từ khai triển Taylor.
 
 Ví dụ:
 Để ước chừng $e^x$, hãy cắt bớt chuỗi Maclaurin:
@@ -5113,7 +5113,7 @@ $$
 #### Hiệu quả trong thuật toán
 
 - Hàm lượng giác: Các thuật toán cho máy tính và CPU thường sử dụng khai triển chuỗi (hoặc các biến thể như đa thức Chebyshev).
-- Hàm mũ/logarit: Khai triển Taylor là nền tảng của phép tính gần đúng nhanh trong các thư viện số.
+- Hàm mũ/logarit: Khai triển Taylor là nền tảng của giải tích gần đúng nhanh trong các thư viện số.
 - Tìm nghiệm: Phương pháp Newton dựa trên phép gần đúng tuyến tính, ứng dụng trực tiếp chuỗi Taylor (đạo hàm bậc nhất).
 
 #### Phân tích số
@@ -5137,12 +5137,12 @@ Khai triển Taylor là trọng tâm trong phân tích lỗi:
 
 - Phép tính gần đúng Taylor kết nối toán học liên tục với tính toán rời rạc.
 - Chúng cho thấy các khái niệm tính toán được sử dụng như thế nào trong các thuật toán, phương pháp số và học máy.
-- Hiểu được các phép tính gần đúng giúp tránh được những cạm bẫy khi dựa vào máy tính để tính toán.
+- Hiểu được các giải tích gần đúng giúp tránh được những cạm bẫy khi dựa vào máy tính để tính toán.
 
 ####Thực hành nhanh
 
 1. Tính gần đúng $\sin(0,1)$ bằng cách sử dụng ba số hạng đầu tiên của chuỗi Maclaurin.
 2. Sử dụng số hạng còn lại để ước tính sai số khi xấp xỉ $e^1$ với đa thức bậc 3.
 3. Giải thích cách sử dụng định lý Taylor trong phương pháp Newton.
-4. Tại sao máy tính có thể thích các phép tính gần đúng đa thức hơn là các công thức chính xác của hàm số?
+4. Tại sao máy tính có thể thích các giải tích gần đúng đa thức hơn là các công thức chính xác của hàm số?
 5. Trong học máy, tại sao đạo hàm (độ dốc) lại quan trọng đối với việc tối ưu hóa?

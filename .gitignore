@@ -21,3 +21,9 @@ Thumbs.db
 
 
 /.quarto/
+
+# Generated book binaries (not committed)
+book.pdf
+book.epub
+artifacts/*/book.pdf
+artifacts/*/book.epub

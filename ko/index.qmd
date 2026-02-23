@@ -9,9 +9,9 @@ lang: ko
 
 ## 형식
 
-- [Download PDF](../book.pdf) – 인쇄 가능 버전
-- [Download EPUB](../book.epub) – e-reader 친화적
-- [View LaTeX](../book.tex) – 라텍스 소스
+- [Download PDF](../artifacts/ko/book.pdf) – 인쇄 가능 버전
+- [Download EPUB](../artifacts/ko/book.epub) – e-reader 친화적
+- [View LaTeX](../artifacts/ko/book.tex) – 라텍스 소스
 
 # 1부. 극한과 파생상품
 

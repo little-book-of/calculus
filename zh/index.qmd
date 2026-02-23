@@ -9,9 +9,9 @@ lang: zh
 
 ## 格式
 
-- [下载 PDF](../book.pdf) – 可打印版本
-- [下载 EPUB](../book.epub) – 适合电子阅读器
-- [查看 LaTeX](../book.tex) – Latex 源
+- [下载 PDF](../artifacts/zh/book.pdf) – 可打印版本
+- [下载 EPUB](../artifacts/zh/book.epub) – 适合电子阅读器
+- [查看 LaTeX](../artifacts/zh/book.tex) – Latex 源
 
 # 第 1 部分：极限和导数
 

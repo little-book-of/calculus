@@ -1,0 +1,7911 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\PassOptionsToPackage{dvipsnames,svgnames,x11names}{xcolor}
+%
+\documentclass[
+  letterpaper,
+  DIV=11,
+  numbers=noendperiod]{scrartcl}
+
+\usepackage{amsmath,amssymb}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else  
+    % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+% Make \paragraph and \subparagraph free-standing
+\makeatletter
+\ifx\paragraph\undefined\else
+  \let\oldparagraph\paragraph
+  \renewcommand{\paragraph}{
+    \@ifstar
+      \xxxParagraphStar
+      \xxxParagraphNoStar
+  }
+  \newcommand{\xxxParagraphStar}[1]{\oldparagraph*{#1}\mbox{}}
+  \newcommand{\xxxParagraphNoStar}[1]{\oldparagraph{#1}\mbox{}}
+\fi
+\ifx\subparagraph\undefined\else
+  \let\oldsubparagraph\subparagraph
+  \renewcommand{\subparagraph}{
+    \@ifstar
+      \xxxSubParagraphStar
+      \xxxSubParagraphNoStar
+  }
+  \newcommand{\xxxSubParagraphStar}[1]{\oldsubparagraph*{#1}\mbox{}}
+  \newcommand{\xxxSubParagraphNoStar}[1]{\oldsubparagraph{#1}\mbox{}}
+\fi
+\makeatother
+
+
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}\usepackage{longtable,booktabs,array}
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\usepackage{graphicx}
+\makeatletter
+\newsavebox\pandoc@box
+\newcommand*\pandocbounded[1]{% scales image to fit in text height/width
+  \sbox\pandoc@box{#1}%
+  \Gscale@div\@tempa{\textheight}{\dimexpr\ht\pandoc@box+\dp\pandoc@box\relax}%
+  \Gscale@div\@tempb{\linewidth}{\wd\pandoc@box}%
+  \ifdim\@tempb\p@<\@tempa\p@\let\@tempa\@tempb\fi% select the smaller of both
+  \ifdim\@tempa\p@<\p@\scalebox{\@tempa}{\usebox\pandoc@box}%
+  \else\usebox{\pandoc@box}%
+  \fi%
+}
+% Set default figure placement to htbp
+\def\fps@figure{htbp}
+\makeatother
+
+\KOMAoption{captions}{tableheading}
+\makeatletter
+\@ifpackageloaded{caption}{}{\usepackage{caption}}
+\AtBeginDocument{%
+\ifdefined\contentsname
+  \renewcommand*\contentsname{目次}
+\else
+  \newcommand\contentsname{目次}
+\fi
+\ifdefined\listfigurename
+  \renewcommand*\listfigurename{図一覧}
+\else
+  \newcommand\listfigurename{図一覧}
+\fi
+\ifdefined\listtablename
+  \renewcommand*\listtablename{表一覧}
+\else
+  \newcommand\listtablename{表一覧}
+\fi
+\ifdefined\figurename
+  \renewcommand*\figurename{図}
+\else
+  \newcommand\figurename{図}
+\fi
+\ifdefined\tablename
+  \renewcommand*\tablename{表}
+\else
+  \newcommand\tablename{表}
+\fi
+}
+\@ifpackageloaded{float}{}{\usepackage{float}}
+\floatstyle{ruled}
+\@ifundefined{c@chapter}{\newfloat{codelisting}{h}{lop}}{\newfloat{codelisting}{h}{lop}[chapter]}
+\floatname{codelisting}{コード}
+\newcommand*\listoflistings{\listof{codelisting}{コード一覧}}
+\makeatother
+\makeatletter
+\makeatother
+\makeatletter
+\@ifpackageloaded{caption}{}{\usepackage{caption}}
+\@ifpackageloaded{subcaption}{}{\usepackage{subcaption}}
+\makeatother
+
+\ifLuaTeX
+\usepackage[bidi=basic]{babel}
+\else
+\usepackage[bidi=default]{babel}
+\fi
+\babelprovide[main,import]{japanese}
+% get rid of language-specific shorthands (see #6817):
+\let\LanguageShortHands\languageshorthands
+\def\languageshorthands#1{}
+\usepackage{bookmark}
+
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same} % disable monospaced font for URLs
+\hypersetup{
+  pdftitle={The Little Book of Calculus (日本語版)},
+  pdflang={ja},
+  colorlinks=true,
+  linkcolor={blue},
+  filecolor={Maroon},
+  citecolor={Blue},
+  urlcolor={Blue},
+  pdfcreator={LaTeX via pandoc}}
+
+
+\title{The Little Book of Calculus (日本語版)}
+\author{}
+\date{}
+
+\begin{document}
+\maketitle
+
+
+\section{微積分の小さな本}\label{ux5faeux7a4dux5206ux306eux5c0fux3055ux306aux672c}
+
+微積分の中核となる考え方を初心者向けに簡潔にまとめた入門書。
+
+\subsection{フォーマット}\label{ux30d5ux30a9ux30fcux30deux30c3ux30c8}
+
+\begin{itemize}
+\tightlist
+\item
+  \href{../artifacts/ja/book.pdf}{Download PDF} -- 印刷可能バージョン
+\item
+  \href{../artifacts/ja/book.epub}{Download EPUB} --
+  電子書籍リーダーに優しい
+\item
+  \href{../artifacts/ja/book.tex}{View LaTeX} -- ラテックス ソース
+\end{itemize}
+
+\section{パート 1.
+極限と導関数}\label{ux30d1ux30fcux30c8-1.-ux6975ux9650ux3068ux5c0eux95a2ux6570}
+
+\section{第1章
+機能と制限事項}\label{ux7b2c1ux7ae0-ux6a5fux80fdux3068ux5236ux9650ux4e8bux9805}
+
+\subsection{1.1 機能}\label{ux6a5fux80fd}
+
+関数は数学における最も基本的なオブジェクトの 1
+つです。関数の本質は、入力を受け取り、出力を 1
+つだけ生成するルールです。関数を使用すると、関係を記述し、現実世界の現象をモデル化し、微積分の機構全体を構築できます。
+
+\subsubsection{定義}\label{ux5b9aux7fa9}
+
+正式には、セット \(X\) (ドメインと呼ばれる) からセット \(Y\)
+(コドメインと呼ばれる) までの関数 \(f\) が記述されます。
+
+\[
+f : X \to Y.
+\]
+
+すべての要素 \(x \in X\) に対して、一意の要素 \(f(x) \in Y\)
+があります。値 \(f(x)\) は、\(f\) の下の \(x\) のイメージと呼ばれます。
+
+\(y = f(x)\) の場合、\(y\) は入力 \(x\)
+に対応する出力です。実際に表示されるすべての出力のセットは、範囲
+(コドメインのサブセット) と呼ばれます。
+
+\subsubsection{例}\label{ux4f8b}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  関数 \(f(x) = x^2\) は、各実数 \(x\) をその 2 乗にマッピングします。
+
+  \begin{itemize}
+  \tightlist
+  \item
+    ドメイン: すべての実数 \(\mathbb{R}\)。
+  \item
+    コドメイン: すべての実数 \(\mathbb{R}\)。
+  \item
+    範囲: すべての非負の実数 \([0, \infty)\)。
+  \end{itemize}
+\item
+  関数 \(g(x) = \dfrac{1}{x}\)
+  は、ゼロ以外の各実数にその逆数を割り当てます。
+
+  \begin{itemize}
+  \tightlist
+  \item
+    ドメイン: \(\mathbb{R} \setminus \{0\}\)。
+  \item
+    範囲: \(\mathbb{R} \setminus \{0\}\)。
+  \end{itemize}
+\item
+  実際の例: \(T(t)\) を、時刻 \(t\) (時間単位) における外気温 (°C 単位)
+  とします。これは「時刻」から「温度」までの関数です。
+\end{enumerate}
+
+\subsubsection{関数の表現方法}\label{ux95a2ux6570ux306eux8868ux73feux65b9ux6cd5}
+
+関数はいくつかの便利な方法で表現できます。
+
+\begin{itemize}
+\tightlist
+\item
+  数式: 例: \(f(x) = \sin x + x^2\)。- グラフ: 座標平面内のすべての点
+  \((x, f(x))\) をプロットします。
+\item
+  テーブル: 個別のデータ セットの入力と出力をペアリングします。
+\item
+  口頭説明: 「各生徒に自分の成績を割り当てます。」
+\end{itemize}
+
+それぞれの表現は、同じ機能のさまざまな側面を強調しています。
+
+\subsubsection{用語}\label{ux7528ux8a9e}
+
+\begin{itemize}
+\tightlist
+\item
+  独立変数: 入力 (通常は \(x\) と書かれます)。
+\item
+  従属変数: 出力 (通常は \(y\) と書かれ、ここでは \(y = f(x)\))。
+\item
+  関数表記: \(f(x)\) は「\(x\) の \(f\)」と読み取られます。
+\end{itemize}
+
+\subsubsection{微積分において関数が重要な理由}\label{ux5faeux7a4dux5206ux306bux304aux3044ux3066ux95a2ux6570ux304cux91cdux8981ux306aux7406ux7531}
+
+微積分は関数がどのように変化するかを研究するものです。微分値は瞬間的な変化率を測定し、積分値は累積された効果を測定します。これらのアイデアを習得するには、まず関数とは何か、そして関数がどのように動作するかをしっかりと理解する必要があります。
+
+\subsubsection{演習}\label{ux6f14ux7fd2}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  関数 \(f(x) = 3x - 2\) の場合:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    ドメイン、コドメイン、および範囲を見つけます。
+  \end{itemize}
+\item
+  関数 \(h(x) = \sqrt{x-1}\)
+  はどの入力に対して定義されていますか?その範囲はどれくらいですか?
+\item
+  日常生活の機能の実例を挙げてください。ドメインとコドメインを明確に記載します。
+\item
+  \(f(x) = |x|\) のグラフをスケッチします。範囲は何ですか?
+\item
+  \(g(x) = \dfrac{1}{x^2+1}\) と仮定します。その範囲が間隔 \((0, 1]\)
+  である理由を説明してください。
+\end{enumerate}
+
+\subsection{1.2
+グラフと変換}\label{ux30b0ux30e9ux30d5ux3068ux5909ux63db}
+
+関数は数式だけでなくグラフからも理解できます。関数 \(f\)
+のグラフは、すべての順序付きペア \((x, f(x))\) のセットであり、\(x\) は
+\(f\)
+のドメインに属します。これらのペアを座標平面にプロットすると、関数がどのように動作するかがわかります。
+
+\subsubsection{基本的なグラフ}\label{ux57faux672cux7684ux306aux30b0ux30e9ux30d5}
+
+いくつかのグラフは非常に基本的なため、覚えておく必要があります。
+
+\begin{itemize}
+\tightlist
+\item
+  \(f(x) = x\): 原点を通る直線。
+\item
+  \(f(x) = x^2\): 上に開く放物線。
+\item
+  \(f(x) = |x|\): 「V」字型のグラフ。
+\item
+  \(f(x) = \frac{1}{x}\): 2 つの分岐を持つ双曲線。- \(f(x) = \sin x\):
+  波状の周期曲線。
+\end{itemize}
+
+これらは、より複雑な機能の構成要素として機能します。
+
+\subsubsection{変換}\label{ux5909ux63db}
+
+簡単なルールを使用して、グラフを移動、引き伸ばし、または反映することができます。
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  垂直方向のシフト: 定数を追加すると、グラフが上下に移動します。
+
+  \[
+  y = f(x) + c \quad \text{is } f(x) \text{ 上に } c. シフトします。
+  \]
+\item
+  水平方向のシフト: 引数内に追加すると、グラフが左または右に移動します。
+
+  \[
+  y = f(x - c) \quad \text{is } f(x) \text{ 右にシフト } c.
+  \]
+\item
+  垂直方向のスケーリング:
+  定数を乗算すると、グラフが垂直方向に伸縮されます。
+
+  \[
+  y = a f(x), \quad a > 1 \text{ ストレッチします。 } 0 < a < 1 \text{ 圧縮します。}
+  \]
+\item
+  水平スケーリング: 引数内で乗算すると、グラフが水平方向に伸縮されます。
+
+  \[
+  y = f(bx), \quad b > 1 \text{ は } y\text{-axis} に向かって圧縮します。
+  \]
+\item
+  反省:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \(y = -f(x)\): \(x\) 軸を横切る反射。
+  \item
+    \(y = f(-x)\): \(y\) 軸を横切る反射。
+  \end{itemize}
+\end{enumerate}
+
+\subsubsection{変換の結合}\label{ux5909ux63dbux306eux7d50ux5408}
+
+複雑なグラフは、多くの場合、複数の変換を順番に組み合わせることで作成されます。たとえば:
+
+\[
+y = 2(x-1)^2 + 3
+\]
+
+放物線 \(y = x^2\) を右に 1 シフトし、垂直に 2 伸ばし、上に 3
+シフトすることで得られます。
+
+\subsubsection{演習}\label{ux6f14ux7fd2-1}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \(y = (x+2)^2 - 1\) のグラフをスケッチします。 \(y = x^2\)
+  からの変換のシーケンスを特定します。
+\item
+  \(x\) を \(-x\) に置き換えると、\(y = f(x)\) のグラフはどうなりますか?
+  \(f(x) = \sqrt{x}\) で試してください。
+\item
+  \(y = \sin x\) を \(y = 3\sin(x - \pi/4)\)
+  に変える変換について説明します。
+\item
+  \(y = |x-1| + 2\) のグラフを描きます。各枝の頂点と傾きを記述します。
+\item
+  \(y = \frac{1}{x-2}\) について、\(y = \frac{1}{x}\)
+  のグラフがどのように変換されたかを説明してください。
+\end{enumerate}
+
+\subsection{1.3
+限界の直感的な考え方多くの状況では、ある点での関数の値は、その点付近で取られる値ほど重要ではありません。制限の概念はこの考え方を捉えています。}\label{ux9650ux754cux306eux76f4ux611fux7684ux306aux8003ux3048ux65b9ux591aux304fux306eux72b6ux6cc1ux3067ux306fux3042ux308bux70b9ux3067ux306eux95a2ux6570ux306eux5024ux306fux305dux306eux70b9ux4ed8ux8fd1ux3067ux53d6ux3089ux308cux308bux5024ux307bux3069ux91cdux8981ux3067ux306fux3042ux308aux307eux305bux3093ux5236ux9650ux306eux6982ux5ff5ux306fux3053ux306eux8003ux3048ux65b9ux3092ux6349ux3048ux3066ux3044ux307eux3059}
+
+\subsubsection{価値観に近づく}\label{ux4fa1ux5024ux89b3ux306bux8fd1ux3065ux304f}
+
+壁に向かって歩いているところを想像してみてください。触れる前からどんどん近づいてきます。同様に、\(x\)
+が数値 \(a\) に近づくと、\(f(x)\) の値は数値 \(L\)
+に近づく可能性があります。次に、次のように言います。
+
+\[
+\lim_{x \to a} f(x) = L。
+\]
+
+これは、\(x\) を \(a\) に十分近づけるだけで、\(f(x)\) を \(L\)
+に近づけることができるという考えを表しています。
+
+\subsubsection{例}\label{ux4f8b-1}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  \(f(x) = 2x + 3\) の場合: \(x \to 1\)、\(f(x) \to 5\) として。
+\item
+  \(f(x) = \dfrac{\sin x}{x}\) の場合: \(f(0)\)
+  が定義されていない場合でも、\(x \to 0\) と関数は 1 に近づきます。
+\item
+  \(f(x) = \dfrac{1}{x}\) の場合: \(x \to 0^+\)
+  (右から近づく)、\(f(x) \to +\infty\) となります。 \(x \to 0^-\)
+  (左から近づく)、\(f(x) \to -\infty\)。 左右の動作が異なるため、0
+  での制限は存在しません。
+\end{enumerate}
+
+\subsubsection{制限の重要性}\label{ux5236ux9650ux306eux91cdux8981ux6027}
+
+\begin{itemize}
+\tightlist
+\item
+  元々定義されていない箇所で関数を定義できるようになります。
+\item
+  不連続点や特異点付近の動作を捕捉します。
+\item
+  微分 (瞬間的な変化率) と積分 (和の限界としての面積)
+  の基礎を形成します。
+\end{itemize}
+
+\subsubsection{一方的な制限}\label{ux4e00ux65b9ux7684ux306aux5236ux9650}
+
+場合によっては、左側と右側の動作を別々に研究する必要があります。
+
+\[
+\lim_{x \to a^-} f(x)、\quad \lim_{x \to a^+} f(x)。
+\]
+
+両方が一致する場合、両側制限が存在します。
+
+\subsubsection{演習}\label{ux6f14ux7fd2-2}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \(\lim_{x \to 2} (3x^2 - x)\) を計算します。
+\item
+  \(\lim_{x \to 0} \frac{\sin x}{x}\) とは何ですか? \(\sin x\)
+  のグラフからの直感を使用します。
+\item
+  \(\lim_{x \to 0} |x|/x\) を評価します。両側の制限は存在しますか?
+\item
+  \(\lim_{x \to \infty} \frac{1}{x}\)
+  を見つけます。この結果を言葉で解釈してください。5.
+  \(f(x) = \frac{x^2-1}{x-1}\) の場合、\(\lim_{x \to 1} f(x)\)
+  とは何ですか? \(f(1)\) の値と比較します。
+\end{enumerate}
+
+\subsection{1.4
+限界の正式な定義}\label{ux9650ux754cux306eux6b63ux5f0fux306aux5b9aux7fa9}
+
+イプシロンとデルタの定義を使用すると、限界についての直感的な考え方を正確にすることができます。これにより、\(x\)
+が \(a\) に近づくにつれて、\(f(x)\) が値 \(L\)
+に近づくという厳密な方法が得られます。
+
+\subsubsection{定義}\label{ux5b9aux7fa9-1}
+
+私たちは書きます
+
+\[
+\lim_{x \to a} f(x) = L
+\]
+
+次の条件が当てはまる場合:
+
+すべての \(\varepsilon > 0\) (どんなに小さくても) ごとに、次のような
+\(\delta > 0\) が存在します。
+
+\[
+0 < |x - a| < \デルタ、
+\]
+
+それは次のとおりです
+
+\[
+|f(x) - L| < \バレプシロン。
+\]
+
+言い換えると、\(x\) が \(a\) に十分近い (ただし、\(a\) とは等しくない)
+という条件で、\(f(x)\) を \(L\) に近づけることができます。
+
+\subsubsection{例 1: 一次関数}\label{ux4f8b-1-ux4e00ux6b21ux95a2ux6570}
+
+\(f(x) = 2x + 1\) の場合は、\(\lim_{x \to 3} f(x) = 7\)
+であることを示します。
+
+\begin{itemize}
+\tightlist
+\item
+  \(|f(x) - 7| < \varepsilon\) が必要です。
+\item
+  ただし、\(f(x) - 7 = 2x + 1 - 7 = 2(x - 3)\)。
+\item
+  それで、\(|f(x) - 7| = 2|x - 3|\)。
+\item
+  \(\delta = \varepsilon / 2\) を選択すると、\(|x - 3| < \delta\)
+  の場合は常に \(|f(x) - 7| < \varepsilon\) になります。
+  これは限界を証明しています。
+\end{itemize}
+
+\subsubsection{例 2: 逆関数}\label{ux4f8b-2-ux9006ux95a2ux6570}
+
+\(f(x) = \frac{1}{x}\) の場合は、\(\lim_{x \to 2} f(x) = \tfrac{1}{2}\)
+を検討してください。
+
+\begin{itemize}
+\tightlist
+\item
+  \(\left|\frac{1}{x} - \frac{1}{2}\right| < \varepsilon\) が必要です。
+\item
+  この不等式には代数的操作が必要ですが、\(\varepsilon\) に応じて
+  \(\delta\) を選択することで満たすことができます。
+  プロセスはより複雑ですが、原理は同じです。
+\end{itemize}
+
+\subsubsection{なぜこれが重要なのか}\label{ux306aux305cux3053ux308cux304cux91cdux8981ux306aux306eux304b}
+
+\begin{itemize}
+\tightlist
+\item
+  イプシロンデルタの定義は、限界が曖昧でないこと、または直感のみに基づいていないことを保証します。
+\item
+  連続性、微分、積分の基礎となります。
+\item
+  初心者にとっては抽象的だと感じるかもしれませんが、簡単な例を使って作業すると親しみやすくなります。
+\end{itemize}
+
+\subsubsection{演習}\label{ux6f14ux7fd2-3}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  イプシロンデルタの定義を使用して、\(\lim_{x \to 4} (x+1) = 5\)
+  であることを証明します。2. 正式な定義を使用して
+  \(\lim_{x \to 0} 5x = 0\) であることを示します。
+\item
+  \(\lim_{x \to 0} \frac{1}{x}\) が存在しない理由を説明してください。
+\item
+  \(f(x) = x^2\) の場合、\(\lim_{x \to 2} f(x) = 4\)
+  であることを示します。
+\item
+  制限の定義における \(\varepsilon\) と \(\delta\)
+  の役割を自分の言葉で説明してください。
+\end{enumerate}
+
+\subsection{1.5 継続性}\label{ux7d99ux7d9aux6027}
+
+紙から鉛筆を離さずにグラフを描くことができる場合、関数は連続的です。より正確には、連続性により、入力の小さな変化が出力の小さな変化を生み出すことが保証されます。
+
+\subsubsection{定義}\label{ux5b9aux7fa9-2}
+
+関数 \(f\) は、次の 3 つの条件が満たされる場合、点 \(a\) で連続します。
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \(f(a)\) が定義されています。
+\item
+  \(\lim_{x \to a} f(x)\) が存在します。
+\item
+  \(\lim_{x \to a} f(x) = f(a)\)。
+\end{enumerate}
+
+関数が区間内のすべての点で連続である場合、その関数はその区間で連続であると言います。
+
+\subsubsection{例}\label{ux4f8b-2}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  多項式関数: \(f(x) = x^2 + 3x - 5\) のような関数は、\(\mathbb{R}\)
+  上のどこでも連続です。
+\item
+  有理関数: \(f(x) = \frac{1}{x-1}\) は、未定義の \(x = 1\)
+  を除き、どこでも連続です。
+\item
+  区分関数:
+
+  \[
+  f(x) =
+  \begin{ケース}
+  x^2 & x < 1、\\
+  2 & x = 1、\\
+  x+1 & x > 1、
+  \end{ケース}
+  \]
+
+  この関数には \(x = 1\)
+  で「ジャンプ」があるため、そこでは連続していません。
+\end{enumerate}
+
+\subsubsection{不連続性の種類}\label{ux4e0dux9023ux7d9aux6027ux306eux7a2eux985e}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  除去可能な不連続性: グラフの「穴」。例: \(x=1\) の
+  \(f(x) = \frac{x^2-1}{x-1}\)。
+\item
+  ジャンプの不連続性: 左側と右側の制限が異なります。
+\item
+  無限不連続: 関数は、\(x = 0\) 近くの \(f(x) = 1/x\) と同様に、点近くの
+  \(\pm\infty\) に進みます。
+\end{enumerate}
+
+\subsubsection{中間値定理}\label{ux4e2dux9593ux5024ux5b9aux7406}
+
+関数が \([a, b]\) の間隔で連続している場合、\(f(a)\) と \(f(b)\)
+の間の任意の数 \(N\) に対して、\(f(c) = N\) のようないくつかの
+\(c \in [a, b]\)
+が存在します。この性質は、方程式の根と解の存在を証明する際に重要です。
+
+\subsubsection{演習}\label{ux6f14ux7fd2-4}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  関数 \(f(x) = |x|\) が \(x = 0\) で連続しているかどうかを判断します。
+\item
+  \(f(x) = \frac{x+2}{x^2-1}\) の不連続点を特定します。
+\item
+  すべての多項式関数がどこでも連続である理由を説明します。
+\item
+  ジャンプ不連続性のある関数の例を示します。そのグラフをスケッチします。
+\item
+  中間値定理を使用して、方程式 \(x^3 + x - 1 = 0\) の解が 0 と 1
+  の間であることを示します。
+\end{enumerate}
+
+\section{第2章
+デリバティブ}\label{ux7b2c2ux7ae0-ux30c7ux30eaux30d0ux30c6ux30a3ux30d6}
+
+\subsection{2.1
+変化率としての導関数}\label{ux5909ux5316ux7387ux3068ux3057ux3066ux306eux5c0eux95a2ux6570}
+
+導関数は微積分の中心的な考え方の 1
+つです。入力の変化に応じて関数がどのように変化するか、つまり入力に対する出力の変化率を測定します。
+
+\subsubsection{平均変化率}\label{ux5e73ux5747ux5909ux5316ux7387}
+
+関数 \(f(x)\) の場合、2 点 \(x = a\) と \(x = b\)
+の間の平均変化率は次のようになります。
+
+\[
+\frac{f(b) - f(a)}{b - a}。
+\]
+
+これは、点 \((a, f(a))\) と \((b, f(b))\) を通る割線の傾きです。
+
+\subsubsection{瞬間的な変化率}\label{ux77acux9593ux7684ux306aux5909ux5316ux7387}
+
+\(f(x)\) が 1
+つのポイントでどれだけ速く変化しているかを測定するために、間隔を短縮します。
+
+\[
+f'(a) = \lim_{h \to 0} \frac{f(a+h) - f(a)}{h}。
+\]
+
+この制限が存在する場合、この制限は \(a\) における \(f\)
+の導関数と呼ばれます。幾何学的には、\(f\) の点 \((a, f(a))\)
+における接線の傾きです。
+
+\subsubsection{表記}\label{ux8868ux8a18}
+
+\begin{itemize}
+\tightlist
+\item
+  \(f'(x)\): プライム表記。
+\item
+  \(\dfrac{dy}{dx}\): \(y = f(x)\) の場合に使用されるライプニッツ記法。
+\item
+  \(Df(x)\): 演算子の表記。
+\end{itemize}
+
+これらのシンボルはすべて同じ概念を指します。
+
+\subsubsection{例}\label{ux4f8b-3}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  \(f(x) = x^2\) の場合:
+
+  \[
+  f'(x) = \lim_{h \to 0} \frac{(x+h)^2 - x^2}{h} = \lim_{h \to 0} \frac{2xh + h^2}{h} = 2x。
+  \]
+
+  \(x\) における放物線の傾きは \(2x\) です。
+\item
+  \(f(x) = \sin x\) の場合:
+
+  \[
+  f'(x) = \cos x。
+  \]3. \(f(x) = c\) (定数) の場合:
+
+  \[
+  f'(x) = 0。
+  \]
+
+  定数関数は決して変化しません。
+\end{enumerate}
+
+\subsubsection{解釈}\label{ux89e3ux91c8}
+
+\begin{itemize}
+\tightlist
+\item
+  物理学: \(s(t)\) が位置の場合、\(s'(t)\) は速度です。
+\item
+  経済学: \(C(x)\) がコストの場合、\(C'(x)\) は限界費用です。
+\item
+  生物学: \(P(t)\) が人口の場合、\(P'(t)\) は成長率です。
+\end{itemize}
+
+派生語により、多くの文脈において「変化」が正確になります。
+
+\subsubsection{演習}\label{ux6f14ux7fd2-5}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \(f(x) = 3x^2 - 2x + 1\) に対する \(f'(x)\) を計算します。
+\item
+  \(x = 2\) における \(f(x) = x^3\) への接線の傾きを見つけます。
+\item
+  \(s(t) = t^2 + 2t\) が距離をメートル単位で表す場合、\(t = 5\)
+  での速度はいくらですか?
+\item
+  制限定義を使用して、\(f(x) = \frac{1}{x}\) の導関数を計算します。
+\item
+  \(y = x^2\) のグラフをスケッチし、\(x = 1\) に接線を描きます。
+\end{enumerate}
+
+\subsection{2.2 微分規則}\label{ux5faeux5206ux898fux5247}
+
+導関数が定義されたら、それを計算する効率的な方法が必要になります。微分ルールは、制限定義を繰り返し適用する手間を省くためのショートカットです。
+
+\subsubsection{一定のルール}\label{ux4e00ux5b9aux306eux30ebux30fcux30eb}
+
+\(f(x) = c\) (\(c\) が定数) の場合、
+
+\[
+f'(x) = 0。
+\]
+
+\subsubsection{力の法則}\label{ux529bux306eux6cd5ux5247}
+
+\(f(x) = x^n\) の場合、\(n\) は実数です。
+
+\[
+\frac{d}{dx} \big( x^n \big) = n x^{n-1}。
+\]
+
+例:
+
+\begin{itemize}
+\tightlist
+\item
+  \(\frac{d}{dx}(x^2) = 2x\)。
+\item
+  \(\frac{d}{dx}(x^5) = 5x^4\)。
+\item
+  \(\frac{d}{dx}(\sqrt{x}) = \frac{1}{2\sqrt{x}}\)。
+\end{itemize}
+
+\subsubsection{定数倍数ルール}\label{ux5b9aux6570ux500dux6570ux30ebux30fcux30eb}
+
+\(f(x) = c \cdot g(x)\) の場合、
+
+\[
+f'(x) = c \cdot g'(x)。
+\]
+
+\subsubsection{和と差のルール}\label{ux548cux3068ux5deeux306eux30ebux30fcux30eb}
+
+\begin{itemize}
+\tightlist
+\item
+  \((f + g)' = f' + g'\)。
+\item
+  \((f - g)' = f' - g'\)。
+\end{itemize}
+
+\subsubsection{製品ルール}\label{ux88fdux54c1ux30ebux30fcux30eb}
+
+\(f(x)\) および \(g(x)\) の場合:
+
+\[
+(fg)' = f'g + fg'。
+\]
+
+例: \(f(x) = x^2\)、\(g(x) = \sin x\) の場合:
+
+\[
+(fg)' = (2x)(\sin x) + (x^2)(\cos x)。
+\]
+
+\subsubsection{商の法則}\label{ux5546ux306eux6cd5ux5247}
+
+\(f(x)\) および \(g(x)\) の場合:
+
+\[
+\left(\frac{f}{g}\right)' = \frac{f'g - fg'}{g^2}, \quad g(x) \neq 0。
+\]
+
+例: \(f(x) = x^2\)、\(g(x) = x+1\) の場合:
+
+\[\left(\frac{x^2}{x+1}\right)' = \frac{(2x)(x+1) - (x^2)(1)}{(x+1)^2}。
+\]
+
+\subsubsection{共通関数の導関数}\label{ux5171ux901aux95a2ux6570ux306eux5c0eux95a2ux6570}
+
+\begin{itemize}
+\tightlist
+\item
+  \(\frac{d}{dx}(\sin x) = \cos x\)。
+\item
+  \(\frac{d}{dx}(\cos x) = -\sin x\)。
+\item
+  \(\frac{d}{dx}(e^x) = e^x\)。
+\item
+  \(\frac{d}{dx}(\ln x) = \frac{1}{x}, \quad x > 0\)。
+\end{itemize}
+
+\subsubsection{演習}\label{ux6f14ux7fd2-6}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \(f(x) = 7x^3 - 4x + 9\) を微分します。
+\item
+  積ルールを使用して、\(f(x) = x^2 e^x\) の導関数を見つけます。
+\item
+  商ルールを \(f(x) = \frac{\sin x}{x}\) に適用します。
+\item
+  一連のルールを使用して \(\frac{d}{dx}(\ln(x^2))\) を計算します。
+\item
+  \(f(x) = \frac{1}{x}\) の導関数が \(-\frac{1}{x^2}\)
+  であることを示します。
+\end{enumerate}
+
+\subsection{2.3 連鎖ルール}\label{ux9023ux9396ux30ebux30fcux30eb}
+
+多くの場合、関数はより単純な関数を組み合わせて構築されます。このような複合関数を区別するには、連鎖律を使用します。
+
+\subsubsection{ルール}\label{ux30ebux30fcux30eb}
+
+\(y = f(g(x))\) の場合、
+
+\[
+\frac{dy}{dx} = f'(g(x)) \cdot g'(x)。
+\]
+
+言葉で言えば、外側の関数を微分し、内側を変更しないで、内側の微分値を掛けます。
+
+\subsubsection{例}\label{ux4f8b-4}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  一次関数の二乗
+
+  \[
+  y = (3x+2)^2
+  \]
+
+  外部関数: \(f(u) = u^2\)、内部関数: \(g(x) = 3x+2\)。
+
+  \[
+  y' = 2(3x+2) \cdot 3 = 6(3x+2)。
+  \]
+\item
+  内部が二次関数である指数関数
+
+  \[
+  y = e^{x^2}
+  \]
+
+  外部関数: \(f(u) = e^u\)、内部関数: \(g(x) = x^2\)。
+
+  \[
+  y' = e^{x^2} \cdot 2x = 2x e^{x^2}。
+  \]
+\item
+  根を内側にした対数
+
+  \[
+  y = \ln(\sqrt{x})
+  \]
+
+  外側: \(f(u) = \ln u\)、内側: \(g(x) = \sqrt{x}\)。
+
+  \[
+  y' = \frac{1}{\sqrt{x}} \cdot \frac{1}{2\sqrt{x}} = \frac{1}{2x}。
+  \]
+\end{enumerate}
+
+\subsubsection{一般化された連鎖ルール}\label{ux4e00ux822cux5316ux3055ux308cux305fux9023ux9396ux30ebux30fcux30eb}
+
+複数の入れ子関数 \(y = f(g(h(x)))\) の場合:
+
+\[
+\frac{dy}{dx} = f'(g(h(x))) \cdot g'(h(x)) \cdot h'(x)。
+\]
+
+これは自然に、より深い構成にも拡張されます。
+
+\subsubsection{チェーンルールが重要な理由-
+ある量が別の量に間接的に依存するほぼすべての実世界のモデルを処理します。}\label{ux30c1ux30a7ux30fcux30f3ux30ebux30fcux30ebux304cux91cdux8981ux306aux7406ux7531--ux3042ux308bux91cfux304cux5225ux306eux91cfux306bux9593ux63a5ux7684ux306bux4f9dux5b58ux3059ux308bux307bux307cux3059ux3079ux3066ux306eux5b9fux4e16ux754cux306eux30e2ux30c7ux30ebux3092ux51e6ux7406ux3057ux307eux3059}
+
+\begin{itemize}
+\tightlist
+\item
+  微積分と物理学を結び付けます (例: 位置を通る時間に依存する速度)。
+\item
+  暗黙的な微分や高度なトピックでは必須です。
+\end{itemize}
+
+\subsubsection{演習}\label{ux6f14ux7fd2-7}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \(y = (5x^2 + 1)^3\) を微分します。
+\item
+  \(\frac{d}{dx}(\sin(3x))\) を見つけます。
+\item
+  \(\frac{d}{dx}(\ln(1+x^2))\) を計算します。
+\item
+  \(y = \cos^2(x)\) を微分します。
+\item
+  一般化された連鎖ルールを \(y = e^{\sin(x^2)}\) に適用します。
+\end{enumerate}
+
+\subsection{2.4
+暗黙的な微分}\label{ux6697ux9ed9ux7684ux306aux5faeux5206}
+
+すべての関数が \(y = f(x)\)
+形式で指定されるわけではありません。場合によっては、\(x\) と \(y\)
+が方程式で関連付けられており、\(y\)
+を明示的に解くのは困難または不可能です。このような場合には、陰的微分を使用します。
+
+\subsubsection{アイデア}\label{ux30a2ux30a4ux30c7ux30a2}
+
+方程式に \(x\) と \(y\) の両方が含まれる場合、\(y\) を \(x\)
+の関数として扱い、\(x\) に関して両側を微分できます。 \(y\)
+を含む用語を区別するたびに、\(\frac{dy}{dx}\) を掛けます。
+
+\subsubsection{例 1: 円}\label{ux4f8b-1-ux5186}
+
+方程式:
+
+\[
+x^2 + y^2 = 25
+\]
+
+\(x\) に関して微分します。
+
+\[
+2x + 2y \frac{dy}{dx} = 0。
+\]
+
+\(\frac{dy}{dx}\) を解く:
+
+\[
+\frac{dy}{dx} = -\frac{x}{y}。
+\]
+
+これにより、任意の点における円の接線の傾きが得られます。
+
+\subsubsection{例 2: 変数の積}\label{ux4f8b-2-ux5909ux6570ux306eux7a4d}
+
+方程式:
+
+\[
+xy = 1
+\]
+
+差別化:
+
+\[
+x \frac{dy}{dx} + y = 0。
+\]
+
+それで、
+
+\[
+\frac{dy}{dx} = -\frac{y}{x}。
+\]
+
+\subsubsection{例 3:
+三角関数の関係}\label{ux4f8b-3-ux4e09ux89d2ux95a2ux6570ux306eux95a2ux4fc2}
+
+方程式:
+
+\[
+\sin(xy) = x
+\]
+
+差別化:
+
+\[
+\cos(xy) \cdot \Big(y + x\frac{dy}{dx}\Big) = 1。
+\]
+
+\(\frac{dy}{dx}\) を解く:
+
+\[
+\frac{dy}{dx} = \frac{1 - y\cos(xy)}{x\cos(xy)}。
+\]
+
+\subsubsection{陰的微分が役立つ理由}\label{ux9670ux7684ux5faeux5206ux304cux5f79ux7acbux3064ux7406ux7531}
+
+\begin{itemize}
+\tightlist
+\item
+  多くの重要な曲線 (円、楕円、双曲線) は、自然に暗黙的に定義されます。
+\item
+  最初に \(y\) を解くことなく方程式を微分することができます。-
+  これは、関連する速度や微分方程式などのより高度なトピックにおける重要なステップです。
+\end{itemize}
+
+\subsubsection{演習}\label{ux6f14ux7fd2-8}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  曲線 \(x^2 + xy + y^2 = 7\) について、\(\frac{dy}{dx}\) を見つけます。
+\item
+  \(\cos(x) + \cos(y) = 1\) を暗黙的に微分します。
+\item
+  点 \((1, 2)\) における \(x^3 + y^3 = 9\) への接線の傾きを求めます。
+\item
+  \(x^2 + y^2 = 10\) が与えられた場合、\((x, y) = (1, 3)\) のときの
+  \(\frac{dy}{dx}\) を計算します。
+\item
+  \(e^{xy} = x + y\) を微分して \(\frac{dy}{dx}\) を見つけます。
+\end{enumerate}
+
+\subsection{2.5 高次導関数}\label{ux9ad8ux6b21ux5c0eux95a2ux6570}
+
+これまで、関数の変化率を測定する一次導関数について研究してきました。しかし、導関数自体も微分することができ、より高次の導関数が生じます。
+
+\subsubsection{定義}\label{ux5b9aux7fa9-3}
+
+\begin{itemize}
+\item
+  \(f\) の 2 次導関数は、次の導関数の導関数です。
+
+  \[
+  f''(x) = \frac{d}{dx}\left(f'(x)\right)。
+  \]
+\item
+  より一般的には、\(n\) 番目の導関数は次のように記述されます。
+
+  \[
+  f^{(n)}(x) = \frac{d^n}{dx^n} f(x)。
+  \]
+\end{itemize}
+
+\subsubsection{例}\label{ux4f8b-5}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  \(f(x) = x^3\)
+
+  \begin{itemize}
+  \tightlist
+  \item
+    一次導関数: \(f'(x) = 3x^2\)。
+  \item
+    二次導関数: \(f''(x) = 6x\)。
+  \item
+    三次導関数: \(f^{(3)}(x) = 6\)。
+  \item
+    4 次導関数: \(f^{(4)}(x) = 0\)。
+  \end{itemize}
+\item
+  \(f(x) = \sin x\)
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \(f'(x) = \cos x\)。
+  \item
+    \(f''(x) = -\sin x\)。
+  \item
+    \(f^{(3)}(x) = -\cos x\)。
+  \item
+    \(f^{(4)}(x) = \sin x\)。 導関数は長さ 4
+    のサイクルで繰り返されます。
+  \end{itemize}
+\item
+  \(f(x) = e^x\)
+
+  \begin{itemize}
+  \tightlist
+  \item
+    すべての導関数は \(e^x\) です。
+  \end{itemize}
+\end{enumerate}
+
+\subsubsection{アプリケーション}\label{ux30a2ux30d7ux30eaux30b1ux30fcux30b7ux30e7ux30f3}
+
+\begin{itemize}
+\item
+  凹面: \(f''(x)\) の符号は、\(f\) のグラフが上に凹んでいるか
+  (\(f'' > 0\))、下に凹んでいるか (\(f'' < 0\)) を示します。
+\item
+  変曲点: \(f''(x) = 0\) と凹面が変化する点。
+\item
+  モーション: 物理学では、\(s(t)\) が位置の場合:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \(s'(t)\) = 速度、
+  \item
+    \(s''(t)\) = 加速度、
+  \item
+    \(s^{(3)}(t)\) = ジャーク (加速度の変化率)。
+  \end{itemize}
+\item
+  近似:
+  関数を近似するために使用される高次導関数はテイラー級数に表示されます。\#\#\#
+  演習
+\end{itemize}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \(f(x) = \cos x\) の最初の 4 つの導関数を計算します。
+\item
+  \(f(x) = x^4 - 2x^2 + 3\) の \(f''(x)\) を見つけます。
+\item
+  \(f(x) = e^{2x}\) の場合、\(f^{(n)}(x) = 2^n e^{2x}\)
+  であることを示します。
+\item
+  \(f(x) = x^3 - 3x\) が上に凹む間隔と下に凹む間隔を決定します。
+\item
+  \(s(t) = t^3 - 6t^2 + 9t\) の場合、\(t = 2\)
+  での速度と加速度を求めます。
+\end{enumerate}
+
+\section{第3章
+デリバティブの応用}\label{ux7b2c3ux7ae0-ux30c7ux30eaux30d0ux30c6ux30a3ux30d6ux306eux5fdcux7528}
+
+\subsection{3.1 接線と法線}\label{ux63a5ux7ddaux3068ux6cd5ux7dda}
+
+導関数の最初の応用の 1
+つは、曲線の接線と法線の方程式を見つけることです。これらの線は、特定の点における関数のローカル
+ジオメトリをキャプチャします。
+
+\subsubsection{接線}\label{ux63a5ux7dda}
+
+点 \((a, f(a))\) における曲線 \(y = f(x)\)
+の接線は、そこでグラフにちょうど「接触」し、曲線と同じ傾きを持つ線です。
+
+接線の傾きは導関数で求められます。
+
+\[
+m_{\text{tangent}} = f'(a)。
+\]
+
+したがって、\((a, f(a))\) における接線の方程式は次のようになります。
+
+\[
+y - f(a) = f'(a)(x - a)。
+\]
+
+\subsubsection{法線}\label{ux6cd5ux7dda}
+
+法線は同じ点で接線に対して垂直です。その傾きは接線傾きの負の逆数です。
+
+\[
+m_{\text{normal}} = -\frac{1}{f'(a)}。
+\]
+
+したがって、法線の方程式は次のようになります。
+
+\[
+y - f(a) = -\frac{1}{f'(a)} (x - a), \quad f'(a) \neq 0.
+\]
+
+\subsubsection{例}\label{ux4f8b-6}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  \(f(x) = x^2\) で \(x = 1\)。
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \(f(1) = 1\)、\(f'(x) = 2x\)、つまり \(f'(1) = 2\)。
+  \item
+    接線: \(y - 1 = 2(x - 1)\)、または \(y = 2x - 1\)。
+  \item
+    通常: 傾き = \(-\tfrac{1}{2}\)、つまり方程式は
+    \(y - 1 = -\tfrac{1}{2}(x - 1)\) です。
+  \end{itemize}
+\item
+  \(f(x) = \sin x\) で \(x = \tfrac{\pi}{4}\)。
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \(f(\tfrac{\pi}{4}) = \tfrac{\sqrt{2}}{2}\)、\(f'(\tfrac{\pi}{4}) = \cos(\tfrac{\pi}{4}) = \tfrac{\sqrt{2}}{2}\)。
+  \item
+    接線:
+    \(y - \tfrac{\sqrt{2}}{2} = \tfrac{\sqrt{2}}{2}(x - \tfrac{\pi}{4})\)。
+  \end{itemize}
+\end{enumerate}
+
+\subsubsection{接線と法線が重要な理由- 接線は曲線を局所的に近似します
+(線形近似)。}\label{ux63a5ux7ddaux3068ux6cd5ux7ddaux304cux91cdux8981ux306aux7406ux7531--ux63a5ux7ddaux306fux66f2ux7ddaux3092ux5c40ux6240ux7684ux306bux8fd1ux4f3cux3057ux307eux3059-ux7ddaux5f62ux8fd1ux4f3c}
+
+\begin{itemize}
+\tightlist
+\item
+  法線は、幾何学、光学 (反射/屈折)、力学 (力の方向) で役立ちます。
+\item
+  どちらも最適化と曲率の研究に役割を果たします。
+\end{itemize}
+
+\subsubsection{演習}\label{ux6f14ux7fd2-9}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \(x = 2\) で \(y = x^3\) への接線と法線を見つけます。
+\item
+  \(x = 0\) における \(y = e^x\) への接線と法線を決定します。
+\item
+  \(y = \ln x\) の場合、\(x = 1\) での接線を計算します。
+\item
+  円は \(x^2 + y^2 = 9\)
+  によって与えられます。陰的微分を使用して、\((0,3)\)
+  における接線の傾きを求めます。
+\item
+  \(y = \sqrt{x}\) のグラフをスケッチし、\(x = 4\)
+  に接線と法線を描きます。
+\end{enumerate}
+
+\subsection{3.2 関連料金}\label{ux95a2ux9023ux6599ux91d1}
+
+現実世界の問題の多くでは、2
+つ以上の量が時間とともに変化し、それらの変化率は関連しています。関連レートの問題では、導関数を使用してこれらの関係を記述します。
+
+\subsubsection{一般的なアプローチ}\label{ux4e00ux822cux7684ux306aux30a2ux30d7ux30edux30fcux30c1}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  時間 \(t\) に依存する変数を特定します。
+\item
+  変数を関連付ける方程式を書きます。
+\item
+  連鎖ルールを適用して、\(t\) に関して両側を微分します。
+\item
+  特定の時点での既知の値を代入します。
+\item
+  未知の比率を解きます。
+\end{enumerate}
+
+\subsubsection{例 1:
+円を拡大する}\label{ux4f8b-1-ux5186ux3092ux62e1ux5927ux3059ux308b}
+
+円の半径は \(r\) で、半径は \(\frac{dr}{dt} = 2 \,\text{cm/s}\)
+の割合で増加します。 \(r = 5\) のときの面積 \(A = \pi r^2\)
+の増加率を求めます。
+
+差別化:
+
+\[
+\frac{dA}{dt} = 2\pi r \frac{dr}{dt}。
+\]
+
+代替:
+
+\[
+\frac{dA}{dt} = 2\pi (5)(2) = 20\pi \,\text{cm}^2/\text{s}。
+\]
+
+\subsubsection{例 2:
+スライド式はしご}\label{ux4f8b-2-ux30b9ux30e9ux30a4ux30c9ux5f0fux306fux3057ux3054}
+
+高さ10フィートのはしごが壁に立てかけられています。
+\(\frac{dx}{dt} = 1 \,\text{ft/s}\)
+の位置で底部がスライドして外れます。底部が壁から6フィートの距離にあるとき、上部はどのくらいの速さで滑り落ちますか?
+
+式: \(x^2 + y^2 = 100\)、\(y\) は高さです。
+
+差別化:
+
+\[
+2x \frac{dx}{dt} + 2y \frac{dy}{dt} = 0。
+\]\(x = 6\)、\(y = 8\) で。代替:
+
+\[
+2(6)(1) + 2(8)\frac{dy}{dt} = 0 \quad \Rightarrow \quad \frac{dy}{dt} = -\tfrac{6}{8} = -\tfrac{3}{4}。
+\]
+
+したがって、上部は\(0.75 \,\text{ft/s}\)で滑り落ちます。
+
+\subsubsection{例 3:
+コーン内の水}\label{ux4f8b-3-ux30b3ux30fcux30f3ux5185ux306eux6c34}
+
+高さ12cm、半径6cmの円錐形に水を注ぎます。水深が 4 cm になると、水位は
+\(2 \,\text{cm/s}\)
+で上昇します。量はどれくらいの割合で増加していますか?
+
+方程式:
+\(V = \tfrac{1}{3}\pi r^2 h\)。類似性を使用すると、\(r = \tfrac{h}{2}\)
+になります。代入:
+
+\[
+V = \tfrac{1}{12}\pi h^3。
+\]
+
+差別化:
+
+\[
+\frac{dV}{dt} = \tfrac{1}{4}\pi h^2 \frac{dh}{dt}。
+\]
+
+\(h = 4\)、\(\frac{dh}{dt} = 2\) 時:
+
+\[
+\frac{dV}{dt} = \tfrac{1}{4}\pi (16)(2) = 8\pi \,\text{cm}^3/\text{s}。
+\]
+
+\subsubsection{関連レートが重要な理由}\label{ux95a2ux9023ux30ecux30fcux30c8ux304cux91cdux8981ux306aux7406ux7531}
+
+\begin{itemize}
+\tightlist
+\item
+  物理学、工学、生物学における動きと変化を説明します。
+\item
+  時間依存のプロセスを通じて幾何学と微積分を結び付けます。
+\item
+  彼らは私たちに動的システムを数学的にモデル化するよう訓練します。
+\end{itemize}
+
+\subsubsection{演習}\label{ux6f14ux7fd2-10}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  バルーンは、\(0.5 \,\text{cm/s}\)
+  で半径が増加するように膨張します。半径10cmのとき、体積がどのくらいの速さで増加するかを求めてください。
+\item
+  ある車が時速 40 km で北に走行し、別の車が時速 30 km で東に走行します。
+  2 時間後、二人の距離はどのくらいの速さで広がっていますか?
+\item
+  壁から 20 メートルの距離にあるスポットライトが、秒速 1.5
+  メートルで遠ざかる身長 2 メートルの男性を照らします。彼が光から 5
+  メートル離れたとき、壁に映る彼の影の長さはどのくらいの速さで変化しますか?
+\item
+  立方体の辺の長さは 2 cm/s
+  で増加します。一辺が3cmのとき、表面積はどのくらいの速さで増加しますか?
+\item
+  砂は杭の上に注がれ、半径が常に高さに等しい円錐を形成します。高さが 5
+  cm/s で増加する場合、高さが 10 cm
+  のとき体積はどのくらいの割合で増加しますか?
+\end{enumerate}
+
+\subsection{3.3
+最適化の問題最適化問題では、導関数を使用して、多くの場合、特定の制約の下で関数の最大値または最小値を見つけます。これらの問題は、効率、利益、面積を最大化するか、コスト、距離、時間を最小化したい状況をモデル化します。}\label{ux6700ux9069ux5316ux306eux554fux984cux6700ux9069ux5316ux554fux984cux3067ux306fux5c0eux95a2ux6570ux3092ux4f7fux7528ux3057ux3066ux591aux304fux306eux5834ux5408ux7279ux5b9aux306eux5236ux7d04ux306eux4e0bux3067ux95a2ux6570ux306eux6700ux5927ux5024ux307eux305fux306fux6700ux5c0fux5024ux3092ux898bux3064ux3051ux307eux3059ux3053ux308cux3089ux306eux554fux984cux306fux52b9ux7387ux5229ux76caux9762ux7a4dux3092ux6700ux5927ux5316ux3059ux308bux304bux30b3ux30b9ux30c8ux8dddux96e2ux6642ux9593ux3092ux6700ux5c0fux5316ux3057ux305fux3044ux72b6ux6cc1ux3092ux30e2ux30c7ux30ebux5316ux3057ux307eux3059}
+
+\subsubsection{一般的な手順}\label{ux4e00ux822cux7684ux306aux624bux9806}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  問題を理解する: 最適化する量を特定します。
+\item
+  関数を使用したモデル: 1 つの変数に関して目的関数を記述します。
+\item
+  制約を適用する: 与えられた条件を使用して変数を減らします。
+\item
+  微分: 目的関数の導関数を計算します。
+\item
+  クリティカルポイントを見つけます: \(f'(x) = 0\) または \(f'(x)\)
+  が未定義の場所を解決します。
+\item
+  最大値/最小値のテスト:
+  二次導関数テストを使用するか、エンドポイントを確認します。
+\item
+  結果を解釈する: 元の文脈で答えを述べます。
+\end{enumerate}
+
+\subsubsection{例 1:
+長方形の最大面積}\label{ux4f8b-1-ux9577ux65b9ux5f62ux306eux6700ux5927ux9762ux7a4d}
+
+長方形の周囲は 40 です。その面積を最大化する寸法は何ですか?
+
+\begin{itemize}
+\tightlist
+\item
+  長さ \(x\)、幅 \(y\) とします。制約:
+  \(2x + 2y = 40 \Rightarrow y = 20 - x\)。
+\item
+  エリア: \(A = xy = x(20 - x) = 20x - x^2\)。
+\item
+  派生語: \(A'(x) = 20 - 2x\)。 0 に設定します: \(x = 10\)。
+\item
+  それなら\(y = 10\)。
+\item
+  最大エリア: \(100\)。長方形は正方形です。
+\end{itemize}
+
+\subsubsection{例 2:
+距離の最小化}\label{ux4f8b-2-ux8dddux96e2ux306eux6700ux5c0fux5316}
+
+\((0,3)\) に最も近い放物線 \(y = x^2\) 上の点を見つけます。
+
+\begin{itemize}
+\tightlist
+\item
+  二乗距離: \(D(x) = (x-0)^2 + (x^2 - 3)^2\)。
+\item
+  展開:
+  \(D(x) = x^2 + (x^2 - 3)^2 = x^2 + x^4 - 6x^2 + 9 = x^4 - 5x^2 + 9\)。
+\item
+  派生語: \(D'(x) = 4x^3 - 10x\)。解決: \(x(4x^2 - 10) = 0\)。
+\item
+  解決策: \(x = 0\)、\(x = \pm \sqrt{2.5}\)。
+\item
+  チェックすると、最小距離は \(x = \pm \sqrt{2.5}\) になります。
+\end{itemize}
+
+\subsubsection{例 3:
+最大容積のボックス}\label{ux4f8b-3-ux6700ux5927ux5bb9ux7a4dux306eux30dcux30c3ux30afux30b9}
+
+上部のない箱は、一辺20cmの正方形のボール紙の角を均等に切り取り、側面を折り畳んで作ります。ボリュームを最大化するカットのサイズを見つけます。-
+カットサイズ = \(x\) にします。次に寸法:
+\((20 - 2x) \times (20 - 2x) \times x\)。 - ボリューム:
+\(V(x) = x(20 - 2x)^2\)。 - 派生語: \(V'(x) = (20 - 2x)(20 - 6x)\)。 -
+クリティカルポイント: \(x = 10\) (ボリュームがゼロになる) または
+\(x = \tfrac{20}{6} \approx 3.33\)。 - \(x \approx 3.33\)
+では、音量は最大になります。
+
+\subsubsection{最適化が重要な理由}\label{ux6700ux9069ux5316ux304cux91cdux8981ux306aux7406ux7531}
+
+\begin{itemize}
+\tightlist
+\item
+  エンジニアはこれを使用して効率的な構造を設計します。
+\item
+  企業は利益を最大化したりコストを最小限に抑えたりするためにそれを使用します。
+\item
+  科学者はこれを使用して、平衡を求める自然システムをモデル化します。
+\end{itemize}
+
+\subsubsection{演習}\label{ux6f14ux7fd2-11}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  農家は、川沿いの長方形の畑を囲むために 100 m
+  のフェンスを設置しています (つまり、フェンスが必要なのは 3
+  面だけです)。面積を最大化する寸法を見つけます。
+\item
+  和が 20 で積ができるだけ大きい 2 つの正の数を見つけます。
+\item
+  シリンダーは 100 cm\(^2\)
+  の材料から作られます。最大体積の寸法を求めます。
+\item
+  長さ 10 メートルのワイヤーを 2
+  つの部分に切断し、一方を正方形に曲げ、もう一方を円形に曲げます。囲まれた総面積を最大化するにはどのようにカットすればよいでしょうか?
+\item
+  底面が正方形で体積が 32 m\(^3\)
+  の密閉ボックスを構築します。表面積を最小にする寸法を見つけます。
+\end{enumerate}
+
+\subsection{3.4
+凹面と変曲点}\label{ux51f9ux9762ux3068ux5909ux66f2ux70b9}
+
+導関数は、傾きだけでなく、グラフの形状についても教えてくれます。二次導関数は、凹面を理解し、変曲点を特定するのに特に役立ちます。
+
+\subsubsection{凹面}\label{ux51f9ux9762}
+
+\begin{itemize}
+\item
+  関数 \(f(x)\) は、\(f''(x) > 0\) の間隔で上に凹みます。
+  グラフはカップのように上に曲がります。
+\item
+  関数 \(f(x)\) は、\(f''(x) < 0\) の場合、ある区間で下に凹みます。
+  グラフは眉をひそめるように下に曲がります。
+\end{itemize}
+
+凹面は、関数の傾きがどのように変化しているかを表します。傾きが増加している場合、グラフは上に凹んでいます。傾きが減少している場合、グラフは下に凹んでいます。
+
+\subsubsection{変曲点変曲点とは、凹面が変化するグラフ上の点です。}\label{ux5909ux66f2ux70b9ux5909ux66f2ux70b9ux3068ux306fux51f9ux9762ux304cux5909ux5316ux3059ux308bux30b0ux30e9ux30d5ux4e0aux306eux70b9ux3067ux3059}
+
+\begin{itemize}
+\tightlist
+\item
+  \(f''(x) = 0\) または \(f''(x)\)
+  が未定義の場合、その点は変曲点の候補になります。
+\item
+  確認するには、点の両側で凹面の符号が変わる必要があります。
+\end{itemize}
+
+\subsubsection{例}\label{ux4f8b-7}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  \(f(x) = x^3\)
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \(f''(x) = 6x\)。
+  \item
+    \(x = 0\)、\(f''(0) = 0\) で。
+  \item
+    \(x < 0\)、\(f''(x) < 0\)の場合→下に凹みます。
+  \item
+    \(x > 0\)、\(f''(x) > 0\)の場合→上に凹みます。
+  \item
+    したがって、\((0,0)\) は変曲点です。
+  \end{itemize}
+\item
+  \(f(x) = x^4\)
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \(f''(x) = 12x^2\)。
+  \item
+    \(x = 0\)、\(f''(0) = 0\) では、凹面の符号は変化しません (常に ≥
+    0)。
+  \item
+    変曲点がありません。
+  \end{itemize}
+\end{enumerate}
+
+\subsubsection{凹面と曲線のスケッチ}\label{ux51f9ux9762ux3068ux66f2ux7ddaux306eux30b9ux30b1ux30c3ux30c1}
+
+\begin{itemize}
+\tightlist
+\item
+  \(f'(x) = 0\) と \(f''(x) > 0\) の場合、\(f\) には極小値があります。
+\item
+  \(f'(x) = 0\) と \(f''(x) < 0\) の場合、\(f\) には極大値があります。
+\item
+  これは二次導関数テストとして知られています。
+\end{itemize}
+
+\subsubsection{なぜこれが重要なのか}\label{ux306aux305cux3053ux308cux304cux91cdux8981ux306aux306eux304b-1}
+
+凹面と変曲点は、グラフが曲がる、平らになる、または曲がる場所など、グラフの「形状」を理解するのに役立ちます。これらのアイデアは、曲線のスケッチ、物理学
+(加速)、および経済学 (収穫逓減) の中心です。
+
+\subsubsection{演習}\label{ux6f14ux7fd2-12}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \(f(x) = x^3 - 3x\) の凹面の間隔を決定します。その変曲点を見つけます。
+\item
+  \(f(x) = \ln(x)\) の場合、凹面と考えられる変曲点を特定します。
+\item
+  二次導関数テストを \(f(x) = x^2 e^{-x}\) に適用して、クリティカル
+  ポイントを分類します。
+\item
+  \(f(x) = \sin x\) をスケッチし、凹面と変曲点の間隔をマークします。
+\item
+  \(f(x) = e^x\) に変曲点がない理由を説明してください。
+\end{enumerate}
+
+\subsection{3.5
+曲線のスケッチ}\label{ux66f2ux7ddaux306eux30b9ux30b1ux30c3ux30c1}
+
+曲線スケッチは、導関数からの情報を使用して関数のグラフを描画するプロセスです。多くの点をプロットするのではなく、切片、漸近線、間隔の増減、凹面などの主要な特徴を分析します。
+
+\subsubsection{曲線スケッチの手順1. ドメイン:
+関数が定義されている場所を特定します。}\label{ux66f2ux7ddaux30b9ux30b1ux30c3ux30c1ux306eux624bux98061.-ux30c9ux30e1ux30a4ux30f3-ux95a2ux6570ux304cux5b9aux7fa9ux3055ux308cux3066ux3044ux308bux5834ux6240ux3092ux7279ux5b9aux3057ux307eux3059}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{1}
+\item
+  切片: グラフが軸と交差する場所を見つけます。
+\item
+  漸近線:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    垂直漸近線は、関数が定義されていない場合に発生し、無限大になる傾向があります。
+  \item
+    水平または斜めの漸近線は、終了動作を \(x \to \pm\infty\)
+    として表します。
+  \end{itemize}
+\item
+  一次導関数 \(f'(x)\):
+
+  ・ポジティブ→機能が増えている。 ・マイナス→機能が低下している。
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \(f'(x)\) のゼロ → 臨界点 (最大値/最小値の可能性)。
+  \end{itemize}
+\item
+  二次導関数 \(f''(x)\):
+
+  ・ポジティブ→上に凹む。
+
+  \begin{itemize}
+  \tightlist
+  \item
+    マイナス→下に凹みます。
+  \item
+    ゼロまたは未定義 → 変曲点の可能性があります。
+  \end{itemize}
+\item
+  情報を組み合わせる:
+  すべての結果を使用して、明確で正確なグラフを作成します。
+\end{enumerate}
+
+\subsubsection{\texorpdfstring{例 1:
+\(f(x) = x^3 - 3x\)}{例 1: f(x) = x\^{}3 - 3x}}\label{ux4f8b-1-fx-x3---3x}
+
+\begin{itemize}
+\item
+  ドメイン: すべての実数。
+\item
+  インターセプト: \((0,0)\) で。
+\item
+  派生語: \(f'(x) = 3x^2 - 3 = 3(x-1)(x+1)\)。
+
+  \begin{itemize}
+  \tightlist
+  \item
+    増加: \((-\infty, -1) \cup (1, \infty)\)。
+  \item
+    減少: \((-1, 1)\)。
+  \end{itemize}
+\item
+  二次導関数: \(f''(x) = 6x\)。
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \(x < 0\) の場合は下に凹み、\(x > 0\) の場合は上に凹みます。
+  \item
+    \((0,0)\) の変曲点。
+  \end{itemize}
+\item
+  形状: ローカル最大値が \((-1, 2)\) 、ローカル最小値が \((1, -2)\) の S
+  カーブ。
+\end{itemize}
+
+\subsubsection{\texorpdfstring{例 2:
+\(f(x) = \frac{1}{x}\)}{例 2: f(x) = \textbackslash frac\{1\}\{x\}}}\label{ux4f8b-2-fx-frac1x}
+
+\begin{itemize}
+\item
+  ドメイン: \(x \neq 0\)。
+\item
+  垂直漸近線: \(x = 0\)。
+\item
+  水平漸近線: \(y = 0\)。
+\item
+  導関数: \(f'(x) = -\frac{1}{x^2}\)
+  (常に負)。機能は常に低下しています。
+\item
+  二次導関数: \(f''(x) = \frac{2}{x^3}\)。
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \(x > 0\) の場合は上に凹みます。
+  \item
+    \(x < 0\) の場合は下に凹みます。
+  \end{itemize}
+\item
+  グラフ: 2 つの枝を持つ双曲線。
+\end{itemize}
+
+\subsubsection{曲線スケッチが役立つ理由}\label{ux66f2ux7ddaux30b9ux30b1ux30c3ux30c1ux304cux5f79ux7acbux3064ux7406ux7531}
+
+\begin{itemize}
+\tightlist
+\item
+  徹底的な計算を行わずに、関数の全体的な動作についての洞察を提供します。
+\item
+  微積分の試験や応用問題には必須です。
+\item
+  代数解析と幾何学的理解を橋渡しします。
+\end{itemize}
+
+\subsubsection{演習}\label{ux6f14ux7fd2-13}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \(f(x) = x^4 - 2x^2\)
+  の曲線をスケッチします。最大値、最小値、変曲点を特定します。2.
+  \(f(x) = \ln(x)\)
+  を分析してスケッチします。切片、漸近線、凹面を表示します。
+\item
+  \(f(x) = e^{-x}\)
+  については、成長/減衰、漸近線、および凹面を説明します。
+\item
+  \((- \pi, \pi)\) の間隔で \(f(x) = \tan x\)
+  のグラフをスケッチします。漸近線をマークします。
+\item
+  一次導関数テストと二次導関数テストを使用して、\(f(x) = x^3 - 6x^2 + 9x\)
+  の重要なポイントを分類します。
+\end{enumerate}
+
+＃パートII。積分
+
+\section{第 4 章
+逆微分と定積分}\label{ux7b2c-4-ux7ae0-ux9006ux5faeux5206ux3068ux5b9aux7a4dux5206}
+
+\subsection{4.1 不定積分}\label{ux4e0dux5b9aux7a4dux5206}
+
+不定積分は微分の逆の過程です。導関数の測定値が変化すると、積分はその変化率から元の関数を回復します。
+
+\subsubsection{定義}\label{ux5b9aux7fa9-4}
+
+\(F'(x) = f(x)\) の場合、
+
+\[
+\int f(x)\,dx = F(x) + C,
+\]
+
+ここで、\(C\) は積分定数です。
+
+微分によって定数が排除されるため、すべての不定積分は定数のみが異なる関数群を表します。
+
+\subsubsection{基本ルール}\label{ux57faux672cux30ebux30fcux30eb}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  定数ルール
+\end{enumerate}
+
+\[
+\int c\,dx = cx + C.
+\]
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  力の法則
+\end{enumerate}
+
+\[
+\int x^n\,dx = \frac{x^{n+1}}{n+1} + C, \quad n \neq -1。
+\]
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{2}
+\tightlist
+\item
+  和のルール
+\end{enumerate}
+
+\[
+\int \big(f(x) + g(x)\big)\,dx = \int f(x)\,dx + \int g(x)\,dx。
+\]
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{3}
+\tightlist
+\item
+  定数倍数ルール
+\end{enumerate}
+
+\[
+\int c f(x)\,dx = c \int f(x)\,dx。
+\]
+
+\subsubsection{一般的な積分}\label{ux4e00ux822cux7684ux306aux7a4dux5206}
+
+\begin{itemize}
+\tightlist
+\item
+  \(\int e^x dx = e^x + C\)
+\item
+  \(\int \sin x dx = -\cos x + C\)
+\item
+  \(\int \cos x dx = \sin x + C\)
+\item
+  \(\int \frac{1}{x} dx = \ln|x| + C\)
+\end{itemize}
+
+\subsubsection{例}\label{ux4f8b-8}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  \(\int (3x^2 - 4)\,dx = x^3 - 4x + C\)。
+\item
+  \(\int \cos(2x)\,dx = \tfrac{1}{2}\sin(2x) + C\)。
+\item
+  \(\int \frac{1}{x}\,dx = \ln|x| + C\)。
+\end{enumerate}
+
+\subsubsection{解釈}\label{ux89e3ux91c8-1}
+
+\begin{itemize}
+\tightlist
+\item
+  不定積分は反微分です。
+\item
+  面積、距離、質量などの累積量を測定する定積分の基礎です。
+\item
+  応用的なコンテキストでは、統合によりレートから合計に戻ることができます。
+\end{itemize}
+
+\subsubsection{演習}\label{ux6f14ux7fd2-14}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \(\int (5x^4 + 2x)\,dx\) を見つけます。2. \(\int (e^x + 3)\,dx\)
+  を計算します。
+\item
+  積分を使用して \(f'(x) = 6x\) の一般解を求めます。
+\item
+  \(\int \frac{2}{x}\,dx\) を評価します。
+\item
+  速度が \(v(t) = 4t\) の場合、位置関数 \(s(t)\) を見つけます。
+\end{enumerate}
+
+\subsection{4.2
+面積としての定積分}\label{ux9762ux7a4dux3068ux3057ux3066ux306eux5b9aux7a4dux5206}
+
+不定積分は逆導関数の族を表しますが、定積分は数値、つまり 2
+点間の曲線の下の累積面積を与えます。
+
+\subsubsection{定義}\label{ux5b9aux7fa9-5}
+
+\([a, b]\) で定義された関数 \(f(x)\)
+の場合、定積分は次のようになります。
+
+\[
+\int_a^b f(x)\,dx = \lim_{n \to \infty} \sum_{i=1}^n f(x_i^-) \,\Delta x,
+\]
+
+ここで、区間 \([a, b]\) は幅 \(\Delta x\) の \(n\) サブ区間に分割され、
+\(x_i^-\) は各サブ区間のサンプル ポイントです。
+
+これがリーマン和の限界です。
+
+\subsubsection{幾何学的解釈}\label{ux5e7eux4f55ux5b66ux7684ux89e3ux91c8}
+
+\begin{itemize}
+\tightlist
+\item
+  \([a, b]\) 上の \(f(x) \geq 0\) の場合、\(\int_a^b f(x)\,dx\)
+  は、\(x=a\) から \(x=b\) までの曲線 \(y = f(x)\)
+  の下の面積と等しくなります。
+\item
+  \(f(x)\) が \(x\)
+  軸を下回る場合、積分は符号付き面積を計算します。軸より下の領域は負としてカウントされます。
+\end{itemize}
+
+\subsubsection{定積分の性質}\label{ux5b9aux7a4dux5206ux306eux6027ux8cea}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  区間にわたる相加性
+\end{enumerate}
+
+\[
+\int_a^c f(x)\,dx = \int_a^b f(x)\,dx + \int_b^c f(x)\,dx。
+\]
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  リミットを逆転する
+\end{enumerate}
+
+\[
+\int_a^b f(x)\,dx = -\int_b^a f(x)\,dx。
+\]
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{2}
+\tightlist
+\item
+  ゼロ幅間隔
+\end{enumerate}
+
+\[
+\int_a^a f(x)\,dx = 0。
+\]
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{3}
+\tightlist
+\item
+  直線性
+\end{enumerate}
+
+\[
+\int_a^b \big( cf(x) + g(x)\big)\,dx = c\int_a^b f(x)\,dx + \int_a^b g(x)\,dx。
+\]
+
+\subsubsection{例}\label{ux4f8b-9}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  \(\int_0^2 x\,dx = \left[\tfrac{1}{2}x^2\right]_0^2 = 2.\)
+  これは、\(y=x\) 線の下の直角三角形の領域です。
+\item
+  \(\int_{-1}^1 x^3\,dx = 0.\) 奇数関数 \(x^3\)
+  には、キャンセルされる対称領域があります。
+\item
+  \(\int_0^\pi \sin x\,dx = 2.\) これは、正弦曲線の 1
+  つのアーチの下の面積に等しくなります。
+\end{enumerate}
+
+\subsubsection{なぜこれが重要なのか}\label{ux306aux305cux3053ux308cux304cux91cdux8981ux306aux306eux304b-2}
+
+\begin{itemize}
+\tightlist
+\item
+  定積分は、距離、質量、エネルギー、確率などの累積量を測定します。-
+  代数計算と幾何学的直観の橋渡しをします。
+\item
+  次のステップは、定積分と反微分を結び付ける微積分の基本定理です。
+\end{itemize}
+
+\subsubsection{演習}\label{ux6f14ux7fd2-15}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \(\int_0^3 (2x+1)\,dx\) を計算します。
+\item
+  \(y = x^2\) と \(x\) 軸の間の \(x = 0\) から \(x = 2\)
+  までの領域を見つけます。
+\item
+  \(\int_{-2}^2 (x^2 - 1)\,dx\) を評価します。
+\item
+  \(f(x)\) が奇数の場合、\(\int_{-a}^a f(x)\,dx = 0\)
+  であることを示します。
+\item
+  \(n=4\) 部分区間と右端点を使用してリーマン和を使用して
+  \(\int_0^1 e^x\,dx\) を近似します。
+\end{enumerate}
+
+\subsection{4.3
+微積分の基本定理}\label{ux5faeux7a4dux5206ux306eux57faux672cux5b9aux7406}
+
+微積分の基本定理 (FTC) は、微積分の 2
+つの主要な概念、つまり微分と積分を統合します。これは、領域の検出と変化率の検出が同じコインの表裏であることを示しています。
+
+\subsubsection{パート 1:
+積分の微分}\label{ux30d1ux30fcux30c8-1-ux7a4dux5206ux306eux5faeux5206}
+
+\(f\) が \([a, b]\) 上で連続している場合、次のように定義します
+
+\[
+F(x) = \int_a^x f(t)\,dt。
+\]
+
+この場合、\(F\) は微分可能であり、
+
+\[
+F'(x) = f(x)。
+\]
+
+言い換えれば、累積面積関数の導関数は元の関数そのものです。
+
+\subsubsection{パート 2:
+定積分の評価}\label{ux30d1ux30fcux30c8-2-ux5b9aux7a4dux5206ux306eux8a55ux4fa1}
+
+\(f\) が \([a, b]\) 上で連続であり、 \(F\) が \(f\)
+の逆導関数である場合、
+
+\[
+\int_a^b f(x)\,dx = F(b) - F(a)。
+\]
+
+これは、リーマン和の極限を計算するのではなく、反微分を見つけるだけで定積分を評価できることを示しています。
+
+\subsubsection{例}\label{ux4f8b-10}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  \(\int_0^2 x^2\,dx\)。
+
+  \begin{itemize}
+  \tightlist
+  \item
+    反誘導体: \(F(x) = \tfrac{1}{3}x^3\)。
+  \item
+    FTC の適用: \(F(2) - F(0) = \tfrac{8}{3} - 0 = \tfrac{8}{3}.\)
+  \end{itemize}
+\item
+  \(F(x) = \int_1^x \cos t \, dt\) の場合は、\(F'(x) = \cos x\)。
+\item
+  \(\int_1^4 \frac{1}{x}\,dx\)。
+
+  \begin{itemize}
+  \tightlist
+  \item
+    反誘導体: \(\ln|x|\)。
+  \item
+    FTC の適用: \(\ln 4 - \ln 1 = \ln 4.\)
+  \end{itemize}
+\end{enumerate}
+
+\subsubsection{FTC
+が重要な理由}\label{ftc-ux304cux91cdux8981ux306aux7406ux7531}
+
+\begin{itemize}
+\tightlist
+\item
+  積分を限界プロセスから実用的な計算に変換します。・微分と積分が逆演算であることが確認できる。
+\item
+  微積分を数学、科学、工学に役立てる中心的な定理です。
+\end{itemize}
+
+\subsubsection{演習}\label{ux6f14ux7fd2-16}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  FTC を使用して \(\int_0^3 (2x+1)\,dx\) を評価します。
+\item
+  \(F(x) = \int_0^x e^t\,dt\) の場合は、\(F'(x)\) を見つけます。
+\item
+  \(\int_0^\pi \sin x \, dx\) を計算します。
+\item
+  \(f'(x) = g(x)\) の場合は \(\int_a^b g(x)\,dx = f(b) - f(a)\)
+  であることを示します。
+\item
+  FTC を使用して、\(y = \cos x\) の下の \(0\) から \(\pi/2\)
+  までの領域が 1 に等しい理由を説明します。
+\end{enumerate}
+
+\subsection{4.4 積分の性質}\label{ux7a4dux5206ux306eux6027ux8cea}
+
+定積分には、アプリケーションで柔軟性と強力さを実現するいくつかの重要な特性があります。これらの特性は、和の極限としての定義と微積分の基本定理から得られます。
+
+\subsubsection{直線性}\label{ux76f4ux7ddaux6027}
+
+関数 \(f(x)\) および \(g(x)\)、および定数 \(c, d\) の場合:
+
+\[
+\int_a^b \big(c f(x) + d g(x)\big)\,dx = c \int_a^b f(x)\,dx + d \int_a^b g(x)\,dx。
+\]
+
+これにより、複雑な積分をより単純な部分に分割することができます。
+
+\subsubsection{区間にわたる相加性}\label{ux533aux9593ux306bux308fux305fux308bux76f8ux52a0ux6027}
+
+\(a < c < b\) の場合、
+
+\[
+\int_a^b f(x)\,dx = \int_a^c f(x)\,dx + \int_c^b f(x)\,dx。
+\]
+
+積分は部分ごとに計算できます。
+
+\subsubsection{限界の逆転}\label{ux9650ux754cux306eux9006ux8ee2}
+
+\[
+\int_a^b f(x)\,dx = -\int_b^a f(x)\,dx。
+\]
+
+境界を交換すると、積分の符号が変わります。
+
+\subsubsection{比較プロパティ}\label{ux6bd4ux8f03ux30d7ux30edux30d1ux30c6ux30a3}
+
+\([a, b]\) 内のすべての \(x\) に対して \(f(x) \leq g(x)\) の場合、
+
+\[
+\int_a^b f(x)\,dx \leq \int_a^b g(x)\,dx。
+\]
+
+これにより、直接計算せずに領域を比較できます。
+
+\subsubsection{絶対値の不平等}\label{ux7d76ux5bfeux5024ux306eux4e0dux5e73ux7b49}
+
+\[
+\左| \int_a^b f(x)\,dx \right| \leq \int_a^b |f(x)|\,dx。
+\]
+
+このプロパティは、分析および収束テストでは不可欠です。
+
+\subsubsection{対称性}\label{ux5bfeux79f0ux6027}
+
+\begin{itemize}
+\item
+  \(f(x)\) が偶数の場合 (\(y\) 軸に関して対称):
+
+  \[
+  \int_{-a}^a f(x)\,dx = 2\int_0^a f(x)\,dx。
+  \]
+\item
+  \(f(x)\) が奇数の場合 (原点に対して対称):
+
+  \[
+  \int_{-a}^a f(x)\,dx = 0。
+  \]\#\#\# 例
+\end{itemize}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  \(\int_0^2 (3x^2 + 4)\,dx = \int_0^2 3x^2\,dx + \int_0^2 4\,dx = 8 + 8 = 16.\)
+\item
+  \(f(x) = x^3\) は奇数なので、\(\int_{-1}^1 x^3\,dx = 0.\)
+\item
+  \(f(x) = x^2\)
+  は偶数なので、\(\int_{-2}^2 x^2\,dx = 2\int_0^2 x^2\,dx = 2\cdot \tfrac{8}{3} = \tfrac{16}{3}.\)
+\end{enumerate}
+
+\subsubsection{これらのプロパティが重要な理由}\label{ux3053ux308cux3089ux306eux30d7ux30edux30d1ux30c6ux30a3ux304cux91cdux8981ux306aux7406ux7531}
+
+\begin{itemize}
+\tightlist
+\item
+  計算が簡素化されます。
+\item
+  関数の幾何学的および対称性の特徴を明らかにします。
+\item
+  より高度な分析のための理論的ツールを提供します。
+\end{itemize}
+
+\subsubsection{演習}\label{ux6f14ux7fd2-17}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  対称性を使用して \(\int_{-5}^5 (x^4 - x^3)\,dx\) を評価します。
+\item
+  \(\int_1^4 (2x+3)\,dx = \int_1^2 (2x+3)\,dx + \int_2^4 (2x+3)\,dx\)
+  を示します。
+\item
+  \(\int_0^\pi \sin(x)\,dx\) を評価し、\(\int_{-\pi}^\pi \sin(x)\,dx\)
+  と比較します。
+\item
+  \([a, b]\) で \(f(x) \geq 0\) の場合、\(\int_a^b f(x)\,dx \geq 0\)
+  であることを証明します。
+\item
+  偶数/奇数プロパティを使用して \(\int_{-3}^3 (x^2 + 1)\,dx\)
+  を計算します。
+\end{enumerate}
+
+\section{第5章
+統合のテクニック}\label{ux7b2c5ux7ae0-ux7d71ux5408ux306eux30c6ux30afux30cbux30c3ux30af}
+
+\subsection{5.1 置換}\label{ux7f6eux63db}
+
+統合の最も有用な手法の 1 つは、-u-substitution-
+とも呼ばれる置換法です。これは、デリバティブの連鎖ルールの逆のプロセスです。
+
+\subsubsection{アイデア}\label{ux30a2ux30a4ux30c7ux30a2-1}
+
+積分に複合関数が含まれている場合は、変数を変更することで簡素化できます。
+
+形式的には、 \(u = g(x)\) が微分可能関数である場合、
+
+\[
+\int f(g(x)) g'(x)\,dx = \int f(u)\,du。
+\]
+
+この置換により、積分の評価が容易になります。
+
+\subsubsection{置換の手順}\label{ux7f6eux63dbux306eux624bux9806}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  その導関数が被積分関数にも現れる内部関数 \(u = g(x)\) を特定します。
+\item
+  \(du = g'(x)\,dx\) を計算します。
+\item
+  積分を \(u\) で書き換えます。
+\item
+  \(u\) に関して統合します。
+\item
+  \(u = g(x)\) を置き換えます。
+\end{enumerate}
+
+\subsubsection{例}\label{ux4f8b-11}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  単純な置換
+
+  \[
+  \int 2x \cos(x^2)\,dx
+  \]
+
+  \(u = x^2\) にするので、\(du = 2x\,dx\) になります。 この場合、積分は
+  \(\int \cos u \,du = \sin u + C = \sin(x^2) + C\) になります。
+\item
+  対数の場合
+
+  \[\int \frac{2x}{x^2+1}\,dx
+  \]
+
+  \(u = x^2 + 1\) にするので、\(du = 2x\,dx\) になります。 すると積分は
+  \(\int \frac{1}{u}\,du = \ln|u| + C = \ln(x^2+1) + C\) になります。
+\item
+  三角関数の代入
+
+  \[
+  \int \sin(3x)\,dx
+  \]
+
+  \(u = 3x\) とすれば、\(du = 3\,dx\)、したがって \(dx = \frac{du}{3}\)
+  になります。
+  積分は\(\tfrac{1}{3}\int \sin u\,du = -\tfrac{1}{3}\cos u + C = -\tfrac{1}{3}\cos(3x) + C\)になります。
+\end{enumerate}
+
+\subsubsection{置換を伴う定積分}\label{ux7f6eux63dbux3092ux4f34ux3046ux5b9aux7a4dux5206}
+
+定積分を評価するときは、制限も変更する必要があります。
+
+\[
+\int_a^b f(g(x)) g'(x)\,dx = \int_{g(a)}^{g(b)} f(u)\,du。
+\]
+
+例:
+
+\[
+\int_0^1 2x e^{x^2}\,dx。
+\]
+
+\(u = x^2\)、\(du = 2x\,dx\) にしておきます。制限: \(x=0, u=0\) の場合。
+\(x=1, u=1\)のとき。 したがって、積分は次のようになります
+
+\[
+\int_0^1 e^u\,du = e - 1。
+\]
+
+\subsubsection{演習}\label{ux6f14ux7fd2-18}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \(\int (x^2+1)^5 (2x)\,dx\) を評価します。
+\item
+  \(\int \frac{\cos x}{\sin x}\,dx\) を計算します。
+\item
+  置換を使用して \(\int_0^\pi \sin(2x)\,dx\) を評価します。
+\item
+  \(\int e^{3x}\,dx\) を見つけます。
+\item
+  \(u = 1+x^2\) として \(\int \frac{1}{\sqrt{1+x^2}}\,dx\)
+  を計算します。
+\end{enumerate}
+
+\subsection{5.2
+部品ごとの統合}\label{ux90e8ux54c1ux3054ux3068ux306eux7d71ux5408}
+
+部品による統合は、デリバティブの積則から生まれた手法です。これは、代入だけでは簡単に処理できない関数の積を含む積分を評価するのに役立ちます。
+
+\subsubsection{公式}\label{ux516cux5f0f}
+
+製品ルールから:
+
+\[
+\frac{d}{dx}[u(x)v(x)] = u'(x)v(x) + u(x)v'(x)。
+\]
+
+両側を積分すると、部分ごとの積分公式が得られます。
+
+\[
+\int u\,dv = uv - \int v\,du。
+\]
+
+ここで:
+
+\begin{itemize}
+\tightlist
+\item
+  \(u\) = 微分するために選択された関数、
+\item
+  \(dv\) = 積分される被積分関数の残りの部分。
+\end{itemize}
+
+\subsubsection{\texorpdfstring{\(u\) と \(dv\)
+の選択}{u と dv の選択}}\label{u-ux3068-dv-ux306eux9078ux629e}
+
+一般的なガイドラインは LIATE (対数、逆三角、代数、三角、指数) です。
+
+\begin{itemize}
+\tightlist
+\item
+  存在する最も古いカテゴリから \(u\) を選択します。
+\item
+  残りとして \(dv\) を選択します。
+\end{itemize}
+
+\subsubsection{例}\label{ux4f8b-12}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  多項式×指数関数
+\end{enumerate}
+
+\[
+\int x e^x\,dx
+\]\(u = x\)、\(dv = e^x dx\)
+にしておきます。次に、\(du = dx\)、\(v = e^x\) となります。
+
+\[
+\int x e^x\,dx = x e^x - \int e^x dx = x e^x - e^x + C.
+\]
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  多項式×三角関数
+\end{enumerate}
+
+\[
+\int x \cos x\,dx
+\]
+
+\(u = x\)、\(dv = \cos x dx\)
+にしておきます。次に、\(du = dx\)、\(v = \sin x\)。
+
+\[
+\int x \cos x\,dx = x \sin x - \int \sin x dx = x \sin x + \cos x + C.
+\]
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{2}
+\tightlist
+\item
+  対数
+\end{enumerate}
+
+\[
+\int \ln x\,dx
+\]
+
+\(u = \ln x\)、\(dv = dx\)
+にしておきます。次に、\(du = \frac{1}{x}dx\)、\(v = x\)。
+
+\[
+\int \ln x\,dx = x \ln x - \int 1 dx = x \ln x - x + C.
+\]
+
+\subsubsection{定積分の例}\label{ux5b9aux7a4dux5206ux306eux4f8b}
+
+\[
+\int_0^1 x e^x\,dx
+\]
+
+以前の結果を使用します: \(\int x e^x dx = (x-1)e^x\)。 評価:
+
+\[
+\big[(x-1)e^x\big]_0^1 = (0)e^1 - (-1)e^0 = 0 + 1 = 1。
+\]
+
+\subsubsection{なぜこれが重要なのか}\label{ux306aux305cux3053ux308cux304cux91cdux8981ux306aux306eux304b-3}
+
+部分による積分は、特に対数、逆三角関数、および指数関数または三角関数を含む多項式を含む積の場合、置換が失敗する場合に重要です。
+
+\subsubsection{演習}\label{ux6f14ux7fd2-19}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \(\int x \sin x\,dx\) を評価します。
+\item
+  \(\int e^x \cos x\,dx\) を見つけます。
+\item
+  \(\int_1^2 \ln x\,dx\) を計算します。
+\item
+  \(\int x^2 e^x\,dx\) を評価します。
+\item
+  部品ごとの統合を使用して、\(\int \arctan x\,dx = x\arctan x - \tfrac{1}{2}\ln(1+x^2) + C\)
+  を表示します。
+\end{enumerate}
+
+\subsection{5.3
+三角関数の積分と代入}\label{ux4e09ux89d2ux95a2ux6570ux306eux7a4dux5206ux3068ux4ee3ux5165}
+
+多くの積分には三角関数が含まれます。これらは、多くの場合、アイデンティティを使用するか、特別な置換を行うことによって簡略化できます。
+
+\subsubsection{三角積分}\label{ux4e09ux89d2ux7a4dux5206}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  サインとコサインのべき乗
+\end{enumerate}
+
+\begin{itemize}
+\tightlist
+\item
+  サインのパワーが奇数の場合: \(\sin x\) を 1 つ保存し、残りを
+  \(\sin^2x = 1 - \cos^2x\) で変換し、\(u = \cos x\) に置き換えます。
+\item
+  コサインの累乗が奇数の場合: \(\cos x\) を 1 つ保存し、残りを
+  \(\cos^2x = 1 - \sin^2x\) で変換し、\(u = \sin x\) に置き換えます。
+\item
+  両方が偶数の場合: 半角恒等式を使用します。
+\end{itemize}
+
+例:
+
+\[
+\int \sin^3x \cos x \, dx
+\]
+
+\(u = \sin x\)、\(du = \cos x\,dx\) にします:
+
+\[
+\int u^3\,du = \tfrac{u^4}{4} + C = \tfrac{\sin^4x}{4} + C.\]
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  異なる角度のサインとコサインの積 積と和の式を使用します。
+\end{enumerate}
+
+\[
+\sin A \cos B = \tfrac{1}{2}[\sin(A+B) + \sin(A-B)]。
+\]
+
+例:
+
+\[
+\int \sin(2x)\cos(3x)\,dx = \tfrac{1}{2}\int [\sin(5x) - \sin(x)]\,dx。
+\]
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{2}
+\tightlist
+\item
+  セカントとタンジェントの累乗
+\end{enumerate}
+
+\begin{itemize}
+\tightlist
+\item
+  セカントの累乗が偶数の場合: \(\sec^2x\) を保存し、残りを
+  \(\sec^2x = 1 + \tan^2x\) で変換し、\(u = \tan x\) に置き換えます。
+\item
+  正接のパワーが奇数の場合: \(\sec^2x\) を保存し、残りを
+  \(\tan^2x = \sec^2x - 1\) で変換し、\(u = \tan x\) に置き換えます。
+\end{itemize}
+
+例:
+
+\[
+\int \tan^3x \sec^2x \, dx
+\]
+
+\(u = \tan x\)、\(du = \sec^2x\,dx\) にします:
+
+\[
+\int u^3\,du = \tfrac{u^4}{4} + C = \tfrac{\tan^4x}{4} + C.
+\]
+
+\subsubsection{三角関数の置換}\label{ux4e09ux89d2ux95a2ux6570ux306eux7f6eux63db}
+
+\(\sqrt{a^2 - x^2}\)、\(\sqrt{a^2 + x^2}\)、または \(\sqrt{x^2 - a^2}\)
+を含む積分では、特別な置換を使用します。
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \(x = a \sin \theta\)、\(\sqrt{a^2 - x^2}\) の場合。
+\item
+  \(x = a \tan \theta\)、\(\sqrt{a^2 + x^2}\) の場合。
+\item
+  \(x = a \sec \theta\)、\(\sqrt{x^2 - a^2}\) の場合。
+\end{enumerate}
+
+例:
+
+\[
+\int \sqrt{a^2 - x^2}\,dx
+\]
+
+\(x = a\sin\theta\) とすると、\(dx = a\cos\theta\,d\theta\) になります。
+
+\[
+\int \sqrt{a^2 - a^2\sin^2\theta}(a\cos\theta\,d\theta) = \int a^2 \cos^2\theta \, d\theta。
+\]
+
+半角恒等式を使用して単純化します。
+
+\subsubsection{これらのテクニックが重要な理由}\label{ux3053ux308cux3089ux306eux30c6ux30afux30cbux30c3ux30afux304cux91cdux8981ux306aux7406ux7531}
+
+\begin{itemize}
+\tightlist
+\item
+  難しい代数形式を扱いやすい三角関数形式に変換します。
+\item
+  面積、体積、円弧の長さが関係する問題に特に役立ちます。
+\item
+  高度な統合方法の基礎を築きます。
+\end{itemize}
+
+\subsubsection{演習}\label{ux6f14ux7fd2-20}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \(\int \sin^4x \cos^2x \, dx\) を評価します。
+\item
+  \(\int \sin(5x)\cos(2x)\,dx\) を計算します。
+\item
+  \(\int \tan^2x \sec^2x \, dx\) を評価します。
+\item
+  置換を使用して \(\int \sqrt{9 - x^2}\,dx\) を検索します。
+\item
+  \(x = a\tan\theta\) を使用して
+  \(\int \frac{dx}{\sqrt{x^2 + a^2}} = \ln|x + \sqrt{x^2 + a^2}| + C\)
+  を示します。
+\end{enumerate}
+
+\subsection{5.4 部分分数有理関数 (多項式の比)
+を積分する場合、強力な方法の 1
+つは部分分数分解です。この手法では、複雑な分数を、積分が容易な単純な分数の合計として表現します。}\label{ux90e8ux5206ux5206ux6570ux6709ux7406ux95a2ux6570-ux591aux9805ux5f0fux306eux6bd4-ux3092ux7a4dux5206ux3059ux308bux5834ux5408ux5f37ux529bux306aux65b9ux6cd5ux306e-1-ux3064ux306fux90e8ux5206ux5206ux6570ux5206ux89e3ux3067ux3059ux3053ux306eux624bux6cd5ux3067ux306fux8907ux96d1ux306aux5206ux6570ux3092ux7a4dux5206ux304cux5bb9ux6613ux306aux5358ux7d14ux306aux5206ux6570ux306eux5408ux8a08ux3068ux3057ux3066ux8868ux73feux3057ux307eux3059}
+
+\subsubsection{アイデア}\label{ux30a2ux30a4ux30c7ux30a2-2}
+
+\(R(x) = \frac{P(x)}{Q(x)}\) が有理関数で、\(P(x)\) の次数が \(Q(x)\)
+の次数より小さい場合、\(R(x)\) をより単純な分数に分解できます。
+
+これらの単純な部分は、分母 \(Q(x)\) の因数に対応します。
+
+\subsubsection{一般的なフォーム}\label{ux4e00ux822cux7684ux306aux30d5ux30a9ux30fcux30e0}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  独特の線形因子 もし
+\end{enumerate}
+
+\[
+\frac{1}{(x-a)(x-b)},
+\]
+
+次に次のように分解します
+
+\[
+\frac{A}{x-a} + \frac{B}{x-b}。
+\]
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  繰り返しの線形因子 分母に \((x-a)^n\)
+  がある場合、項は次のようになります。
+\end{enumerate}
+
+\[
+\frac{A_1}{x-a} + \frac{A_2}{(x-a)^2} + \dots + \frac{A_n}{(x-a)^n}。
+\]
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{2}
+\tightlist
+\item
+  既約二次因数 分母に \((x^2+bx+c)\) がある場合、分子は線形になります。
+\end{enumerate}
+
+\[
+\frac{Ax+B}{x^2+bx+c}。
+\]
+
+\subsubsection{例 1:
+明確な線形因子}\label{ux4f8b-1-ux660eux78baux306aux7ddaux5f62ux56e0ux5b50}
+
+\[
+\int \frac{1}{x^2 - 1}\,dx
+\]
+
+因数の分母: \((x-1)(x+1)\)。 分解:
+
+\[
+\frac{1}{x^2-1} = \frac{1}{2}\left(\frac{1}{x-1} - \frac{1}{x+1}\right)。
+\]
+
+統合:
+
+\[
+\int \frac{1}{x^2 - 1}\,dx = \tfrac{1}{2}\ln\left|\frac{x-1}{x+1}\right| +C.
+\]
+
+\subsubsection{例 2:
+反復線形係数}\label{ux4f8b-2-ux53cdux5fa9ux7ddaux5f62ux4fc2ux6570}
+
+\[
+\int \frac{1}{(x-1)^2}\,dx
+\]
+
+これはすでに簡単です:
+
+\[
+\int (x-1)^{-2}\,dx = -\frac{1}{x-1} + C.
+\]
+
+\subsubsection{例 3:
+既約二次因数}\label{ux4f8b-3-ux65e2ux7d04ux4e8cux6b21ux56e0ux6570}
+
+\[
+\int \frac{x}{x^2+1}\,dx
+\]
+
+\(u = x^2+1\)
+を代入するか、分子が分母の導関数であることを認識してください。
+
+\[
+\int \frac{x}{x^2+1}\,dx = \tfrac{1}{2}\ln(x^2+1) + C.
+\]
+
+\subsubsection{部分分数分解のステップ}\label{ux90e8ux5206ux5206ux6570ux5206ux89e3ux306eux30b9ux30c6ux30c3ux30d7}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  分母を因数分解します。
+\item
+  一般的な部分分数形式を書きます。
+\item
+  分母を掛けて分数をクリアします。
+\item
+  未知の定数を解決します。
+\item
+  各項を統合します。\#\#\# なぜこれが重要なのか
+\end{enumerate}
+
+\begin{itemize}
+\tightlist
+\item
+  複雑な有理関数を単純な対数または逆正接形式に変換します。
+\item
+  微分方程式とラプラス変換で特に役立ちます。
+\item
+  高度な微積分と工学の基礎。
+\end{itemize}
+
+\subsubsection{演習}\label{ux6f14ux7fd2-21}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \(\int \frac{3x+5}{x^2-1}\,dx\) を分解して統合します。
+\item
+  \(\int \frac{1}{x^2(x+1)}\,dx\) を評価します。
+\item
+  \(\int \frac{2x+1}{x^2+2x+2}\,dx\) を計算します。
+\item
+  \(\int \frac{1}{x^3 - x}\,dx\) を見つけます。
+\item
+  部分分数または置換を使用して、\(\int \frac{dx}{x^2+1} = \arctan x + C\)
+  であることを示します。
+\end{enumerate}
+
+\subsection{5.5
+不適切な積分}\label{ux4e0dux9069ux5207ux306aux7a4dux5206}
+
+一部の積分は、区間が無限であるか、被積分関数が無制限になるため、直接評価できません。これらは不適切な積分と呼ばれます。これらは制限を使用して定義されます。
+
+\subsubsection{定義}\label{ux5b9aux7fa9-6}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  無限間隔
+\end{enumerate}
+
+\[
+\int_a^\infty f(x)\,dx = \lim_{b \to \infty} \int_a^b f(x)\,dx。
+\]
+
+\[
+\int_{-\infty}^a f(x)\,dx = \lim_{b \to -\infty} \int_b^a f(x)\,dx。
+\]
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  無制限の被積分関数 \(f(x)\) が \(c\) に垂直漸近線を持つ場合、
+\end{enumerate}
+
+\[
+\int_a^c f(x)\,dx = \lim_{t \to c^-} \int_a^t f(x)\,dx,
+\]
+
+\[
+\int_c^b f(x)\,dx = \lim_{t \to c^+} \int_t^b f(x)\,dx。
+\]
+
+\subsubsection{収束と発散}\label{ux53ceux675fux3068ux767aux6563}
+
+\begin{itemize}
+\tightlist
+\item
+  極限が存在し、有限である場合、不適切な積分は収束します。
+\item
+  極限が存在しないか無限である場合、不適切な積分は発散します。
+\end{itemize}
+
+\subsubsection{例}\label{ux4f8b-13}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  指数関数的減衰
+\end{enumerate}
+
+\[
+\int_1^\infty \frac{1}{x^2}\,dx = \lim_{b \to \infty} \Big[-\tfrac{1}{x}\Big]_1^b = 1。
+\]
+
+これは収束します。
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  調和関数
+\end{enumerate}
+
+\[
+\int_1^\infty \frac{1}{x}\,dx = \lim_{b \to \infty} \ln b.
+\]
+
+これは無限に発散します。
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{2}
+\tightlist
+\item
+  0 での漸近線
+\end{enumerate}
+
+\[
+\int_0^1 \frac{1}{\sqrt{x}}\,dx = \lim_{t \to 0^+} \int_t^1 x^{-1/2}\,dx。
+\]
+
+\[
+= \lim_{t \to 0^+} [2\sqrt{x}]_t^1 = 2.
+\]
+
+これは収束します。
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{3}
+\tightlist
+\item
+  0 での漸近線 (発散)
+\end{enumerate}
+
+\[\int_0^1 \frac{1}{x}\,dx = \lim_{t \to 0^+} \ln(1) - \ln(t)。
+\]
+
+これは \(\ln(t) \to -\infty\) 以降異なります。
+
+\subsubsection{不適切な積分に対する比較テスト}\label{ux4e0dux9069ux5207ux306aux7a4dux5206ux306bux5bfeux3059ux308bux6bd4ux8f03ux30c6ux30b9ux30c8}
+
+\begin{itemize}
+\tightlist
+\item
+  大きな \(x\) の \(0 \leq f(x) \leq g(x)\) と \(\int g(x)\,dx\)
+  が収束すると、\(\int f(x)\,dx\) も収束します。
+\item
+  \(\int f(x)\,dx\) が発散し、\(f(x) \geq g(x) \geq 0\)
+  が発散する場合、\(\int g(x)\,dx\) も発散します。
+\end{itemize}
+
+\subsubsection{不適切な積分が問題となる理由}\label{ux4e0dux9069ux5207ux306aux7a4dux5206ux304cux554fux984cux3068ux306aux308bux7406ux7531}
+
+\begin{itemize}
+\tightlist
+\item
+  統合を無限の領域と無制限の関数に拡張します。
+\item
+  確率 (連続分布)、物理学 (重力場/電場)、フーリエ解析に不可欠です。
+\end{itemize}
+
+\subsubsection{演習}\label{ux6f14ux7fd2-22}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \(\int_1^\infty \frac{1}{x^p}\,dx\) が \(p\)
+  のさまざまな値に対して収束するかどうかを判断します。
+\item
+  \(\int_0^\infty e^{-x}\,dx\) を評価します。
+\item
+  \(p\) に応じて \(\int_0^1 \frac{1}{x^p}\,dx\) の収束をテストします。
+\item
+  \(\int_{-\infty}^\infty \frac{1}{1+x^2}\,dx\) を計算します。
+\item
+  比較テストを使用して、\(\int_1^\infty \frac{1}{x^2+1}\,dx\)
+  が収束することを示します。
+\end{enumerate}
+
+\section{第6章
+統合の応用}\label{ux7b2c6ux7ae0-ux7d71ux5408ux306eux5fdcux7528}
+
+\subsection{6.1 面積と体積}\label{ux9762ux7a4dux3068ux4f53ux7a4d}
+
+積分の最も重要なアプリケーションの 1
+つは、曲線の下の領域と固体の体積を見つけることです。
+
+\subsubsection{曲線間の領域}\label{ux66f2ux7ddaux9593ux306eux9818ux57df}
+
+\([a, b]\) 上の \(f(x) \geq g(x)\) の場合、曲線 \(y=f(x)\) と \(y=g(x)\)
+の間の領域は次のようになります。
+
+\[
+A = \int_a^b \big(f(x) - g(x)\big)\,dx.
+\]
+
+例: \([0,1]\) 上の \(y=x^2\) と \(y=x\) の間の領域を見つけます。
+
+\[
+A = \int_0^1 (x - x^2)\,dx = \left[\tfrac{1}{2}x^2 - \tfrac{1}{3}x^3\right]_0^1 = \tfrac{1}{6}。
+\]
+
+\subsubsection{スライスによるボリューム}\label{ux30b9ux30e9ux30a4ux30b9ux306bux3088ux308bux30dcux30eaux30e5ux30fcux30e0}
+
+固体の位置 \(x\) における断面積 \(A(x)\)
+がある場合、体積は次のようになります。
+
+\[
+V = \int_a^b A(x)\,dx。
+\]
+
+\subsubsection{革命のボリューム}\label{ux9769ux547dux306eux30dcux30eaux30e5ux30fcux30e0}
+
+領域が軸の周りを回転すると、結果として得られるソリッドの体積を積分によって見つけることができます。
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  ディスク方式\(y=f(x)\)、\(x\in[a,b]\) の下の領域が \(x\)
+  軸の周りを回転する場合:
+\end{enumerate}
+
+\[
+V = \pi \int_a^b [f(x)]^2\,dx。
+\]
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  ワッシャー方式 \(y=f(x)\) と \(y=g(x)\) の間の領域が \(x\)
+  軸の周りを回転する場合:
+\end{enumerate}
+
+\[
+V = \pi \int_a^b \Big([f(x)]^2 - [g(x)]^2\Big)\,dx。
+\]
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{2}
+\tightlist
+\item
+  シェルメソッド \(y=f(x)\) の下の領域が \(y\) 軸の周りを回転する場合:
+\end{enumerate}
+
+\[
+V = 2\pi \int_a^b x f(x)\,dx。
+\]
+
+\subsubsection{例}\label{ux4f8b-14}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  ディスク方式 \(y=\sqrt{x}\)、\(0 \leq x \leq 4\) を \(x\)
+  軸の周りに回転させます。
+\end{enumerate}
+
+\[
+V = \pi \int_0^4 (\sqrt{x})^2\,dx = \pi \int_0^4 x\,dx = \pi \left[\tfrac{1}{2}x^2\right]_0^4 = 8\pi。
+\]
+
+2.ワッシャー方式 \(y=\sqrt{x}\) と \(y=1\)、\(0 \leq x \leq 1\)
+の間の領域を \(x\) 軸を中心に回転させます。
+
+\[
+V = \pi \int_0^1 \big((\sqrt{x})^2 - (1)^2\big)\,dx = \pi \int_0^1 (x-1)\,dx = -\tfrac{\pi}{2}。
+\]
+
+(ボリュームの絶対値を取得します: \(V = \tfrac{\pi}{2}\))。
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{2}
+\tightlist
+\item
+  シェルメソッド \(y=x\)、\(0 \leq x \leq 1\) の下の領域を \(y\)
+  軸を中心に回転させます。
+\end{enumerate}
+
+\[
+V = 2\pi \int_0^1 x(x)\,dx = 2\pi \int_0^1 x^2\,dx = 2\pi \cdot \tfrac{1}{3} = \tfrac{2\pi}{3}。
+\]
+
+\subsubsection{なぜこれが重要なのか}\label{ux306aux305cux3053ux308cux304cux91cdux8981ux306aux306eux304b-4}
+
+\begin{itemize}
+\tightlist
+\item
+  ジオメトリの面積と体積を計算する正確な方法を提供します。
+\item
+  物理学、工学、確率論の必需品。
+\item
+  統合による幾何学的思考を導入します。
+\end{itemize}
+
+\subsubsection{演習}\label{ux6f14ux7fd2-23}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \([0, \pi/2]\) 上の \(y=\cos x\) と \(y=\sin x\)
+  の間の領域を見つけます。
+\item
+  \(y=x^2\)、\(0 \leq x \leq 1\) を \(x\)
+  軸の周りに回転させることによって形成される固体の体積を計算します。
+\item
+  \([0,1]\) 上の \(y=x\) と \(y=\sqrt{x}\) の間の領域を \(y\)
+  軸の周りに回転させることによって形成される固体の体積を求めます。
+\item
+  ワッシャー法を使用して、\(y=\sqrt{1-x^2}\) (半円) を \(x\)
+  軸の周りに回転させることによって形成される固体の体積を計算します。
+\item
+  \(y=x^2+1\) と \(y=3x\) で囲まれた領域を見つけます。
+\end{enumerate}
+
+\subsection{6.2
+円弧の長さと表面積積分は、曲線の長さや回転曲線によって生成される固体の表面積を測定するためにも使用できます。}\label{ux5186ux5f27ux306eux9577ux3055ux3068ux8868ux9762ux7a4dux7a4dux5206ux306fux66f2ux7ddaux306eux9577ux3055ux3084ux56deux8ee2ux66f2ux7ddaux306bux3088ux3063ux3066ux751fux6210ux3055ux308cux308bux56faux4f53ux306eux8868ux9762ux7a4dux3092ux6e2cux5b9aux3059ux308bux305fux3081ux306bux3082ux4f7fux7528ux3067ux304dux307eux3059}
+
+\subsubsection{円弧の長さ}\label{ux5186ux5f27ux306eux9577ux3055}
+
+区間 \([a,b]\) 上の滑らかな曲線 \(y=f(x)\)
+の場合、曲線の長さは次のようになります。
+
+\[
+L = \int_a^b \sqrt{1 + \big(f'(x)\big)^2}\,dx。
+\]
+
+これは、曲線を線分で近似し、極限を取ることから得られます。
+
+例: \(x=0\) から \(x=4\) までの \(y=\tfrac{1}{2}x^{3/2}\)
+の長さを求めます。
+
+\begin{itemize}
+\tightlist
+\item
+  派生語: \(f'(x) = \tfrac{3}{4}\sqrt{x}\)。
+\item
+  式:
+\end{itemize}
+
+\[
+L = \int_0^4 \sqrt{1 + \Big(\tfrac{3}{4}\sqrt{x}\Big)^2}\,dx
+= \int_0^4 \sqrt{1 + \tfrac{9}{16}x}\,dx。
+\]
+
+この積分は代入を使用して評価できます。
+
+\subsubsection{回転表面積}\label{ux56deux8ee2ux8868ux9762ux7a4d}
+
+曲線 \(y=f(x)\)、\(a \leq x \leq b\) が \(x\)
+軸の周りを回転すると、結果として得られるソリッドの表面積は次のようになります。
+
+\[
+S = 2\pi \int_a^b f(x)\sqrt{1 + \big(f'(x)\big)^2}\,dx。
+\]
+
+\(y\) 軸の周りを回転する場合:
+
+\[
+S = 2\pi \int_a^b x \sqrt{1 + \big(f'(x)\big)^2}\,dx。
+\]
+
+\subsubsection{例}\label{ux4f8b-15}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  線分の弧の長さ \(y=x\)、\(0 \leq x \leq 3\) の場合:
+\end{enumerate}
+
+\[
+L = \int_0^3 \sqrt{1+(1)^2}\,dx = \int_0^3 \sqrt{2}\,dx = 3\sqrt{2}。
+\]
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  球の表面積 \(y = \sqrt{r^2 - x^2}\)、\(-r \leq x \leq r\)
+  を取得し、\(x\) 軸の周りを回転します。
+\end{enumerate}
+
+\[
+S = 2\pi \int_{-r}^r \sqrt{r^2 - x^2}\sqrt{1+\left(\frac{-x}{\sqrt{r^2-x^2}}\right)^2}\,dx。
+\]
+
+単純化すると、球の表面積を表すおなじみの式 \(S = 4\pi r^2\)
+が得られます。
+
+\subsubsection{なぜこれが重要なのか}\label{ux306aux305cux3053ux308cux304cux91cdux8981ux306aux306eux304b-5}
+
+\begin{itemize}
+\tightlist
+\item
+  円弧の長さにより、曲線パスまでの距離の概念が拡張されます。
+\item
+  回転表面積は物理学、工学、設計に応用できます。
+\item
+  微積分と幾何学の橋渡しをします。
+\end{itemize}
+
+\subsubsection{演習}\label{ux6f14ux7fd2-24}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \(y=\sqrt{x}\) の \(x=0\) から \(x=4\) までの円弧の長さを求めます。2.
+  \(y=x^2\)、\(0 \leq x \leq 1\) を \(x\)
+  軸の周りに回転させることによって得られる固体の表面積を計算します。
+\item
+  \(x=0\) から \(x=1\) までの \(y=\ln(\cosh x)\)
+  の円弧の長さを求めます。
+\item
+  \(x\) 軸を中心に \(y=\sqrt{r^2 - x^2}\) を \(0\) から \(r\)
+  まで回転させると、球の表面積が半分になることを示します。
+\item
+  直線を回転させて円錐の表面積の公式を導き出します。
+\end{enumerate}
+
+\subsection{6.3 仕事と平均}\label{ux4ed5ux4e8bux3068ux5e73ux5747}
+
+統合はジオメトリに限定されません。また、力によって行われる仕事や、一定期間にわたる関数の平均値を計算するのにも役立ちます。
+
+\subsubsection{仕事}\label{ux4ed5ux4e8b}
+
+変数力 \(F(x)\) がオブジェクトを \(x=a\) から \(x=b\)
+まで直線に沿って移動させる場合、総仕事量は次のようになります。
+
+\[
+W = \int_a^b F(x)\,dx。
+\]
+
+この式は、一定の力に対する単純なケース \(W = F \cdot d\)
+を一般化したものです。
+
+例 1: ばねの力 (フックの法則) 力 \(F(x) = kx\) で、長さ \(a\) から \(b\)
+まで引き伸ばされたスプリングの場合:
+
+\[
+W = \int_a^b kx\,dx = \tfrac{1}{2}k(b^2-a^2)。
+\]
+
+例 2: 水を汲み上げる
+タンクから水を汲み出す場合、必要な仕事は次のとおりです。
+
+\[
+W = \int_a^b \text{(重量密度)} \times \text{(断面積)} \times \text{(持ち上げ距離)} \, dx。
+\]
+
+\subsubsection{関数の平均値}\label{ux95a2ux6570ux306eux5e73ux5747ux5024}
+
+\([a,b]\) 上の連続関数 \(f(x)\) の平均値は次のとおりです。
+
+\[
+f_{\text{avg}} = \frac{1}{b-a} \int_a^b f(x)\,dx。
+\]
+
+これは、数値のリストを平均する継続的なアナログです。
+
+例 1: \([0,2]\) の \(f(x)=x^2\) の場合:
+
+\[
+f_{\text{avg}} = \tfrac{1}{2-0}\int_0^2 x^2 dx = \tfrac{1}{2}\cdot \tfrac{8}{3} = \tfrac{4}{3}。
+\]
+
+例 2: 粒子の速度が \(v(t)\) の場合、 \([a,b]\)
+にわたる平均速度は次のようになります。
+
+\[
+v_{\text{avg}} = \frac{1}{b-a}\int_a^b v(t)\,dt。
+\]
+
+\subsubsection{なぜこれが重要なのか}\label{ux306aux305cux3053ux308cux304cux91cdux8981ux306aux306eux304b-6}
+
+\begin{itemize}
+\tightlist
+\item
+  仕事積分は、物理学、工学、エネルギー計算に使用されます。-
+  平均値は、さまざまな量を代表する単一の数値を示します。
+\item
+  どちらも微積分を動き、力、効率といった現実世界の問題に結び付けます。
+\end{itemize}
+
+\subsubsection{演習}\label{ux6f14ux7fd2-25}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \(k=10\) の場合、バネを 2 m から 5 m
+  に伸ばすのに必要な仕事を計算します。
+\item
+  100 kg の物体が重力場内で垂直に 5 m 持ち上げられます
+  (\(g=9.8 \,\text{m/s}^2\))。仕事を積分として表現して評価します。
+\item
+  \([0,\pi]\) 上の \(f(x)=\sin x\) の平均値を見つけます。
+\item
+  \(T(t)=20+5\cos(\tfrac{\pi t}{12})\) の場合、1 日 24
+  時間の平均気温を計算します。
+  5.深さ10mのタンクに水が満たされています。水の重さが
+  \(9800 \,\text{N/m}^3\)
+  であるとして、すべての水を上部まで汲み上げるのに必要な仕事を計算します。
+\end{enumerate}
+
+\subsection{6.4
+確率密度と連続分布}\label{ux78baux7387ux5bc6ux5ea6ux3068ux9023ux7d9aux5206ux5e03}
+
+積分は確率理論、特に連続確率変数の場合にも中心的な役割を果たします。離散的な結果の代わりに、確率密度関数
+(pdf) と呼ばれる関数を使用して確率を記述します。
+
+\subsubsection{確率密度関数}\label{ux78baux7387ux5bc6ux5ea6ux95a2ux6570}
+
+確率密度関数 \(f(x)\) は、次の 2 つの条件を満たす必要があります。
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  すべての \(x\) に対して \(f(x) \geq 0\)。
+\item
+  曲線の下の合計面積は 1 です。
+
+  \[
+  \int_{-\infty}^\infty f(x)\,dx = 1。
+  \]
+\end{enumerate}
+
+\(X\) が pdf \(f(x)\) の連続確率変数である場合、\(X\) が \(a\) と \(b\)
+の間にある確率は次のようになります。
+
+\[
+P(a \leq X \leq b) = \int_a^b f(x)\,dx。
+\]
+
+\subsubsection{累積分布関数}\label{ux7d2fux7a4dux5206ux5e03ux95a2ux6570}
+
+累積分布関数 (cdf) は次のように定義されます。
+
+\[
+F(x) = \int_{-\infty}^x f(t)\,dt。
+\]
+
+これは、確率変数が \(x\) 以下である確率を示します。
+
+\subsubsection{期待値 (平均)}\label{ux671fux5f85ux5024-ux5e73ux5747}
+
+連続確率変数の期待値は加重平均です。
+
+\[
+E[X] = \int_{-\infty}^\infty x f(x)\,dx。
+\]
+
+\subsubsection{例}\label{ux4f8b-16}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  均一な分布\([a,b]\) の \(f(x) = \tfrac{1}{b-a}\) の場合:
+\end{enumerate}
+
+\begin{itemize}
+\item
+  間隔 \([c,d]\) の確率:
+
+  \[
+  P(c \leq X \leq d) = \frac{d-c}{b-a}。
+  \]
+\item
+  期待値: \(E[X] = \tfrac{a+b}{2}\)。
+\end{itemize}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  指数分布 \(f(x) = \lambda e^{-\lambda x}\)、\(x \geq 0\) の場合:
+\end{enumerate}
+
+\begin{itemize}
+\tightlist
+\item
+  \(\int_0^\infty \lambda e^{-\lambda x}\,dx = 1\)。
+\item
+  意味: \(E[X] = \tfrac{1}{\lambda}\)。
+\end{itemize}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{2}
+\tightlist
+\item
+  正規分布 ベルカーブ:
+\end{enumerate}
+
+\[
+f(x) = \frac{1}{\sqrt{2\pi\sigma^2}} e^{-\frac{(x-\mu)^2}{2\sigma^2}}。
+\]
+
+1に統合しますが、高度な技術が必要です。
+
+\subsubsection{なぜこれが重要なのか}\label{ux306aux305cux3053ux308cux304cux91cdux8981ux306aux306eux304b-7}
+
+\begin{itemize}
+\tightlist
+\item
+  確率密度は、科学、工学、統計における不確実性を表します。
+\item
+  積分は曲線の下の領域を確率に結び付けます。
+\item
+  連続分布は、結果を数えて間隔にわたる可能性を測定するという考え方を一般化します。
+\end{itemize}
+
+\subsubsection{演習}\label{ux6f14ux7fd2-26}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \([a,b]\) 上の均一密度 \(f(x) = \tfrac{1}{b-a}\) が積分して 1
+  になることを示します。
+\item
+  \(\lambda = 2\) を使用した指数分布の場合、\(P(0 \leq X \leq 1)\)
+  を計算します。
+\item
+  \([0,1]\) で \(f(x) = 3x^2\) の場合の \(X\) の期待値を見つけます。
+\item
+  平均 0、分散 1 の正規分布の合計確率が 1 であることを検証します
+  (完全な証明は必要ありませんが、それが成り立つ理由を説明してください)。
+\item
+  \([0,1]\) 上の一様分布の累積分布関数を計算します。
+\end{enumerate}
+
+＃パートIII。多変数微積分
+
+\section{第 7 章
+ベクトル関数と曲線}\label{ux7b2c-7-ux7ae0-ux30d9ux30afux30c8ux30ebux95a2ux6570ux3068ux66f2ux7dda}
+
+\subsection{7.1
+ベクトル関数と空間曲線}\label{ux30d9ux30afux30c8ux30ebux95a2ux6570ux3068ux7a7aux9593ux66f2ux7dda}
+
+多変数微積分では、関数は数値の代わりにベクトルを出力できます。これらはベクトル値関数と呼ばれ、空間内の曲線を記述するために不可欠です。
+
+\subsubsection{定義}\label{ux5b9aux7fa9-7}
+
+ベクトル関数は次の形式の関数です。
+
+\[
+\mathbf{r}(t) = \langle x(t), y(t), z(t) \rangle,
+\]
+
+ここで、\(x(t), y(t), z(t)\) は実数値関数です。
+
+\begin{itemize}
+\tightlist
+\item
+  入力 \(t\) は、パラメーターと呼ばれることがよくあります。- 出力は 2D
+  または 3D 空間のベクトルです。
+\item
+  3D のベクトル関数のグラフは空間曲線です。
+\end{itemize}
+
+\subsubsection{例}\label{ux4f8b-17}
+
+1.ライン
+
+\[
+\mathbf{r}(t) = \langle 1+2t, \; 3-t、\; 4+5t \rangle。
+\]
+
+これは、方向ベクトル \(\langle 2,-1,5 \rangle\) を持つ点 \((1,3,4)\)
+を通る直線を表します。
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  平面内で円を描く
+\end{enumerate}
+
+\[
+\mathbf{r}(t) = \langle \cos t, \; \罪、\; 0 \rangle, \quad 0 \leq t < 2\pi。
+\]
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{2}
+\tightlist
+\item
+  ヘリックス
+\end{enumerate}
+
+\[
+\mathbf{r}(t) = \langle \cos t, \; \罪、\; t \rangle.
+\]
+
+これは、\(z\) 軸の周りに上昇する螺旋です。
+
+\subsubsection{限界と継続性}\label{ux9650ux754cux3068ux7d99ux7d9aux6027}
+
+各コンポーネント \(x(t), y(t), z(t)\) が \(t=a\)
+で連続している場合、ベクトル関数は \(t=a\) で連続です。
+
+\[
+\lim_{t \to a} \mathbf{r}(t) = \langle \lim_{t \to a} x(t), \; \lim_{t \to a} y(t), \; \lim_{t \to a} z(t) \rangle。
+\]
+
+\subsubsection{空間曲線の幾何学}\label{ux7a7aux9593ux66f2ux7ddaux306eux5e7eux4f55ux5b66}
+
+\begin{itemize}
+\tightlist
+\item
+  各曲線には微分によって与えられる接線方向があります。
+\item
+  スペース カーブは、モーション
+  パス、粒子の軌道、幾何学的形状をモデル化できます。
+\end{itemize}
+
+\subsubsection{なぜこれが重要なのか}\label{ux306aux305cux3053ux308cux304cux91cdux8981ux306aux306eux304b-8}
+
+ベクトル関数は多変数微積分の基礎であり、微分と積分の考え方をより高い次元に拡張することができます。それらは物理学
+(3D の運動、電磁気学、流体力学) にも自然に現れます。
+
+\subsubsection{演習}\label{ux6f14ux7fd2-27}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \((0,1,2)\) を通るベクトル関数をベクトル \(\langle 3,-2,1 \rangle\)
+  に平行に記述します。
+\item
+  \(\mathbf{r}(t) = \langle 2\cos t, \; 2\sin t, \; 3 \rangle\)
+  で与えられる曲線を記述します。
+\item
+  \(\mathbf{r}(t) = \langle e^t, \; \ln t, \; t^2 \rangle\) が \(t=1\)
+  で連続しているかどうかを判断します。
+\item
+  らせん \(\mathbf{r}(t) = \langle \cos t, \; \sin t, \; 2t \rangle\)
+  をスケッチします。
+\item
+  \(t=2\) のときの曲線
+  \(\mathbf{r}(t) = \langle t, \; t^2, \; t^3 \rangle\)
+  上の点を見つけます。
+\end{enumerate}
+
+\subsection{7.2
+ベクトル関数の導関数と積分ベクトル関数は、通常の関数と同じように微分および統合することができ、各コンポーネントに演算を適用するだけです。これにより、運動、速度、加速度、蓄積を高次元で研究できるようになります。}\label{ux30d9ux30afux30c8ux30ebux95a2ux6570ux306eux5c0eux95a2ux6570ux3068ux7a4dux5206ux30d9ux30afux30c8ux30ebux95a2ux6570ux306fux901aux5e38ux306eux95a2ux6570ux3068ux540cux3058ux3088ux3046ux306bux5faeux5206ux304aux3088ux3073ux7d71ux5408ux3059ux308bux3053ux3068ux304cux3067ux304dux5404ux30b3ux30f3ux30ddux30fcux30cdux30f3ux30c8ux306bux6f14ux7b97ux3092ux9069ux7528ux3059ux308bux3060ux3051ux3067ux3059ux3053ux308cux306bux3088ux308aux904bux52d5ux901fux5ea6ux52a0ux901fux5ea6ux84c4ux7a4dux3092ux9ad8ux6b21ux5143ux3067ux7814ux7a76ux3067ux304dux308bux3088ux3046ux306bux306aux308aux307eux3059}
+
+\subsubsection{ベクトル関数の導関数}\label{ux30d9ux30afux30c8ux30ebux95a2ux6570ux306eux5c0eux95a2ux6570}
+
+もし
+
+\[
+\mathbf{r}(t) = \langle x(t), y(t), z(t) \rangle,
+\]
+
+それから
+
+\[
+\mathbf{r}'(t) = \langle x'(t), y'(t), z'(t) \rangle。
+\]
+
+この導関数ベクトルは、パラメーター \(t\) の曲線の接線方向を指します。
+
+\begin{itemize}
+\tightlist
+\item
+  速度: \(\mathbf{r}(t)\) が時間 \(t\)
+  における粒子の位置を与える場合、\(\mathbf{v}(t) = \mathbf{r}'(t)\)
+  はその速度ベクトルです。
+\item
+  速度: 大きさ \(|\mathbf{v}(t)|\) はパーティクルの速度です。
+\item
+  加速: \(\mathbf{a}(t) = \mathbf{v}'(t) = \mathbf{r}''(t)\)。
+\end{itemize}
+
+\subsubsection{例}\label{ux4f8b-18}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  ヘリックス
+\end{enumerate}
+
+\[
+\mathbf{r}(t) = \langle \cos t, \sin t, t \rangle.
+\]
+
+\begin{itemize}
+\tightlist
+\item
+  速度: \(\mathbf{v}(t) = \langle -\sin t, \cos t, 1 \rangle\)。
+\item
+  速度:
+  \(|\mathbf{v}(t)| = \sqrt{(-\sin t)^2 + (\cos t)^2 + 1^2} = \sqrt{2}\)。
+\item
+  加速度: \(\mathbf{a}(t) = \langle -\cos t, -\sin t, 0 \rangle\)。
+\end{itemize}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  発射体の動き
+\end{enumerate}
+
+\[
+\mathbf{r}(t) = \langle v_0 \cos\theta \cdot t, \; v_0 \sin\theta \cdot t - \tfrac{1}{2}gt^2 \rangle。
+\]
+
+これは、重力下での発射体の放物線経路をモデル化します。
+
+\subsubsection{ベクトル関数の積分}\label{ux30d9ux30afux30c8ux30ebux95a2ux6570ux306eux7a4dux5206}
+
+もし
+
+\[
+\mathbf{r}(t) = \langle x(t), y(t), z(t) \rangle,
+\]
+
+それから
+
+\[
+\int \mathbf{r}(t)\,dt = \left\langle \int x(t)\,dt, \; \int y(t)\,dt, \; \int z(t)\,dt \right\rangle + \mathbf{C},
+\]
+
+ここで、\(\mathbf{C}\) は定数ベクトルです。
+
+\subsubsection{例}\label{ux4f8b-19}
+
+\[
+\mathbf{r}(t) = \langle t, t^2, t^3 \rangle.
+\]
+
+\begin{itemize}
+\tightlist
+\item
+  派生語: \(\mathbf{r}'(t) = \langle 1, 2t, 3t^2 \rangle\)。
+\item
+  一体型:
+\end{itemize}
+
+\[
+\int \mathbf{r}(t)\,dt = \langle \tfrac{1}{2}t^2, \tfrac{1}{3}t^3, \tfrac{1}{4}t^4 \rangle + \mathbf{C}。
+\]
+
+\subsubsection{なぜこれが重要なのか-
+ベクトル関数の導関数は、空間内の動きと力を記述します。}\label{ux306aux305cux3053ux308cux304cux91cdux8981ux306aux306eux304b--ux30d9ux30afux30c8ux30ebux95a2ux6570ux306eux5c0eux95a2ux6570ux306fux7a7aux9593ux5185ux306eux52d5ux304dux3068ux529bux3092ux8a18ux8ff0ux3057ux307eux3059}
+
+\begin{itemize}
+\tightlist
+\item
+  積分は変位、仕事、累積量を与えます。
+\item
+  これらのツールは、微積分を物理学や工学に直接接続します。
+\end{itemize}
+
+\subsubsection{演習}\label{ux6f14ux7fd2-28}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \(\mathbf{r}(t) = \langle t, \cos t, \sin t \rangle\)
+  について、速度、速度、加速度を求めます。
+\item
+  \(\mathbf{r}(t) = \langle e^t, \ln t, t^2 \rangle\) に対する
+  \(\mathbf{r}'(t)\) を計算します。
+\item
+  \(\mathbf{r}(t) = \langle 1, t, t^2 \rangle\) を統合します。
+\item
+  粒子の速度は \(\mathbf{v}(t) = \langle t, 2, 0 \rangle\) です。
+  \(\mathbf{r}(0) = \langle 1, 0, 0 \rangle\)
+  の場合、その位置ベクトルを見つけます。
+\item
+  \(\mathbf{r}(t) = \langle \cos t, \sin t, 0 \rangle\)
+  の速度が一定であることを示します。
+\end{enumerate}
+
+\subsection{7.3
+円弧の長さと曲率}\label{ux5186ux5f27ux306eux9577ux3055ux3068ux66f2ux7387}
+
+ベクトル計算は、曲線がたどる経路だけでなく、曲線がどの程度急激に曲がるかを測定するツールを提供します。これらは円弧の長さと曲率によって表現されます。
+
+\subsubsection{空間曲線の円弧の長さ}\label{ux7a7aux9593ux66f2ux7ddaux306eux5186ux5f27ux306eux9577ux3055}
+
+曲線が次のように与えられる場合、
+
+\[
+\mathbf{r}(t) = \langle x(t), y(t), z(t) \rangle, \quad a \leq t \leq b,
+\]
+
+その場合、円弧の長さは
+
+\[
+L = \int_a^b |\mathbf{r}'(t)|\,dt,
+\]
+
+どこで
+
+\[
+|\mathbf{r}'(t)| = \sqrt{(x'(t))^2 + (y'(t))^2 + (z'(t))^2}。
+\]
+
+例: ヘリックス
+\(\mathbf{r}(t) = \langle \cos t, \sin t, t \rangle, \, 0 \leq t \leq 2\pi\)
+の場合:
+
+\begin{itemize}
+\tightlist
+\item
+  速度: \(\mathbf{r}'(t) = \langle -\sin t, \cos t, 1 \rangle\)。
+\item
+  速度:
+  \(|\mathbf{r}'(t)| = \sqrt{(-\sin t)^2 + (\cos t)^2 + 1^2} = \sqrt{2}\)。
+\item
+  円弧の長さ:
+\end{itemize}
+
+\[
+L = \int_0^{2\pi} \sqrt{2}\,dt = 2\pi\sqrt{2}。
+\]
+
+\subsubsection{曲率}\label{ux66f2ux7387}
+
+曲率は、曲線が方向を変える速さを測定します。
+
+滑らかな曲線の場合 \(\mathbf{r}(t)\):
+
+\[
+\kappa(t) = \frac{|\mathbf{r}'(t) \times \mathbf{r}''(t)|}{|\mathbf{r}'(t)|^3}。
+\]
+
+\begin{itemize}
+\tightlist
+\item
+  \(\kappa = 0\): 直線。
+\item
+  \(\kappa\) を大きくすると、カーブがより鋭く曲がります。
+\end{itemize}
+
+例: 半径 \(r\) の円の場合:\[
+\mathbf{r}(t) = \langle r\cos t, r\sin t \rangle.
+\]
+
+それから\(\kappa = \tfrac{1}{r}\)。
+したがって、曲率は一定であり、半径に反比例します。
+
+\subsubsection{単位接線ベクトルと法線ベクトル}\label{ux5358ux4f4dux63a5ux7ddaux30d9ux30afux30c8ux30ebux3068ux6cd5ux7ddaux30d9ux30afux30c8ux30eb}
+
+\begin{itemize}
+\tightlist
+\item
+  接線ベクトル:
+\end{itemize}
+
+\[
+\mathbf{T}(t) = \frac{\mathbf{r}'(t)}{|\mathbf{r}'(t)|}。
+\]
+
+\begin{itemize}
+\tightlist
+\item
+  法線ベクトル: 曲率の中心を指し、次のように定義されます。
+\end{itemize}
+
+\[
+\mathbf{N}(t) = \frac{\mathbf{T}'(t)}{|\mathbf{T}'(t)|}。
+\]
+
+これらのベクトルは、移動方向と回転方向といった動きの幾何学形状を記述します。
+
+\subsubsection{なぜこれが重要なのか}\label{ux306aux305cux3053ux308cux304cux91cdux8981ux306aux306eux304b-9}
+
+\begin{itemize}
+\tightlist
+\item
+  円弧の長さは、空間内の曲線までの距離の概念を一般化します。
+\item
+  曲率は、物理学 (向心加速度)、工学 (道路、ジェット
+  コースター)、およびコンピューター
+  グラフィックスで重要な曲がりを表します。
+\end{itemize}
+
+\subsubsection{演習}\label{ux6f14ux7fd2-29}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \(t=0\) から \(t=1\) までの
+  \(\mathbf{r}(t) = \langle t, t^2, 0 \rangle\) の円弧の長さを求めます。
+\item
+  円 \(\mathbf{r}(t) = \langle \cos t, \sin t \rangle\)
+  の曲率を計算します。
+\item
+  \(\mathbf{r}(t) = \langle t, \cos t, \sin t \rangle\)
+  の場合、\(|\mathbf{r}'(t)|\) を計算します。
+\item
+  直線に曲率 \(\kappa = 0\) があることを示します。
+\item
+  \(t=0\) で \(\mathbf{r}(t) = \langle e^t, e^{-t}, t \rangle\)
+  への接線ベクトルを見つけます。
+\end{enumerate}
+
+\subsection{7.4
+空間内の運動}\label{ux7a7aux9593ux5185ux306eux904bux52d5}
+
+ベクトル関数は、2 次元または 3
+次元の動きを記述する場合に特に強力です。位置、速度、加速度は、ベクトル値関数の導関数と積分を使用して自然に表現されます。
+
+\subsubsection{位置、速度、加速度}\label{ux4f4dux7f6eux901fux5ea6ux52a0ux901fux5ea6}
+
+\begin{itemize}
+\tightlist
+\item
+  位置ベクトル:
+\end{itemize}
+
+\[
+\mathbf{r}(t) = \langle x(t), y(t), z(t) \rangle
+\]
+
+\begin{itemize}
+\tightlist
+\item
+  速度ベクトル (位置の導関数):
+\end{itemize}
+
+\[
+\mathbf{v}(t) = \mathbf{r}'(t) = \langle x'(t), y'(t), z'(t) \rangle
+\]
+
+\begin{itemize}
+\tightlist
+\item
+  速度 (速度の大きさ):
+\end{itemize}
+
+\[
+|\mathbf{v}(t)| = \sqrt{(x'(t))^2 + (y'(t))^2 + (z'(t))^2}
+\]
+
+\begin{itemize}
+\tightlist
+\item
+  加速度ベクトル (速度の導関数):
+\end{itemize}
+
+\[\mathbf{a}(t) = \mathbf{v}'(t) = \mathbf{r}''(t)。
+\]
+
+\subsubsection{接線成分と法線成分}\label{ux63a5ux7ddaux6210ux5206ux3068ux6cd5ux7ddaux6210ux5206}
+
+加速は 2 つの要素に分解できます。
+
+\[
+\mathbf{a}(t) = a_T \mathbf{T}(t) + a_N \mathbf{N}(t),
+\]
+
+ここで:
+
+\begin{itemize}
+\tightlist
+\item
+  \(\mathbf{T}(t)\) = 単位接線ベクトル、
+\item
+  \(\mathbf{N}(t)\) = 主法線ベクトル、
+\item
+  \(a_T = \frac{d}{dt}|\mathbf{v}(t)|\) = 接線加速度 (速度の変化)、
+\item
+  \(a_N = \kappa |\mathbf{v}(t)|^2\) = 通常の加速 (方向の変更)。
+\end{itemize}
+
+\subsubsection{3D
+での発射体の動き}\label{d-ux3067ux306eux767aux5c04ux4f53ux306eux52d5ux304d}
+
+重力が \(-z\) 方向に作用する場合:
+
+\[
+\mathbf{r}(t) = \langle v_0 \cos\theta \cos\phi \cdot t,\; v_0 \cos\theta \sin\phi \cdot t,\; v_0 \sin\theta \cdot t - \tfrac{1}{2}gt^2 \rangle,
+\]
+
+ここで、\(v_0\) は初速度、\(\theta\) は発射角、\(\phi\) は方位角です。
+
+\subsubsection{例:
+ヘリカルモーション}\label{ux4f8b-ux30d8ux30eaux30abux30ebux30e2ux30fcux30b7ux30e7ux30f3}
+
+\[
+\mathbf{r}(t) = \langle \cos t, \sin t, t \rangle
+\]
+
+\begin{itemize}
+\tightlist
+\item
+  速度: \(\mathbf{v}(t) = \langle -\sin t, \cos t, 1 \rangle\)。
+\item
+  速度: \(|\mathbf{v}(t)| = \sqrt{2}\)。
+\item
+  加速度: \(\mathbf{a}(t) = \langle -\cos t, -\sin t, 0 \rangle\)。
+\item
+  動きは均一な速度で、上向きに螺旋を描きます。
+\end{itemize}
+
+\subsubsection{なぜこれが重要なのか}\label{ux306aux305cux3053ux308cux304cux91cdux8981ux306aux306eux304b-10}
+
+\begin{itemize}
+\tightlist
+\item
+  現実世界の動きに数学的言語を提供します。
+\item
+  物理学 (力、軌道、円運動) に不可欠。
+\item
+  高度な機械およびエンジニアリング モデルの基礎。
+\end{itemize}
+
+\subsubsection{演習}\label{ux6f14ux7fd2-30}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  パーティクルは \(\mathbf{r}(t) = \langle t, t^2, t^3 \rangle\)
+  に沿って移動します。 \(t=1\) の速度と加速度を求めます。
+\item
+  らせん \(\mathbf{r}(t) = \langle \cos t, \sin t, t \rangle\)
+  の速度が一定であることを示します。
+\item
+  発射体は、\(v_0 = 20 \,\text{m/s}\) の角度で \(45^\circ\)
+  で発射されます。垂直面内の動きを想定して位置ベクトルを記述します。
+\item
+  \(\mathbf{r}(t) = \langle e^t, e^{-t}, t \rangle\)
+  の場合、\(\mathbf{v}(t)\) と \(\mathbf{a}(t)\) を見つけます。5.
+  加速度ベクトルを、半径 \(r\)
+  の円に沿った動きの接線成分と法線成分に分解します。
+\end{enumerate}
+
+\section{第 8 章
+いくつかの変数の関数}\label{ux7b2c-8-ux7ae0-ux3044ux304fux3064ux304bux306eux5909ux6570ux306eux95a2ux6570}
+
+\subsection{8.1
+いくつかの変数の極限と連続性}\label{ux3044ux304fux3064ux304bux306eux5909ux6570ux306eux6975ux9650ux3068ux9023ux7d9aux6027}
+
+多変数計算では、関数は \(f(x,y)\) や \(f(x,y,z)\) など、2
+つ以上の変数に依存する場合があります。限界と連続性の概念は、単一変数微積分から自然に拡張されますが、考えられるすべてのアプローチ経路を考慮する必要があるため、より微妙になります。
+
+\subsubsection{2
+つの変数の極限}\label{ux3064ux306eux5909ux6570ux306eux6975ux9650}
+
+関数 \(f(x,y)\) の場合、次のように言います。
+
+\[
+\lim_{(x,y) \to (a,b)} f(x,y) = L
+\]
+
+任意のパスに沿って \((x,y)\) が \((a,b)\) に近づくにつれて、\(f(x,y)\)
+が任意に \(L\) に近づいた場合。
+
+パスが異なると制限値が異なる場合、制限は存在しません。
+
+例 1 (制限が存在する):
+
+\[
+f(x,y) = x^2 + y^2, \quad \lim_{(x,y) \to (0,0)} f(x,y) = 0。
+\]
+
+例 2 (制限が存在しない):
+
+\[
+f(x,y) = \frac{xy}{x^2+y^2}, \quad (x,y) \to (0,0)。
+\]
+
+\begin{itemize}
+\tightlist
+\item
+  \(y=0\) に沿って、関数は 0 です。
+\item
+  \(y=x\) に沿って、機能は \(\tfrac{1}{2}\) です。 異なる結果 →
+  制限は存在しません。
+\end{itemize}
+
+\subsubsection{継続性}\label{ux7d99ux7d9aux6027-1}
+
+関数 \(f(x,y)\) は、次の場合に \((a,b)\) で連続します。
+
+\[
+\lim_{(x,y)\to(a,b)} f(x,y) = f(a,b)。
+\]
+
+多項式と有理関数 (分母 ≠ 0) は、その領域内のどこでも連続です。
+
+\subsubsection{3
+つ以上の変数への拡張}\label{ux3064ux4ee5ux4e0aux306eux5909ux6570ux3078ux306eux62e1ux5f35}
+
+\(f(x,y,z)\) の場合、限界と連続性は同じ方法で定義されますが、点
+\((a,b,c)\)
+には空間内の無限の多くの方向からアプローチする必要があります。
+
+\subsubsection{なぜこれが重要なのか}\label{ux306aux305cux3053ux308cux304cux91cdux8981ux306aux306eux304b-11}
+
+\begin{itemize}
+\tightlist
+\item
+  連続性により、多変数関数にジャンプ、穴、または漸近線が存在しないことが保証されます。
+\item
+  極限は、偏導関数と多重積分を定義するための基本です。
+\item
+  これらの概念は、多変数微積分の構成要素です。
+\end{itemize}
+
+\subsubsection{\texorpdfstring{演習1. \(\lim_{(x,y)\to(0,0)} (x^2+y^2)\)
+が存在するかどうかを確認します。}{演習1. \textbackslash lim\_\{(x,y)\textbackslash to(0,0)\} (x\^{}2+y\^{}2) が存在するかどうかを確認します。}}\label{ux6f14ux7fd21.-lim_xyto00-x2y2-ux304cux5b58ux5728ux3059ux308bux304bux3069ux3046ux304bux3092ux78baux8a8dux3057ux307eux3059}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  すべての直線パス \(y=mx\) に沿って
+  \(\lim_{(x,y)\to(0,0)} \frac{x^2y}{x^2+y^2} = 0\)
+  であることを示します。
+\item
+  \(f(x,y) = \frac{x^2-y^2}{x^2+y^2}\) と \((x,y)\to(0,0)\)
+  には制限が存在しますか?
+\item
+  2 つの変数の多項式がどこでも連続である理由を説明します。
+\item
+  ある点で不連続になる 2 変数の関数の例を挙げ、その理由を説明します。
+\end{enumerate}
+
+\subsection{8.2 部分導関数}\label{ux90e8ux5206ux5c0eux95a2ux6570}
+
+複数の変数の関数では、1
+つの変数だけが変化し、他の変数が一定に保たれた場合に関数がどのように変化するかを測定したいことがよくあります。これは偏導関数のアイデアにつながります。
+
+\subsubsection{定義}\label{ux5b9aux7fa9-8}
+
+関数 \(f(x,y)\) の場合、点 \((a,b)\) における \(x\)
+に関する偏導関数は次のようになります。
+
+\[
+\frac{\partial f}{\partial x}(a,b) = \lim_{h \to 0} \frac{f(a+h, b) - f(a,b)}{h}。
+\]
+
+同様に、\(y\) に関する偏導関数は次のようになります。
+
+\[
+\frac{\partial f}{\partial y}(a,b) = \lim_{h \to 0} \frac{f(a, b+h) - f(a,b)}{h}。
+\]
+
+微分する場合、他のすべての変数を定数として扱います。
+
+\subsubsection{表記}\label{ux8868ux8a18-1}
+
+\begin{itemize}
+\tightlist
+\item
+  \(\frac{\partial f}{\partial x}\)、\(f_x\)、\(\partial_x f\)。
+\item
+  \(\frac{\partial f}{\partial y}\)、\(f_y\)、\(\partial_y f\)。
+\end{itemize}
+
+3 つの変数 \(f(x,y,z)\) には、\(f_x, f_y, f_z\) もあります。
+
+\subsubsection{例}\label{ux4f8b-20}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \(f(x,y) = x^2y + y^3\)
+\end{enumerate}
+
+\begin{itemize}
+\tightlist
+\item
+  \(f_x = 2xy\)。
+\item
+  \(f_y = x^2 + 3y^2\)。
+\end{itemize}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  \(f(x,y) = e^{xy}\)
+\end{enumerate}
+
+\begin{itemize}
+\tightlist
+\item
+  \(f_x = y e^{xy}\)。
+\item
+  \(f_y = x e^{xy}\)。
+\end{itemize}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{2}
+\tightlist
+\item
+  \(f(x,y,z) = x^2 + yz\)
+\end{enumerate}
+
+\begin{itemize}
+\tightlist
+\item
+  \(f_x = 2x\)。
+\item
+  \(f_y = z\)。
+\item
+  \(f_z = y\)。
+\end{itemize}
+
+\subsubsection{高次の部分導関数}\label{ux9ad8ux6b21ux306eux90e8ux5206ux5c0eux95a2ux6570}
+
+偏導関数を繰り返して取ることができます。
+
+\begin{itemize}
+\tightlist
+\item
+  \(f_{xx} = \frac{\partial}{\partial x}\Big(f_x\Big)\)。
+\item
+  \(f_{yy}, f_{xy}, f_{yx}\) など
+\end{itemize}
+
+Clairaut の定理: \(f\) に連続 2 次偏導関数がある場合、
+
+\[
+f_{xy} = f_{yx}。
+\]
+
+\subsubsection{\texorpdfstring{幾何学的意味- \(f_x\): \(x\)
+方向のサーフェスの傾斜。}{幾何学的意味- f\_x: x 方向のサーフェスの傾斜。}}\label{ux5e7eux4f55ux5b66ux7684ux610fux5473--f_x-x-ux65b9ux5411ux306eux30b5ux30fcux30d5ux30a7ux30b9ux306eux50beux659c}
+
+\begin{itemize}
+\tightlist
+\item
+  \(f_y\): \(y\) 方向のサーフェスの傾斜。
+\item
+  これらは一緒に、表面がどのように傾くかを説明します。
+\end{itemize}
+
+\subsubsection{なぜこれが重要なのか}\label{ux306aux305cux3053ux308cux304cux91cdux8981ux306aux306eux304b-12}
+
+\begin{itemize}
+\tightlist
+\item
+  偏導関数は、勾配、接平面、および複数の変数での最適化の基礎です。
+\item
+  複数の入力を持つシステムをモデル化するために、物理学、工学、経済学で広く使用されています。
+\end{itemize}
+
+\subsubsection{演習}\label{ux6f14ux7fd2-31}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \(f(x,y) = x^3y^2\) の \(f_x\) と \(f_y\) を見つけます。
+\item
+  \(f(x,y,z) = xyz + x^2\) に対する \(f_x, f_y, f_z\) を計算します。
+\item
+  \(f(x,y) = x^2y + y^3\) に対する Clairaut の定理を検証します。
+\item
+  \(f_x\) と \(f_y\) が \(f(x,y) = \sqrt{x^2+y^2}\)
+  に対して何を意味するかを幾何学的に解釈します。
+\item
+  \(f(x,y) = e^{x^2+y^2}\) のすべての 2 次偏導関数を求めます。
+\end{enumerate}
+
+\subsection{8.3
+勾配および方向導関数}\label{ux52feux914dux304aux3088ux3073ux65b9ux5411ux5c0eux95a2ux6570}
+
+偏導関数は座標軸に沿った変化を測定しますが、任意の方向における関数の変化率を知りたい場合があります。これは、勾配微分と方向導関数の概念につながります。
+
+\subsubsection{勾配ベクトル}\label{ux52feux914dux30d9ux30afux30c8ux30eb}
+
+関数 \(f(x,y)\) の場合、勾配はベクトルです。
+
+\[
+\nabla f(x,y) = \left\langle \frac{\partial f}{\partial x}, \frac{\partial f}{\partial y} \right\rangle。
+\]
+
+3 つの変数 \(f(x,y,z)\) の場合:
+
+\[
+\nabla f(x,y,z) = \left\langle f_x, f_y, f_z \right\rangle。
+\]
+
+勾配は関数の最大増加の方向を指し、その大きさは最も急な勾配を示します。
+
+\subsubsection{方向性導関数}\label{ux65b9ux5411ux6027ux5c0eux95a2ux6570}
+
+単位ベクトル \(\mathbf{u} = \langle u_1, u_2 \rangle\)
+の方向の点における \(f(x,y)\) の変化率は次のとおりです。
+
+\[
+D_{\mathbf{u}} f(x,y) = \nabla f(x,y) \cdot \mathbf{u}。
+\]
+
+これは、勾配と方向ベクトルの内積です。
+
+\subsubsection{例}\label{ux4f8b-21}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \(f(x,y) = x^2 + y^2\)
+\end{enumerate}
+
+\begin{itemize}
+\tightlist
+\item
+  勾配: \(\nabla f = \langle 2x, 2y \rangle\)。
+\item
+  (1,2) で: \(\nabla f = \langle 2,4 \rangle\)。-
+  \(\mathbf{u} = \langle \tfrac{3}{5}, \tfrac{4}{5} \rangle\)
+  に沿った方向導関数:
+\end{itemize}
+
+\[
+D_{\mathbf{u}} f(1,2) = \langle 2,4 \rangle \cdot \langle \tfrac{3}{5}, \tfrac{4}{5} \rangle = \tfrac{26}{5}。
+\]
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  \(f(x,y,z) = x y z\)
+\end{enumerate}
+
+\begin{itemize}
+\tightlist
+\item
+  勾配: \(\nabla f = \langle yz, xz, xy \rangle\)。
+\item
+  (1,1,1) で: \(\nabla f = \langle 1,1,1 \rangle\)。
+\item
+  最大増加方向は \(\langle 1,1,1 \rangle\) に沿った方向です。
+\end{itemize}
+
+\subsubsection{幾何学的解釈}\label{ux5e7eux4f55ux5b66ux7684ux89e3ux91c8-1}
+
+\begin{itemize}
+\tightlist
+\item
+  勾配ベクトルは、\(f\) のレベル曲線またはレベル サーフェスに対して垂直
+  (法線) です。
+\item
+  方向導関数は、任意の方向の傾きを一般化します。
+\end{itemize}
+
+\subsubsection{なぜこれが重要なのか}\label{ux306aux305cux3053ux308cux304cux91cdux8981ux306aux306eux304b-13}
+
+\begin{itemize}
+\tightlist
+\item
+  最適化では、勾配は最も急な上りまたは下りの移動方向を示します。
+\item
+  物理学では、勾配は熱流や電位などの場を表します。
+\item
+  方向導関数は、単一変数と多変数の変化率を統合します。
+\end{itemize}
+
+\subsubsection{演習}\label{ux6f14ux7fd2-32}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \(f(x,y) = e^{xy}\) に対する \(\nabla f(x,y)\) を計算します。
+\item
+  \(f(x,y,z) = x^2+y^2+z^2\) の勾配を見つけて、(1,1,1) で評価します。
+\item
+  (2,1) における \(f(x,y) = x^2-y\) の方向導関数を
+  \(\mathbf{u} = \langle 0,1 \rangle\) の方向に計算します。
+\item
+  \(f(x,y) = x^2+y^2\) の勾配が円 \(x^2+y^2=1\)
+  に対して垂直であることを示します。
+\item
+  (1,2) での \(f(x,y) = xy\)
+  の方向導関数を最大化する単位ベクトルの方向を見つけます。
+\end{enumerate}
+
+\subsection{8.4
+接平面と線形近似}\label{ux63a5ux5e73ux9762ux3068ux7ddaux5f62ux8fd1ux4f3c}
+
+単一変数微積分では、接線は点付近の曲線を近似します。多変数微積分学では、これに似た概念が接平面です。これは、点付近の表面の線形近似を提供します。
+
+\subsubsection{サーフェスへの接平面}\label{ux30b5ux30fcux30d5ux30a7ux30b9ux3078ux306eux63a5ux5e73ux9762}
+
+\(z = f(x,y)\) が \((a,b)\) で微分可能であるとします。 \((a,b,f(a,b))\)
+における接平面は次の式で与えられます。
+
+\[
+z = f(a,b) + f_x(a,b)(x-a) + f_y(a,b)(y-b)。
+\]この平面は、その点でサーフェスに触れ、その近くでサーフェスに近づきます。
+
+\subsubsection{例 1: 放物面}\label{ux4f8b-1-ux653eux7269ux9762}
+
+\((1,2)\) の \(f(x,y) = x^2 + y^2\) の場合:
+
+\begin{itemize}
+\tightlist
+\item
+  \(f(1,2) = 1^2+2^2=5\)。
+\item
+  \(f_x = 2x\)、つまり \(f_x(1,2) = 2\)。
+\item
+  \(f_y = 2y\)、つまり \(f_y(1,2) = 4\)。
+\end{itemize}
+
+接平面の方程式:
+
+\[
+z = 5 + 2(x-1) + 4(y-2)。
+\]
+
+\subsubsection{線形近似}\label{ux7ddaux5f62ux8fd1ux4f3c}
+
+接平面を使用すると、\((a,b)\) 付近の \(f(x,y)\) を近似できます。
+
+\[
+f(x,y) \およそ f(a,b) + f_x(a,b)(x-a) + f_y(a,b)(y-b)。
+\]
+
+これは、\((a,b)\) での \(f\) の線形化です。
+
+\subsubsection{例 2: 線形近似}\label{ux4f8b-2-ux7ddaux5f62ux8fd1ux4f3c}
+
+およそ \(f(x,y) = \sqrt{x+y}\) は \((4,5)\) 付近です。
+
+\begin{itemize}
+\tightlist
+\item
+  \(f(4,5) = \sqrt{9} = 3\)。
+\item
+  \(f_x = \frac{1}{2\sqrt{x+y}}, \quad f_y = \frac{1}{2\sqrt{x+y}}\)。
+\item
+  (4,5) で: \(f_x = f_y = \tfrac{1}{6}\)。
+\end{itemize}
+
+それで、
+
+\[
+f(x,y) \およそ 3 + \tfrac{1}{6}(x-4) + \tfrac{1}{6}(y-5)。
+\]
+
+\subsubsection{なぜこれが重要なのか}\label{ux306aux305cux3053ux308cux304cux91cdux8981ux306aux306eux304b-14}
+
+\begin{itemize}
+\tightlist
+\item
+  接平面は、サーフェスに最適な線形近似を与えます。
+\item
+  線形化により、計算用の複雑な関数が簡素化されます。
+\item
+  数値手法、物理学、経済学で広く使用されています。
+\end{itemize}
+
+\subsubsection{演習}\label{ux6f14ux7fd2-33}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \((1,1)\) で \(z = x^2y + y^2\) への接平面を見つけます。
+\item
+  \(f(x,y) = e^{x+y}\) を \((0,0)\) 付近に概算します。
+\item
+  \((1,1)\) における \(z = \ln(x^2+y^2)\) の接平面方程式を導出します。
+\item
+  線形近似を使用して、(4,6) 付近の \(f(x,y) = \sqrt{x+y}\) を使用して
+  \(\sqrt{10.1}\) を推定します。
+\item
+  \((x,y)\) が \((a,b)\)
+  に近づくにつれて接平面近似が向上する理由を説明してください。
+\end{enumerate}
+
+\subsection{8.5
+複数の変数の最適化}\label{ux8907ux6570ux306eux5909ux6570ux306eux6700ux9069ux5316}
+
+多変数微積分の最適化は、最大値と最小値の概念を単一変数関数から 2
+つ以上の変数の関数に拡張します。
+
+\subsubsection{重要なポイント}\label{ux91cdux8981ux306aux30ddux30a4ux30f3ux30c8}
+
+\(f(x,y)\) の場合、次の点で重要なポイントが発生します。
+
+\[
+f_x(x,y) = 0 \quad \text{and} \quad f_y(x,y) = 0,
+\]
+
+または偏導関数が存在しない場合。
+
+\subsubsection{二次導関数テスト臨界点を分類するには、二次偏導関数を計算します。}\label{ux4e8cux6b21ux5c0eux95a2ux6570ux30c6ux30b9ux30c8ux81e8ux754cux70b9ux3092ux5206ux985eux3059ux308bux306bux306fux4e8cux6b21ux504fux5c0eux95a2ux6570ux3092ux8a08ux7b97ux3057ux307eux3059}
+
+\[
+D = f_{xx}(a,b) f_{yy}(a,b) - \big(f_{xy}(a,b)\big)^2。
+\]
+
+\begin{itemize}
+\tightlist
+\item
+  \(D > 0\) および \(f_{xx}(a,b) > 0\) の場合: ローカル最小値。
+\item
+  \(D > 0\) および \(f_{xx}(a,b) < 0\) の場合: ローカル最大値。
+\item
+  \(D < 0\) の場合: サドルポイント。
+\item
+  \(D = 0\) の場合: テストは決定的ではありません。
+\end{itemize}
+
+\subsubsection{例 1: 放物面}\label{ux4f8b-1-ux653eux7269ux9762-1}
+
+\(f(x,y) = x^2 + y^2\)。
+
+\begin{itemize}
+\tightlist
+\item
+  \(f_x = 2x, f_y = 2y\)。 (0,0) の臨界点。
+\item
+  \(f_{xx} = 2, f_{yy} = 2, f_{xy} = 0\)。
+\item
+  \(D = (2)(2) - 0 = 4 > 0\)、および \(f_{xx} > 0\)。
+\item
+  したがって、(0,0) は極小値です。
+\end{itemize}
+
+\subsubsection{例 2:
+サドルポイント}\label{ux4f8b-2-ux30b5ux30c9ux30ebux30ddux30a4ux30f3ux30c8}
+
+\(f(x,y) = x^2 - y^2\)。
+
+\begin{itemize}
+\tightlist
+\item
+  \(f_x = 2x, f_y = -2y\)。 (0,0) の臨界点。
+\item
+  \(f_{xx} = 2, f_{yy} = -2, f_{xy} = 0\)。
+\item
+  \(D = (2)(-2) - 0 = -4 < 0\)。
+\item
+  したがって、(0,0) は鞍点です。
+\end{itemize}
+
+\subsubsection{制約付き最適化とラグランジュ乗数}\label{ux5236ux7d04ux4ed8ux304dux6700ux9069ux5316ux3068ux30e9ux30b0ux30e9ux30f3ux30b8ux30e5ux4e57ux6570}
+
+場合によっては、制約 \(g(x,y) = c\) に従って \(f(x,y)\)
+を最適化したいことがあります。
+
+ラグランジュ乗数の方法: 解く
+
+\[
+\nabla f(x,y) = \lambda \nabla g(x,y)。
+\]
+
+例: \(x^2+y^2=1\) を条件として \(f(x,y) = xy\) を最大化します。
+
+\begin{itemize}
+\tightlist
+\item
+  グラデーション:
+  \(\nabla f = \langle y,x \rangle, \quad \nabla g = \langle 2x,2y \rangle\)。
+\item
+  方程式: \(y = 2\lambda x, \, x = 2\lambda y\)。
+\item
+  解決策は \((\pm \tfrac{1}{\sqrt{2}}, \pm \tfrac{1}{\sqrt{2}})\)
+  で最大値に達します。
+\end{itemize}
+
+\subsubsection{なぜこれが重要なのか}\label{ux306aux305cux3053ux308cux304cux91cdux8981ux306aux306eux304b-15}
+
+\begin{itemize}
+\tightlist
+\item
+  最適化は経済学、工学、機械学習、物理学において不可欠です。
+\item
+  ラグランジュ乗算により、応用数学の重要なツールである制約付きの最適化が可能になります。
+\end{itemize}
+
+\subsubsection{演習}\label{ux6f14ux7fd2-34}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \(f(x,y) = x^2+xy+y^2\) の重要なポイントを見つけて分類します。
+\item
+  \(f(x,y) = x^3-y^3\) の点 (0,0) を分類します。
+\item
+  \(f(x,y) = x^4+y^4-4xy\) の二次導関数テストを使用します。
+\item
+  \(x^2+y^2=1\) を条件として \(f(x,y) = x+y\) を最大化します。
+\item
+  \(x+y=1\) に従って \(f(x,y) = x^2+2y^2\) を最小化します。
+\end{enumerate}
+
+\section{第9章
+複数の積分}\label{ux7b2c9ux7ae0-ux8907ux6570ux306eux7a4dux5206}
+
+\subsection{9.1
+二重積分単変数微積分では、定積分によって曲線の下の面積が求められます。 2
+つの変数において、二重積分はサーフェスの下の体積
+(より一般的には、領域全体にわたる値の累積)
+を計算します。}\label{ux4e8cux91cdux7a4dux5206ux5358ux5909ux6570ux5faeux7a4dux5206ux3067ux306fux5b9aux7a4dux5206ux306bux3088ux3063ux3066ux66f2ux7ddaux306eux4e0bux306eux9762ux7a4dux304cux6c42ux3081ux3089ux308cux307eux3059-2-ux3064ux306eux5909ux6570ux306bux304aux3044ux3066ux4e8cux91cdux7a4dux5206ux306fux30b5ux30fcux30d5ux30a7ux30b9ux306eux4e0bux306eux4f53ux7a4d-ux3088ux308aux4e00ux822cux7684ux306bux306fux9818ux57dfux5168ux4f53ux306bux308fux305fux308bux5024ux306eux7d2fux7a4d-ux3092ux8a08ux7b97ux3057ux307eux3059}
+
+\subsubsection{定義}\label{ux5b9aux7fa9-9}
+
+\(f(x,y)\) が領域 \(R\)
+上で連続である場合、二重積分は次のようになります。
+
+\[
+\iint_R f(x,y)\, dA = \lim_{m,n \to \infty} \sum_{i=1}^m \sum_{j=1}^n f(x_{ij}^-, y_{ij}^-) \Delta A,
+\]
+
+ここで、\(R\) は、領域 \(\Delta A\) の小さな長方形に分割されます。
+
+\subsubsection{反復積分}\label{ux53cdux5fa9ux7a4dux5206}
+
+フビニの定理により、二重積分を反復積分として計算できます。
+
+\[
+\iint_R f(x,y)\, dA = \int_a^b \int_c^d f(x,y)\, dy\, dx,
+\]
+
+\(R\) が長方形 \([a,b] \times [c,d]\) の場合。
+
+積分順序は多くの場合入れ替えることができます。
+
+\[
+\int_a^b \int_c^d f(x,y)\,dy\,dx = \int_c^d \int_a^b f(x,y)\,dx\,dy。
+\]
+
+\subsubsection{例}\label{ux4f8b-22}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  長方形領域
+\end{enumerate}
+
+\[
+\iint_R (x+y)\, dA, \quad R=[0,1]\times[0,2]。
+\]
+
+\[
+= \int_0^1 \int_0^2 (x+y)\,dy\,dx = \int_0^1 \Big[xy+\tfrac{1}{2}y^2\Big]_0^2 dx
+= \int_0^1 (2x+2)dx = 3.
+\]
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  三角形領域
+\end{enumerate}
+
+\[
+R = \{(x,y): 0 \leq x \leq 1, 0 \leq y \leq x\}。
+\]
+
+\[
+\iint_R (x+y)\, dA = \int_0^1 \int_0^x (x+y)\,dy\,dx。
+\]
+
+評価すると \(\tfrac{2}{3}\) が得られます。
+
+\subsubsection{アプリケーション}\label{ux30a2ux30d7ux30eaux30b1ux30fcux30b7ux30e7ux30f3-1}
+
+\begin{itemize}
+\tightlist
+\item
+  表面下の体積:
+\end{itemize}
+
+\[
+V = \iint_R f(x,y)\, dA。
+\]
+
+\begin{itemize}
+\tightlist
+\item
+  領域にわたる関数の平均値:
+\end{itemize}
+
+\[
+f_{\text{avg}} = \frac{1}{A(R)} \iint_R f(x,y)\, dA.
+\]
+
+\subsubsection{なぜこれが重要なのか}\label{ux306aux305cux3053ux308cux304cux91cdux8981ux306aux306eux304b-16}
+
+二重積分は積分を 2 次元に拡張します。これらは、物理学
+(質量、確率分布)、経済学 (期待値)、工学 (重心、磁束)
+において不可欠です。
+
+\subsubsection{演習}\label{ux6f14ux7fd2-35}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \(R=[0,1]\times[0,1]\) である \(\iint_R (x^2+y^2)\, dA\)
+  を評価します。
+\item
+  \(R=\{(x,y):0\leq x\leq2,0\leq y\leq x\}\) である \(\iint_R xy\, dA\)
+  を計算します。3. 単位平方 \([0,1]\times[0,1]\) にわたる
+  \(f(x,y) = x+y\) の平均値を見つけます。
+\item
+  \(f(x,y)\) が確率密度関数である場合、\(\iint_R f(x,y)\, dA\)
+  を確率の観点から解釈します。
+\item
+  積分の順序を切り替えても、\(\iint_{[0,1]\times[0,2]} (x+y)\,dA\)
+  に対して同じ結果が得られることを示します。
+\end{enumerate}
+
+\subsection{9.2 三重積分}\label{ux4e09ux91cdux7a4dux5206}
+
+三重積分は、積分の考え方を 3 つの変数に拡張し、3
+次元領域の体積、質量、その他の量を計算できるようにします。
+
+\subsubsection{定義}\label{ux5b9aux7fa9-10}
+
+\(f(x,y,z)\) が固体領域 \(E\)
+上で連続である場合、三重積分は次のようになります。
+
+\[
+\iiint_E f(x,y,z)\, dV = \lim_{m,n,p \to \infty} \sum f(x_{ijk}^-, y_{ijk}^-, z_{ijk}^-) \Delta V,
+\]
+
+ここで、領域は体積 \(\Delta V\) のボックスに再分割されます。
+
+\subsubsection{反復積分}\label{ux53cdux5fa9ux7a4dux5206-1}
+
+フビニの定理により、三重積分は反復積分として計算できます。
+
+\[
+\iiint_E f(x,y,z)\, dV = \int_a^b \int_c^d \int_e^f f(x,y,z)\, dz\, dy\, dx,
+\]
+
+長方形のボックスの場合は \(E = [a,b]\times[c,d]\times[e,f]\)。
+
+統合の順序は便宜上選択できます。
+
+\subsubsection{例}\label{ux4f8b-23}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  長方形のボックス
+\end{enumerate}
+
+\[
+\iiint_E xyz\、dV、\quad E=[0,1]\times[0,2]\times[0,3]。
+\]
+
+\[
+= \int_0^1 \int_0^2 \int_0^3 xyz\,dz\,dy\,dx。
+\]
+
+まず \(z\) を介して統合します。
+
+\[
+\int_0^3 xyz\,dz = xy \left[\tfrac{1}{2}z^2\right]_0^3 = \tfrac{9}{2}xy。
+\]
+
+次に、\(y\) にわたって統合します。
+
+\[
+\int_0^2 \tfrac{9}{2}xy\,dy = \tfrac{9}{2}x \cdot \left[\tfrac{1}{2}y^2\right]_0^2 = 9x。
+\]
+
+最後に \(x\) を介して統合します。
+
+\[
+\int_0^1 9x\,dx = \tfrac{9}{2}。
+\]
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  平面で囲まれた領域
+  \(E = \{(x,y,z) \mid 0 \leq x \leq 1, 0 \leq y \leq x, 0 \leq z \leq y\}\)
+  にしておきます。
+\end{enumerate}
+
+\[
+\iiint_E 1\,dV = \int_0^1 \int_0^x \int_0^y 1\,dz\,dy\,dx。
+\]
+
+評価:
+
+\[
+= \int_0^1 \int_0^x y\,dy\,dx = \int_0^1 \tfrac{1}{2}x^2\,dx = \tfrac{1}{6}。
+\]したがって、この三角形領域の体積は \(\tfrac{1}{6}\) です。
+
+\subsubsection{アプリケーション}\label{ux30a2ux30d7ux30eaux30b1ux30fcux30b7ux30e7ux30f3-2}
+
+\begin{itemize}
+\item
+  ボリューム: \(V = \iiint_E 1 \, dV\)。
+\item
+  質量: 密度が \(\rho(x,y,z)\) の場合、
+
+  \[
+  M = \iiint_E \rho(x,y,z)\, dV。
+  \]
+\item
+  平均値:
+
+  \[
+  f_{\text{avg}} = \frac{1}{V(E)} \iiint_E f(x,y,z)\,dV。
+  \]
+\end{itemize}
+
+\subsubsection{なぜこれが重要なのか}\label{ux306aux305cux3053ux308cux304cux91cdux8981ux306aux306eux304b-17}
+
+三重積分は、面積と体積の計算を任意の固体に一般化します。これらは、物理学
+(質量分布、質量中心、重力場)、工学、確率で使用されます。
+
+\subsubsection{演習}\label{ux6f14ux7fd2-36}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  立方体 \(E=[0,1]\times[0,1]\times[0,1]\) に対して
+  \(\iiint_E (x+y+z)\,dV\) を計算します。
+\item
+  \(x=0, y=0, z=0, x+y+z=1\) で囲まれた四面体の体積を求めます。
+\item
+  \(E=[0,2]\times[0,1]\times[0,1]\) である \(\iiint_E x^2 \, dV\)
+  を評価します。
+\item
+  \(\iiint_E 1\,dV\) が \(E\) の幾何学的体積と等しいことを示します。
+\item
+  密度が \(\rho(x,y,z)=x+y+z\) の場合、単位立方体の質量を計算します。
+\end{enumerate}
+
+\subsection{9.3 アプリケーション:
+体積、質量、確率}\label{ux30a2ux30d7ux30eaux30b1ux30fcux30b7ux30e7ux30f3-ux4f53ux7a4dux8ceaux91cfux78baux7387}
+
+三重積分は、固体領域にわたって値を累積することによって 3
+次元の量を計算できるため、強力です。
+
+\subsubsection{ボリューム}\label{ux30dcux30eaux30e5ux30fcux30e0}
+
+最も単純なアプリケーションは、領域 \(E\) の体積を見つけることです。
+
+\[
+V = \iiint_E 1 \、dV。
+\]
+
+例: 座標平面と \(x+y+z=1\)
+平面によって境界付けられるソリッドの体積を求めます。
+
+\[
+V = \iiint_E 1 \、dV = \int_0^1 \int_0^{1-x} \int_0^{1-x-y} 1 \、dz\、dy\、dx。
+\]
+
+評価すると \(V = \tfrac{1}{6}\) が得られます。
+
+\subsubsection{質量と密度}\label{ux8ceaux91cfux3068ux5bc6ux5ea6}
+
+固体に密度関数 \(\rho(x,y,z)\)
+がある場合、その質量は次のようになります。
+
+\[
+M = \iiint_E \rho(x,y,z)\, dV。
+\]
+
+重心は次の式で与えられます。
+
+\[
+\bar{x} = \frac{1}{M}\iiint_E x\rho(x,y,z)\,dV, \quad
+\bar{y} = \frac{1}{M}\iiint_E y\rho(x,y,z)\,dV, \quad
+\bar{z} = \frac{1}{M}\iiint_E z\rho(x,y,z)\,dV。
+\]
+
+例:一定密度 \(\rho=1\) の単位立方体の場合、質量中心は \((0.5,0.5,0.5)\)
+にあります。
+
+\subsubsection{確率}\label{ux78baux7387}
+
+\(f(x,y,z)\) が 3D の確率密度関数である場合、確率変数が領域 \(E\)
+に存在する確率は次のようになります。
+
+\[
+P(E) = \iiint_E f(x,y,z)\, dV,
+\]
+
+ここで、\(f(x,y,z) \geq 0\)と
+
+\[
+\iiint_{\mathbb{R}^3} f(x,y,z)\,dV = 1。
+\]
+
+例: \(0 \leq z \leq 1\) に対して \(f(x,y,z) = \tfrac{3}{4}z^2\) を一律に
+\(x,y\) に設定する場合、
+
+\[
+P(0 \leq z \leq 0.5) = \int_0^{0.5} \tfrac{3}{4}z^2 \, dz = \tfrac{1}{32}。
+\]
+
+\subsubsection{なぜこれが重要なのか}\label{ux306aux305cux3053ux308cux304cux91cdux8981ux306aux306eux304b-18}
+
+\begin{itemize}
+\tightlist
+\item
+  ボリュームは、ジオメトリを不規則なソリッドに一般化します。
+\item
+  質量積分と密度積分は、微積分を物理学と工学に結び付けます。
+\item
+  高次元の確率密度関数は、統計とデータ
+  サイエンスで広く使用されています。
+\end{itemize}
+
+\subsubsection{演習}\label{ux6f14ux7fd2-37}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \(x^2+y^2+z^2 \leq 1\) (単位球) で囲まれた固体の体積を見つけます。
+\item
+  \(z\) に比例する密度を持つ円錐の質量を計算します。
+\item
+  \(x=0, y=0, z=0, x+y+z=1\)
+  で囲まれた一様四面体の質量中心を見つけます。
+\item
+  立方体 \([0,2]\times[0,2]\times[0,2]\) 上に \(f(x,y,z) = \frac{1}{8}\)
+  がある場合、それが確率密度関数であることを検証します。
+\item
+  三重積分を使用して、単位球内でランダムに選択された点が \(z > 0\)
+  を持つ確率を計算します。
+\end{enumerate}
+
+\subsection{9.4 変数の変更:
+極座標、円筒座標、球座標}\label{ux5909ux6570ux306eux5909ux66f4-ux6975ux5ea7ux6a19ux5186ux7b52ux5ea7ux6a19ux7403ux5ea7ux6a19}
+
+多くの積分は、領域の対称性に一致する座標系で表現すると簡単になります。デカルト座標
+\((x,y,z)\) の代わりに、極座標、円筒座標、または球座標を使用できます。
+
+\subsubsection{極座標 (2D)}\label{ux6975ux5ea7ux6a19-2d}
+
+2 つの変数の関数については、極座標に切り替えることができます。
+
+\[
+x = r\cos\theta, \quad y = r\sin\theta, \quad r \geq 0, \; 0 \leq \theta < 2\pi.
+\]
+
+area 要素は次のように変換されます。
+
+\[
+dA = r\,dr\,d\θ。
+\]
+
+例:単位円の面積を求めます。
+
+\[
+A = \iint_{x^2+y^2\leq 1} 1\,dA = \int_0^{2\pi}\int_0^1 r\,dr\,d\theta = \pi。
+\]
+
+\subsubsection{円筒座標 (3D)}\label{ux5186ux7b52ux5ea7ux6a19-3d}
+
+3D では、円筒座標は \(z\) を使用して極座標を拡張します。
+
+\[
+x = r\cos\theta、\quad y = r\sin\theta、\quad z = z。
+\]
+
+体積要素は
+
+\[
+dV = r\,dr\,d\theta\,dz。
+\]
+
+例: 半径 \(R\) および高さ \(h\) の円柱の体積:
+
+\[
+V = \int_0^h \int_0^{2\pi} \int_0^R r\,dr\,d\theta\,dz = \pi R^2 h。
+\]
+
+\subsubsection{球面座標 (3D)}\label{ux7403ux9762ux5ea7ux6a19-3d}
+
+球面対称の場合は、次を使用します。
+
+\[
+x = \rho \sin\phi \cos\theta、\quad y = \rho \sin\phi \sin\theta、\quad z = \rho \cos\phi、
+\]
+
+どこで
+
+\begin{itemize}
+\tightlist
+\item
+  \(\rho \geq 0\) は原点からの距離です。
+\item
+  \(0 \leq \phi \leq \pi\) は、正の \(z\) 軸からの角度です。
+\item
+  \(0 \leq \theta < 2\pi\) は、\(xy\) 平面の角度です。
+\end{itemize}
+
+体積要素は
+
+\[
+dV = \rho^2 \sin\phi \、d\rho\、d\phi\、d\theta。
+\]
+
+例: 単位球の体積:
+
+\[
+V = \int_0^{2\pi} \int_0^\pi \int_0^1 \rho^2 \sin\phi \, d\rho\, d\phi\, d\theta。
+\]
+
+評価中:
+
+\[
+V = \left(\int_0^1 \rho^2 d\rho\right)\left(\int_0^\pi \sin\phi d\phi\right)\left(\int_0^{2\pi} d\theta\right) = \tfrac{1}{3}(2)(2\pi) = \tfrac{4\pi}{3}。
+\]
+
+\subsubsection{なぜこれが重要なのか}\label{ux306aux305cux3053ux308cux304cux91cdux8981ux306aux306eux304b-19}
+
+\begin{itemize}
+\tightlist
+\item
+  極座標は円形領域を単純化します。
+\item
+  円柱座標は円柱と回転対称を扱います。
+\item
+  球面座標は、球、円錐、および放射状の問題を単純化します。
+\item
+  これらの変数の変更により、他の方法では不可能な積分が管理可能になります。
+\end{itemize}
+
+\subsubsection{演習}\label{ux6f14ux7fd2-38}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  極座標を使用して \(\iint_{x^2+y^2\leq 4} (x^2+y^2)\,dA\)
+  を計算します。
+\item
+  円筒座標を使用して、高さ \(h\)、半径 \(R\) の円錐の体積を求めます。
+\item
+  球面座標を使用して、半径 \(R\) のボールの体積を評価します。
+\item
+  極座標のヤコビアン係数が \(r\) であることを示します。5.
+  球座標を使用して、密度が原点からの距離に比例する半径 \(R\)
+  の固体球の質量を求めます。
+\end{enumerate}
+
+\section{第10章
+ベクトル微積分}\label{ux7b2c10ux7ae0-ux30d9ux30afux30c8ux30ebux5faeux7a4dux5206}
+
+\subsection{10.1
+ベクトルフィールド}\label{ux30d9ux30afux30c8ux30ebux30d5ux30a3ux30fcux30ebux30c9}
+
+ベクトル場は、スカラー関数が数値を割り当てるのと同じように、空間内の各点にベクトルを割り当てます。ベクトル場は、流れ、力、その他の方向の量をモデル化するために使用されます。
+
+\subsubsection{定義}\label{ux5b9aux7fa9-11}
+
+2 次元では、ベクトル場は関数です
+
+\[
+\mathbf{F}(x,y) = \langle P(x,y), Q(x,y) \rangle,
+\]
+
+ここで、\(P\) と \(Q\) はスカラー関数です。
+
+三次元では、
+
+\[
+\mathbf{F}(x,y,z) = \langle P(x,y,z), Q(x,y,z), R(x,y,z) \rangle。
+\]
+
+\subsubsection{例}\label{ux4f8b-24}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  放射状フィールド
+\end{enumerate}
+
+\[
+\mathbf{F}(x,y) = \langle x, y \rangle.
+\]
+
+ベクトルは原点から外側を指します。
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  回転場
+\end{enumerate}
+
+\[
+\mathbf{F}(x,y) = \langle -y, x \rangle.
+\]
+
+ベクトルは原点の周りを循環します。
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{2}
+\tightlist
+\item
+  重力場
+\end{enumerate}
+
+\[
+\mathbf{F}(x,y,z) = -\frac{GM}{r^3}\langle x,y,z \rangle, \quad r=\sqrt{x^2+y^2+z^2}。
+\]
+
+\subsubsection{ベクトル場の視覚化}\label{ux30d9ux30afux30c8ux30ebux5834ux306eux8996ux899aux5316}
+
+\begin{itemize}
+\tightlist
+\item
+  サンプル ポイントに小さな矢印を描き、方向と大きさを示します。
+\item
+  大きさが大きいほど矢印が濃くなります。
+\item
+  流れ線、軌道、力の解釈に役立ちます。
+\end{itemize}
+
+\subsubsection{動線}\label{ux52d5ux7dda}
+
+ベクトル フィールドの流れ線 (または積分曲線)
+は、各点の接線ベクトルがフィールドと一致する曲線 \(\mathbf{r}(t)\)
+です。
+
+\[
+\mathbf{r}'(t) = \mathbf{F}(\mathbf{r}(t))。
+\]
+
+流線は、速度場内の粒子の経路を表します。
+
+\subsubsection{なぜこれが重要なのか}\label{ux306aux305cux3053ux308cux304cux91cdux8981ux306aux306eux304b-20}
+
+\begin{itemize}
+\tightlist
+\item
+  ベクトル場は物理学 (流体の流れ、電磁気、重力) の基本です。
+\item
+  それらは、線積分、表面積分、およびベクトル微積分の大きな定理
+  (グリーン、ストークス、ダイバージェンス) の基礎を形成します。
+\item
+  方向性量を表す幾何学的な方法を提供します。
+\end{itemize}
+
+\subsubsection{\texorpdfstring{演習1. ベクトルフィールド
+\(\mathbf{F}(x,y) = \langle y, -x \rangle\)
+をスケッチします。}{演習1. ベクトルフィールド \textbackslash mathbf\{F\}(x,y) = \textbackslash langle y, -x \textbackslash rangle をスケッチします。}}\label{ux6f14ux7fd21.-ux30d9ux30afux30c8ux30ebux30d5ux30a3ux30fcux30ebux30c9-mathbffxy-langle-y--x-rangle-ux3092ux30b9ux30b1ux30c3ux30c1ux3057ux307eux3059}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  \(\mathbf{F}(x,y) = \langle x,y \rangle\)
+  のベクトルが原点の方向を向いているか、原点から離れているかを判断します。
+\item
+  \(\mathbf{F}(x,y,z) = \langle y, z, x \rangle\)
+  の場合、\(\mathbf{F}(1,2,3)\) を計算します。
+\item
+  \(\mathbf{F}(x,y) = \langle -y, x \rangle\) の動線を説明します。
+\item
+  重力場と電場が動径ベクトル場の例である理由を説明します。
+\end{enumerate}
+
+\subsection{10.2 線積分}\label{ux7ddaux7a4dux5206}
+
+線積分は、積分の概念を曲線に沿って評価される関数に拡張します。区間または領域にわたって統合するのではなく、空間内のパスにわたって統合します。
+
+\subsubsection{定義:
+スカラー線積分}\label{ux5b9aux7fa9-ux30b9ux30abux30e9ux30fcux7ddaux7a4dux5206}
+
+\(f(x,y)\) がスカラー関数で、\(C\) が
+\(\mathbf{r}(t) = \langle x(t), y(t) \rangle, \; a \leq t \leq b\)
+によってパラメーター化された曲線である場合、線積分は次のようになります。
+
+\[
+\int_C f(x,y)\, ds = \int_a^b f(x(t),y(t)) \, |\mathbf{r}'(t)|\, dt,
+\]
+
+ここで、\(ds\) は円弧の長さです。
+
+これは、曲線に沿った \(f\) の累積を測定します。
+
+\subsubsection{定義:
+ベクトル線積分}\label{ux5b9aux7fa9-ux30d9ux30afux30c8ux30ebux7ddaux7a4dux5206}
+
+ベクトル場 \(\mathbf{F}(x,y) = \langle P(x,y), Q(x,y) \rangle\)
+の場合、\(C\) に沿った線積分は次のようになります。
+
+\[
+\int_C \mathbf{F} \cdot d\mathbf{r} = \int_a^b \mathbf{F}(\mathbf{r}(t)) \cdot \mathbf{r}'(t)\, dt.
+\]
+
+これは、曲線に沿って現場で行われた作業を測定します。
+
+\subsubsection{例}\label{ux4f8b-25}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  スカラー線積分
+\end{enumerate}
+
+\[
+f(x,y) = x+y, \quad C: \mathbf{r}(t) = \langle t, t^2 \rangle, \; 0 \leq t \leq 1.
+\]
+
+それから
+
+\[
+\int_C f(x,y)\, ds = \int_0^1 (t+t^2)\sqrt{(1)^2+(2t)^2}\, dt.
+\]
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  力によって行われる仕事
+\end{enumerate}
+
+\[
+\mathbf{F}(x,y) = \langle y, x \rangle, \quad C: \mathbf{r}(t) = \langle t, t^2 \rangle, \; 0 \leq t \leq 1.
+\]
+
+\[
+\int_C \mathbf{F} \cdot d\mathbf{r} = \int_0^1 \langle t^2, t \rangle \cdot \langle 1, 2t \rangle\, dt = \int_0^1 (t^2 + 2t^2)\, dt = \int_0^1 3t^2\, dt = 1。\]
+
+\subsubsection{物理的な解釈}\label{ux7269ux7406ux7684ux306aux89e3ux91c8}
+
+\begin{itemize}
+\tightlist
+\item
+  スカラー線積分: ワイヤに沿った密度の蓄積。
+\item
+  ベクトル線積分:
+  パスに沿ってオブジェクトを移動させる力によって行われる仕事。
+\end{itemize}
+
+\subsubsection{なぜこれが重要なのか}\label{ux306aux305cux3053ux308cux304cux91cdux8981ux306aux306eux304b-21}
+
+\begin{itemize}
+\tightlist
+\item
+  線積分は、ベクトル場を仕事や循環などの物理量と結び付けます。
+\item
+  それらはグリーンの定理とストークスの定理の構成要素です。
+\item
+  物理学（電位、流体の流れ、力学）に登場します。
+\end{itemize}
+
+\subsubsection{演習}\label{ux6f14ux7fd2-39}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \(\int_C (x^2+y^2)\, ds\) を計算します。ここで、\(C\) は (0,0) から
+  (1,1) までの線分です。
+\item
+  単位円 \(x^2+y^2=1\) に沿って
+  \(\mathbf{F}(x,y) = \langle -y, x \rangle\) に対する
+  \(\int_C \mathbf{F}\cdot d\mathbf{r}\) を評価します。
+\item
+  \(\int_C 1\,ds\) の意味を解釈します。
+\item
+  \(\mathbf{F}(x,y,z) = \langle z,0,x \rangle\)
+  の場合、\(\mathbf{r}(t) = \langle t,t,1 \rangle, 0 \leq t \leq 1\)
+  に沿った線積分を計算します。
+\item
+  スカラー線積分とベクトル線積分の違いを説明します。
+\end{enumerate}
+
+\subsection{10.3 曲面積分}\label{ux66f2ux9762ux7a4dux5206}
+
+面積分は、線積分を 3 次元空間の 2
+次元曲面に一般化します。これらを使用すると、表面を通る磁束と曲面上のスカラー場の蓄積を計算できます。
+
+\subsubsection{スカラー曲面積分}\label{ux30b9ux30abux30e9ux30fcux66f2ux9762ux7a4dux5206}
+
+サーフェス \(S\) が次のようにパラメータ化されている場合
+
+\[
+\mathbf{r}(u,v) = \langle x(u,v), y(u,v), z(u,v) \rangle,
+\]
+
+この場合、スカラー関数 \(f(x,y,z)\) の表面積分は次のようになります。
+
+\[
+\iint_S f(x,y,z)\, dS = \iint_D f(\mathbf{r}(u,v)) \, |\mathbf{r}_u \times \mathbf{r}_v| \、デュ\、dv、
+\]
+
+ここで、 \(\mathbf{r}_u\) と \(\mathbf{r}_v\) は \(\mathbf{r}(u,v)\)
+の偏導関数であり、 \(D\) はパラメーター ドメインです。
+
+\subsubsection{ベクトル曲面積分
+(磁束)}\label{ux30d9ux30afux30c8ux30ebux66f2ux9762ux7a4dux5206-ux78c1ux675f}
+
+ベクトル場 \(\mathbf{F}(x,y,z)\) の場合、表面 \(S\)
+を通る光束は次のようになります。
+
+\[
+\iint_S \mathbf{F}\cdot d\mathbf{S} = \iint_S \mathbf{F}\cdot \mathbf{n}\, dS,
+\]ここで、\(\mathbf{n}\)
+は単位法線ベクトルです。パラメータ化を使用すると、
+
+\[
+\iint_S \mathbf{F}\cdot d\mathbf{S} = \iint_D \mathbf{F}(\mathbf{r}(u,v)) \cdot (\mathbf{r}_u \times \mathbf{r}_v)\,du\,dv.
+\]
+
+\subsubsection{例}\label{ux4f8b-26}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  スカラー曲面積分 表面: ユニット ディスク \(x^2+y^2 \leq 1\) 上の平面
+  \(z=1\)。
+\end{enumerate}
+
+\[
+\iint_S 1\, dS = \text{ディスクの領域} = \pi。
+\]
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  球体を通る光束 \(\mathbf{F}(x,y,z) = \langle x,y,z \rangle\) および
+  \(S\) = 半径 \(R\) の球体とします。 法線ベクトルは
+  \(\mathbf{n} = \frac{1}{R}\langle x,y,z \rangle\) です。
+\end{enumerate}
+
+\[
+\mathbf{F}\cdot \mathbf{n} = \frac{x^2+y^2+z^2}{R} = R.
+\]
+
+それで
+
+\[
+\iint_S \mathbf{F}\cdot d\mathbf{S} = \iint_S R\、dS = R \cdot 4\pi R^2 = 4\pi R^3。
+\]
+
+\subsubsection{なぜこれが重要なのか}\label{ux306aux305cux3053ux308cux304cux91cdux8981ux306aux306eux304b-22}
+
+\begin{itemize}
+\tightlist
+\item
+  スカラー表面積分は、面積と表面の分布を測定します。
+\item
+  ベクトル表面積分は、磁束、つまり表面を通過する場の量を測定します。
+\item
+  用途: 電磁気、流体の流れ、熱伝達など。
+\end{itemize}
+
+\subsubsection{演習}\label{ux6f14ux7fd2-40}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  辺の長さ 2 の立方体の表面に対して \(\iint_S 1\, dS\) を計算します。
+\item
+  単位球を通る \(\mathbf{F}(x,y,z) = \langle x,y,z \rangle\)
+  の流束を求めます。
+\item
+  放物面 \(z = x^2+y^2, \, z \leq 1\) の \(\iint_S z\, dS\)
+  を評価します。
+\item
+  \(\mathbf{F}(x,y,z) = \langle y,0,0 \rangle\) の場合、平面
+  \(x=1\)、\(0 \leq y,z \leq 1\) を通る磁束を計算します。
+\item
+  閉じた曲面を通るベクトル場の磁束がゼロであることが何を意味するかを物理的に説明します。
+\end{enumerate}
+
+\subsection{10.4
+グリーンの定理}\label{ux30b0ux30eaux30fcux30f3ux306eux5b9aux7406}
+
+グリーンの定理は、閉曲線の周りの線積分を、それが囲む領域にわたる二重積分に接続するベクトル微積分の基本的な結果です。これはストークスの定理の
+2 次元バージョンです。
+
+\subsubsection{\texorpdfstring{グリーンの定理の記述\(C\)
+を平面内の正方向の単純な閉曲線とし、\(R\) をそれを囲む領域とします。
+\(\mathbf{F}(x,y) = \langle P(x,y), Q(x,y) \rangle\) に \(R\)
+を含む開いた領域上の連続偏導関数がある場合、}{グリーンの定理の記述C を平面内の正方向の単純な閉曲線とし、R をそれを囲む領域とします。 \textbackslash mathbf\{F\}(x,y) = \textbackslash langle P(x,y), Q(x,y) \textbackslash rangle に R を含む開いた領域上の連続偏導関数がある場合、}}\label{ux30b0ux30eaux30fcux30f3ux306eux5b9aux7406ux306eux8a18ux8ff0c-ux3092ux5e73ux9762ux5185ux306eux6b63ux65b9ux5411ux306eux5358ux7d14ux306aux9589ux66f2ux7ddaux3068ux3057r-ux3092ux305dux308cux3092ux56f2ux3080ux9818ux57dfux3068ux3057ux307eux3059-mathbffxy-langle-pxy-qxy-rangle-ux306b-r-ux3092ux542bux3080ux958bux3044ux305fux9818ux57dfux4e0aux306eux9023ux7d9aux504fux5c0eux95a2ux6570ux304cux3042ux308bux5834ux5408}
+
+\[
+\oint_C \mathbf{F} \cdot d\mathbf{r} = \oint_C P\,dx + Q\,dy = \iint_R \left( \frac{\partial Q}{\partial x} - \frac{\partial P}{\partial y} \right)\, dA.
+\]
+
+\subsubsection{解釈}\label{ux89e3ux91c8-2}
+
+\begin{itemize}
+\tightlist
+\item
+  \(C\) の周りの線積分は、境界に沿ったベクトル場の循環を測定します。
+\item
+  \(R\) の二重積分は、領域内のフィールドの合計カール (回転)
+  を測定します。
+\end{itemize}
+
+\subsubsection{例 1:
+面積の計算式}\label{ux4f8b-1-ux9762ux7a4dux306eux8a08ux7b97ux5f0f}
+
+\(\mathbf{F} = \langle -y/2, x/2 \rangle\) の場合、
+
+\[
+\frac{\partial Q}{\partial x} - \frac{\partial P}{\partial y} = 1。
+\]
+
+したがって、グリーンの定理は次のようになります。
+
+\[
+\text{面積}(R) = \iint_R 1\,dA = \oint_C \left(-\tfrac{y}{2}\,dx + \tfrac{x}{2}\,dy\right)。
+\]
+
+これにより、線積分を使用して面積を計算する方法が提供されます。
+
+\subsubsection{例 2: 循環}\label{ux4f8b-2-ux5faaux74b0}
+
+\(\mathbf{F}(x,y) = \langle -y, x \rangle\) と \(C\) を単位円とします。
+
+\begin{itemize}
+\tightlist
+\item
+  \(P=-y, Q=x\)。
+\item
+  \(Q_x - P_y = 1 - (-1) = 2\)。
+\item
+  ユニットディスク上の二重積分:
+\end{itemize}
+
+\[
+\iint_R 2\,dA = 2\pi (1^2) = 2\pi。
+\]
+
+したがって、円の周りの循環は \(2\pi\) です。
+
+\subsubsection{なぜこれが重要なのか}\label{ux306aux305cux3053ux308cux304cux91cdux8981ux306aux306eux304b-23}
+
+\begin{itemize}
+\tightlist
+\item
+  難しい線積分を二重積分に、またはその逆に変換します。
+\item
+  ローカル プロパティ (カール) とグローバル プロパティ (循環)
+  の間のブリッジを提供します。
+\item
+  流体の流れ、電磁気、平面ベクトル場などの物理学で広く使用されています。
+\end{itemize}
+
+\subsubsection{演習}\label{ux6f14ux7fd2-41}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  グリーンの定理を使用して、楕円
+  \(\frac{x^2}{a^2} + \frac{y^2}{b^2} = 1\) 内の面積を計算します。
+\item
+  頂点 (0,0)、(1,0)、(1,1)、(0,1) を持つ正方形に沿った
+  \(\mathbf{F}(x,y) = \langle -y, x \rangle\)
+  のグリーンの定理を検証します。3. 単位円の周りの
+  \(\mathbf{F}(x,y) = \langle -y, x \rangle\) の循環を計算します。
+\item
+  \(\nabla \times \mathbf{F} = 0\) の場合、閉曲線の周りの \(\mathbf{F}\)
+  の線積分がゼロになることを示します。
+\item
+  グリーンの定理を使用して次のことを示します
+\end{enumerate}
+
+\[
+\oint_C x\,dy = -\oint_C y\,dx
+\]
+
+任意の閉曲線の場合は \(C\)。
+
+\subsection{10.5
+ストークスの定理}\label{ux30b9ux30c8ux30fcux30afux30b9ux306eux5b9aux7406}
+
+ストークスの定理は、グリーンの定理を 3
+次元に一般化します。これは、表面上のベクトル場のカールの表面積分を、その表面の境界の周りのベクトル場の線積分に関連付けます。
+
+\subsubsection{ストークスの定理の記述}\label{ux30b9ux30c8ux30fcux30afux30b9ux306eux5b9aux7406ux306eux8a18ux8ff0}
+
+\(S\) を境界曲線 \(C\) (正の方向)
+を持つ配向された滑らかなサーフェスとします。 \(\mathbf{F}(x,y,z)\)
+が連続偏微分をもつベクトル場である場合、
+
+\[
+\iint_S (\nabla \times \mathbf{F}) \cdot d\mathbf{S} = \oint_C \mathbf{F} \cdot d\mathbf{r}。
+\]
+
+\begin{itemize}
+\tightlist
+\item
+  左側: 表面を通過する \(\mathbf{F}\) のカールの流束。
+\item
+  右側: 境界曲線に沿った \(\mathbf{F}\) の循環。
+\end{itemize}
+
+\subsubsection{解釈}\label{ux89e3ux91c8-3}
+
+\begin{itemize}
+\tightlist
+\item
+  境界の周りの線積分は、表面内の合計の「回転」に等しくなります。
+\item
+  グリーンの定理を拡張します (表面が平面内にある場合の特殊なケース)。
+\end{itemize}
+
+\subsubsection{例 1:
+特殊な場合としてのグリーンの定理}\label{ux4f8b-1-ux7279ux6b8aux306aux5834ux5408ux3068ux3057ux3066ux306eux30b0ux30eaux30fcux30f3ux306eux5b9aux7406}
+
+\(S\) が \(xy\)
+平面内の平坦な領域である場合、ストークスの定理はグリーンの定理に帰着します。
+
+\subsubsection{例 2:
+半球上の循環}\label{ux4f8b-2-ux534aux7403ux4e0aux306eux5faaux74b0}
+
+\(\mathbf{F}(x,y,z) = \langle -y, x, 0 \rangle\) と \(S\) を半径 1
+の上半球とします。
+
+\begin{itemize}
+\tightlist
+\item
+  境界 \(C\): \(xy\) 平面内の単位円。
+\item
+  ストークスの定理による:
+\end{itemize}
+
+\[
+\oint_C \mathbf{F}\cdot d\mathbf{r} = \iint_S (\nabla \times \mathbf{F})\cdot d\mathbf{S}。
+\]
+
+\begin{itemize}
+\tightlist
+\item
+  カール: \(\nabla \times \mathbf{F} = \langle 0,0,2 \rangle\)。
+\item
+  半球の法線は外側を指します: \(\mathbf{n} = \langle 0,0,1 \rangle\)。
+\item
+  したがって、被積分関数 = 2。- 半球の面積 = \(2\pi (1^2)\)。
+\end{itemize}
+
+\[
+\iint_S 2\、dS = 2 \cdot 2\pi = 4\pi。
+\]
+
+したがって、赤道の周りの循環は\(4\pi\)です。
+
+\subsubsection{なぜこれが重要なのか}\label{ux306aux305cux3053ux308cux304cux91cdux8981ux306aux306eux304b-24}
+
+\begin{itemize}
+\tightlist
+\item
+  面積分と線積分の間に深いつながりを提供します。
+\item
+  便利な表面を選択できるため、計算が簡素化されます。
+\item
+  電磁気学 (ファラデーの法則) と流体力学で広く使用されています。
+\end{itemize}
+
+\subsubsection{演習}\label{ux6f14ux7fd2-42}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \(xy\) 平面の単位ディスク上で
+  \(\mathbf{F}(x,y,z) = \langle y, -x, 0 \rangle\)
+  のストークスの定理を検証します。
+\item
+  \(\oint_C \mathbf{F}\cdot d\mathbf{r}\)
+  を計算します。ここで、\(\mathbf{F}(x,y,z) = \langle z, 0, x \rangle\)
+  および \(C\) は、頂点 (0,0,0)、(1,0,0)、(0,1,0)
+  を持つ三角形の境界です。
+\item
+  \(\nabla \times \mathbf{F} = 0\)
+  の場合、閉曲線の周囲の循環はゼロであることを示します。
+\item
+  ストークスの定理を適用して、平面 \(z=0\) 内の単位正方形の境界の周りの
+  \(\mathbf{F}(x,y,z) = \langle -y, x, z \rangle\) の循環を計算します。
+\item
+  ストークスの定理がグリーンの定理をどのように一般化するかを説明します。
+\end{enumerate}
+
+\subsection{10.6 発散定理}\label{ux767aux6563ux5b9aux7406}
+
+発散定理 (ガウスの定理とも呼ばれる)
+は、閉じた表面を通るベクトル場の流束を、表面内の場の発散の三重積分に関連付けます。
+
+\subsubsection{発散定理の記述}\label{ux767aux6563ux5b9aux7406ux306eux8a18ux8ff0}
+
+\(E\) を、境界面 \(S\) (外側を向いた) を持つ \(\mathbb{R}^3\)
+内の固体領域とする。 \(\mathbf{F}(x,y,z)\) が \(E\)
+上の連続偏微分をもつベクトル場である場合、
+
+\[
+\iint_S \mathbf{F} \cdot d\mathbf{S} = \iiint_E (\nabla \cdot \mathbf{F}) \, dV。
+\]
+
+\begin{itemize}
+\tightlist
+\item
+  左側: 閉じた表面 \(S\) を横切る \(\mathbf{F}\) の光束。
+\item
+  右側: 領域内の発散の三重積分。
+\end{itemize}
+
+\subsubsection{発散}\label{ux767aux6563}
+
+ベクトル場 \(\mathbf{F}(x,y,z) = \langle P, Q, R \rangle\)
+の発散は次のとおりです。
+
+\[\nabla \cdot \mathbf{F} = \frac{\partial P}{\partial x} + \frac{\partial Q}{\partial y} + \frac{\partial R}{\partial z}。
+\]
+
+各地点における単位体積当たりの「純流出量」を測定します。
+
+\subsubsection{例 1:
+放射状磁束の磁束}\label{ux4f8b-1-ux653eux5c04ux72b6ux78c1ux675fux306eux78c1ux675f}
+
+\(\mathbf{F}(x,y,z) = \langle x, y, z \rangle\) とし、\(E\) を単位ボール
+\(x^2+y^2+z^2 \leq 1\) とします。
+
+\begin{itemize}
+\tightlist
+\item
+  発散: \(\nabla \cdot \mathbf{F} = 1+1+1 = 3\)。
+\item
+  単位ボールの体積: \(\tfrac{4}{3}\pi\)。 それで
+\end{itemize}
+
+\[
+\iiint_E (\nabla \cdot \mathbf{F})\, dV = 3 \cdot \tfrac{4}{3}\pi = 4\pi.
+\]
+
+したがって、単位球を横切る磁束は \(4\pi\) です。
+
+\subsubsection{例 2:
+定数フィールド}\label{ux4f8b-2-ux5b9aux6570ux30d5ux30a3ux30fcux30ebux30c9}
+
+\(\mathbf{F}(x,y,z) = \langle 1, 0, 0 \rangle\) にしておきます。
+
+\begin{itemize}
+\tightlist
+\item
+  発散: \(\nabla \cdot \mathbf{F} = 0\)。
+\item
+  したがって、直感と一致して、閉じた表面を通る磁束はゼロになります
+  (正味の流出はありません)。
+\end{itemize}
+
+\subsubsection{なぜこれが重要なのか}\label{ux306aux305cux3053ux308cux304cux91cdux8981ux306aux306eux304b-25}
+
+\begin{itemize}
+\item
+  表面積分をより単純な体積積分に変換します。
+\item
+  物理学で使用される: 電磁気、流体の流れ、熱伝達におけるガウスの法則。
+\item
+  統一フレームワークを完成させます。
+
+  \begin{itemize}
+  \tightlist
+  \item
+    グリーンの定理（2Dカール ↔ 循環）
+  \item
+    ストークスの定理 (3D カール ↔ 表面の循環)
+  \item
+    発散定理 (3D 発散 ↔ 閉曲面上の光束)
+  \end{itemize}
+\end{itemize}
+
+\subsubsection{演習}\label{ux6f14ux7fd2-43}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  発散定理を使用して、半径 \(R\) の球の表面を横切る
+  \(\mathbf{F}(x,y,z) = \langle x,y,z \rangle\) の流束を計算します。
+\item
+  単位立方体 \([0,1]^3\) 上の
+  \(\mathbf{F}(x,y,z) = \langle y, z, x \rangle\)
+  の発散定理を検証します。
+\item
+  \(\nabla \cdot \mathbf{F} = 0\)
+  の場合、閉じた表面を通る総光束はゼロであることを示します。
+\item
+  単位球を通る \(\mathbf{F}(x,y,z) = \langle x^2, y^2, z^2 \rangle\)
+  の流束を計算します。
+\item
+  発散定理が微積分の 1
+  次元基本定理をどのように一般化するかを説明します。
+\end{enumerate}
+
+＃パートIV。無限のプロセス
+
+\section{第11章 シーケンスと収束\#\# 11.1
+定義と例}\label{ux7b2c11ux7ae0-ux30b7ux30fcux30b1ux30f3ux30b9ux3068ux53ceux675f-11.1-ux5b9aux7fa9ux3068ux4f8b}
+
+シーケンスは番号の順序付きリストであり、通常は次のように書かれます。
+
+\[
+a_1、a_2、a_3、\ドット
+\]
+
+より一般的には \((a_n)_{n=1}^\infty\) です。各 \(a_n\) は、シーケンスの
+n 番目の項と呼ばれます。
+
+\subsubsection{シーケンスの定義}\label{ux30b7ux30fcux30b1ux30f3ux30b9ux306eux5b9aux7fa9}
+
+シーケンスは 2 つの方法で定義できます。
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  明示的な式 -- n 番目の項に直接規則を与えます。
+
+  \begin{itemize}
+  \item
+    例: \(a_n = \frac{1}{n}\) はシーケンスを定義します
+
+    \[
+    1、\tfrac{1}{2}、\tfrac{1}{3}、\tfrac{1}{4}、\dots
+    \]
+  \end{itemize}
+\item
+  再帰的定義 -- 以前の用語を使用して用語を定義します。
+
+  \begin{itemize}
+  \item
+    例: フィボナッチ数列:
+
+    \[
+    a_1 = 1、\quad a_2 = 1、\quad a_{n} = a_{n-1} + a_{n-2} \quad (n \geq 3)。
+    \]
+  \end{itemize}
+\end{enumerate}
+
+\subsubsection{シーケンスの例}\label{ux30b7ux30fcux30b1ux30f3ux30b9ux306eux4f8b}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  等差数列:
+
+  \[
+  a_n = a_1 + (n-1)d。
+  \]
+
+  例: \(a_n = 2n+1\) → 奇数の並び。
+\item
+  幾何学的シーケンス:
+
+  \[
+  a_n = a_1 r^{n-1}。
+  \]
+
+  例: \(a_n = 2^n\) → 2 の累乗。
+\item
+  倍音シーケンス:
+
+  \[
+  a_n = \frac{1}{n}。
+  \]
+\item
+  交互シーケンス:
+
+  \[
+  a_n = (-1)^n。
+  \]
+\end{enumerate}
+
+\subsubsection{微積分の数列}\label{ux5faeux7a4dux5206ux306eux6570ux5217}
+
+シーケンスは無限プロセスの基礎です。
+
+\begin{itemize}
+\tightlist
+\item
+  シーケンスの極限 → 収束を定義します。
+\item
+  系列 → 系列から構築される無限和。
+\item
+  数列と級数で近似した関数。
+\end{itemize}
+
+\subsubsection{なぜこれが重要なのか}\label{ux306aux305cux3053ux308cux304cux91cdux8981ux306aux306eux304b-26}
+
+\begin{itemize}
+\tightlist
+\item
+  シーケンスは、無限級数と近似の構成要素を提供します。
+\item
+  これらにより、「無限に近づくこと」と収束を厳密に定義できるようになります。
+\item
+  多くの重要な関数 (指数関数、三角関数)
+  は数列と級数を通じて表現できます。
+\end{itemize}
+
+\subsubsection{演習}\label{ux6f14ux7fd2-44}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  シーケンス \(a_n = \frac{n}{n+1}\) の最初の 5 つの項を書き込みます。
+\item
+  \(a_n = (-1)^n n\) が制限されているかどうかを確認します。
+\item
+  シーケンス \(2,4,8,16,\dots\) に再帰的定義を与えます。
+\item
+  \(a_1=3\) と \(d=5\) を使用して、等差数列の 10
+  番目の項を見つけます。5. \(a_1=1\)、\(a_{n+1}=2a_n\)
+  で定義されるシーケンスの明示的な式を記述します。
+\end{enumerate}
+
+\subsection{11.2
+単調シーケンスと有界シーケンス}\label{ux5358ux8abfux30b7ux30fcux30b1ux30f3ux30b9ux3068ux6709ux754cux30b7ux30fcux30b1ux30f3ux30b9}
+
+シーケンスが収束するかどうかを理解するには、その動作を研究する必要があります。つまり、シーケンスは増加するのか、減少するのか、範囲内に留まるのか、それとも際限なく増加するのか?
+2 つの重要な概念は、単調性と有界性です。
+
+\subsubsection{モノトーンシーケンス}\label{ux30e2ux30ceux30c8ux30fcux30f3ux30b7ux30fcux30b1ux30f3ux30b9}
+
+シーケンス \((a_n)\)
+が常に増加しているか、常に減少している場合、それは単調と呼ばれます。
+
+\begin{itemize}
+\item
+  単調増加:
+
+  \[
+  a_{n+1} \geq a_n \quad \text{すべての } n に対して。
+  \]
+\item
+  単調減少:
+
+  \[
+  a_{n+1} \leq a_n \quad \text{すべての } n に対して。
+  \]
+\end{itemize}
+
+例:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \(a_n = n\) は単調増加です。
+\item
+  \(a_n = \frac{1}{n}\) は単調減少です。
+\end{enumerate}
+
+\subsubsection{境界のあるシーケンス}\label{ux5883ux754cux306eux3042ux308bux30b7ux30fcux30b1ux30f3ux30b9}
+
+すべての \(n\) に対して \(a_n \leq M\) となるような数値 \(M\)
+が存在する場合、シーケンスは上に制限されます。 すべての \(n\) に対して
+\(a_n \geq m\) となるような \(m\)
+が存在する場合、それは以下に制限されます。
+
+両方の条件が当てはまる場合、シーケンスは制限されます。
+
+例:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \(a_n = \frac{1}{n}\) は 0 と 1 の間に制限されます。
+\item
+  \(a_n = (-1)^n\) は -1 と 1 の間に制限されます。
+\item
+  \(a_n = n\) には制限がありません。
+\end{enumerate}
+
+\subsubsection{単調収束定理}\label{ux5358ux8abfux53ceux675fux5b9aux7406}
+
+分析の基本的な結果:
+
+\begin{itemize}
+\tightlist
+\item
+  上で区切られたすべての単調増加シーケンスが収束します。
+\item
+  以下の範囲にあるすべての単調減少シーケンスが収束します。
+\end{itemize}
+
+この定理は、極限を明示的に求めることなく収束を保証します。
+
+\subsubsection{例}\label{ux4f8b-27}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  シーケンス: \(a_n = 1 - \frac{1}{n}\)。
+
+  \begin{itemize}
+  \tightlist
+  \item
+    増加: \(a_{n+1} - a_n = \frac{1}{n} - \frac{1}{n+1} > 0\) 以降。
+  \item
+    上は 1 で区切られます。
+  \item
+    したがって、収束します。
+  \item
+    制限: \(\lim_{n\to\infty} a_n = 1\)。
+  \end{itemize}
+\end{enumerate}
+
+\subsubsection{なぜこれが重要なのか}\label{ux306aux305cux3053ux308cux304cux91cdux8981ux306aux306eux304b-27}
+
+\begin{itemize}
+\tightlist
+\item
+  単調性と有界性により、収束を迅速にテストできます。
+\item
+  それらは、証明および厳密な制限の構築に不可欠です。
+\item
+  こうした発想は自然と機能やシリーズにも広がります。\#\#\# 演習
+\end{itemize}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \(a_n = \frac{n}{n+1}\) が単調で有界であるかどうかを判断します。
+\item
+  \(a_n = \sqrt{n}\) が単調増加であるが、有界ではないことを示します。
+\item
+  \(a_n = 2 - \frac{1}{n}\) が収束することを証明し、その極限を求めます。
+\item
+  単調ではない境界のあるシーケンスの例を示します。
+\item
+  単調収束定理を \(a_n = \ln\!\big(1+\frac{1}{n}\big)\) に適用します。
+\end{enumerate}
+
+\subsection{11.3
+シーケンスの制限}\label{ux30b7ux30fcux30b1ux30f3ux30b9ux306eux5236ux9650}
+
+シーケンスに関する中心的な問題は、\(n\)
+が増加するにつれてその項が単一の値に近づくかどうかです。これは、数列の極限という概念につながります。
+
+\subsubsection{定義}\label{ux5b9aux7fa9-12}
+
+すべての \(\varepsilon > 0\) に対して、次のような整数 \(N\)
+が存在する場合、シーケンス \((a_n)\) には制限 \(L\) があります。
+
+\[
+|a_n - L| < \varepsilon \quad \text{いつでも } n > N.
+\]
+
+それから書きます
+
+\[
+\lim_{n\to\infty} a_n = L.
+\]
+
+そのような \(L\) が存在しない場合、シーケンスは分岐します。
+
+\subsubsection{直感}\label{ux76f4ux611f}
+
+\begin{itemize}
+\tightlist
+\item
+  \(n\) が大きくなるにつれて、数列の項は任意に \(L\) に近づきます。
+\item
+  インデックス \(N\) を超えると、すべての用語は \(L\)
+  の周囲の小さなバンド内に留まります。
+\end{itemize}
+
+\subsubsection{例}\label{ux4f8b-28}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  \(a_n = \frac{1}{n}\)。 \(n\) が大きくなるにつれて、項は 0
+  に向かって縮小します。
+
+  \[
+  \lim_{n\to\infty} \frac{1}{n} = 0。
+  \]
+\item
+  \(a_n = (-1)^n\)。 項は -1 と 1
+  の間で交互に現れるため、単一の制限は存在しません。順序が分岐します。
+\item
+  \(a_n = \frac{n}{n+1}\)。 \(n \to \infty\)
+  として、分子と分母はほぼ等しいため、
+
+  \[
+  \lim_{n\to\infty} \frac{n}{n+1} = 1。
+  \]
+\end{enumerate}
+
+\subsubsection{極限の性質}\label{ux6975ux9650ux306eux6027ux8cea}
+
+\(\lim a_n = A\) および \(\lim b_n = B\) の場合:
+
+\begin{itemize}
+\item
+  \(\lim (a_n+b_n) = A+B\)。
+\item
+  \(\lim (a_n b_n) = AB\)。
+\item
+  \(\lim (c a_n) = cA\) は定数 \(c\) です。
+\item
+  \(b_n \neq 0\) および \(B \neq 0\) の場合、
+
+  \[
+  \lim \frac{a_n}{b_n} = \frac{A}{B}。
+  \]
+\end{itemize}
+
+\subsubsection{定理:
+スクイーズ原理}\label{ux5b9aux7406-ux30b9ux30afux30a4ux30fcux30baux539fux7406}
+
+すべての大きな \(n\) に対して \(a_n \leq b_n \leq c_n\) の場合、
+
+\[
+\lim_{n\to\infty} a_n = \lim_{n\to\infty} c_n = L、
+\]
+
+それから
+
+\[\lim_{n\to\infty} b_n = L.
+\]
+
+例:
+
+\[
+a_n = -\tfrac{1}{n}、\quad b_n = \tfrac{\sin n}{n}、\quad c_n = \tfrac{1}{n}。
+\]
+
+\(-\tfrac{1}{n} \leq \tfrac{\sin n}{n} \leq \tfrac{1}{n}\)
+と両方の境界シーケンスが 0 になるため、
+
+\[
+\lim_{n\to\infty} \frac{\sin n}{n} = 0。
+\]
+
+\subsubsection{なぜこれが重要なのか}\label{ux306aux305cux3053ux308cux304cux91cdux8981ux306aux306eux304b-28}
+
+\begin{itemize}
+\tightlist
+\item
+  制限により、シーケンスが値に「近づく」という考え方が厳密になります。
+\item
+  シーケンスの収束は無限級数と連続性を支えます。
+\item
+  これらの概念は、制限によって実数を定義する際に不可欠です。
+\end{itemize}
+
+\subsubsection{演習}\label{ux6f14ux7fd2-45}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \(\lim_{n\to\infty} \frac{2n+1}{3n+4}\) を見つけます。
+\item
+  \(a_n = \sqrt{n+1} - \sqrt{n}\) が収束するかどうかを判断します。
+\item
+  \(a_n = \cos n\)
+  は収束しますか?なぜ、あるいはなぜそうではないのでしょうか？
+\item
+  スクイーズ原理を使用して \(\lim_{n\to\infty} \frac{\sin n}{n} = 0\)
+  を表示します。
+\item
+  \(\lim a_n = L\) の場合、\(\lim |a_n| = |L|\) であることを証明します。
+\end{enumerate}
+
+\section{第12章
+無限シリーズ}\label{ux7b2c12ux7ae0-ux7121ux9650ux30b7ux30eaux30fcux30ba}
+
+\subsection{12.1
+シリーズとコンバージェンス}\label{ux30b7ux30eaux30fcux30baux3068ux30b3ux30f3ux30d0ux30fcux30b8ux30a7ux30f3ux30b9}
+
+シリーズとは、シーケンスの項の合計です。単に数値を列挙するのではなく、数値を加算して、無限の和が有限の値に近づくかどうかを調べます。
+
+\subsubsection{定義}\label{ux5b9aux7fa9-13}
+
+シーケンス \((a_n)\)
+を指定すると、対応するシリーズは次のようになります。
+
+\[
+\sum_{n=1}^\infty a_n = a_1 + a_2 + a_3 + \dots
+\]
+
+n 番目の部分和を次のように定義します。
+
+\[
+S_n = \sum_{k=1}^n a_k。
+\]
+
+数列 \((S_n)\) が有限限界 \(S\) に収束すると、級数は収束し、
+
+\[
+\sum_{n=1}^\infty a_n = S.
+\]
+
+\((S_n)\) が発散すると、系列も発散します。
+
+\subsubsection{例}\label{ux4f8b-29}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  幾何学シリーズ
+\end{enumerate}
+
+\[
+\sum_{n=0}^\infty ar^n = \frac{a}{1-r}, \quad |r| < 1.
+\]
+
+例:
+
+\[
+1 + \tfrac{1}{2} + \tfrac{1}{4} + \tfrac{1}{8} + \dots = 2。
+\]
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  高調波系列
+\end{enumerate}
+
+\[
+\sum_{n=1}^\infty \frac{1}{n}。
+\]
+
+この級数は、項が 0 になっても発散します。
+
+3.pシリーズ
+
+\[
+\sum_{n=1}^\infty \frac{1}{n^p}。
+\]
+
+\begin{itemize}
+\tightlist
+\item
+  \(p > 1\) の場合は収束します。
+\item
+  \(p \leq 1\) の場合は分岐します。\#\#\# 収束の必要条件
+\end{itemize}
+
+\(\sum a_n\) が収束した場合、必然的に
+
+\[
+\lim_{n\to\infty} a_n = 0。
+\]
+
+\(\lim a_n \neq 0\) の場合、系列は発散します。
+しかし、その逆は当てはまりません。\(\lim a_n = 0\) は収束を保証しません
+(高調波系列など)。
+
+\subsubsection{なぜこれが重要なのか}\label{ux306aux305cux3053ux308cux304cux91cdux8981ux306aux306eux304b-29}
+
+\begin{itemize}
+\tightlist
+\item
+  シリーズは有限の加算を無限のプロセスに拡張します。
+\item
+  収束シリーズは、関数の近似、面積の計算、物理プロセスのモデル化に使用されます。
+\item
+  級数の研究は強力な収束テストにつながります。
+\end{itemize}
+
+\subsubsection{演習}\label{ux6f14ux7fd2-46}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \(\sum_{n=1}^\infty \frac{2}{3^n}\)
+  が収束するかどうかを判断し、その合計を求めます。
+\item
+  \(\sum_{n=1}^\infty \frac{1}{n^2}\) が収束することを示します。
+\item
+  \(\sum_{n=1}^\infty \frac{1}{\sqrt{n}}\) は収束しますか?
+\item
+  \(\sum_{n=1}^\infty \frac{1}{2^n}\) 系列の最初の 4
+  つの部分和を書き込みます。
+\item
+  \(\lim a_n = 0\)
+  が必要であるが、収束には十分ではない理由を説明します。
+\end{enumerate}
+
+\subsection{12.2 収束テスト}\label{ux53ceux675fux30c6ux30b9ux30c8}
+
+多くの級数は直接合計できないため、数学者は級数が収束するか発散するかを判断するテストを開発しました。これらのテストは、無限和を分析するためのツールです。
+
+\subsubsection{1. 第 n
+期発散テスト}\label{ux7b2c-n-ux671fux767aux6563ux30c6ux30b9ux30c8}
+
+もし
+
+\[
+\lim_{n\to\infty} a_n \neq 0 \quad \text{または存在しません}、
+\]
+
+それから
+
+\[
+\合計_n
+\]
+
+発散します。
+
+\(\lim a_n = 0\) の場合、テストは決定的ではありません。
+
+\subsubsection{2. 比較テスト}\label{ux6bd4ux8f03ux30c6ux30b9ux30c8}
+
+すべての \(n\) に対して \(0 \leq a_n \leq b_n\) を指定するとします。
+
+\begin{itemize}
+\tightlist
+\item
+  \(\sum b_n\) が収束すると、\(\sum a_n\) も収束します。
+\item
+  \(\sum a_n\) が発散すると、\(\sum b_n\) も発散します。
+\end{itemize}
+
+\subsubsection{3.
+限界比較テスト}\label{ux9650ux754cux6bd4ux8f03ux30c6ux30b9ux30c8}
+
+\(a_n, b_n > 0\) の場合、および
+
+\[
+\lim_{n\to\infty} \frac{a_n}{b_n} = c、
+\]
+
+ここで、\(0 < c < \infty\)、次に \(\sum a_n\)、\(\sum b_n\)
+は、両方が収束するか、両方が発散します。
+
+\subsubsection{4. 比率テスト}\label{ux6bd4ux7387ux30c6ux30b9ux30c8}
+
+\(\sum a_n\) の場合、計算します
+
+\[
+L = \lim_{n\to\infty} \left| \frac{a_{n+1}}{a_n} \right|。
+\]- \(L < 1\) の場合、級数は絶対に収束します。 - \(L > 1\) または
+\(L = \infty\) の場合、系列は分岐します。 - \(L = 1\)
+の場合、テストは決定的ではありません。
+
+\subsubsection{5.
+ルートテスト}\label{ux30ebux30fcux30c8ux30c6ux30b9ux30c8}
+
+\(\sum a_n\) の場合、計算します
+
+\[
+L = \lim_{n\to\infty} \sqrt[n]{|a_n|}。
+\]
+
+\begin{itemize}
+\tightlist
+\item
+  \(L < 1\) の場合、級数は絶対に収束します。
+\item
+  \(L > 1\) の場合、系列は分岐します。
+\item
+  \(L = 1\) の場合、テストは決定的ではありません。
+\end{itemize}
+
+\subsubsection{6. 交互系列検定
+(ライプニッツの検定)}\label{ux4ea4ux4e92ux7cfbux5217ux691cux5b9a-ux30e9ux30a4ux30d7ux30cbux30c3ux30c4ux306eux691cux5b9a}
+
+フォームのシリーズの場合
+
+\[
+\sum (-1)^n b_n \quad \text{or} \quad \sum (-1)^{n+1} b_n,
+\]
+
+もし
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \(b_{n+1} \leq b_n\) (減少)、および
+\item
+  \(\lim_{n\to\infty} b_n = 0\)、
+\end{enumerate}
+
+その後、系列は収束します。
+
+\subsubsection{例}\label{ux4f8b-30}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \(\sum \frac{1}{n^2}\): 比較テスト → 収束します。
+\item
+  \(\sum \frac{1}{n}\): 高調波系列 → 発散。
+\item
+  \(\sum \frac{(-1)^n}{n}\): 交互系列テスト → 収束。
+\item
+  \(\sum \frac{n!}{n^n}\): 比率テスト → 収束。
+\item
+  \(\sum \frac{2^n}{n}\): ルート テスト → 分岐。
+\end{enumerate}
+
+\subsubsection{なぜこれが重要なのか}\label{ux306aux305cux3053ux308cux304cux91cdux8981ux306aux306eux304b-30}
+
+\begin{itemize}
+\tightlist
+\item
+  収束テストにより、明示的な合計を必要とせずに系列を分類できます。
+\item
+  微積分における無限のプロセスを処理する体系的な方法を提供します。
+\item
+  これらは、べき級数やフーリエ級数などの後のトピックにとって重要です。
+\end{itemize}
+
+\subsubsection{演習}\label{ux6f14ux7fd2-47}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \(\sum \frac{1}{n^3}\) の収束をテストします。
+\item
+  \(\sum \frac{3^n}{n!}\) の比率テストを使用します。
+\item
+  ルート テストを \(\sum \left(\frac{1}{2}\right)^n\) に適用します。
+\item
+  \(\sum \frac{(-1)^n}{\sqrt{n}}\) の収束を判断します。
+\item
+  \(\frac{1}{n^2}\)
+  による制限比較テストを使用して、\(\sum \frac{1}{n^2+1}\)
+  をテストします。
+\end{enumerate}
+
+\subsection{12.3
+絶対収束と条件付き収束}\label{ux7d76ux5bfeux53ceux675fux3068ux6761ux4ef6ux4ed8ux304dux53ceux675f}
+
+記号が交互に切り替わるときに、すべてのシリーズが同じように動作するわけではありません。これに対処するために、絶対収束と条件付き収束を区別します。
+
+\subsubsection{絶対収束}\label{ux7d76ux5bfeux53ceux675f}
+
+系列 \(\sum a_n\) は、次の場合に絶対収束します。
+
+\[
+\合計 |a_n|
+\]
+
+収束します。定理: 級数が絶対に収束する場合、級数も収束します。
+
+例:
+
+\[
+\sum \frac{(-1)^n}{n^2}。
+\]
+
+ここで、\(\sum \left|\frac{(-1)^n}{n^2}\right| = \sum \frac{1}{n^2}\)
+は収束します (p シリーズ、\(p=2\))。
+したがって、この系列は完全に収束します。
+
+\subsubsection{条件付き収束}\label{ux6761ux4ef6ux4ed8ux304dux53ceux675f}
+
+シリーズ \(\sum a_n\)
+は、収束する場合は条件付きで収束しますが、絶対的に収束するわけではありません。
+
+例:
+
+\[
+\sum \frac{(-1)^n}{n}。
+\]
+
+\begin{itemize}
+\tightlist
+\item
+  交互系列テスト→収束。
+\item
+  しかし、\(\sum \left|\frac{(-1)^n}{n}\right| = \sum \frac{1}{n}\)
+  は発散します (高調波系列)。
+  したがって、この級数は条件付きで収束します。
+\end{itemize}
+
+\subsubsection{並べ替え定理}\label{ux4e26ux3079ux66ffux3048ux5b9aux7406}
+
+条件付き収束系列の場合、項を並べ替えると合計が変化する可能性があり、発散したり別の値に収束したりする場合もあります。
+
+この驚くべき結果は、条件付き収束の繊細な性質を示しています。
+
+\subsubsection{なぜこれが重要なのか}\label{ux306aux305cux3053ux308cux304cux91cdux8981ux306aux306eux304b-31}
+
+\begin{itemize}
+\tightlist
+\item
+  絶対収束がより強力になり、安定性が保証されます。
+\item
+  条件付き収束は、無限和における順序の重要性を強調します。
+\item
+  実際に遭遇する交互系列の多くは、条件付きでのみ収束します。
+\end{itemize}
+
+\subsubsection{演習}\label{ux6f14ux7fd2-48}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \(\sum \frac{(-1)^n}{n^3}\) が絶対収束することを示します。
+\item
+  \(\sum \frac{(-1)^n}{n}\) が条件付きで収束することを示します。
+\item
+  \(\sum \frac{(-1)^n}{\sqrt{n}}\)
+  の絶対収束と条件付き収束をテストします。
+\item
+  絶対収束は収束を意味するが、その逆は当てはまらない理由を説明してください。
+\item
+  リーマンの並べ替え定理を調べて自分の言葉で要約する。
+\end{enumerate}
+
+\section{第 13 章
+べき級数と拡張}\label{ux7b2c-13-ux7ae0-ux3079ux304dux7d1aux6570ux3068ux62e1ux5f35}
+
+\subsection{13.1 べき級数}\label{ux3079ux304dux7d1aux6570}
+
+べき級数は、各項が変数のべき乗を含む無限級数です。べき級数は関数を無限多項式として表現できるため、微積分の中心となります。
+
+\subsubsection{一般的な形式}\label{ux4e00ux822cux7684ux306aux5f62ux5f0f}
+
+\(a\) を中心とするべき級数は次の形式になります。
+
+\[\sum_{n=0}^\infty c_n (x-a)^n,
+\]
+
+ここで、\(c_n\) は係数と呼ばれる定数です。
+
+\begin{itemize}
+\item
+  \(a=0\) の場合、シリーズは原点を中心に配置されます。
+
+  \[
+  \sum_{n=0}^\infty c_n x^n。
+  \]
+\end{itemize}
+
+\subsubsection{例}\label{ux4f8b-31}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  幾何学シリーズ
+\end{enumerate}
+
+\[
+\sum_{n=0}^\infty x^n = \frac{1}{1-x}, \quad |x|<1。
+\]
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  指数関数
+\end{enumerate}
+
+\[
+e^x = \sum_{n=0}^\infty \frac{x^n}{n!}。
+\]
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{2}
+\tightlist
+\item
+  サインとコサイン
+\end{enumerate}
+
+\[
+\sin x = \sum_{n=0}^\infty (-1)^n \frac{x^{2n+1}}{(2n+1)!}, \quad  
+\cos x = \sum_{n=0}^\infty (-1)^n \frac{x^{2n}}{(2n)!}。
+\]
+
+\subsubsection{収束の間隔}\label{ux53ceux675fux306eux9593ux9694}
+
+各べき級数には、次のような収束半径 \(R\) が存在します。
+
+\begin{itemize}
+\tightlist
+\item
+  \(|x-a| < R\) の場合、系列は収束します。
+\item
+  \(|x-a| > R\) の場合、系列は分岐します。
+\item
+  \(|x-a| = R\) では、収束を個別にチェックする必要があります。
+\end{itemize}
+
+\subsubsection{なぜこれが重要なのか}\label{ux306aux305cux3053ux308cux304cux91cdux8981ux306aux306eux304b-32}
+
+\begin{itemize}
+\tightlist
+\item
+  べき級数を使用すると、関数を多項式で近似できます。
+\item
+  微積分を解析および微分方程式と結び付けます。
+\item
+  数学と物理学の多くの特殊関数は、べき級数によって定義されます。
+\end{itemize}
+
+\subsubsection{演習}\label{ux6f14ux7fd2-49}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \(\sum_{n=0}^\infty \frac{(x-2)^n}{n!}\) のべき級数を書き込みます。
+\item
+  \(e^x\) のべき級数の最初の 4 つの項を見つけます。
+\item
+  \(\frac{1}{1+x}\) を 0 を中心とするべき級数として表します。
+\item
+  シリーズ \(\sum_{n=0}^\infty n! x^n\) が \(x=0.1\)
+  に収束するかどうかを判断します。
+\item
+  べき級数が「無限多項式」と呼ばれることがある理由を説明します。
+\end{enumerate}
+
+\subsection{13.2 収束半径}\label{ux53ceux675fux534aux5f84}
+
+すべてのべき級数は、\(x\)
+の一部の値では収束し、他の値では発散します。これら 2
+つの動作間の境界は、収束半径によって表されます。
+
+\subsubsection{定義}\label{ux5b9aux7fa9-14}
+
+パワーシリーズの場合
+
+\[
+\sum_{n=0}^\infty c_n (x-a)^n,
+\]
+
+次のような数値 \(R \geq 0\) (おそらく無限) が存在します。
+
+\begin{itemize}
+\tightlist
+\item
+  \(|x-a| < R\) の場合、級数は絶対に収束します。
+\item
+  \(|x-a| > R\) の場合、系列は分岐します。- \(|x-a| = R\)
+  では、収束を個別にチェックする必要があります。
+\end{itemize}
+
+この数値 \(R\) は、収束半径と呼ばれます。
+
+\subsubsection{収束半径を求める}\label{ux53ceux675fux534aux5f84ux3092ux6c42ux3081ux308b}
+
+2 つの一般的な方法:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  比率テスト
+\end{enumerate}
+
+\[
+R = \lim_{n\to\infty} \left| \frac{c_n}{c_{n+1}} \right|。
+\]
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  ルートテスト
+\end{enumerate}
+
+\[
+R = \frac{1}{\limsup_{n\to\infty} \sqrt[n]{|c_n|}}。
+\]
+
+\subsubsection{例}\label{ux4f8b-32}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  シリーズ:
+\end{enumerate}
+
+\[
+\sum_{n=0}^\infty \frac{x^n}{n!}。
+\]
+
+比率テストの使用:
+
+\[
+\lim_{n\to\infty} \frac{1/(n!)}{1/((n+1)!)} = \infty.
+\]
+
+したがって、\(R = \infty\) (実際のすべての \(x\) について収束します)。
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  シリーズ:
+\end{enumerate}
+
+\[
+\sum_{n=0}^\infty x^n。
+\]
+
+ここでは\(c_n = 1\)です。
+
+\[
+R = 1。
+\]
+
+\(|x| < 1\) に収束します。
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{2}
+\tightlist
+\item
+  シリーズ:
+\end{enumerate}
+
+\[
+\sum_{n=1}^\infty \frac{x^n}{n}。
+\]
+
+比率テスト:
+
+\[
+\lim_{n\to\infty} \left|\frac{(x^{n+1}/(n+1))}{(x^n/n)}\right| = |x|。
+\]
+
+したがって、\(R = 1\)。 \(|x| < 1\) では収束し、\(|x| > 1\)
+では発散します。 \(x=\pm 1\) で、個別にテストします。
+
+\subsubsection{収束の間隔}\label{ux53ceux675fux306eux9593ux9694-1}
+
+系列が収束する \(x\) 値のセットは、収束間隔と呼ばれます。
+
+\begin{itemize}
+\tightlist
+\item
+  常に \(a\) を中心に配置します。
+\item
+  \(R\) 単位を両方向に拡張します。
+\item
+  エンドポイント \(x=a\pm R\) は個別にチェックする必要があります。
+\end{itemize}
+
+\subsubsection{なぜこれが重要なのか}\label{ux306aux305cux3053ux308cux304cux91cdux8981ux306aux306eux304b-33}
+
+\begin{itemize}
+\tightlist
+\item
+  収束半径は、べき級数が関数のように動作する場所を示します。
+\item
+  テイラー級数展開を実際に使用するために不可欠です。
+\item
+  物理学および工学における級数解の有効性の領域を決定します。
+\end{itemize}
+
+\subsubsection{演習}\label{ux6f14ux7fd2-50}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \(\sum_{n=0}^\infty \frac{(x-3)^n}{n!}\) の収束半径を見つけます。
+\item
+  \(\sum_{n=1}^\infty \frac{x^n}{n^2}\) の収束半径を計算します。
+\item
+  比率テストを使用して、\(\sum_{n=0}^\infty n!x^n\) に対する \(R\)
+  を見つけます。
+\item
+  \(\sum_{n=1}^\infty \frac{(x+1)^n}{n}\) の収束間隔を決定します。
+\item
+  指数級数がすべての \(x\) について収束するのに対し、等比級数は
+  \(|x|<1\) についてのみ収束する理由を説明してください。\#\# 13.3
+  テイラーとマクローリンのシリーズ
+\end{enumerate}
+
+べき級数は、よく知られた関数を表すために使用される場合に特に強力になります。これはテイラー級数によって行われ、0
+を中心とする特殊な場合はマクローリン級数と呼ばれます。
+
+\subsubsection{テイラーシリーズ}\label{ux30c6ux30a4ux30e9ux30fcux30b7ux30eaux30fcux30ba}
+
+関数 \(f(x)\) が \(x=a\) で無限微分可能である場合、\(a\)
+に関するそのテイラー級数は次のようになります。
+
+\[
+f(x) = \sum_{n=0}^\infty \frac{f^{(n)}(a)}{n!}(x-a)^n。
+\]
+
+ここで、\(f^{(n)}(a)\) は、\(a\) における \(f\) の \(n\)
+次導関数を示します。
+
+\subsubsection{マクローリンシリーズ}\label{ux30deux30afux30edux30fcux30eaux30f3ux30b7ux30eaux30fcux30ba}
+
+\(a=0\) を中心とするテイラー系列:
+
+\[
+f(x) = \sum_{n=0}^\infty \frac{f^{(n)}(0)}{n!} x^n。
+\]
+
+\subsubsection{例}\label{ux4f8b-33}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  指数関数
+\end{enumerate}
+
+\[
+e^x = 1 + x + \frac{x^2}{2!} + \frac{x^3}{3!} + \cdots
+\]
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  サインとコサイン
+\end{enumerate}
+
+\[
+\sin x = x - \frac{x^3}{3!} + \frac{x^5}{5!} - \cdots
+\]
+
+\[
+\cos x = 1 - \frac{x^2}{2!} + \frac{x^4}{4!} - \cdots
+\]
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{2}
+\tightlist
+\item
+  自然対数 (\(|x|<1\) の場合)
+\end{enumerate}
+
+\[
+\ln(1+x) = x - \frac{x^2}{2} + \frac{x^3}{3} - \frac{x^4}{4} + \cdots
+\]
+
+\subsubsection{テイラー多項式近似}\label{ux30c6ux30a4ux30e9ux30fcux591aux9805ux5f0fux8fd1ux4f3c}
+
+最初の \(n\) 項の有限和は、次数 \(n\) のテイラー多項式です。
+
+\[
+P_n(x) = \sum_{k=0}^n \frac{f^{(k)}(a)}{k!}(x-a)^k。
+\]
+
+この多項式は、\(x=a\) 付近の \(f(x)\) に近似します。
+
+\subsubsection{剰余
+(エラー項)}\label{ux5270ux4f59-ux30a8ux30e9ux30fcux9805}
+
+関数とそのテイラー多項式の違いは剰余です。
+
+\[
+R_n(x) = f(x) - P_n(x)。
+\]
+
+1 つの形式 (ラグランジュ形式) は、
+
+\[
+R_n(x) = \frac{f^{(n+1)}(c)}{(n+1)!}(x-a)^{n+1}、
+\]
+
+\(a\) と \(x\) の間の一部の \(c\) について。
+
+\subsubsection{なぜこれが重要なのか}\label{ux306aux305cux3053ux308cux304cux91cdux8981ux306aux306eux304b-34}
+
+\begin{itemize}
+\tightlist
+\item
+  テイラー級数は、複雑な関数の多項式近似を提供します。
+\item
+  数値解析、物理学、工学に不可欠です。
+\item
+  マクローリン級数展開により、指数関数、三角関数、対数関数の簡単な公式が得られます。
+\end{itemize}
+
+\subsubsection{演習}\label{ux6f14ux7fd2-51}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \(f(x)=\cosh x = \tfrac{e^x+e^{-x}}{2}\)
+  のマクローリン系列を検索します。2. \(a=2\) を中心とする \(f(x)=e^x\)
+  のテイラー級数を書きます。
+\item
+  \(a=0\) における \(f(x)=\ln(1+x)\) の 3 次テイラー多項式を計算します。
+\item
+  \(\sin x\) のマクローリン級数を使用して、\(\sin(0.1)\) を近似します。
+\item
+  テイラー級数は多くの場合良好な局所近似を提供しますが、\(|x|\)
+  が大きい場合には発散する可能性がある理由を説明してください。
+\end{enumerate}
+
+\subsection{13.4
+テイラー級数の応用}\label{ux30c6ux30a4ux30e9ux30fcux7d1aux6570ux306eux5fdcux7528}
+
+テイラー級数は理論上のツールであるだけではなく、関数を近似したり、方程式を解いたり、物理システムを分析したりするために使用されます。その応用範囲は数学、科学、工学に及びます。
+
+\subsubsection{関数近似}\label{ux95a2ux6570ux8fd1ux4f3c}
+
+複雑な関数は、点付近の多項式で近似できます。
+
+例: 3 次のマクローリン多項式を使用して、\(x=0\) 付近の \(e^x\)
+を近似します。
+
+\[
+P_3(x) = 1 + x + \tfrac{x^2}{2} + \tfrac{x^3}{6}。
+\]
+
+小さい \(x\) の場合、これにより \(e^x\) の正確な推定値が得られます。
+
+\subsubsection{数値的手法}\label{ux6570ux5024ux7684ux624bux6cd5}
+
+テイラー級数は数値アルゴリズムの基礎を提供します。
+
+\begin{itemize}
+\tightlist
+\item
+  平方根、対数、三角関数の近似値。
+\item
+  剰余項による誤差推定。
+\item
+  ニュートン法 (局所線形化がテイラー級数から得られる)
+  のような反復法で使用されます。
+\end{itemize}
+
+\subsubsection{微分方程式を解く}\label{ux5faeux5206ux65b9ux7a0bux5f0fux3092ux89e3ux304f}
+
+多くの微分方程式には、テイラー (またはべき) 級数で表される解があります。
+
+例: \(y(0)=0, y'(0)=1\) を使用した \(y'' + y = 0\) の解決策は \(\sin x\)
+であり、これはマクローリン系列から自然に生じます。
+
+\subsubsection{物理学と工学}\label{ux7269ux7406ux5b66ux3068ux5de5ux5b66}
+
+\begin{itemize}
+\item
+  小角近似:
+
+  \[
+  \sin x \about x, \quad \cos x \about 1 - \tfrac{x^2}{2}, \quad |x| \ll 1.
+  \]
+
+  振り子運動、光学、波力学で使用されます。
+\item
+  相対性理論と量子力学:
+  テイラー展開は非線形表現を実用化するために単純化します。-
+  エネルギー関数の近似:
+  力学では、位置エネルギー関数は平衡点付近で展開されます。
+\end{itemize}
+
+\subsubsection{確率と統計}\label{ux78baux7387ux3068ux7d71ux8a08}
+
+\begin{itemize}
+\tightlist
+\item
+  モーメント母関数および特性関数はべき級数を使用します。
+\item
+  確率分布の近似 (二項分布への正規近似など) はテイラー展開を使用します。
+\end{itemize}
+
+\subsubsection{なぜこれが重要なのか}\label{ux306aux305cux3053ux308cux304cux91cdux8981ux306aux306eux304b-35}
+
+\begin{itemize}
+\tightlist
+\item
+  テイラー級数は、正確な公式と実際の計算の間の橋渡しをします。
+\item
+  これらにより、複雑な問題を管理可能な多項式近似に減らすことができます。
+\item
+  アプリケーションは、応用数学における最も重要なツールの 1 つです。
+\end{itemize}
+
+\subsubsection{演習}\label{ux6f14ux7fd2-52}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \(e^x\) のマクローリン級数を使用して、\(e^{0.1}\) を小数点以下 4
+  桁まで近似します。
+\item
+  小角近似を適用して \(\sin(5^\circ)\) を推定します。
+\item
+  べき級数アプローチを使用して、微分方程式 \(y'' = -y\) を解きます。
+\item
+  \(\ln(1+x)\) を 4 次まで拡張し、それを使用して \(\ln(1.1)\)
+  を近似します。
+\item
+  多項式近似がコンピュータや電卓に特に役立つ理由を説明します。
+\end{enumerate}
+
+\section{付録}\label{ux4ed8ux9332}
+
+\subsection{付録 A.
+微積分の基礎知識}\label{ux4ed8ux9332-a.-ux5faeux7a4dux5206ux306eux57faux790eux77e5ux8b58}
+
+\subsubsection{A.1 代数の復習}\label{a.1-ux4ee3ux6570ux306eux5fa9ux7fd2}
+
+微積分に入る前に、何度も登場する代数のスキルを復習しておくと役立ちます。これらは、式を操作し、方程式を解き、結果を単純化するために必要な「ツール」です。
+
+\paragraph{指数と累乗}\label{ux6307ux6570ux3068ux7d2fux4e57}
+
+\begin{itemize}
+\item
+  基本ルール:
+
+  \[
+  a^m \cdot a^n = a^{m+n}、\quad \frac{a^m}{a^n} = a^{m-n}、\quad (a^m)^n = a^{mn}。
+  \]
+\item
+  負の指数:
+
+  \[
+  a^{-n} = \frac{1}{a^n}, \quad a \neq 0.
+  \]
+\item
+  小数部の指数:
+
+  \[
+  a^{1/n} = \sqrt[n]{a}、\quad a^{m/n} = \sqrt[n]{a^m}。
+  \]
+\end{itemize}
+
+\paragraph{ファクタリング}\label{ux30d5ux30a1ux30afux30bfux30eaux30f3ux30b0}
+
+因数分解は式を単純化し、方程式を解くのに役立ちます。
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  共通因子:
+
+  \[
+  6x^2+9x = 3x(2x+3)。
+  \]
+\item
+  正方形の違い:
+
+  \[a^2-b^2 = (a-b)(a+b)。
+  \]
+\item
+  二次三項式:
+
+  \[
+  x^2+5x+6 = (x+2)(x+3)。
+  \]
+\end{enumerate}
+
+\paragraph{多項式}\label{ux591aux9805ux5f0f}
+
+\begin{itemize}
+\tightlist
+\item
+  標準形式: \(P(x) = a_nx^n + a_{n-1}x^{n-1} + \cdots + a_0\)。
+\item
+  次数: \(x\) の最大パワー。
+\item
+  長い除算と合成除算は、有理関数を単純化するのに役立ちます。
+\end{itemize}
+
+\paragraph{有理式}\label{ux6709ux7406ux5f0f}
+
+分子と分母を因数分解して単純化します。
+
+\[
+\frac{x^2-1}{x^2-2x+1} = \frac{(x-1)(x+1)}{(x-1)^2} = \frac{x+1}{x-1}, \quad x \neq 1.
+\]
+
+\paragraph{対数}\label{ux5bfeux6570}
+
+\begin{itemize}
+\item
+  定義: \(\log_a b = c\) は \(a^c = b\) を意味します。
+\item
+  一般的な基数: 自然対数 (\(\ln x = \log_e x\)) および基数 10
+  (\(\log x\))。
+\item
+  ルール:
+
+  \[
+  \log(ab) = \log a + \log b, \quad \log\left(\frac{a}{b}\right) = \log a - \log b, \quad \log(a^n) = n\log a。
+  \]
+\end{itemize}
+
+\paragraph{方程式}\label{ux65b9ux7a0bux5f0f}
+
+\begin{itemize}
+\item
+  線形: \(ax+b=0\) → \(x=-b/a\) を解決します。
+\item
+  二次関数: \(ax^2+bx+c=0\) には解があります
+
+  \[
+  x=\frac{-b\pm \sqrt{b^2-4ac}}{2a}。
+  \]
+\item
+  指数関数: \(e^x = k\) → \(x = \ln k\)。
+\end{itemize}
+
+\subsubsection{A.2
+三角法の基礎}\label{a.2-ux4e09ux89d2ux6cd5ux306eux57faux790e}
+
+三角法は角度と周期現象の言語を提供します。微積分では振動、運動、波を扱うことが多いため、三角関数とその性質をしっかりと理解することが不可欠です。
+
+\paragraph{単位円}\label{ux5358ux4f4dux5186}
+
+\begin{itemize}
+\item
+  座標平面の原点を中心とする半径 1 の円として定義されます。
+\item
+  正の \(x\) 軸から測定された角度 \(\theta\) の場合:
+
+  \[
+  (\cos \theta、\sin \theta)
+  \]
+
+  円上の点の座標を与えます。
+\end{itemize}
+
+特別な値:
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.3333}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.1667}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.1667}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.3333}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+\(\theta\)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\(\sin \theta\)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\(\cos \theta\)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\(\tan \theta = \frac{\sin \theta}{\cos \theta}\)
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\(0\) & 0 & 1 & 0 \\
+\(\pi/6\) & 1/2 & \(\sqrt{3}/2\) & \(1/\sqrt{3}\) \\
+\(\pi/3\) & \(\sqrt{3}/2\) & 1/2 & \(\sqrt{3}\) \\
+\(\pi/2\) & 1 & 0 & 未定義 \\
+\end{longtable}
+
+\paragraph{基本的なアイデンティティ}\label{ux57faux672cux7684ux306aux30a2ux30a4ux30c7ux30f3ux30c6ux30a3ux30c6ux30a3}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  ピタゴラス的アイデンティティ
+\end{enumerate}
+
+\[
+\sin^2\theta + \cos^2\theta = 1。
+\]
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  商のアイデンティティ
+\end{enumerate}
+
+\[
+\tan\theta = \frac{\sin\theta}{\cos\theta}、\quad \cot\theta = \frac{\cos\theta}{\sin\theta}。
+\]
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{2}
+\tightlist
+\item
+  相互のアイデンティティ
+\end{enumerate}
+
+\[
+\sec\theta = \frac{1}{\cos\theta}、\quad \csc\theta = \frac{1}{\sin\theta}。
+\]
+
+\paragraph{角度の加算公式}\label{ux89d2ux5ea6ux306eux52a0ux7b97ux516cux5f0f}
+
+\[
+\sin(\alpha+\beta) = \sin\alpha\cos\beta + \cos\alpha\sin\beta,
+\]
+
+\[
+\cos(\alpha+\beta) = \cos\alpha\cos\beta - \sin\alpha\sin\beta。
+\]
+
+特殊な場合:
+
+\begin{itemize}
+\item
+  ダブルアングル:
+
+  \[
+  \sin(2\theta) = 2\sin\theta\cos\theta, \quad
+  \cos(2\theta) = \cos^2\theta - \sin^2\theta。
+  \]
+\end{itemize}
+
+\paragraph{グラフ}\label{ux30b0ux30e9ux30d5}
+
+\begin{itemize}
+\tightlist
+\item
+  \(\sin x\): 0 から始まる波、振幅 1、周期 \(2\pi\)。
+\item
+  \(\cos x\): 1 で始まる波、振幅 1、周期 \(2\pi\)。
+\item
+  \(\tan x\): \(\pi\) ごとに繰り返しますが、\(\pi/2\)
+  の奇数倍では未定義です。
+\end{itemize}
+
+\subsubsection{A.3 座標幾何学}\label{a.3-ux5ea7ux6a19ux5e7eux4f55ux5b66}
+
+座標幾何学は、方程式を使用して幾何学オブジェクト (線、円、曲線)
+を記述することにより、代数と幾何学を結び付けます。 Calculus
+は、関数のグラフ作成、傾きの検出、曲線の分析に関してこのフレームワークに大きく依存しています。
+
+\paragraph{デカルト平面}\label{ux30c7ux30abux30ebux30c8ux5e73ux9762}
+
+\begin{itemize}
+\item
+  点は座標 \((x,y)\) で表されます。
+\item
+  2 点間の距離 \((x_1,y_1)\) と \((x_2,y_2)\):
+
+  \[
+  d = \sqrt{(x_2-x_1)^2 + (y_2-y_1)^2}。
+  \]
+\item
+  線分の中点:
+
+  \[
+  M = \left(\frac{x_1+x_2}{2}, \frac{y_1+y_2}{2}\right)。
+  \]
+\end{itemize}
+
+\paragraph{行}\label{ux884c}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  傾きの公式
+
+  \[
+  m = \frac{y_2-y_1}{x_2-x_1}。
+  \]
+\item
+  直線の方程式
+
+  \begin{itemize}
+  \item
+    点と斜面の形式:
+
+    \[y-y_1 = m(x-x_1)。
+    \]
+  \item
+    勾配切片の形式:
+
+    \[
+    y = mx+b。
+    \]
+  \end{itemize}
+\item
+  平行線と垂直線
+
+  \begin{itemize}
+  \tightlist
+  \item
+    平行線: 同じ傾き。
+  \item
+    垂直線: 傾斜は\(m_1m_2 = -1\)を満たします。
+  \end{itemize}
+\end{enumerate}
+
+\paragraph{サークル}\label{ux30b5ux30fcux30afux30eb}
+
+中心が\((h,k)\)、半径が\(r\)の円の方程式:
+
+\[
+(x-h)^2+(y-k)^2 = r^2。
+\]
+
+特殊なケース: 原点を中心とする単位円:
+
+\[
+x^2+y^2=1。
+\]
+
+\paragraph{円錐曲線}\label{ux5186ux9310ux66f2ux7dda}
+
+1.放物線:
+
+\begin{itemize}
+\item
+  標準形式 (上開き/下開き):
+
+  \[
+  y = ax^2+bx+c。
+  \]
+\end{itemize}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{1}
+\item
+  楕円 (原点を中心とする):
+
+  \[
+  \frac{x^2}{a^2}+\frac{y^2}{b^2}=1。
+  \]
+\item
+  双曲線 (原点中心):
+
+  \[
+  \frac{x^2}{a^2}-\frac{y^2}{b^2}=1。
+  \]
+\end{enumerate}
+
+\subsection{付録 B.
+主要な式と表}\label{ux4ed8ux9332-b.-ux4e3bux8981ux306aux5f0fux3068ux8868}
+
+\subsubsection{B.1 導関数表}\label{b.1-ux5c0eux95a2ux6570ux8868}
+
+微分関数は関数の変化率と傾きを測定します。早見表があると、学習者は毎回式を再導出する必要がなくなります。
+
+\paragraph{基本ルール}\label{ux57faux672cux30ebux30fcux30eb-1}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  定数ルール
+\end{enumerate}
+
+\[
+\frac{d}{dx}[c] = 0
+\]
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  べき乗則
+\end{enumerate}
+
+\[
+\frac{d}{dx}[x^n] = nx^{n-1}, \quad (n \in \mathbb{R})
+\]
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{2}
+\tightlist
+\item
+  定数倍ルール
+\end{enumerate}
+
+\[
+\frac{d}{dx}[c f(x)] = c f'(x)
+\]
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{3}
+\tightlist
+\item
+  和と差のルール
+\end{enumerate}
+
+\[
+\frac{d}{dx}[f(x)\pm g(x)] = f'(x)\pm g'(x)
+\]
+
+\paragraph{三角関数}\label{ux4e09ux89d2ux95a2ux6570}
+
+\[
+\frac{d}{dx}[\sin x] = \cos x
+\]
+
+\[
+\frac{d}{dx}[\cos x] = -\sin x
+\]
+
+\[
+\frac{d}{dx}[\tan x] = \sec^2 x, \quad x \neq \tfrac{\pi}{2}+k\pi
+\]
+
+\[
+\frac{d}{dx}[\cot x] = -\csc^2 x
+\]
+
+\[
+\frac{d}{dx}[\sec x] = \sec x \tan x
+\]
+
+\[
+\frac{d}{dx}[\csc x] = -\csc x \cot x
+\]
+
+\paragraph{指数関数と対数関数}\label{ux6307ux6570ux95a2ux6570ux3068ux5bfeux6570ux95a2ux6570}
+
+\[
+\frac{d}{dx}[e^x] = e^x
+\]
+
+\[
+\frac{d}{dx}[a^x] = a^x \ln a, \quad a>0, a\neq 1
+\]
+
+\[
+\frac{d}{dx}[\ln x] = \frac{1}{x}, \quad x>0
+\]
+
+\[
+\frac{d}{dx}[\log_a x] = \frac{1}{x\ln a}, \quad a>0, a\neq 1
+\]
+
+\paragraph{逆三角関数}\label{ux9006ux4e09ux89d2ux95a2ux6570}
+
+\[\frac{d}{dx}[\arcsin x] = \frac{1}{\sqrt{1-x^2}}, \quad |x|<1
+\]
+
+\[
+\frac{d}{dx}[\arccos x] = -\frac{1}{\sqrt{1-x^2}}, \quad |x|<1
+\]
+
+\[
+\frac{d}{dx}[\arctan x] = \frac{1}{1+x^2}, \quad x \in \mathbb{R}
+\]
+
+\paragraph{製品、商、チェーンのルール}\label{ux88fdux54c1ux5546ux30c1ux30a7ux30fcux30f3ux306eux30ebux30fcux30eb}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  商品規定
+\end{enumerate}
+
+\[
+\frac{d}{dx}[f(x)g(x)] = f'(x)g(x)+f(x)g'(x)
+\]
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  商の法則
+\end{enumerate}
+
+\[
+\frac{d}{dx}\left[\frac{f(x)}{g(x)}\right] = \frac{f'(x)g(x)-f(x)g'(x)}{[g(x)]^2}, \quad g(x)\neq 0
+\]
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{2}
+\tightlist
+\item
+  チェーンルール
+\end{enumerate}
+
+\[
+\frac{d}{dx}[f(g(x))] = f'(g(x))\cdot g'(x)
+\]
+
+\subsubsection{B.3
+一般的なシリーズの拡張}\label{b.3-ux4e00ux822cux7684ux306aux30b7ux30eaux30fcux30baux306eux62e1ux5f35}
+
+べき級数を使用すると、関数を無限多項式として表現できます。これらの展開は、近似、微分方程式の解法、および微積分の関数についての直観を構築するために不可欠です。
+
+\paragraph{幾何学シリーズ}\label{ux5e7eux4f55ux5b66ux30b7ux30eaux30fcux30ba}
+
+\[
+\frac{1}{1-x} = \sum_{n=0}^\infty x^n, \quad |x| < 1
+\]
+
+\paragraph{指数関数}\label{ux6307ux6570ux95a2ux6570}
+
+\[
+e^x = \sum_{n=0}^\infty \frac{x^n}{n!}
+= 1 + x + \frac{x^2}{2!} + \frac{x^3}{3!} + \cdots
+\]
+
+すべての \(x\) に有効です。
+
+\paragraph{三角関数}\label{ux4e09ux89d2ux95a2ux6570-1}
+
+\[
+\sin x = \sum_{n=0}^\infty (-1)^n \frac{x^{2n+1}}{(2n+1)!}
+= x - \frac{x^3}{3!} + \frac{x^5}{5!} - \cdots
+\]
+
+\[
+\cos x = \sum_{n=0}^\infty (-1)^n \frac{x^{2n}}{(2n)!}
+= 1 - \frac{x^2}{2!} + \frac{x^4}{4!} - \cdots
+\]
+
+\[
+\tan^{-1} x = \sum_{n=0}^\infty (-1)^n \frac{x^{2n+1}}{2n+1}, \quad |x|\leq 1
+\]
+
+\paragraph{対数}\label{ux5bfeux6570-1}
+
+\[
+\ln(1+x) = \sum_{n=1}^\infty (-1)^{n+1} \frac{x^n}{n}, \quad -1 < x \leq 1
+\]
+
+\paragraph{二項展開
+(一般化)}\label{ux4e8cux9805ux5c55ux958b-ux4e00ux822cux5316}
+
+\[
+(1+x)^r = \sum_{n=0}^\infty \binom{r}{n} x^n, \quad |x|<1
+\]
+
+どこで
+
+\[
+\binom{r}{n} = \frac{r(r-1)(r-2)\cdots(r-n+1)}{n!}。
+\]
+
+\subsection{付録 C.
+校正スケッチ}\label{ux4ed8ux9332-c.-ux6821ux6b63ux30b9ux30b1ux30c3ux30c1}
+
+\subsubsection{\texorpdfstring{C.1 制限の法則と
+\(\varepsilon\)--\(\delta\)
+の定義微積分は、極限の正確な意味に基づいています。直感
+(「値がどんどん近づいていく」)
+は役に立ちますが、正式な定義により厳密さが保証され、パラドックスが回避されます。}{C.1 制限の法則と \textbackslash varepsilon--\textbackslash delta の定義微積分は、極限の正確な意味に基づいています。直感 (「値がどんどん近づいていく」) は役に立ちますが、正式な定義により厳密さが保証され、パラドックスが回避されます。}}\label{c.1-ux5236ux9650ux306eux6cd5ux5247ux3068-varepsilondelta-ux306eux5b9aux7fa9ux5faeux7a4dux5206ux306fux6975ux9650ux306eux6b63ux78baux306aux610fux5473ux306bux57faux3065ux3044ux3066ux3044ux307eux3059ux76f4ux611f-ux5024ux304cux3069ux3093ux3069ux3093ux8fd1ux3065ux3044ux3066ux3044ux304f-ux306fux5f79ux306bux7acbux3061ux307eux3059ux304cux6b63ux5f0fux306aux5b9aux7fa9ux306bux3088ux308aux53b3ux5bc6ux3055ux304cux4fddux8a3cux3055ux308cux30d1ux30e9ux30c9ux30c3ux30afux30b9ux304cux56deux907fux3055ux308cux307eux3059}
+
+\paragraph{直感的なアイデア}\label{ux76f4ux611fux7684ux306aux30a2ux30a4ux30c7ux30a2}
+
+私たちは書きます
+
+\[
+\lim_{x \to a} f(x) = L
+\]
+
+これは、\(x\) が任意に \(a\) に近づくと、\(f(x)\) の値が任意に \(L\)
+に近づくことを意味します。
+
+\paragraph{\texorpdfstring{正式な (\(\varepsilon\)--\(\delta\))
+定義}{正式な (\textbackslash varepsilon--\textbackslash delta) 定義}}\label{ux6b63ux5f0fux306a-varepsilondelta-ux5b9aux7fa9}
+
+私たちはそう言います
+
+\[
+\lim_{x \to a} f(x) = L
+\]
+
+すべての \(\varepsilon > 0\) に対して、次のような \(\delta > 0\)
+が存在する場合、
+
+\[
+0 < |x-a| < \デルタ、
+\]
+
+私たちは持っています
+
+\[
+|f(x) - L| < \バレプシロン。
+\]
+
+\begin{itemize}
+\tightlist
+\item
+  \(\varepsilon\): \(f(x)\) を \(L\) にどれだけ近づけるか。
+\item
+  \(\delta\): これを達成するには、\(x\) が \(a\)
+  にどれだけ近づく必要があります。
+\end{itemize}
+
+\paragraph{例}\label{ux4f8b-34}
+
+それを見せてください
+
+\[
+\lim_{x \to 2} (3x+1) = 7。
+\]
+
+\begin{itemize}
+\tightlist
+\item
+  \(\varepsilon > 0\) にしておきます。
+\item
+  \(|(3x+1)-7| < \varepsilon\) が必要です。
+\item
+  簡略化: \(|3x-6| = 3|x-2| < \varepsilon\)。
+\item
+  これは、\(\delta = \varepsilon/3\) を選択した場合にも当てはまります。
+\end{itemize}
+
+したがって、定義によれば、制限は 7 です。
+
+\paragraph{制限法}\label{ux5236ux9650ux6cd5}
+
+\(\lim_{x \to a} f(x) = L\) および \(\lim_{x \to a} g(x) = M\)
+の場合、次のようになります。
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  和/差
+\end{enumerate}
+
+\[
+\lim_{x \to a} [f(x) \pm g(x)] = L \pm M
+\]
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  定数倍数
+\end{enumerate}
+
+\[
+\lim_{x \to a} [c f(x)] = cL
+\]
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{2}
+\tightlist
+\item
+  製品
+\end{enumerate}
+
+\[
+\lim_{x \to a} [f(x)g(x)] = LM
+\]
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{3}
+\tightlist
+\item
+  商 (\(M \neq 0\) の場合)
+\end{enumerate}
+
+\[
+\lim_{x \to a} \frac{f(x)}{g(x)} = \frac{L}{M}
+\]
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{4}
+\tightlist
+\item
+  権力と根源
+\end{enumerate}
+
+\[
+\lim_{x \to a} [f(x)]^n = L^n, \quad \lim_{x \to a} \sqrt[n]{f(x)} = \sqrt[n]{L} \ (\text{定義されている場合})。
+\]
+
+\subsubsection{C.2 証明スケッチ:
+微積分の基本定理}\label{c.2-ux8a3cux660eux30b9ux30b1ux30c3ux30c1-ux5faeux7a4dux5206ux306eux57faux672cux5b9aux7406}
+
+微積分の基本定理 (FTC) は、微積分の 2
+つの中心的な演算である微分と積分を結び付けます。これは、それらが実際には逆のプロセスであることを示しています。
+
+\paragraph{定理の説明}\label{ux5b9aux7406ux306eux8aacux660e}
+
+パート I (積分の微分): \(f\) が \([a,b]\)
+上で連続していて、次のように定義した場合
+
+\[F(x) = \int_a^x f(t)\,dt,
+\]
+
+\(F\) は \((a,b)\) で微分可能であり、
+
+\[
+F'(x) = f(x)。
+\]
+
+パート II (定積分の評価): \(F\) が \([a,b]\) における \(f\)
+の逆導関数である場合、
+
+\[
+\int_a^b f(x)\,dx = F(b)-F(a)。
+\]
+
+\paragraph{パート I のプルーフ
+スケッチ}\label{ux30d1ux30fcux30c8-i-ux306eux30d7ux30ebux30fcux30d5-ux30b9ux30b1ux30c3ux30c1}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  導関数の定義から始めます。
+
+  \[
+  F'(x) = \lim_{h\to 0} \frac{F(x+h)-F(x)}{h}。
+  \]
+\item
+  \(F(x) = \int_a^x f(t)\,dt\) を置き換えます。
+
+  \[
+  F(x+h)-F(x) = \int_a^{x+h} f(t)\,dt - \int_a^x f(t)\,dt。
+  \]
+\item
+  積分の加法性により:
+
+  \[
+  F(x+h)-F(x) = \int_x^{x+h} f(t)\,dt。
+  \]
+\item
+  したがって:
+
+  \[
+  \frac{F(x+h)-F(x)}{h} = \frac{1}{h}\int_x^{x+h} f(t)\,dt。
+  \]
+\item
+  積分の平均値定理により、次のような \(c \in [x,x+h]\) が存在します。
+
+  \[
+  \frac{1}{h}\int_x^{x+h} f(t)\,dt = f(c)。
+  \]
+\item
+  \(h \to 0\)、\(c \to x\)、および \(f\)
+  は連続であるため、次のようになります。
+
+  \[
+  \lim_{h\to 0} f(c) = f(x)。
+  \]
+\end{enumerate}
+
+したがって、\(F'(x) = f(x)\)。
+
+\paragraph{パート II のプルーフ
+スケッチ}\label{ux30d1ux30fcux30c8-ii-ux306eux30d7ux30ebux30fcux30d5-ux30b9ux30b1ux30c3ux30c1}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  \(F\) を \(f\) の逆微分であるとすると、\(F'(x) = f(x)\) になります。
+\item
+  パート I では、関数
+
+  \[
+  G(x) = \int_a^x f(t)\,dt
+  \]
+
+  \(f\) の逆派生でもあります。
+\item
+  \(F\) と \(G\) は定数が異なるだけなので、
+
+  \[
+  F(x) = G(x) + C.
+  \]
+\item
+  エンドポイントでの評価:
+
+  \[
+  \int_a^b f(x)\,dx = G(b)-G(a) = (F(b)+C)-(F(a)+C) = F(b)-F(a)。
+  \]
+\end{enumerate}
+
+\subsubsection{C.3 証明スケッチ:
+幾何級数の収束}\label{c.3-ux8a3cux660eux30b9ux30b1ux30c3ux30c1-ux5e7eux4f55ux7d1aux6570ux306eux53ceux675f}
+
+幾何級数は、最も単純かつ重要な無限級数の 1
+つです。これは収束を理解するためのモデルとして機能し、その後の微積分の多くの結果の基礎となります。
+
+\paragraph{シリーズ}\label{ux30b7ux30eaux30fcux30ba}
+
+\[
+\sum_{n=0}^\infty ar^n = a + ar + ar^2 + ar^3 + \cdots
+\]
+
+ここで、\(a\) は最初の項、\(r\) は公比です。
+
+\paragraph{部分和の式}\label{ux90e8ux5206ux548cux306eux5f0f}
+
+\(n\) 番目の部分合計は次のとおりです。
+
+\[S_n = a + ar + ar^2 + \cdots + ar^n。
+\]
+
+両辺に \(r\) を掛けます。
+
+\[
+rS_n = ar + ar^2 + \cdots + ar^{n+1}。
+\]
+
+2 つの方程式を引き算します。
+
+\[
+S_n - rS_n = a - ar^{n+1}。
+\]
+
+\[
+S_n(1-r) = a(1-r^{n+1})。
+\]
+
+それで
+
+\[
+S_n = \frac{a(1-r^{n+1})}{1-r}, \quad r \neq 1.
+\]
+
+\paragraph{収束}\label{ux53ceux675f}
+
+制限を \(n \to \infty\) とします。
+
+\begin{itemize}
+\item
+  \(|r| < 1\) の場合は、\(r^{n+1} \to 0\)。
+
+  \[
+  \lim_{n\to\infty} S_n = \frac{a}{1-r}。
+  \]
+\item
+  \(|r| \geq 1\) の場合、\(r^{n+1}\) は 0
+  になりません。系列は発散します。
+\end{itemize}
+
+\paragraph{結果}\label{ux7d50ux679c}
+
+\[
+\sum_{n=0}^\infty ar^n =
+\begin{ケース}
+\dfrac{a}{1-r}, & |r|<1, \\[6pt]
+\text{発散}, & |r|\geq 1.
+\end{ケース}
+\]
+
+\subsection{付録 D.
+アプリケーションと接続}\label{ux4ed8ux9332-d.-ux30a2ux30d7ux30eaux30b1ux30fcux30b7ux30e7ux30f3ux3068ux63a5ux7d9a}
+
+\subsubsection{D.1 物理学の関係:
+速度、加速度、および仕事}\label{d.1-ux7269ux7406ux5b66ux306eux95a2ux4fc2-ux901fux5ea6ux52a0ux901fux5ea6ux304aux3088ux3073ux4ed5ux4e8b}
+
+微積分はもともと物理学、特に運動と変化の問題を解決するために開発されました。ここでは最も重要な接続をいくつか紹介します。
+
+\paragraph{位置、速度、加速度}\label{ux4f4dux7f6eux901fux5ea6ux52a0ux901fux5ea6-1}
+
+\begin{itemize}
+\item
+  位置関数: \(s(t)\) は、時刻 \(t\)
+  におけるオブジェクトの位置を示します。
+\item
+  速度: 位置の導関数。
+
+  \[
+  v(t) = s'(t) = \frac{ds}{dt}
+  \]
+\item
+  加速度: 速度の導関数 (または位置の 2 次導関数)。
+
+  \[
+  a(t) = v'(t) = s''(t) = \frac{d^2s}{dt^2}
+  \]
+\end{itemize}
+
+例: \(s(t) = 4t^2\) メートルの場合:
+
+\[
+v(t) = 8t、\quad a(t) = 8。
+\]
+
+したがって、一定の加速度の下では、物体は時間とともに線形に速く移動します。
+
+\paragraph{仕事と力}\label{ux4ed5ux4e8bux3068ux529b}
+
+物理学では、仕事は力と距離の積です。力が位置によって変化すると、微積分は次のようになります。
+
+\[
+W = \int_a^b F(x)\, dx
+\]
+
+ここで、\(F(x)\) は位置 \(x\) における力であり、オブジェクトは \(x=a\)
+から \(x=b\) に移動します。
+
+例: フックの法則の力 \(F(x) = kx\) を持つバネには作業が必要です
+
+\[
+W = \int_0^d kx\、dx = \frac{1}{2}kd^2
+\]
+
+スプリングを\(d\)の距離だけ引き伸ばします。
+
+\paragraph{\texorpdfstring{エネルギーと曲線下面積- 運動エネルギー:
+\(E_k = \tfrac{1}{2}mv^2\)。}{エネルギーと曲線下面積- 運動エネルギー: E\_k = \textbackslash tfrac\{1\}\{2\}mv\^{}2。}}\label{ux30a8ux30cdux30ebux30aeux30fcux3068ux66f2ux7ddaux4e0bux9762ux7a4d--ux904bux52d5ux30a8ux30cdux30ebux30aeux30fc-e_k-tfrac12mv2}
+
+\begin{itemize}
+\tightlist
+\item
+  位置エネルギーには積分が含まれることがよくあります (例:
+  重力による重力位置エネルギー)。
+\item
+  一般に、力関数を統合すると、エネルギーが蓄積されるか、または完了した仕事が得られます。
+\end{itemize}
+
+\paragraph{簡単な練習}\label{ux7c21ux5358ux306aux7df4ux7fd2}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \(s(t) = t^3 - 3t\) の場合、\(v(t)\) と \(a(t)\) を見つけます。
+\item
+  10 N の一定の力で物体を 5 m
+  動かすことによって行われる仕事を計算します。
+\item
+  ばねには定数 \(k=200\) があります。
+  0.1m伸ばすのにどれくらいの仕事が必要ですか？
+\item
+  加速度が位置の二次導関数であることを示します。
+\item
+  積分 \(\int v(t)\, dt\) が変位にどのように関係するかを説明します。
+\end{enumerate}
+
+\subsubsection{D.2
+確率と統計の関係}\label{d.2-ux78baux7387ux3068ux7d71ux8a08ux306eux95a2ux4fc2}
+
+微積分は、特に連続確率変数を扱う場合、確率や統計と深く関係しています。積分は、確率、平均、期待値を定義するために不可欠になります。
+
+\paragraph{確率密度関数
+(PDF)}\label{ux78baux7387ux5bc6ux5ea6ux95a2ux6570-pdf}
+
+連続確率変数 \(X\) の場合、確率は確率密度関数 \(f(x)\) で記述されます。
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  すべての \(x\) に対して \(f(x) \geq 0\)。
+\item
+  確率の合計は 1 に等しい:
+
+  \[
+  \int_{-\infty}^{\infty} f(x)\、dx = 1。
+  \]
+\end{enumerate}
+
+\(X\) が区間 \([a,b]\) 内にある確率は次のとおりです。
+
+\[
+P(a \leq X \leq b) = \int_a^b f(x)\, dx。
+\]
+
+\paragraph{期待値 (平均)}\label{ux671fux5f85ux5024-ux5e73ux5747-1}
+
+期待値 (平均結果) は次のとおりです。
+
+\[
+E[X] = \int_{-\infty}^{\infty} x f(x)\, dx。
+\]
+
+これは加重平均の微積分版です。
+
+\paragraph{差異}\label{ux5deeux7570}
+
+分散測定の広がり:
+
+\[
+\text{Var}(X) = E[(X-\mu)^2] = \int_{-\infty}^{\infty} (x-\mu)^2 f(x)\, dx,
+\]
+
+ここで\(\mu = E[X]\)。
+
+\paragraph{一般的なディストリビューション}\label{ux4e00ux822cux7684ux306aux30c7ux30a3ux30b9ux30c8ux30eaux30d3ux30e5ux30fcux30b7ux30e7ux30f3}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  \([a,b]\) での均一な分布:
+
+  \[
+  f(x) = \frac{1}{b-a}, \quad a \leq x \leq b.
+  \]
+
+  平均: \(\frac{a+b}{2}\)。
+\item
+  パラメーター \(\lambda > 0\) を使用した指数分布:
+
+  \[
+  f(x) = \lambda e^{-\lambda x}、\quad x \geq 0。\]
+
+  意味: \(1/\lambda\)。
+\item
+  正規 (ガウス) 分布:
+
+  \[
+  f(x) = \frac{1}{\sqrt{2\pi\sigma^2}} e^{-(x-\mu)^2/(2\sigma^2)}。
+  \]
+
+  この分布の積分は誤差関数に接続されます。
+\end{enumerate}
+
+\paragraph{なぜこれが重要なのか}\label{ux306aux305cux3053ux308cux304cux91cdux8981ux306aux306eux304b-36}
+
+\begin{itemize}
+\tightlist
+\item
+  積分は確率を曲線の下の領域に変換します。
+\item
+  期待と分散は、計算を平均と変動に結び付けます。
+\item
+  ほとんどの実世界のデータ モデル (金融、物理学、生物学、AI)
+  は、これらの連続確率分布を使用します。
+\end{itemize}
+
+\paragraph{簡単な練習}\label{ux7c21ux5358ux306aux7df4ux7fd2-1}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \([0,2]\) の \(f(x) = \tfrac{1}{2}\)
+  について、\(P(0.5 \leq X \leq 1.5)\) を計算します。
+\item
+  \(\lambda = 2\) を使用した指数分布の場合、\(E[X]\) を計算します。
+\item
+  標準正規曲線の下の総面積が 1 に等しいことを示します。
+\item
+  \([3,7]\) 上の一様分布の平均を求めます。
+\item
+  連続変数の確率が合計ではなく積分で計算される理由を説明します。
+\end{enumerate}
+
+\subsubsection{D.3 コンピューター サイエンスとの関連:
+アルゴリズムにおけるテイラー近似}\label{d.3-ux30b3ux30f3ux30d4ux30e5ux30fcux30bfux30fc-ux30b5ux30a4ux30a8ux30f3ux30b9ux3068ux306eux95a2ux9023-ux30a2ux30ebux30b4ux30eaux30baux30e0ux306bux304aux3051ux308bux30c6ux30a4ux30e9ux30fcux8fd1ux4f3c}
+
+微積分は物理学のためだけのものではなく、コンピューター
+サイエンスの多くのツールやテクニックの基礎にもなります。最も明確なブリッジの
+1
+つはテイラー級数によるもので、数値計算およびアルゴリズムで関数を近似する効率的な方法を提供します。
+
+\paragraph{計算のための関数近似}\label{ux8a08ux7b97ux306eux305fux3081ux306eux95a2ux6570ux8fd1ux4f3c}
+
+コンピューターは、ほとんどの関数 (\(e^x\)、\(\sin x\)、\(\ln x\) など)
+を直接保存したり、正確に計算したりすることはできません。代わりに、テイラー展開から導出された多項式近似を使用します。
+
+例: \(e^x\) を近似するには、マクローリン級数を切り捨てます。
+
+\[
+e^x \約 1 + x + \frac{x^2}{2!} + \frac{x^3}{3!}。
+\]
+
+小さい \(x\) の場合、この多項式はわずか数項で正確な結果を返します。
+
+\paragraph{アルゴリズムの効率化}\label{ux30a2ux30ebux30b4ux30eaux30baux30e0ux306eux52b9ux7387ux5316}
+
+\begin{itemize}
+\tightlist
+\item
+  三角関数: 電卓や CPU のアルゴリズムでは、級数展開
+  (またはチェビシェフ多項式のようなバリエーション) がよく使用されます。-
+  指数/対数: テイラー展開は、数値ライブラリにおける高速近似の基礎です。
+\item
+  根探索: ニュートンの方法は、テイラー級数 (一次導関数)
+  を直接適用した線形近似に基づいています。
+\end{itemize}
+
+\paragraph{数値解析}\label{ux6570ux5024ux89e3ux6790}
+
+テイラー展開はエラー分析の中心となります。
+
+\begin{itemize}
+\item
+  剰余式を使用して誤差項を近似します。
+
+  \[
+  R_n(x) = \frac{f^{(n+1)}(c)}{(n+1)!}(x-a)^{n+1}。
+  \]
+\item
+  これにより、特定の精度を得るために必要な項の数がわかります。
+\end{itemize}
+
+\paragraph{機械学習の接続}\label{ux6a5fux68b0ux5b66ux7fd2ux306eux63a5ux7d9a}
+
+\begin{itemize}
+\tightlist
+\item
+  勾配ベースの最適化 (勾配降下法など)
+  は、導関数を使用してパラメーターを効率的に更新します。
+\item
+  アクティベーション関数 (\(\tanh x\) や \(\sigma(x)=1/(1+e^{-x})\)
+  など)
+  は、速度を高めるために多項式または区分関数で近似されることがよくあります。
+\item
+  級数近似により、制約のある環境でのトレーニングと推論を高速化できます。
+\end{itemize}
+
+\paragraph{なぜこれが重要なのか}\label{ux306aux305cux3053ux308cux304cux91cdux8981ux306aux306eux304b-37}
+
+\begin{itemize}
+\tightlist
+\item
+  テイラー近似は、連続数学と離散コンピューティングの橋渡しをします。
+\item
+  微積分の概念がアルゴリズム、数値的手法、機械学習でどのように使用されるかを示します。
+\item
+  近似を理解することは、計算をコンピューターに依存する場合の落とし穴を避けるのに役立ちます。
+\end{itemize}
+
+\paragraph{簡単な練習}\label{ux7c21ux5358ux306aux7df4ux7fd2-2}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  マクローリン級数の最初の 3 項を使用して \(\sin(0.1)\) を近似します。
+\item
+  剰余項を使用して、\(e^1\) を 3
+  次多項式で近似する際の誤差を推定します。
+\item
+  ニュートンの方法がテイラーの定理をどのように使用するかを説明します。
+\item
+  コンピュータはなぜ関数の正確な式よりも多項式近似を好むのでしょうか?
+\item
+  機械学習において、最適化に導関数 (勾配) が非常に重要なのはなぜですか?
+\end{enumerate}
+
+
+
+
+\end{document}

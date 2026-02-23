@@ -9,9 +9,9 @@ Une introduction concise et adaptée aux débutants aux idées fondamentales du 
 
 ## Formats
 
-- [Download PDF](../book.pdf) – version prête à imprimer
-- [Download EPUB](../book.epub) – compatible avec les lecteurs électroniques
-- [View LaTeX](../book.tex) – Source de latex
+- [Download PDF](../artifacts/fr/book.pdf) – version prête à imprimer
+- [Download EPUB](../artifacts/fr/book.epub) – compatible avec les lecteurs électroniques
+- [View LaTeX](../artifacts/fr/book.tex) – Source de latex
 
 # Partie 1. Limites et dérivés
 

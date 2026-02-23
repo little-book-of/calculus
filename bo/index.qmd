@@ -9,9 +9,9 @@ lang: bo
 
 ## རྩ་སྒྲིག
 
-- [Download PDF](../book.pdf) – པར་སྐྲུན་གྲ་སྒྲིག་ཐོན་རིམ།
-- [Download EPUB](../book.epub) - གློག་རྡུལ་ཀློག་ཆས་ལ་འཚམ་པོ་ཡོད།
-- [View LaTeX](../book.tex) - འོ་མའི་འབྱུང་ཁུངས།
+- [Download PDF](../artifacts/bo/book.pdf) – པར་སྐྲུན་གྲ་སྒྲིག་ཐོན་རིམ།
+- [Download EPUB](../artifacts/bo/book.epub) - གློག་རྡུལ་ཀློག་ཆས་ལ་འཚམ་པོ་ཡོད།
+- [View LaTeX](../artifacts/bo/book.tex) - འོ་མའི་འབྱུང་ཁུངས།
 
 # Part 1. ཚད་གཞི་དང་འབྱུང་ཁུངས།
 

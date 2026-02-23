@@ -9,9 +9,9 @@ Phần giới thiệu ngắn gọn, thân thiện với người mới bắt đ�
 
 ## Định dạng
 
-- [Tải xuống PDF](../book.pdf) – phiên bản sẵn sàng để in
-- [Tải xuống EPUB](../book.epub) – thân thiện với trình đọc sách điện tử
-- [Xem LaTeX](../book.tex) – Nguồn latex
+- [Tải xuống PDF](../artifacts/vi/book.pdf) – phiên bản sẵn sàng để in
+- [Tải xuống EPUB](../artifacts/vi/book.epub) – thân thiện với trình đọc sách điện tử
+- [Xem LaTeX](../artifacts/vi/book.tex) – Nguồn latex
 
 # Phần 1. Giới hạn và đạo hàm
 

@@ -9,9 +9,9 @@ Eine prägnante, anfängerfreundliche Einführung in die Kernideen der Analysis.
 
 ## Formate
 
-- [Download PDF](../book.pdf) – druckfertige Version
-- [Download EPUB](../book.epub) – E-Reader-freundlich
-- [View LaTeX](../book.tex) – Latexquelle
+- [Download PDF](../artifacts/de/book.pdf) – druckfertige Version
+- [Download EPUB](../artifacts/de/book.epub) – E-Reader-freundlich
+- [View LaTeX](../artifacts/de/book.tex) – Latexquelle
 
 # Teil 1. Limits und Derivate
 

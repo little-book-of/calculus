@@ -9,9 +9,9 @@ Uma introdução concisa e amigável para iniciantes às ideias centrais do cál
 
 ## Formatos
 
-- [Download PDF](../book.pdf) – versão pronta para impressão
-- [Download EPUB](../book.epub) – compatível com e-reader
-- [View LaTeX](../book.tex) – Fonte de látex
+- [Download PDF](../artifacts/pt/book.pdf) – versão pronta para impressão
+- [Download EPUB](../artifacts/pt/book.epub) – compatível com e-reader
+- [View LaTeX](../artifacts/pt/book.tex) – Fonte de látex
 
 # Parte 1. Limites e derivadas
 

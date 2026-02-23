@@ -10,9 +10,9 @@ lang: hi
 
 ## प्रारूप
 
-- [Download PDF](../book.pdf) - प्रिंट-तैयार संस्करण
-- [Download EPUB](../book.epub) - ई-रीडर फ्रेंडली
-- [View LaTeX](../book.tex) - लेटेक्स स्रोत
+- [Download PDF](../artifacts/hi/book.pdf) - प्रिंट-तैयार संस्करण
+- [Download EPUB](../artifacts/hi/book.epub) - ई-रीडर फ्रेंडली
+- [View LaTeX](../artifacts/hi/book.tex) - लेटेक्स स्रोत
 
 # भाग 1. सीमाएँ और व्युत्पन्न
 

@@ -8,9 +8,9 @@ lang: ja
 
 ## フォーマット
 
-- [Download PDF](../book.pdf) – 印刷可能バージョン
-- [Download EPUB](../book.epub) – 電子書籍リーダーに優しい
-- [View LaTeX](../book.tex) – ラテックス ソース
+- [Download PDF](../artifacts/ja/book.pdf) – 印刷可能バージョン
+- [Download EPUB](../artifacts/ja/book.epub) – 電子書籍リーダーに優しい
+- [View LaTeX](../artifacts/ja/book.tex) – ラテックス ソース
 
 # パート 1. 極限と導関数
 

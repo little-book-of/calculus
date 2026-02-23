@@ -30,6 +30,8 @@ website:
         text: العربية
       - href: ru/index.qmd
         text: Русский
+      - href: hi/index.qmd
+        text: हिन्दी
 
 format:
   html:

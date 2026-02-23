@@ -16,6 +16,11 @@ ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_SOURCE = ROOT / "en" / "index.qmd"
 PROTECTED_INLINE_RE = re.compile(r"(`[^`]*`|\$\$[\s\S]*?\$\$|\$[^$\n]*\$|\[.*?\]\(.*?\))", re.DOTALL)
 SKIP_RE = re.compile(r"^[\s\d#>*\-`~:;,.!\[\](){}+=_/\\|]+$")
+LANGUAGE_ALIASES = {
+    # Google Translate does not currently expose Pali.
+    # Use Sanskrit as a practical fallback for generating an Indic translation draft.
+    "pi": "sa",
+}
 
 
 @dataclass
@@ -78,11 +83,21 @@ def split_chunks(text: str, size: int) -> list[str]:
     return out
 
 
+def _alpha_token(n: int) -> str:
+    letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+    out = []
+    n += 1
+    while n > 0:
+        n, r = divmod(n - 1, 26)
+        out.append(letters[r])
+    return "".join(reversed(out))
+
+
 def protect_inline(text: str) -> tuple[str, dict[str, str]]:
     mapping: dict[str, str] = {}
 
     def repl(match: re.Match[str]) -> str:
-        token = f"__CODEX_TOKEN_{len(mapping)}__"
+        token = f"`__XTK{_alpha_token(len(mapping))}__`"
         mapping[token] = match.group(0)
         return token
 
@@ -129,7 +144,12 @@ def main() -> None:
     chunks = split_chunks(text, args.chunk_size)
     logging.info("start %s -> %s | file=%s | chunks=%d | workers=%d | rate=%.1f/s", args.source_lang, args.target_lang, src.relative_to(ROOT), len(chunks), args.max_workers, args.rate_limit)
 
-    translator = GoogleTranslator(source=args.source_lang, target=args.target_lang)
+    requested_target = args.target_lang
+    resolved_target = LANGUAGE_ALIASES.get(requested_target, requested_target)
+    if resolved_target != requested_target:
+        logging.warning("target language '%s' is not supported by GoogleTranslator; using fallback '%s'", requested_target, resolved_target)
+
+    translator = GoogleTranslator(source=args.source_lang, target=resolved_target)
     limiter = RateLimiter(interval_s=1.0 / max(0.2, args.rate_limit))
     counter = Counter(total=len(chunks))
 

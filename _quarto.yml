@@ -34,6 +34,8 @@ website:
         text: Русский
       - href: hi/index.qmd
         text: हिन्दी
+      - href: pi/index.qmd
+        text: Pāḷi
 
 format:
   html:

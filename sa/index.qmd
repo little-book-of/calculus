@@ -9,9 +9,9 @@ lang: sa
 
 ## प्रारूप
 
-- [Download PDF](../book.pdf) – मुद्रण-सज्ज संस्करण
-- [Download EPUB](../book.epub) – ई-पाठक अनुकूल
-- [View LaTeX](../book.tex) – लेटेक्स स्रोत
+- [Download PDF](../artifacts/sa/book.pdf) – मुद्रण-सज्ज संस्करण
+- [Download EPUB](../artifacts/sa/book.epub) – ई-पाठक अनुकूल
+- [View LaTeX](../artifacts/sa/book.tex) – लेटेक्स स्रोत
 
 # भाग 1. सीमा व्युत्पन्न
 

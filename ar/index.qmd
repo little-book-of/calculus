@@ -9,9 +9,9 @@
 
 ## التنسيقات
 
-- [Download PDF](../book.pdf) – نسخة جاهزة للطباعة
-- [Download EPUB](../book.epub) – صديق للقارئ الإلكتروني
-- [View LaTeX](../book.tex) - مصدر اللاتكس
+- [Download PDF](../artifacts/ar/book.pdf) – نسخة جاهزة للطباعة
+- [Download EPUB](../artifacts/ar/book.epub) – صديق للقارئ الإلكتروني
+- [View LaTeX](../artifacts/ar/book.tex) - مصدر اللاتكس
 
 # الجزء 1. الحدود والمشتقات
 

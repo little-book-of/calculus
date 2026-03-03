@@ -9,9 +9,9 @@ A concise, beginner-friendly introduction to the core ideas of calculus.
 
 ## Formats
 
-- [Download PDF](../book.pdf) – print-ready version
-- [Download EPUB](../book.epub) – e-reader friendly
-- [View LaTeX](../book.tex) – Latex source
+- [Download PDF](../artifacts/en/book.pdf) – print-ready version
+- [Download EPUB](../artifacts/en/book.epub) – e-reader friendly
+- [View LaTeX](../artifacts/en/book.tex) – Latex source
 
 # Part 1. Limits and derivatives
 

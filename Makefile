@@ -11,8 +11,11 @@ TRANSLATE_CHUNK_SIZE ?= 1800
 TRANSLATE_MAX_WORKERS ?= 6
 TRANSLATE_RATE_LIMIT ?= 4
 TRANSLATE_RETRIES ?= 4
+LANGUAGES := en pt de es fr it vi zh ja ko ar ru hi sa pi bo
+ARTIFACTS_DIR ?= artifacts
+PDF_ENGINE ?= wkhtmltopdf
 
-.PHONY: help install-quarto check-quarto install-translate-deps translate translate-ja translate-ko translate-pt translate-ar translate-it translate-sa translate-pi translate-bo render render-en render-pt render-vi render-zh render-ja render-ko render-ar render-it render-sa render-pi render-bo preview clean
+.PHONY: help install-quarto check-quarto install-translate-deps translate translate-ja translate-ko translate-pt translate-ar translate-it translate-sa translate-pi translate-bo render render-en render-pt render-vi render-zh render-ja render-ko render-ar render-it render-sa render-pi render-bo render-artifacts preview clean
 
 help:
 	@echo "Available targets:"
@@ -39,6 +42,7 @@ help:
 	@echo "  make render-sa              # Render Sanskrit book page"
 	@echo "  make render-pi              # Render Pali book page"
 	@echo "  make render-bo              # Render Tibetan book page"
+	@echo "  make render-artifacts       # Render PDF/EPUB/LaTeX for all languages (skip unchanged)"
 	@echo "  make render                 # Render full multilingual website"
 	@echo "  make preview                # Live preview website"
 	@echo "  make clean                  # Remove rendered site output"
@@ -127,6 +131,35 @@ render-pi: check-quarto
 
 render-bo: check-quarto
 	@quarto render bo/index.qmd
+
+render-artifacts: check-quarto
+	@set -euo pipefail; \
+	for lang in $(LANGUAGES); do \
+		src="$$lang/index.qmd"; \
+		if [[ ! -f "$$src" ]]; then \
+			echo "[skip] $$src (missing)"; \
+			continue; \
+		fi; \
+		outdir="$(ARTIFACTS_DIR)/$$lang"; \
+		mkdir -p "$$outdir"; \
+		for format in pdf epub latex; do \
+			case "$$format" in \
+				latex) outfile="book.tex" ;; \
+				*) outfile="book.$$format" ;; \
+			esac; \
+			out="$$outdir/$$outfile"; \
+			if [[ -f "$$out" && "$$out" -nt "$$src" ]]; then \
+				echo "[skip] $$out (unchanged)"; \
+				continue; \
+			fi; \
+			echo "[render] $$src -> $$out"; \
+			if [[ "$$format" == "pdf" ]]; then \
+				quarto render "$$src" --to "$$format" --output-dir "$$outdir" --output "$$outfile" --pdf-engine "$(PDF_ENGINE)"; \
+			else \
+				quarto render "$$src" --to "$$format" --output-dir "$$outdir" --output "$$outfile"; \
+			fi; \
+		done; \
+	done
 
 render: check-quarto
 	@quarto render

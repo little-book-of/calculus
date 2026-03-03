@@ -9,9 +9,9 @@ Un'introduzione concisa e adatta ai principianti alle idee fondamentali del calc
 
 ## Formati
 
-- [Download PDF](../book.pdf) – versione pronta per la stampa
-- [Download EPUB](../book.epub) – compatibile con gli e-reader
-- [View LaTeX](../book.tex) – Origine lattice
+- [Download PDF](../artifacts/it/book.pdf) – versione pronta per la stampa
+- [Download EPUB](../artifacts/it/book.epub) – compatibile con gli e-reader
+- [View LaTeX](../artifacts/it/book.tex) – Origine lattice
 
 # Parte 1. Limiti e derivati
 

@@ -9,9 +9,9 @@ Una introducción concisa y amigable para principiantes a las ideas centrales de
 
 ## Formatos
 
-- [Download PDF](../book.pdf) – versión lista para imprimir
-- [Download EPUB](../book.epub) – compatible con lectores electrónicos
-- [View LaTeX](../book.tex) – Fuente de látex
+- [Download PDF](../artifacts/es/book.pdf) – versión lista para imprimir
+- [Download EPUB](../artifacts/es/book.epub) – compatible con lectores electrónicos
+- [View LaTeX](../artifacts/es/book.tex) – Fuente de látex
 
 # Parte 1. Límites y derivadas
 

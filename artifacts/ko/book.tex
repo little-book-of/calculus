@@ -1,0 +1,8107 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\PassOptionsToPackage{dvipsnames,svgnames,x11names}{xcolor}
+%
+\documentclass[
+  letterpaper,
+  DIV=11,
+  numbers=noendperiod]{scrartcl}
+
+\usepackage{amsmath,amssymb}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else  
+    % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+% Make \paragraph and \subparagraph free-standing
+\makeatletter
+\ifx\paragraph\undefined\else
+  \let\oldparagraph\paragraph
+  \renewcommand{\paragraph}{
+    \@ifstar
+      \xxxParagraphStar
+      \xxxParagraphNoStar
+  }
+  \newcommand{\xxxParagraphStar}[1]{\oldparagraph*{#1}\mbox{}}
+  \newcommand{\xxxParagraphNoStar}[1]{\oldparagraph{#1}\mbox{}}
+\fi
+\ifx\subparagraph\undefined\else
+  \let\oldsubparagraph\subparagraph
+  \renewcommand{\subparagraph}{
+    \@ifstar
+      \xxxSubParagraphStar
+      \xxxSubParagraphNoStar
+  }
+  \newcommand{\xxxSubParagraphStar}[1]{\oldsubparagraph*{#1}\mbox{}}
+  \newcommand{\xxxSubParagraphNoStar}[1]{\oldsubparagraph{#1}\mbox{}}
+\fi
+\makeatother
+
+
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}\usepackage{longtable,booktabs,array}
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\usepackage{graphicx}
+\makeatletter
+\newsavebox\pandoc@box
+\newcommand*\pandocbounded[1]{% scales image to fit in text height/width
+  \sbox\pandoc@box{#1}%
+  \Gscale@div\@tempa{\textheight}{\dimexpr\ht\pandoc@box+\dp\pandoc@box\relax}%
+  \Gscale@div\@tempb{\linewidth}{\wd\pandoc@box}%
+  \ifdim\@tempb\p@<\@tempa\p@\let\@tempa\@tempb\fi% select the smaller of both
+  \ifdim\@tempa\p@<\p@\scalebox{\@tempa}{\usebox\pandoc@box}%
+  \else\usebox{\pandoc@box}%
+  \fi%
+}
+% Set default figure placement to htbp
+\def\fps@figure{htbp}
+\makeatother
+
+\KOMAoption{captions}{tableheading}
+\makeatletter
+\@ifpackageloaded{caption}{}{\usepackage{caption}}
+\AtBeginDocument{%
+\ifdefined\contentsname
+  \renewcommand*\contentsname{목차}
+\else
+  \newcommand\contentsname{목차}
+\fi
+\ifdefined\listfigurename
+  \renewcommand*\listfigurename{그림 목록}
+\else
+  \newcommand\listfigurename{그림 목록}
+\fi
+\ifdefined\listtablename
+  \renewcommand*\listtablename{표 목록}
+\else
+  \newcommand\listtablename{표 목록}
+\fi
+\ifdefined\figurename
+  \renewcommand*\figurename{그림}
+\else
+  \newcommand\figurename{그림}
+\fi
+\ifdefined\tablename
+  \renewcommand*\tablename{표}
+\else
+  \newcommand\tablename{표}
+\fi
+}
+\@ifpackageloaded{float}{}{\usepackage{float}}
+\floatstyle{ruled}
+\@ifundefined{c@chapter}{\newfloat{codelisting}{h}{lop}}{\newfloat{codelisting}{h}{lop}[chapter]}
+\floatname{codelisting}{목록}
+\newcommand*\listoflistings{\listof{codelisting}{코드 목록}}
+\makeatother
+\makeatletter
+\makeatother
+\makeatletter
+\@ifpackageloaded{caption}{}{\usepackage{caption}}
+\@ifpackageloaded{subcaption}{}{\usepackage{subcaption}}
+\makeatother
+
+\ifLuaTeX
+\usepackage[bidi=basic]{babel}
+\else
+\usepackage[bidi=default]{babel}
+\fi
+\babelprovide[main,import]{korean}
+% get rid of language-specific shorthands (see #6817):
+\let\LanguageShortHands\languageshorthands
+\def\languageshorthands#1{}
+\usepackage{bookmark}
+
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same} % disable monospaced font for URLs
+\hypersetup{
+  pdftitle={The Little Book of Calculus (한국어판)},
+  pdflang={ko},
+  colorlinks=true,
+  linkcolor={blue},
+  filecolor={Maroon},
+  citecolor={Blue},
+  urlcolor={Blue},
+  pdfcreator={LaTeX via pandoc}}
+
+
+\title{The Little Book of Calculus (한국어판)}
+\author{}
+\date{}
+
+\begin{document}
+\maketitle
+
+
+\section{미적분학의 작은
+책}\label{uxbbf8uxc801uxbd84uxd559uxc758-uxc791uxc740-uxcc45}
+
+미적분학의 핵심 아이디어에 대한 간결하고 초보자 친화적인 소개입니다.
+
+\subsection{형식}\label{uxd615uxc2dd}
+
+\begin{itemize}
+\tightlist
+\item
+  \href{../artifacts/ko/book.pdf}{Download PDF} -- 인쇄 가능 버전
+\item
+  \href{../artifacts/ko/book.epub}{Download EPUB} -- e-reader 친화적
+\item
+  \href{../artifacts/ko/book.tex}{View LaTeX} -- 라텍스 소스
+\end{itemize}
+
+\section{1부. 극한과
+파생상품}\label{uxbd80.-uxadf9uxd55cuxacfc-uxd30cuxc0dduxc0c1uxd488}
+
+\section{1장. 기능 및
+한계}\label{uxc7a5.-uxae30uxb2a5-uxbc0f-uxd55cuxacc4}
+
+\subsection{1.1 기능}\label{uxae30uxb2a5}
+
+함수는 수학에서 가장 기본적인 객체 중 하나입니다. 본질적으로 함수는
+입력을 받아 정확히 하나의 출력을 생성하는 규칙입니다. 함수를 사용하면
+관계를 설명하고, 실제 현상을 모델링하고, 미적분의 전체 기계를 구축할 수
+있습니다.
+
+\subsubsection{정의}\label{uxc815uxc758}
+
+공식적으로, \(X\) 세트(도메인이라고 함)에서 \(Y\) 세트(코도메인이라고
+함)로 \(f\) 함수가 작성됩니다.
+
+\[
+f : X \to Y.
+\]
+
+모든 요소 \(x \in X\)에는 고유한 요소 \(f(x) \in Y\)이 있습니다.
+\(f(x)\) 값은 \(f\) 아래의 \(x\) 이미지라고 합니다.
+
+\(y = f(x)\)인 경우 \(y\)은 입력 \(x\)에 해당하는 출력입니다. 실제로
+나타나는 모든 출력 집합을 범위(공동 도메인의 하위 집합)라고 합니다.
+
+\subsubsection{예}\label{uxc608}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  \(f(x) = x^2\) 함수는 각 실수 \(x\)을 해당 사각형에 매핑합니다.
+
+  \begin{itemize}
+  \tightlist
+  \item
+    도메인: 모든 실수 \(\mathbb{R}\).
+  \item
+    코도메인: 모든 실수 \(\mathbb{R}\).
+  \item
+    범위: 음이 아닌 모든 실수 \([0, \infty)\).
+  \end{itemize}
+\item
+  \(g(x) = \dfrac{1}{x}\) 함수는 0이 아닌 각 실수에 역수를 할당합니다.
+
+  \begin{itemize}
+  \tightlist
+  \item
+    도메인: \(\mathbb{R} \setminus \{0\}\).
+  \item
+    범위: \(\mathbb{R} \setminus \{0\}\).
+  \end{itemize}
+\item
+  실제 예: \(T(t)\)을 시간 \(t\)(시간)의 외부 온도(°C)로 가정합니다.
+  이는 ``시간''부터 ``온도''까지의 함수입니다.
+\end{enumerate}
+
+\subsubsection{함수를 표현하는
+방법}\label{uxd568uxc218uxb97c-uxd45cuxd604uxd558uxb294-uxbc29uxbc95}
+
+함수는 여러 가지 유용한 방법으로 표현될 수 있습니다:
+
+\begin{itemize}
+\tightlist
+\item
+  수식: 예: \(f(x) = \sin x + x^2\).- 그래프: 좌표 평면에 모든 점
+  \((x, f(x))\)을 표시합니다.
+\item
+  테이블: 개별 데이터 세트에 대한 입력 및 출력 쌍입니다.
+\item
+  구두 설명: ``각 학생에게 성적을 할당합니다.''
+\end{itemize}
+
+각 표현은 동일한 기능의 다양한 측면을 강조합니다.
+
+\subsubsection{용어}\label{uxc6a9uxc5b4}
+
+\begin{itemize}
+\tightlist
+\item
+  독립변수: 입력(보통 \(x\)로 작성).
+\item
+  종속 변수: 출력(일반적으로 \(y\)로 작성, 여기서 \(y = f(x)\)).
+\item
+  함수 표기: \(f(x)\)은 ``\(f\) of \(x\)''으로 읽습니다.
+\end{itemize}
+
+\subsubsection{미적분학에서 함수가 중요한
+이유}\label{uxbbf8uxc801uxbd84uxd559uxc5d0uxc11c-uxd568uxc218uxac00-uxc911uxc694uxd55c-uxc774uxc720}
+
+미적분학은 함수가 어떻게 변화하는지 연구하는 학문입니다. 미분은 순간적인
+변화율을 측정하는 반면, 적분은 누적된 효과를 측정합니다. 이러한
+아이디어를 익히려면 먼저 기능이 무엇인지, 어떻게 작동하는지에 대한
+확실한 이해가 필요합니다.
+
+\subsubsection{연습}\label{uxc5f0uxc2b5}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  \(f(x) = 3x - 2\) 함수의 경우:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    도메인, 공동도메인, 범위를 찾아보세요.
+  \end{itemize}
+\item
+  \(h(x) = \sqrt{x-1}\) 함수는 어떤 입력에 대해 정의됩니까? 그 범위는
+  무엇입니까?
+\item
+  일상생활에서 사용되는 기능의 실제 예를 들어보세요. 도메인과
+  공동도메인을 명확하게 명시하세요.
+\item
+  \(f(x) = |x|\)의 그래프를 스케치합니다. 범위는 무엇입니까?
+\item
+  \(g(x) = \dfrac{1}{x^2+1}\)을 가정해 보겠습니다. 범위가 \((0, 1]\)
+  간격인 이유를 설명하세요.
+\end{enumerate}
+
+\subsection{1.2 그래프와
+변환}\label{uxadf8uxb798uxd504uxc640-uxbcc0uxd658}
+
+함수는 공식뿐만 아니라 그래프로도 이해할 수 있습니다. \(f\) 함수의
+그래프는 모든 순서쌍 \((x, f(x))\)의 집합입니다. 여기서 \(x\)은 \(f\)의
+도메인에 속합니다. 좌표 평면에 이러한 쌍을 그리면 함수가 어떻게
+작동하는지 그림을 얻을 수 있습니다.
+
+\subsubsection{기본 그래프}\label{uxae30uxbcf8-uxadf8uxb798uxd504}
+
+일부 그래프는 매우 기본적이어서 기억해야 합니다.
+
+\begin{itemize}
+\tightlist
+\item
+  \(f(x) = x\): 원점을 통과하는 직선.
+\item
+  \(f(x) = x^2\): 위로 열리는 포물선.
+\item
+  \(f(x) = |x|\): ``V''자 모양의 그래프입니다.
+\item
+  \(f(x) = \frac{1}{x}\): 두 개의 분기가 있는 쌍곡선.-
+  \(f(x) = \sin x\): 파동 모양의 주기 곡선입니다.
+\end{itemize}
+
+이는 보다 복잡한 기능을 위한 구성 요소 역할을 합니다.
+
+\subsubsection{변환}\label{uxbcc0uxd658}
+
+간단한 규칙을 사용하여 그래프를 이동하거나 늘리거나 반영할 수 있습니다.
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  수직 이동: 상수를 추가하면 그래프가 위나 아래로 이동합니다.
+
+  \[
+  y = f(x) + c \quad \text{is } f(x) \text{ shifted upward by } c.
+  \]
+\item
+  수평 이동: 인수 내부에 추가하면 그래프가 왼쪽이나 오른쪽으로
+  이동합니다.
+
+  \[
+  y = f(x - c) \quad \text{is } f(x) \text{ shifted right by } c.
+  \]
+\item
+  수직 스케일링: 상수를 곱하면 그래프가 수직으로 늘어나거나 압축됩니다.
+
+  \[
+  y = a f(x), \quad a > 1 \text{ stretches; } 0 < a < 1 \text{ compresses.}
+  \]
+\item
+  수평 스케일링: 인수 내부에 곱하면 그래프가 수평으로 늘어나거나
+  줄어듭니다.
+
+  \[
+  y = f(bx), \quad b > 1 \text{ compresses toward the } y\text{-axis}.
+  \]
+\item
+  반사:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \(y = -f(x)\): \(x\) 축에 걸친 반사입니다.
+  \item
+    \(y = f(-x)\): \(y\) 축을 가로지르는 반사입니다.
+  \end{itemize}
+\end{enumerate}
+
+\subsubsection{변환 결합}\label{uxbcc0uxd658-uxacb0uxd569}
+
+복잡한 그래프는 여러 변환을 순서대로 결합하여 생성되는 경우가 많습니다.
+예를 들면:
+
+\[
+y = 2(x-1)^2 + 3
+\]
+
+은 포물선 \(y = x^2\)을 취하고 오른쪽으로 1만큼 이동하고 수직으로 2만큼
+늘린 다음 위쪽으로 3만큼 이동하여 얻습니다.
+
+\subsubsection{연습}\label{uxc5f0uxc2b5-1}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \(y = (x+2)^2 - 1\)의 그래프를 스케치합니다. \(y = x^2\)의 변환 순서를
+  식별합니다.
+\item
+  \(x\)을 \(-x\)로 바꾸면 \(y = f(x)\)의 그래프는 어떻게 됩니까?
+  \(f(x) = \sqrt{x}\)으로 시도해 보세요.
+\item
+  \(y = \sin x\)을 \(y = 3\sin(x - \pi/4)\)로 바꾸는 변환을
+  설명하십시오.
+\item
+  \(y = |x-1| + 2\)의 그래프를 그립니다. 각 가지의 꼭지점과 기울기를
+  기술합니다.
+\item
+  \(y = \frac{1}{x-2}\)의 경우 \(y = \frac{1}{x}\)의 그래프가 어떻게
+  변환되었는지 설명하세요.
+\end{enumerate}
+
+\subsection{1.3 한계에 대한 직관적인 아이디어많은 상황에서 한 지점의
+함수 값은 해당 지점 근처에서 사용되는 값보다 덜 중요합니다. 극한의
+개념은 이러한 아이디어를
+포착합니다.}\label{uxd55cuxacc4uxc5d0-uxb300uxd55c-uxc9c1uxad00uxc801uxc778-uxc544uxc774uxb514uxc5b4uxb9ceuxc740-uxc0c1uxd669uxc5d0uxc11c-uxd55c-uxc9c0uxc810uxc758-uxd568uxc218-uxac12uxc740-uxd574uxb2f9-uxc9c0uxc810-uxadfcuxcc98uxc5d0uxc11c-uxc0acuxc6a9uxb418uxb294-uxac12uxbcf4uxb2e4-uxb35c-uxc911uxc694uxd569uxb2c8uxb2e4.-uxadf9uxd55cuxc758-uxac1cuxb150uxc740-uxc774uxb7ecuxd55c-uxc544uxc774uxb514uxc5b4uxb97c-uxd3ecuxcc29uxd569uxb2c8uxb2e4.}
+
+\subsubsection{가치에
+접근하기}\label{uxac00uxce58uxc5d0-uxc811uxadfcuxd558uxae30}
+
+벽을 향해 걸어간다고 상상해 보세요. 만지기 전에도 점점 가까워지네요.
+같은 방식으로 \(x\)이 숫자 \(a\)에 접근하면 \(f(x)\)의 값은 숫자 \(L\)에
+접근할 수 있습니다. 그런 다음 우리는 이렇게 말합니다.
+
+\[
+\lim_{x \to a} f(x) = L.
+\]
+
+이는 \(x\)을 \(a\)에 충분히 가깝게 하면 \(f(x)\)을 \(L\)에 원하는 만큼
+가깝게 만들 수 있다는 아이디어를 표현합니다.
+
+\subsubsection{예}\label{uxc608-1}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  \(f(x) = 2x + 3\)의 경우: \(x \to 1\), \(f(x) \to 5\)입니다.
+\item
+  \(f(x) = \dfrac{\sin x}{x}\)의 경우: \(x \to 0\)이므로 \(f(0)\)이
+  정의되지 않은 경우에도 함수는 1에 접근합니다.
+\item
+  \(f(x) = \dfrac{1}{x}\)의 경우: \(x \to 0^+\)(오른쪽에서 접근),
+  \(f(x) \to +\infty\). \(x \to 0^-\)(왼쪽에서 접근),
+  \(f(x) \to -\infty\)입니다. 왼쪽과 오른쪽 동작이 다르기 때문에 0에서의
+  극한은 존재하지 않습니다.
+\end{enumerate}
+
+\subsubsection{한계의
+중요성}\label{uxd55cuxacc4uxc758-uxc911uxc694uxc131}
+
+\begin{itemize}
+\tightlist
+\item
+  원래 정의되지 않은 지점에서 함수를 정의할 수 있습니다.
+\item
+  불연속성과 특이점 근처의 동작을 포착합니다.
+\item
+  이는 도함수(순간적인 변화율)와 적분(합계의 한계인 영역)의 기초를
+  형성합니다.
+\end{itemize}
+
+\subsubsection{일방적 한계}\label{uxc77cuxbc29uxc801-uxd55cuxacc4}
+
+때로는 왼쪽과 오른쪽의 행동을 별도로 연구해야 합니다.
+
+\[
+\lim_{x \to a^-} f(x), \quad \lim_{x \to a^+} f(x).
+\]
+
+둘 다 동의하면 양면 한계가 존재합니다.
+
+\subsubsection{연습}\label{uxc5f0uxc2b5-2}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \(\lim_{x \to 2} (3x^2 - x)\)을 계산합니다.
+\item
+  \(\lim_{x \to 0} \frac{\sin x}{x}\)이란 무엇입니까? \(\sin x\)
+  그래프에서 직관을 사용하세요.
+\item
+  \(\lim_{x \to 0} |x|/x\)을 평가합니다. 양면 극한이 존재합니까?
+\item
+  \(\lim_{x \to \infty} \frac{1}{x}\)을 찾으세요. 이 결과를 말로 해석해
+  보세요.5. \(f(x) = \frac{x^2-1}{x-1}\)의 경우
+  \(\lim_{x \to 1} f(x)\)은 무엇인가요? \(f(1)\)의 값과 비교하세요.
+\end{enumerate}
+
+\subsection{1.4 한계의 공식적인
+정의}\label{uxd55cuxacc4uxc758-uxacf5uxc2dduxc801uxc778-uxc815uxc758}
+
+극한에 대한 직관적인 아이디어는 엡실론-델타 정의를 사용하여 정확하게
+만들어질 수 있습니다. 이는 \(x\)이 \(a\)에 가까워짐에 따라 \(f(x)\)이
+\(L\) 값에 가까워진다고 말하는 엄격한 방법을 제공합니다.
+
+\subsubsection{정의}\label{uxc815uxc758-1}
+
+우리는 쓴다
+
+\[
+\lim_{x \to a} f(x) = L
+\]
+
+다음 조건이 충족되는 경우:
+
+모든 \(\varepsilon > 0\)(아무리 작더라도)에 대해 \(\delta > 0\)이
+존재합니다.
+
+\[
+0 < |x - a| < \delta,
+\]
+
+그것은 다음과 같다
+
+\[
+|f(x) - L| < \varepsilon.
+\]
+
+즉, \(x\)이 \(a\)(그러나 \(a\)과 같지 않음)에 충분히 가깝다면 \(f(x)\)을
+\(L\)에 최대한 가깝게 만들 수 있습니다.
+
+\subsubsection{예 1: 선형
+함수}\label{uxc608-1-uxc120uxd615-uxd568uxc218}
+
+\(f(x) = 2x + 1\)의 경우 \(\lim_{x \to 3} f(x) = 7\)을 표시하세요.
+
+\begin{itemize}
+\tightlist
+\item
+  우리는 \(|f(x) - 7| < \varepsilon\)을 원합니다.
+\item
+  하지만 \(f(x) - 7 = 2x + 1 - 7 = 2(x - 3)\).
+\item
+  그럼 \(|f(x) - 7| = 2|x - 3|\)이군요.
+\item
+  \(\delta = \varepsilon / 2\)을 선택하면 \(|x - 3| < \delta\)이 될
+  때마다 \(|f(x) - 7| < \varepsilon\)이 됩니다. 이것이 한계를
+  증명합니다.
+\end{itemize}
+
+\subsubsection{예시 2: 역함수}\label{uxc608uxc2dc-2-uxc5eduxd568uxc218}
+
+\(f(x) = \frac{1}{x}\)의 경우 \(\lim_{x \to 2} f(x) = \tfrac{1}{2}\)을
+고려하세요.
+
+\begin{itemize}
+\tightlist
+\item
+  우리는 \(\left|\frac{1}{x} - \frac{1}{2}\right| < \varepsilon\)을
+  원합니다.
+\item
+  이 부등식은 대수적 조작이 필요하지만 \(\varepsilon\)에 따라
+  \(\delta\)을 선택하면 충족될 수 있습니다. 과정은 더 복잡하지만 원리는
+  동일합니다.
+\end{itemize}
+
+\subsubsection{이것이 중요한
+이유}\label{uxc774uxac83uxc774-uxc911uxc694uxd55c-uxc774uxc720}
+
+\begin{itemize}
+\tightlist
+\item
+  엡실론-델타 정의는 극한이 모호하지 않거나 직관에만 근거하지 않음을
+  보장합니다.
+\item
+  연속성, 도함수, 적분의 기초가 됩니다.
+\item
+  초보자에게는 추상적이라고 생각할 수 있지만 간단한 예제를 사용하면
+  친숙해집니다.
+\end{itemize}
+
+\subsubsection{연습}\label{uxc5f0uxc2b5-3}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  엡실론-델타 정의를 사용하여 \(\lim_{x \to 4} (x+1) = 5\)임을
+  증명합니다.2. 정식 정의를 사용하여 \(\lim_{x \to 0} 5x = 0\)을
+  표시합니다.
+\item
+  \(\lim_{x \to 0} \frac{1}{x}\)이 존재하지 않는 이유를 설명하세요.
+\item
+  \(f(x) = x^2\)의 경우 \(\lim_{x \to 2} f(x) = 4\)을 표시합니다.
+\item
+  한도 정의에서 \(\varepsilon\) 및 \(\delta\)의 역할을 자신의 말로
+  설명하십시오.
+\end{enumerate}
+
+\subsection{1.5 연속성}\label{uxc5f0uxc18duxc131}
+
+종이에서 연필을 떼지 않고도 그래프를 그릴 수 있다면 함수는 연속적입니다.
+보다 정확하게 말하면 연속성은 입력의 작은 변화가 출력의 작은 변화를
+가져오는 것을 보장합니다.
+
+\subsubsection{정의}\label{uxc815uxc758-2}
+
+세 가지 조건이 충족되면 \(f\) 함수는 \(a\) 지점에서 연속됩니다.
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \(f(a)\)이 정의되었습니다.
+\item
+  \(\lim_{x \to a} f(x)\)이 존재합니다.
+\item
+  \(\lim_{x \to a} f(x) = f(a)\).
+\end{enumerate}
+
+함수가 구간의 모든 점에서 연속이면 해당 구간에서 연속이라고 말합니다.
+
+\subsubsection{예}\label{uxc608-2}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  다항식 함수: \(f(x) = x^2 + 3x - 5\)과 같은 함수는 \(\mathbb{R}\)의
+  모든 위치에서 연속됩니다.
+\item
+  유리수 함수: \(f(x) = \frac{1}{x-1}\)은 정의되지 않은 \(x = 1\)을
+  제외하고 모든 곳에서 연속적입니다.
+\item
+  조각별 함수:
+
+  \[
+  f(x) =
+  \begin{cases}
+  x^2 & x < 1, \\
+  2 & x = 1, \\
+  x+1 & x > 1,
+  \end{cases}
+  \]
+
+  이 함수는 \(x = 1\)에 ``점프''가 있으므로 그곳에서 연속되지 않습니다.
+\end{enumerate}
+
+\subsubsection{불연속의
+유형}\label{uxbd88uxc5f0uxc18duxc758-uxc720uxd615}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  제거 가능한 불연속성: 그래프의 ``구멍''. 예: \(x=1\)의
+  \(f(x) = \frac{x^2-1}{x-1}\).
+\item
+  점프 불연속성: 왼쪽과 오른쪽 한계가 다릅니다.
+\item
+  무한 불연속성: 함수는 \(x = 0\) 근처의 \(f(x) = 1/x\)과 마찬가지로
+  지점 근처의 \(\pm\infty\)로 이동합니다.
+\end{enumerate}
+
+\subsubsection{중간가치
+정리}\label{uxc911uxac04uxac00uxce58-uxc815uxb9ac}
+
+함수가 \([a, b]\) 간격으로 연속적인 경우 \(f(a)\)과 \(f(b)\) 사이의 숫자
+\(N\)에 대해 \(f(c) = N\)과 같은 일부 \(c \in [a, b]\)이 존재합니다.이
+속성은 방정식에 대한 근과 해의 존재를 증명하는 데 중요합니다.
+
+\subsubsection{연습}\label{uxc5f0uxc2b5-4}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \(f(x) = |x|\) 함수가 \(x = 0\)에서 연속인지 여부를 결정합니다.
+\item
+  \(f(x) = \frac{x+2}{x^2-1}\)의 불연속 지점을 식별합니다.
+\item
+  모든 다항함수가 어디에서나 연속인 이유를 설명하십시오.
+\item
+  점프 불연속성이 있는 함수의 예를 들어보세요. 그래프를 스케치합니다.
+\item
+  중간값 정리를 사용하여 \(x^3 + x - 1 = 0\) 방정식의 해가 0과 1
+  사이임을 보여줍니다.
+\end{enumerate}
+
+\section{제2장 파생상품}\label{uxc81c2uxc7a5-uxd30cuxc0dduxc0c1uxd488}
+
+\subsection{2.1 변화율로서의
+미분}\label{uxbcc0uxd654uxc728uxb85cuxc11cuxc758-uxbbf8uxbd84}
+
+도함수는 미적분학의 핵심 개념 중 하나입니다. 입력이 변경됨에 따라 함수가
+어떻게 변경되는지, 즉 입력에 대한 출력의 변화율을 측정합니다.
+
+\subsubsection{평균변화율}\label{uxd3c9uxade0uxbcc0uxd654uxc728}
+
+\(f(x)\) 함수의 경우 \(x = a\)과 \(x = b\) 두 지점 사이의 평균 변화율은
+다음과 같습니다.
+
+\[
+\frac{f(b) - f(a)}{b - a}.
+\]
+
+이는 \((a, f(a))\) 및 \((b, f(b))\) 점을 통과하는 할선의 기울기입니다.
+
+\subsubsection{순간 변화율}\label{uxc21cuxac04-uxbcc0uxd654uxc728}
+
+\(f(x)\)이 단일 지점에서 얼마나 빨리 변하는지 측정하기 위해 간격을
+줄입니다.
+
+\[
+f'(a) = \lim_{h \to 0} \frac{f(a+h) - f(a)}{h}.
+\]
+
+이 제한이 존재하는 경우 \(a\)에서 \(f\)의 파생물이라고 합니다.
+기하학적으로 이는 \((a, f(a))\) 지점에서 \(f\) 그래프에 대한 접선의
+기울기입니다.
+
+\subsubsection{표기법}\label{uxd45cuxae30uxbc95}
+
+\begin{itemize}
+\tightlist
+\item
+  \(f'(x)\): 소수 표기법.
+\item
+  \(\dfrac{dy}{dx}\): 라이프니츠 표기법, \(y = f(x)\)일 때 사용됩니다.
+\item
+  \(Df(x)\): 연산자 표기법.
+\end{itemize}
+
+이 기호들은 모두 동일한 개념을 나타냅니다.
+
+\subsubsection{예}\label{uxc608-3}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  \(f(x) = x^2\)의 경우:
+
+  \[
+  f'(x) = \lim_{h \to 0} \frac{(x+h)^2 - x^2}{h} = \lim_{h \to 0} \frac{2xh + h^2}{h} = 2x.
+  \]
+
+  \(x\)에서 포물선의 기울기는 \(2x\)입니다.
+\item
+  \(f(x) = \sin x\)의 경우:
+
+  \[
+  f'(x) = \cos x.
+  \]3. \(f(x) = c\)(상수)의 경우:
+
+  \[
+  f'(x) = 0.
+  \]
+
+  상수 함수는 절대 변하지 않습니다.
+\end{enumerate}
+
+\subsubsection{해석}\label{uxd574uxc11d}
+
+\begin{itemize}
+\tightlist
+\item
+  물리학: \(s(t)\)이 위치라면 \(s'(t)\)은 속도입니다.
+\item
+  경제학: \(C(x)\)이 비용이면 \(C'(x)\)은 한계 비용입니다.
+\item
+  생물학: \(P(t)\)이 인구라면 \(P'(t)\)은 성장률입니다.
+\end{itemize}
+
+미분은 많은 맥락에서 ``변화''를 정확하게 만듭니다.
+
+\subsubsection{연습}\label{uxc5f0uxc2b5-5}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \(f(x) = 3x^2 - 2x + 1\)에 대해 \(f'(x)\)을 계산합니다.
+\item
+  \(x = 2\)에서 \(f(x) = x^3\)에 대한 접선의 기울기를 찾습니다.
+\item
+  \(s(t) = t^2 + 2t\)이 거리(미터)를 나타내는 경우 \(t = 5\)의 속도는
+  얼마입니까?
+\item
+  한도 정의를 사용하여 \(f(x) = \frac{1}{x}\)의 파생물을 계산합니다.
+\item
+  \(y = x^2\)의 그래프를 스케치하고 \(x = 1\)에 접선을 그립니다.
+\end{enumerate}
+
+\subsection{2.2 차별화 규칙}\label{uxcc28uxbcc4uxd654-uxaddcuxce59}
+
+도함수가 정의되면 이를 계산하는 효율적인 방법이 필요합니다. 미분 규칙은
+한계 정의를 반복적으로 적용하지 않아도 되는 지름길입니다.
+
+\subsubsection{상수 규칙}\label{uxc0c1uxc218-uxaddcuxce59}
+
+\(f(x) = c\)(여기서 \(c\)은 상수)인 경우
+
+\[
+f'(x) = 0.
+\]
+
+\subsubsection{권력의 법칙}\label{uxad8cuxb825uxc758-uxbc95uxce59}
+
+\(n\)이 실수인 \(f(x) = x^n\)의 경우,
+
+\[
+\frac{d}{dx} \big( x^n \big) = n x^{n-1}.
+\]
+
+예:
+
+\begin{itemize}
+\tightlist
+\item
+  \(\frac{d}{dx}(x^2) = 2x\).
+\item
+  \(\frac{d}{dx}(x^5) = 5x^4\).
+\item
+  \(\frac{d}{dx}(\sqrt{x}) = \frac{1}{2\sqrt{x}}\).
+\end{itemize}
+
+\subsubsection{상수 배수
+규칙}\label{uxc0c1uxc218-uxbc30uxc218-uxaddcuxce59}
+
+\(f(x) = c \cdot g(x)\)인 경우
+
+\[
+f'(x) = c \cdot g'(x).
+\]
+
+\subsubsection{합과 차이
+규칙}\label{uxd569uxacfc-uxcc28uxc774-uxaddcuxce59}
+
+\begin{itemize}
+\tightlist
+\item
+  \((f + g)' = f' + g'\).
+\item
+  \((f - g)' = f' - g'\).
+\end{itemize}
+
+\subsubsection{제품 규칙}\label{uxc81cuxd488-uxaddcuxce59}
+
+\(f(x)\) 및 \(g(x)\)의 경우:
+
+\[
+(fg)' = f'g + fg'.
+\]
+
+예: \(f(x) = x^2\), \(g(x) = \sin x\)인 경우:
+
+\[
+(fg)' = (2x)(\sin x) + (x^2)(\cos x).
+\]
+
+\subsubsection{몫의 법칙}\label{uxbaabuxc758-uxbc95uxce59}
+
+\(f(x)\) 및 \(g(x)\)의 경우:
+
+\[
+\left(\frac{f}{g}\right)' = \frac{f'g - fg'}{g^2}, \quad g(x) \neq 0.
+\]
+
+예: \(f(x) = x^2\), \(g(x) = x+1\)인 경우:
+
+\[\left(\frac{x^2}{x+1}\right)' = \frac{(2x)(x+1) - (x^2)(1)}{(x+1)^2}.
+\]
+
+\subsubsection{Derivatives of Common
+Functions}\label{derivatives-of-common-functions}
+
+\begin{itemize}
+\tightlist
+\item
+  \(\frac{d}{dx}(\sin x) = \cos x\).
+\item
+  \(\frac{d}{dx}(\cos x) = -\sin x\).
+\item
+  \(\frac{d}{dx}(e^x) = e^x\).
+\item
+  \(\frac{d}{dx}(\ln x) = \frac{1}{x}, \quad x > 0\).
+\end{itemize}
+
+\subsubsection{Exercises}\label{exercises}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Differentiate \(f(x) = 7x^3 - 4x + 9\).
+\item
+  Use the product rule to find the derivative of \(f(x) = x^2 e^x\).
+\item
+  Apply the quotient rule to \(f(x) = \frac{\sin x}{x}\).
+\item
+  Compute \(\frac{d}{dx}(\ln(x^2))\) using the chain of rules.
+\item
+  Show that the derivative of \(f(x) = \frac{1}{x}\) is
+  \(-\frac{1}{x^2}\).
+\end{enumerate}
+
+\subsection{2.3 The Chain Rule}\label{the-chain-rule}
+
+Often, functions are built by combining simpler functions together. To
+differentiate such composite functions, we use the chain rule.
+
+\subsubsection{The Rule}\label{the-rule}
+
+If \(y = f(g(x))\), then
+
+\[
+\frac{dy}{dx} = f'(g(x)) \cdot g'(x).
+\]
+
+In words: differentiate the outer function, keep the inside unchanged,
+then multiply by the derivative of the inside.
+
+\subsubsection{Examples}\label{examples}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Square of a linear function
+
+  \[
+  y = (3x+2)^2
+  \]
+
+  Outer function: \(f(u) = u^2\), inner function: \(g(x) = 3x+2\).
+
+  \[
+  y' = 2(3x+2) \cdot 3 = 6(3x+2).
+  \]
+\item
+  Exponential with quadratic inside
+
+  \[
+  y = e^{x^2}
+  \]
+
+  Outer function: \(f(u) = e^u\), inner function: \(g(x) = x^2\).
+
+  \[
+  y' = e^{x^2} \cdot 2x = 2x e^{x^2}.
+  \]
+\item
+  Logarithm with root inside
+
+  \[
+  y = \ln(\sqrt{x})
+  \]
+
+  Outer: \(f(u) = \ln u\), inner: \(g(x) = \sqrt{x}\).
+
+  \[
+  y' = \frac{1}{\sqrt{x}} \cdot \frac{1}{2\sqrt{x}} = \frac{1}{2x}.
+  \]
+\end{enumerate}
+
+\subsubsection{Generalized Chain Rule}\label{generalized-chain-rule}
+
+For multiple nested functions \(y = f(g(h(x)))\):
+
+\[
+\frac{dy}{dx} = f'(g(h(x))) \cdot g'(h(x)) \cdot h'(x).
+\]
+
+이는 자연스럽게 더 깊은 구성으로 확장됩니다.
+
+\subsubsection{체인 규칙이 중요한 이유- 한 수량이 다른 수량에 간접적으로
+의존하는 거의 모든 실제 모델을
+처리합니다.}\label{uxccb4uxc778-uxaddcuxce59uxc774-uxc911uxc694uxd55c-uxc774uxc720--uxd55c-uxc218uxb7c9uxc774-uxb2e4uxb978-uxc218uxb7c9uxc5d0-uxac04uxc811uxc801uxc73cuxb85c-uxc758uxc874uxd558uxb294-uxac70uxc758-uxbaa8uxb4e0-uxc2e4uxc81c-uxbaa8uxb378uxc744-uxcc98uxb9acuxd569uxb2c8uxb2e4.}
+
+\begin{itemize}
+\tightlist
+\item
+  미적분학과 물리학을 연결합니다(예: 위치를 통한 시간에 따른 속도).
+\item
+  암묵적인 차별화와 고급 주제에 필수적입니다.
+\end{itemize}
+
+\subsubsection{연습}\label{uxc5f0uxc2b5-6}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \(y = (5x^2 + 1)^3\)을 구별합니다.
+\item
+  \(\frac{d}{dx}(\sin(3x))\)을(를) 찾으세요.
+\item
+  \(\frac{d}{dx}(\ln(1+x^2))\)을 계산합니다.
+\item
+  \(y = \cos^2(x)\)을 구별합니다.
+\item
+  \(y = e^{\sin(x^2)}\)에 일반화된 체인 규칙을 적용합니다.
+\end{enumerate}
+
+\subsection{2.4 암묵적 미분}\label{uxc554uxbb35uxc801-uxbbf8uxbd84}
+
+모든 함수가 \(y = f(x)\) 형식으로 제공되는 것은 아닙니다. 때로는 \(x\)
+및 \(y\)이 방정식으로 관련되어 있으며 \(y\)에 대해 명시적으로 해결하는
+것이 어렵거나 불가능합니다. 이러한 경우 암시적 차별화를 사용합니다.
+
+\subsubsection{아이디어}\label{uxc544uxc774uxb514uxc5b4}
+
+방정식에 \(x\) 및 \(y\)이 모두 포함된 경우 \(y\)을 \(x\)의 함수로
+처리하여 \(x\)에 대해 양쪽을 구별할 수 있습니다. \(y\)과 관련된 용어를
+구별할 때마다 \(\frac{dy}{dx}\)을 곱합니다.
+
+\subsubsection{예 1: 원}\label{uxc608-1-uxc6d0}
+
+방정식:
+
+\[
+x^2 + y^2 = 25
+\]
+
+\(x\)과 관련하여 차별화:
+
+\[
+2x + 2y \frac{dy}{dx} = 0.
+\]
+
+\(\frac{dy}{dx}\)에 대한 해결:
+
+\[
+\frac{dy}{dx} = -\frac{x}{y}.
+\]
+
+이는 임의의 지점에서 원에 대한 접선의 기울기를 제공합니다.
+
+\subsubsection{예시 2: 변수의
+곱}\label{uxc608uxc2dc-2-uxbcc0uxc218uxc758-uxacf1}
+
+방정식:
+
+\[
+xy = 1
+\]
+
+차별화:
+
+\[
+x \frac{dy}{dx} + y = 0.
+\]
+
+그래서,
+
+\[
+\frac{dy}{dx} = -\frac{y}{x}.
+\]
+
+\subsubsection{예 3: 삼각관계}\label{uxc608-3-uxc0bcuxac01uxad00uxacc4}
+
+방정식:
+
+\[
+\sin(xy) = x
+\]
+
+차별화:
+
+\[
+\cos(xy) \cdot \Big(y + x\frac{dy}{dx}\Big) = 1.
+\]
+
+\(\frac{dy}{dx}\)에 대한 해결:
+
+\[
+\frac{dy}{dx} = \frac{1 - y\cos(xy)}{x\cos(xy)}.
+\]
+
+\subsubsection{암시적 차별화가 유용한
+이유}\label{uxc554uxc2dcuxc801-uxcc28uxbcc4uxd654uxac00-uxc720uxc6a9uxd55c-uxc774uxc720}
+
+\begin{itemize}
+\tightlist
+\item
+  많은 중요한 곡선(원, 타원, 쌍곡선)이 자연스럽게 암시적으로 정의됩니다.
+\item
+  \(y\)을 먼저 풀지 않고도 방정식을 미분할 수 있습니다.- 관련율,
+  미분방정식 등 고급 주제에 대한 핵심 단계입니다.
+\end{itemize}
+
+\subsubsection{연습}\label{uxc5f0uxc2b5-7}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \(x^2 + xy + y^2 = 7\) 곡선에 대해 \(\frac{dy}{dx}\)을 찾습니다.
+\item
+  \(\cos(x) + \cos(y) = 1\)을 암시적으로 구별합니다.
+\item
+  \((1, 2)\) 지점에서 \(x^3 + y^3 = 9\)에 대한 접선의 기울기를 찾습니다.
+\item
+  \(x^2 + y^2 = 10\)이 주어지면 \((x, y) = (1, 3)\)인 경우
+  \(\frac{dy}{dx}\)을 계산합니다.
+\item
+  \(e^{xy} = x + y\)을 차별화하여 \(\frac{dy}{dx}\)을 찾습니다.
+\end{enumerate}
+
+\subsection{2.5 고차
+파생상품}\label{uxace0uxcc28-uxd30cuxc0dduxc0c1uxd488}
+
+지금까지 우리는 함수의 변화율을 측정하는 1차 도함수를 연구했습니다.
+그러나 파생 상품 자체도 미분되어 고차 파생 상품이 발생할 수 있습니다.
+
+\subsubsection{정의}\label{uxc815uxc758-3}
+
+\begin{itemize}
+\item
+  \(f\)의 2차 파생어는 파생어의 파생어입니다.
+
+  \[
+  f''(x) = \frac{d}{dx}\left(f'(x)\right).
+  \]
+\item
+  보다 일반적으로 \(n\)번째 파생 상품은 다음과 같이 작성됩니다.
+
+  \[
+  f^{(n)}(x) = \frac{d^n}{dx^n} f(x).
+  \]
+\end{itemize}
+
+\subsubsection{예}\label{uxc608-4}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  \(f(x) = x^3\)
+
+  \begin{itemize}
+  \tightlist
+  \item
+    1차 파생물: \(f'(x) = 3x^2\).
+  \item
+    2차 파생: \(f''(x) = 6x\).
+  \item
+    3차 파생물: \(f^{(3)}(x) = 6\).
+  \item
+    4차 파생물: \(f^{(4)}(x) = 0\).
+  \end{itemize}
+\item
+  \(f(x) = \sin x\)
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \(f'(x) = \cos x\).
+  \item
+    \(f''(x) = -\sin x\).
+  \item
+    \(f^{(3)}(x) = -\cos x\).
+  \item
+    \(f^{(4)}(x) = \sin x\). 도함수는 길이 4의 주기로 반복됩니다.
+  \end{itemize}
+\item
+  \(f(x) = e^x\)
+
+  \begin{itemize}
+  \tightlist
+  \item
+    모든 파생 상품은 \(e^x\)입니다.
+  \end{itemize}
+\end{enumerate}
+
+\subsubsection{애플리케이션}\label{uxc560uxd50cuxb9acuxcf00uxc774uxc158}
+
+\begin{itemize}
+\item
+  오목함: \(f''(x)\)의 부호는 \(f\)의 그래프가 위로
+  오목한지(\(f'' > 0\)) 아래로 오목한지(\(f'' < 0\))를 나타냅니다.
+\item
+  변곡점: \(f''(x) = 0\)과 오목함이 변하는 지점.
+\item
+  동작: 물리학에서 \(s(t)\)이 위치인 경우:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \(s'(t)\) = 속도,
+  \item
+    \(s''(t)\) = 가속,
+  \item
+    \(s^{(3)}(t)\) = 저크(가속도 변화율).
+  \end{itemize}
+\item
+  근사: 고차 도함수는 함수 근사에 사용되는 Taylor 계열에
+  나타납니다.\#\#\# 연습
+\end{itemize}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \(f(x) = \cos x\)의 처음 4개 도함수를 계산합니다.
+\item
+  \(f(x) = x^4 - 2x^2 + 3\)에 대한 \(f''(x)\)을(를) 찾으세요.
+\item
+  \(f(x) = e^{2x}\)의 경우 \(f^{(n)}(x) = 2^n e^{2x}\)을 표시합니다.
+\item
+  \(f(x) = x^3 - 3x\)이 위로 오목하고 아래로 오목해지는 간격을
+  결정합니다.
+\item
+  \(s(t) = t^3 - 6t^2 + 9t\)인 경우 \(t = 2\)에서 속도와 가속도를
+  찾습니다.
+\end{enumerate}
+
+\section{제3장 파생상품의
+활용}\label{uxc81c3uxc7a5-uxd30cuxc0dduxc0c1uxd488uxc758-uxd65cuxc6a9}
+
+\subsection{3.1 접선과 법선}\label{uxc811uxc120uxacfc-uxbc95uxc120}
+
+도함수의 첫 번째 응용 중 하나는 곡선에 대한 접선과 법선의 방정식을 찾는
+것입니다. 이 선은 주어진 지점에서 함수의 로컬 기하학을 캡처합니다.
+
+\subsubsection{접선}\label{uxc811uxc120}
+
+\((a, f(a))\) 지점에서 \(y = f(x)\) 곡선에 대한 접선은 그래프와
+``접촉''하고 곡선과 동일한 기울기를 갖는 선입니다.
+
+접선의 기울기는 도함수로 제공됩니다.
+
+\[
+m_{\text{tangent}} = f'(a).
+\]
+
+따라서 \((a, f(a))\)의 접선 방정식은 다음과 같습니다.
+
+\[
+y - f(a) = f'(a)(x - a).
+\]
+
+\subsubsection{일반 라인}\label{uxc77cuxbc18-uxb77cuxc778}
+
+법선은 같은 점에서 접선에 수직입니다. 그 기울기는 접선 기울기의 음의
+역수입니다.
+
+\[
+m_{\text{normal}} = -\frac{1}{f'(a)}.
+\]
+
+따라서 정규선의 방정식은 다음과 같습니다.
+
+\[
+y - f(a) = -\frac{1}{f'(a)} (x - a), \quad f'(a) \neq 0.
+\]
+
+\subsubsection{예}\label{uxc608-5}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  \(f(x) = x^2\)(\(x = 1\)).
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \(f(1) = 1\), \(f'(x) = 2x\)이므로 \(f'(1) = 2\)입니다.
+  \item
+    탄젠트: \(y - 1 = 2(x - 1)\) 또는 \(y = 2x - 1\).
+  \item
+    법선: 기울기 = \(-\tfrac{1}{2}\)이므로 방정식은
+    \(y - 1 = -\tfrac{1}{2}(x - 1)\)입니다.
+  \end{itemize}
+\item
+  \(x = \tfrac{\pi}{4}\)의 \(f(x) = \sin x\).
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \(f(\tfrac{\pi}{4}) = \tfrac{\sqrt{2}}{2}\),
+    \(f'(\tfrac{\pi}{4}) = \cos(\tfrac{\pi}{4}) = \tfrac{\sqrt{2}}{2}\).
+  \item
+    탄젠트:
+    \(y - \tfrac{\sqrt{2}}{2} = \tfrac{\sqrt{2}}{2}(x - \tfrac{\pi}{4})\).
+  \end{itemize}
+\end{enumerate}
+
+\subsubsection{접선과 법선이 중요한 이유- 접선은 곡선을 국부적으로
+근사화합니다(선형
+근사화).}\label{uxc811uxc120uxacfc-uxbc95uxc120uxc774-uxc911uxc694uxd55c-uxc774uxc720--uxc811uxc120uxc740-uxace1uxc120uxc744-uxad6duxbd80uxc801uxc73cuxb85c-uxadfcuxc0acuxd654uxd569uxb2c8uxb2e4uxc120uxd615-uxadfcuxc0acuxd654.}
+
+\begin{itemize}
+\tightlist
+\item
+  법선은 기하학, 광학(반사/굴절) 및 역학(힘 방향)에 유용합니다.
+\item
+  둘 다 최적화 및 곡률 연구에서 역할을 합니다.
+\end{itemize}
+
+\subsubsection{연습}\label{uxc5f0uxc2b5-8}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \(x = 2\)에서 \(y = x^3\)에 대한 접선과 법선을 찾습니다.
+\item
+  \(x = 0\)에서 \(y = e^x\)에 대한 접선과 법선을 결정합니다.
+\item
+  \(y = \ln x\)의 경우 \(x = 1\)에서 접선을 계산합니다.
+\item
+  \(x^2 + y^2 = 9\)으로 원이 주어집니다. 암시적 미분을 사용하여
+  \((0,3)\)에서 접선의 기울기를 찾습니다.
+\item
+  \(y = \sqrt{x}\)의 그래프를 스케치하고 \(x = 4\)에 접선과 법선을
+  그립니다.
+\end{enumerate}
+
+\subsection{3.2 관련 환율}\label{uxad00uxb828-uxd658uxc728}
+
+많은 실제 문제에서는 두 개 이상의 양이 시간에 따라 변하고 변화율이
+연결되어 있습니다. 관련 비율 문제는 파생 상품을 사용하여 이러한 관계를
+설명합니다.
+
+\subsubsection{일반적인 접근
+방식}\label{uxc77cuxbc18uxc801uxc778-uxc811uxadfc-uxbc29uxc2dd}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  시간 \(t\)에 따라 달라지는 변수를 식별합니다.
+\item
+  변수와 관련된 방정식을 작성하십시오.
+\item
+  체인 규칙을 적용하여 \(t\)에 대해 양쪽을 구분합니다.
+\item
+  주어진 순간에 알려진 값을 대체합니다.
+\item
+  알 수 없는 비율을 푼다.
+\end{enumerate}
+
+\subsubsection{예 1: 원 확장}\label{uxc608-1-uxc6d0-uxd655uxc7a5}
+
+원의 반경은 \(r\)이며 \(\frac{dr}{dt} = 2 \,\text{cm/s}\)의 비율로
+증가합니다. \(r = 5\)일 때 \(A = \pi r^2\) 면적이 증가하는 비율을
+찾아보세요.
+
+차별화:
+
+\[
+\frac{dA}{dt} = 2\pi r \frac{dr}{dt}.
+\]
+
+대체:
+
+\[
+\frac{dA}{dt} = 2\pi (5)(2) = 20\pi \,\text{cm}^2/\text{s}.
+\]
+
+\subsubsection{예 2: 슬라이딩
+사다리}\label{uxc608-2-uxc2acuxb77cuxc774uxb529-uxc0acuxb2e4uxb9ac}
+
+10피트 사다리가 벽에 기대어 있습니다. 하단은
+\(\frac{dx}{dt} = 1 \,\text{ft/s}\)에서 미끄러집니다. 바닥이 벽에서
+6피트 떨어져 있을 때 상단이 얼마나 빨리 아래로 미끄러지나요?
+
+방정식: \(x^2 + y^2 = 100\), 여기서 \(y\)은 높이입니다.
+
+차별화:
+
+\[
+2x \frac{dx}{dt} + 2y \frac{dy}{dt} = 0.
+\]\(x = 6\), \(y = 8\)에 있습니다. 대체:
+
+\[
+2(6)(1) + 2(8)\frac{dy}{dt} = 0 \quad \Rightarrow \quad \frac{dy}{dt} = -\tfrac{6}{8} = -\tfrac{3}{4}.
+\]
+
+따라서 상단은 \(0.75 \,\text{ft/s}\)에서 아래로 미끄러집니다.
+
+\subsubsection{예 3: 원뿔 속의
+물}\label{uxc608-3-uxc6d0uxbfd4-uxc18duxc758-uxbb3c}
+
+높이 12cm, 반경 6cm의 원뿔에 물을 붓습니다. 물의 깊이가 4cm일 때 수위는
+\(2 \,\text{cm/s}\)에서 상승합니다. 볼륨이 어느 정도 증가하고 있나요?
+
+방정식: \(V = \tfrac{1}{3}\pi r^2 h\). 유사성을 사용하여
+\(r = \tfrac{h}{2}\). 대체:
+
+\[
+V = \tfrac{1}{12}\pi h^3.
+\]
+
+차별화:
+
+\[
+\frac{dV}{dt} = \tfrac{1}{4}\pi h^2 \frac{dh}{dt}.
+\]
+
+\(h = 4\), \(\frac{dh}{dt} = 2\)에서:
+
+\[
+\frac{dV}{dt} = \tfrac{1}{4}\pi (16)(2) = 8\pi \,\text{cm}^3/\text{s}.
+\]
+
+\subsubsection{관련 요금이 중요한
+이유}\label{uxad00uxb828-uxc694uxae08uxc774-uxc911uxc694uxd55c-uxc774uxc720}
+
+\begin{itemize}
+\tightlist
+\item
+  물리학, 공학, 생물학의 움직임과 변화를 설명합니다.
+\item
+  시간에 따른 과정을 통해 기하학과 미적분학을 연결합니다.
+\item
+  동적 시스템을 수학적으로 모델링하도록 교육합니다.
+\end{itemize}
+
+\subsubsection{연습}\label{uxc5f0uxc2b5-9}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  풍선은 \(0.5 \,\text{cm/s}\)에서 반경이 증가하도록 팽창됩니다.
+  반지름이 10cm일 때 부피가 얼마나 빨리 증가하는지 알아보세요.
+\item
+  자동차 한 대가 북쪽으로 40km/h의 속도로 주행하고 다른 자동차는
+  동쪽으로 30km/h의 속도로 주행합니다. 2시간 후에 그들 사이의 거리는
+  얼마나 빨리 증가하는가?
+\item
+  벽에서 20m 떨어진 스포트라이트가 1.5m/s의 속도로 걸어가는 키 2m의
+  남자를 비춥니다. 빛으로부터 5m 떨어져 있을 때 벽에 비친 그림자의
+  길이는 얼마나 빨리 변합니까?
+\item
+  정육면체의 한 변의 길이는 2cm/s씩 늘어납니다. 한 변이 3 cm일 때
+  표면적은 얼마나 빨리 증가합니까?
+\item
+  모래는 항상 높이와 동일한 반경을 갖는 원뿔을 형성하는 더미 위에
+  부어집니다. 높이가 5 cm/s로 증가한다면, 높이가 10 cm일 때 부피는 몇 \%
+  증가합니까?
+\end{enumerate}
+
+\subsection{3.3 최적화 문제최적화 문제는 종종 특정 제약 조건 하에서
+함수의 최대값 또는 최소값을 찾기 위해 도함수를 사용합니다. 이러한 문제는
+효율성, 이익 또는 면적을 최대화하거나 비용, 거리 또는 시간을
+최소화하려는 상황을
+모델링합니다.}\label{uxcd5cuxc801uxd654-uxbb38uxc81cuxcd5cuxc801uxd654-uxbb38uxc81cuxb294-uxc885uxc885-uxd2b9uxc815-uxc81cuxc57d-uxc870uxac74-uxd558uxc5d0uxc11c-uxd568uxc218uxc758-uxcd5cuxb300uxac12-uxb610uxb294-uxcd5cuxc18cuxac12uxc744-uxcc3euxae30-uxc704uxd574-uxb3c4uxd568uxc218uxb97c-uxc0acuxc6a9uxd569uxb2c8uxb2e4.-uxc774uxb7ecuxd55c-uxbb38uxc81cuxb294-uxd6a8uxc728uxc131-uxc774uxc775-uxb610uxb294-uxba74uxc801uxc744-uxcd5cuxb300uxd654uxd558uxac70uxb098-uxbe44uxc6a9-uxac70uxb9ac-uxb610uxb294-uxc2dcuxac04uxc744-uxcd5cuxc18cuxd654uxd558uxb824uxb294-uxc0c1uxd669uxc744-uxbaa8uxb378uxb9c1uxd569uxb2c8uxb2e4.}
+
+\subsubsection{일반 단계}\label{uxc77cuxbc18-uxb2e8uxacc4}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  문제 이해: 최적화할 수량을 식별합니다.
+\item
+  함수를 사용한 모델: 하나의 변수로 목적 함수를 작성합니다.
+\item
+  제약 조건 적용: 주어진 조건을 사용하여 변수를 줄입니다.
+\item
+  미분: 목적 함수의 미분을 계산합니다.
+\item
+  중요한 점 찾기: \(f'(x) = 0\)을 해결하거나 \(f'(x)\)이 정의되지 않은
+  곳을 해결하세요.
+\item
+  최대값/최소값 테스트: 2차 미분 테스트를 사용하거나 끝점을 확인합니다.
+\item
+  결과를 해석하십시오. 원래의 맥락에서 답을 기술하십시오.
+\end{enumerate}
+
+\subsubsection{예 1: 직사각형의 최대
+면적}\label{uxc608-1-uxc9c1uxc0acuxac01uxd615uxc758-uxcd5cuxb300-uxba74uxc801}
+
+직사각형의 둘레는 40입니다. 면적을 최대화하는 치수는 무엇입니까?
+
+\begin{itemize}
+\tightlist
+\item
+  길이를 \(x\), 너비를 \(y\)로 설정합니다. 제약 조건:
+  \(2x + 2y = 40 \Rightarrow y = 20 - x\).
+\item
+  지역: \(A = xy = x(20 - x) = 20x - x^2\).
+\item
+  파생상품: \(A'(x) = 20 - 2x\). 0으로 설정: \(x = 10\).
+\item
+  그러면 \(y = 10\)입니다.
+\item
+  최대 면적: \(100\). 직사각형은 정사각형입니다.
+\end{itemize}
+
+\subsubsection{예시 2: 거리
+최소화}\label{uxc608uxc2dc-2-uxac70uxb9ac-uxcd5cuxc18cuxd654}
+
+\((0,3)\)에 가장 가까운 포물선 \(y = x^2\)에서 점을 찾으세요.
+
+\begin{itemize}
+\tightlist
+\item
+  거리 제곱: \(D(x) = (x-0)^2 + (x^2 - 3)^2\).
+\item
+  확장:
+  \(D(x) = x^2 + (x^2 - 3)^2 = x^2 + x^4 - 6x^2 + 9 = x^4 - 5x^2 + 9\).
+\item
+  파생상품: \(D'(x) = 4x^3 - 10x\). 해결: \(x(4x^2 - 10) = 0\).
+\item
+  솔루션: \(x = 0\), \(x = \pm \sqrt{2.5}\).
+\item
+  확인하면 \(x = \pm \sqrt{2.5}\)에서 최소 거리가 제공됩니다.
+\end{itemize}
+
+\subsubsection{예 3: 최대 용량의
+상자}\label{uxc608-3-uxcd5cuxb300-uxc6a9uxb7c9uxc758-uxc0c1uxc790}
+
+윗부분이 없는 상자는 한 변이 20cm인 정사각형 판지 조각으로 모서리를
+동일한 정사각형으로 자르고 측면을 접어서 만듭니다. 볼륨을 최대화하는 컷
+크기를 찾으세요.- 절단 크기 = \(x\)로 설정합니다. 그런 다음 크기는
+\((20 - 2x) \times (20 - 2x) \times x\)입니다. - 볼륨:
+\(V(x) = x(20 - 2x)^2\). - 파생상품: \(V'(x) = (20 - 2x)(20 - 6x)\). -
+중요 포인트: \(x = 10\)(볼륨 0 제공) 또는
+\(x = \tfrac{20}{6} \approx 3.33\). - \(x \approx 3.33\)에서는 볼륨이
+최대화됩니다.
+
+\subsubsection{최적화가 중요한
+이유}\label{uxcd5cuxc801uxd654uxac00-uxc911uxc694uxd55c-uxc774uxc720}
+
+\begin{itemize}
+\tightlist
+\item
+  엔지니어는 이를 사용하여 효율적인 구조를 설계합니다.
+\item
+  기업은 이익을 극대화하거나 비용을 최소화하기 위해 이를 사용합니다.
+\item
+  과학자들은 이를 사용하여 평형을 추구하는 자연 시스템을 모델링합니다.
+\end{itemize}
+
+\subsubsection{연습}\label{uxc5f0uxc2b5-10}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  농부는 강을 따라 직사각형의 들판을 둘러싸기 위해 100m의 울타리를
+  가지고 있습니다(따라서 3면에만 울타리가 필요합니다). 면적을 최대화하는
+  차원을 찾아보세요.
+\item
+  합이 20이고 곱이 가능한 한 큰 양수 두 개를 찾으세요.
+\item
+  실린더는 100cm\(^2\) 재료로 만들어집니다. 최대 볼륨의 크기를
+  찾으십시오.
+\item
+  길이 10m의 와이어를 두 조각으로 절단합니다. 하나는 정사각형으로, 다른
+  하나는 원형으로 구부립니다. 둘러싸인 전체 면적을 최대화하려면 어떻게
+  절단해야 합니까?
+\item
+  바닥이 정사각형이고 부피가 32m\(^3\)인 닫힌 상자를 제작합니다.
+  표면적을 최소화하는 치수를 찾으십시오.
+\end{enumerate}
+
+\subsection{3.4 오목함과
+변곡점}\label{uxc624uxbaa9uxd568uxacfc-uxbcc0uxace1uxc810}
+
+도함수는 기울기뿐만 아니라 그래프의 모양에 대해서도 알려줍니다. 2차
+도함수는 오목함을 이해하고 변곡점을 식별하는 데 특히 유용합니다.
+
+\subsubsection{오목함}\label{uxc624uxbaa9uxd568}
+
+\begin{itemize}
+\item
+  \(f(x)\) 함수는 \(f''(x) > 0\)인 경우 일정 간격으로 오목합니다.
+  그래프가 컵처럼 위쪽으로 휘어집니다.
+\item
+  \(f(x)\) 함수는 \(f''(x) < 0\)인 경우 일정 간격으로 아래로 오목합니다.
+  그래프가 찡그린 것처럼 아래로 휘어집니다.
+\end{itemize}
+
+오목함은 함수의 기울기가 어떻게 변하는지 설명합니다. 기울기가 증가하면
+그래프가 위로 오목해집니다. 기울기가 감소하면 그래프는 아래쪽으로
+오목해집니다.
+
+\subsubsection{변곡점변곡점은 그래프에서 오목함이 변하는
+지점입니다.}\label{uxbcc0uxace1uxc810uxbcc0uxace1uxc810uxc740-uxadf8uxb798uxd504uxc5d0uxc11c-uxc624uxbaa9uxd568uxc774-uxbcc0uxd558uxb294-uxc9c0uxc810uxc785uxb2c8uxb2e4.}
+
+\begin{itemize}
+\tightlist
+\item
+  \(f''(x) = 0\) 또는 \(f''(x)\)이 정의되지 않은 경우 해당 지점은 변곡점
+  후보입니다.
+\item
+  확인하려면 오목한 부분이 점 양쪽의 기호를 변경해야 합니다.
+\end{itemize}
+
+\subsubsection{예}\label{uxc608-6}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  \(f(x) = x^3\)
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \(f''(x) = 6x\).
+  \item
+    \(x = 0\), \(f''(0) = 0\)에서.
+  \item
+    \(x < 0\), \(f''(x) < 0\)의 경우 → 아래로 오목합니다.
+  \item
+    \(x > 0\), \(f''(x) > 0\)의 경우 → 위로 오목합니다.
+  \item
+    따라서 \((0,0)\)은 변곡점입니다.
+  \end{itemize}
+\item
+  \(f(x) = x^4\)
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \(f''(x) = 12x^2\).
+  \item
+    \(x = 0\), \(f''(0) = 0\)에서 오목함은 부호를 변경하지 않습니다(항상
+    ≥ 0).
+  \item
+    변곡점이 없습니다.
+  \end{itemize}
+\end{enumerate}
+
+\subsubsection{오목함과 곡선
+스케치}\label{uxc624uxbaa9uxd568uxacfc-uxace1uxc120-uxc2a4uxcf00uxce58}
+
+\begin{itemize}
+\tightlist
+\item
+  \(f'(x) = 0\) 및 \(f''(x) > 0\)인 경우 \(f\)에는 로컬 최소값이
+  있습니다.
+\item
+  \(f'(x) = 0\) 및 \(f''(x) < 0\)인 경우 \(f\)에는 로컬 최대값이
+  있습니다.
+\item
+  이를 2차 미분 검정이라고 합니다.
+\end{itemize}
+
+\subsubsection{이것이 중요한
+이유}\label{uxc774uxac83uxc774-uxc911uxc694uxd55c-uxc774uxc720-1}
+
+오목함과 변곡점은 그래프의 ``모양'', 즉 그래프가 구부러지고, 편평해지고,
+회전하는 위치를 이해하는 데 도움이 됩니다. 이러한 아이디어는 곡선
+스케치, 물리학(가속) 및 경제학(수익률 감소)의 핵심입니다.
+
+\subsubsection{연습}\label{uxc5f0uxc2b5-11}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \(f(x) = x^3 - 3x\)의 오목함 간격을 결정합니다. 변곡점을 찾아보세요.
+\item
+  \(f(x) = \ln(x)\)의 경우 오목함과 가능한 변곡점을 식별합니다.
+\item
+  \(f(x) = x^2 e^{-x}\)에 2차 미분 테스트를 적용하여 중요 사항을
+  분류합니다.
+\item
+  오목한 부분과 변곡점의 간격을 표시하여 \(f(x) = \sin x\)을
+  스케치합니다.
+\item
+  \(f(x) = e^x\)에 변곡점이 없는 이유를 설명하세요.
+\end{enumerate}
+
+\subsection{3.5 커브 스케치}\label{uxcee4uxbe0c-uxc2a4uxcf00uxce58}
+
+곡선 스케치는 함수의 도함수 정보를 사용하여 함수 그래프를 그리는
+과정입니다. 많은 점을 그리는 대신 절편, 점근선, 간격 증가/감소, 오목함
+등 주요 특징을 분석합니다.
+
+\subsubsection{곡선 스케치 단계1. 도메인: 함수가 정의된 위치를
+식별합니다.}\label{uxace1uxc120-uxc2a4uxcf00uxce58-uxb2e8uxacc41.-uxb3c4uxba54uxc778-uxd568uxc218uxac00-uxc815uxc758uxb41c-uxc704uxce58uxb97c-uxc2dduxbcc4uxd569uxb2c8uxb2e4.}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{1}
+\item
+  절편: 그래프가 축과 교차하는 위치를 찾습니다.
+\item
+  점근선:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    수직 점근선은 함수가 정의되지 않고 무한대 경향이 있는 곳에서
+    발생합니다.
+  \item
+    수평 또는 경사 점근선은 최종 동작을 \(x \to \pm\infty\)으로
+    설명합니다.
+  \end{itemize}
+\item
+  1차 파생물 \(f'(x)\):
+
+  \begin{itemize}
+  \tightlist
+  \item
+    긍정적 → 기능이 증가합니다.
+  \item
+    음성 → 기능이 저하됩니다.
+  \item
+    \(f'(x)\)의 0 → 임계점(가능한 최대값/최소값).
+  \end{itemize}
+\item
+  2차 파생 \(f''(x)\):
+
+  \begin{itemize}
+  \tightlist
+  \item
+    양수 → 위로 오목함.
+  \item
+    음수 → 아래로 오목함.
+  \item
+    0 또는 정의되지 않음 → 가능한 변곡점.
+  \end{itemize}
+\item
+  정보 결합: 모든 결과를 사용하여 명확하고 정확한 그래프를 스케치합니다.
+\end{enumerate}
+
+\subsubsection{\texorpdfstring{예시 1:
+\(f(x) = x^3 - 3x\)}{예시 1: f(x) = x\^{}3 - 3x}}\label{uxc608uxc2dc-1-fx-x3---3x}
+
+\begin{itemize}
+\item
+  도메인: 모두 실수입니다.
+\item
+  차단: \((0,0)\)에서.
+\item
+  파생상품: \(f'(x) = 3x^2 - 3 = 3(x-1)(x+1)\).
+
+  \begin{itemize}
+  \tightlist
+  \item
+    증가: \((-\infty, -1) \cup (1, \infty)\).
+  \item
+    감소: \((-1, 1)\).
+  \end{itemize}
+\item
+  2차 파생: \(f''(x) = 6x\).
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \(x < 0\)은 아래로 오목하고, \(x > 0\)은 위로 오목합니다.
+  \item
+    \((0,0)\)의 변곡점.
+  \end{itemize}
+\item
+  모양: \((-1, 2)\)에 로컬 최대값, \((1, -2)\)에 로컬 최소값이 있는
+  S-곡선.
+\end{itemize}
+
+\subsubsection{\texorpdfstring{예시 2:
+\(f(x) = \frac{1}{x}\)}{예시 2: f(x) = \textbackslash frac\{1\}\{x\}}}\label{uxc608uxc2dc-2-fx-frac1x}
+
+\begin{itemize}
+\item
+  도메인: \(x \neq 0\).
+\item
+  수직 점근선: \(x = 0\).
+\item
+  수평 점근선: \(y = 0\).
+\item
+  파생형: \(f'(x) = -\frac{1}{x^2}\)(항상 음수). 기능은 항상 감소합니다.
+\item
+  2차 파생: \(f''(x) = \frac{2}{x^3}\).
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \(x > 0\)에 대해 위로 오목합니다.
+  \item
+    \(x < 0\)에 대해 아래로 오목합니다.
+  \end{itemize}
+\item
+  그래프: 가지가 두 개 있는 쌍곡선.
+\end{itemize}
+
+\subsubsection{곡선 스케치가 유용한
+이유}\label{uxace1uxc120-uxc2a4uxcf00uxce58uxac00-uxc720uxc6a9uxd55c-uxc774uxc720}
+
+\begin{itemize}
+\tightlist
+\item
+  철저한 계산 없이 함수의 전반적인 동작에 대한 통찰력을 제공합니다.
+\item
+  미적분학 시험 \hspace{0pt}\hspace{0pt}및 응용 문제에 필수적입니다.
+\item
+  대수적 분석과 기하학적 이해를 연결합니다.
+\end{itemize}
+
+\subsubsection{연습}\label{uxc5f0uxc2b5-12}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \(f(x) = x^4 - 2x^2\)의 곡선을 스케치합니다. 최대값, 최소값, 변곡점을
+  식별합니다.2. \(f(x) = \ln(x)\)을 분석하고 스케치합니다. 절편, 점근선,
+  오목함을 표시합니다.
+\item
+  \(f(x) = e^{-x}\)의 경우 성장/쇠퇴, 점근선 및 오목함을 설명합니다.
+\item
+  \((- \pi, \pi)\) 간격에서 \(f(x) = \tan x\)의 그래프를 스케치합니다.
+  점근선을 표시합니다.
+\item
+  1차 및 2차 파생 테스트를 사용하여 \(f(x) = x^3 - 6x^2 + 9x\)의 중요
+  지점을 분류합니다.
+\end{enumerate}
+
+\section{2부. 적분}\label{uxbd80.-uxc801uxbd84}
+
+\section{4장. 역도함수와
+정적분}\label{uxc7a5.-uxc5eduxb3c4uxd568uxc218uxc640-uxc815uxc801uxbd84}
+
+\subsection{4.1 부정적분}\label{uxbd80uxc815uxc801uxbd84}
+
+무기한 적분은 미분의 역 과정입니다. 도함수 측정값이 변경되면 적분은
+변화율에서 원래 함수를 복구합니다.
+
+\subsubsection{정의}\label{uxc815uxc758-4}
+
+\(F'(x) = f(x)\)인 경우
+
+\[
+\int f(x)\,dx = F(x) + C,
+\]
+
+여기서 \(C\)은 통합 상수입니다.
+
+모든 부정적분은 미분으로 인해 상수가 제거되므로 상수만 다른 함수군을
+나타냅니다.
+
+\subsubsection{기본 규칙}\label{uxae30uxbcf8-uxaddcuxce59}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  상수 규칙
+\end{enumerate}
+
+\[
+\int c\,dx = cx + C.
+\]
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  권력의 법칙
+\end{enumerate}
+
+\[
+\int x^n\,dx = \frac{x^{n+1}}{n+1} + C, \quad n \neq -1.
+\]
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{2}
+\tightlist
+\item
+  합계 규칙
+\end{enumerate}
+
+\[
+\int \big(f(x) + g(x)\big)\,dx = \int f(x)\,dx + \int g(x)\,dx.
+\]
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{3}
+\tightlist
+\item
+  상수 배수 규칙
+\end{enumerate}
+
+\[
+\int c f(x)\,dx = c \int f(x)\,dx.
+\]
+
+\subsubsection{공적분}\label{uxacf5uxc801uxbd84}
+
+\begin{itemize}
+\tightlist
+\item
+  \(\int e^x dx = e^x + C\)
+\item
+  \(\int \sin x dx = -\cos x + C\)
+\item
+  \(\int \cos x dx = \sin x + C\)
+\item
+  \(\int \frac{1}{x} dx = \ln|x| + C\)
+\end{itemize}
+
+\subsubsection{예}\label{uxc608-7}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  \(\int (3x^2 - 4)\,dx = x^3 - 4x + C\).
+\item
+  \(\int \cos(2x)\,dx = \tfrac{1}{2}\sin(2x) + C\).
+\item
+  \(\int \frac{1}{x}\,dx = \ln|x| + C\).
+\end{enumerate}
+
+\subsubsection{해석}\label{uxd574uxc11d-1}
+
+\begin{itemize}
+\tightlist
+\item
+  부정 적분은 역도함수입니다.
+\item
+  면적, 거리, 질량 등 누적량을 측정하는 정적분의 기초입니다.
+\item
+  적용된 상황에서 통합을 통해 요율에서 다시 총계로 이동할 수 있습니다.
+\end{itemize}
+
+\subsubsection{연습}\label{uxc5f0uxc2b5-13}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \(\int (5x^4 + 2x)\,dx\)을 찾으세요.2. \(\int (e^x + 3)\,dx\)을
+  계산합니다.
+\item
+  통합을 사용하여 \(f'(x) = 6x\)의 일반적인 솔루션을 찾습니다.
+\item
+  \(\int \frac{2}{x}\,dx\)을(를) 평가합니다.
+\item
+  속도가 \(v(t) = 4t\)인 경우 위치 함수 \(s(t)\)을 찾습니다.
+\end{enumerate}
+
+\subsection{4.2 면적으로서의
+정적분}\label{uxba74uxc801uxc73cuxb85cuxc11cuxc758-uxc815uxc801uxbd84}
+
+부정적분은 역도함수 계열을 나타내는 반면, 정적분은 수치 값, 즉 두 점
+사이의 곡선 아래 누적 면적을 제공합니다.
+
+\subsubsection{정의}\label{uxc815uxc758-5}
+
+\([a, b]\)에 정의된 \(f(x)\) 함수의 경우 정적분은 다음과 같습니다.
+
+\[
+\int_a^b f(x)\,dx = \lim_{n \to \infty} \sum_{i=1}^n f(x_i^-) \,\Delta x,
+\]
+
+여기서 \([a, b]\) 간격은 \(\Delta x\) 너비의 \(n\) 하위 간격으로 나뉘며
+\(x_i^-\)은 각 하위 간격의 샘플 포인트입니다.
+
+이것이 리만 합의의 한계입니다.
+
+\subsubsection{기하학적
+해석}\label{uxae30uxd558uxd559uxc801-uxd574uxc11d}
+
+\begin{itemize}
+\tightlist
+\item
+  \([a, b]\)의 \(f(x) \geq 0\)인 경우 \(\int_a^b f(x)\,dx\)은
+  \(x=a\)에서 \(x=b\)까지 \(y = f(x)\) 곡선 아래의 면적과 같습니다.
+\item
+  \(f(x)\)이 \(x\)축 아래로 떨어지면 적분은 부호 있는 면적을 계산합니다.
+  축 아래의 영역은 음수로 계산됩니다.
+\end{itemize}
+
+\subsubsection{유한적분의
+속성}\label{uxc720uxd55cuxc801uxbd84uxc758-uxc18duxc131}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  간격에 따른 가산성
+\end{enumerate}
+
+\[
+\int_a^c f(x)\,dx = \int_a^b f(x)\,dx + \int_b^c f(x)\,dx.
+\]
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  반전 한도
+\end{enumerate}
+
+\[
+\int_a^b f(x)\,dx = -\int_b^a f(x)\,dx.
+\]
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{2}
+\tightlist
+\item
+  폭이 0인 간격
+\end{enumerate}
+
+\[
+\int_a^a f(x)\,dx = 0.
+\]
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{3}
+\tightlist
+\item
+  선형성
+\end{enumerate}
+
+\[
+\int_a^b \big( cf(x) + g(x)\big)\,dx = c\int_a^b f(x)\,dx + \int_a^b g(x)\,dx.
+\]
+
+\subsubsection{예}\label{uxc608-8}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  \(\int_0^2 x\,dx = \left[\tfrac{1}{2}x^2\right]_0^2 = 2.\) 이는
+  \(y=x\) 선 아래 직각삼각형의 면적입니다.
+\item
+  \(\int_{-1}^1 x^3\,dx = 0.\) 홀수 함수 \(x^3\)에는 취소되는 대칭
+  영역이 있습니다.
+\item
+  \(\int_0^\pi \sin x\,dx = 2.\) 이는 사인 곡선의 한 아치 아래 면적과
+  같습니다.
+\end{enumerate}
+
+\subsubsection{이것이 중요한
+이유}\label{uxc774uxac83uxc774-uxc911uxc694uxd55c-uxc774uxc720-2}
+
+\begin{itemize}
+\tightlist
+\item
+  정적분은 거리, 질량, 에너지, 확률 등 누적량을 측정합니다.- 대수적
+  계산과 기하학적 직관을 연결합니다.
+\item
+  다음 단계는 정적분과 역도함수를 연결하는 미적분학의 기본 정리입니다.
+\end{itemize}
+
+\subsubsection{연습}\label{uxc5f0uxc2b5-14}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \(\int_0^3 (2x+1)\,dx\)을 계산합니다.
+\item
+  \(y = x^2\)과 \(x\) 축 사이의 영역을 \(x = 0\)에서 \(x = 2\)까지
+  찾습니다.
+\item
+  \(\int_{-2}^2 (x^2 - 1)\,dx\)을 평가합니다.
+\item
+  \(f(x)\)이 홀수이면 \(\int_{-a}^a f(x)\,dx = 0\)을 표시합니다.
+\item
+  \(n=4\) 하위 간격 및 오른쪽 끝점을 사용하여 Riemann 합계를 사용하여
+  \(\int_0^1 e^x\,dx\)을 대략적으로 계산합니다.
+\end{enumerate}
+
+\subsection{4.3 미적분학의 기본
+정리}\label{uxbbf8uxc801uxbd84uxd559uxc758-uxae30uxbcf8-uxc815uxb9ac}
+
+미적분학의 기본 정리(FTC)는 미적분학의 두 가지 주요 개념인 미분과 적분을
+통합합니다. 면적을 찾는 것과 변화율을 찾는 것이 동전의 양면임을
+보여줍니다.
+
+\subsubsection{1부: 적분의
+미분}\label{uxbd80-uxc801uxbd84uxc758-uxbbf8uxbd84}
+
+\(f\)이 \([a, b]\)에서 연속적인 경우 정의합니다.
+
+\[
+F(x) = \int_a^x f(t)\,dt.
+\]
+
+그러면 \(F\)은 미분 가능하며
+
+\[
+F'(x) = f(x).
+\]
+
+즉, 누적 면적 함수의 미분은 원래 함수 자체입니다.
+
+\subsubsection{2부: 정적분
+평가}\label{uxbd80-uxc815uxc801uxbd84-uxd3c9uxac00}
+
+\(f\)이 \([a, b]\)에서 연속이고 \(F\)이 \(f\)의 역도함수인 경우
+
+\[
+\int_a^b f(x)\,dx = F(b) - F(a).
+\]
+
+이는 리만 합의 극한을 계산하는 것이 아니라 단순히 역도함수를 찾는
+것만으로 정적분을 평가할 수 있음을 알려줍니다.
+
+\subsubsection{예}\label{uxc608-9}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  \(\int_0^2 x^2\,dx\).
+
+  \begin{itemize}
+  \tightlist
+  \item
+    역파생: \(F(x) = \tfrac{1}{3}x^3\).
+  \item
+    FTC 적용: \(F(2) - F(0) = \tfrac{8}{3} - 0 = \tfrac{8}{3}.\)
+  \end{itemize}
+\item
+  \(F(x) = \int_1^x \cos t \, dt\)이면 \(F'(x) = \cos x\)입니다.
+\item
+  \(\int_1^4 \frac{1}{x}\,dx\).
+
+  \begin{itemize}
+  \tightlist
+  \item
+    역파생: \(\ln|x|\).
+  \item
+    FTC 적용: \(\ln 4 - \ln 1 = \ln 4.\)
+  \end{itemize}
+\end{enumerate}
+
+\subsubsection{FTC가 중요한
+이유}\label{ftcuxac00-uxc911uxc694uxd55c-uxc774uxc720}
+
+\begin{itemize}
+\tightlist
+\item
+  적분을 극한 과정에서 실제 계산으로 전환합니다.- 미분과 통합이
+  역작용임을 확인한다.
+\item
+  수학, 과학, 공학에서 미적분학을 유용하게 만드는 중심 정리입니다.
+\end{itemize}
+
+\subsubsection{연습}\label{uxc5f0uxc2b5-15}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  FTC를 사용하여 \(\int_0^3 (2x+1)\,dx\)을 평가합니다.
+\item
+  \(F(x) = \int_0^x e^t\,dt\)인 경우 \(F'(x)\)을 찾으세요.
+\item
+  \(\int_0^\pi \sin x \, dx\)을 계산합니다.
+\item
+  \(f'(x) = g(x)\)이면 \(\int_a^b g(x)\,dx = f(b) - f(a)\)임을
+  보여주세요.
+\item
+  FTC를 통해 \(y = \cos x\) 아래의 영역이 \(0\)에서 \(\pi/2\)까지 1인
+  이유를 설명하세요.
+\end{enumerate}
+
+\subsection{4.4 적분의 속성}\label{uxc801uxbd84uxc758-uxc18duxc131}
+
+정적분에는 응용 분야에서 유연하고 강력하게 만드는 몇 가지 중요한 속성이
+있습니다. 이러한 속성은 합의 극한에 대한 정의와 미적분학의 기본 정리를
+따릅니다.
+
+\subsubsection{선형성}\label{uxc120uxd615uxc131}
+
+함수 \(f(x)\) 및 \(g(x)\) 및 상수 \(c, d\)의 경우:
+
+\[
+\int_a^b \big(c f(x) + d g(x)\big)\,dx = c \int_a^b f(x)\,dx + d \int_a^b g(x)\,dx.
+\]
+
+이를 통해 복잡한 적분을 간단한 부분으로 나눌 수 있습니다.
+
+\subsubsection{간격에 따른
+가산성}\label{uxac04uxaca9uxc5d0-uxb530uxb978-uxac00uxc0b0uxc131}
+
+\(a < c < b\)인 경우
+
+\[
+\int_a^b f(x)\,dx = \int_a^c f(x)\,dx + \int_c^b f(x)\,dx.
+\]
+
+우리는 적분을 하나씩 계산할 수 있습니다.
+
+\subsubsection{한도 역전}\label{uxd55cuxb3c4-uxc5eduxc804}
+
+\[
+\int_a^b f(x)\,dx = -\int_b^a f(x)\,dx.
+\]
+
+경계를 바꾸면 적분의 부호가 변경됩니다.
+
+\subsubsection{비교 속성}\label{uxbe44uxad50-uxc18duxc131}
+
+\([a, b]\)의 모든 \(x\)에 대해 \(f(x) \leq g(x)\)인 경우
+
+\[
+\int_a^b f(x)\,dx \leq \int_a^b g(x)\,dx.
+\]
+
+이를 통해 직접 계산하지 않고도 면적을 비교할 수 있습니다.
+
+\subsubsection{절대가치
+불평등}\label{uxc808uxb300uxac00uxce58-uxbd88uxd3c9uxb4f1}
+
+\[
+\left| \int_a^b f(x)\,dx \right| \leq \int_a^b |f(x)|\,dx.
+\]
+
+이 속성은 분석 및 수렴 테스트에 필수적입니다.
+
+\subsubsection{대칭}\label{uxb300uxce6d}
+
+\begin{itemize}
+\item
+  \(f(x)\)이 짝수인 경우(\(y\)축에 대해 대칭):
+
+  \[
+  \int_{-a}^a f(x)\,dx = 2\int_0^a f(x)\,dx.
+  \]
+\item
+  \(f(x)\)이 홀수인 경우(원점에 대해 대칭):
+
+  \[
+  \int_{-a}^a f(x)\,dx = 0.
+  \]\#\#\# 예
+\end{itemize}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  \(\int_0^2 (3x^2 + 4)\,dx = \int_0^2 3x^2\,dx + \int_0^2 4\,dx = 8 + 8 = 16.\)
+\item
+  \(f(x) = x^3\)은 홀수이므로 \(\int_{-1}^1 x^3\,dx = 0.\)
+\item
+  \(f(x) = x^2\)은 짝수이므로
+  \(\int_{-2}^2 x^2\,dx = 2\int_0^2 x^2\,dx = 2\cdot \tfrac{8}{3} = \tfrac{16}{3}.\)
+\end{enumerate}
+
+\subsubsection{이러한 속성이 중요한
+이유}\label{uxc774uxb7ecuxd55c-uxc18duxc131uxc774-uxc911uxc694uxd55c-uxc774uxc720}
+
+\begin{itemize}
+\tightlist
+\item
+  계산을 단순화합니다.
+\item
+  함수의 기하학적, 대칭적 특징을 드러냅니다.
+\item
+  보다 고급 분석을 위한 이론적 도구를 제공합니다.
+\end{itemize}
+
+\subsubsection{연습}\label{uxc5f0uxc2b5-16}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  대칭을 사용하여 \(\int_{-5}^5 (x^4 - x^3)\,dx\)을 평가합니다.
+\item
+  \(\int_1^4 (2x+3)\,dx = \int_1^2 (2x+3)\,dx + \int_2^4 (2x+3)\,dx\)을
+  보여주세요.
+\item
+  \(\int_0^\pi \sin(x)\,dx\)을 평가하고
+  \(\int_{-\pi}^\pi \sin(x)\,dx\)과 비교합니다.
+\item
+  \([a, b]\)에 \(f(x) \geq 0\)이 있으면 \(\int_a^b f(x)\,dx \geq 0\)임을
+  증명하세요.
+\item
+  짝수/홀수 속성을 사용하여 \(\int_{-3}^3 (x^2 + 1)\,dx\)을 계산합니다.
+\end{enumerate}
+
+\section{5장. 통합 기법}\label{uxc7a5.-uxd1b5uxd569-uxae30uxbc95}
+
+\subsection{5.1 대체}\label{uxb300uxccb4}
+
+가장 유용한 통합 기술 중 하나는 -u-substitution-이라고도 하는 대체
+방법입니다. 이는 파생상품에 대한 연쇄법칙의 역과정입니다.
+
+\subsubsection{아이디어}\label{uxc544uxc774uxb514uxc5b4-1}
+
+적분이 복합 함수를 포함하는 경우 변수를 변경하여 이를 단순화할 수
+있습니다.
+
+공식적으로 \(u = g(x)\)이 미분 가능 함수인 경우
+
+\[
+\int f(g(x)) g'(x)\,dx = \int f(u)\,du.
+\]
+
+이 대체를 사용하면 적분을 더 쉽게 평가할 수 있습니다.
+
+\subsubsection{대체 단계}\label{uxb300uxccb4-uxb2e8uxacc4}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  미분도 피적분 함수에 나타나는 내부 함수 \(u = g(x)\)을 식별합니다.
+\item
+  \(du = g'(x)\,dx\)을 계산합니다.
+\item
+  \(u\)의 관점에서 적분을 다시 작성합니다.
+\item
+  \(u\)과 관련하여 통합합니다.
+\item
+  \(u = g(x)\)을(를) 다시 대체하세요.
+\end{enumerate}
+
+\subsubsection{예}\label{uxc608-10}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  단순 대체
+
+  \[
+  \int 2x \cos(x^2)\,dx
+  \]
+
+  \(u = x^2\)이므로 \(du = 2x\,dx\)이 됩니다. 그러면 적분은
+  \(\int \cos u \,du = \sin u + C = \sin(x^2) + C\)이 됩니다.
+\item
+  대수적 사례
+
+  \[\int \frac{2x}{x^2+1}\,dx
+  \]
+
+  Let \(u = x^2 + 1\), so \(du = 2x\,dx\). Then integral becomes
+  \(\int \frac{1}{u}\,du = \ln|u| + C = \ln(x^2+1) + C\).
+\item
+  Trigonometric substitution
+
+  \[
+  \int \sin(3x)\,dx
+  \]
+
+  Let \(u = 3x\), so \(du = 3\,dx\), hence \(dx = \frac{du}{3}\).
+  Integral becomes
+  \(\tfrac{1}{3}\int \sin u\,du = -\tfrac{1}{3}\cos u + C = -\tfrac{1}{3}\cos(3x) + C\).
+\end{enumerate}
+
+\subsubsection{Definite Integrals with
+Substitution}\label{definite-integrals-with-substitution}
+
+When evaluating definite integrals, we must also change the limits:
+
+\[
+\int_a^b f(g(x)) g'(x)\,dx = \int_{g(a)}^{g(b)} f(u)\,du.
+\]
+
+Example:
+
+\[
+\int_0^1 2x e^{x^2}\,dx.
+\]
+
+Let \(u = x^2\), \(du = 2x\,dx\). Limits: when \(x=0, u=0\); when
+\(x=1, u=1\). So the integral becomes
+
+\[
+\int_0^1 e^u\,du = e - 1.
+\]
+
+\subsubsection{Exercises}\label{exercises-1}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Evaluate \(\int (x^2+1)^5 (2x)\,dx\).
+\item
+  Compute \(\int \frac{\cos x}{\sin x}\,dx\).
+\item
+  Evaluate \(\int_0^\pi \sin(2x)\,dx\) using substitution.
+\item
+  Find \(\int e^{3x}\,dx\).
+\item
+  Compute \(\int \frac{1}{\sqrt{1+x^2}}\,dx\) by letting \(u = 1+x^2\).
+\end{enumerate}
+
+\subsection{5.2 Integration by Parts}\label{integration-by-parts}
+
+Integration by parts is a technique that comes from the product rule for
+derivatives. It helps evaluate integrals involving products of functions
+that are not easily handled by substitution alone.
+
+\subsubsection{The Formula}\label{the-formula}
+
+From the product rule:
+
+\[
+\frac{d}{dx}[u(x)v(x)] = u'(x)v(x) + u(x)v'(x).
+\]
+
+Integrating both sides gives the integration by parts formula:
+
+\[
+\int u\,dv = uv - \int v\,du.
+\]
+
+Here:
+
+\begin{itemize}
+\tightlist
+\item
+  \(u\) = a function chosen to be differentiated,
+\item
+  \(dv\) = the remaining part of the integrand to be integrated.
+\end{itemize}
+
+\subsubsection{\texorpdfstring{Choosing \(u\) and
+\(dv\)}{Choosing u and dv}}\label{choosing-u-and-dv}
+
+A common guideline is LIATE (Logarithmic, Inverse trig, Algebraic,
+Trigonometric, Exponential).
+
+\begin{itemize}
+\tightlist
+\item
+  Choose \(u\) from the earliest category present.
+\item
+  Choose \(dv\) as the rest.
+\end{itemize}
+
+\subsubsection{Examples}\label{examples-1}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Polynomial × Exponential
+\end{enumerate}
+
+\[
+\int x e^x\,dx
+\]\(u = x\), \(dv = e^x dx\)로 설정하세요. 그런 다음 \(du = dx\),
+\(v = e^x\)입니다.
+
+\[
+\int x e^x\,dx = x e^x - \int e^x dx = x e^x - e^x + C.
+\]
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  다항식 × 삼각법
+\end{enumerate}
+
+\[
+\int x \cos x\,dx
+\]
+
+\(u = x\), \(dv = \cos x dx\)로 설정하세요. 그런 다음 \(du = dx\),
+\(v = \sin x\)입니다.
+
+\[
+\int x \cos x\,dx = x \sin x - \int \sin x dx = x \sin x + \cos x + C.
+\]
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{2}
+\tightlist
+\item
+  로그
+\end{enumerate}
+
+\[
+\int \ln x\,dx
+\]
+
+\(u = \ln x\), \(dv = dx\)로 설정하세요. 그런 다음
+\(du = \frac{1}{x}dx\), \(v = x\)입니다.
+
+\[
+\int \ln x\,dx = x \ln x - \int 1 dx = x \ln x - x + C.
+\]
+
+\subsubsection{명확한 적분
+예}\label{uxba85uxd655uxd55c-uxc801uxbd84-uxc608}
+
+\[
+\int_0^1 x e^x\,dx
+\]
+
+이전 결과 사용: \(\int x e^x dx = (x-1)e^x\). 평가:
+
+\[
+\big[(x-1)e^x\big]_0^1 = (0)e^1 - (-1)e^0 = 0 + 1 = 1.
+\]
+
+\subsubsection{이것이 중요한
+이유}\label{uxc774uxac83uxc774-uxc911uxc694uxd55c-uxc774uxc720-3}
+
+특히 대수, 역삼각함수 및 지수나 삼각 함수가 포함된 다항식을 포함하는
+곱의 경우 치환이 실패하는 경우 부분별 통합이 중요합니다.
+
+\subsubsection{연습}\label{uxc5f0uxc2b5-17}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \(\int x \sin x\,dx\)을 평가합니다.
+\item
+  \(\int e^x \cos x\,dx\)을 찾으세요.
+\item
+  \(\int_1^2 \ln x\,dx\)을 계산합니다.
+\item
+  \(\int x^2 e^x\,dx\)을 평가합니다.
+\item
+  부분별 통합을 사용하여
+  \(\int \arctan x\,dx = x\arctan x - \tfrac{1}{2}\ln(1+x^2) + C\)을
+  표시합니다.
+\end{enumerate}
+
+\subsection{5.3 삼각함수 적분과
+대입}\label{uxc0bcuxac01uxd568uxc218-uxc801uxbd84uxacfc-uxb300uxc785}
+
+많은 적분에는 삼각 함수가 포함됩니다. 이는 종종 ID를 사용하거나 특별한
+대체를 수행하여 단순화할 수 있습니다.
+
+\subsubsection{삼각 적분}\label{uxc0bcuxac01-uxc801uxbd84}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  사인과 코사인의 거듭제곱
+\end{enumerate}
+
+\begin{itemize}
+\tightlist
+\item
+  사인의 거듭제곱이 홀수인 경우: 하나의 \(\sin x\)을 저장하고 나머지는
+  \(\sin^2x = 1 - \cos^2x\)로 변환한 후 \(u = \cos x\)로 대체합니다.
+\item
+  코사인의 거듭제곱이 홀수인 경우: 하나의 \(\cos x\)을 저장하고 나머지는
+  \(\cos^2x = 1 - \sin^2x\)로 변환하고 \(u = \sin x\)을 대체합니다.
+\item
+  둘 다 짝수인 경우: 반각 항등식을 사용합니다.
+\end{itemize}
+
+예:
+
+\[
+\int \sin^3x \cos x \, dx
+\]
+
+\(u = \sin x\), \(du = \cos x\,dx\)을 다음과 같이 설정하세요.
+
+\[
+\int u^3\,du = \tfrac{u^4}{4} + C = \tfrac{\sin^4x}{4} + C.\]
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  Products of sine and cosine with different angles Use product-to-sum
+  formulas:
+\end{enumerate}
+
+\[
+\sin A \cos B = \tfrac{1}{2}[\sin(A+B) + \sin(A-B)].
+\]
+
+Example:
+
+\[
+\int \sin(2x)\cos(3x)\,dx = \tfrac{1}{2}\int [\sin(5x) - \sin(x)]\,dx.
+\]
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{2}
+\tightlist
+\item
+  Powers of secant and tangent
+\end{enumerate}
+
+\begin{itemize}
+\tightlist
+\item
+  If the power of secant is even: save \(\sec^2x\), convert the rest
+  with \(\sec^2x = 1 + \tan^2x\), and substitute \(u = \tan x\).
+\item
+  If the power of tangent is odd: save \(\sec^2x\), convert the rest
+  with \(\tan^2x = \sec^2x - 1\), and substitute \(u = \tan x\).
+\end{itemize}
+
+Example:
+
+\[
+\int \tan^3x \sec^2x \, dx
+\]
+
+Let \(u = \tan x\), \(du = \sec^2x\,dx\):
+
+\[
+\int u^3\,du = \tfrac{u^4}{4} + C = \tfrac{\tan^4x}{4} + C.
+\]
+
+\subsubsection{Trigonometric
+Substitutions}\label{trigonometric-substitutions}
+
+For integrals involving \(\sqrt{a^2 - x^2}\), \(\sqrt{a^2 + x^2}\), or
+\(\sqrt{x^2 - a^2}\), use special substitutions:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \(x = a \sin \theta\), for \(\sqrt{a^2 - x^2}\).
+\item
+  \(x = a \tan \theta\), for \(\sqrt{a^2 + x^2}\).
+\item
+  \(x = a \sec \theta\), for \(\sqrt{x^2 - a^2}\).
+\end{enumerate}
+
+Example:
+
+\[
+\int \sqrt{a^2 - x^2}\,dx
+\]
+
+Let \(x = a\sin\theta\), so \(dx = a\cos\theta\,d\theta\):
+
+\[
+\int \sqrt{a^2 - a^2\sin^2\theta}(a\cos\theta\,d\theta) = \int a^2 \cos^2\theta \, d\theta.
+\]
+
+반각 항등식을 사용하여 단순화합니다.
+
+\subsubsection{이러한 기술이 중요한
+이유}\label{uxc774uxb7ecuxd55c-uxae30uxc220uxc774-uxc911uxc694uxd55c-uxc774uxc720}
+
+\begin{itemize}
+\tightlist
+\item
+  어려운 대수학 형태를 다루기 쉬운 삼각법 형태로 변환합니다.
+\item
+  면적, 부피, 호 길이와 관련된 문제에 특히 유용합니다.
+\item
+  고급 통합 방법의 기반을 마련합니다.
+\end{itemize}
+
+\subsubsection{연습}\label{uxc5f0uxc2b5-18}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \(\int \sin^4x \cos^2x \, dx\)을 평가합니다.
+\item
+  \(\int \sin(5x)\cos(2x)\,dx\)을 계산합니다.
+\item
+  \(\int \tan^2x \sec^2x \, dx\)을 평가합니다.
+\item
+  대체를 사용하여 \(\int \sqrt{9 - x^2}\,dx\)을 찾습니다.
+\item
+  \(x = a\tan\theta\)을 사용하여
+  \(\int \frac{dx}{\sqrt{x^2 + a^2}} = \ln|x + \sqrt{x^2 + a^2}| + C\)을
+  표시합니다.
+\end{enumerate}
+
+\subsection{5.4 부분 분수유리 함수(다항식의 비율)를 통합할 때 강력한
+방법 중 하나는 부분 분수 분해입니다. 이 기술은 복잡한 분수를 적분하기 더
+쉬운 간단한 분수의 합으로
+표현합니다.}\label{uxbd80uxbd84-uxbd84uxc218uxc720uxb9ac-uxd568uxc218uxb2e4uxd56duxc2dduxc758-uxbe44uxc728uxb97c-uxd1b5uxd569uxd560-uxb54c-uxac15uxb825uxd55c-uxbc29uxbc95-uxc911-uxd558uxb098uxb294-uxbd80uxbd84-uxbd84uxc218-uxbd84uxd574uxc785uxb2c8uxb2e4.-uxc774-uxae30uxc220uxc740-uxbcf5uxc7a1uxd55c-uxbd84uxc218uxb97c-uxc801uxbd84uxd558uxae30-uxb354-uxc26cuxc6b4-uxac04uxb2e8uxd55c-uxbd84uxc218uxc758-uxd569uxc73cuxb85c-uxd45cuxd604uxd569uxb2c8uxb2e4.}
+
+\subsubsection{아이디어}\label{uxc544uxc774uxb514uxc5b4-2}
+
+\(R(x) = \frac{P(x)}{Q(x)}\)이 \(P(x)\)의 차수가 \(Q(x)\)의 차수보다
+작은 유리 함수인 경우 \(R(x)\)을 더 간단한 분수로 분해할 수 있습니다.
+
+이러한 단순한 부분은 분모 \(Q(x)\)의 요소에 해당합니다.
+
+\subsubsection{일반 양식}\label{uxc77cuxbc18-uxc591uxc2dd}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  뚜렷한 선형 요인 만약에
+\end{enumerate}
+
+\[
+\frac{1}{(x-a)(x-b)},
+\]
+
+그런 다음 다음과 같이 분해됩니다.
+
+\[
+\frac{A}{x-a} + \frac{B}{x-b}.
+\]
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  반복되는 선형 요인 분모에 \((x-a)^n\)이 있으면 용어는 다음과 같습니다.
+\end{enumerate}
+
+\[
+\frac{A_1}{x-a} + \frac{A_2}{(x-a)^2} + \dots + \frac{A_n}{(x-a)^n}.
+\]
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{2}
+\tightlist
+\item
+  기약 2차 인수 분모에 \((x^2+bx+c)\)이 있으면 분자는 선형입니다.
+\end{enumerate}
+
+\[
+\frac{Ax+B}{x^2+bx+c}.
+\]
+
+\subsubsection{예 1: 고유 선형
+요인}\label{uxc608-1-uxace0uxc720-uxc120uxd615-uxc694uxc778}
+
+\[
+\int \frac{1}{x^2 - 1}\,dx
+\]
+
+요소 분모: \((x-1)(x+1)\). 분해:
+
+\[
+\frac{1}{x^2-1} = \frac{1}{2}\left(\frac{1}{x-1} - \frac{1}{x+1}\right).
+\]
+
+통합:
+
+\[
+\int \frac{1}{x^2 - 1}\,dx = \tfrac{1}{2}\ln\left|\frac{x-1}{x+1}\right| + C.
+\]
+
+\subsubsection{예 2: 반복 선형
+요인}\label{uxc608-2-uxbc18uxbcf5-uxc120uxd615-uxc694uxc778}
+
+\[
+\int \frac{1}{(x-1)^2}\,dx
+\]
+
+이것은 이미 간단합니다:
+
+\[
+\int (x-1)^{-2}\,dx = -\frac{1}{x-1} + C.
+\]
+
+\subsubsection{예 3: 기약 2차
+인수}\label{uxc608-3-uxae30uxc57d-2uxcc28-uxc778uxc218}
+
+\[
+\int \frac{x}{x^2+1}\,dx
+\]
+
+\(u = x^2+1\)을 대체하거나 분자가 분모에서 파생된 것임을 인식합니다.
+
+\[
+\int \frac{x}{x^2+1}\,dx = \tfrac{1}{2}\ln(x^2+1) + C.
+\]
+
+\subsubsection{부분 분수 분해의
+단계}\label{uxbd80uxbd84-uxbd84uxc218-uxbd84uxd574uxc758-uxb2e8uxacc4}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  분모를 인수분해합니다.
+\item
+  일반적인 부분 분수 형식을 작성합니다.
+\item
+  분모를 곱하여 분수를 정리합니다.
+\item
+  알려지지 않은 상수를 푼다.
+\item
+  각 항을 통합합니다.\#\#\# 이것이 중요한 이유
+\end{enumerate}
+
+\begin{itemize}
+\tightlist
+\item
+  복잡한 유리 함수를 간단한 로그 또는 아크탄젠트 형태로 변환합니다.
+\item
+  미분 방정식과 라플라스 변환에 특히 유용합니다.
+\item
+  고급 미적분학 및 공학의 기초입니다.
+\end{itemize}
+
+\subsubsection{연습}\label{uxc5f0uxc2b5-19}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \(\int \frac{3x+5}{x^2-1}\,dx\)을 분해하고 통합합니다.
+\item
+  \(\int \frac{1}{x^2(x+1)}\,dx\)을 평가합니다.
+\item
+  \(\int \frac{2x+1}{x^2+2x+2}\,dx\)을 계산합니다.
+\item
+  \(\int \frac{1}{x^3 - x}\,dx\)을 찾으세요.
+\item
+  부분 분수 또는 대입을 사용하여
+  \(\int \frac{dx}{x^2+1} = \arctan x + C\)을 보여줍니다.
+\end{enumerate}
+
+\subsection{5.5 부적절한
+적분}\label{uxbd80uxc801uxc808uxd55c-uxc801uxbd84}
+
+일부 적분은 구간이 무한하거나 피적분 함수가 무한해지기 때문에 직접
+계산할 수 없습니다. 이를 부적절한 적분이라고 합니다. 이는 한계를
+사용하여 정의됩니다.
+
+\subsubsection{정의}\label{uxc815uxc758-6}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  무한 간격
+\end{enumerate}
+
+\[
+\int_a^\infty f(x)\,dx = \lim_{b \to \infty} \int_a^b f(x)\,dx.
+\]
+
+\[
+\int_{-\infty}^a f(x)\,dx = \lim_{b \to -\infty} \int_b^a f(x)\,dx.
+\]
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  무한한 피적분함수 \(f(x)\)이 \(c\)에 수직 점근선을 갖는다면,
+\end{enumerate}
+
+\[
+\int_a^c f(x)\,dx = \lim_{t \to c^-} \int_a^t f(x)\,dx,
+\]
+
+\[
+\int_c^b f(x)\,dx = \lim_{t \to c^+} \int_t^b f(x)\,dx.
+\]
+
+\subsubsection{융합과 발산}\label{uxc735uxd569uxacfc-uxbc1cuxc0b0}
+
+\begin{itemize}
+\tightlist
+\item
+  극한이 존재하고 유한한 경우, 부적절한 적분은 수렴합니다.
+\item
+  극한이 존재하지 않거나 무한대이면 가적분은 발산합니다.
+\end{itemize}
+
+\subsubsection{예}\label{uxc608-11}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  지수적 붕괴
+\end{enumerate}
+
+\[
+\int_1^\infty \frac{1}{x^2}\,dx = \lim_{b \to \infty} \Big[-\tfrac{1}{x}\Big]_1^b = 1.
+\]
+
+이것은 수렴됩니다.
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  고조파 기능
+\end{enumerate}
+
+\[
+\int_1^\infty \frac{1}{x}\,dx = \lim_{b \to \infty} \ln b.
+\]
+
+이는 무한대로 발산됩니다.
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{2}
+\tightlist
+\item
+  0에서의 점근선
+\end{enumerate}
+
+\[
+\int_0^1 \frac{1}{\sqrt{x}}\,dx = \lim_{t \to 0^+} \int_t^1 x^{-1/2}\,dx.
+\]
+
+\[
+= \lim_{t \to 0^+} [2\sqrt{x}]_t^1 = 2.
+\]
+
+이것은 수렴됩니다.
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{3}
+\tightlist
+\item
+  0에서의 점근선(발산)
+\end{enumerate}
+
+\[\int_0^1 \frac{1}{x}\,dx = \lim_{t \to 0^+} \ln(1) - \ln(t).
+\]
+
+This diverges since \(\ln(t) \to -\infty\).
+
+\subsubsection{Comparison Test for Improper
+Integrals}\label{comparison-test-for-improper-integrals}
+
+\begin{itemize}
+\tightlist
+\item
+  If \(0 \leq f(x) \leq g(x)\) for large \(x\), and \(\int g(x)\,dx\)
+  converges, then \(\int f(x)\,dx\) also converges.
+\item
+  If \(\int f(x)\,dx\) diverges and \(f(x) \geq g(x) \geq 0\), then
+  \(\int g(x)\,dx\) also diverges.
+\end{itemize}
+
+\subsubsection{Why Improper Integrals
+Matter}\label{why-improper-integrals-matter}
+
+\begin{itemize}
+\tightlist
+\item
+  They extend integration to infinite domains and unbounded functions.
+\item
+  They are essential in probability (continuous distributions), physics
+  (gravitational/electric fields), and Fourier analysis.
+\end{itemize}
+
+\subsubsection{Exercises}\label{exercises-2}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Determine whether \(\int_1^\infty \frac{1}{x^p}\,dx\) converges for
+  various values of \(p\).
+\item
+  Evaluate \(\int_0^\infty e^{-x}\,dx\).
+\item
+  Test convergence of \(\int_0^1 \frac{1}{x^p}\,dx\) depending on \(p\).
+\item
+  Compute \(\int_{-\infty}^\infty \frac{1}{1+x^2}\,dx\).
+\item
+  Use the comparison test to show that
+  \(\int_1^\infty \frac{1}{x^2+1}\,dx\) converges.
+\end{enumerate}
+
+\section{Chapter 6. Applications of
+Integration}\label{chapter-6.-applications-of-integration}
+
+\subsection{6.1 Areas and Volumes}\label{areas-and-volumes}
+
+One of the most important applications of integration is finding areas
+under curves and volumes of solids.
+
+\subsubsection{Area Between Curves}\label{area-between-curves}
+
+If \(f(x) \geq g(x)\) on \([a, b]\), then the area between the curves
+\(y=f(x)\) and \(y=g(x)\) is
+
+\[
+A = \int_a^b \big(f(x) - g(x)\big)\,dx.
+\]
+
+Example: Find the area between \(y=x^2\) and \(y=x\) on \([0,1]\).
+
+\[
+A = \int_0^1 (x - x^2)\,dx = \left[\tfrac{1}{2}x^2 - \tfrac{1}{3}x^3\right]_0^1 = \tfrac{1}{6}.
+\]
+
+\subsubsection{Volumes by Slicing}\label{volumes-by-slicing}
+
+If a solid has cross-sectional area \(A(x)\) at position \(x\), then the
+volume is
+
+\[
+V = \int_a^b A(x)\,dx.
+\]
+
+\subsubsection{혁명의 양}\label{uxd601uxba85uxc758-uxc591}
+
+영역이 축을 중심으로 회전하면 결과로 생성되는 솔리드의 부피를 적분하여
+찾을 수 있습니다.
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  디스크 방식\(y=f(x)\) 아래의 영역인 \(x\in[a,b]\)이 \(x\) 축을
+  중심으로 회전하는 경우:
+\end{enumerate}
+
+\[
+V = \pi \int_a^b [f(x)]^2\,dx.
+\]
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  세탁기 방식 \(y=f(x)\)과 \(y=g(x)\) 사이의 영역이 \(x\) 축을 중심으로
+  회전하는 경우:
+\end{enumerate}
+
+\[
+V = \pi \int_a^b \Big([f(x)]^2 - [g(x)]^2\Big)\,dx.
+\]
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{2}
+\tightlist
+\item
+  쉘 방식 \(y=f(x)\) 아래의 영역이 \(y\) 축을 중심으로 회전하는 경우:
+\end{enumerate}
+
+\[
+V = 2\pi \int_a^b x f(x)\,dx.
+\]
+
+\subsubsection{예}\label{uxc608-12}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  디스크 방식 \(x\)축을 중심으로 \(y=\sqrt{x}\), \(0 \leq x \leq 4\)을
+  회전합니다.
+\end{enumerate}
+
+\[
+V = \pi \int_0^4 (\sqrt{x})^2\,dx = \pi \int_0^4 x\,dx = \pi \left[\tfrac{1}{2}x^2\right]_0^4 = 8\pi.
+\]
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  세탁기 방식 \(x\)축을 중심으로 \(y=\sqrt{x}\)과 \(y=1\),
+  \(0 \leq x \leq 1\) 사이의 영역을 회전합니다.
+\end{enumerate}
+
+\[
+V = \pi \int_0^1 \big((\sqrt{x})^2 - (1)^2\big)\,dx = \pi \int_0^1 (x-1)\,dx = -\tfrac{\pi}{2}.
+\]
+
+(볼륨의 절대값을 취합니다: \(V = \tfrac{\pi}{2}\)).
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{2}
+\tightlist
+\item
+  쉘 방식 \(y\)축을 기준으로 \(y=x\), \(0 \leq x \leq 1\) 아래 영역을
+  회전합니다.
+\end{enumerate}
+
+\[
+V = 2\pi \int_0^1 x(x)\,dx = 2\pi \int_0^1 x^2\,dx = 2\pi \cdot \tfrac{1}{3} = \tfrac{2\pi}{3}.
+\]
+
+\subsubsection{이것이 중요한
+이유}\label{uxc774uxac83uxc774-uxc911uxc694uxd55c-uxc774uxc720-4}
+
+\begin{itemize}
+\tightlist
+\item
+  기하학의 면적과 부피를 계산하는 정확한 방법을 제공합니다.
+\item
+  물리학, 공학, 확률에 필수적입니다.
+\item
+  통합을 통한 기하학적 사고를 소개합니다.
+\end{itemize}
+
+\subsubsection{연습}\label{uxc5f0uxc2b5-20}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \([0, \pi/2]\)에서 \(y=\cos x\)과 \(y=\sin x\) 사이의 영역을 찾으세요.
+\item
+  \(x\)축을 중심으로 \(y=x^2\), \(0 \leq x \leq 1\)을 회전시켜 형성된
+  고체의 부피를 계산합니다.
+\item
+  \(y\)축을 중심으로 \([0,1]\)의 \(y=x\)과 \(y=\sqrt{x}\) 사이의 영역을
+  회전하여 형성된 고체의 부피를 찾습니다.
+\item
+  와셔 방법을 사용하여 \(x\) 축을 중심으로 \(y=\sqrt{1-x^2}\)(반원)을
+  회전시켜 형성된 고체의 부피를 계산합니다.
+\item
+  \(y=x^2+1\)과 \(y=3x\) 사이에 둘러싸인 영역을 찾으세요.
+\end{enumerate}
+
+\subsection{6.2 호 길이와 표면적통합은 곡선의 길이와 회전 곡선에 의해
+생성된 고체의 표면적을 측정하는 데에도 사용할 수
+있습니다.}\label{uxd638-uxae38uxc774uxc640-uxd45cuxba74uxc801uxd1b5uxd569uxc740-uxace1uxc120uxc758-uxae38uxc774uxc640-uxd68cuxc804-uxace1uxc120uxc5d0-uxc758uxd574-uxc0dduxc131uxb41c-uxace0uxccb4uxc758-uxd45cuxba74uxc801uxc744-uxce21uxc815uxd558uxb294-uxb370uxc5d0uxb3c4-uxc0acuxc6a9uxd560-uxc218-uxc788uxc2b5uxb2c8uxb2e4.}
+
+\subsubsection{호 길이}\label{uxd638-uxae38uxc774}
+
+\([a,b]\) 간격의 매끄러운 곡선 \(y=f(x)\)의 경우 곡선의 길이는 다음과
+같습니다.
+
+\[
+L = \int_a^b \sqrt{1 + \big(f'(x)\big)^2}\,dx.
+\]
+
+이는 선분으로 곡선을 근사하고 극한을 취하는 데서 비롯됩니다.
+
+예: \(x=0\)에서 \(x=4\)까지 \(y=\tfrac{1}{2}x^{3/2}\)의 길이를 찾습니다.
+
+\begin{itemize}
+\tightlist
+\item
+  파생상품: \(f'(x) = \tfrac{3}{4}\sqrt{x}\).
+\item
+  공식:
+\end{itemize}
+
+\[
+L = \int_0^4 \sqrt{1 + \Big(\tfrac{3}{4}\sqrt{x}\Big)^2}\,dx
+= \int_0^4 \sqrt{1 + \tfrac{9}{16}x}\,dx.
+\]
+
+이 적분은 대체를 사용하여 평가할 수 있습니다.
+
+\subsubsection{혁명의
+표면적}\label{uxd601uxba85uxc758-uxd45cuxba74uxc801}
+
+곡선 \(y=f(x)\), \(a \leq x \leq b\)이 \(x\) 축을 중심으로 회전하는 경우
+결과 솔리드의 표면적은 다음과 같습니다.
+
+\[
+S = 2\pi \int_a^b f(x)\sqrt{1 + \big(f'(x)\big)^2}\,dx.
+\]
+
+\(y\)축을 중심으로 회전하는 경우:
+
+\[
+S = 2\pi \int_a^b x \sqrt{1 + \big(f'(x)\big)^2}\,dx.
+\]
+
+\subsubsection{예}\label{uxc608-13}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  선의 호 길이 \(y=x\), \(0 \leq x \leq 3\)의 경우:
+\end{enumerate}
+
+\[
+L = \int_0^3 \sqrt{1+(1)^2}\,dx = \int_0^3 \sqrt{2}\,dx = 3\sqrt{2}.
+\]
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  구의 표면적 \(y = \sqrt{r^2 - x^2}\), \(-r \leq x \leq r\)을 가져와
+  \(x\)축을 중심으로 회전합니다.
+\end{enumerate}
+
+\[
+S = 2\pi \int_{-r}^r \sqrt{r^2 - x^2}\sqrt{1+\left(\frac{-x}{\sqrt{r^2-x^2}}\right)^2}\,dx.
+\]
+
+단순화하면 구의 표면적에 대한 친숙한 공식인 \(S = 4\pi r^2\)이
+제공됩니다.
+
+\subsubsection{이것이 중요한
+이유}\label{uxc774uxac83uxc774-uxc911uxc694uxd55c-uxc774uxc720-5}
+
+\begin{itemize}
+\tightlist
+\item
+  호 길이는 곡선 경로까지의 거리 개념을 확장합니다.
+\item
+  회전면적은 물리학, 공학, 디자인 분야에 응용됩니다.
+\item
+  미적분학과 기하학 사이에 다리를 제공합니다.
+\end{itemize}
+
+\subsubsection{연습}\label{uxc5f0uxc2b5-21}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \(x=0\)에서 \(x=4\)까지 \(y=\sqrt{x}\)의 호 길이를 찾습니다.2.
+  \(x\)축을 중심으로 \(y=x^2\), \(0 \leq x \leq 1\)을 회전시켜 얻은
+  고체의 표면적을 계산합니다.
+\item
+  \(x=0\)에서 \(x=1\)까지 \(y=\ln(\cosh x)\)의 호 길이를 찾습니다.
+\item
+  \(x\) 축을 중심으로 \(y=\sqrt{r^2 - x^2}\)을 \(0\)에서 \(r\)로
+  회전하면 구 표면적이 절반이 된다는 것을 보여줍니다.
+\item
+  선을 회전시켜 원뿔의 표면적 공식을 도출합니다.
+\end{enumerate}
+
+\subsection{6.3 작업 및 평균}\label{uxc791uxc5c5-uxbc0f-uxd3c9uxade0}
+
+통합은 기하학에만 국한되지 않습니다. 또한 힘에 의해 수행된 작업과 간격에
+따른 함수의 평균값을 계산하는 데도 도움이 됩니다.
+
+\subsubsection{일}\label{uxc77c}
+
+변수 힘 \(F(x)\)이 객체를 \(x=a\)에서 \(x=b\)까지 직선을 따라 이동하는
+경우 총 작업량은 다음과 같습니다.
+
+\[
+W = \int_a^b F(x)\,dx.
+\]
+
+이 공식은 일정한 힘에 대한 간단한 사례 \(W = F \cdot d\)을 일반화합니다.
+
+예제 1: 스프링력(훅의 법칙) \(F(x) = kx\) 힘으로 길이 \(a\)에서
+\(b\)까지 늘어난 스프링의 경우:
+
+\[
+W = \int_a^b kx\,dx = \tfrac{1}{2}k(b^2-a^2).
+\]
+
+예 2: 물 펌핑 탱크에서 물을 펌핑하는 경우 필요한 작업은 다음과 같습니다.
+
+\[
+W = \int_a^b \text{(weight density)} \times \text{(cross-sectional area)} \times \text{(distance lifted)} \, dx.
+\]
+
+\subsubsection{함수의
+평균값}\label{uxd568uxc218uxc758-uxd3c9uxade0uxac12}
+
+\([a,b]\)에 대한 연속 함수 \(f(x)\)의 평균값은 다음과 같습니다.
+
+\[
+f_{\text{avg}} = \frac{1}{b-a} \int_a^b f(x)\,dx.
+\]
+
+이것은 숫자 목록의 평균을 구하는 연속적인 아날로그입니다.
+
+예시 1: \([0,2]\)의 \(f(x)=x^2\)의 경우:
+
+\[
+f_{\text{avg}} = \tfrac{1}{2-0}\int_0^2 x^2 dx = \tfrac{1}{2}\cdot \tfrac{8}{3} = \tfrac{4}{3}.
+\]
+
+예시 2: 입자의 속도가 \(v(t)\)인 경우 \([a,b]\)에 대한 평균 속도는
+다음과 같습니다.
+
+\[
+v_{\text{avg}} = \frac{1}{b-a}\int_a^b v(t)\,dt.
+\]
+
+\subsubsection{이것이 중요한
+이유}\label{uxc774uxac83uxc774-uxc911uxc694uxd55c-uxc774uxc720-6}
+
+\begin{itemize}
+\tightlist
+\item
+  작업 적분은 물리학, 공학, 에너지 계산에 나타납니다.- 평균값은 다양한
+  수량에 대한 단일 대표 숫자를 제공합니다.
+\item
+  둘 다 미적분학을 운동, 힘, 효율성의 실제 문제에 연결합니다.
+\end{itemize}
+
+\subsubsection{연습}\label{uxc5f0uxc2b5-22}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \(k=10\)인 경우 용수철을 2m에서 5m로 늘리는 데 필요한 작업을
+  계산합니다.
+\item
+  100kg의 물체가 중력장(\(g=9.8 \,\text{m/s}^2\))에서 수직으로 5m 들어
+  올려졌습니다. 작품을 일체형으로 표현하고 평가한다.
+\item
+  \([0,\pi]\)에서 \(f(x)=\sin x\)의 평균값을 찾습니다.
+\item
+  하루 24시간 동안 \(T(t)=20+5\cos(\tfrac{\pi t}{12})\)인 경우 평균
+  기온을 계산합니다.
+\item
+  깊이 10m의 탱크에 물이 가득 차 있습니다. 물의 무게가
+  \(9800 \,\text{N/m}^3\)인 경우 모든 물을 꼭대기까지 펌핑하는 데 필요한
+  작업을 계산합니다.
+\end{enumerate}
+
+\subsection{6.4 확률 밀도와 연속
+분포}\label{uxd655uxb960-uxbc00uxb3c4uxc640-uxc5f0uxc18d-uxbd84uxd3ec}
+
+적분은 확률 이론, 특히 연속 확률 변수의 경우에도 핵심적인 역할을 합니다.
+이산적 결과 대신 확률 밀도 함수(pdf)라는 함수를 사용하여 확률을
+설명합니다.
+
+\subsubsection{확률 밀도
+함수}\label{uxd655uxb960-uxbc00uxb3c4-uxd568uxc218}
+
+확률 밀도 함수 \(f(x)\)은 두 가지 조건을 충족해야 합니다.
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  모든 \(x\)에 대한 \(f(x) \geq 0\).
+\item
+  곡선 아래의 전체 면적은 1입니다.
+
+  \[
+  \int_{-\infty}^\infty f(x)\,dx = 1.
+  \]
+\end{enumerate}
+
+\(X\)이 pdf \(f(x)\)을 갖는 연속 확률 변수인 경우 \(X\)이 \(a\)과 \(b\)
+사이에 있을 확률은 다음과 같습니다.
+
+\[
+P(a \leq X \leq b) = \int_a^b f(x)\,dx.
+\]
+
+\subsubsection{누적 분포
+함수}\label{uxb204uxc801-uxbd84uxd3ec-uxd568uxc218}
+
+누적 분포 함수(cdf)는 다음과 같이 정의됩니다.
+
+\[
+F(x) = \int_{-\infty}^x f(t)\,dt.
+\]
+
+이는 무작위 변수가 \(x\)보다 작거나 같을 확률을 제공합니다.
+
+\subsubsection{기대값(평균)}\label{uxae30uxb300uxac12uxd3c9uxade0}
+
+연속 확률 변수의 기대값은 가중 평균입니다.
+
+\[
+E[X] = \int_{-\infty}^\infty x f(x)\,dx.
+\]
+
+\subsubsection{예}\label{uxc608-14}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  균일한 분포\([a,b]\)의 \(f(x) = \tfrac{1}{b-a}\)의 경우:
+\end{enumerate}
+
+\begin{itemize}
+\item
+  간격 \([c,d]\)의 확률:
+
+  \[
+  P(c \leq X \leq d) = \frac{d-c}{b-a}.
+  \]
+\item
+  예상 값: \(E[X] = \tfrac{a+b}{2}\).
+\end{itemize}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  지수분포 \(f(x) = \lambda e^{-\lambda x}\), \(x \geq 0\)의 경우:
+\end{enumerate}
+
+\begin{itemize}
+\tightlist
+\item
+  \(\int_0^\infty \lambda e^{-\lambda x}\,dx = 1\).
+\item
+  의미: \(E[X] = \tfrac{1}{\lambda}\).
+\end{itemize}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{2}
+\tightlist
+\item
+  정규분포 벨 곡선:
+\end{enumerate}
+
+\[
+f(x) = \frac{1}{\sqrt{2\pi\sigma^2}} e^{-\frac{(x-\mu)^2}{2\sigma^2}}.
+\]
+
+1로 통합되지만 고급 기술이 필요합니다.
+
+\subsubsection{이것이 중요한
+이유}\label{uxc774uxac83uxc774-uxc911uxc694uxd55c-uxc774uxc720-7}
+
+\begin{itemize}
+\tightlist
+\item
+  확률밀도는 과학, 공학, 통계의 불확실성을 나타냅니다.
+\item
+  적분은 곡선 아래 영역을 확률에 연결합니다.
+\item
+  연속 분포는 간격에 따른 가능성을 측정하기 위해 결과를 계산하는
+  아이디어를 일반화합니다.
+\end{itemize}
+
+\subsubsection{연습}\label{uxc5f0uxc2b5-23}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \([a,b]\)의 균일 밀도 \(f(x) = \tfrac{1}{b-a}\)이 1로 적분됨을
+  보여줍니다.
+\item
+  \(\lambda = 2\)을 사용한 지수 분포의 경우 \(P(0 \leq X \leq 1)\)을
+  계산합니다.
+\item
+  \([0,1]\)에서 \(f(x) = 3x^2\)인 경우 \(X\)의 예상 값을 찾습니다.
+\item
+  평균이 0이고 분산이 1인 정규 분포의 총 확률이 1인지 확인합니다(완전한
+  증명은 필요하지 않지만 왜 유지되는지 설명).
+\item
+  \([0,1]\)에 대한 균일 분포의 cdf를 계산합니다.
+\end{enumerate}
+
+\section{3부. 다변수
+미적분학}\label{uxbd80.-uxb2e4uxbcc0uxc218-uxbbf8uxc801uxbd84uxd559}
+
+\section{7장. 벡터 함수 및
+곡선}\label{uxc7a5.-uxbca1uxd130-uxd568uxc218-uxbc0f-uxace1uxc120}
+
+\subsection{7.1 벡터 함수와 공간
+곡선}\label{uxbca1uxd130-uxd568uxc218uxc640-uxacf5uxac04-uxace1uxc120}
+
+다변수 미적분학에서 함수는 숫자 대신 벡터를 출력할 수 있습니다. 이를
+벡터 값 함수라고 하며 공간의 곡선을 설명하는 데 필수적입니다.
+
+\subsubsection{정의}\label{uxc815uxc758-7}
+
+벡터 함수는 다음 형식의 함수입니다.
+
+\[
+\mathbf{r}(t) = \langle x(t), y(t), z(t) \rangle,
+\]
+
+여기서 \(x(t), y(t), z(t)\)은 실수 값 함수입니다.
+
+\begin{itemize}
+\tightlist
+\item
+  입력 \(t\)을 매개변수라고도 합니다.- 출력은 2D 또는 3D 공간의
+  벡터입니다.
+\item
+  3D 벡터함수의 그래프는 공간곡선이다.
+\end{itemize}
+
+\subsubsection{예}\label{uxc608-15}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  라인
+\end{enumerate}
+
+\[
+\mathbf{r}(t) = \langle 1+2t, \; 3-t, \; 4+5t \rangle.
+\]
+
+이는 방향 벡터 \(\langle 2,-1,5 \rangle\)을 사용하여 \((1,3,4)\) 점을
+통과하는 직선을 설명합니다.
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  평면의 원
+\end{enumerate}
+
+\[
+\mathbf{r}(t) = \langle \cos t, \; \sin t, \; 0 \rangle, \quad 0 \leq t < 2\pi.
+\]
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{2}
+\tightlist
+\item
+  나선
+\end{enumerate}
+
+\[
+\mathbf{r}(t) = \langle \cos t, \; \sin t, \; t \rangle.
+\]
+
+이는 \(z\) 축을 중심으로 상승하는 나선형입니다.
+
+\subsubsection{한계와
+연속성}\label{uxd55cuxacc4uxc640-uxc5f0uxc18duxc131}
+
+각 구성요소 \(x(t), y(t), z(t)\)이 \(t=a\)에서 연속인 경우 벡터 함수는
+\(t=a\)에서 연속입니다.
+
+\[
+\lim_{t \to a} \mathbf{r}(t) = \langle \lim_{t \to a} x(t), \; \lim_{t \to a} y(t), \; \lim_{t \to a} z(t) \rangle.
+\]
+
+\subsubsection{공간 곡선의
+기하학}\label{uxacf5uxac04-uxace1uxc120uxc758-uxae30uxd558uxd559}
+
+\begin{itemize}
+\tightlist
+\item
+  각 곡선은 도함수에 의해 지정된 접선 방향을 갖습니다.
+\item
+  공간 곡선은 모션 경로, 입자 궤적 및 기하학적 모양을 모델링할 수
+  있습니다.
+\end{itemize}
+
+\subsubsection{이것이 중요한
+이유}\label{uxc774uxac83uxc774-uxc911uxc694uxd55c-uxc774uxc720-8}
+
+벡터 함수는 다변수 미적분학의 기초이며, 이를 통해 도함수와 적분의 개념을
+더 높은 차원으로 확장할 수 있습니다. 또한 물리학(3D 모션, 전자기학, 유체
+역학)에서도 자연스럽게 나타납니다.
+
+\subsubsection{연습}\label{uxc5f0uxc2b5-24}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \(\langle 3,-2,1 \rangle\) 벡터와 평행한 \((0,1,2)\)을 통과하는 선에
+  대한 벡터 함수를 작성합니다.
+\item
+  \(\mathbf{r}(t) = \langle 2\cos t, \; 2\sin t, \; 3 \rangle\)에 의해
+  주어진 곡선을 설명하십시오.
+\item
+  \(\mathbf{r}(t) = \langle e^t, \; \ln t, \; t^2 \rangle\)이
+  \(t=1\)에서 연속인지 확인합니다.
+\item
+  나선 \(\mathbf{r}(t) = \langle \cos t, \; \sin t, \; 2t \rangle\)을
+  스케치합니다.
+\item
+  \(t=2\)일 때 \(\mathbf{r}(t) = \langle t, \; t^2, \; t^3 \rangle\)
+  곡선에서 점을 찾습니다.
+\end{enumerate}
+
+\subsection{7.2 벡터 함수의 도함수와 적분벡터 함수는 일반 함수처럼
+차별화되고 통합될 수 있습니다. 즉, 각 구성요소에 연산을 적용하기만 하면
+됩니다. 이를 통해 우리는 더 높은 차원에서 운동, 속도, 가속도 및 축적을
+연구할 수
+있습니다.}\label{uxbca1uxd130-uxd568uxc218uxc758-uxb3c4uxd568uxc218uxc640-uxc801uxbd84uxbca1uxd130-uxd568uxc218uxb294-uxc77cuxbc18-uxd568uxc218uxcc98uxb7fc-uxcc28uxbcc4uxd654uxb418uxace0-uxd1b5uxd569uxb420-uxc218-uxc788uxc2b5uxb2c8uxb2e4.-uxc989-uxac01-uxad6cuxc131uxc694uxc18cuxc5d0-uxc5f0uxc0b0uxc744-uxc801uxc6a9uxd558uxae30uxb9cc-uxd558uxba74-uxb429uxb2c8uxb2e4.-uxc774uxb97c-uxd1b5uxd574-uxc6b0uxb9acuxb294-uxb354-uxb192uxc740-uxcc28uxc6d0uxc5d0uxc11c-uxc6b4uxb3d9-uxc18duxb3c4-uxac00uxc18duxb3c4-uxbc0f-uxcd95uxc801uxc744-uxc5f0uxad6cuxd560-uxc218-uxc788uxc2b5uxb2c8uxb2e4.}
+
+\subsubsection{벡터 함수의
+파생}\label{uxbca1uxd130-uxd568uxc218uxc758-uxd30cuxc0dd}
+
+만약에
+
+\[
+\mathbf{r}(t) = \langle x(t), y(t), z(t) \rangle,
+\]
+
+그럼
+
+\[
+\mathbf{r}'(t) = \langle x'(t), y'(t), z'(t) \rangle.
+\]
+
+이 파생 벡터는 매개변수 \(t\)에서 곡선의 접선 방향을 가리킵니다.
+
+\begin{itemize}
+\tightlist
+\item
+  속도: \(\mathbf{r}(t)\)이 시간 \(t\)에서 입자의 위치를
+  \hspace{0pt}\hspace{0pt}제공하는 경우
+  \(\mathbf{v}(t) = \mathbf{r}'(t)\)은 속도 벡터입니다.
+\item
+  속도: \(|\mathbf{v}(t)|\) 크기는 입자의 속도입니다.
+\item
+  가속: \(\mathbf{a}(t) = \mathbf{v}'(t) = \mathbf{r}''(t)\).
+\end{itemize}
+
+\subsubsection{예}\label{uxc608-16}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  나선
+\end{enumerate}
+
+\[
+\mathbf{r}(t) = \langle \cos t, \sin t, t \rangle.
+\]
+
+\begin{itemize}
+\tightlist
+\item
+  속도: \(\mathbf{v}(t) = \langle -\sin t, \cos t, 1 \rangle\).
+\item
+  속도:
+  \(|\mathbf{v}(t)| = \sqrt{(-\sin t)^2 + (\cos t)^2 + 1^2} = \sqrt{2}\).
+\item
+  가속: \(\mathbf{a}(t) = \langle -\cos t, -\sin t, 0 \rangle\).
+\end{itemize}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  발사체 움직임
+\end{enumerate}
+
+\[
+\mathbf{r}(t) = \langle v_0 \cos\theta \cdot t, \; v_0 \sin\theta \cdot t - \tfrac{1}{2}gt^2 \rangle.
+\]
+
+이는 중력 하에서 발사체의 포물선 경로를 모델링합니다.
+
+\subsubsection{벡터 함수의
+적분}\label{uxbca1uxd130-uxd568uxc218uxc758-uxc801uxbd84}
+
+만약에
+
+\[
+\mathbf{r}(t) = \langle x(t), y(t), z(t) \rangle,
+\]
+
+그럼
+
+\[
+\int \mathbf{r}(t)\,dt = \left\langle \int x(t)\,dt, \; \int y(t)\,dt, \; \int z(t)\,dt \right\rangle + \mathbf{C},
+\]
+
+여기서 \(\mathbf{C}\)은 상수 벡터입니다.
+
+\subsubsection{예}\label{uxc608-17}
+
+\[
+\mathbf{r}(t) = \langle t, t^2, t^3 \rangle.
+\]
+
+\begin{itemize}
+\tightlist
+\item
+  파생상품: \(\mathbf{r}'(t) = \langle 1, 2t, 3t^2 \rangle\).
+\item
+  일체형:
+\end{itemize}
+
+\[
+\int \mathbf{r}(t)\,dt = \langle \tfrac{1}{2}t^2, \tfrac{1}{3}t^3, \tfrac{1}{4}t^4 \rangle + \mathbf{C}.
+\]
+
+\subsubsection{이것이 중요한 이유- 벡터 함수의 파생물은 공간에서의
+움직임과 힘을
+설명합니다.}\label{uxc774uxac83uxc774-uxc911uxc694uxd55c-uxc774uxc720--uxbca1uxd130-uxd568uxc218uxc758-uxd30cuxc0dduxbb3cuxc740-uxacf5uxac04uxc5d0uxc11cuxc758-uxc6c0uxc9c1uxc784uxacfc-uxd798uxc744-uxc124uxba85uxd569uxb2c8uxb2e4.}
+
+\begin{itemize}
+\tightlist
+\item
+  적분은 변위, 일 및 누적량을 제공합니다.
+\item
+  이 도구는 미적분학을 물리학 및 공학에 직접 연결합니다.
+\end{itemize}
+
+\subsubsection{연습}\label{uxc5f0uxc2b5-25}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \(\mathbf{r}(t) = \langle t, \cos t, \sin t \rangle\)에 대해 속도,
+  속도 및 가속도를 찾습니다.
+\item
+  \(\mathbf{r}(t) = \langle e^t, \ln t, t^2 \rangle\)에 대해
+  \(\mathbf{r}'(t)\)을 계산합니다.
+\item
+  \(\mathbf{r}(t) = \langle 1, t, t^2 \rangle\)을 통합합니다.
+\item
+  입자의 속도는 \(\mathbf{v}(t) = \langle t, 2, 0 \rangle\)입니다.
+  \(\mathbf{r}(0) = \langle 1, 0, 0 \rangle\)인 경우 해당 위치 벡터를
+  찾습니다.
+\item
+  \(\mathbf{r}(t) = \langle \cos t, \sin t, 0 \rangle\)의 속도가
+  일정하다는 것을 보여주세요.
+\end{enumerate}
+
+\subsection{7.3 호 길이와
+곡률}\label{uxd638-uxae38uxc774uxc640-uxace1uxb960}
+
+벡터 미적분학은 곡선이 그리는 경로뿐만 아니라 곡선이 얼마나 급격하게
+구부러지는지도 측정하는 도구를 제공합니다. 이는 호 길이와 곡률을 통해
+표현됩니다.
+
+\subsubsection{공간 곡선의 호
+길이}\label{uxacf5uxac04-uxace1uxc120uxc758-uxd638-uxae38uxc774}
+
+곡선이 다음과 같이 주어지면
+
+\[
+\mathbf{r}(t) = \langle x(t), y(t), z(t) \rangle, \quad a \leq t \leq b,
+\]
+
+그러면 호 길이는
+
+\[
+L = \int_a^b |\mathbf{r}'(t)|\,dt,
+\]
+
+어디서
+
+\[
+|\mathbf{r}'(t)| = \sqrt{(x'(t))^2 + (y'(t))^2 + (z'(t))^2}.
+\]
+
+예: 나선
+\(\mathbf{r}(t) = \langle \cos t, \sin t, t \rangle, \, 0 \leq t \leq 2\pi\)의
+경우:
+
+\begin{itemize}
+\tightlist
+\item
+  속도: \(\mathbf{r}'(t) = \langle -\sin t, \cos t, 1 \rangle\).
+\item
+  속도:
+  \(|\mathbf{r}'(t)| = \sqrt{(-\sin t)^2 + (\cos t)^2 + 1^2} = \sqrt{2}\).
+\item
+  호 길이:
+\end{itemize}
+
+\[
+L = \int_0^{2\pi} \sqrt{2}\,dt = 2\pi\sqrt{2}.
+\]
+
+\subsubsection{곡률}\label{uxace1uxb960}
+
+곡률은 곡선의 방향이 얼마나 빨리 바뀌는지 측정합니다.
+
+부드러운 곡선의 경우 \(\mathbf{r}(t)\):
+
+\[
+\kappa(t) = \frac{|\mathbf{r}'(t) \times \mathbf{r}''(t)|}{|\mathbf{r}'(t)|^3}.
+\]
+
+\begin{itemize}
+\tightlist
+\item
+  \(\kappa = 0\): 직선.
+\item
+  더 큰 \(\kappa\): 곡선이 더 급격하게 휘어집니다.
+\end{itemize}
+
+예: 반경이 \(r\)인 원의 경우:\[
+\mathbf{r}(t) = \langle r\cos t, r\sin t \rangle.
+\]
+
+그런 다음 \(\kappa = \tfrac{1}{r}\)입니다. 따라서 곡률은 일정하고 반경에
+반비례합니다.
+
+\subsubsection{단위 접선 및 법선
+벡터}\label{uxb2e8uxc704-uxc811uxc120-uxbc0f-uxbc95uxc120-uxbca1uxd130}
+
+\begin{itemize}
+\tightlist
+\item
+  탄젠트 벡터:
+\end{itemize}
+
+\[
+\mathbf{T}(t) = \frac{\mathbf{r}'(t)}{|\mathbf{r}'(t)|}.
+\]
+
+\begin{itemize}
+\tightlist
+\item
+  법선 벡터: 곡률 중심을 향하며 다음과 같이 정의됩니다.
+\end{itemize}
+
+\[
+\mathbf{N}(t) = \frac{\mathbf{T}'(t)}{|\mathbf{T}'(t)|}.
+\]
+
+이러한 벡터는 운동의 기하학적 구조, 즉 이동 방향과 회전 방향을
+설명합니다.
+
+\subsubsection{이것이 중요한
+이유}\label{uxc774uxac83uxc774-uxc911uxc694uxd55c-uxc774uxc720-9}
+
+\begin{itemize}
+\tightlist
+\item
+  호 길이는 공간에서 곡선까지의 거리 개념을 일반화합니다.
+\item
+  곡률은 물리학(구심 가속도), 엔지니어링(도로, 롤러코스터) 및 컴퓨터
+  그래픽에서 중요한 굽힘을 설명합니다.
+\end{itemize}
+
+\subsubsection{연습}\label{uxc5f0uxc2b5-26}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \(t=0\)에서 \(t=1\)까지
+  \(\mathbf{r}(t) = \langle t, t^2, 0 \rangle\)의 호 길이를 찾습니다.
+\item
+  원 \(\mathbf{r}(t) = \langle \cos t, \sin t \rangle\)의 곡률을
+  계산합니다.
+\item
+  \(\mathbf{r}(t) = \langle t, \cos t, \sin t \rangle\)의 경우
+  \(|\mathbf{r}'(t)|\)을 계산합니다.
+\item
+  직선에는 \(\kappa = 0\) 곡률이 있음을 보여주세요.
+\item
+  \(t=0\)에서 \(\mathbf{r}(t) = \langle e^t, e^{-t}, t \rangle\)에 대한
+  접선 벡터를 찾습니다.
+\end{enumerate}
+
+\subsection{7.4 우주에서의
+움직임}\label{uxc6b0uxc8fcuxc5d0uxc11cuxc758-uxc6c0uxc9c1uxc784}
+
+벡터 함수는 2차원 또는 3차원의 모션을 설명하는 데 특히 강력합니다. 위치,
+속도, 가속도는 벡터 값 함수의 도함수와 적분을 사용하여 자연스럽게
+표현됩니다.
+
+\subsubsection{위치, 속도 및
+가속도}\label{uxc704uxce58-uxc18duxb3c4-uxbc0f-uxac00uxc18duxb3c4}
+
+\begin{itemize}
+\tightlist
+\item
+  위치 벡터:
+\end{itemize}
+
+\[
+\mathbf{r}(t) = \langle x(t), y(t), z(t) \rangle
+\]
+
+\begin{itemize}
+\tightlist
+\item
+  속도 벡터(위치 파생):
+\end{itemize}
+
+\[
+\mathbf{v}(t) = \mathbf{r}'(t) = \langle x'(t), y'(t), z'(t) \rangle
+\]
+
+\begin{itemize}
+\tightlist
+\item
+  속도(속도의 크기):
+\end{itemize}
+
+\[
+|\mathbf{v}(t)| = \sqrt{(x'(t))^2 + (y'(t))^2 + (z'(t))^2}
+\]
+
+\begin{itemize}
+\tightlist
+\item
+  가속도 벡터(속도에서 파생됨):
+\end{itemize}
+
+\[\mathbf{a}(t) = \mathbf{v}'(t) = \mathbf{r}''(t).
+\]
+
+\subsubsection{Tangential and Normal
+Components}\label{tangential-and-normal-components}
+
+Acceleration can be decomposed into two components:
+
+\[
+\mathbf{a}(t) = a_T \mathbf{T}(t) + a_N \mathbf{N}(t),
+\]
+
+where:
+
+\begin{itemize}
+\tightlist
+\item
+  \(\mathbf{T}(t)\) = unit tangent vector,
+\item
+  \(\mathbf{N}(t)\) = principal normal vector,
+\item
+  \(a_T = \frac{d}{dt}|\mathbf{v}(t)|\) = tangential acceleration
+  (change in speed),
+\item
+  \(a_N = \kappa |\mathbf{v}(t)|^2\) = normal acceleration (change in
+  direction).
+\end{itemize}
+
+\subsubsection{Projectile Motion in 3D}\label{projectile-motion-in-3d}
+
+With gravity acting in the \(-z\) direction:
+
+\[
+\mathbf{r}(t) = \langle v_0 \cos\theta \cos\phi \cdot t,\; v_0 \cos\theta \sin\phi \cdot t,\; v_0 \sin\theta \cdot t - \tfrac{1}{2}gt^2 \rangle,
+\]
+
+where \(v_0\) is initial speed, \(\theta\) launch angle, and \(\phi\)
+azimuthal direction.
+
+\subsubsection{Example: Helical Motion}\label{example-helical-motion}
+
+\[
+\mathbf{r}(t) = \langle \cos t, \sin t, t \rangle
+\]
+
+\begin{itemize}
+\tightlist
+\item
+  속도: \(\mathbf{v}(t) = \langle -\sin t, \cos t, 1 \rangle\).
+\item
+  속도: \(|\mathbf{v}(t)| = \sqrt{2}\).
+\item
+  가속: \(\mathbf{a}(t) = \langle -\cos t, -\sin t, 0 \rangle\).
+\item
+  움직임은 속도가 일정하며 위쪽으로 나선형으로 움직입니다.
+\end{itemize}
+
+\subsubsection{이것이 중요한
+이유}\label{uxc774uxac83uxc774-uxc911uxc694uxd55c-uxc774uxc720-10}
+
+\begin{itemize}
+\tightlist
+\item
+  실제 모션에 대한 수학적 언어를 제공합니다.
+\item
+  물리학에 필수적입니다(힘, 궤적, 원형 운동).
+\item
+  고급 기계 및 엔지니어링 모델의 기초입니다.
+\end{itemize}
+
+\subsubsection{연습}\label{uxc5f0uxc2b5-27}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  입자가 \(\mathbf{r}(t) = \langle t, t^2, t^3 \rangle\)을 따라
+  이동합니다. \(t=1\)에서 속도와 가속도를 찾아보세요.
+\item
+  나선 \(\mathbf{r}(t) = \langle \cos t, \sin t, t \rangle\)의 속도가
+  일정하다는 것을 보여주세요.
+\item
+  \(45^\circ\) 각도에서 \(v_0 = 20 \,\text{m/s}\)을 사용하여 발사체가
+  발사됩니다. 수직 평면에서 움직임을 가정하여 위치 벡터를 작성합니다.
+\item
+  \(\mathbf{r}(t) = \langle e^t, e^{-t}, t \rangle\)의 경우
+  \(\mathbf{v}(t)\) 및 \(\mathbf{a}(t)\)을 찾으세요.5. 반경 \(r\) 원을
+  따라 이동하기 위해 가속도 벡터를 접선 및 일반 구성 요소로 분해합니다.
+\end{enumerate}
+
+\section{8장. 여러 변수의
+기능}\label{uxc7a5.-uxc5ecuxb7ec-uxbcc0uxc218uxc758-uxae30uxb2a5}
+
+\subsection{8.1 여러 변수의 극한과
+연속성}\label{uxc5ecuxb7ec-uxbcc0uxc218uxc758-uxadf9uxd55cuxacfc-uxc5f0uxc18duxc131}
+
+다변수 미적분학에서 함수는 \(f(x,y)\) 또는 \(f(x,y,z)\)과 같은 두 개
+이상의 변수에 따라 달라질 수 있습니다. 극한과 연속성의 개념은 단일변수
+미적분학에서 자연스럽게 확장되지만 가능한 모든 접근 경로를 고려해야 하기
+때문에 더 미묘합니다.
+
+\subsubsection{두 변수의
+한계}\label{uxb450-uxbcc0uxc218uxc758-uxd55cuxacc4}
+
+\(f(x,y)\) 함수에 대해 다음과 같이 말합니다.
+
+\[
+\lim_{(x,y) \to (a,b)} f(x,y) = L
+\]
+
+\(f(x,y)\)이 임의의 경로를 따라 \((x,y)\)이 \((a,b)\)에 접근함에 따라
+\(L\)에 임의로 가까워지는 경우.
+
+서로 다른 경로가 서로 다른 제한 값을 제공하는 경우 해당 제한은 존재하지
+않습니다.
+
+예시 1(한도 있음):
+
+\[
+f(x,y) = x^2 + y^2, \quad \lim_{(x,y) \to (0,0)} f(x,y) = 0.
+\]
+
+예 2(한도가 존재하지 않음):
+
+\[
+f(x,y) = \frac{xy}{x^2+y^2}, \quad (x,y) \to (0,0).
+\]
+
+\begin{itemize}
+\tightlist
+\item
+  \(y=0\)에 따라 함수는 0입니다.
+\item
+  \(y=x\)에 따른 함수는 \(\tfrac{1}{2}\)입니다. 다른 결과 → 한도가
+  존재하지 않습니다.
+\end{itemize}
+
+\subsubsection{연속성}\label{uxc5f0uxc18duxc131-1}
+
+\(f(x,y)\) 함수는 다음과 같은 경우 \((a,b)\)에서 연속적입니다.
+
+\[
+\lim_{(x,y)\to(a,b)} f(x,y) = f(a,b).
+\]
+
+다항식과 유리 함수(분모 ≠ 0)는 해당 영역의 모든 곳에서 연속입니다.
+
+\subsubsection{세 개 이상의 변수로
+확장}\label{uxc138-uxac1c-uxc774uxc0c1uxc758-uxbcc0uxc218uxb85c-uxd655uxc7a5}
+
+\(f(x,y,z)\)의 경우 한계와 연속성은 동일한 방식으로 정의되지만
+\((a,b,c)\) 지점은 공간의 무한히 많은 방향에서 접근해야 합니다.
+
+\subsubsection{이것이 중요한
+이유}\label{uxc774uxac83uxc774-uxc911uxc694uxd55c-uxc774uxc720-11}
+
+\begin{itemize}
+\tightlist
+\item
+  연속성은 다변수 함수에서 점프, 구멍 또는 점근선을 보장하지 않습니다.
+\item
+  극한은 부분 도함수와 다중 적분을 정의하는 데 기본입니다.
+\item
+  이러한 개념은 다변수 미적분학의 구성 요소입니다.
+\end{itemize}
+
+\subsubsection{\texorpdfstring{연습1.
+\(\lim_{(x,y)\to(0,0)} (x^2+y^2)\)이 존재하는지
+확인합니다.}{연습1. \textbackslash lim\_\{(x,y)\textbackslash to(0,0)\} (x\^{}2+y\^{}2)이 존재하는지 확인합니다.}}\label{uxc5f0uxc2b51.-lim_xyto00-x2y2uxc774-uxc874uxc7acuxd558uxb294uxc9c0-uxd655uxc778uxd569uxb2c8uxb2e4.}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  모든 직선 경로를 따라
+  \(\lim_{(x,y)\to(0,0)} \frac{x^2y}{x^2+y^2} = 0\)을 표시합니다.
+  \(y=mx\).
+\item
+  \(f(x,y) = \frac{x^2-y^2}{x^2+y^2}\)에 대한 한도가 \((x,y)\to(0,0)\)로
+  존재합니까?
+\item
+  두 변수의 다항식이 모든 곳에서 연속인 이유를 설명하십시오.
+\item
+  한 점에서 불연속적인 두 변수의 함수의 예를 들고 그 이유를
+  설명하십시오.
+\end{enumerate}
+
+\subsection{8.2 부분
+파생상품}\label{uxbd80uxbd84-uxd30cuxc0dduxc0c1uxd488}
+
+여러 변수의 함수에서 우리는 종종 하나의 변수만 변경되고 다른 변수는
+일정하게 유지될 때 함수가 어떻게 변경되는지 측정하려고 합니다. 이는 부분
+도함수의 개념으로 이어집니다.
+
+\subsubsection{정의}\label{uxc815uxc758-8}
+
+\(f(x,y)\) 함수의 경우 \((a,b)\) 지점에서 \(x\)에 대한 편도함수는 다음과
+같습니다.
+
+\[
+\frac{\partial f}{\partial x}(a,b) = \lim_{h \to 0} \frac{f(a+h, b) - f(a,b)}{h}.
+\]
+
+마찬가지로 \(y\)에 대한 편미분은 다음과 같습니다.
+
+\[
+\frac{\partial f}{\partial y}(a,b) = \lim_{h \to 0} \frac{f(a, b+h) - f(a,b)}{h}.
+\]
+
+미분할 때 다른 모든 변수는 상수로 취급됩니다.
+
+\subsubsection{표기법}\label{uxd45cuxae30uxbc95-1}
+
+\begin{itemize}
+\tightlist
+\item
+  \(\frac{\partial f}{\partial x}\), \(f_x\), \(\partial_x f\).
+\item
+  \(\frac{\partial f}{\partial y}\), \(f_y\), \(\partial_y f\).
+\end{itemize}
+
+3개의 변수 \(f(x,y,z)\)에 대해 \(f_x, f_y, f_z\)도 있습니다.
+
+\subsubsection{예}\label{uxc608-18}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \(f(x,y) = x^2y + y^3\)
+\end{enumerate}
+
+\begin{itemize}
+\tightlist
+\item
+  \(f_x = 2xy\).
+\item
+  \(f_y = x^2 + 3y^2\).
+\end{itemize}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  \(f(x,y) = e^{xy}\)
+\end{enumerate}
+
+\begin{itemize}
+\tightlist
+\item
+  \(f_x = y e^{xy}\).
+\item
+  \(f_y = x e^{xy}\).
+\end{itemize}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{2}
+\tightlist
+\item
+  \(f(x,y,z) = x^2 + yz\)
+\end{enumerate}
+
+\begin{itemize}
+\tightlist
+\item
+  \(f_x = 2x\).
+\item
+  \(f_y = z\).
+\item
+  \(f_z = y\).
+\end{itemize}
+
+\subsubsection{고차 부분 파생
+상품}\label{uxace0uxcc28-uxbd80uxbd84-uxd30cuxc0dd-uxc0c1uxd488}
+
+부분도함수를 반복적으로 취할 수 있습니다:
+
+\begin{itemize}
+\tightlist
+\item
+  \(f_{xx} = \frac{\partial}{\partial x}\Big(f_x\Big)\).
+\item
+  \(f_{yy}, f_{xy}, f_{yx}\) 등
+\end{itemize}
+
+Clairaut의 정리: \(f\)에 연속적인 2차 부분 도함수가 있는 경우
+
+\[
+f_{xy} = f_{yx}.
+\]
+
+\subsubsection{\texorpdfstring{기하학적 의미- \(f_x\): \(x\) 방향의 표면
+경사입니다.}{기하학적 의미- f\_x: x 방향의 표면 경사입니다.}}\label{uxae30uxd558uxd559uxc801-uxc758uxbbf8--f_x-x-uxbc29uxd5a5uxc758-uxd45cuxba74-uxacbduxc0acuxc785uxb2c8uxb2e4.}
+
+\begin{itemize}
+\tightlist
+\item
+  \(f_y\): \(y\) 방향의 표면 경사입니다.
+\item
+  함께 표면이 어떻게 기울어지는지를 설명합니다.
+\end{itemize}
+
+\subsubsection{이것이 중요한
+이유}\label{uxc774uxac83uxc774-uxc911uxc694uxd55c-uxc774uxc720-12}
+
+\begin{itemize}
+\tightlist
+\item
+  부분 도함수는 기울기, 접선 평면 및 다중 변수 최적화의 기초입니다.
+\item
+  물리학, 공학, 경제학에서 여러 입력을 사용하여 시스템을 모델링하는 데
+  널리 사용됩니다.
+\end{itemize}
+
+\subsubsection{연습}\label{uxc5f0uxc2b5-28}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \(f(x,y) = x^3y^2\)에 대한 \(f_x\) 및 \(f_y\)을 찾으세요.
+\item
+  \(f(x,y,z) = xyz + x^2\)에 대해 \(f_x, f_y, f_z\)을 계산합니다.
+\item
+  \(f(x,y) = x^2y + y^3\)에 대한 Clairaut의 정리를 검증합니다.
+\item
+  \(f(x,y) = \sqrt{x^2+y^2}\)에 대한 \(f_x\) 및 \(f_y\)의 의미를
+  기하학적으로 해석합니다.
+\item
+  \(f(x,y) = e^{x^2+y^2}\)의 모든 2차 편도함수를 찾습니다.
+\end{enumerate}
+
+\subsection{8.3 기울기와 방향
+도함수}\label{uxae30uxc6b8uxae30uxc640-uxbc29uxd5a5-uxb3c4uxd568uxc218}
+
+편도함수는 좌표축을 따라 변화를 측정하지만 때로는 모든 방향에서 함수의
+변화율을 알고 싶을 때도 있습니다. 이는 기울기 및 방향 도함수의 개념으로
+이어집니다.
+
+\subsubsection{그라데이션
+벡터}\label{uxadf8uxb77cuxb370uxc774uxc158-uxbca1uxd130}
+
+\(f(x,y)\) 함수의 경우 그라데이션은 벡터입니다.
+
+\[
+\nabla f(x,y) = \left\langle \frac{\partial f}{\partial x}, \frac{\partial f}{\partial y} \right\rangle.
+\]
+
+세 가지 변수 \(f(x,y,z)\)의 경우:
+
+\[
+\nabla f(x,y,z) = \left\langle f_x, f_y, f_z \right\rangle.
+\]
+
+기울기는 함수의 최대 증가 방향을 가리키며 그 크기는 가장 가파른 기울기를
+제공합니다.
+
+\subsubsection{방향 파생
+상품}\label{uxbc29uxd5a5-uxd30cuxc0dd-uxc0c1uxd488}
+
+단위 벡터 \(\mathbf{u} = \langle u_1, u_2 \rangle\) 방향의 한 지점에서
+\(f(x,y)\)의 변화율은 다음과 같습니다.
+
+\[
+D_{\mathbf{u}} f(x,y) = \nabla f(x,y) \cdot \mathbf{u}.
+\]
+
+이는 방향 벡터와 그래디언트의 내적입니다.
+
+\subsubsection{예}\label{uxc608-19}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \(f(x,y) = x^2 + y^2\)
+\end{enumerate}
+
+\begin{itemize}
+\tightlist
+\item
+  그라데이션: \(\nabla f = \langle 2x, 2y \rangle\).
+\item
+  (1,2): \(\nabla f = \langle 2,4 \rangle\).-
+  \(\mathbf{u} = \langle \tfrac{3}{5}, \tfrac{4}{5} \rangle\)에 따른
+  방향 파생물:
+\end{itemize}
+
+\[
+D_{\mathbf{u}} f(1,2) = \langle 2,4 \rangle \cdot \langle \tfrac{3}{5}, \tfrac{4}{5} \rangle = \tfrac{26}{5}.
+\]
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  \(f(x,y,z) = x y z\)
+\end{enumerate}
+
+\begin{itemize}
+\tightlist
+\item
+  그라데이션: \(\nabla f = \langle yz, xz, xy \rangle\).
+\item
+  (1,1,1): \(\nabla f = \langle 1,1,1 \rangle\).
+\item
+  최대 증가 방향은 \(\langle 1,1,1 \rangle\)입니다.
+\end{itemize}
+
+\subsubsection{기하학적
+해석}\label{uxae30uxd558uxd559uxc801-uxd574uxc11d-1}
+
+\begin{itemize}
+\tightlist
+\item
+  그래디언트 벡터는 \(f\)의 레벨 곡선 또는 레벨 표면에 수직(법선)입니다.
+\item
+  방향 도함수는 임의의 방향으로 기울기를 일반화합니다.
+\end{itemize}
+
+\subsubsection{이것이 중요한
+이유}\label{uxc774uxac83uxc774-uxc911uxc694uxd55c-uxc774uxc720-13}
+
+\begin{itemize}
+\tightlist
+\item
+  최적화에서 기울기는 가장 가파른 상승 또는 하강을 위해 이동할 방향을
+  알려줍니다.
+\item
+  물리학에서 그라데이션은 열 흐름 및 전위와 같은 장을 설명합니다.
+\item
+  방향 미분은 단일변수와 다변수 변화율을 통합합니다.
+\end{itemize}
+
+\subsubsection{연습}\label{uxc5f0uxc2b5-29}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \(f(x,y) = e^{xy}\)에 대해 \(\nabla f(x,y)\)을 계산합니다.
+\item
+  \(f(x,y,z) = x^2+y^2+z^2\)의 기울기를 찾아 (1,1,1)에서 평가합니다.
+\item
+  (2,1)에서 \(\mathbf{u} = \langle 0,1 \rangle\) 방향으로
+  \(f(x,y) = x^2-y\)의 방향 도함수를 계산합니다.
+\item
+  \(f(x,y) = x^2+y^2\)의 기울기가 원 \(x^2+y^2=1\)에 수직임을
+  보여줍니다.
+\item
+  (1,2)에서 \(f(x,y) = xy\)의 방향 도함수를 최대화하는 단위 벡터 방향을
+  찾습니다.
+\end{enumerate}
+
+\subsection{8.4 접평면과 선형
+근사}\label{uxc811uxd3c9uxba74uxacfc-uxc120uxd615-uxadfcuxc0ac}
+
+단일 변수 미적분학에서 접선은 점 근처의 곡선에 가깝습니다. 다변수
+미적분학에서 유사한 개념은 점 근처의 표면에 대한 선형 근사치를 제공하는
+접선 평면입니다.
+
+\subsubsection{표면에 접하는
+평면}\label{uxd45cuxba74uxc5d0-uxc811uxd558uxb294-uxd3c9uxba74}
+
+\(z = f(x,y)\)이 \((a,b)\)에서 미분 가능하다고 가정합니다.
+\((a,b,f(a,b))\)의 접선 평면은 다음과 같습니다.
+
+\[
+z = f(a,b) + f_x(a,b)(x-a) + f_y(a,b)(y-b).
+\]이 평면은 해당 지점의 표면에 닿아 근처의 표면에 접근합니다.
+
+\subsubsection{예 1: 포물면}\label{uxc608-1-uxd3ecuxbb3cuxba74}
+
+\((1,2)\)의 \(f(x,y) = x^2 + y^2\)의 경우:
+
+\begin{itemize}
+\tightlist
+\item
+  \(f(1,2) = 1^2+2^2=5\).
+\item
+  \(f_x = 2x\), 즉 \(f_x(1,2) = 2\)입니다.
+\item
+  \(f_y = 2y\), 즉 \(f_y(1,2) = 4\)입니다.
+\end{itemize}
+
+접평면의 방정식:
+
+\[
+z = 5 + 2(x-1) + 4(y-2).
+\]
+
+\subsubsection{선형 근사}\label{uxc120uxd615-uxadfcuxc0ac}
+
+접선 평면을 사용하여 \((a,b)\) 근처의 \(f(x,y)\)을 근사화할 수 있습니다.
+
+\[
+f(x,y) \approx f(a,b) + f_x(a,b)(x-a) + f_y(a,b)(y-b).
+\]
+
+이는 \((a,b)\)에서 \(f\)의 선형화입니다.
+
+\subsubsection{예 2: 선형
+근사}\label{uxc608-2-uxc120uxd615-uxadfcuxc0ac}
+
+\((4,5)\) 근처의 대략적인 \(f(x,y) = \sqrt{x+y}\)입니다.
+
+\begin{itemize}
+\tightlist
+\item
+  \(f(4,5) = \sqrt{9} = 3\).
+\item
+  \(f_x = \frac{1}{2\sqrt{x+y}}, \quad f_y = \frac{1}{2\sqrt{x+y}}\).
+\item
+  (4,5): \(f_x = f_y = \tfrac{1}{6}\).
+\end{itemize}
+
+그래서,
+
+\[
+f(x,y) \approx 3 + \tfrac{1}{6}(x-4) + \tfrac{1}{6}(y-5).
+\]
+
+\subsubsection{이것이 중요한
+이유}\label{uxc774uxac83uxc774-uxc911uxc694uxd55c-uxc774uxc720-14}
+
+\begin{itemize}
+\tightlist
+\item
+  접선 평면은 표면에 대한 최상의 선형 근사치를 제공합니다.
+\item
+  선형화는 계산을 위한 복잡한 기능을 단순화합니다.
+\item
+  수치해석, 물리학, 경제학 분야에서 널리 사용됩니다.
+\end{itemize}
+
+\subsubsection{연습}\label{uxc5f0uxc2b5-30}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \((1,1)\)에서 \(z = x^2y + y^2\)에 대한 접선 평면을 찾습니다.
+\item
+  대략 \((0,0)\) 근처의 \(f(x,y) = e^{x+y}\)입니다.
+\item
+  \((1,1)\)에서 \(z = \ln(x^2+y^2)\)에 대한 접선 평면 방정식을
+  도출합니다.
+\item
+  선형 근사법을 사용하여 (4,6) 근처의 \(f(x,y) = \sqrt{x+y}\)을 사용하여
+  \(\sqrt{10.1}\)을 추정합니다.
+\item
+  \((x,y)\)이 \((a,b)\)에 가까워질수록 접평면 근사치가 향상되는 이유를
+  설명하십시오.
+\end{enumerate}
+
+\subsection{8.5 여러 변수의
+최적화}\label{uxc5ecuxb7ec-uxbcc0uxc218uxc758-uxcd5cuxc801uxd654}
+
+다변수 미적분학의 최적화는 최대값과 최소값의 개념을 단일 변수 함수에서
+두 개 이상의 변수 함수로 확장합니다.
+
+\subsubsection{중요 포인트}\label{uxc911uxc694-uxd3ecuxc778uxd2b8}
+
+\(f(x,y)\)의 경우 중요한 지점이 발생합니다.
+
+\[
+f_x(x,y) = 0 \quad \text{and} \quad f_y(x,y) = 0,
+\]
+
+또는 부분 파생물이 존재하지 않는 경우.
+
+\subsubsection{두 번째 미분 테스트임계점을 분류하려면 2차 편도함수를
+계산하세요.}\label{uxb450-uxbc88uxc9f8-uxbbf8uxbd84-uxd14cuxc2a4uxd2b8uxc784uxacc4uxc810uxc744-uxbd84uxb958uxd558uxb824uxba74-2uxcc28-uxd3b8uxb3c4uxd568uxc218uxb97c-uxacc4uxc0b0uxd558uxc138uxc694.}
+
+\[
+D = f_{xx}(a,b) f_{yy}(a,b) - \big(f_{xy}(a,b)\big)^2.
+\]
+
+\begin{itemize}
+\tightlist
+\item
+  \(D > 0\) 및 \(f_{xx}(a,b) > 0\)인 경우: 로컬 최소값.
+\item
+  \(D > 0\) 및 \(f_{xx}(a,b) < 0\)인 경우: 로컬 최대값.
+\item
+  \(D < 0\)인 경우: 안장 지점.
+\item
+  \(D = 0\)인 경우: 테스트가 결론에 이르지 못했습니다.
+\end{itemize}
+
+\subsubsection{예 1: 포물면}\label{uxc608-1-uxd3ecuxbb3cuxba74-1}
+
+\(f(x,y) = x^2 + y^2\).
+
+\begin{itemize}
+\tightlist
+\item
+  \(f_x = 2x, f_y = 2y\). (0,0)의 임계점.
+\item
+  \(f_{xx} = 2, f_{yy} = 2, f_{xy} = 0\).
+\item
+  \(D = (2)(2) - 0 = 4 > 0\) 및 \(f_{xx} > 0\).
+\item
+  따라서 (0,0)은 지역 최소값입니다.
+\end{itemize}
+
+\subsubsection{예 2: 안장점}\label{uxc608-2-uxc548uxc7a5uxc810}
+
+\(f(x,y) = x^2 - y^2\).
+
+\begin{itemize}
+\tightlist
+\item
+  \(f_x = 2x, f_y = -2y\). (0,0)의 임계점.
+\item
+  \(f_{xx} = 2, f_{yy} = -2, f_{xy} = 0\).
+\item
+  \(D = (2)(-2) - 0 = -4 < 0\).
+\item
+  따라서 (0,0)은 안장점입니다.
+\end{itemize}
+
+\subsubsection{제한된 최적화 및 라그랑주
+승수}\label{uxc81cuxd55cuxb41c-uxcd5cuxc801uxd654-uxbc0f-uxb77cuxadf8uxb791uxc8fc-uxc2b9uxc218}
+
+때로는 \(g(x,y) = c\) 제약 조건에 따라 \(f(x,y)\)을 최적화하고 싶을 때도
+있습니다.
+
+라그랑주 승수 방법: 풀기
+
+\[
+\nabla f(x,y) = \lambda \nabla g(x,y).
+\]
+
+예: \(x^2+y^2=1\)에 따라 \(f(x,y) = xy\)을 최대화합니다.
+
+\begin{itemize}
+\tightlist
+\item
+  그라데이션:
+  \(\nabla f = \langle y,x \rangle, \quad \nabla g = \langle 2x,2y \rangle\).
+\item
+  방정식: \(y = 2\lambda x, \, x = 2\lambda y\).
+\item
+  솔루션은 \((\pm \tfrac{1}{\sqrt{2}}, \pm \tfrac{1}{\sqrt{2}})\)에서
+  최대로 이어집니다.
+\end{itemize}
+
+\subsubsection{이것이 중요한
+이유}\label{uxc774uxac83uxc774-uxc911uxc694uxd55c-uxc774uxc720-15}
+
+\begin{itemize}
+\tightlist
+\item
+  경제학, 공학, 기계학습, 물리학에서는 최적화가 필수적입니다.
+\item
+  라그랑주 승수를 사용하면 응용 수학의 핵심 도구인 제약 조건을 사용하여
+  최적화할 수 있습니다.
+\end{itemize}
+
+\subsubsection{연습}\label{uxc5f0uxc2b5-31}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \(f(x,y) = x^2+xy+y^2\)의 핵심 포인트를 찾아 분류합니다.
+\item
+  \(f(x,y) = x^3-y^3\)에 대한 포인트(0,0)를 분류합니다.
+\item
+  \(f(x,y) = x^4+y^4-4xy\)에 대한 2차 파생 테스트를 사용합니다.
+\item
+  \(x^2+y^2=1\)에 따라 \(f(x,y) = x+y\)을 최대화합니다.
+\item
+  \(x+y=1\)에 따라 \(f(x,y) = x^2+2y^2\)을 최소화합니다.
+\end{enumerate}
+
+\section{9장. 다중 적분}\label{uxc7a5.-uxb2e4uxc911-uxc801uxbd84}
+
+\subsection{9.1 이중 적분일변수 미적분학에서 정적분은 곡선 아래의 면적을
+제공합니다. 두 변수에서 이중 적분은 표면 아래의 부피(또는 보다
+일반적으로 영역에 대한 값의 누적)를
+계산합니다.}\label{uxc774uxc911-uxc801uxbd84uxc77cuxbcc0uxc218-uxbbf8uxc801uxbd84uxd559uxc5d0uxc11c-uxc815uxc801uxbd84uxc740-uxace1uxc120-uxc544uxb798uxc758-uxba74uxc801uxc744-uxc81cuxacf5uxd569uxb2c8uxb2e4.-uxb450-uxbcc0uxc218uxc5d0uxc11c-uxc774uxc911-uxc801uxbd84uxc740-uxd45cuxba74-uxc544uxb798uxc758-uxbd80uxd53cuxb610uxb294-uxbcf4uxb2e4-uxc77cuxbc18uxc801uxc73cuxb85c-uxc601uxc5eduxc5d0-uxb300uxd55c-uxac12uxc758-uxb204uxc801uxb97c-uxacc4uxc0b0uxd569uxb2c8uxb2e4.}
+
+\subsubsection{정의}\label{uxc815uxc758-9}
+
+\(f(x,y)\)이 \(R\) 영역에서 연속적인 경우 이중 적분은 다음과 같습니다.
+
+\[
+\iint_R f(x,y)\, dA = \lim_{m,n \to \infty} \sum_{i=1}^m \sum_{j=1}^n f(x_{ij}^-, y_{ij}^-) \Delta A,
+\]
+
+여기서 \(R\)은 \(\Delta A\) 영역의 작은 직사각형으로 나뉩니다.
+
+\subsubsection{반복적분}\label{uxbc18uxbcf5uxc801uxbd84}
+
+Fubini의 정리에 따라 이중 적분을 반복 적분으로 계산할 수 있습니다.
+
+\[
+\iint_R f(x,y)\, dA = \int_a^b \int_c^d f(x,y)\, dy\, dx,
+\]
+
+\(R\)이 직사각형 \([a,b] \times [c,d]\)인 경우.
+
+통합 순서는 종종 바뀔 수 있습니다.
+
+\[
+\int_a^b \int_c^d f(x,y)\,dy\,dx = \int_c^d \int_a^b f(x,y)\,dx\,dy.
+\]
+
+\subsubsection{예}\label{uxc608-20}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  직사각형 영역
+\end{enumerate}
+
+\[
+\iint_R (x+y)\, dA, \quad R=[0,1]\times[0,2].
+\]
+
+\[
+= \int_0^1 \int_0^2 (x+y)\,dy\,dx = \int_0^1 \Big[xy+\tfrac{1}{2}y^2\Big]_0^2 dx
+= \int_0^1 (2x+2)dx = 3.
+\]
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  삼각형 영역
+\end{enumerate}
+
+\[
+R = \{(x,y): 0 \leq x \leq 1, 0 \leq y \leq x\}.
+\]
+
+\[
+\iint_R (x+y)\, dA = \int_0^1 \int_0^x (x+y)\,dy\,dx.
+\]
+
+평가하면 \(\tfrac{2}{3}\)이 제공됩니다.
+
+\subsubsection{애플리케이션}\label{uxc560uxd50cuxb9acuxcf00uxc774uxc158-1}
+
+\begin{itemize}
+\tightlist
+\item
+  표면 아래의 부피:
+\end{itemize}
+
+\[
+V = \iint_R f(x,y)\, dA.
+\]
+
+\begin{itemize}
+\tightlist
+\item
+  지역에 대한 함수의 평균값:
+\end{itemize}
+
+\[
+f_{\text{avg}} = \frac{1}{A(R)} \iint_R f(x,y)\, dA.
+\]
+
+\subsubsection{이것이 중요한
+이유}\label{uxc774uxac83uxc774-uxc911uxc694uxd55c-uxc774uxc720-16}
+
+이중 적분은 적분을 2차원으로 확장합니다. 이는 물리학(질량, 확률 분포),
+경제학(기대값) 및 공학(중심, 흐름)에 필수적입니다.
+
+\subsubsection{연습}\label{uxc5f0uxc2b5-32}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \(R=[0,1]\times[0,1]\)인 경우 \(\iint_R (x^2+y^2)\, dA\)을 평가합니다.
+\item
+  \(R=\{(x,y):0\leq x\leq2,0\leq y\leq x\}\)인 경우
+  \(\iint_R xy\, dA\)을 계산합니다.3. 단위 정사각형
+  \([0,1]\times[0,1]\)에 대한 \(f(x,y) = x+y\)의 평균값을 찾습니다.
+\item
+  \(f(x,y)\)이 확률 밀도 함수인 경우 확률 측면에서
+  \(\iint_R f(x,y)\, dA\)을 해석합니다.
+\item
+  통합 순서 전환이 \(\iint_{[0,1]\times[0,2]} (x+y)\,dA\)에 대해 동일한
+  결과를 제공한다는 것을 보여줍니다.
+\end{enumerate}
+
+\subsection{9.2 삼중 적분}\label{uxc0bcuxc911-uxc801uxbd84}
+
+삼중 적분은 적분 개념을 세 가지 변수로 확장하여 3차원 영역의 부피, 질량
+및 기타 양을 계산할 수 있게 해줍니다.
+
+\subsubsection{정의}\label{uxc815uxc758-10}
+
+\(f(x,y,z)\)이 고체 영역 \(E\)에서 연속인 경우 삼중 적분은 다음과
+같습니다.
+
+\[
+\iiint_E f(x,y,z)\, dV = \lim_{m,n,p \to \infty} \sum f(x_{ijk}^-, y_{ijk}^-, z_{ijk}^-) \Delta V,
+\]
+
+여기서 지역은 \(\Delta V\) 볼륨의 상자로 세분화됩니다.
+
+\subsubsection{반복적분}\label{uxbc18uxbcf5uxc801uxbd84-1}
+
+Fubini의 정리에 따르면 삼중 적분은 반복 적분으로 계산될 수 있습니다.
+
+\[
+\iiint_E f(x,y,z)\, dV = \int_a^b \int_c^d \int_e^f f(x,y,z)\, dz\, dy\, dx,
+\]
+
+직사각형 상자 \(E = [a,b]\times[c,d]\times[e,f]\)의 경우.
+
+편의를 위해 통합 순서를 선택할 수 있습니다.
+
+\subsubsection{예}\label{uxc608-21}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  직사각형 상자
+\end{enumerate}
+
+\[
+\iiint_E xyz\, dV, \quad E=[0,1]\times[0,2]\times[0,3].
+\]
+
+\[
+= \int_0^1 \int_0^2 \int_0^3 xyz\,dz\,dy\,dx.
+\]
+
+먼저 \(z\)을 통해 통합하세요.
+
+\[
+\int_0^3 xyz\,dz = xy \left[\tfrac{1}{2}z^2\right]_0^3 = \tfrac{9}{2}xy.
+\]
+
+이제 \(y\)을 통해 통합하세요.
+
+\[
+\int_0^2 \tfrac{9}{2}xy\,dy = \tfrac{9}{2}x \cdot \left[\tfrac{1}{2}y^2\right]_0^2 = 9x.
+\]
+
+마지막으로 \(x\)을 통해 통합합니다.
+
+\[
+\int_0^1 9x\,dx = \tfrac{9}{2}.
+\]
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  평면으로 둘러싸인 지역
+  \(E = \{(x,y,z) \mid 0 \leq x \leq 1, 0 \leq y \leq x, 0 \leq z \leq y\}\)을
+  허용합니다.
+\end{enumerate}
+
+\[
+\iiint_E 1\,dV = \int_0^1 \int_0^x \int_0^y 1\,dz\,dy\,dx.
+\]
+
+평가:
+
+\[
+= \int_0^1 \int_0^x y\,dy\,dx = \int_0^1 \tfrac{1}{2}x^2\,dx = \tfrac{1}{6}.
+\]따라서 이 삼각형 영역의 부피는 \(\tfrac{1}{6}\)입니다.
+
+\subsubsection{애플리케이션}\label{uxc560uxd50cuxb9acuxcf00uxc774uxc158-2}
+
+\begin{itemize}
+\item
+  볼륨: \(V = \iiint_E 1 \, dV\).
+\item
+  질량: 밀도가 \(\rho(x,y,z)\)인 경우
+
+  \[
+  M = \iiint_E \rho(x,y,z)\, dV.
+  \]
+\item
+  평균값:
+
+  \[
+  f_{\text{avg}} = \frac{1}{V(E)} \iiint_E f(x,y,z)\,dV.
+  \]
+\end{itemize}
+
+\subsubsection{이것이 중요한
+이유}\label{uxc774uxac83uxc774-uxc911uxc694uxd55c-uxc774uxc720-17}
+
+삼중 적분은 면적과 부피 계산을 임의의 고체로 일반화합니다. 이는
+물리학(질량 분포, 질량 중심, 중력장), 공학 및 확률에 사용됩니다.
+
+\subsubsection{연습}\label{uxc5f0uxc2b5-33}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \(E=[0,1]\times[0,1]\times[0,1]\) 큐브에 대해
+  \(\iiint_E (x+y+z)\,dV\)을 계산합니다.
+\item
+  \(x=0, y=0, z=0, x+y+z=1\)로 둘러싸인 사면체의 부피를 구합니다.
+\item
+  \(E=[0,2]\times[0,1]\times[0,1]\)인 경우 \(\iiint_E x^2 \, dV\)을
+  평가합니다.
+\item
+  \(\iiint_E 1\,dV\)이 \(E\)의 기하학적 부피와 동일함을 보여줍니다.
+\item
+  밀도가 \(\rho(x,y,z)=x+y+z\)인 경우 단위 입방체의 질량을 계산합니다.
+\end{enumerate}
+
+\subsection{9.3 응용: 부피, 질량,
+확률}\label{uxc751uxc6a9-uxbd80uxd53c-uxc9c8uxb7c9-uxd655uxb960}
+
+삼중 적분은 고체 영역에 걸쳐 값을 축적하여 3차원의 양을 계산할 수 있게
+해주기 때문에 강력합니다.
+
+\subsubsection{볼륨}\label{uxbcfcuxb968}
+
+가장 간단한 응용 프로그램은 \(E\) 지역의 볼륨을 찾는 것입니다.
+
+\[
+V = \iiint_E 1 \, dV.
+\]
+
+예: 좌표 평면과 \(x+y+z=1\) 평면으로 둘러싸인 입체의 부피를 구합니다.
+
+\[
+V = \iiint_E 1 \, dV = \int_0^1 \int_0^{1-x} \int_0^{1-x-y} 1 \, dz\, dy\, dx.
+\]
+
+평가하면 \(V = \tfrac{1}{6}\)이 제공됩니다.
+
+\subsubsection{질량과 밀도}\label{uxc9c8uxb7c9uxacfc-uxbc00uxb3c4}
+
+고체에 밀도 함수 \(\rho(x,y,z)\)이 있는 경우 질량은 다음과 같습니다.
+
+\[
+M = \iiint_E \rho(x,y,z)\, dV.
+\]
+
+질량 중심은 다음과 같이 주어진다.
+
+\[
+\bar{x} = \frac{1}{M}\iiint_E x\rho(x,y,z)\,dV, \quad
+\bar{y} = \frac{1}{M}\iiint_E y\rho(x,y,z)\,dV, \quad
+\bar{z} = \frac{1}{M}\iiint_E z\rho(x,y,z)\,dV.
+\]
+
+예:일정한 밀도 \(\rho=1\)을 갖는 단위 입방체의 경우 질량 중심은
+\((0.5,0.5,0.5)\)에 있습니다.
+
+\subsubsection{확률}\label{uxd655uxb960}
+
+\(f(x,y,z)\)가 3D의 확률 밀도 함수인 경우 확률 변수가 \(E\) 영역에 있을
+확률은 다음과 같습니다.
+
+\[
+P(E) = \iiint_E f(x,y,z)\, dV,
+\]
+
+여기서 \(f(x,y,z) \geq 0\) 및
+
+\[
+\iiint_{\mathbb{R}^3} f(x,y,z)\,dV = 1.
+\]
+
+예: \(0 \leq z \leq 1\)에 대해 \(f(x,y,z) = \tfrac{3}{4}z^2\)인 경우
+\(x,y\)에 균일하게 적용됩니다.
+
+\[
+P(0 \leq z \leq 0.5) = \int_0^{0.5} \tfrac{3}{4}z^2 \, dz = \tfrac{1}{32}.
+\]
+
+\subsubsection{이것이 중요한
+이유}\label{uxc774uxac83uxc774-uxc911uxc694uxd55c-uxc774uxc720-18}
+
+\begin{itemize}
+\tightlist
+\item
+  볼륨은 형상을 불규칙한 솔리드로 일반화합니다.
+\item
+  질량 및 밀도 적분은 미적분을 물리학 및 공학에 연결합니다.
+\item
+  고차원의 확률 밀도 함수는 통계 및 데이터 과학에서 널리 사용됩니다.
+\end{itemize}
+
+\subsubsection{연습}\label{uxc5f0uxc2b5-34}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \(x^2+y^2+z^2 \leq 1\)(단위구)로 둘러싸인 입체의 부피를 구합니다.
+\item
+  \(z\)에 비례하는 밀도를 갖는 원뿔의 질량을 계산합니다.
+\item
+  \(x=0, y=0, z=0, x+y+z=1\)으로 둘러싸인 균일한 사면체의 질량 중심을
+  찾습니다.
+\item
+  \([0,2]\times[0,2]\times[0,2]\) 큐브의 \(f(x,y,z) = \frac{1}{8}\)인
+  경우 확률 밀도 함수인지 확인합니다.
+\item
+  삼중 적분을 사용하여 단위 구에서 무작위로 선택한 점이 \(z > 0\)을 가질
+  확률을 계산합니다.
+\end{enumerate}
+
+\subsection{9.4 변수 변경: 극좌표, 원통형, 구형
+좌표}\label{uxbcc0uxc218-uxbcc0uxacbd-uxadf9uxc88cuxd45c-uxc6d0uxd1b5uxd615-uxad6cuxd615-uxc88cuxd45c}
+
+많은 적분은 영역의 대칭과 일치하는 좌표계로 표현되면 더 쉬워집니다. 직교
+좌표 \((x,y,z)\) 대신 극좌표, 원통형 또는 구형 좌표를 사용할 수
+있습니다.
+
+\subsubsection{극좌표(2D)}\label{uxadf9uxc88cuxd45c2d}
+
+두 변수의 함수의 경우 극좌표로 전환할 수 있습니다.
+
+\[
+x = r\cos\theta, \quad y = r\sin\theta, \quad r \geq 0, \; 0 \leq \theta < 2\pi.
+\]
+
+영역 요소는 다음과 같이 변환됩니다.
+
+\[
+dA = r\,dr\,d\theta.
+\]
+
+예:단위원의 면적을 구합니다.
+
+\[
+A = \iint_{x^2+y^2\leq 1} 1\,dA = \int_0^{2\pi}\int_0^1 r\,dr\,d\theta = \pi.
+\]
+
+\subsubsection{원통형 좌표(3D)}\label{uxc6d0uxd1b5uxd615-uxc88cuxd45c3d}
+
+3D에서 원통형 좌표는 \(z\)을 사용하여 극좌표를 확장합니다.
+
+\[
+x = r\cos\theta, \quad y = r\sin\theta, \quad z = z.
+\]
+
+볼륨 요소는
+
+\[
+dV = r\,dr\,d\theta\,dz.
+\]
+
+예: 반경이 \(R\)이고 높이가 \(h\)인 원통의 부피:
+
+\[
+V = \int_0^h \int_0^{2\pi} \int_0^R r\,dr\,d\theta\,dz = \pi R^2 h.
+\]
+
+\subsubsection{구형 좌표(3D)}\label{uxad6cuxd615-uxc88cuxd45c3d}
+
+구형 대칭의 경우 다음을 사용합니다.
+
+\[
+x = \rho \sin\phi \cos\theta, \quad y = \rho \sin\phi \sin\theta, \quad z = \rho \cos\phi,
+\]
+
+어디서
+
+\begin{itemize}
+\tightlist
+\item
+  \(\rho \geq 0\)은 원점으로부터의 거리,
+\item
+  \(0 \leq \phi \leq \pi\)은 양의 \(z\)축으로부터의 각도입니다.
+\item
+  \(0 \leq \theta < 2\pi\)은 \(xy\) 평면의 각도입니다.
+\end{itemize}
+
+볼륨 요소는
+
+\[
+dV = \rho^2 \sin\phi \, d\rho\, d\phi\, d\theta.
+\]
+
+예: 단위 구의 부피:
+
+\[
+V = \int_0^{2\pi} \int_0^\pi \int_0^1 \rho^2 \sin\phi \, d\rho\, d\phi\, d\theta.
+\]
+
+평가:
+
+\[
+V = \left(\int_0^1 \rho^2 d\rho\right)\left(\int_0^\pi \sin\phi d\phi\right)\left(\int_0^{2\pi} d\theta\right) = \tfrac{1}{3}(2)(2\pi) = \tfrac{4\pi}{3}.
+\]
+
+\subsubsection{이것이 중요한
+이유}\label{uxc774uxac83uxc774-uxc911uxc694uxd55c-uxc774uxc720-19}
+
+\begin{itemize}
+\tightlist
+\item
+  극좌표는 원형 영역을 단순화합니다.
+\item
+  원통형 좌표는 원통 및 회전 대칭을 처리합니다.
+\item
+  구면 좌표는 구, 원뿔 및 방사형 문제를 단순화합니다.
+\item
+  이러한 변수 변경으로 인해 불가능한 적분을 관리할 수 있게 됩니다.
+\end{itemize}
+
+\subsubsection{연습}\label{uxc5f0uxc2b5-35}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  극좌표를 사용하여 \(\iint_{x^2+y^2\leq 4} (x^2+y^2)\,dA\)을
+  계산합니다.
+\item
+  원통형 좌표를 사용하여 높이가 \(h\)이고 반경이 \(R\)인 원뿔의 부피를
+  찾습니다.
+\item
+  구형 좌표를 사용하여 반경이 \(R\)인 공의 부피를 평가합니다.
+\item
+  극좌표의 야코비 인수는 \(r\)임을 보여줍니다.5. 구면 좌표를 사용하여
+  원점으로부터의 거리에 비례하는 밀도를 갖는 반경 \(R\)의 고체 구의
+  질량을 구합니다.
+\end{enumerate}
+
+\section{10장. 벡터
+미적분학}\label{uxc7a5.-uxbca1uxd130-uxbbf8uxc801uxbd84uxd559}
+
+\subsection{10.1 벡터 필드}\label{uxbca1uxd130-uxd544uxb4dc}
+
+벡터 필드는 스칼라 함수가 숫자를 할당하는 것과 마찬가지로 공간의 각 점에
+벡터를 할당합니다. 벡터 필드는 흐름, 힘 및 기타 방향 수량을 모델링하는
+데 사용됩니다.
+
+\subsubsection{정의}\label{uxc815uxc758-11}
+
+2차원에서 벡터장은 함수입니다.
+
+\[
+\mathbf{F}(x,y) = \langle P(x,y), Q(x,y) \rangle,
+\]
+
+여기서 \(P\) 및 \(Q\)은 스칼라 함수입니다.
+
+3차원에서는
+
+\[
+\mathbf{F}(x,y,z) = \langle P(x,y,z), Q(x,y,z), R(x,y,z) \rangle.
+\]
+
+\subsubsection{예}\label{uxc608-22}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  방사형 필드
+\end{enumerate}
+
+\[
+\mathbf{F}(x,y) = \langle x, y \rangle.
+\]
+
+벡터는 원점에서 바깥쪽을 가리킵니다.
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  회전장
+\end{enumerate}
+
+\[
+\mathbf{F}(x,y) = \langle -y, x \rangle.
+\]
+
+벡터는 원점을 중심으로 순환합니다.
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{2}
+\tightlist
+\item
+  중력장
+\end{enumerate}
+
+\[
+\mathbf{F}(x,y,z) = -\frac{GM}{r^3}\langle x,y,z \rangle, \quad r=\sqrt{x^2+y^2+z^2}.
+\]
+
+\subsubsection{벡터 필드
+시각화}\label{uxbca1uxd130-uxd544uxb4dc-uxc2dcuxac01uxd654}
+
+\begin{itemize}
+\tightlist
+\item
+  방향과 크기를 나타내기 위해 샘플 지점에 작은 화살표를 그립니다.
+\item
+  크기가 더 큰 밀도가 높은 화살표입니다.
+\item
+  흐름선, 궤적 및 힘을 해석하는 데 유용합니다.
+\end{itemize}
+
+\subsubsection{흐름선}\label{uxd750uxb984uxc120}
+
+벡터 필드의 흐름선(또는 적분 곡선)은 각 점의 접선 벡터가 필드와 일치하는
+곡선 \(\mathbf{r}(t)\)입니다.
+
+\[
+\mathbf{r}'(t) = \mathbf{F}(\mathbf{r}(t)).
+\]
+
+흐름선은 속도 장의 입자 경로를 나타냅니다.
+
+\subsubsection{이것이 중요한
+이유}\label{uxc774uxac83uxc774-uxc911uxc694uxd55c-uxc774uxc720-20}
+
+\begin{itemize}
+\tightlist
+\item
+  벡터장은 물리학(유체 흐름, 전자기학, 중력)의 기본입니다.
+\item
+  선적분, 곡면적분, 벡터 미적분학의 대정리(Green, Stokes, Divergence)의
+  기초를 형성합니다.
+\item
+  방향 수량을 나타내는 기하학적 방법을 제공합니다.
+\end{itemize}
+
+\subsubsection{\texorpdfstring{연습1. 벡터장
+\(\mathbf{F}(x,y) = \langle y, -x \rangle\)을
+스케치합니다.}{연습1. 벡터장 \textbackslash mathbf\{F\}(x,y) = \textbackslash langle y, -x \textbackslash rangle을 스케치합니다.}}\label{uxc5f0uxc2b51.-uxbca1uxd130uxc7a5-mathbffxy-langle-y--x-rangleuxc744-uxc2a4uxcf00uxce58uxd569uxb2c8uxb2e4.}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  \(\mathbf{F}(x,y) = \langle x,y \rangle\)의 벡터가 원점을 향하는지
+  아니면 원점에서 멀어지는지를 결정합니다.
+\item
+  \(\mathbf{F}(x,y,z) = \langle y, z, x \rangle\)의 경우
+  \(\mathbf{F}(1,2,3)\)을 계산합니다.
+\item
+  \(\mathbf{F}(x,y) = \langle -y, x \rangle\)의 흐름선을 설명하세요.
+\item
+  중력장과 전기장이 방사형 벡터장의 예인 이유를 설명하십시오.
+\end{enumerate}
+
+\subsection{10.2 선적분}\label{uxc120uxc801uxbd84}
+
+선 적분은 적분의 아이디어를 곡선을 따라 계산되는 함수로 확장합니다.
+간격이나 영역을 통합하는 대신 공간의 경로를 통합합니다.
+
+\subsubsection{정의: 스칼라 선
+적분}\label{uxc815uxc758-uxc2a4uxce7cuxb77c-uxc120-uxc801uxbd84}
+
+\(f(x,y)\)이 스칼라 함수이고 \(C\)이
+\(\mathbf{r}(t) = \langle x(t), y(t) \rangle, \; a \leq t \leq b\)에
+의해 매개변수화된 곡선인 경우 선 적분은 다음과 같습니다.
+
+\[
+\int_C f(x,y)\, ds = \int_a^b f(x(t),y(t)) \, |\mathbf{r}'(t)|\, dt,
+\]
+
+여기서 \(ds\)은 호 길이입니다.
+
+이는 곡선을 따라 \(f\)의 축적을 측정합니다.
+
+\subsubsection{정의: 벡터선
+적분}\label{uxc815uxc758-uxbca1uxd130uxc120-uxc801uxbd84}
+
+벡터 필드 \(\mathbf{F}(x,y) = \langle P(x,y), Q(x,y) \rangle\)의 경우
+\(C\)을 따른 선 적분은 다음과 같습니다.
+
+\[
+\int_C \mathbf{F} \cdot d\mathbf{r} = \int_a^b \mathbf{F}(\mathbf{r}(t)) \cdot \mathbf{r}'(t)\, dt.
+\]
+
+이는 곡선을 따라 필드가 수행한 작업을 측정합니다.
+
+\subsubsection{예}\label{uxc608-23}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  스칼라 선 적분
+\end{enumerate}
+
+\[
+f(x,y) = x+y, \quad C: \mathbf{r}(t) = \langle t, t^2 \rangle, \; 0 \leq t \leq 1.
+\]
+
+그런 다음
+
+\[
+\int_C f(x,y)\, ds = \int_0^1 (t+t^2)\sqrt{(1)^2+(2t)^2}\, dt.
+\]
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  힘이 하는 일
+\end{enumerate}
+
+\[
+\mathbf{F}(x,y) = \langle y, x \rangle, \quad C: \mathbf{r}(t) = \langle t, t^2 \rangle, \; 0 \leq t \leq 1.
+\]
+
+\[
+\int_C \mathbf{F} \cdot d\mathbf{r} = \int_0^1 \langle t^2, t \rangle \cdot \langle 1, 2t \rangle\, dt = \int_0^1 (t^2 + 2t^2)\, dt = \int_0^1 3t^2\, dt = 1.\]
+
+\subsubsection{Physical Interpretation}\label{physical-interpretation}
+
+\begin{itemize}
+\tightlist
+\item
+  Scalar line integral: accumulation of density along a wire.
+\item
+  Vector line integral: work done by a force moving an object along a
+  path.
+\end{itemize}
+
+\subsubsection{Why This Matters}\label{why-this-matters}
+
+\begin{itemize}
+\tightlist
+\item
+  Line integrals connect vector fields with physical quantities like
+  work and circulation.
+\item
+  They are building blocks for Green's Theorem and Stokes' Theorem.
+\item
+  Appear in physics (electric potential, fluid flow, mechanics).
+\end{itemize}
+
+\subsubsection{Exercises}\label{exercises-3}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Compute \(\int_C (x^2+y^2)\, ds\) where \(C\) is the line segment from
+  (0,0) to (1,1).
+\item
+  Evaluate \(\int_C \mathbf{F}\cdot d\mathbf{r}\) for
+  \(\mathbf{F}(x,y) = \langle -y, x \rangle\) along the unit circle
+  \(x^2+y^2=1\).
+\item
+  Interpret the meaning of \(\int_C 1\,ds\).
+\item
+  For \(\mathbf{F}(x,y,z) = \langle z,0,x \rangle\), compute the line
+  integral along
+  \(\mathbf{r}(t) = \langle t,t,1 \rangle, 0 \leq t \leq 1\).
+\item
+  Explain the difference between scalar and vector line integrals.
+\end{enumerate}
+
+\subsection{10.3 Surface Integrals}\label{surface-integrals}
+
+A surface integral generalizes line integrals to two-dimensional
+surfaces in three-dimensional space. They allow us to compute flux
+through surfaces and accumulation of scalar fields over curved surfaces.
+
+\subsubsection{Scalar Surface Integral}\label{scalar-surface-integral}
+
+If a surface \(S\) is parameterized by
+
+\[
+\mathbf{r}(u,v) = \langle x(u,v), y(u,v), z(u,v) \rangle,
+\]
+
+then the surface integral of a scalar function \(f(x,y,z)\) is
+
+\[
+\iint_S f(x,y,z)\, dS = \iint_D f(\mathbf{r}(u,v)) \, |\mathbf{r}_u \times \mathbf{r}_v| \, 뒤\,dv,
+\]
+
+where \(\mathbf{r}_u\) and \(\mathbf{r}_v\) are partial derivatives of
+\(\mathbf{r}(u,v)\), and \(D\) is the parameter domain.
+
+\subsubsection{Vector Surface Integral
+(Flux)}\label{vector-surface-integral-flux}
+
+For a vector field \(\mathbf{F}(x,y,z)\), the flux through a surface
+\(S\) is
+
+\[
+\iint_S \mathbf{F}\cdot d\mathbf{S} = \iint_S \mathbf{F}\cdot \mathbf{n}\, dS,
+\]여기서 \(\mathbf{n}\)은 단위 법선 벡터입니다. 매개변수화를 사용하여,
+
+\[
+\iint_S \mathbf{F}\cdot d\mathbf{S} = \iint_D \mathbf{F}(\mathbf{r}(u,v)) \cdot (\mathbf{r}_u \times \mathbf{r}_v)\,du\,dv.
+\]
+
+\subsubsection{예}\label{uxc608-24}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  스칼라 표면 적분 표면: 단위 디스크 \(x^2+y^2 \leq 1\) 위의 평면
+  \(z=1\).
+\end{enumerate}
+
+\[
+\iint_S 1\, dS = \text{area of the disk} = \pi.
+\]
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  구를 통한 플럭스 \(\mathbf{F}(x,y,z) = \langle x,y,z \rangle\) 및
+  \(S\) = 반경 \(R\)의 구라고 가정합니다. 법선 벡터는
+  \(\mathbf{n} = \frac{1}{R}\langle x,y,z \rangle\)입니다.
+\end{enumerate}
+
+\[
+\mathbf{F}\cdot \mathbf{n} = \frac{x^2+y^2+z^2}{R} = R.
+\]
+
+그래서
+
+\[
+\iint_S \mathbf{F}\cdot d\mathbf{S} = \iint_S R\, dS = R \cdot 4\pi R^2 = 4\pi R^3.
+\]
+
+\subsubsection{이것이 중요한
+이유}\label{uxc774uxac83uxc774-uxc911uxc694uxd55c-uxc774uxc720-21}
+
+\begin{itemize}
+\tightlist
+\item
+  스칼라 표면 적분은 면적과 표면 분포를 측정합니다.
+\item
+  벡터 표면 적분은 플럭스(표면을 통과하는 필드의 양)를 측정합니다.
+\item
+  응용 분야: 전자기학, 유체 흐름, 열 전달 등.
+\end{itemize}
+
+\subsubsection{연습}\label{uxc5f0uxc2b5-36}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  한 변의 길이가 2인 정육면체의 표면에 대해 \(\iint_S 1\, dS\)을
+  계산합니다.
+\item
+  단위구를 통과하는 \(\mathbf{F}(x,y,z) = \langle x,y,z \rangle\)의
+  플럭스를 구합니다.
+\item
+  포물면 \(z = x^2+y^2, \, z \leq 1\)에 대해 \(\iint_S z\, dS\)을
+  평가합니다.
+\item
+  \(\mathbf{F}(x,y,z) = \langle y,0,0 \rangle\)의 경우 \(x=1\),
+  \(0 \leq y,z \leq 1\) 평면을 통한 플럭스를 계산합니다.
+\item
+  닫힌 표면을 통과하는 벡터장의 자속이 0이라는 것이 무엇을 의미하는지
+  물리적으로 설명하십시오.
+\end{enumerate}
+
+\subsection{10.4 그린의 정리}\label{uxadf8uxb9b0uxc758-uxc815uxb9ac}
+
+그린의 정리는 닫힌 곡선 주위의 선 적분을 닫힌 곡선 주위의 이중 적분과
+연결하는 벡터 미적분학의 기본 결과입니다. 이는 스톡스 정리의 2차원
+버전입니다.
+
+\subsubsection{\texorpdfstring{그린 정리의 진술\(C\)은 평면에서 양의
+방향을 갖는 단순하고 닫힌 곡선이고 \(R\)은 이를 둘러싸는 영역입니다.
+\(\mathbf{F}(x,y) = \langle P(x,y), Q(x,y) \rangle\)에 \(R\)을 포함하는
+개방형 영역에 연속 편도함수가 있는
+경우}{그린 정리의 진술C은 평면에서 양의 방향을 갖는 단순하고 닫힌 곡선이고 R은 이를 둘러싸는 영역입니다. \textbackslash mathbf\{F\}(x,y) = \textbackslash langle P(x,y), Q(x,y) \textbackslash rangle에 R을 포함하는 개방형 영역에 연속 편도함수가 있는 경우}}\label{uxadf8uxb9b0-uxc815uxb9acuxc758-uxc9c4uxc220cuxc740-uxd3c9uxba74uxc5d0uxc11c-uxc591uxc758-uxbc29uxd5a5uxc744-uxac16uxb294-uxb2e8uxc21cuxd558uxace0-uxb2ebuxd78c-uxace1uxc120uxc774uxace0-ruxc740-uxc774uxb97c-uxb458uxb7ecuxc2f8uxb294-uxc601uxc5eduxc785uxb2c8uxb2e4.-mathbffxy-langle-pxy-qxy-rangleuxc5d0-ruxc744-uxd3ecuxd568uxd558uxb294-uxac1cuxbc29uxd615-uxc601uxc5eduxc5d0-uxc5f0uxc18d-uxd3b8uxb3c4uxd568uxc218uxac00-uxc788uxb294-uxacbduxc6b0}
+
+\[
+\oint_C \mathbf{F} \cdot d\mathbf{r} = \oint_C P\,dx + Q\,dy = \iint_R \left( \frac{\partial Q}{\partial x} - \frac{\partial P}{\partial y} \right)\, dA.
+\]
+
+\subsubsection{해석}\label{uxd574uxc11d-2}
+
+\begin{itemize}
+\tightlist
+\item
+  \(C\) 주변의 선 적분은 경계를 따라 벡터장의 순환을 측정합니다.
+\item
+  \(R\)에 대한 이중 적분은 영역 내부 필드의 전체 컬(회전)을 측정합니다.
+\end{itemize}
+
+\subsubsection{예 1: 면적
+공식}\label{uxc608-1-uxba74uxc801-uxacf5uxc2dd}
+
+\(\mathbf{F} = \langle -y/2, x/2 \rangle\)인 경우
+
+\[
+\frac{\partial Q}{\partial x} - \frac{\partial P}{\partial y} = 1.
+\]
+
+따라서 그린의 정리는 다음을 제공합니다.
+
+\[
+\text{Area}(R) = \iint_R 1\,dA = \oint_C \left(-\tfrac{y}{2}\,dx + \tfrac{x}{2}\,dy\right).
+\]
+
+이는 선적분을 사용하여 면적을 계산하는 방법을 제공합니다.
+
+\subsubsection{예시 2: 순환}\label{uxc608uxc2dc-2-uxc21cuxd658}
+
+\(\mathbf{F}(x,y) = \langle -y, x \rangle\) 및 \(C\)을 단위원으로
+둡니다.
+
+\begin{itemize}
+\tightlist
+\item
+  \(P=-y, Q=x\).
+\item
+  \(Q_x - P_y = 1 - (-1) = 2\).
+\item
+  단위 디스크에 대한 이중 적분:
+\end{itemize}
+
+\[
+\iint_R 2\,dA = 2\pi (1^2) = 2\pi.
+\]
+
+따라서 원 주위의 순환은 \(2\pi\)입니다.
+
+\subsubsection{이것이 중요한
+이유}\label{uxc774uxac83uxc774-uxc911uxc694uxd55c-uxc774uxc720-22}
+
+\begin{itemize}
+\tightlist
+\item
+  어려운 선적분을 이중 적분으로 변환하거나 그 반대로 변환합니다.
+\item
+  로컬 속성(컬)과 전역 속성(순환) 사이에 브리지를 제공합니다.
+\item
+  유체 흐름, 전자기학 및 평면 벡터장에 대한 물리학에서 널리 사용됩니다.
+\end{itemize}
+
+\subsubsection{연습}\label{uxc5f0uxc2b5-37}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  그린의 정리를 사용하여 타원 \(\frac{x^2}{a^2} + \frac{y^2}{b^2} = 1\)
+  내부 면적을 계산합니다.
+\item
+  정점 (0,0), (1,0), (1,1), (0,1)이 있는 정사각형을 따라
+  \(\mathbf{F}(x,y) = \langle -y, x \rangle\)에 대한 그린의 정리를
+  확인합니다.3. 단위원 주위의
+  \(\mathbf{F}(x,y) = \langle -y, x \rangle\) 순환을 계산합니다.
+\item
+  \(\nabla \times \mathbf{F} = 0\)인 경우 닫힌 곡선 주위의
+  \(\mathbf{F}\)의 선 적분은 0임을 보여줍니다.
+\item
+  그린의 정리를 사용하여 다음을 보여줍니다.
+\end{enumerate}
+
+\[
+\oint_C x\,dy = -\oint_C y\,dx
+\]
+
+닫힌 곡선 \(C\)에 대해.
+
+\subsection{10.5 스톡스의
+정리}\label{uxc2a4uxd1a1uxc2a4uxc758-uxc815uxb9ac}
+
+스톡스의 정리는 그린의 정리를 3차원으로 일반화한 것입니다. 이는 표면
+위의 벡터 필드 컬의 표면 적분을 해당 표면 경계 주위의 벡터 필드의 선
+적분과 관련시킵니다.
+
+\subsubsection{스톡스 정리의
+진술}\label{uxc2a4uxd1a1uxc2a4-uxc815uxb9acuxc758-uxc9c4uxc220}
+
+\(S\)을 경계 곡선 \(C\)(양의 방향)이 있는 방향이 있는 매끄러운 표면으로
+설정합니다. \(\mathbf{F}(x,y,z)\)이 연속 편도함수를 포함하는 벡터장인
+경우
+
+\[
+\iint_S (\nabla \times \mathbf{F}) \cdot d\mathbf{S} = \oint_C \mathbf{F} \cdot d\mathbf{r}.
+\]
+
+\begin{itemize}
+\tightlist
+\item
+  왼쪽: 표면을 통한 \(\mathbf{F}\) 컬의 흐름.
+\item
+  오른쪽: 경계 곡선을 따라 \(\mathbf{F}\)의 순환.
+\end{itemize}
+
+\subsubsection{해석}\label{uxd574uxc11d-3}
+
+\begin{itemize}
+\tightlist
+\item
+  경계 주변의 선 적분은 표면 내부의 전체 ``회전''과 같습니다.
+\item
+  그린 정리(곡면이 평면에 있는 특별한 경우)를 확장합니다.
+\end{itemize}
+
+\subsubsection{예 1: 특수 사례로서의 그린
+정리}\label{uxc608-1-uxd2b9uxc218-uxc0acuxb840uxb85cuxc11cuxc758-uxadf8uxb9b0-uxc815uxb9ac}
+
+\(S\)이 \(xy\) 평면의 평평한 영역인 경우 스톡스 정리는 그린 정리로
+축소됩니다.
+
+\subsubsection{예 2: 반구에서의
+순환}\label{uxc608-2-uxbc18uxad6cuxc5d0uxc11cuxc758-uxc21cuxd658}
+
+\(\mathbf{F}(x,y,z) = \langle -y, x, 0 \rangle\) 및 \(S\)을 반경 1의
+상반구로 설정합니다.
+
+\begin{itemize}
+\tightlist
+\item
+  경계 \(C\): \(xy\) 평면의 단위원.
+\item
+  스톡스의 정리에 따라:
+\end{itemize}
+
+\[
+\oint_C \mathbf{F}\cdot d\mathbf{r} = \iint_S (\nabla \times \mathbf{F})\cdot d\mathbf{S}.
+\]
+
+\begin{itemize}
+\tightlist
+\item
+  컬: \(\nabla \times \mathbf{F} = \langle 0,0,2 \rangle\).
+\item
+  반구에 대한 법선 지점은 바깥쪽입니다:
+  \(\mathbf{n} = \langle 0,0,1 \rangle\).
+\item
+  따라서 피적분함수 = 2입니다.- 반구 면적 = \(2\pi (1^2)\).
+\end{itemize}
+
+\[
+\iint_S 2\, dS = 2 \cdot 2\pi = 4\pi.
+\]
+
+따라서 적도 주변의 순환은 \(4\pi\)입니다.
+
+\subsubsection{이것이 중요한
+이유}\label{uxc774uxac83uxc774-uxc911uxc694uxd55c-uxc774uxc720-23}
+
+\begin{itemize}
+\tightlist
+\item
+  표면 적분과 선 적분 간의 깊은 연결을 제공합니다.
+\item
+  편리한 표면을 선택할 수 있어 계산이 단순화됩니다.
+\item
+  전자기학(패러데이의 법칙) 및 유체 역학에 널리 사용됩니다.
+\end{itemize}
+
+\subsubsection{연습}\label{uxc5f0uxc2b5-38}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \(xy\) 평면의 장치 디스크에 대한
+  \(\mathbf{F}(x,y,z) = \langle y, -x, 0 \rangle\)에 대한 Stokes의
+  정리를 검증합니다.
+\item
+  \(\oint_C \mathbf{F}\cdot d\mathbf{r}\)를 계산합니다. 여기서
+  \(\mathbf{F}(x,y,z) = \langle z, 0, x \rangle\) 및 \(C\)은 정점
+  (0,0,0), (1,0,0), (0,1,0)이 있는 삼각형의 경계입니다.
+\item
+  \(\nabla \times \mathbf{F} = 0\)이면 폐곡선 주위의 순환이 0임을
+  보여줍니다.
+\item
+  스토크스의 정리를 적용하여 \(z=0\) 평면의 단위 사각형 경계 주위에서
+  \(\mathbf{F}(x,y,z) = \langle -y, x, z \rangle\)의 순환을 계산합니다.
+\item
+  스톡스의 정리가 그린의 정리를 어떻게 일반화하는지 설명하십시오.
+\end{enumerate}
+
+\subsection{10.6 발산 정리}\label{uxbc1cuxc0b0-uxc815uxb9ac}
+
+발산 정리(가우스 정리라고도 함)는 닫힌 표면을 통과하는 벡터장의 플럭스를
+표면 내부 필드 발산의 삼중 적분과 관련시킵니다.
+
+\subsubsection{발산 정리의
+진술}\label{uxbc1cuxc0b0-uxc815uxb9acuxc758-uxc9c4uxc220}
+
+\(E\)을 경계면 \(S\)(바깥쪽 방향)이 있는 \(\mathbb{R}^3\)의 솔리드
+영역으로 설정합니다. \(\mathbf{F}(x,y,z)\)가 \(E\)에 대한 연속 부분
+도함수를 포함하는 벡터 필드인 경우
+
+\[
+\iint_S \mathbf{F} \cdot d\mathbf{S} = \iiint_E (\nabla \cdot \mathbf{F}) \, dV.
+\]
+
+\begin{itemize}
+\tightlist
+\item
+  왼쪽: 닫힌 표면 \(S\)을 가로지르는 \(\mathbf{F}\)의 흐름.
+\item
+  오른쪽: 영역 내부 발산의 삼중 적분.
+\end{itemize}
+
+\subsubsection{다이버전스}\label{uxb2e4uxc774uxbc84uxc804uxc2a4}
+
+벡터 필드 \(\mathbf{F}(x,y,z) = \langle P, Q, R \rangle\)의 발산은
+다음과 같습니다.
+
+\[\nabla \cdot \mathbf{F} = \frac{\partial P}{\partial x} + \frac{\partial Q}{\partial y} + \frac{\partial R}{\partial z}.
+\]
+
+It measures the ``net outflow'' per unit volume at each point.
+
+\subsubsection{Example 1: Flux of a Radial
+Field}\label{example-1-flux-of-a-radial-field}
+
+Let \(\mathbf{F}(x,y,z) = \langle x, y, z \rangle\), and let \(E\) be
+the unit ball \(x^2+y^2+z^2 \leq 1\).
+
+\begin{itemize}
+\tightlist
+\item
+  Divergence: \(\nabla \cdot \mathbf{F} = 1+1+1 = 3\).
+\item
+  Volume of unit ball: \(\tfrac{4}{3}\pi\). So
+\end{itemize}
+
+\[
+\iiint_E (\nabla \cdot \mathbf{F})\, dV = 3 \cdot \tfrac{4}{3}\pi = 4\pi.
+\]
+
+따라서 단위 구 전체의 플럭스는 \(4\pi\)입니다.
+
+\subsubsection{예시 2: 상수
+필드}\label{uxc608uxc2dc-2-uxc0c1uxc218-uxd544uxb4dc}
+
+\(\mathbf{F}(x,y,z) = \langle 1, 0, 0 \rangle\)을 사용하세요.
+
+\begin{itemize}
+\tightlist
+\item
+  발산: \(\nabla \cdot \mathbf{F} = 0\).
+\item
+  따라서 닫힌 표면을 통과하는 플럭스는 0이며 직관과 일치합니다(순 유출
+  없음).
+\end{itemize}
+
+\subsubsection{이것이 중요한
+이유}\label{uxc774uxac83uxc774-uxc911uxc694uxd55c-uxc774uxc720-24}
+
+\begin{itemize}
+\item
+  표면 적분을 더 간단한 부피 적분으로 변환합니다.
+\item
+  물리학에서 사용: 전자기학, 유체 흐름 및 열 전달 분야의 가우스 법칙.
+\item
+  통합 프레임워크를 완성합니다.
+
+  \begin{itemize}
+  \tightlist
+  \item
+    그린의 정리(2D 컬 ⇔ 순환)
+  \item
+    스톡스의 정리(3D 컬 ⇔ 표면 순환)
+  \item
+    발산 정리(3D 발산 ⇔ 닫힌 표면의 플럭스)
+  \end{itemize}
+\end{itemize}
+
+\subsubsection{연습}\label{uxc5f0uxc2b5-39}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  발산 정리를 사용하여 반경이 \(R\)인 구의 표면을 가로지르는
+  \(\mathbf{F}(x,y,z) = \langle x,y,z \rangle\)의 플럭스를 계산합니다.
+\item
+  단위 큐브 \([0,1]^3\)에서
+  \(\mathbf{F}(x,y,z) = \langle y, z, x \rangle\)에 대한 발산 정리를
+  확인합니다.
+\item
+  \(\nabla \cdot \mathbf{F} = 0\)이면 닫힌 표면을 통과하는 총 플럭스가
+  0임을 보여줍니다.
+\item
+  단위 구를 통과하는
+  \(\mathbf{F}(x,y,z) = \langle x^2, y^2, z^2 \rangle\)의 플럭스를
+  계산합니다.
+\item
+  발산 정리가 어떻게 미적분학의 1차원 기본 정리를 일반화하는지
+  설명하십시오.
+\end{enumerate}
+
+\section{4부. 무한한
+프로세스}\label{uxbd80.-uxbb34uxd55cuxd55c-uxd504uxb85cuxc138uxc2a4}
+
+\section{11장. 시퀀스와 수렴\#\# 11.1 정의 및
+예}\label{uxc7a5.-uxc2dcuxd000uxc2a4uxc640-uxc218uxb834-11.1-uxc815uxc758-uxbc0f-uxc608}
+
+시퀀스는 순서가 지정된 숫자 목록이며 일반적으로 다음과 같이 작성됩니다.
+
+\[
+a_1, a_2, a_3, \dots
+\]
+
+또는 더 일반적으로는 \((a_n)_{n=1}^\infty\)입니다. 각 \(a_n\)은 시퀀스의
+n번째 항이라고 합니다.
+
+\subsubsection{시퀀스 정의}\label{uxc2dcuxd000uxc2a4-uxc815uxc758}
+
+시퀀스는 두 가지 방법으로 정의할 수 있습니다.
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  명시적 공식 -- n번째 항에 대한 직접적인 규칙을 제공합니다.
+
+  \begin{itemize}
+  \item
+    예: \(a_n = \frac{1}{n}\)은 시퀀스를 정의합니다.
+
+    \[
+    1, \tfrac{1}{2}, \tfrac{1}{3}, \tfrac{1}{4}, \dots
+    \]
+  \end{itemize}
+\item
+  재귀적 정의 - 이전 용어를 사용하여 용어를 정의합니다.
+
+  \begin{itemize}
+  \item
+    예: 피보나치 수열:
+
+    \[
+    a_1 = 1, \quad a_2 = 1, \quad a_{n} = a_{n-1} + a_{n-2} \quad (n \geq 3).
+    \]
+  \end{itemize}
+\end{enumerate}
+
+\subsubsection{시퀀스의 예}\label{uxc2dcuxd000uxc2a4uxc758-uxc608}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  산술 수열:
+
+  \[
+  a_n = a_1 + (n-1)d.
+  \]
+
+  예: \(a_n = 2n+1\) → 홀수의 시퀀스.
+\item
+  기하학적 순서:
+
+  \[
+  a_n = a_1 r^{n-1}.
+  \]
+
+  예: \(a_n = 2^n\) → 2의 거듭제곱.
+\item
+  고조파 시퀀스:
+
+  \[
+  a_n = \frac{1}{n}.
+  \]
+\item
+  교대 순서:
+
+  \[
+  a_n = (-1)^n.
+  \]
+\end{enumerate}
+
+\subsubsection{미적분학의
+수열}\label{uxbbf8uxc801uxbd84uxd559uxc758-uxc218uxc5f4}
+
+시퀀스는 무한 프로세스의 기초입니다.
+
+\begin{itemize}
+\tightlist
+\item
+  시퀀스의 한계 → 수렴을 정의합니다.
+\item
+  계열 → 수열로 구성된 무한 합.
+\item
+  시퀀스와 시리즈로 근사된 함수입니다.
+\end{itemize}
+
+\subsubsection{이것이 중요한
+이유}\label{uxc774uxac83uxc774-uxc911uxc694uxd55c-uxc774uxc720-25}
+
+\begin{itemize}
+\tightlist
+\item
+  시퀀스는 무한 계열 및 근사를 위한 구성 요소를 제공합니다.
+\item
+  이는 ``무한에 접근하는 것''과 수렴을 엄격하게 정의할 수 있게 해줍니다.
+\item
+  많은 중요한 함수(지수, 삼각함수)를 수열과 계열을 통해 표현할 수
+  있습니다.
+\end{itemize}
+
+\subsubsection{연습}\label{uxc5f0uxc2b5-40}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \(a_n = \frac{n}{n+1}\) 시퀀스의 처음 5개 항을 작성합니다.
+\item
+  \(a_n = (-1)^n n\)이 제한되어 있는지 확인합니다.
+\item
+  \(2,4,8,16,\dots\) 시퀀스에 대한 재귀적 정의를 제공합니다.
+\item
+  \(a_1=3\) 및 \(d=5\)을 사용하여 산술 수열의 10번째 항을 찾습니다.5.
+  \(a_1=1\), \(a_{n+1}=2a_n\)에 의해 정의된 시퀀스에 대한 명시적 공식을
+  작성합니다.
+\end{enumerate}
+
+\subsection{11.2 단조롭고 제한된
+시퀀스}\label{uxb2e8uxc870uxb86duxace0-uxc81cuxd55cuxb41c-uxc2dcuxd000uxc2a4}
+
+수열이 수렴하는지 여부를 이해하려면 수열의 동작을 연구해야 합니다. 즉,
+수열이 증가하는지, 감소하는지, 경계 내에 머무르는지, 아니면 제한 없이
+증가하는지를 연구해야 합니다. 두 가지 중요한 개념은 단조성과
+경계성입니다.
+
+\subsubsection{모노톤
+시퀀스}\label{uxbaa8uxb178uxd1a4-uxc2dcuxd000uxc2a4}
+
+\((a_n)\) 시퀀스가 항상 증가하거나 항상 감소하는 경우 단조라고 합니다.
+
+\begin{itemize}
+\item
+  모노톤 증가:
+
+  \[
+  a_{n+1} \geq a_n \quad \text{for all } n.
+  \]
+\item
+  모노톤 감소:
+
+  \[
+  a_{n+1} \leq a_n \quad \text{for all } n.
+  \]
+\end{itemize}
+
+예:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \(a_n = n\)이 단조롭게 증가하고 있습니다.
+\item
+  \(a_n = \frac{1}{n}\)은 단조롭게 감소합니다.
+\end{enumerate}
+
+\subsubsection{제한된
+시퀀스}\label{uxc81cuxd55cuxb41c-uxc2dcuxd000uxc2a4}
+
+모든 \(n\)에 대해 \(a_n \leq M\)과 같은 숫자 \(M\)이 존재하는 경우
+시퀀스는 위에 제한됩니다. 모든 \(n\)에 대해 \(a_n \geq m\)이 되는
+\(m\)이 있는 경우 아래로 제한됩니다.
+
+두 조건이 모두 충족되면 시퀀스는 제한됩니다.
+
+예:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \(a_n = \frac{1}{n}\)은 0과 1 사이로 제한됩니다.
+\item
+  \(a_n = (-1)^n\)은 -1과 1 사이로 제한됩니다.
+\item
+  \(a_n = n\)은 제한되지 않습니다.
+\end{enumerate}
+
+\subsubsection{모노톤 수렴
+정리}\label{uxbaa8uxb178uxd1a4-uxc218uxb834-uxc815uxb9ac}
+
+분석의 기본 결과:
+
+\begin{itemize}
+\tightlist
+\item
+  위에 경계가 있는 모든 단조 증가 수열은 수렴됩니다.
+\item
+  아래로 제한된 모든 단조 감소 수열은 수렴됩니다.
+\end{itemize}
+
+이 정리는 극한을 명시적으로 찾지 않고도 수렴을 보장합니다.
+
+\subsubsection{예}\label{uxc608-25}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  순서: \(a_n = 1 - \frac{1}{n}\).
+
+  \begin{itemize}
+  \tightlist
+  \item
+    증가: \(a_{n+1} - a_n = \frac{1}{n} - \frac{1}{n+1} > 0\) 이후.
+  \item
+    위의 경계는 1입니다.
+  \item
+    그러므로 수렴한다.
+  \item
+    한도: \(\lim_{n\to\infty} a_n = 1\).
+  \end{itemize}
+\end{enumerate}
+
+\subsubsection{이것이 중요한
+이유}\label{uxc774uxac83uxc774-uxc911uxc694uxd55c-uxc774uxc720-26}
+
+\begin{itemize}
+\tightlist
+\item
+  단조성과 경계성은 수렴에 대한 빠른 테스트를 제공합니다.
+\item
+  증명과 극한을 엄격하게 구성하는 데 필수적입니다.
+\item
+  이러한 아이디어는 자연스럽게 기능과 시리즈로 확장됩니다.\#\#\# 연습
+\end{itemize}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \(a_n = \frac{n}{n+1}\)이 단조롭고 경계가 있는지 확인합니다.
+\item
+  \(a_n = \sqrt{n}\)이 단조롭게 증가하지만 제한되지 않음을 보여줍니다.
+\item
+  \(a_n = 2 - \frac{1}{n}\)이 수렴함을 증명하고 그 한계를 찾으세요.
+\item
+  단조가 아닌 경계 수열의 예를 들어보세요.
+\item
+  \(a_n = \ln\!\big(1+\frac{1}{n}\big)\)에 단조 수렴 정리를 적용합니다.
+\end{enumerate}
+
+\subsection{11.3 시퀀스의
+한계}\label{uxc2dcuxd000uxc2a4uxc758-uxd55cuxacc4}
+
+시퀀스에 대한 핵심 질문은 \(n\)이 성장함에 따라 해당 용어가 단일 값에
+접근하는지 여부입니다. 이는 수열의 극한 개념으로 이어집니다.
+
+\subsubsection{정의}\label{uxc815uxc758-12}
+
+모든 \(\varepsilon > 0\)에 대해 정수 \(N\)이 존재하는 경우 시퀀스
+\((a_n)\)에는 \(L\) 제한이 있습니다.
+
+\[
+|a_n - L| < \varepsilon \quad \text{whenever } n > N.
+\]
+
+그런 다음 우리는 다음과 같이 씁니다.
+
+\[
+\lim_{n\to\infty} a_n = L.
+\]
+
+그러한 \(L\)이 존재하지 않으면 시퀀스가 분기됩니다.
+
+\subsubsection{직관}\label{uxc9c1uxad00}
+
+\begin{itemize}
+\tightlist
+\item
+  \(n\)이 커질수록 시퀀스의 항은 \(L\)에 임의로 가까워집니다.
+\item
+  일부 색인 \(N\)을 넘어서 모든 용어는 \(L\) 주변의 작은 밴드 내에
+  유지됩니다.
+\end{itemize}
+
+\subsubsection{예}\label{uxc608-26}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  \(a_n = \frac{1}{n}\). \(n\)이 커지면 용어는 0으로 줄어듭니다.
+
+  \[
+  \lim_{n\to\infty} \frac{1}{n} = 0.
+  \]
+\item
+  \(a_n = (-1)^n\). 항은 -1과 1 사이에서 번갈아 나타나므로 단일 제한이
+  존재하지 않습니다. 순서가 다릅니다.
+\item
+  \(a_n = \frac{n}{n+1}\). \(n \to \infty\)이므로 분자와 분모가 거의
+  같으므로
+
+  \[
+  \lim_{n\to\infty} \frac{n}{n+1} = 1.
+  \]
+\end{enumerate}
+
+\subsubsection{한계의 속성}\label{uxd55cuxacc4uxc758-uxc18duxc131}
+
+\(\lim a_n = A\) 및 \(\lim b_n = B\)인 경우:
+
+\begin{itemize}
+\item
+  \(\lim (a_n+b_n) = A+B\).
+\item
+  \(\lim (a_n b_n) = AB\).
+\item
+  상수 \(c\)에 대한 \(\lim (c a_n) = cA\).
+\item
+  \(b_n \neq 0\) 및 \(B \neq 0\)인 경우
+
+  \[
+  \lim \frac{a_n}{b_n} = \frac{A}{B}.
+  \]
+\end{itemize}
+
+\subsubsection{정리: 압착
+원리}\label{uxc815uxb9ac-uxc555uxcc29-uxc6d0uxb9ac}
+
+모든 대형 \(n\)에 대해 \(a_n \leq b_n \leq c_n\)인 경우
+
+\[
+\lim_{n\to\infty} a_n = \lim_{n\to\infty} c_n = L,
+\]
+
+그럼
+
+\[\lim_{n\to\infty} b_n = L.
+\]
+
+Example:
+
+\[
+a_n = -\tfrac{1}{n}, \quad b_n = \tfrac{\sin n}{n}, \quad c_n = \tfrac{1}{n}.
+\]
+
+Since \(-\tfrac{1}{n} \leq \tfrac{\sin n}{n} \leq \tfrac{1}{n}\) and
+both bounding sequences go to 0,
+
+\[
+\lim_{n\to\infty} \frac{\sin n}{n} = 0.
+\]
+
+\subsubsection{Why This Matters}\label{why-this-matters-1}
+
+\begin{itemize}
+\tightlist
+\item
+  Limits make rigorous the idea of sequences ``approaching'' a value.
+\item
+  Convergence of sequences underpins infinite series and continuity.
+\item
+  These concepts are essential in defining real numbers via limits.
+\end{itemize}
+
+\subsubsection{Exercises}\label{exercises-4}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Find \(\lim_{n\to\infty} \frac{2n+1}{3n+4}\).
+\item
+  Determine if \(a_n = \sqrt{n+1} - \sqrt{n}\) converges.
+\item
+  Does \(a_n = \cos n\) converge? Why or why not?
+\item
+  Use the Squeeze Principle to show
+  \(\lim_{n\to\infty} \frac{\sin n}{n} = 0\).
+\item
+  Prove that if \(\lim a_n = L\), then \(\lim |a_n| = |L|\).
+\end{enumerate}
+
+\section{Chapter 12. Infinite series}\label{chapter-12.-infinite-series}
+
+\subsection{12.1 Series and Convergence}\label{series-and-convergence}
+
+A series is the sum of the terms of a sequence. Instead of just listing
+numbers, we add them together and study whether the infinite sum
+approaches a finite value.
+
+\subsubsection{Definition}\label{definition}
+
+Given a sequence \((a_n)\), the corresponding series is
+
+\[
+\sum_{n=1}^\infty a_n = a_1 + a_2 + a_3 + \dots
+\]
+
+We define the nth partial sum as
+
+\[
+S_n = \sum_{k=1}^n a_k.
+\]
+
+If the sequence \((S_n)\) converges to a finite limit \(S\), then the
+series converges and
+
+\[
+\sum_{n=1}^\infty a_n = S.
+\]
+
+If \((S_n)\) diverges, then the series diverges.
+
+\subsubsection{Examples}\label{examples-2}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Geometric series
+\end{enumerate}
+
+\[
+\sum_{n=0}^\infty ar^n = \frac{a}{1-r}, \quad |r| < 1.
+\]
+
+Example:
+
+\[
+1 + \tfrac{1}{2} + \tfrac{1}{4} + \tfrac{1}{8} + \dots = 2.
+\]
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  Harmonic series
+\end{enumerate}
+
+\[
+\sum_{n=1}^\infty \frac{1}{n}.
+\]
+
+This series diverges, even though the terms go to 0.
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{2}
+\tightlist
+\item
+  p-series
+\end{enumerate}
+
+\[
+\sum_{n=1}^\infty \frac{1}{n^p}.
+\]
+
+\begin{itemize}
+\tightlist
+\item
+  \(p > 1\)인 경우 수렴합니다.
+\item
+  \(p \leq 1\)인 경우 분기됩니다.\#\#\# 융합의 필요조건
+\end{itemize}
+
+\(\sum a_n\)이 수렴하면 반드시
+
+\[
+\lim_{n\to\infty} a_n = 0.
+\]
+
+\(\lim a_n \neq 0\)인 경우 계열이 분기됩니다. 그러나 그 반대는 사실이
+아닙니다. \(\lim a_n = 0\)은 수렴(예: 조화 계열)을 보장하지 않습니다.
+
+\subsubsection{이것이 중요한
+이유}\label{uxc774uxac83uxc774-uxc911uxc694uxd55c-uxc774uxc720-27}
+
+\begin{itemize}
+\tightlist
+\item
+  시리즈는 유한 추가를 무한 프로세스로 확장합니다.
+\item
+  수렴 시리즈는 기능을 근사화하고 영역을 계산하며 물리적 프로세스를
+  모델링하는 데 사용됩니다.
+\item
+  계열에 대한 연구는 강력한 수렴 테스트로 이어집니다.
+\end{itemize}
+
+\subsubsection{연습}\label{uxc5f0uxc2b5-41}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \(\sum_{n=1}^\infty \frac{2}{3^n}\)이 수렴하는지 확인하고 그 합을
+  구합니다.
+\item
+  \(\sum_{n=1}^\infty \frac{1}{n^2}\)이 수렴함을 보여줍니다.
+\item
+  \(\sum_{n=1}^\infty \frac{1}{\sqrt{n}}\)이 수렴됩니까?
+\item
+  \(\sum_{n=1}^\infty \frac{1}{2^n}\) 계열의 처음 4개 부분합을
+  작성합니다.
+\item
+  \(\lim a_n = 0\)이 필요하지만 수렴에 충분하지 않은 이유를 설명하세요.
+\end{enumerate}
+
+\subsection{12.2 수렴 테스트}\label{uxc218uxb834-uxd14cuxc2a4uxd2b8}
+
+많은 계열을 직접 합산할 수 없기 때문에 수학자들은 계열이 수렴하는지
+발산하는지 결정하는 테스트를 개발했습니다. 이러한 테스트는 무한 합계를
+분석하기 위한 도구입니다.
+
+\subsubsection{1. n차 발산
+테스트}\label{nuxcc28-uxbc1cuxc0b0-uxd14cuxc2a4uxd2b8}
+
+만약에
+
+\[
+\lim_{n\to\infty} a_n \neq 0 \quad \text{or does not exist},
+\]
+
+그럼
+
+\[
+\sum a_n
+\]
+
+갈라진다.
+
+\(\lim a_n = 0\)인 경우 테스트 결과가 나오지 않은 것입니다.
+
+\subsubsection{2. 비교 테스트}\label{uxbe44uxad50-uxd14cuxc2a4uxd2b8}
+
+모든 \(n\)에 대해 \(0 \leq a_n \leq b_n\)을 가정합니다.
+
+\begin{itemize}
+\tightlist
+\item
+  \(\sum b_n\)이 수렴하면 \(\sum a_n\)도 수렴합니다.
+\item
+  \(\sum a_n\)이 발산하면 \(\sum b_n\)도 발산됩니다.
+\end{itemize}
+
+\subsubsection{3. 한계 비교
+테스트}\label{uxd55cuxacc4-uxbe44uxad50-uxd14cuxc2a4uxd2b8}
+
+\(a_n, b_n > 0\) 및
+
+\[
+\lim_{n\to\infty} \frac{a_n}{b_n} = c,
+\]
+
+여기서 \(0 < c < \infty\), \(\sum a_n\) 및 \(\sum b_n\)는 둘 다
+수렴하거나 둘 다 발산합니다.
+
+\subsubsection{4. 비율 테스트}\label{uxbe44uxc728-uxd14cuxc2a4uxd2b8}
+
+\(\sum a_n\)의 경우 다음을 계산합니다.
+
+\[
+L = \lim_{n\to\infty} \left| \frac{a_{n+1}}{a_n} \right|.
+\]- \(L < 1\)인 경우 계열은 절대적으로 수렴합니다. - \(L > 1\) 또는
+\(L = \infty\)인 경우 계열이 분기됩니다. - \(L = 1\)인 경우 테스트
+결과가 나오지 않은 것입니다.
+
+\subsubsection{5. 루트 테스트}\label{uxb8e8uxd2b8-uxd14cuxc2a4uxd2b8}
+
+\(\sum a_n\)의 경우 다음을 계산합니다.
+
+\[
+L = \lim_{n\to\infty} \sqrt[n]{|a_n|}.
+\]
+
+\begin{itemize}
+\tightlist
+\item
+  \(L < 1\)이면 계열이 절대적으로 수렴합니다.
+\item
+  \(L > 1\)인 경우 계열이 분기됩니다.
+\item
+  \(L = 1\)인 경우 테스트 결과가 나오지 않은 것입니다.
+\end{itemize}
+
+\subsubsection{6. 교대 급수 검정(라이프니츠
+검정)}\label{uxad50uxb300-uxae09uxc218-uxac80uxc815uxb77cuxc774uxd504uxb2c8uxce20-uxac80uxc815}
+
+일련의 형태에 대해
+
+\[
+\sum (-1)^n b_n \quad \text{or} \quad \sum (-1)^{n+1} b_n,
+\]
+
+만약에
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \(b_{n+1} \leq b_n\)(감소) 및
+\item
+  \(\lim_{n\to\infty} b_n = 0\),
+\end{enumerate}
+
+그런 다음 시리즈가 수렴됩니다.
+
+\subsubsection{예}\label{uxc608-27}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \(\sum \frac{1}{n^2}\): 비교 테스트 → 수렴합니다.
+\item
+  \(\sum \frac{1}{n}\): 고조파 계열 → 발산합니다.
+\item
+  \(\sum \frac{(-1)^n}{n}\): 교대 계열 테스트 → 수렴.
+\item
+  \(\sum \frac{n!}{n^n}\): 비율 테스트 → 수렴합니다.
+\item
+  \(\sum \frac{2^n}{n}\): 루트 테스트 → 발산합니다.
+\end{enumerate}
+
+\subsubsection{이것이 중요한
+이유}\label{uxc774uxac83uxc774-uxc911uxc694uxd55c-uxc774uxc720-28}
+
+\begin{itemize}
+\tightlist
+\item
+  수렴 테스트를 사용하면 명시적인 합계 없이도 계열을 분류할 수 있습니다.
+\item
+  미적분학에서 무한 과정을 처리하는 체계적인 방법을 제공합니다.
+\item
+  이는 멱급수 및 푸리에 급수와 같은 이후 주제에 매우 중요합니다.
+\end{itemize}
+
+\subsubsection{연습}\label{uxc5f0uxc2b5-42}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \(\sum \frac{1}{n^3}\)의 수렴을 테스트합니다.
+\item
+  \(\sum \frac{3^n}{n!}\)에 대한 비율 테스트를 사용합니다.
+\item
+  \(\sum \left(\frac{1}{2}\right)^n\)에 루트 테스트를 적용합니다.
+\item
+  \(\sum \frac{(-1)^n}{\sqrt{n}}\)의 수렴을 결정합니다.
+\item
+  \(\frac{1}{n^2}\)과 함께 한도 비교 테스트를 사용하여
+  \(\sum \frac{1}{n^2+1}\)을 테스트합니다.
+\end{enumerate}
+
+\subsection{12.3 절대 수렴과 조건
+수렴}\label{uxc808uxb300-uxc218uxb834uxacfc-uxc870uxac74-uxc218uxb834}
+
+부호가 번갈아 나타날 때 모든 계열이 동일한 방식으로 작동하는 것은
+아닙니다. 이를 처리하기 위해 절대 수렴과 조건부 수렴을 구분합니다.
+
+\subsubsection{절대융합}\label{uxc808uxb300uxc735uxd569}
+
+\(\sum a_n\) 계열은 다음과 같은 경우 절대적으로 수렴합니다.
+
+\[
+\sum |a_n|
+\]
+
+수렴한다.정리: 급수가 절대적으로 수렴하면 역시 수렴합니다.
+
+예:
+
+\[
+\sum \frac{(-1)^n}{n^2}.
+\]
+
+여기서 \(\sum \left|\frac{(-1)^n}{n^2}\right| = \sum \frac{1}{n^2}\)은
+수렴됩니다(p-시리즈, \(p=2\)). 따라서 이 계열은 절대적으로 수렴합니다.
+
+\subsubsection{조건부 수렴}\label{uxc870uxac74uxbd80-uxc218uxb834}
+
+\(\sum a_n\) 계열은 수렴하는 경우 조건부 수렴이지만 절대적이지는
+않습니다.
+
+예:
+
+\[
+\sum \frac{(-1)^n}{n}.
+\]
+
+\begin{itemize}
+\tightlist
+\item
+  교대 계열 테스트 → 수렴.
+\item
+  하지만 \(\sum \left|\frac{(-1)^n}{n}\right| = \sum \frac{1}{n}\)은
+  발산합니다(고조파 급수). 따라서 급수는 조건부 수렴합니다.
+\end{itemize}
+
+\subsubsection{재배열 정리}\label{uxc7acuxbc30uxc5f4-uxc815uxb9ac}
+
+조건부 수렴 계열의 경우 항을 재배열하면 합계가 변경될 수 있습니다.
+심지어 다른 값으로 발산하거나 수렴할 수도 있습니다.
+
+이 놀라운 결과는 조건부 수렴의 섬세한 특성을 보여줍니다.
+
+\subsubsection{이것이 중요한
+이유}\label{uxc774uxac83uxc774-uxc911uxc694uxd55c-uxc774uxc720-29}
+
+\begin{itemize}
+\tightlist
+\item
+  절대수렴이 더욱 강해지며 안정성을 보장합니다.
+\item
+  조건부 수렴은 무한한 합에서 질서의 중요성을 강조합니다.
+\item
+  실제로 접하는 많은 교대 계열은 조건부로만 수렴합니다.
+\end{itemize}
+
+\subsubsection{연습}\label{uxc5f0uxc2b5-43}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \(\sum \frac{(-1)^n}{n^3}\)이 절대적으로 수렴함을 보여주세요.
+\item
+  \(\sum \frac{(-1)^n}{n}\)이 조건부 수렴임을 보여줍니다.
+\item
+  절대 및 조건부 수렴에 대해 \(\sum \frac{(-1)^n}{\sqrt{n}}\)을
+  테스트합니다.
+\item
+  절대 수렴이 수렴을 의미하지만 그 반대는 사실이 아닌 이유를
+  설명하십시오.
+\item
+  리만 재배열 정리를 연구하고 자신의 말로 요약해 보세요.
+\end{enumerate}
+
+\section{13장. Power 시리즈 및
+확장}\label{uxc7a5.-power-uxc2dcuxb9acuxc988-uxbc0f-uxd655uxc7a5}
+
+\subsection{13.1 파워 시리즈}\label{uxd30cuxc6cc-uxc2dcuxb9acuxc988}
+
+거듭제곱 계열은 각 항이 변수의 거듭제곱을 포함하는 무한 계열입니다.
+멱급수는 함수를 무한 다항식으로 표현할 수 있기 때문에 미적분학의
+핵심입니다.
+
+\subsubsection{일반 양식}\label{uxc77cuxbc18-uxc591uxc2dd-1}
+
+\(a\)을 중심으로 한 거듭제곱 계열은 다음과 같은 형식을 갖습니다.
+
+\[\sum_{n=0}^\infty c_n (x-a)^n,
+\]
+
+where \(c_n\) are constants called the coefficients.
+
+\begin{itemize}
+\item
+  If \(a=0\), the series is centered at the origin:
+
+  \[
+  \sum_{n=0}^\infty c_n x^n.
+  \]
+\end{itemize}
+
+\subsubsection{Examples}\label{examples-3}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Geometric series
+\end{enumerate}
+
+\[
+\sum_{n=0}^\infty x^n = \frac{1}{1-x}, \quad |x|<1.
+\]
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  Exponential function
+\end{enumerate}
+
+\[
+e^x = \sum_{n=0}^\infty \frac{x^n}{n!}.
+\]
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{2}
+\tightlist
+\item
+  Sine and cosine
+\end{enumerate}
+
+\[
+\sin x = \sum_{n=0}^\infty (-1)^n \frac{x^{2n+1}}{(2n+1)!}, \quad  
+\cos x = \sum_{n=0}^\infty (-1)^n \frac{x^{2n}}{(2n)!}.
+\]
+
+\subsubsection{Interval of Convergence}\label{interval-of-convergence}
+
+For each power series, there exists a radius of convergence \(R\) such
+that:
+
+\begin{itemize}
+\tightlist
+\item
+  The series converges if \(|x-a| < R\).
+\item
+  The series diverges if \(|x-a| > R\).
+\item
+  At \(|x-a| = R\), convergence must be checked separately.
+\end{itemize}
+
+\subsubsection{Why This Matters}\label{why-this-matters-2}
+
+\begin{itemize}
+\tightlist
+\item
+  Power series allow us to approximate functions by polynomials.
+\item
+  They connect calculus with analysis and differential equations.
+\item
+  Many special functions in mathematics and physics are defined by their
+  power series.
+\end{itemize}
+
+\subsubsection{Exercises}\label{exercises-5}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Write the power series for \(\sum_{n=0}^\infty \frac{(x-2)^n}{n!}\).
+\item
+  Find the first four terms of the power series for \(e^x\).
+\item
+  Express \(\frac{1}{1+x}\) as a power series centered at 0.
+\item
+  Determine whether the series \(\sum_{n=0}^\infty n! x^n\) converges at
+  \(x=0.1\).
+\item
+  Explain why power series are sometimes called ``infinite
+  polynomials.''
+\end{enumerate}
+
+\subsection{13.2 Radius of Convergence}\label{radius-of-convergence}
+
+Every power series converges for some values of \(x\) and diverges for
+others. The boundary between these two behaviors is described by the
+radius of convergence.
+
+\subsubsection{Definition}\label{definition-1}
+
+For a power series
+
+\[
+\sum_{n=0}^\infty c_n (x-a)^n,
+\]
+
+다음과 같은 숫자 \(R \geq 0\)(아마도 무한함)이 존재합니다.
+
+\begin{itemize}
+\tightlist
+\item
+  \(|x-a| < R\)인 경우 계열은 절대적으로 수렴합니다.
+\item
+  \(|x-a| > R\)인 경우 시리즈가 분기됩니다.- \(|x-a| = R\)에서는 수렴
+  여부를 별도로 확인해야 합니다.
+\end{itemize}
+
+이 숫자 \(R\)을 수렴 반경이라고 합니다.
+
+\subsubsection{수렴 반경
+찾기}\label{uxc218uxb834-uxbc18uxacbd-uxcc3euxae30}
+
+두 가지 일반적인 방법:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  비율 테스트
+\end{enumerate}
+
+\[
+R = \lim_{n\to\infty} \left| \frac{c_n}{c_{n+1}} \right|.
+\]
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  루트 테스트
+\end{enumerate}
+
+\[
+R = \frac{1}{\limsup_{n\to\infty} \sqrt[n]{|c_n|}}.
+\]
+
+\subsubsection{예}\label{uxc608-28}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  시리즈:
+\end{enumerate}
+
+\[
+\sum_{n=0}^\infty \frac{x^n}{n!}.
+\]
+
+비율 테스트 사용:
+
+\[
+\lim_{n\to\infty} \frac{1/(n!)}{1/((n+1)!)} = \infty.
+\]
+
+따라서 \(R = \infty\)(모든 실제 \(x\)에 대해 수렴)입니다.
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  시리즈:
+\end{enumerate}
+
+\[
+\sum_{n=0}^\infty x^n.
+\]
+
+여기 \(c_n = 1\)입니다.
+
+\[
+R = 1.
+\]
+
+\(|x| < 1\)로 수렴합니다.
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{2}
+\tightlist
+\item
+  시리즈:
+\end{enumerate}
+
+\[
+\sum_{n=1}^\infty \frac{x^n}{n}.
+\]
+
+비율 테스트:
+
+\[
+\lim_{n\to\infty} \left|\frac{(x^{n+1}/(n+1))}{(x^n/n)}\right| = |x|.
+\]
+
+따라서 \(R = 1\)입니다. \(|x| < 1\)에 대해 수렴하고 \(|x| > 1\)에 대해
+분기합니다. \(x=\pm 1\)에서 별도로 테스트하세요.
+
+\subsubsection{수렴 간격}\label{uxc218uxb834-uxac04uxaca9}
+
+계열이 수렴하는 \(x\) 값 집합을 수렴 간격이라고 합니다.
+
+\begin{itemize}
+\tightlist
+\item
+  항상 \(a\) 중심에 위치합니다.
+\item
+  양방향으로 \(R\) 단위를 확장합니다.
+\item
+  엔드포인트 \(x=a\pm R\)을 개별적으로 확인해야 합니다.
+\end{itemize}
+
+\subsubsection{이것이 중요한
+이유}\label{uxc774uxac83uxc774-uxc911uxc694uxd55c-uxc774uxc720-30}
+
+\begin{itemize}
+\tightlist
+\item
+  수렴 반경은 거듭제곱 계열이 함수처럼 동작하는 위치를 알려줍니다.
+\item
+  실제로 Taylor 계열 확장을 사용하는 데 필수적입니다.
+\item
+  물리학 및 공학 분야의 계열 솔루션의 유효성 영역을 결정합니다.
+\end{itemize}
+
+\subsubsection{연습}\label{uxc5f0uxc2b5-44}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \(\sum_{n=0}^\infty \frac{(x-3)^n}{n!}\)의 수렴 반경을 찾으세요.
+\item
+  \(\sum_{n=1}^\infty \frac{x^n}{n^2}\)의 수렴 반경을 계산합니다.
+\item
+  비율 테스트를 사용하여 \(\sum_{n=0}^\infty n!x^n\)에 대한 \(R\)을
+  찾습니다.
+\item
+  \(\sum_{n=1}^\infty \frac{(x+1)^n}{n}\)에 대한 수렴 간격을 결정합니다.
+\item
+  지수 계열은 모든 \(x\)에 대해 수렴하는 반면 기하 계열은 \(|x|<1\)에
+  대해서만 수렴하는 이유를 설명하십시오.\#\# 13.3 테일러와 매클로린 급수
+\end{enumerate}
+
+거듭제곱 계열은 익숙한 기능을 나타내는 데 사용될 때 특히 강력해집니다.
+이는 테일러 급수(Taylor series)를 통해 이루어지며, 0을 중심으로 하는
+특별한 경우를 매클로린 급수(Maclaurin series)라고 합니다.
+
+\subsubsection{테일러
+시리즈}\label{uxd14cuxc77cuxb7ec-uxc2dcuxb9acuxc988}
+
+\(f(x)\) 함수가 \(x=a\)에서 무한히 미분 가능하다면 \(a\)에 대한 Taylor
+계열은 다음과 같습니다.
+
+\[
+f(x) = \sum_{n=0}^\infty \frac{f^{(n)}(a)}{n!}(x-a)^n.
+\]
+
+여기서 \(f^{(n)}(a)\)은 \(a\)에 있는 \(f\)의 \(n\)번째 파생물을
+나타냅니다.
+
+\subsubsection{매클로린
+시리즈}\label{uxb9e4uxd074uxb85cuxb9b0-uxc2dcuxb9acuxc988}
+
+\(a=0\)을 중심으로 한 Taylor 시리즈:
+
+\[
+f(x) = \sum_{n=0}^\infty \frac{f^{(n)}(0)}{n!} x^n.
+\]
+
+\subsubsection{예}\label{uxc608-29}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  지수함수
+\end{enumerate}
+
+\[
+e^x = 1 + x + \frac{x^2}{2!} + \frac{x^3}{3!} + \cdots
+\]
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  사인과 코사인
+\end{enumerate}
+
+\[
+\sin x = x - \frac{x^3}{3!} + \frac{x^5}{5!} - \cdots
+\]
+
+\[
+\cos x = 1 - \frac{x^2}{2!} + \frac{x^4}{4!} - \cdots
+\]
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{2}
+\tightlist
+\item
+  자연 로그(\(|x|<1\)의 경우)
+\end{enumerate}
+
+\[
+\ln(1+x) = x - \frac{x^2}{2} + \frac{x^3}{3} - \frac{x^4}{4} + \cdots
+\]
+
+\subsubsection{테일러 다항식
+근사}\label{uxd14cuxc77cuxb7ec-uxb2e4uxd56duxc2dd-uxadfcuxc0ac}
+
+첫 번째 \(n\) 항의 유한합은 \(n\) 차수의 Taylor 다항식입니다.
+
+\[
+P_n(x) = \sum_{k=0}^n \frac{f^{(k)}(a)}{k!}(x-a)^k.
+\]
+
+이 다항식은 \(x=a\) 근처의 \(f(x)\)에 가깝습니다.
+
+\subsubsection{나머지(오류
+용어)}\label{uxb098uxba38uxc9c0uxc624uxb958-uxc6a9uxc5b4}
+
+함수와 Taylor 다항식의 차이는 나머지입니다.
+
+\[
+R_n(x) = f(x) - P_n(x).
+\]
+
+한 형식(라그랑주 형식)은 다음과 같습니다.
+
+\[
+R_n(x) = \frac{f^{(n+1)}(c)}{(n+1)!}(x-a)^{n+1},
+\]
+
+\(a\)과 \(x\) 사이의 일부 \(c\)에 대해.
+
+\subsubsection{이것이 중요한
+이유}\label{uxc774uxac83uxc774-uxc911uxc694uxd55c-uxc774uxc720-31}
+
+\begin{itemize}
+\tightlist
+\item
+  Taylor 시리즈는 복잡한 함수에 대한 다항식 근사를 제공합니다.
+\item
+  수치해석, 물리학, 공학에 필수적입니다.
+\item
+  매클로린 급수 전개는 지수, 삼각, 로그 함수에 대한 간단한 공식을
+  제공합니다.
+\end{itemize}
+
+\subsubsection{연습}\label{uxc5f0uxc2b5-45}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \(f(x)=\cosh x = \tfrac{e^x+e^{-x}}{2}\)에 대한 Maclaurin 계열을
+  찾으세요.2. \(a=2\)을 중심으로 \(f(x)=e^x\)에 대한 Taylor 계열을
+  작성합니다.
+\item
+  \(a=0\)에서 \(f(x)=\ln(1+x)\)에 대한 3차 테일러 다항식을 계산합니다.
+\item
+  \(\sin x\)에 대한 Maclaurin 계열을 사용하여 \(\sin(0.1)\)을 대략적으로
+  계산합니다.
+\item
+  Taylor 계열이 종종 좋은 지역 근사치를 제공하지만 대규모 \(|x|\)에 대해
+  분기될 수 있는 이유를 설명하십시오.
+\end{enumerate}
+
+\subsection{13.4 Taylor 시리즈의
+응용}\label{taylor-uxc2dcuxb9acuxc988uxc758-uxc751uxc6a9}
+
+Taylor 계열은 이론적인 도구일 뿐만 아니라 함수 근사, 방정식 풀기, 물리적
+시스템 분석에 사용됩니다. 그들의 응용 분야는 수학, 과학, 공학에 걸쳐
+있습니다.
+
+\subsubsection{함수 근사}\label{uxd568uxc218-uxadfcuxc0ac}
+
+복잡한 함수는 점 근처의 다항식으로 근사화할 수 있습니다.
+
+예: 3차 Maclaurin 다항식을 사용하여 \(x=0\) 근처의 \(e^x\)을 대략적으로
+계산합니다.
+
+\[
+P_3(x) = 1 + x + \tfrac{x^2}{2} + \tfrac{x^3}{6}.
+\]
+
+작은 \(x\)의 경우 \(e^x\)의 정확한 추정치를 제공합니다.
+
+\subsubsection{수치해석법}\label{uxc218uxce58uxd574uxc11duxbc95}
+
+Taylor 시리즈는 수치 알고리즘의 기초를 제공합니다.
+
+\begin{itemize}
+\tightlist
+\item
+  대략적인 제곱근, 로그 및 삼각법 값.
+\item
+  나머지 항을 통한 오차 추정.
+\item
+  뉴턴 방법과 같은 반복 방법에 사용됩니다(국소 선형화가 Taylor 계열에서
+  유래함).
+\end{itemize}
+
+\subsubsection{미분 방정식
+풀기}\label{uxbbf8uxbd84-uxbc29uxc815uxc2dd-uxd480uxae30}
+
+많은 미분 방정식에는 Taylor(또는 거듭제곱) 계열로 표현되는 해가
+있습니다.
+
+예: \(y(0)=0, y'(0)=1\)을 사용하는 \(y'' + y = 0\)의 해는
+\(\sin x\)이며, 이는 Maclaurin 계열에서 자연스럽게 발생합니다.
+
+\subsubsection{물리학 및
+공학}\label{uxbb3cuxb9acuxd559-uxbc0f-uxacf5uxd559}
+
+\begin{itemize}
+\item
+  소각 근사:
+
+  \[
+  \sin x \approx x, \quad \cos x \approx 1 - \tfrac{x^2}{2}, \quad |x| \ll 1.
+  \]
+
+  진자 운동, 광학 및 파동 역학에 사용됩니다.
+\item
+  상대성 이론 및 양자 역학: 테일러 전개는 실제 사용을 위해 비선형 표현을
+  단순화합니다.- 에너지 함수 근사화: 역학에서 위치 에너지 함수는 평형점
+  근처에서 확장됩니다.
+\end{itemize}
+
+\subsubsection{확률과 통계}\label{uxd655uxb960uxacfc-uxd1b5uxacc4}
+
+\begin{itemize}
+\tightlist
+\item
+  모멘트 발생함수와 특성함수는 멱급수를 사용합니다.
+\item
+  확률 분포의 근사(예: 이항에 대한 정규 근사)는 테일러 확장을
+  사용합니다.
+\end{itemize}
+
+\subsubsection{이것이 중요한
+이유}\label{uxc774uxac83uxc774-uxc911uxc694uxd55c-uxc774uxc720-32}
+
+\begin{itemize}
+\tightlist
+\item
+  Taylor 시리즈는 정확한 공식과 실제 계산 사이의 연결을 제공합니다.
+\item
+  이를 통해 복잡한 문제를 관리 가능한 다항식 근사로 줄일 수 있습니다.
+\item
+  응용 프로그램은 응용 수학에서 가장 중요한 도구 중 하나입니다.
+\end{itemize}
+
+\subsubsection{연습}\label{uxc5f0uxc2b5-46}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \(e^x\)에 대한 Maclaurin 계열을 사용하여 \(e^{0.1}\)을 소수점 이하
+  4자리까지 대략적으로 계산합니다.
+\item
+  소각 근사법을 적용하여 \(\sin(5^\circ)\)을 추정합니다.
+\item
+  멱급수 접근법을 사용하여 미분 방정식 \(y'' = -y\)을 풉니다.
+\item
+  \(\ln(1+x)\)을 4차까지 확장하고 이를 사용하여 \(\ln(1.1)\)의 근사치를
+  구합니다.
+\item
+  다항식 근사가 컴퓨터와 계산기에 특히 유용한 이유를 설명하십시오.
+\end{enumerate}
+
+\section{부록}\label{uxbd80uxb85d}
+
+\subsection{부록 A. 미적분학 기초 필수
+사항}\label{uxbd80uxb85d-a.-uxbbf8uxc801uxbd84uxd559-uxae30uxcd08-uxd544uxc218-uxc0acuxd56d}
+
+\subsubsection{A.1 대수 복습}\label{a.1-uxb300uxc218-uxbcf5uxc2b5}
+
+미적분학을 시작하기 전에 계속해서 등장하게 될 몇 가지 대수학 기술을
+복습하는 것이 도움이 됩니다. 이는 표현식을 조작하고, 방정식을 풀고,
+결과를 단순화하는 데 필요한 ``도구''입니다.
+
+\paragraph{지수 및
+거듭제곱}\label{uxc9c0uxc218-uxbc0f-uxac70uxb4eduxc81cuxacf1}
+
+\begin{itemize}
+\item
+  기본 규칙:
+
+  \[
+  a^m \cdot a^n = a^{m+n}, \quad \frac{a^m}{a^n} = a^{m-n}, \quad (a^m)^n = a^{mn}.
+  \]
+\item
+  음수 지수:
+
+  \[
+  a^{-n} = \frac{1}{a^n}, \quad a \neq 0.
+  \]
+\item
+  분수 지수:
+
+  \[
+  a^{1/n} = \sqrt[n]{a}, \quad a^{m/n} = \sqrt[n]{a^m}.
+  \]
+\end{itemize}
+
+\paragraph{인수분해}\label{uxc778uxc218uxbd84uxd574}
+
+인수분해는 표현을 단순화하고 방정식을 푸는 데 도움이 됩니다.
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  공통인수:
+
+  \[
+  6x^2+9x = 3x(2x+3).
+  \]
+\item
+  제곱의 차이:
+
+  \[a^2-b^2 = (a-b)(a+b).
+  \]
+\item
+  Quadratic trinomials:
+
+  \[
+  x^2+5x+6 = (x+2)(x+3).
+  \]
+\end{enumerate}
+
+\paragraph{Polynomials}\label{polynomials}
+
+\begin{itemize}
+\tightlist
+\item
+  Standard form: \(P(x) = a_nx^n + a_{n-1}x^{n-1} + \cdots + a_0\).
+\item
+  Degree: the largest power of \(x\).
+\item
+  Long division and synthetic division are useful for simplifying
+  rational functions.
+\end{itemize}
+
+\paragraph{Rational Expressions}\label{rational-expressions}
+
+Simplify by factoring numerator and denominator:
+
+\[
+\frac{x^2-1}{x^2-2x+1} = \frac{(x-1)(x+1)}{(x-1)^2} = \frac{x+1}{x-1}, \quad x \neq 1.
+\]
+
+\paragraph{Logarithms}\label{logarithms}
+
+\begin{itemize}
+\item
+  Definition: \(\log_a b = c\) means \(a^c = b\).
+\item
+  Common bases: natural log (\(\ln x = \log_e x\)) and base 10
+  (\(\log x\)).
+\item
+  Rules:
+
+  \[
+  \log(ab) = \log a + \log b, \quad \log\left(\frac{a}{b}\right) = \log a - \log b, \quad \log(a^n) = n\log a.
+  \]
+\end{itemize}
+
+\paragraph{Equations}\label{equations}
+
+\begin{itemize}
+\item
+  Linear: solve \(ax+b=0\) → \(x=-b/a\).
+\item
+  Quadratic: \(ax^2+bx+c=0\) has solutions
+
+  \[
+  x=\frac{-b\pm \sqrt{b^2-4ac}}{2a}.
+  \]
+\item
+  Exponential: \(e^x = k\) → \(x = \ln k\).
+\end{itemize}
+
+\subsubsection{A.2 Trigonometry Basics}\label{a.2-trigonometry-basics}
+
+Trigonometry provides the language of angles and periodic phenomena.
+Since calculus often deals with oscillations, motion, and waves, a solid
+grasp of trigonometric functions and their properties is essential.
+
+\paragraph{The Unit Circle}\label{the-unit-circle}
+
+\begin{itemize}
+\item
+  Defined as the circle of radius 1 centered at the origin in the
+  coordinate plane.
+\item
+  For an angle \(\theta\) measured from the positive \(x\)-axis:
+
+  \[
+  (\cos\세타, \sin\세타)
+  \]
+
+  원 위의 점의 좌표를 제공합니다.
+\end{itemize}
+
+특수 값:
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.3333}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.1667}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.1667}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.3333}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+\(\theta\)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\(\sin \theta\)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\(\cos \theta\)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\(\tan \theta = \frac{\sin \theta}{\cos \theta}\)
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\(0\) & 0 & 1 & 0 \\
+\(\pi/6\) & 1/2 & \(\sqrt{3}/2\) & \(1/\sqrt{3}\) \\
+\(\pi/3\) & \(\sqrt{3}/2\) & 1/2 & \(\sqrt{3}\) \\
+\(\pi/2\) & 1 & 0 & 정의되지 않음 \\
+\end{longtable}
+
+\paragraph{기본 정체성}\label{uxae30uxbcf8-uxc815uxccb4uxc131}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  피타고라스 항등식
+\end{enumerate}
+
+\[
+\sin^2\theta + \cos^2\theta = 1.
+\]
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  몫 항등식
+\end{enumerate}
+
+\[
+\tan\theta = \frac{\sin\theta}{\cos\theta}, \quad \cot\theta = \frac{\cos\theta}{\sin\theta}.
+\]
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{2}
+\tightlist
+\item
+  상호 정체성
+\end{enumerate}
+
+\[
+\sec\theta = \frac{1}{\cos\theta}, \quad \csc\theta = \frac{1}{\sin\theta}.
+\]
+
+\paragraph{각도 덧셈 공식}\label{uxac01uxb3c4-uxb367uxc148-uxacf5uxc2dd}
+
+\[
+\sin(\alpha+\beta) = \sin\alpha\cos\beta + \cos\alpha\sin\beta,
+\]
+
+\[
+\cos(\alpha+\beta) = \cos\alpha\cos\beta - \sin\alpha\sin\beta.
+\]
+
+특별한 경우:
+
+\begin{itemize}
+\item
+  이중 각도:
+
+  \[
+  \sin(2\theta) = 2\sin\theta\cos\theta, \quad
+  \cos(2\theta) = \cos^2\theta - \sin^2\theta.
+  \]
+\end{itemize}
+
+\paragraph{그래프}\label{uxadf8uxb798uxd504}
+
+\begin{itemize}
+\tightlist
+\item
+  \(\sin x\): 0에서 시작하는 파동, 진폭 1, 주기 \(2\pi\).
+\item
+  \(\cos x\): 1에서 시작하는 파동, 진폭 1, 주기 \(2\pi\).
+\item
+  \(\tan x\): \(\pi/2\)의 홀수 배수로 정의되지 않은 모든 \(\pi\)을
+  반복합니다.
+\end{itemize}
+
+\subsubsection{A.3 좌표
+기하학}\label{a.3-uxc88cuxd45c-uxae30uxd558uxd559}
+
+좌표기하학은 방정식을 사용하여 기하학적 객체(선, 원, 곡선)를
+설명함으로써 대수학과 기하학을 연결합니다. 미적분학은 함수 그래프 작성,
+기울기 찾기, 곡선 분석을 위해 이 프레임워크에 크게 의존합니다.
+
+\paragraph{데카르트 평면}\label{uxb370uxce74uxb974uxd2b8-uxd3c9uxba74}
+
+\begin{itemize}
+\item
+  포인트는 \((x,y)\) 좌표로 표시됩니다.
+\item
+  두 지점 \((x_1,y_1)\) 및 \((x_2,y_2)\) 사이의 거리:
+
+  \[
+  d = \sqrt{(x_2-x_1)^2 + (y_2-y_1)^2}.
+  \]
+\item
+  선분의 중간점:
+
+  \[
+  M = \left(\frac{x_1+x_2}{2}, \frac{y_1+y_2}{2}\right).
+  \]
+\end{itemize}
+
+\paragraph{라인}\label{uxb77cuxc778}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  경사 공식
+
+  \[
+  m = \frac{y_2-y_1}{x_2-x_1}.
+  \]
+\item
+  선의 방정식
+
+  \begin{itemize}
+  \item
+    점-기울기 형태:
+
+    \[y-y_1 = m(x-x_1).
+    \]
+  \item
+    Slope-intercept form:
+
+    \[
+    y = mx+b.
+    \]
+  \end{itemize}
+\item
+  Parallel and perpendicular lines
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Parallel lines: same slope.
+  \item
+    Perpendicular lines: slopes satisfy \(m_1m_2 = -1\).
+  \end{itemize}
+\end{enumerate}
+
+\paragraph{Circles}\label{circles}
+
+Equation of a circle with center \((h,k)\) and radius \(r\):
+
+\[
+(x-h)^2+(y-k)^2 = r^2.
+\]
+
+Special case: unit circle centered at origin:
+
+\[
+x^2+y^2=1.
+\]
+
+\paragraph{Conic Sections}\label{conic-sections}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Parabola:
+
+  \begin{itemize}
+  \item
+    Standard form (opening up/down):
+
+    \[
+    y = 도끼^2+bx+c.
+    \]
+  \end{itemize}
+\item
+  Ellipse (centered at origin):
+
+  \[
+  \frac{x^2}{a^2}+\frac{y^2}{b^2}=1.
+  \]
+\item
+  Hyperbola (centered at origin):
+
+  \[
+  \frac{x^2}{a^2}-\frac{y^2}{b^2}=1.
+  \]
+\end{enumerate}
+
+\subsection{Appendix B. Key Formulas and
+Tables}\label{appendix-b.-key-formulas-and-tables}
+
+\subsubsection{B.1 Derivative Table}\label{b.1-derivative-table}
+
+Derivatives measure rates of change and slopes of functions. Having a
+quick-reference table helps learners avoid re-deriving formulas each
+time.
+
+\paragraph{Basic Rules}\label{basic-rules}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Constant rule
+\end{enumerate}
+
+\[
+\frac{d}{dx}[c] = 0
+\]
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  Power rule
+\end{enumerate}
+
+\[
+\frac{d}{dx}[x^n] = nx^{n-1}, \quad (n \in \mathbb{R})
+\]
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{2}
+\tightlist
+\item
+  Constant multiple rule
+\end{enumerate}
+
+\[
+\frac{d}{dx}[c f(x)] = c f'(x)
+\]
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{3}
+\tightlist
+\item
+  Sum and difference rule
+\end{enumerate}
+
+\[
+\frac{d}{dx}[f(x)\pm g(x)] = f'(x)\pm g'(x)
+\]
+
+\paragraph{Trigonometric Functions}\label{trigonometric-functions}
+
+\[
+\frac{d}{dx}[\sin x] = \cos x
+\]
+
+\[
+\frac{d}{dx}[\cos x] = -\sin x
+\]
+
+\[
+\frac{d}{dx}[\tan x] = \sec^2 x, \quad x \neq \tfrac{\pi}{2}+k\pi
+\]
+
+\[
+\frac{d}{dx}[\cot x] = -\csc^2 x
+\]
+
+\[
+\frac{d}{dx}[\sec x] = \sec x \tan x
+\]
+
+\[
+\frac{d}{dx}[\csc x] = -\csc x \cot x
+\]
+
+\paragraph{Exponential and Logarithmic
+Functions}\label{exponential-and-logarithmic-functions}
+
+\[
+\frac{d}{dx}[e^x] = e^x
+\]
+
+\[
+\frac{d}{dx}[a^x] = a^x \ln a, \quad a>0, a\neq 1
+\]
+
+\[
+\frac{d}{dx}[\ln x] = \frac{1}{x}, \quad x>0
+\]
+
+\[
+\frac{d}{dx}[\log_a x] = \frac{1}{x\ln a}, \quad a>0, a\neq 1
+\]
+
+\paragraph{Inverse Trigonometric
+Functions}\label{inverse-trigonometric-functions}
+
+\[\frac{d}{dx}[\arcsin x] = \frac{1}{\sqrt{1-x^2}}, \quad |x|<1
+\]
+
+\[
+\frac{d}{dx}[\arccos x] = -\frac{1}{\sqrt{1-x^2}}, \quad |x|<1
+\]
+
+\[
+\frac{d}{dx}[\arctan x] = \frac{1}{1+x^2}, \quad x \in \mathbb{R}
+\]
+
+\paragraph{Product, Quotient, and Chain
+Rules}\label{product-quotient-and-chain-rules}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Product Rule
+\end{enumerate}
+
+\[
+\frac{d}{dx}[f(x)g(x)] = f'(x)g(x)+f(x)g'(x)
+\]
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  Quotient Rule
+\end{enumerate}
+
+\[
+\frac{d}{dx}\left[\frac{f(x)}{g(x)}\right] = \frac{f'(x)g(x)-f(x)g'(x)}{[g(x)]^2}, \quad g(x)\neq 0
+\]
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{2}
+\tightlist
+\item
+  Chain Rule
+\end{enumerate}
+
+\[
+\frac{d}{dx}[f(g(x))] = f'(g(x))\cdot g'(x)
+\]
+
+\subsubsection{B.3 Common Series
+Expansions}\label{b.3-common-series-expansions}
+
+Power series let us express functions as infinite polynomials. These
+expansions are essential for approximations, solving differential
+equations, and building intuition about functions in calculus.
+
+\paragraph{Geometric Series}\label{geometric-series}
+
+\[
+\frac{1}{1-x} = \sum_{n=0}^\infty x^n, \quad |x| < 1
+\]
+
+\paragraph{Exponential Function}\label{exponential-function}
+
+\[
+e^x = \sum_{n=0}^\infty \frac{x^n}{n!}
+= 1 + x + \frac{x^2}{2!} + \frac{x^3}{3!} + \cdots
+\]
+
+Valid for all \(x\).
+
+\paragraph{Trigonometric Functions}\label{trigonometric-functions-1}
+
+\[
+\sin x = \sum_{n=0}^\infty (-1)^n \frac{x^{2n+1}}{(2n+1)!}
+= x - \frac{x^3}{3!} + \frac{x^5}{5!} - \cdots
+\]
+
+\[
+\cos x = \sum_{n=0}^\infty (-1)^n \frac{x^{2n}}{(2n)!}
+= 1 - \frac{x^2}{2!} + \frac{x^4}{4!} - \cdots
+\]
+
+\[
+\tan^{-1} x = \sum_{n=0}^\infty (-1)^n \frac{x^{2n+1}}{2n+1}, \quad |x|\leq 1
+\]
+
+\paragraph{Logarithm}\label{logarithm}
+
+\[
+\ln(1+x) = \sum_{n=1}^\infty (-1)^{n+1} \frac{x^n}{n}, \quad -1 < x \leq 1
+\]
+
+\paragraph{Binomial Expansion
+(Generalized)}\label{binomial-expansion-generalized}
+
+\[
+(1+x)^r = \sum_{n=0}^\infty \binom{r}{n} x^n, \quad |x|<1
+\]
+
+where
+
+\[
+\binom{r}{n} = \frac{r(r-1)(r-2)\cdots(r-n+1)}{n!}.
+\]
+
+\subsection{부록 C. 교정
+스케치}\label{uxbd80uxb85d-c.-uxad50uxc815-uxc2a4uxcf00uxce58}
+
+\subsubsection{\texorpdfstring{C.1 한도법 및 \(\varepsilon\)--\(\delta\)
+정의미적분학은 극한의 정확한 의미에 기초합니다. 직관(``가치는 점점 더
+가까워진다'')이 도움이 되지만 공식적인 정의는 엄격함을 보장하고 역설을
+방지합니다.}{C.1 한도법 및 \textbackslash varepsilon--\textbackslash delta 정의미적분학은 극한의 정확한 의미에 기초합니다. 직관(``가치는 점점 더 가까워진다'')이 도움이 되지만 공식적인 정의는 엄격함을 보장하고 역설을 방지합니다.}}\label{c.1-uxd55cuxb3c4uxbc95-uxbc0f-varepsilondelta-uxc815uxc758uxbbf8uxc801uxbd84uxd559uxc740-uxadf9uxd55cuxc758-uxc815uxd655uxd55c-uxc758uxbbf8uxc5d0-uxae30uxcd08uxd569uxb2c8uxb2e4.-uxc9c1uxad00uxac00uxce58uxb294-uxc810uxc810-uxb354-uxac00uxae4cuxc6ccuxc9c4uxb2e4uxc774-uxb3c4uxc6c0uxc774-uxb418uxc9c0uxb9cc-uxacf5uxc2dduxc801uxc778-uxc815uxc758uxb294-uxc5c4uxaca9uxd568uxc744-uxbcf4uxc7a5uxd558uxace0-uxc5eduxc124uxc744-uxbc29uxc9c0uxd569uxb2c8uxb2e4.}
+
+\paragraph{직관적인
+아이디어}\label{uxc9c1uxad00uxc801uxc778-uxc544uxc774uxb514uxc5b4}
+
+우리는 쓴다
+
+\[
+\lim_{x \to a} f(x) = L
+\]
+
+즉, \(x\)이 임의로 \(a\)에 가까워지면 \(f(x)\)의 값도 임의로 \(L\)에
+가까워집니다.
+
+\paragraph{\texorpdfstring{공식(\(\varepsilon\)--\(\delta\))
+정의}{공식(\textbackslash varepsilon--\textbackslash delta) 정의}}\label{uxacf5uxc2ddvarepsilondelta-uxc815uxc758}
+
+우리는 이렇게 말한다
+
+\[
+\lim_{x \to a} f(x) = L
+\]
+
+모든 \(\varepsilon > 0\)에 대해 \(\delta > 0\)이 존재하는 경우
+
+\[
+0 < |x-a| < \delta,
+\]
+
+우리는
+
+\[
+|f(x) - L| < \varepsilon.
+\]
+
+\begin{itemize}
+\tightlist
+\item
+  \(\varepsilon\): \(f(x)\)이 \(L\)에 얼마나 가까워지기를 원하는지.
+\item
+  \(\delta\): 이를 달성하려면 \(x\)이 \(a\)에 얼마나 가까워야 합니다.
+\end{itemize}
+
+\paragraph{예}\label{uxc608-30}
+
+보여줘
+
+\[
+\lim_{x \to 2} (3x+1) = 7.
+\]
+
+\begin{itemize}
+\tightlist
+\item
+  \(\varepsilon > 0\)을 사용하세요.
+\item
+  우리는 \(|(3x+1)-7| < \varepsilon\)을 원합니다.
+\item
+  단순화: \(|3x-6| = 3|x-2| < \varepsilon\).
+\item
+  \(\delta = \varepsilon/3\)을 선택하는 경우에도 마찬가지입니다.
+\end{itemize}
+
+따라서 정의에 따르면 한계는 7입니다.
+
+\paragraph{제한법}\label{uxc81cuxd55cuxbc95}
+
+\(\lim_{x \to a} f(x) = L\) 및 \(\lim_{x \to a} g(x) = M\)인 경우:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  합계/차
+\end{enumerate}
+
+\[
+\lim_{x \to a} [f(x) \pm g(x)] = L \pm M
+\]
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  상수 배수
+\end{enumerate}
+
+\[
+\lim_{x \to a} [c f(x)] = cL
+\]
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{2}
+\tightlist
+\item
+  제품
+\end{enumerate}
+
+\[
+\lim_{x \to a} [f(x)g(x)] = LM
+\]
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{3}
+\tightlist
+\item
+  몫(\(M \neq 0\)인 경우)
+\end{enumerate}
+
+\[
+\lim_{x \to a} \frac{f(x)}{g(x)} = \frac{L}{M}
+\]
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{4}
+\tightlist
+\item
+  힘과 뿌리
+\end{enumerate}
+
+\[
+\lim_{x \to a} [f(x)]^n = L^n, \quad \lim_{x \to a} \sqrt[n]{f(x)} = \sqrt[n]{L} \ (\text{if defined}).
+\]
+
+\subsubsection{C.2 증명 개요: 미적분학의 기본
+정리}\label{c.2-uxc99duxba85-uxac1cuxc694-uxbbf8uxc801uxbd84uxd559uxc758-uxae30uxbcf8-uxc815uxb9ac}
+
+미적분학의 기본 정리(FTC)는 미적분학의 두 가지 핵심 연산인 미분과 적분을
+연결합니다. 이는 실제로 역과정임을 보여줍니다.
+
+\paragraph{정리의 진술}\label{uxc815uxb9acuxc758-uxc9c4uxc220}
+
+파트 I(적분의 미분): \(f\)이 \([a,b]\)에서 연속적이고 우리가 정의하는
+경우
+
+\[F(x) = \int_a^x f(t)\,dt,
+\]
+
+then \(F\) is differentiable on \((a,b)\) and
+
+\[
+F'(x) = f(x).
+\]
+
+Part II (Evaluation of a Definite Integral): If \(F\) is any
+antiderivative of \(f\) on \([a,b]\), then
+
+\[
+\int_a^b f(x)\,dx = F(b)-F(a).
+\]
+
+\paragraph{Proof Sketch of Part I}\label{proof-sketch-of-part-i}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Start with the definition of the derivative:
+
+  \[
+  F'(x) = \lim_{h\to 0} \frac{F(x+h)-F(x)}{h}.
+  \]
+\item
+  Substituting \(F(x) = \int_a^x f(t)\,dt\):
+
+  \[
+  F(x+h)-F(x) = \int_a^{x+h} f(t)\,dt - \int_a^x f(t)\,dt.
+  \]
+\item
+  By the additivity of integrals:
+
+  \[
+  F(x+h)-F(x) = \int_x^{x+h} f(t)\,dt.
+  \]
+\item
+  Therefore:
+
+  \[
+  \frac{F(x+h)-F(x)}{h} = \frac{1}{h}\int_x^{x+h} f(t)\,dt.
+  \]
+\item
+  By the Mean Value Theorem for integrals, there exists
+  \(c \in [x,x+h]\) such that
+
+  \[
+  \frac{1}{h}\int_x^{x+h} f(t)\,dt = f(c).
+  \]
+\item
+  As \(h \to 0\), \(c \to x\), and since \(f\) is continuous:
+
+  \[
+  \lim_{h\to 0} f(c) = f(x).
+  \]
+\end{enumerate}
+
+Thus, \(F'(x) = f(x)\).
+
+\paragraph{Proof Sketch of Part II}\label{proof-sketch-of-part-ii}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Let \(F\) be an antiderivative of \(f\), so \(F'(x) = f(x)\).
+\item
+  By Part I, the function
+
+  \[
+  G(x) = \int_a^x f(t)\,dt
+  \]
+
+  is also an antiderivative of \(f\).
+\item
+  Since \(F\) and \(G\) differ only by a constant,
+
+  \[
+  F(x) = G(x) + C.
+  \]
+\item
+  Evaluating at the endpoints:
+
+  \[
+  \int_a^b f(x)\,dx = G(b)-G(a) = (F(b)+C)-(F(a)+C) = F(b)-F(a).
+  \]
+\end{enumerate}
+
+\subsubsection{C.3 Proof Sketch: Convergence of the Geometric
+Series}\label{c.3-proof-sketch-convergence-of-the-geometric-series}
+
+The geometric series is one of the simplest and most important infinite
+series. It serves as a model for understanding convergence and is the
+foundation for many later results in calculus.
+
+\paragraph{The Series}\label{the-series}
+
+\[
+\sum_{n=0}^\infty ar^n = a + ar + ar^2 + ar^3 + \cdots
+\]
+
+where \(a\) is the first term and \(r\) is the common ratio.
+
+\paragraph{Partial Sum Formula}\label{partial-sum-formula}
+
+The \(n\)-th partial sum is
+
+\[S_n = a + ar + ar^2 + \cdots + ar^n.
+\]
+
+Multiply both sides by \(r\):
+
+\[
+rS_n = ar + ar^2 + \cdots + ar^{n+1}.
+\]
+
+Subtract the two equations:
+
+\[
+S_n - rS_n = a - ar^{n+1}.
+\]
+
+\[
+S_n(1-r) = a(1-r^{n+1}).
+\]
+
+So
+
+\[
+S_n = \frac{a(1-r^{n+1})}{1-r}, \quad r \neq 1.
+\]
+
+\paragraph{Convergence}\label{convergence}
+
+Take the limit as \(n \to \infty\):
+
+\begin{itemize}
+\item
+  If \(|r| < 1\), then \(r^{n+1} \to 0\).
+
+  \[
+  \lim_{n\to\infty} S_n = \frac{a}{1-r}.
+  \]
+\item
+  If \(|r| \geq 1\), then \(r^{n+1}\) does not go to 0. The series
+  diverges.
+\end{itemize}
+
+\paragraph{Result}\label{result}
+
+\[
+\sum_{n=0}^\infty ar^n =
+\begin{사례}
+\dfrac{a}{1-r}, & |r|<1, \\[6pt]
+\text{발산}, & |r|\geq 1.
+\end{사례}
+\]
+
+\subsection{Appendix D. Applications and
+Connections}\label{appendix-d.-applications-and-connections}
+
+\subsubsection{D.1 Physics Connections: Velocity, Acceleration, and
+Work}\label{d.1-physics-connections-velocity-acceleration-and-work}
+
+Calculus was originally developed to solve problems in physics -
+especially motion and change. Here are some of the most important
+connections.
+
+\paragraph{Position, Velocity, and
+Acceleration}\label{position-velocity-and-acceleration}
+
+\begin{itemize}
+\item
+  Position function: \(s(t)\) gives the location of an object at time
+  \(t\).
+\item
+  Velocity: the derivative of position.
+
+  \[
+  v(t) = s'(t) = \frac{ds}{dt}
+  \]
+\item
+  Acceleration: the derivative of velocity (or second derivative of
+  position).
+
+  \[
+  a(t) = v'(t) = s''(t) = \frac{d^2s}{dt^2}
+  \]
+\end{itemize}
+
+Example: If \(s(t) = 4t^2\) meters, then:
+
+\[
+v(t) = 8t, \quad a(t) = 8.
+\]
+
+So the object moves faster linearly with time, under constant
+acceleration.
+
+\paragraph{Work and Force}\label{work-and-force}
+
+In physics, work is the product of force and distance. If force varies
+with position, calculus gives:
+
+\[
+W = \int_a^b F(x)\, dx
+\]
+
+where \(F(x)\) is the force at position \(x\), and the object moves from
+\(x=a\) to \(x=b\).
+
+Example: A spring with Hooke's law force \(F(x) = kx\) requires work
+
+\[
+W = \int_0^d kx\, dx = \frac{1}{2}kd^2
+\]
+
+스프링을 \(d\) 거리만큼 늘립니다.
+
+\paragraph{\texorpdfstring{에너지 및 곡선 아래 면적- 운동 에너지:
+\(E_k = \tfrac{1}{2}mv^2\).}{에너지 및 곡선 아래 면적- 운동 에너지: E\_k = \textbackslash tfrac\{1\}\{2\}mv\^{}2.}}\label{uxc5d0uxb108uxc9c0-uxbc0f-uxace1uxc120-uxc544uxb798-uxba74uxc801--uxc6b4uxb3d9-uxc5d0uxb108uxc9c0-e_k-tfrac12mv2.}
+
+\begin{itemize}
+\tightlist
+\item
+  위치 에너지는 종종 적분을 포함합니다(예: 중력으로 인한 중력 위치
+  에너지).
+\item
+  일반적으로 힘 함수를 통합하면 에너지가 저장되거나 작업이 수행됩니다.
+\end{itemize}
+
+\paragraph{빠른 연습}\label{uxbe60uxb978-uxc5f0uxc2b5}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \(s(t) = t^3 - 3t\)인 경우 \(v(t)\) 및 \(a(t)\)을 찾습니다.
+\item
+  물체를 5m 이동시키는 10N의 일정한 힘이 한 일을 계산하십시오.
+\item
+  스프링에는 상수 \(k=200\)이 있습니다. 0.1m 늘리려면 얼마나 많은 일이
+  필요합니까?
+\item
+  가속도는 위치의 2차 미분임을 보여줍니다.
+\item
+  적분 \(\int v(t)\, dt\)이 변위와 어떻게 관련되는지 설명하십시오.
+\end{enumerate}
+
+\subsubsection{D.2 확률과 통계
+연결}\label{d.2-uxd655uxb960uxacfc-uxd1b5uxacc4-uxc5f0uxacb0}
+
+미적분학은 특히 연속 확률 변수를 다룰 때 확률 및 통계와 깊은 관련이
+있습니다. 적분은 확률, 평균 및 기대치를 정의하는 데 필수적입니다.
+
+\paragraph{확률 밀도
+함수(PDF)}\label{uxd655uxb960-uxbc00uxb3c4-uxd568uxc218pdf}
+
+연속 확률 변수 \(X\)의 경우 확률은 확률 밀도 함수 \(f(x)\)로 설명됩니다.
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  모든 \(x\)에 대한 \(f(x) \geq 0\).
+\item
+  총 확률은 1입니다.
+
+  \[
+  \int_{-\infty}^{\infty} f(x)\, dx = 1.
+  \]
+\end{enumerate}
+
+\(X\)이 \([a,b]\) 간격에 있을 확률은 다음과 같습니다.
+
+\[
+P(a \leq X \leq b) = \int_a^b f(x)\, dx.
+\]
+
+\paragraph{기대값(평균)}\label{uxae30uxb300uxac12uxd3c9uxade0-1}
+
+기대값(평균 결과)은 다음과 같습니다.
+
+\[
+E[X] = \int_{-\infty}^{\infty} x f(x)\, dx.
+\]
+
+이것은 가중 평균의 미적분 버전입니다.
+
+\paragraph{차이}\label{uxcc28uxc774}
+
+분산 측정 확산:
+
+\[
+\text{Var}(X) = E[(X-\mu)^2] = \int_{-\infty}^{\infty} (x-\mu)^2 f(x)\, dx,
+\]
+
+여기서 \(\mu = E[X]\)입니다.
+
+\paragraph{공통 분포}\label{uxacf5uxd1b5-uxbd84uxd3ec}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  \([a,b]\)의 균일한 배포:
+
+  \[
+  f(x) = \frac{1}{b-a}, \quad a \leq x \leq b.
+  \]
+
+  의미: \(\frac{a+b}{2}\).
+\item
+  매개변수 \(\lambda > 0\)을 사용한 지수 분포:
+
+  \[
+  f(x) = \lambda e^{-\lambda x}, \quad x \geq 0.\]
+
+  Mean: \(1/\lambda\).
+\item
+  Normal (Gaussian) distribution:
+
+  \[
+  f(x) = \frac{1}{\sqrt{2\pi\sigma^2}} e^{-(x-\mu)^2/(2\sigma^2)}.
+  \]
+
+  Integrals of this distribution connect to the error function.
+\end{enumerate}
+
+\paragraph{Why This Matters}\label{why-this-matters-3}
+
+\begin{itemize}
+\tightlist
+\item
+  Integrals turn probabilities into areas under curves.
+\item
+  Expectation and variance link calculus to averages and variability.
+\item
+  Most real-world data models (finance, physics, biology, AI) use these
+  continuous probability distributions.
+\end{itemize}
+
+\paragraph{Quick Practice}\label{quick-practice}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  For \(f(x) = \tfrac{1}{2}\) on \([0,2]\), compute
+  \(P(0.5 \leq X \leq 1.5)\).
+\item
+  For exponential distribution with \(\lambda = 2\), compute \(E[X]\).
+\item
+  Show that the total area under the standard normal curve equals 1.
+\item
+  Find the mean of a uniform distribution on \([3,7]\).
+\item
+  Explain why probabilities are computed with integrals, not sums, for
+  continuous variables.
+\end{enumerate}
+
+\subsubsection{D.3 Computer Science Connections: Taylor Approximations
+in
+Algorithms}\label{d.3-computer-science-connections-taylor-approximations-in-algorithms}
+
+Calculus is not only for physics - it also underpins many tools and
+techniques in computer science. One of the clearest bridges is through
+Taylor series, which provide efficient ways to approximate functions in
+numerical computing and algorithms.
+
+\paragraph{Function Approximation for
+Computing}\label{function-approximation-for-computing}
+
+Computers cannot directly store or calculate most functions exactly
+(like \(e^x\), \(\sin x\), or \(\ln x\)). Instead, they use polynomial
+approximations derived from Taylor expansions.
+
+Example: To approximate \(e^x\), truncate the Maclaurin series:
+
+\[
+e^x \대략 1 + x + \frac{x^2}{2!} + \frac{x^3}{3!}.
+\]
+
+작은 \(x\)의 경우 이 다항식은 몇 개의 항만으로 정확한 결과를 제공합니다.
+
+\paragraph{알고리즘의
+효율성}\label{uxc54cuxace0uxb9acuxc998uxc758-uxd6a8uxc728uxc131}
+
+\begin{itemize}
+\tightlist
+\item
+  삼각 함수: 계산기 및 CPU용 알고리즘은 종종 계열 확장(또는 체비쇼프
+  다항식과 같은 변형)을 사용합니다.- 지수/대수: 테일러 전개는 수치
+  라이브러리의 빠른 근사치의 기초입니다.
+\item
+  근 찾기: 뉴턴의 방법은 테일러 급수(1차 도함수)를 직접 적용한 선형
+  근사법을 기반으로 합니다.
+\end{itemize}
+
+\paragraph{수치해석}\label{uxc218uxce58uxd574uxc11d}
+
+Taylor 확장은 오류 분석의 핵심입니다.
+
+\begin{itemize}
+\item
+  나머지 공식을 사용하여 오차항을 근사화합니다.
+
+  \[
+  R_n(x) = \frac{f^{(n+1)}(c)}{(n+1)!}(x-a)^{n+1}.
+  \]
+\item
+  이는 주어진 정확도를 위해 몇 개의 용어가 필요한지 알려줍니다.
+\end{itemize}
+
+\paragraph{머신러닝 연결}\label{uxba38uxc2e0uxb7ecuxb2dd-uxc5f0uxacb0}
+
+\begin{itemize}
+\tightlist
+\item
+  경사 기반 최적화(예: 경사하강법)는 파생 상품을 사용하여 매개변수를
+  효율적으로 업데이트합니다.
+\item
+  활성화 함수(예: \(\tanh x\) 또는 \(\sigma(x)=1/(1+e^{-x})\))는 속도를
+  위해 다항식 또는 조각별 함수로 근사화되는 경우가 많습니다.
+\item
+  계열 근사는 제한된 환경에서 훈련 및 추론 속도를 높일 수 있습니다.
+\end{itemize}
+
+\paragraph{이것이 중요한
+이유}\label{uxc774uxac83uxc774-uxc911uxc694uxd55c-uxc774uxc720-33}
+
+\begin{itemize}
+\tightlist
+\item
+  테일러 근사법은 연속 수학과 이산 컴퓨팅을 연결합니다.
+\item
+  미적분 개념이 알고리즘, 수치 방법 및 기계 학습에 어떻게 사용되는지
+  보여줍니다.
+\item
+  근사치를 이해하면 계산을 위해 컴퓨터에 의존할 때 함정을 피하는 데
+  도움이 됩니다.
+\end{itemize}
+
+\paragraph{빠른 연습}\label{uxbe60uxb978-uxc5f0uxc2b5-1}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Maclaurin 계열의 처음 세 항을 사용하여 \(\sin(0.1)\)을 근사화합니다.
+\item
+  나머지 항을 사용하여 \(e^1\)을 3차 다항식으로 근사할 때 오류를
+  추정합니다.
+\item
+  뉴턴의 방법이 테일러의 정리를 어떻게 사용하는지 설명하십시오.
+\item
+  컴퓨터가 함수의 정확한 공식보다 다항식 근사를 선호하는 이유는
+  무엇입니까?
+\item
+  머신러닝에서 최적화를 위해 미분(그라디언트)이 왜 그렇게 중요한가요?
+\end{enumerate}
+
+
+
+
+\end{document}
